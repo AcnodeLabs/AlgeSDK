@@ -1,0 +1,1 @@
+start Platforms/Alge-Windows/Alge_VC14.sln

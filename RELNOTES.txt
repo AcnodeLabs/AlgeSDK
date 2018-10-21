@@ -1,0 +1,26 @@
+JD2f is Free Release of June 2018
+
+NOTES:-
+
+- Follwoing Plaforms are included in JD2f:-
+	- Alge-Windows			Yes
+- This is the minimum first formal free release branch, consider obtaining full release for publishing
+- Contribute by Supporting/ Funding is encouraged
+
+Fastest way to get up and running is to open Alge-Windows
+a) Open Platforms/Alge-Windows/Alge-Windows.sln in Visual Studio 2017 
+b) press F5 (this will compile your App, and in Windows will also launch NATS and FPS Window)
+
+To change User Application/See Demos Update CANDIDATE.h
+- Make a copy of an any existing application and its .assets folder, Rename Folders and Update Candidate.h
+- This is the first public release, glitches may be reported meantime you have full source code to adjust.
+- AlgeSDK recommended way to relese on multiple Platforms is
+	- Develop in Visual Studio or Xcode (in order of recommendation)
+	- For iOS/macOS Switch to macOS in Packaging phase
+	- Use Android build script
+
+AlgeSDK by Acnodelabs
+three6tdegree@gmail.com
+fb.com/algesdk
+twitter.com/algesdk
+
