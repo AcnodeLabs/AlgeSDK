@@ -14,7 +14,7 @@ public:
         if (Screen0.wasTouched()) { Screen0.HideFor(&sel_lvl);}
         if (sel_lvl.wasTouched()) { sel_lvl.HideFor(&start0); PlaySnd("motorbike.wav");}
 	}
-	/
+	
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
 		alInit(STANDARD);

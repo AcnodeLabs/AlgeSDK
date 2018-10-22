@@ -1,9 +1,7 @@
 // Copyright (c) 2018 AcnodLabs Inc
 
-
-
 /*
-   ALGE SDK JD3 Demo :: ColorSwitch2D
+   ALGE SDK JD4 Demo :: ColorSwitch2D (Front Screen Only)
 */
 
 class /*ColorSwitch2D*/ App : public AlgeApp {

@@ -156,7 +156,7 @@ public:
 		g->originalScale = scale;
         g->JuiceType = 0;
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), name);
-        g->UUID = name;
+        g->UUID = name + ".GOB";
         g->m_touched = false;
 		return g;
 	}
