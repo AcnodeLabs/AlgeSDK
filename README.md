@@ -1,4 +1,4 @@
-### **Programming with ALGE Vanilla SDK**
+﻿### **Programming with ALGE Vanilla SDK**
 ### **Developing Platform Independent**
 ### **3D Graphics Applications**
 
@@ -9,7 +9,7 @@ Assuming you are a developer who has good handle on C/C++ and are perplexed from
 
 If u own a Windows Machine you can develop using ALGE and sell your app on Windows Marketplace, Intel AppUp, Android Marketplace right out of the box. If u own a Mac you can test and port your App on iTunes Store, Mac App Store and Android Marketplace. If U own both you can develop on one machine and port to many possible outlets, Windows Marketplace, Tunes App Store, Mac App Store, Android Marketplace and the Intel AppUp Store. You may also distribute the Android Apps to third party stores around the globe.
 
-When u have a ALGE compliant release candidate ready you can use ALGE templates to port it right away. By the way you won�t have to rewrite your app as when moving from one machine to another as your App is ALGE compliant i.e Vanilla. So you have maximum reach and a fairly broad user base unmatched by any other SDK offerings. I suspect you are now feeling the Adrenaline rush as part of ALGE process, and Wait the moment you would be finished by the prototype you would be enthralled by the possible prompt porting schemes ready to comply to your instructions. 
+When u have a ALGE compliant release candidate ready you can use ALGE templates to port it right away. By the way you wont have to rewrite your app as when moving from one machine to another as your App is ALGE compliant i.e Vanilla. So you have maximum reach and a fairly broad user base unmatched by any other SDK offerings. I suspect you are now feeling the Adrenaline rush as part of ALGE process, and Wait the moment you would be finished by the prototype you would be enthralled by the possible prompt porting schemes ready to comply to your instructions. 
 A common repository or version control system on your networked machines is recommended to transfer App codebase. If u prefer to use cloud �Windows Live Mesh� is a very good way to maintain a common repository for a beginner.
 
 Make your plan to get hold of test devices for every platform you intend to use. You would probably already own a device that supports OpenGL ES. I started from buying a cheap iPod Touch 2G and an Android G1 and released apps for iPhone 4, Galaxy Tab, and even iPad. The Apps paid
