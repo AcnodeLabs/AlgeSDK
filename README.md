@@ -2,7 +2,7 @@
 ### **Developing Platform Independent**
 ### **3D Graphics Applications**
 
-AcnodeLabs (c)  2012 
+AcnodeLabs (c)  2018
 ## Hefty Skippable Introducion
 
 Assuming you are a developer who has good handle on C/C++ and are perplexed from where to dwell further in App making and monetization. You would like to present your idea to the world as quickly as possible to the app store users.
@@ -10,21 +10,21 @@ Assuming you are a developer who has good handle on C/C++ and are perplexed from
 If u own a Windows Machine you can develop using ALGE and sell your app on Windows Marketplace, Intel AppUp, Android Marketplace right out of the box. If u own a Mac you can test and port your App on iTunes Store, Mac App Store and Android Marketplace. If U own both you can develop on one machine and port to many possible outlets, Windows Marketplace, Tunes App Store, Mac App Store, Android Marketplace and the Intel AppUp Store. You may also distribute the Android Apps to third party stores around the globe.
 
 When u have a ALGE compliant release candidate ready you can use ALGE templates to port it right away. By the way you wont have to rewrite your app as when moving from one machine to another as your App is ALGE compliant i.e Vanilla. So you have maximum reach and a fairly broad user base unmatched by any other SDK offerings. I suspect you are now feeling the Adrenaline rush as part of ALGE process, and Wait the moment you would be finished by the prototype you would be enthralled by the possible prompt porting schemes ready to comply to your instructions. 
-A common repository or version control system on your networked machines is recommended to transfer App codebase. If u prefer to use cloud �Windows Live Mesh� is a very good way to maintain a common repository for a beginner.
+A common repository or version control system on your networked machines is recommended to transfer App codebase. If u prefer to use cloud Windows Live Mesh is a very good way to maintain a common repository for a beginner.
 
 Make your plan to get hold of test devices for every platform you intend to use. You would probably already own a device that supports OpenGL ES. I started from buying a cheap iPod Touch 2G and an Android G1 and released apps for iPhone 4, Galaxy Tab, and even iPad. The Apps paid
 off well for upgrades.
 
-Jumping into Apple territory means you need a Mac (could be cheap Mac Mini) but that�s worth investing for a starter. Few SDK paradigms claim to write complete iOS App on Windows PC without even requiring the platform device. Come On!! Getting hold of a low spec device on which you users will actually use and feel your app is not at all a bad
+Jumping into Apple territory means you need a Mac (could be cheap Mac Mini) but thats worth investing for a starter. Few SDK paradigms claim to write complete iOS App on Windows PC without even requiring the platform device. Come On!! Getting hold of a low spec device on which you users will actually use and feel your app is not at all a bad
 bet considering the usability and lovability of these devices. After all you are required to invest essentially in App Developer programs and beta testers, why not invest in a device of the OEM in whose ecosystem you are going to benefit from.
 
 As Android tools for both OSX and Windows are available, you can even start developing on a Windows Workstation and release Apps to Android community. Monetizing Android Apps require you to incorporate Ad based services and the Good News is that ALGE SDK has pre-configured Admob (In App Ads)  and Airpush (Out of App Ads) SDK so your first Hello World App also shows up the Ads out of the box.
 
-Platform OEM�s always like you to stick to their particular toolset and associated technologies. Apple wants people to use Swift. Objective-C using XCode and Microsoft requires people to use MS Technologies. If u develop a App for Android and then later when it would decide to port it to iPhone, what�s your best course of action? Invest in Porting!! And after investing you would also like to retain your platform specific workforce. What does this have to do with vanilla? Take a few steps back and See. You are in the Game of making your product cut through the market and shine before anyone one else does this faster than you, Period !! ALGE SDK enables you to do that. You Think, design, code, debug in a platform independent way and it lets you quickly port your Apps using automation.
+Platform OEMs always like you to stick to their particular toolset and associated technologies. Apple wants people to use Swift. Objective-C using XCode and Microsoft requires people to use MS Technologies. If u develop a App for Android and then later when it would decide to port it to iPhone, whats your best course of action? Invest in Porting!! And after investing you would also like to retain your platform specific workforce. What does this have to do with vanilla? Take a few steps back and See. You are in the Game of making your product cut through the market and shine before anyone one else does this faster than you, Period !! ALGE SDK enables you to do that. You Think, design, code, debug in a platform independent way and it lets you quickly port your Apps using automation.
 
-Of course you would require �the platform� for deployment and pre- release testing of your Application. By Vanilla what I mean is to use the platform and tools of your choice for development code the App in pure C / C++ as inherently it�s a portable language across the OpenGL world.
+Of course you would require the platform for deployment and pre- release testing of your Application. By Vanilla what I mean is to use the platform and tools of your choice for development code the App in pure C / C++ as inherently its a portable language across the OpenGL world.
 
-Visual Studio is the ALGE�s preferred development environment. This does not mean that you won�t be able to program for ALGE if you own a Mac, XCode now also have elegant facilities and ALGE SDK has no issues with that too. 
+Visual Studio and XCode are the preferred development environments. 
 
 C++ is a widely used lingua facia for game developers all around the world. It is inherently portable and is designed for portability across platforms. You can achieve unmatched performance in comparison with other languages. You can develop mixed mode structured and object oriented both. OpenGL ES is a C API so you program closer to the
 metal. For 3D graphics certain C++ features are indispensable. Operator overloading makes it possible to perform vector math in a syntactically natural way. Templates allow the reuse of vector and matrix types using a variety of underlying numerical representations. ALGE SDK includes all Glue code necessary to interface your C/C++ vanilla code to the platform specific code, on iOS ALGE uses Objective-C and for Android it uses Java Native Interface to talk to the platform. But as a developer your purview remains only Vanilla C/C++.
@@ -62,7 +62,7 @@ The installation is pretty straightforward. Extract the package to your reposito
 relative. It also simplifies to zip your App Folder to backup all your work periodically. 
 
 
-Under the platforms folder you can find IDE project templates. To take a start Let�s compile and a defacto demo application �Lesson03�. In fact this is an Alge compatible port of Lesson03 of the defacto OpenGL tutorials of NeHe (original is found at http://nehe.gamedev.net). This App displays a colored rectangle and a colored Quad on the Screen. You would be glad that Lesson 01 and Lesson 02 are not required
+Under the platforms folder you can find IDE project templates. To take a start Lets compile and a defacto demo application �Lesson03�. In fact this is an Alge compatible port of Lesson03 of the defacto OpenGL tutorials of NeHe (original is found at http://nehe.gamedev.net). This App displays a colored rectangle and a colored Quad on the Screen. You would be glad that Lesson 01 and Lesson 02 are not required
 as initialization of GL Context and window creating has already been catered for by ALGE framework. 
 
 
@@ -126,7 +126,7 @@ The App is identified not by the name of class nor by its File name, it is ident
 ?         Every App Folder resides in Apps directory of SDK
 ?         Every App has a self contained Data folder
 ?	Every App is a encapsulated in a class named App contained in file App.hpp
-?         App Folder name �IS THE� App�s Name
+?         App Folder name �IS THE� Apps Name
 
 Getting used to these conventions is a good idea at the beginning to avoid confusions later.
 
@@ -143,7 +143,7 @@ These are the essential ingredients and may not be altered or modified else buil
 
 Every App class is expected to contain public instances of class PEG named input and output. Your Application can read input messages queued for processing through the �input PEG� and send or request platform services through �output PEG�. PEG is not an acronym, it can be considered as a peg that joins items or a channel of communication of messages and associated data.
 
-**IMPORTANT**:- Your App has one chance per message, if the queue is read and message is ignored, the message is removed the queue assuming you don�t intend to act on it. 
+**IMPORTANT**:- Your App has one chance per message, if the queue is read and message is ignored, the message is removed the queue assuming you dont intend to act on it. 
 The Init Method is called once the Platform is ready with OpenGL context and loading other preliminaries. The path in which the app can read and write data in a vanilla way is passed to you as a parameter. Simply put you can even use core C stdio functions on every platform using this path. This is also used to initialize the resource manger(s) in your application to read and write to assets.
 
 The DeInit method is called before the App quits to give you an opportunity to deallocate any user objects and perform de-initialization of the App.
@@ -160,7 +160,7 @@ Every render method is accompanied with a float elapsed time variable (in second
 
 ## USER Variables, Objects and Methods
 
-All your Application specific variables and objects can be defined and used within the class in the same hpp file. It is recommended that you restrict your App�s code in the same hpp file, you may use your own objects as a separate hpp code file and include in the App.hpp defines section, but still a better way is to write re-usable code is through the Extension Scheme of the SDK. You can use inner classes and avoid using class wizards that auto generate class file pairs of Cpp and h files one per class. If you are used to using C/C++ cpp and header files separately, consider making all reusable code as an Extension, and retain only the App specific code in the App.hpp File. 
+All your Application specific variables and objects can be defined and used within the class in the same hpp file. It is recommended that you restrict your Apps code in the same hpp file, you may use your own objects as a separate hpp code file and include in the App.hpp defines section, but still a better way is to write re-usable code is through the Extension Scheme of the SDK. You can use inner classes and avoid using class wizards that auto generate class file pairs of Cpp and h files one per class. If you are used to using C/C++ cpp and header files separately, consider making all reusable code as an Extension, and retain only the App specific code in the App.hpp File. 
 
 ## About Messaging and Commands
 
@@ -208,7 +208,7 @@ Lets revisit some characteristics of the this 11 line APPLICATION.
 
 ## Give it a �Push� !!
 
-You can push and pull messages from the PEG�s, pushP is used for parameters of type POINTER; After all the file name is a const char*, Also $ is a helper define that means ((void*)(char*)) cast.
+You can push and pull messages from the PEGs, pushP is used for parameters of type POINTER; After all the file name is a const char*, Also $ is a helper define that means ((void*)(char*)) cast.
 
 The PEG Objects also include another variant to support integer values, thru call pushI , if u need to pass Integer parameters.
 
@@ -246,14 +246,14 @@ width = cmd->i1; height = cmd->i2;
 }
 
 void DeInit() {}
-void Render(�) {
+void Render(..) {
 processInput();
 // Other Rendering calls
 }
 
 };//~App
 
-Let�s Return to 3D Graphics
+Lets Return to 3D Graphics
 ===========================
 Now its time to break the Good News!!
 
