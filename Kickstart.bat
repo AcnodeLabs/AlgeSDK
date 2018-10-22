@@ -1,1 +1,1 @@
-start Platforms/Alge-Windows/Alge_VC14.sln
+start https://www.facebook.com/algesdk/shop

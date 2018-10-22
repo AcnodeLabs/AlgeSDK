@@ -61,36 +61,8 @@ public:
         
 	}
     
-	void processInput(PEG::CMD* p, float deltaT) {
-		if (p->command == CMD_KEYDOWN) {
-			if (p->i1 == AL_KEY_RIGHT) {
-				editX += 1;
-			}
-			if (p->i1 == AL_KEY_LEFT) {
-				editX -= 1;
-			}
-			if (p->i1 == AL_KEY_UP) {
-				editY += 1;
-			}
-			if (p->i1 == AL_KEY_DOWN) {
-				editY -= 1;
-			}
-		}
-		if (p->command == CMD_TOUCH_START) {
-           // screen0cs.obj.NextJuice();
-            
-		}
-		if (p->command == CMD_TOUCH_END) {
-		}
-	}
-	
-	float editX = originX;
-	float editY = originY;
-
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-	
-        gob->rotatefirst = false;
-        
+		gob->rotatefirst = false;
         if (gamemodesbanner.wasTouched()) {
             PosRotScale tgt;
             tgt.CopyFrom(gob);
@@ -98,32 +70,7 @@ public:
             tgt.pos.y = randm() * bottomSide;
             gamemodesbanner.transitionTo(tgt);
         };
-        
-		if (gob->modelId == stars[0].modelId) {
-		}
-
-		if (gob->modelId == ring4color.modelId) {
-            
-            PosRotScale* i = gob->getInstancePtr(instanceNo);
-
-			switch (instanceNo) {
-			case 1:
-				//i->rot.z -= (deltaT * 75);
-				break;
-			case 2:
-				//i->rot.z += (deltaT * 70);
-				break;
-			case 3:
-				//i->rot.z -= (deltaT * 85);
-				break;
-			case 4:
-			//	i->rot.z -= (deltaT * 85);
-				break;
-			case 5:
-			//	i->rot.z -= (deltaT * 85);
-				break;
-			}
-		}
+      
 	}
 
 	virtual i2 getBackgroundSize() {

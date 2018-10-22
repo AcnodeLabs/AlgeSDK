@@ -10,7 +10,7 @@ class CFTFont {
     struct dtx_font *font;
 public:
     
-    CFTFont() : CFTFont((char*)"C:\\OpenSans.ttf", 24) {}
+    CFTFont() : CFTFont((char*)"OpenSans.ttf", 24) {}
     CFTFont(char* fontname, int size) {
         font = nullptr;
         //https://github.com/jtsiomb/libdrawtext/blob/master/examples/simple/simple.c
@@ -38,7 +38,7 @@ public:
 
     ~CFTFont() {
         dtx_flush();
-        if (font!=nullptr) dtx_close_font(font);
+      //  if (font!=nullptr) dtx_close_font(font);
     }
 
 };
