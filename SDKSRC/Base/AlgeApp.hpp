@@ -2,7 +2,7 @@
 #include <Box2D/Box2D.h>
 #endif
 #ifndef NO_NATS
-#include "..\..\..\AlgeSDK_m\m_Tools\CNetMsg\CNetMsg.h"
+#include "..\..\..\AlgeSDK_m\Tools\CNetMsg\CNetMsg.h"
 extern CNetMsg netmsg;
 #endif
 

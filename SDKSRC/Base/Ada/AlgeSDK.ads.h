@@ -415,7 +415,7 @@ public:
         children.push_back(child);
         child->parent = this;
     }
-    PosRotScale* AddInstance(PosRotScale prs) {
+    PosRotScale* AddInstance(PosRotScale& prs) {
         if (prs.scale <= 0) prs.scale = 1.0;
         prs.originalScale = prs.scale;
         prsInstances.push_back(prs);
