@@ -54,6 +54,7 @@ public:
     float x,y,z;
 	char xyz[64] = { 0 };
 	void clear() { x = 0; y = 0; z = 0; }
+	f3(f2 f) { x = f.x; y = f.y; z = 0; }
 	f3(float mx, float my, float mz) { x = mx; y = my; z = mz; }
 	string str(string fmt) {
     //sprintf_s(xyz, 64, fmt.c_str(), x, y, z);
@@ -69,10 +70,12 @@ public:
 
 struct CRect {
 public:
-    float Top, Bottom, Left, Right;
+    float Top, Bottom, Left, Right, Width, Height;
     CRect() {};
     CRect(float _top, float _bottom, float _left, float _right) {
         Top = _top; Bottom = _bottom; Left = _left; Right = _right;
+		Width = abs(Right - Left);
+		Height = abs(Top - Bottom);
     }
     
     CRect objectToScreen() {}
@@ -80,28 +83,29 @@ public:
     
     CRect scaledRect(CRect s) {
         CRect ret;
-        float width = abs(Right-Left);
-        float height = abs(Top-Bottom);
-        float cX = width / 2.0;
-        float cY = height / 2.0;
+
+        float cX = Width / 2.0;
+        float cY = Height / 2.0;
         
         float s_width = abs(s.Right-s.Left);
         float s_height = abs(s.Top-s.Bottom);
         
-        float x_scale_factor = s_width / width;
-        float y_scale_factor = s_height / height;
+        float x_scale_factor = s_width / Width;
+        float y_scale_factor = s_height / Height;
         
-        float new_width = width * x_scale_factor;
-        float new_height = height * y_scale_factor;
+        float new_width = Width * x_scale_factor;
+        float new_height = Height * y_scale_factor;
         
-        float cnX = cX / width * new_width;
-        float cnY = cY / height * new_height;
+        float cnX = cX / Width * new_width;
+        float cnY = cY / Height * new_height;
         
         ret.Left = cnX - (new_width / 2.);
         ret.Right = cnX + (new_width / 2.);
         
         ret.Top = cnY - (new_height / 2.);
         ret.Bottom = cnY + (new_height / 2.);
+		Width = abs(Right - Left);
+		Height = abs(Top - Bottom);
         return ret;
     }
     

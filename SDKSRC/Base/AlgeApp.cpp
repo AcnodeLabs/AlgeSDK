@@ -98,11 +98,14 @@
     
     short AlgeApp::iSelectedObject = 0;
     
+
+
     auto AlgeApp::renderObjects(float deltaT, bool btrackball) {
         selectedObject = gobs[iSelectedObject];
         alPushMatrix();
         aCamera.Update(deltaT, selectedObject);
-        if (btrackball) trackball.ApplyRotate();
+		
+		if (btrackball) trackball.ApplyRotate();
         
         vec3 gray(0.5,0.5,0.5);
         xyz.setStippleAndColor(2, 0xAEAE, gray, gray, gray);

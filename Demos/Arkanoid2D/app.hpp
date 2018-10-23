@@ -67,7 +67,8 @@ class /*Arkanoid2D*/ App : public AlgeApp {
 	RoundGameObject bal; ResourceInf res;
 	GameObject bric;
     CControls controls;
-    
+	CPhys2D phys;
+
 	const int xMax = 500;
 	const int xSpd = 10;
 public:
@@ -112,9 +113,26 @@ public:
 
 #define ADJUST /1.0
 
+	void Update(float deltaT) {
+		phys.Step(deltaT);
+		bal.pos = f3(phys.getPos("ball"));
+		bat.pos = f3(phys.getPos("bat"));
+
+		int n = 0;
+		for (int x = leftSide + 100; x < rightSide - 50; x += 100) {
+			sprintf(bricTag, "bric%d", n++);
+			bric.getInstancePtr(n)->pos = f3(phys.getPos(bricTag));
+			sprintf(bricTag, "bric%d", n++);
+			bric.getInstancePtr(n)->pos = f3(phys.getPos(bricTag));
+			sprintf(bricTag, "bric%d", n++);
+			bric.getInstancePtr(n)->pos = f3(phys.getPos(bricTag));
+		}
+
+	}
 
 	void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
-
+		
+		
 		if (gob->modelId == bric.modelId) {
 			RectGameObject* b = (RectGameObject*)bric.getInstancePtr(instanceNo);
 			if (isCircleIntersectingRect(bal.pos.x, bal.pos.y, bal.ballRadius, b->pos.x, b->pos.y, blockWidth, blockHeight)) {
@@ -145,8 +163,10 @@ public:
 		}
 	}
 
+	char bricTag[64];
 
 	virtual void Init(char* path) {
+		wireframe = true;
 
 		alInit(STANDARD);
 
@@ -156,14 +176,20 @@ public:
         float scalefactor_bg = getBackgroundSize().x / 800.;
         AddResource(&bg, "ab_city", scalefactor_bg);
 
+		phys.AddGround(f2(leftSide, bottomSide - 100), f2(rightSide, bottomSide- 100));
+
 		AddResource(&bal, "adidas_ball", 10.);
 		bal.pos.x = originX;
 		bal.pos.y = originY;
-		AddResource(&bat, "paddle");
-		bat.pos.x = originX;
-		bat.pos.y = bottomSide - 50;
-		AddResource(&bric, "brick", 1.0);
+		phys.AddAsCircle(&bal, "ball");
 
+		AddResource(&bat, "paddle");
+		bat.pos.x = originX - 200;
+		bat.pos.y = bottomSide - 50;
+		phys.AddAsRect(&bat, "bat");
+
+		AddResource(&bric, "brick", 1.0);
+		
 		//output.pushP(CMD_SNDSET1, "techno.wav");
 		output.pushP(CMD_SNDSET0, $ "techno.wav");
         output.pushP(CMD_SNDSET1, $ "wall.wav");
@@ -172,17 +198,21 @@ public:
 
 		output.pushP(CMD_SNDPLAY0);
 
-		f2 pos;
-		pos.clear();
-
+		PosRotScale prs;
+		
+		int n = 0;
 		for (int x = leftSide + 100; x < rightSide - 50; x += 100) {
-			pos.x = x;
-			pos.y = topSide + 100;
-			bric.AddInstance(pos);
-			pos.y += 50;
-			bric.AddInstance(pos);
-			pos.y += 50;
-			bric.AddInstance(pos);
+			prs.pos.x = x;
+			prs.pos.y = topSide + 100;
+			sprintf(bricTag, "bric%d", n++);
+			phys.AddAsRect(bric.AddInstance(prs),bricTag);
+			prs.pos.y += 50;
+			sprintf(bricTag, "bric%d", n++);
+			phys.AddAsRect(bric.AddInstance(prs), bricTag); 
+			prs.pos.y += 50;
+			sprintf(bricTag, "bric%d", n++);
+			phys.AddAsRect(bric.AddInstance(prs), bricTag);
+
 		}
 	}
 

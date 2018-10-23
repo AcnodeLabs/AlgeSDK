@@ -187,4 +187,109 @@ public:
 
 };
 
+#ifndef NO_BOX_2D
+	#include "../../../../../../AlgeSDK_m/ThirdParty/Box2D-master/Box2D-master/Box2D/Box2D.h"
+#endif
 
+#include <map>
+
+class CPhys2D : public CPhys, public b2ContactListener {
+#ifndef NO_BOX_2D
+
+	b2World* m_world;
+	
+public:
+	CPhys2D(float _gravity = 9.8) {
+		b2Vec2 gravity;
+		gravity.Set(0.0f, _gravity);
+		m_world = new b2World(gravity);
+		m_world->SetContactListener(this);
+	}
+	//Eg: AddGround(-50.0, +50.0) will make ground at y = 0 with it
+
+	/// Called when two fixtures begin to touch.
+	virtual void BeginContact(b2Contact* contact) { 
+		B2_NOT_USED(contact); 
+	}
+
+	/// Called when two fixtures cease to touch.
+	virtual void EndContact(b2Contact* contact) { 
+		B2_NOT_USED(contact); 
+	}
+
+	map<string, b2Body*> bodies;
+
+	f2 getPos(string name) {
+		b2Body* b = bodies[name];
+		if (b) {
+			b2Vec2 p = b->GetPosition();
+			return f2(p.x, p.y);
+		}
+		return f2(0, 0);
+	}
+
+	void AddAsCircle(PosRotScale* gob, string tag, float density = 1.0f) {
+		// Small circle
+		b2CircleShape circle;
+		circle.m_radius = gob->getOwnRect(tag).Width;
+
+		b2FixtureDef circleShapeDef;
+		circleShapeDef.shape = &circle;
+		circleShapeDef.density = density;
+
+		b2BodyDef circleBodyDef;
+		circleBodyDef.type = b2_dynamicBody;
+		circleBodyDef.position.Set(gob->pos.x, gob->pos.y);
+
+		b2Body* body5 = m_world->CreateBody(&circleBodyDef);
+		body5->CreateFixture(&circleShapeDef);
+		bodies.emplace(tag, body5);
+	}
+
+
+	void AddAsRect(PosRotScale* gob, string tag, float density = 1.0f) {
+		// Small box
+		b2PolygonShape polygon;
+		polygon.SetAsBox(gob->m_width, gob->m_height);
+
+		b2FixtureDef boxShapeDef;
+		boxShapeDef.shape = &polygon;
+		boxShapeDef.density = 1.0f;
+
+		b2BodyDef boxBodyDef;
+		boxBodyDef.type = b2_dynamicBody;
+		boxBodyDef.position.Set(gob->pos.x, gob->pos.y);
+
+		b2Body* body3 = m_world->CreateBody(&boxBodyDef);
+		body3->CreateFixture(&boxShapeDef);
+		bodies.emplace(tag, body3);
+	}
+
+	void AddGround(f2 pt1, f2 pt2) {
+		if (m_world) {
+			b2BodyDef bd;
+			b2Body* ground = m_world->CreateBody(&bd);
+
+			b2FixtureDef sd;
+			b2EdgeShape shape;
+			shape.Set(b2Vec2(pt1.x, pt1.y), b2Vec2(pt2.x, pt2.y));
+			sd.shape = &shape;
+
+			ground->CreateFixture(&sd);
+		}
+	}
+
+	void Step(float timeStep) {
+		if (m_world) {
+			m_world->Step(timeStep, 8, 3); // velocityIterations, positionIterations);
+		}
+	}
+
+	~CPhys2D() {
+		delete m_world;
+		m_world = NULL;
+	}
+
+#endif // !NO_BOX_2D
+
+};
