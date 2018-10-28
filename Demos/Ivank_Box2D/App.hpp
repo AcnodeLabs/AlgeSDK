@@ -13,7 +13,8 @@ class /*IvanK Box2D*/ App : public AlgeApp {
 	b2PolygonShape polygon;
 	b2CircleShape circle;
 	b2FixtureDef bxFixDef, blFixDef;
-	b2BodyDef bodyDef;
+	b2BodyDef bodyDefBall;
+	b2BodyDef bodyDefBox;
 
 public:
 
@@ -26,8 +27,8 @@ public:
 			int x = p->i1;
 			int y = p->i2;
 			for (auto b : touched_bodies) {
-				if (b->GetType() == b2_dynamicBody) {
-					b->ApplyLinearImpulse(iUp, b->GetWorldCenter(), true);
+				if (b->physBodyPtr->GetType() == b2_dynamicBody) {
+					b->physBodyPtr->ApplyLinearImpulse(iUp, b->physBodyPtr->GetWorldCenter(), true);
 				}
 			}
 		}
@@ -74,7 +75,7 @@ public:
 		Phys2DWallIt();// Make Lt Wall Bottom Ground Rt Wall as per 2D view
 		
 		iUp.x = 0;
-		iUp.y = -3;
+		iUp.y = -2;
 
 		AddResource(&winter2, "winter2"); // 512 pixels = 5.12 meters
 		
@@ -90,10 +91,11 @@ public:
 		bxFixDef.density = 1;
 		blFixDef.density = 1;
 
-		bxFixDef.restitution = .3;
-		blFixDef.restitution = .8;
+		bxFixDef.restitution = .15;
+		blFixDef.restitution = .5;
 
-		bodyDef.type = b2_dynamicBody;
+		bodyDefBall.type = b2_dynamicBody;
+		bodyDefBox.type = b2_dynamicBody;
 
 		char szuuid[64];
 
@@ -107,22 +109,22 @@ public:
 			float box_hw = 20 * rndScale;
 		
 			polygon.SetAsBox(box_hh * S2P, box_hw * S2P);
-			bodyDef.position.Set(randm() * 7, randm() * 5);
+			bodyDefBox.position.Set(randm() * 7, randm() * 5);
 
-			px_body[i] = world->CreateBody(&bodyDef);
+			px_body[i] = world->CreateBody(&bodyDefBox);
 			b2FixtureDef* fixDef = &bxFixDef;
 			px_body[i]->CreateFixture(fixDef);
 
 			px[i].physBodyPtr = px_body[i];
 			px[i].scale = rndScale;//?
-			px[i].pos.x = bodyDef.position.x * P2S;
-			px[i].pos.y = bodyDef.position.y * P2S;
+			px[i].pos.x = bodyDefBox.position.x * P2S;
+			px[i].pos.y = bodyDefBox.position.y * P2S;
 			px[i].m_height = 2*box_hh;
 			px[i].m_width = 2*box_hw; // == ball_rad = 20 in this case
 			
 			//bm[i].userId = i;
 
-			sprintf(szuuid, "ball#%d", i); 
+			sprintf(szuuid, "box#%d", i); 
 			px[i].UUID = string(szuuid);
 			boxes.AddInstance(px[i]);
 			
@@ -137,16 +139,16 @@ public:
 			float ball_rad = 20;
 
 			circle.m_radius = 20 * S2P * rndScale;
-			bodyDef.position.Set(randm() * 7, randm() * 5);
-			pl_body[i] = world->CreateBody(&bodyDef);
+			bodyDefBall.position.Set(randm() * 7, randm() * 5);
+			pl_body[i] = world->CreateBody(&bodyDefBall);
 
 			b2FixtureDef* fixDef = &blFixDef;
 			pl_body[i]->CreateFixture(fixDef);
 
 			pl[i].physBodyPtr = pl_body[i];
 			pl[i].scale = rndScale;//?
-			pl[i].pos.x = bodyDef.position.x * P2S;
-			pl[i].pos.y = bodyDef.position.y * P2S;
+			pl[i].pos.x = bodyDefBall.position.x * P2S;
+			pl[i].pos.y = bodyDefBall.position.y * P2S;
 			pl[i].m_height = 2 * ball_rad;
 			pl[i].m_width = 2 * ball_rad;
 

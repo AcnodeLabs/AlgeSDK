@@ -149,6 +149,13 @@ public:
 	 float m_height;
 	 b2Body* physBodyPtr;
 	 string UUID;
+	 int m_touchedX;
+	 int m_touchedY;
+
+	 CRect getOwnRect(string name = "") {
+		 CRect own(pos.y - m_height / 2.0, pos.y + m_height / 2.0, pos.x - m_width / 2.0, pos.x + m_width / 2.0);
+		 return own;
+	 }
 
     void CopyFrom(PosRotScale* o) {
         pos.x = o->pos.x;
@@ -283,10 +290,7 @@ public:
         m_height = fHeight;
     }
     
-    CRect getOwnRect(string name = "") {
-        CRect own(pos.y - m_height / 2.0 , pos.y + m_height / 2.0 , pos.x - m_width / 2.0, pos.x + m_width / 2.0);
-        return own;
-    }
+
     
     void NextJuice() {
         

@@ -19,7 +19,7 @@ public:
 	
 	b2World* world;
 
-	vector<b2Body*> touched_bodies;
+	vector<PosRotScale*> touched_bodies;
 
 	CTrackBall trackball;
 	//CEasyBullet bullet;
@@ -370,10 +370,10 @@ public:
 	}
 	
         
-    bool doPicking2D(GameObject* it, f2 mouse) {
+    bool doPicking2D(PosRotScale* it, f2 mouse) {
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
         CRect obj = it->getOwnRect(it->UUID);
-        bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, "doPicking2D"));
+        bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
         return ret;
     }
@@ -397,7 +397,7 @@ public:
         PEG::CMD* cmd = input.pull();
         preProcessInput(cmd, deltaT);
         
-      
+		touched_bodies.clear();
   
 		
         int picked = -1;
@@ -406,13 +406,7 @@ public:
 			GameObject* it = gobs[i];
 			if (inhibitRender) { inhibitRender = false; continue; }
             
-            //Touched flag updated here
-            if (cmd->command== CMD_TOUCH_START)  {
-                if (!it->hidden)
-                    if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
-                    picked = i; //will be overriden by last ordered object
-                    }
-            }
+            
             
             PosRotScale origPRS;
 			origPRS.pos.x = it->pos.x; origPRS.pos.y = it->pos.y; origPRS.pos.z = it->pos.z;
@@ -425,6 +419,8 @@ public:
 			int n = it->prsInstances.size();
 			bool instanced = (n > 0);
 			
+			
+
 			for (int ins = 0; ins < n; ins++) {
 				
 				PosRotScale* prs = it->getInstancePtr(ins);
@@ -443,6 +439,16 @@ public:
 				it->JuiceSpeed = prs->JuiceSpeed;
 				it->JuiceType = prs->JuiceType;
 				
+
+				//Touched flag updated here for instances
+				if (cmd->command == CMD_TOUCH_START) {
+					if (!it->hidden)
+						if (doPicking2D(prs, f2(cmd->i1, cmd->i2))) {
+							touched_bodies.push_back(prs);
+							picked = i; //will be overriden by last ordered object
+						}
+				}
+
 				if (!prs->hidden) renderSingleObject(it, deltaT, ins);
 			}
 
@@ -893,7 +899,7 @@ public:
 	}
 
 	b2FixtureDef bxFixDef;
-	b2BodyDef bodyDef;
+	b2BodyDef bodyDefWalls;
 	b2PolygonShape shp;
 
 	void Phys2DWallIt() {
@@ -901,16 +907,16 @@ public:
 		bxFixDef.shape = &shp;
 		// create ground
 		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
-		bodyDef.position.Set(rightSide * S2P / 2, bottomSide * S2P );
-		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
+		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
+		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 		
 		shp.SetAsBox(1 * S2P, bottomSide*S2P);
 		// left wall
-		bodyDef.position.Set(0, bottomSide * S2P / 2);
-		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
+		bodyDefWalls.position.Set(0, bottomSide * S2P / 2);
+		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 		// right wall
-		bodyDef.position.Set(rightSide * S2P, bottomSide * S2P / 2);
-		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
+		bodyDefWalls.position.Set(rightSide * S2P, bottomSide * S2P / 2);
+		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 	}
 
 
