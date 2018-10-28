@@ -5,9 +5,6 @@
    http://lib.ivank.net/demos/box2D.html
 */
 
-#define S2P 0.01
-#define P2S 100.
-
 class /*IvanK Box2D*/ App : public AlgeApp {
 
 	GameObject winter2;
@@ -75,6 +72,7 @@ public:
 	//	xDebugDraw.Setup(originX, originY, 0.01);
 		
 		Phys2DWallIt();// Make Lt Wall Bottom Ground Rt Wall as per 2D view
+		
 		iUp.x = 0;
 		iUp.y = -3;
 

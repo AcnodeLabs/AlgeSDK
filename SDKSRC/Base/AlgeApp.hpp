@@ -7,7 +7,8 @@ extern CNetMsg netmsg;
 #endif
 
 #define FIRST 1
-
+#define P2S 100
+#define S2P 0.01
 #include "dimensions.h"
 
 class AlgeApp {
@@ -158,6 +159,7 @@ public:
         g->JuiceType = 0;
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), name);
         g->UUID = name;
+
 		return g;
 	}
 	
@@ -283,7 +285,9 @@ public:
 		}
 	}
 
-	void renderSingleObject(GameObject* it, float deltaT = 0.1f, int instanceNo = 0) {
+	void renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1) {
+
+		PosRotScale* it = iit->getInstancePtr(instanceNo);
 
 		static float wobble = 0.;
 		glPushMatrix();
@@ -298,22 +302,22 @@ public:
 
 		//glScalef(it->scale, it->scale, it->scale);
 
-		if (it->parent) {
-			relPos.x += it->parent->pos.x;
-			relPos.y += it->parent->pos.y;
-			relPos.z += it->parent->pos.z;
-			relRot.x += it->parent->rot.x;
-			relRot.y += it->parent->rot.y;
-			relRot.z += it->parent->rot.z;
+		if (iit->parent) {
+			relPos.x += iit->parent->pos.x;
+			relPos.y += iit->parent->pos.y;
+			relPos.z += iit->parent->pos.z;
+			relRot.x += iit->parent->rot.x;
+			relRot.y += iit->parent->rot.y;
+			relRot.z += iit->parent->rot.z;
 		}
 
-		if (!it->rotatefirst) glTranslatef(relPos.x, relPos.y, relPos.z);
+		if (!iit->rotatefirst) glTranslatef(relPos.x, relPos.y, relPos.z);
 
 		glRotatef(relRot.x, 1., 0., 0.);
 		glRotatef(relRot.y, 0., 1., 0.);
 		glRotatef(relRot.z, 0., 0., 1.);
 
-		if (it->rotatefirst) glTranslatef(relPos.x, relPos.y, relPos.z);
+		if (iit->rotatefirst) glTranslatef(relPos.x, relPos.y, relPos.z);
 
 		if (it->hidden) return;
 		
@@ -321,42 +325,42 @@ public:
 		
         
 		if (edit) {
-			if (it->modelId >= 0)
-			xyz.setSize(rm.models[it->modelId]->boundz() * 200.f);
+			if (iit->modelId >= 0)
+			xyz.setSize(rm.models[iit->modelId]->boundz() * 200.f);
 			xyz.glDraw();//draw axis
 		   //xyz.glDrawGroundAsGrid();
 		}
 
 
 		//it->Update(deltaT);
-		UpdateCustom(it, instanceNo, deltaT);
+		UpdateCustom(iit, instanceNo, deltaT);
 	
 		
-		if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
-			PosRotScale* i = it->getInstancePtr(instanceNo);
-			i->pos.x = originX;
-			i->pos.y = originY;
-			float originalWidth = rm.models[it->modelId]->originalWidth();
-			ammendTopLeft2D(&i->pos, i->scale, originalWidth);
-		}
+//	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
+//			PosRotScale* i = iit->getInstancePtr(instanceNo);
+//			i->pos.x = originX;
+//			i->pos.y = originY;
+//			float originalWidth = rm.models[iit->modelId]->originalWidth();
+//			ammendTopLeft2D(&i->pos, i->scale, originalWidth);
+//		}
         
        
-		if (it->billboard) alBillboardBegin();
+		if (iit->billboard) alBillboardBegin();
 
 		glScalef(it->scale, it->scale, it->scale);
 
 		int m_j = it->JuiceType;//save  *1 >>>>>
 		if ((edit && it == gobs[iSelectedObject])) it->JuiceType = JuiceTypes::JUICE_PULSATE;
 
-		if (it != &aCamera) UpdateJuices(it, instanceNo, deltaT);
+		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
 		if (edit) {
-			if (it->modelId >= 0) alDrawModel(it->modelId, wireframe);
+			if (iit->modelId >= 0) alDrawModel(iit->modelId, wireframe);
 		}
 		else {
-			if (it->modelId >= 0) alDrawModel(it->modelId, false);
+			if (iit->modelId >= 0) alDrawModel(iit->modelId, false);
 		}
-		if (it->billboard) alBillboardEnd();
+		if (iit->billboard) alBillboardEnd();
 
 		it->JuiceType = m_j;//restore *1 <<<<<
 
@@ -394,7 +398,7 @@ public:
         preProcessInput(cmd, deltaT);
         
       
-        processInput(cmd, deltaT);
+  
 		
         int picked = -1;
         
@@ -418,23 +422,39 @@ public:
 			origPRS.JuiceType = it->JuiceType;
 			origPRS.hidden = it->hidden;
 
-			bool instanced = (it->prsInstances.size() > 0);
-			int ins = 0;
-			for (auto prs : it->prsInstances) {
-				it->pos.x = prs.pos.x; it->pos.y = prs.pos.y; it->pos.z = prs.pos.z;
-				it->rot.x = prs.rot.x; it->rot.y = prs.rot.y; it->rot.z = prs.rot.z;
-				it->scale = prs.scale;
-				it->hidden = prs.hidden;
-				it->JuiceSpeed = prs.JuiceSpeed;
-				it->JuiceType = prs.JuiceType;
+			int n = it->prsInstances.size();
+			bool instanced = (n > 0);
+			
+			for (int ins = 0; ins < n; ins++) {
+				
+				PosRotScale* prs = it->getInstancePtr(ins);
+				
+				if (prs->physBodyPtr) {
+					b2Body *b = (b2Body*)prs->physBodyPtr;
+					prs->pos.x = b->GetPosition().x * P2S;
+					prs->pos.y = b->GetPosition().y * P2S;
+					prs->rot.z = b->GetAngle() * 57.2958f;
+				}
 
-				if (!prs.hidden) renderSingleObject(&(*it), deltaT, ins);
-				ins++;
-				instanced = true;
+				it->pos.x = prs->pos.x; it->pos.y = prs->pos.y; it->pos.z = prs->pos.z;
+				it->rot.x = prs->rot.x; it->rot.y = prs->rot.y; it->rot.z = prs->rot.z;
+				it->scale = prs->scale;
+				it->hidden = prs->hidden;
+				it->JuiceSpeed = prs->JuiceSpeed;
+				it->JuiceType = prs->JuiceType;
+				
+				if (!prs->hidden) renderSingleObject(it, deltaT, ins);
 			}
 
-			if (!instanced && !it->hidden) renderSingleObject(&(*it), deltaT, -1);
-			else {
+			if (!instanced && !it->hidden) {
+				if (it->physBodyPtr) {
+					b2Body *b = (b2Body*) it->physBodyPtr;
+					it->pos.x = b->GetPosition().x *P2S;
+					it->pos.y = b->GetPosition().y * P2S;
+					it->rot.z = b->GetAngle() * 57.2958f;
+				}
+				renderSingleObject(&(*it), deltaT, -1);
+			} else {
 				it->pos.x = origPRS.pos.x; it->pos.y = origPRS.pos.y; it->pos.z = origPRS.pos.z;
 				it->rot.x = origPRS.rot.x; it->rot.y = origPRS.rot.y; it->rot.z = origPRS.rot.z;
 				it->scale = origPRS.scale;
@@ -454,6 +474,11 @@ public:
         
 		glPopMatrix();
         
+		//updateBody from phys
+
+		processInput(cmd, deltaT);
+
+
 	}
 
     short iSelectedObject = 1;
@@ -867,7 +892,25 @@ public:
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
 
+	b2FixtureDef bxFixDef;
+	b2BodyDef bodyDef;
+	b2PolygonShape shp;
+
 	void Phys2DWallIt() {
+		
+		bxFixDef.shape = &shp;
+		// create ground
+		shp.SetAsBox(rightSide * S2P / 2, 2 * S2P);
+		bodyDef.position.Set(rightSide * S2P / 2, bottomSide * S2P + 1);
+		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
+		
+		shp.SetAsBox(2 * S2P, bottomSide*S2P);
+		// left wall
+		bodyDef.position.Set(0, bottomSide * S2P / 2);
+		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
+		// right wall
+		bodyDef.position.Set(rightSide * S2P, bottomSide * S2P / 2);
+		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
 	}
 
 
