@@ -900,11 +900,11 @@ public:
 		
 		bxFixDef.shape = &shp;
 		// create ground
-		shp.SetAsBox(rightSide * S2P / 2, 2 * S2P);
-		bodyDef.position.Set(rightSide * S2P / 2, bottomSide * S2P + 1);
+		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
+		bodyDef.position.Set(rightSide * S2P / 2, bottomSide * S2P );
 		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);
 		
-		shp.SetAsBox(2 * S2P, bottomSide*S2P);
+		shp.SetAsBox(1 * S2P, bottomSide*S2P);
 		// left wall
 		bodyDef.position.Set(0, bottomSide * S2P / 2);
 		world->CreateBody(&bodyDef)->CreateFixture(&bxFixDef);

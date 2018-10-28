@@ -53,9 +53,9 @@ public:
 		}
 	}
 
-#define numBalls 100
-#define numBoxes 100
-#define num_max 100
+#define numBalls 50
+#define numBoxes 50
+#define num_max 50
 
 	b2Vec2 iUp;
 	
