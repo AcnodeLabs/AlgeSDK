@@ -80,16 +80,9 @@ public:
 
 	float tTotal, tRun;
 	float startX, startY, startZ;
-	int m_equationType;
 
-	enum ANIM_TWEEN {
-		ANIM_LINEAR = 1,
-		ANIM_QUADRADIC_EASE_IN = 2,
-		ANIM_QUADRADIC_EASE_IN_OUT = 3
-	};
-
-	void Reset(float *current, float* desirable, float speedA, int anim_tween_type = ANIM_LINEAR) {
-		m_equationType = anim_tween_type;
+	void Reset(float *current, float* desirable, float speedA) {
+	
 		tTotal = Dist(current,desirable) / speedA;
 	
 		curr = current;
@@ -113,21 +106,9 @@ public:
 	void Step(float dt) {
 		if (active) tRun += dt; else {tTotal = 0;return;}
 		r = tRun / tTotal;
-		if (m_equationType == ANIM_LINEAR) {
-			curr[0] = LinearTween(r, startX, desired[0]);
-			curr[1] = LinearTween(r, startY, desired[1]);
-			curr[2] = LinearTween(r, startZ, desired[2]);
-		}
-		if (m_equationType == ANIM_QUADRADIC_EASE_IN) {
-			curr[0] = QuadraticEaseIn(r, startX, desired[0]);
-			curr[1] = QuadraticEaseIn(r, startY, desired[1]);
-			curr[2] = QuadraticEaseIn(r, startZ, desired[2]);
-		}
-		if (m_equationType == ANIM_QUADRADIC_EASE_IN_OUT) {
-			curr[0] = QuadraticEaseInOut(r, startX, desired[0]);
-			curr[1] = QuadraticEaseInOut(r, startY, desired[1]);
-			curr[2] = QuadraticEaseInOut(r, startZ, desired[2]);
-		}
+		curr[0] = LinearTween(r, startX, desired[0]);
+		curr[1] = LinearTween(r, startY, desired[1]);
+        curr[2] = LinearTween(r, startZ, desired[2]);
         if (r>=1) {
 			active = false;
 		}

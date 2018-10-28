@@ -132,7 +132,7 @@ public:
 
 	void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
 		
-		
+		return;
 		if (gob->modelId == bric.modelId) {
 			RectGameObject* b = (RectGameObject*)bric.getInstancePtr(instanceNo);
 			if (isCircleIntersectingRect(bal.pos.x, bal.pos.y, bal.ballRadius, b->pos.x, b->pos.y, blockWidth, blockHeight)) {
@@ -196,7 +196,7 @@ public:
         output.pushP(CMD_SNDSET2, $ "blob.wav");
         
 
-		output.pushP(CMD_SNDPLAY0);
+	//	output.pushP(CMD_SNDPLAY0);
 
 		PosRotScale prs;
 		

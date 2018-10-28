@@ -41,7 +41,6 @@ public:
 	void clear() { x = 0; y = 0; }
 	f2() { clear(); };
 	f2(float mx, float my) { x = mx; y = my; }
-    f2(i2 m) { x = m.x; y = m.y; }
 	void CopyFrom(f2 p) { x = float(p.x); y = float(p.y); }
     f2 half() { return f2(x / 2, y / 2); }
     f2 twice() { return f2(x * 2, y * 2); }
@@ -54,7 +53,6 @@ public:
     float x,y,z;
 	char xyz[64] = { 0 };
 	void clear() { x = 0; y = 0; z = 0; }
-	f3(f2 f) { x = f.x; y = f.y; z = 0; }
 	f3(float mx, float my, float mz) { x = mx; y = my; z = mz; }
 	string str(string fmt) {
     //sprintf_s(xyz, 64, fmt.c_str(), x, y, z);
@@ -63,19 +61,17 @@ public:
 	}
 	f2 xy() {return f2{ x,y }; }
 	f3* ref() { return this; }
-    f3 half() { return f3(x / 2, y / 2, z/2); }
+
     f3() {clear();};
 };
 
 
 struct CRect {
 public:
-    float Top, Bottom, Left, Right, Width, Height;
+    float Top, Bottom, Left, Right;
     CRect() {};
     CRect(float _top, float _bottom, float _left, float _right) {
-        Top = _top; Bottom = _bottom; Left = _left; Right = _right;
-		Width = abs(Right - Left);
-		Height = abs(Top - Bottom);
+        Top = _top; Bottom = _bottom; Left = _left, Right = _right;
     }
     
     CRect objectToScreen() {}
@@ -83,29 +79,28 @@ public:
     
     CRect scaledRect(CRect s) {
         CRect ret;
-
-        float cX = Width / 2.0;
-        float cY = Height / 2.0;
+        float width = abs(Right-Left);
+        float height = abs(Top-Bottom);
+        float cX = width / 2.0;
+        float cY = height / 2.0;
         
         float s_width = abs(s.Right-s.Left);
         float s_height = abs(s.Top-s.Bottom);
         
-        float x_scale_factor = s_width / Width;
-        float y_scale_factor = s_height / Height;
+        float x_scale_factor = s_width / width;
+        float y_scale_factor = s_height / height;
         
-        float new_width = Width * x_scale_factor;
-        float new_height = Height * y_scale_factor;
+        float new_width = width * x_scale_factor;
+        float new_height = height * y_scale_factor;
         
-        float cnX = cX / Width * new_width;
-        float cnY = cY / Height * new_height;
+        float cnX = cX / width * new_width;
+        float cnY = cY / height * new_height;
         
         ret.Left = cnX - (new_width / 2.);
         ret.Right = cnX + (new_width / 2.);
         
         ret.Top = cnY - (new_height / 2.);
         ret.Bottom = cnY + (new_height / 2.);
-		Width = abs(Right - Left);
-		Height = abs(Top - Bottom);
         return ret;
     }
     
@@ -149,22 +144,7 @@ public:
 	int JuiceType;
 	float JuiceSpeed = 1.;
 	float originalScale = 1.;
-    float debugUseOnly = 0.;
-    f3 color;
-    float m_width;
-    float m_height;
-    bool m_touched = false;
-    int m_touchedX;
-    int m_touchedY;
-    
-    CRect m_rect;
-    string UUID;
-
-	PosRotScale() {
-		color.x = 1.0;
-		color.y = 1.0;
-		color.z = 1.0;
-	};
+     float debugUseOnly = 0.;
     
     void CopyFrom(PosRotScale* o) {
         pos.x = o->pos.x;
@@ -179,14 +159,7 @@ public:
         JuiceSpeed = o->JuiceSpeed;
         originalScale = o->originalScale;
     }
-    CRect getOwnRect(string name) {
-        m_rect.Top = pos.y - m_height / 2;
-        m_rect.Bottom = pos.y + m_height / 2;
-        m_rect.Left = pos.x - m_width / 2;
-        m_rect.Right = pos.x - m_width / 2;
-        
-        return m_rect;
-    }
+
 };
 
 class Serializable : public PosRotScale {
@@ -232,8 +205,6 @@ class Serializable : public PosRotScale {
 enum JuiceTypes {
 	JUICE_ROTZ =1,
 	JUICE_PULSATE,
-	JUICE_PULSATEX,
-	JUICE_PULSATE_FULLY_AND_DIE,
 	JUICE_PULSATE_FULLY,
 	JUICE_ROTZ_PULSATE,
 	JUICE_ROTXYZ,
@@ -242,7 +213,6 @@ enum JuiceTypes {
 	JUICES_END
 };
 
-//deprecated
 string JuiceName(int j) {
 	if (j == JUICE_ROTZ) return "JUICE_ROTZ";
 	if (j == JUICE_PULSATE) return "JUICE_PULSATE";
@@ -258,11 +228,12 @@ string JuiceName(int j) {
 
 class GameObject : public Serializable {
     
-
+    float m_width;
+    float m_height;
     
 public:
-    
-   
+    CRect m_rect;
+    bool m_touched;
     int m_touchedX;
     int m_touchedY;
     
@@ -276,7 +247,7 @@ public:
     std::list<GameObject*> children;
     short instanceBiengRendered;
     bool rotatefirst;
-   
+    string UUID;
     string Text;
     // float Scale;
     bool billboard;
@@ -297,10 +268,6 @@ public:
     void HideFor(GameObject* next) {
         Hide();
         next->hidden = false;
-    }
-    
-    bool is(PosRotScale* that) {
-        return (this==that);
     }
     
     void SetBounds(float fWidth, float fHeight, string name= "") {
@@ -419,7 +386,7 @@ public:
         children.push_back(child);
         child->parent = this;
     }
-    PosRotScale* AddInstance(PosRotScale& prs) {
+    PosRotScale* AddInstance(PosRotScale prs) {
         if (prs.scale <= 0) prs.scale = 1.0;
         prs.originalScale = prs.scale;
         prsInstances.push_back(prs);

@@ -1,14 +1,62 @@
-#include "AlgeApp.h"
 
+class AlgeApp {
+public:
+    CTrackBall trackball;
     
-	void AlgeApp::Init(char* path) {
-	}
-
-	void AlgeApp::Deinit() {}
-
+    CAnimator can;
+    CTimed animStepTimed;
+    FontMap16x16 fonts;
+    int keyframe, nseq,screenX, screenY;
+    f3 eye,eyerot,tgt,up;
+    float timeVar, animstep, deltaT;
+    float bz, width, height;
+    GameObject* gobs[128]; short nGobs;
+    GameObject* selectedObject;
+    CAxis xyz;
+    
+    short currentscene;
+    
+    int iUnassigned;
+    int dcursor;
+    int screen_y;
+    PEG input,output;
+    CResourceManager rm;
+    aL10 AL10;
+    virtual void UpdateCustom(GameObject*,PEG::CMD*) {};
+    bool inhibitRender = false;
+    bool edit;
+    bool wireframe = false;
+    
+    Camera aCamera;
+    
+    GameObject origin;
+    
+    AlgeApp() :
+    iUnassigned(-1),
+    timeVar(0.0)  {
+        width = 0;
+        height = 0;
+        dcursor = 0;
+        screen_y = 0;
+        keyframe = 1;
+        animstep = 0.0;
+        bz = 1.0;
+        nseq = 0;
+        screenX  = iUnassigned;
+        screenY  = iUnassigned;
+        selectedObject = nullptr;
+        edit = false;
+        iSelectedObject = 0;
+        nGobs = 0;
+        wireframe = false;
+        iSelectedObject = 0;
+        currentscene=0;
+        LoadScene(currentscene);
+    }
+    
     //Preconditions: Dont call before init
     //Assumption Scene is Saved from same arrangement of Gobs
-    short AlgeApp::LoadScene(short n) {
+    short LoadScene(short n) {
         char filename[16];
         /* sprintf(filename, "")
          for (int i=0; i<nGobs; i++) {
@@ -18,14 +66,14 @@
         return 0;
     }
     
-    auto AlgeApp::AddObject(GameObject *o, GameObject* parent = nullptr) {
+    auto AddObject(GameObject *o, GameObject* parent = nullptr) {
         nGobs++;
         if (nGobs>=128) nGobs=127;
         gobs[nGobs-1] = o;
         if (parent) parent->AddChild(o);
     }
     
-    void AlgeApp::UndoInheritedRotation(GameObject* it) {
+    void UndoInheritedRotation(GameObject* it) {
         it->rot.x = - it->parent->rot.x;
         it->rot.y = - it->parent->rot.y;
         it->rot.z = - it->parent->rot.z;
@@ -38,7 +86,7 @@
         }
     }
     
-    auto AlgeApp::renderSingleObject(GameObject* it) {
+    auto renderSingleObject(GameObject* it) {
         static float wobble = 0.;
         glPushMatrix();
         f3 relPos, relRot;
@@ -96,9 +144,9 @@
         glPopMatrix();
     }
     
-    short AlgeApp::iSelectedObject = 0;
+    short iSelectedObject = 0;
     
-    auto AlgeApp::renderObjects(float deltaT, bool btrackball) {
+    auto renderObjects(float deltaT, bool btrackball) {
         selectedObject = gobs[iSelectedObject];
         alPushMatrix();
         aCamera.Update(deltaT, selectedObject);
@@ -121,10 +169,10 @@
         alPopMatrix();
     }
     
-    virtual void AlgeApp::Update(float delta_t) {};
-    virtual void AlgeApp::processInput() {};
+    virtual void Update(float delta_t) {};
+    virtual void processInput() {};
     
-    auto AlgeApp::Render(float deltaT, int aX, int aY, int aZ) {
+    auto Render(float deltaT, int aX, int aY, int aZ) {
         if (!edit) {
             timeVar += deltaT;
             Update(deltaT);
@@ -140,11 +188,11 @@
         renderObjects(deltaT, true);
     }
     
-    auto AlgeApp::LoadModel(GameObject* go, ResourceInf* res, short customtype = 0) {
+    auto LoadModel(GameObject* go, ResourceInf* res, short customtype = 0) {
         go->modelId = alLoadModel(res);
         go->resInf = res;
         go->custom_type = customtype;
     }
     
-
+};
 

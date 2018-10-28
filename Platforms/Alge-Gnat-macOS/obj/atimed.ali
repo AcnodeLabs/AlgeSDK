@@ -1,0 +1,45 @@
+V "GNAT Lib v2016"
+A -mmacosx-version-min=10.11.6
+A -gnatA
+A -g
+A -mtune=core2
+A -fPIC
+A -feliminate-unused-debug-symbols
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U atimed%b		atimed.adb		fa070472 NE OO PK IL
+
+U atimed%s		atimed.ads		8bb52bae EE NE OO PK IL
+
+D atimed.ads		20170216142009 8bb52bae atimed%s
+D atimed.adb		20170216143044 71b22fdc atimed%b
+D system.ads		20160516092930 c3282aa7 system%s
+X 1 atimed.ads
+2K9*ATimed 10l5 10e11 2|2b14 43l5 43t11
+3V13*dst{float} 3>17 3>29 2|4b13 7l8 7t11
+3f17 vel{float} 2|4b17
+3f29 dt{float} 2|4b29
+4V13*spd{float} 4>17 4>29 2|9b13 12l8 12t11
+4f17 dst{float} 2|9b17
+4f29 dt{float} 2|9b29
+7f3*curr1{float} 2|16m7 24m6 34m10 34r19 35r27 36r27 39r14
+7f10*from1{float} 2|17m7 24r15 33r13 35r17 36r17 37r17
+7f17*to1{float} 2|18m7 31r17 33r19 35r13 35r34 36r13 36r34 37r13
+7f22*speed1{float} 2|19m7 34r36
+8b3*done{boolean} 2|30r10 35m43 36m43 37m28
+X 2 atimed.adb
+14U14 Set 14b14 14>18 14>32 14>44 20l8 20t11
+14f18 from{float} 16r16 17r16
+14f32 to{float} 18r14
+14f44 speed{float} 19r17
+22U14 Redo 22b14 25l8 25t12
+27V13 StepLinear{float} 27b13 27>24 40l8 40t18
+27f24 dt{float} 34r46
+28f7 i1{float} 33m28 33m43 34r27
+

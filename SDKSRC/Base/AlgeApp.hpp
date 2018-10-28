@@ -2,7 +2,7 @@
 #include <Box2D/Box2D.h>
 #endif
 #ifndef NO_NATS
-#include "..\..\..\AlgeSDK_m\Tools\CNetMsg\CNetMsg.h"
+#include "../../Tools/CNetMsg/CNetMsg.h"
 extern CNetMsg netmsg;
 #endif
 
@@ -16,6 +16,10 @@ public:
 	b2World* pWorld;
     #endif
 	
+	b2World* world;
+
+	vector<b2Body*> touched_bodies;
+
 	CTrackBall trackball;
 	//CEasyBullet bullet;
 	short renderSchemeVersion;//1=> Render processInput 2->UpdateCustom GOB's
@@ -45,9 +49,6 @@ public:
 	bool edit;
 	bool wireframe = false;
 
-    bool screenTouched = false;
-    i2 wasTouchedi2;
-    
 	Camera aCamera;
 
 	GameObject origin;
@@ -156,8 +157,7 @@ public:
 		g->originalScale = scale;
         g->JuiceType = 0;
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), name);
-        g->UUID = name + ".GOB";
-        g->m_touched = false;
+        g->UUID = name;
 		return g;
 	}
 	
@@ -194,15 +194,16 @@ public:
     
 	int leftSide, rightSide, topSide, bottomSide, originX, originY;
 
+#ifdef WIN32
+#define glOrthof glOrtho
+#endif
+
 	void ViewOrthoBegin(int width, int height, int depth = 1)												// Set Up An Ortho View
 	{
 		glDisable(GL_DEPTH_TEST);							// Disables Depth Testing
 		glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
 		glPushMatrix();										// Store The Projection Matrix
 		glLoadIdentity();									// Reset The Projection Matrix
-#ifdef WIN32
-#define glOrthof glOrtho
-#endif
 		glOrthof(leftSide, rightSide, bottomSide, topSide, -depth, depth);
 		glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
 		glPushMatrix();										// Store The Modelview Matrix
@@ -266,27 +267,15 @@ public:
 			break;
 		case JuiceTypes::JUICE_PULSATE:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
-			juice_sine_angle += (6.0 * deltaT * jprs->JuiceSpeed);
-			glScalef(1. + 0.1 * sin(juice_sine_angle), 1. + 0.1 * sin(juice_sine_angle), 1. + 0.1 * sin(juice_sine_angle));
+			juice_sine_angle += (0.01 * deltaT * jprs->JuiceSpeed);
+			glScalef(1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle));
 			break;
-        case JuiceTypes::JUICE_PULSATEX:
-             juice_sine_angle += (6.0 * deltaT * jprs->JuiceSpeed);
-                glScalef(1. + 0.1 * sin(juice_sine_angle), 1. + 0.1 * sin(juice_sine_angle), 1. + 0.1 * sin(juice_sine_angle));
-                jprs->rot.x = 50 * sin(juice_sine_angle);
-             break;
 		case JuiceTypes::JUICE_PULSATE_FULLY:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
             glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
 			break;
-        case JuiceTypes::JUICE_PULSATE_FULLY_AND_DIE:
-                //jprs->rot.z += (deltaT * jprs->JuiceSpeed);
-                juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
-                glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
-                jprs->scale -= deltaT * 10;
-                if (jprs->scale<=0) jprs->scale = 0;
-                break;
-            case JuiceTypes::JUICE_CANCEL:
+		case JuiceTypes::JUICE_CANCEL:
 			jprs->rot.x = 0;
 			jprs->rot.y = 0;
 			jprs->rot.z = 0;
@@ -341,7 +330,8 @@ public:
 
 		//it->Update(deltaT);
 		UpdateCustom(it, instanceNo, deltaT);
-			
+	
+		
 		if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
 			PosRotScale* i = it->getInstancePtr(instanceNo);
 			i->pos.x = originX;
@@ -360,14 +350,11 @@ public:
 
 		if (it != &aCamera) UpdateJuices(it, instanceNo, deltaT);
 		
-		
-		if (it->m_touched && wireframe) glColor3f(0, 1, 0);
-        
 		if (edit) {
 			if (it->modelId >= 0) alDrawModel(it->modelId, wireframe);
 		}
 		else {
-			if (it->modelId >= 0) alDrawModel(it->modelId, wireframe);
+			if (it->modelId >= 0) alDrawModel(it->modelId, false);
 		}
 		if (it->billboard) alBillboardEnd();
 
@@ -375,20 +362,12 @@ public:
 
 		//ShowMarkerinOrthoMode(10);
 		glPopMatrix();
-        glColor3f(1, 1, 1);
+
 	}
 	
-    bool wasTouched() {
-        if (screenTouched) {screenTouched=false; return true;}
-        return false;
-    }
-    
-    f2 screenToWorld(f2 point) {
-        return f2(point.x / resolutionReported.x * getBackgroundSize().x, point.y / resolutionReported.y * getBackgroundSize().y);
-    }
-    
-    bool doPicking2D(PosRotScale* it, f2 mouse) {
-        f2 pt_in_world = screenToWorld(mouse);
+        
+    bool doPicking2D(GameObject* it, f2 mouse) {
+        f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
         CRect obj = it->getOwnRect(it->UUID);
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, "doPicking2D"));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
@@ -414,64 +393,63 @@ public:
         PEG::CMD* cmd = input.pull();
         preProcessInput(cmd, deltaT);
         
-        if (cmd->command == CMD_TOUCH_START) {
-            screenTouched = true;
-            wasTouchedi2 = i2(cmd->i1, cmd->i2);
-        }
       
         processInput(cmd, deltaT);
 		
-		PosRotScale* picked = 0;
+        int picked = -1;
         
         for (int i = 1; i < nGobs; i++) {
 			GameObject* it = gobs[i];
 			if (inhibitRender) { inhibitRender = false; continue; }
             
+            //Touched flag updated here
+            if (cmd->command== CMD_TOUCH_START)  {
+                if (!it->hidden)
+                    if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
+                    picked = i; //will be overriden by last ordered object
+                    }
+            }
+            
             PosRotScale origPRS;
-			origPRS.CopyFrom(it);
-			
+			origPRS.pos.x = it->pos.x; origPRS.pos.y = it->pos.y; origPRS.pos.z = it->pos.z;
+			origPRS.rot.x = it->rot.x; origPRS.rot.y = it->rot.y; origPRS.rot.z = it->rot.z;
+			origPRS.scale = it->scale;
+			origPRS.JuiceSpeed = it->JuiceSpeed;
+			origPRS.JuiceType = it->JuiceType;
+			origPRS.hidden = it->hidden;
+
 			bool instanced = (it->prsInstances.size() > 0);
-			int ins = 0;
+			int ins = 1;
 			for (auto prs : it->prsInstances) {
-				it->CopyFrom(&prs);
-				if (!prs.hidden) { 
-                    glColor3f(prs.color.x, prs.color.y, prs.color.z);
-                    renderSingleObject(&(*it), deltaT, ins);
-					glColor3f(1., 1., 1.);
-					if (cmd->command == CMD_TOUCH_START) {
-                       if (doPicking2D(&prs, f2(cmd->i1, cmd->i2))) {
-							prs.m_touchedX = cmd->i1;
-							prs.m_touchedY = cmd->i2;
-							picked = &prs;
-						}
-					}
-				}
+				it->pos.x = prs.pos.x; it->pos.y = prs.pos.y; it->pos.z = prs.pos.z;
+				it->rot.x = prs.rot.x; it->rot.y = prs.rot.y; it->rot.z = prs.rot.z;
+				it->scale = prs.scale;
+				it->hidden = prs.hidden;
+				it->JuiceSpeed = prs.JuiceSpeed;
+				it->JuiceType = prs.JuiceType;
+
+				if (!prs.hidden) renderSingleObject(&(*it), deltaT, ins);
 				ins++;
 				instanced = true;
 			}
 
-			if (!instanced && (it->prsInstances.size()==0) && !it->hidden) {
-				glColor3f(it->color.x, it->color.y, it->color.z);
-                renderSingleObject(&(*it), deltaT, -1);
-				glColor3f(1., 1., 1.);
-				if (cmd->command == CMD_TOUCH_START) {
-                	if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
-						it->m_touchedX = cmd->i1;
-						it->m_touchedY = cmd->i2;
-						picked = it;
-					}
-				}
-			} 
+			if (!instanced && !it->hidden) renderSingleObject(&(*it), deltaT, 0);
 			else {
-				it->CopyFrom(&origPRS);
+				it->pos.x = origPRS.pos.x; it->pos.y = origPRS.pos.y; it->pos.z = origPRS.pos.z;
+				it->rot.x = origPRS.rot.x; it->rot.y = origPRS.rot.y; it->rot.z = origPRS.rot.z;
+				it->scale = origPRS.scale;
+				it->hidden = origPRS.hidden;
+				it->JuiceSpeed = origPRS.JuiceSpeed;
+				it->JuiceType = origPRS.JuiceType;
+
 			}
 
 			//netmsg.Post("Render::=" + it->Name());//Disabled due to perf concerns
 		}
 
-		if (picked) {
-			picked->m_touched = true;
-			picked = 0;
+        if (picked>-1) {
+            gobs[picked]->m_touched = true;
+            picked = -1;
         }
         
 		glPopMatrix();
@@ -855,7 +833,7 @@ public:
 
 
 	//https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
-	inline bool isCircleIntersectingRect(float circleX, float circleY, float circleRadius, float rectX, float rectY, float rectWidth, float rectHeight)
+	bool isCircleIntersectingRect(float circleX, float circleY, float circleRadius, float rectX, float rectY, float rectWidth, float rectHeight)
 	{
 		f2 circleDistance;
 		circleDistance.x = abs(circleX - rectX);
@@ -888,17 +866,11 @@ public:
 	void SetTitle(char * name) {
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
-    //promotables - reusables
-    
-    bool isTouchAtLeft(GameObject* g) {
-        bool l = (getMouseIntent(wasTouchedi2.x, wasTouchedi2.y, g->pos.x, g->pos.y).directionX=='L');
-        return l;
-    }
-    void handy_moveToTouchLocation(GameObject* gob) {
-    }
-    
-    //~ promotables
-    
+
+	void Phys2DWallit() {
+	}
+
+
 };
 
 
