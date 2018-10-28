@@ -243,8 +243,8 @@ public:
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
 		static float juice_sine_angle;
-		PosRotScale* jprs = (instanceNo < 1) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
-		switch (it->JuiceType) {
+		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
+		switch (jprs->JuiceType) {
 
 		case JuiceTypes::JUICE_ROTZ:
 			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
@@ -419,7 +419,7 @@ public:
 			origPRS.hidden = it->hidden;
 
 			bool instanced = (it->prsInstances.size() > 0);
-			int ins = 1;
+			int ins = 0;
 			for (auto prs : it->prsInstances) {
 				it->pos.x = prs.pos.x; it->pos.y = prs.pos.y; it->pos.z = prs.pos.z;
 				it->rot.x = prs.rot.x; it->rot.y = prs.rot.y; it->rot.z = prs.rot.z;
@@ -433,7 +433,7 @@ public:
 				instanced = true;
 			}
 
-			if (!instanced && !it->hidden) renderSingleObject(&(*it), deltaT, 0);
+			if (!instanced && !it->hidden) renderSingleObject(&(*it), deltaT, -1);
 			else {
 				it->pos.x = origPRS.pos.x; it->pos.y = origPRS.pos.y; it->pos.z = origPRS.pos.z;
 				it->rot.x = origPRS.rot.x; it->rot.y = origPRS.rot.y; it->rot.z = origPRS.rot.z;
