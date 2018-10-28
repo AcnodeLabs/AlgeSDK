@@ -145,7 +145,11 @@ public:
 	float JuiceSpeed = 1.;
 	float originalScale = 1.;
      float debugUseOnly = 0.;
-    
+	 float m_width;
+	 float m_height;
+	 b2Body* physBodyPtr;
+	 string UUID;
+
     void CopyFrom(PosRotScale* o) {
         pos.x = o->pos.x;
         pos.y = o->pos.y;
@@ -158,6 +162,10 @@ public:
         JuiceType = o->JuiceType;
         JuiceSpeed = o->JuiceSpeed;
         originalScale = o->originalScale;
+		m_width = o->m_width;
+		m_height = o->m_height;
+		physBodyPtr = o->physBodyPtr;
+		UUID = o->UUID;
     }
 
 };
@@ -247,7 +255,7 @@ public:
     std::list<GameObject*> children;
     short instanceBiengRendered;
     bool rotatefirst;
-    string UUID;
+    
     string Text;
     // float Scale;
     bool billboard;
@@ -386,7 +394,7 @@ public:
         children.push_back(child);
         child->parent = this;
     }
-    PosRotScale* AddInstance(PosRotScale prs) {
+    PosRotScale* AddInstance(PosRotScale &prs) {
         if (prs.scale <= 0) prs.scale = 1.0;
         prs.originalScale = prs.scale;
         prsInstances.push_back(prs);
@@ -407,8 +415,8 @@ public:
     
     //getInstance(0) returns main object instances are at 1..n
     PosRotScale* getInstancePtr(int n) {
-        if (n <= 0) return ((PosRotScale*)this);
-        return &prsInstances.at(n-1);
+        if (n < 0) return ((PosRotScale*)this);
+        return &prsInstances.at(n);
     }
     GameObject() {
         pos.clear();

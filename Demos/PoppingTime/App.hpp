@@ -1,7 +1,7 @@
 // Copyright (c) 2018 AcnodLabs Inc
 
 /* 
-   ALGE SDK JD3 Demo :: MotoX3
+   ALGE SDK JD3 Demo :: PoppingTime
 */
 
 class App : public AlgeApp {
@@ -57,7 +57,7 @@ public:
         
         
         
-        //PlaySnd("race-track.wav");
+        PlaySnd("race-track.wav");
 	}
 
     virtual i2 getBackgroundSize() {

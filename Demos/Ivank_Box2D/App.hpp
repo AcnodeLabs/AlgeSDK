@@ -5,14 +5,18 @@
    http://lib.ivank.net/demos/box2D.html
 */
 
-
+#define S2P 0.01
+#define P2S 100.
 
 class /*IvanK Box2D*/ App : public AlgeApp {
 
 	GameObject winter2;
 	GameObject boxes;
 	GameObject balls;
-
+	b2PolygonShape polygon;
+	b2CircleShape circle;
+	b2FixtureDef bxFixDef, blFixDef;
+	b2BodyDef bodyDef;
 
 public:
 

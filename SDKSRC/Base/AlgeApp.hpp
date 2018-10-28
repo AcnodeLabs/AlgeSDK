@@ -867,7 +867,7 @@ public:
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
 
-	void Phys2DWallit() {
+	void Phys2DWallIt() {
 	}
 
 
