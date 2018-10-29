@@ -433,7 +433,7 @@ public:
         children.clear();
         hidden = false;
         parent = nullptr;
-        rotatefirst = true;
+        rotatefirst = false;
         UUID = "";
         //    Scale = 1.0f;
         billboard = false;

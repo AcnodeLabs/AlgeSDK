@@ -787,9 +787,14 @@ public:
 	int velocityIterations = 6;
 	int positionIterations = 2;
 
+	void PhysicsInit() {
+		world = new b2World(b2Vec2(0, 10));
+	}
+
 	void PhysicsUpdate(float deltaT) {
 #ifndef NO_BOX2D
-        if (pWorld) pWorld->Step(deltaT, velocityIterations, positionIterations);
+        if (world) world->Step(deltaT, velocityIterations, positionIterations);
+		if (world) world->ClearForces();
 #endif
 	}
 #ifndef NO_BOX2D
@@ -867,13 +872,28 @@ public:
 	b2BodyDef bodyDefBall;
 	b2BodyDef bodyDefBox;
 
-	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 half_size) {
+	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 obj_size) {
 
 #define max_generate_obj 99
 
 		char szuuid[64];
 		static PosRotScale px[max_generate_obj];
 		static b2Body* px_body[max_generate_obj];
+
+		polygon.SetAsBox(obj_size.x * S2P, obj_size.y * S2P); //20 is size from alx
+		circle.m_radius = obj_size.x * S2P;//20 is size from alx
+
+		bxFixDef.shape = &polygon;
+		blFixDef.shape = &circle;
+
+		bxFixDef.density = 1;
+		blFixDef.density = 1;
+
+		bxFixDef.restitution = .15;
+		blFixDef.restitution = .5;
+
+		bodyDefBall.type = b2_dynamicBody;
+		bodyDefBox.type = b2_dynamicBody;
 
 		if (count > max_generate_obj) {
 			output.pushP(CMD_TOAST, $ "numInstances exceeds limit", 0);
@@ -883,8 +903,8 @@ public:
 		for (int i = 0; i < count; i++) {
 
 			float rndScale = 1.;// 0.5 + randm();
-			float box_hh = half_size.x  * rndScale;
-			float box_hw = half_size.y * rndScale;
+			float box_hh = obj_size.x  * rndScale;
+			float box_hw = obj_size.y * rndScale;
 
 			polygon.SetAsBox(box_hh * S2P, box_hw * S2P);
 			bodyDefBox.position.Set(randm() * 7, randm() * 5);
@@ -949,7 +969,7 @@ public:
 	b2BodyDef bodyDefWalls;
 	b2PolygonShape shp;
 
-	void Phys2DWallIt() {
+	void PhysAddGroundWithWalls() {
 		
 		bxFixDef.shape = &shp;
 		// create ground
