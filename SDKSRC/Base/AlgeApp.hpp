@@ -861,6 +861,54 @@ public:
 #endif
 	}
 	/////////////
+	b2PolygonShape polygon;
+	b2CircleShape circle;
+	b2FixtureDef bxFixDef, blFixDef;
+	b2BodyDef bodyDefBall;
+	b2BodyDef bodyDefBox;
+
+	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 half_size) {
+
+#define max_generate_obj 99
+
+		char szuuid[64];
+		static PosRotScale px[max_generate_obj];
+		static b2Body* px_body[max_generate_obj];
+
+		if (count > max_generate_obj) {
+			output.pushP(CMD_TOAST, $ "numInstances exceeds limit", 0);
+			return;
+		}
+
+		for (int i = 0; i < count; i++) {
+
+			float rndScale = 1.;// 0.5 + randm();
+			float box_hh = half_size.x  * rndScale;
+			float box_hw = half_size.y * rndScale;
+
+			polygon.SetAsBox(box_hh * S2P, box_hw * S2P);
+			bodyDefBox.position.Set(randm() * 7, randm() * 5);
+
+			px_body[i] = (world) ? world->CreateBody(&bodyDefBox) : 0;
+			b2FixtureDef* fixDef = &bxFixDef;
+			if (world) {
+				px_body[i]->CreateFixture(fixDef);
+				px[i].physBodyPtr = px_body[i];
+			}
+			px[i].scale = rndScale;//?
+			px[i].pos.x = bodyDefBox.position.x * P2S;
+			px[i].pos.y = bodyDefBox.position.y * P2S;
+			px[i].m_height = 2 * box_hh;
+			px[i].m_width = 2 * box_hw; // == ball_rad = 20 in this case
+
+			//bm[i].userId = i;
+			sprintf(szuuid, "%s#%d", o.UUID.c_str(), i);
+			px[i].UUID = string(szuuid);
+			o.AddInstance(px[i]);
+
+		}
+	}
+
 
 
 	//https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
@@ -898,7 +946,6 @@ public:
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
 
-	b2FixtureDef bxFixDef;
 	b2BodyDef bodyDefWalls;
 	b2PolygonShape shp;
 
@@ -908,15 +955,15 @@ public:
 		// create ground
 		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
 		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
-		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 		
 		shp.SetAsBox(1 * S2P, bottomSide*S2P);
 		// left wall
 		bodyDefWalls.position.Set(0, bottomSide * S2P / 2);
-		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 		// right wall
 		bodyDefWalls.position.Set(rightSide * S2P, bottomSide * S2P / 2);
-		world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 	}
 
 
