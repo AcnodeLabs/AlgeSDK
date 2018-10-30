@@ -27,8 +27,8 @@ public:
 		PhysAddGroundWithWalls();
 		
 		AddResource(&winter2, "winter2"); 
-		AddResourceEx(&boxes, "box", 50);
-		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);
+		AddResourceEx(&boxes, "box", 50, false, 1, 0.1);//false::Polygon/Box
+		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);//true:Circle
 	}
 
 };

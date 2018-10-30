@@ -147,7 +147,7 @@ public:
 
 	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 		AddResource(g, name);
-		AddMultiplePhysicalInstances(*g, numInstances_max99, i2(g->m_width, g->m_height).half(),is_circle, density, restitution); //physics require half width/half height
+		AddMultiplePhysicalInstances(*g, numInstances_max99, is_circle, density, restitution); //physics require half width/half height
 		return g;
 	}
 
@@ -876,7 +876,7 @@ public:
 	b2BodyDef bodyDefBox;
 
 	
-	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 obj_size, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
+	void AddMultiplePhysicalInstances(GameObject &o, int count, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 
 #define max_generate_obj 99
 
@@ -884,6 +884,8 @@ public:
 		static PosRotScale px[max_generate_obj];
 		static b2Body* px_body[max_generate_obj];
 
+		i2 obj_size = i2(o.m_width, o.m_height).half();
+		
 		polygon.SetAsBox(obj_size.x * S2P, obj_size.y * S2P); //20 is size from alx
 		circle.m_radius = obj_size.x * S2P;//20 is size from alx
 
@@ -906,7 +908,7 @@ public:
 
 		for (int i = 0; i < count; i++) {
 
-			float rndScale = 1.;// 0.5 + randm();
+			float rndScale = 1.0;// 0.5 + randm();
 			float box_hh = obj_size.x  * rndScale;
 			float box_hw = obj_size.y * rndScale;
 
