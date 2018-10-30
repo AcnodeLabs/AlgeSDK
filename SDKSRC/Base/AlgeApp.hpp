@@ -148,6 +148,12 @@ public:
 
 	}
 
+	GameObject* AddResourceEx(GameObject* g, string name, int numInstances, i2 size ) {
+		AddResource(g, name, 1.0);
+		AddMultiplePhysicalInstances(*g, numInstances, size);
+		return g;
+	}
+
 	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
 		ResourceInf res;
 		res.Set(name, name + ".alx", name + ".tga", scale);

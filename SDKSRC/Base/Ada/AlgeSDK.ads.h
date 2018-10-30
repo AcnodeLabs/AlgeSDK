@@ -175,6 +175,13 @@ public:
 		UUID = o->UUID;
     }
 
+	void Impulse(f2 up) {
+		static b2Vec2 bUp;
+		bUp.x = up.x;
+		bUp.y = up.y;
+		if (physBodyPtr) physBodyPtr->ApplyLinearImpulse(bUp, physBodyPtr->GetWorldCenter(), true);
+	}
+
 };
 
 class Serializable : public PosRotScale {
