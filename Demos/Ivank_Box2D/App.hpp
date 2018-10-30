@@ -28,7 +28,7 @@ public:
 		
 		AddResource(&winter2, "winter2"); 
 		AddResourceEx(&boxes, "box", 50);
-		AddResourceEx(&balls, "bigball", 50);
+		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);
 	}
 
 };

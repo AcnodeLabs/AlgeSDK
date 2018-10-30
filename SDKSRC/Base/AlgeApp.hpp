@@ -145,9 +145,9 @@ public:
 
 	}
 
-	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99) {
+	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 		AddResource(g, name);
-		AddMultiplePhysicalInstances(*g, numInstances_max99, i2(g->m_width, g->m_height).half()); //physics require half width/half height
+		AddMultiplePhysicalInstances(*g, numInstances_max99, i2(g->m_width, g->m_height).half(),is_circle, density, restitution); //physics require half width/half height
 		return g;
 	}
 
@@ -875,7 +875,8 @@ public:
 	b2BodyDef bodyDefBall;
 	b2BodyDef bodyDefBox;
 
-	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 obj_size) {
+	
+	void AddMultiplePhysicalInstances(GameObject &o, int count, i2 obj_size, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 
 #define max_generate_obj 99
 
@@ -889,11 +890,11 @@ public:
 		bxFixDef.shape = &polygon;
 		blFixDef.shape = &circle;
 
-		bxFixDef.density = 1;
-		blFixDef.density = 1;
+		bxFixDef.density = density;
+		blFixDef.density = density;
 
-		bxFixDef.restitution = .15;
-		blFixDef.restitution = .5;
+		bxFixDef.restitution = restitution;
+		blFixDef.restitution = restitution;
 
 		bodyDefBall.type = b2_dynamicBody;
 		bodyDefBox.type = b2_dynamicBody;
@@ -913,7 +914,7 @@ public:
 			bodyDefBox.position.Set(randm() * 7, randm() * 5);
 
 			px_body[i] = (world) ? world->CreateBody(&bodyDefBox) : 0;
-			b2FixtureDef* fixDef = &bxFixDef;
+			b2FixtureDef* fixDef = (is_circle?&blFixDef:&bxFixDef);
 			if (world) {
 				px_body[i]->CreateFixture(fixDef);
 				px[i].physBodyPtr = px_body[i];
