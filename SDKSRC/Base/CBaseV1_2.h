@@ -114,7 +114,9 @@ public:
 
 #define AUTO 0
 #define STANDARD 1
-#define STANDARD_WITH_TEXTURES 2
+#define STANDARD_WITH_TEXTURES 3
+#define STANDARD_2D 2
+
 #define AL_QUADS 0x0007
 #define KROSS_UP 1
 #define KROSS_DOWN 2
@@ -2338,8 +2340,9 @@ float rndm(float min, float max) {
 
 
 
-void alInit(int TYPE) {
-	if (TYPE == STANDARD) {
+void AlInit(int TYPE, std::string title) {
+	
+	if (TYPE == STANDARD || TYPE == STANDARD_2D) {
 #ifndef NOGL
 #ifndef METRO
 		glShadeModel(GL_SMOOTH);							// Enable Smooth Shading
@@ -2354,6 +2357,10 @@ void alInit(int TYPE) {
 #endif
 	}
 	
+	if (TYPE == STANDARD_2D) AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+
+	SetTitle(title);
+
 };
 
 

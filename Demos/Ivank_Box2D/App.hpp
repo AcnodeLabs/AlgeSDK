@@ -7,9 +7,7 @@
 
 class /*IvanK Box2D*/ App : public AlgeApp {
 
-	GameObject winter2;
-	GameObject boxes;
-	GameObject balls;
+	GameObject winter2, boxes, balls;
 
 public:
 
@@ -22,10 +20,8 @@ public:
 	}
 
 	virtual void Init(char* path) {
-		alInit(STANDARD);
-		SetTitle("IvanK Box2D");
-		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-
+		AlInit(STANDARD_2D, "IvanK Box2D");
+		
 		PhysicsInit();
 		PhysAddGroundWithWalls();
 		

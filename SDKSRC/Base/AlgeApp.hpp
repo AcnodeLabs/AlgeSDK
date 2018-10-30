@@ -148,9 +148,9 @@ public:
 
 	}
 
-	GameObject* AddResourceEx(GameObject* g, string name, int numInstances, i2 size ) {
+	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, i2 size ) {
 		AddResource(g, name, 1.0);
-		AddMultiplePhysicalInstances(*g, numInstances, size);
+		AddMultiplePhysicalInstances(*g, numInstances_max99, size);
 		return g;
 	}
 
