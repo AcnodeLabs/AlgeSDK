@@ -154,7 +154,7 @@ public:
 	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
 		ResourceInf res;
 		res.Set(name, name + ".alx", name + ".tga", scale);
-		LoadModel(g, &res);
+		g->modelId = LoadModel(g, &res);
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;

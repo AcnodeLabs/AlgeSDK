@@ -35,11 +35,15 @@ public:
 	
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
-		alInit(STANDARD);
+		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-        
+
+		PhysicsInit();
+		PhysAddGroundWithWalls();
+
 		AddResource(&bg, "bg", 1);
-        AddResource(&heli, "heli", 1);
+		AddResource(&heli, "heli", 1);
+
         spikey.JuiceType = JuiceTypes::JUICE_PULSATE;
         AddResource(&spikey, "spikey",0.3);
         spikey.JuiceType = JuiceTypes::JUICE_ROTZ_PULSATE;
@@ -51,17 +55,13 @@ public:
         for (int i=0; i< 10; i++) {
             bp.pos.x = randm() * rightSide;
             bp.pos.y = bottomSide - rndm(10, 200);
-            bp.scale = rndm(0.5, 0.8);
+            bp.scale = rndm(0.3, 0.5);
             baloons.AddInstance(bp);
         }
-        
-        
-        
-        PlaySnd("race-track.wav");
-	}
+   }
 
     virtual i2 getBackgroundSize() {
-        return i2(2048,1536);
+        return i2(1024,512);
     }
 };
 
