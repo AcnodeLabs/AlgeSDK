@@ -250,14 +250,11 @@ string JuiceName(int j) {
 
 class GameObject : public Serializable {
     
-    float m_width;
-    float m_height;
-    
 public:
     CRect m_rect;
-    bool m_touched;
-    int m_touchedX;
-    int m_touchedY;
+    bool m_touched;//deprecated   use touched_bodies instead
+    int m_touchedX;//deprecated
+    int m_touchedY;//deprecated
     
     //Add PRS to multiple drawing of same model
     //use getInstancePtr to access instances

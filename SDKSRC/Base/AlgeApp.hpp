@@ -145,9 +145,9 @@ public:
 
 	}
 
-	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, i2 size ) {
-		AddResource(g, name, 1.0);
-		AddMultiplePhysicalInstances(*g, numInstances_max99, size);
+	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99) {
+		AddResource(g, name);
+		AddMultiplePhysicalInstances(*g, numInstances_max99, i2(g->m_width, g->m_height).half()); //physics require half width/half height
 		return g;
 	}
 
