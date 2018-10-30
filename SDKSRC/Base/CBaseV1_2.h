@@ -2338,9 +2338,12 @@ float rndm(float min, float max) {
 	return (min + r);
 }
 
+enum OrthoTypes {
+	ORIGIN_IN_MIDDLE_OF_SCREEN = 0,
+	ORIGIN_IN_TOP_LEFT_OF_SCREEN
+};
 
-
-void AlInit(int TYPE, std::string title) {
+void AlInit(int TYPE, std::string title = "") {
 	
 	if (TYPE == STANDARD || TYPE == STANDARD_2D) {
 #ifndef NOGL
@@ -2356,10 +2359,10 @@ void AlInit(int TYPE, std::string title) {
 #endif
 #endif
 	}
-	
-	if (TYPE == STANDARD_2D) AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
-	SetTitle(title);
+	//To add these two lines refactoring would be needed: PENDED
+	//if (TYPE == STANDARD_2D) game.AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+	//SetTitle(title);
 
 };
 

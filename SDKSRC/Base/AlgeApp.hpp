@@ -112,10 +112,7 @@ public:
     }
 	int orthoType;
 
-	enum OrthoTypes {
-		ORIGIN_IN_MIDDLE_OF_SCREEN = 0,
-		ORIGIN_IN_TOP_LEFT_OF_SCREEN
-	};
+
 
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
 		orthoType = _orthoType;
