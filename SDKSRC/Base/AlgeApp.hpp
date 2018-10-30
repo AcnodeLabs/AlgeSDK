@@ -463,6 +463,18 @@ public:
 					it->rot.z = b->GetAngle() * 57.2958f;
 				}
 				renderSingleObject(&(*it), deltaT, -1);
+				
+				//Touched flag updated here for principal objects
+				if (cmd->command == CMD_TOUCH_START) {
+					if (!it->hidden)
+						if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
+							touched_bodies.push_back(it);
+							picked = i; //will be overriden by last ordered object
+							it->m_touched = true;
+							it->m_touchedX = cmd->i1;
+							it->m_touchedY = cmd->i2;
+						}
+				}
 			} else {
 				it->pos.x = origPRS.pos.x; it->pos.y = origPRS.pos.y; it->pos.z = origPRS.pos.z;
 				it->rot.x = origPRS.rot.x; it->rot.y = origPRS.rot.y; it->rot.z = origPRS.rot.z;
@@ -470,7 +482,6 @@ public:
 				it->hidden = origPRS.hidden;
 				it->JuiceSpeed = origPRS.JuiceSpeed;
 				it->JuiceType = origPRS.JuiceType;
-
 			}
 
 			//netmsg.Post("Render::=" + it->Name());//Disabled due to perf concerns

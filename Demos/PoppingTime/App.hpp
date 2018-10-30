@@ -16,7 +16,7 @@ public:
         if (gob->modelId==spikey.modelId) {
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
-            spikey.pos.y += 150;
+            spikey.pos.y += 50;
            // spikey.pos.y += heli.pos.y + 10;
         }
         if (bg.wasTouched()) {
@@ -24,13 +24,18 @@ public:
         }
         
         if (gob->modelId==baloons.modelId) {
-            gob->getInstancePtr(instanceNo)->pos.y -= rndm(0, 3);
-            if ( gob->getInstancePtr(instanceNo)->pos.y < topSide) gob->getInstancePtr(instanceNo)->pos.y = bottomSide + 70;
+			//point to y position of baloon
+			float *y =  & (gob->getInstancePtr(instanceNo)->pos.y);
+			// rise baloon
+            *y -= rndm(0, 3); 
+			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
+            if ( *y < topSide) *y = bottomSide + 70;
         }
         
         if (spikey.wasTouched()) {
            spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
         }
+
 	}
 	
 	//Play Original https://bit.ly/2yKoV23
@@ -45,7 +50,7 @@ public:
 		AddResource(&heli, "heli", 1);
 
         spikey.JuiceType = JuiceTypes::JUICE_PULSATE;
-        AddResource(&spikey, "spikey",0.3);
+        AddResource(&spikey, "spikey",0.5);
         spikey.JuiceType = JuiceTypes::JUICE_ROTZ_PULSATE;
         spikey.JuiceSpeed = 10;
         
@@ -54,7 +59,7 @@ public:
         bp.CopyFrom(&heli);
         for (int i=0; i< 10; i++) {
             bp.pos.x = randm() * rightSide;
-            bp.pos.y = bottomSide - rndm(10, 200);
+            bp.pos.y = bottomSide - rndm(10, 200);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
             baloons.AddInstance(bp);
         }
