@@ -28,6 +28,7 @@
     <ClInclude Include="glext.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="candidate.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

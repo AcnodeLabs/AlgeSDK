@@ -67,7 +67,6 @@ class /*Arkanoid2D*/ App : public AlgeApp {
 	RoundGameObject bal; ResourceInf res;
 	GameObject bric;
     CControls controls;
-	CPhys2D phys;
 
 	const int xMax = 500;
 	const int xSpd = 10;
@@ -114,9 +113,9 @@ public:
 #define ADJUST /1.0
 
 	void Update(float deltaT) {
-		phys.Step(deltaT);
-		bal.pos = f3(phys.getPos("ball"));
-		bat.pos = f3(phys.getPos("bat"));
+	
+	//	bal.pos = f3(phys.getPos("ball"));
+	//	bat.pos = f3(phys.getPos("bat"));
 
 		int n = 0;
 		for (int x = leftSide + 100; x < rightSide - 50; x += 100) {
@@ -168,7 +167,7 @@ public:
 	virtual void Init(char* path) {
 		wireframe = true;
 
-		alInit(STANDARD);
+		AlInit(STANDARD);
 
 		output.pushP(CMD_TITLE, $ "Arkanoid", 0);
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
@@ -176,17 +175,18 @@ public:
         float scalefactor_bg = getBackgroundSize().x / 800.;
         AddResource(&bg, "ab_city", scalefactor_bg);
 
-		phys.AddGround(f2(leftSide, bottomSide - 100), f2(rightSide, bottomSide- 100));
+		PhysicsInit();
+		PhysAddGroundWithWalls();
 
 		AddResource(&bal, "adidas_ball", 10.);
 		bal.pos.x = originX;
 		bal.pos.y = originY;
-		phys.AddAsCircle(&bal, "ball");
+	//	phys.AddAsCircle(&bal, "ball");
 
 		AddResource(&bat, "paddle");
 		bat.pos.x = originX - 200;
 		bat.pos.y = bottomSide - 50;
-		phys.AddAsRect(&bat, "bat");
+	//	phys.AddAsRect(&bat, "bat");
 
 		AddResource(&bric, "brick", 1.0);
 		
@@ -205,13 +205,13 @@ public:
 			prs.pos.x = x;
 			prs.pos.y = topSide + 100;
 			sprintf(bricTag, "bric%d", n++);
-			phys.AddAsRect(bric.AddInstance(prs),bricTag);
+	//		phys.AddAsRect(bric.AddInstance(prs),bricTag);
 			prs.pos.y += 50;
 			sprintf(bricTag, "bric%d", n++);
-			phys.AddAsRect(bric.AddInstance(prs), bricTag); 
+	//		phys.AddAsRect(bric.AddInstance(prs), bricTag); 
 			prs.pos.y += 50;
 			sprintf(bricTag, "bric%d", n++);
-			phys.AddAsRect(bric.AddInstance(prs), bricTag);
+	//		phys.AddAsRect(bric.AddInstance(prs), bricTag);
 
 		}
 	}

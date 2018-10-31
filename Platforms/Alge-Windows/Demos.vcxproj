@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
+    <ClInclude Include="candidate.h" />
     <ClInclude Include="glext.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Timer.h" />
