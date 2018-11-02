@@ -255,6 +255,9 @@ class GameObject : public Serializable {
 public:
     CRect m_rect;
     bool m_touched;//deprecated   use touched_bodies instead
+	
+	bool m_actionComplete = false;
+
     int m_touchedX;//deprecated
     int m_touchedY;//deprecated
     
@@ -311,29 +314,39 @@ public:
         if (m_touched) {m_touched = false;return true;} else return false;
     }
     
+	bool actionComplete() {
+		if (hidden) return false;
+		if (m_actionComplete) { m_actionComplete = false; return true; }
+		else return false;
+	}
+
     f2 posTouched() {
         return f2(m_touchedX, m_touchedY);
     }
     
     void Update(float dt) {
         
-        if (animPos.active) {
-            animPos.Step(dt);
+		if (animPos.active) {
+			animPos.Step(dt);
             pos.x = mPos[0];
             pos.y = mPos[1];
             pos.z = mPos[2];
-            printf("\animpos pos.y=%.0f", pos.y);
         }
         if (animRot.active) {
             animRot.Step(dt);
             rot.x = mRot[0];
             rot.y = mRot[1];
             rot.z = mRot[2];
+			
         }
         if (animScale.active) {
             animScale.Step(dt);
             scale = mScale[0];//3d?
+			m_actionComplete = false;
         }
+
+		m_actionComplete = (animPos.r>=1 && animRot.r>=1 && animRot.r>=1);
+
 #ifndef NO_BOX2D
         if (phys_body && phys_body->GetType()==b2_dynamicBody) {
             b2Vec2 position = phys_body->GetPosition();
@@ -343,7 +356,7 @@ public:
             rot.z = angle * 57.272727;
         }
 #endif
-        
+		
         m_rect.Top = pos.y - m_height / 2.0;
         m_rect.Bottom = pos.y + m_height / 2.0 ;
         m_rect.Left = pos.x - m_width / 2.0;
@@ -368,6 +381,7 @@ public:
         tgt.pos.x = pos.x;
         tgt.pos.y = pos.y;
         transitionTo(tgt, speed);
+		m_actionComplete = false;
     }
     
     void transitionTo(PosRotScale tgt, float speed = 60.) {

@@ -11,23 +11,47 @@ class App : public AlgeApp {
     
 public:
 	
+	class GameLogic {
+	public:
+		bool spikeyIsDropping = false;
+
+	} logic;
+
+	
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         static bool done = false;
-
+		
 		if (gob->modelId == bg.modelId) {
 			inhibitRender = true;
 		}
+
+		
 
         if (gob->modelId==spikey.modelId) {
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
             spikey.pos.y += 50;
-           // spikey.pos.y += heli.pos.y + 10;
+        	
+			if (spikey.wasTouched()) {
+				spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
+				logic.spikeyIsDropping = true;
+			}
+
         }
-        if (bg.wasTouched()) {
-		  heli.JuiceType = 0;
-          heli.transitionTo(bg.posTouched(), 500);
-        }
+
+		if (gob->modelId == heli.modelId) {
+			bool moveRight = bg.posTouched().x > heli.pos.x;
+			heli.rot.y = moveRight ? 180 : 0;
+
+			if (bg.wasTouched()) {
+				heli.JuiceType = 0;
+				heli.transitionTo(bg.posTouched(), 500);
+			}
+
+			if (heli.actionComplete()) {
+				heli.JuiceType = JuiceTypes::JUICE_DIE;
+			}
+		}
         
         if (gob->modelId==baloons.modelId) {
 			//point to y position of baloon
@@ -40,20 +64,10 @@ public:
 			}
 
 			if (doObjectsIntersect(baloon, &spikey)) {
-				baloon->JuiceType = JuiceTypes::JUICE_DIE;
-				baloon->JuiceSpeed = 100;
-			//	paused = true;
+				baloon->hidden = true;
 			}
-
         }
-        
-        if (spikey.wasTouched()) {
-           spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
-        }
-
 	}
-
-
 
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {

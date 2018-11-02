@@ -144,12 +144,11 @@ public:
 			originX = rightSide / 2;
 			originY = bottomSide / 2;
 		}
-
 	}
 
 	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 		AddResource(g, name);
-		AddMultiplePhysicalInstances(*g, numInstances_max99, is_circle, density, restitution); //physics require half width/half height
+		AddMultiplePhysicalInstances(*g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
 		return g;
 	}
 
