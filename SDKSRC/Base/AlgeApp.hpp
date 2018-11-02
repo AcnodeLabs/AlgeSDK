@@ -112,7 +112,9 @@ public:
     }
 	int orthoType;
 
-
+	bool doObjectsIntersect(PosRotScale* prs1, PosRotScale* prs2) {
+		return isCircleIntersectingRect(prs1->pos.x, prs1->pos.y, prs1->m_width / 2, prs2->pos.x, prs2->pos.y, prs2->m_width / 2, prs2->m_height / 2);
+	}
 
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
 		orthoType = _orthoType;
@@ -254,6 +256,10 @@ public:
 		case JuiceTypes::JUICE_ROTZ:
 			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
 			break;
+		case JuiceTypes::JUICE_DIE:
+			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
+			jprs->hidden = true;
+			break;
 		case JuiceTypes::JUICE_ROTXYZ:
 			jprs->rot.x += (deltaT * (jprs->JuiceSpeed));
 			jprs->rot.y += (deltaT * (jprs->JuiceSpeed));
@@ -347,7 +353,6 @@ public:
 //			ammendTopLeft2D(&i->pos, i->scale, originalWidth);
 //		}
         
-       
 		if (iit->billboard) alBillboardBegin();
 
 		glScalef(it->scale, it->scale, it->scale);
@@ -358,17 +363,19 @@ public:
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
 		if (edit) {
-			if (iit->modelId >= 0) alDrawModel(iit->modelId, wireframe);
+			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
 		}
 		else {
-			if (iit->modelId >= 0) alDrawModel(iit->modelId, false);
+			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, false);
 		}
 		if (iit->billboard) alBillboardEnd();
 
 		it->JuiceType = m_j;//restore *1 <<<<<
 
 		//ShowMarkerinOrthoMode(10);
+
 		glPopMatrix();
+		inhibitRender = false;
 
 	}
 	
@@ -449,6 +456,8 @@ public:
 						if (doPicking2D(prs, f2(cmd->i1, cmd->i2))) {
 							touched_bodies.push_back(prs);
 							picked = i; //will be overriden by last ordered object
+							prs->m_touchedX = cmd->i1;
+							prs->m_touchedY = cmd->i2;
 						}
 				}
 
@@ -488,8 +497,8 @@ public:
 		}
 
         if (picked>-1) {
-            gobs[picked]->m_touched = true;
-            picked = -1;
+         //   gobs[picked]->m_touched = true;
+		//	picked = -1;
         }
         
 		glPopMatrix();
@@ -497,8 +506,7 @@ public:
 		//updateBody from phys
 
 		processInput(cmd, deltaT);
-
-
+		
 	}
 
     short iSelectedObject = 1;
@@ -711,7 +719,7 @@ public:
 			preProcessRemoteCommand((char*)p->param1);
 		}
 
-		if (p->command == CMD_KEYDOWN) { aCamera.KeyDownCcam(p->i1, deltaT*300.0f); }
+		if (p->command == CMD_KEYDOWN) { aCamera.KeyDownCcam(p->i1, deltaT*300.0f); paused = false; }
 		if (p->command == CMD_MOUSEWHEEL) {
 			//aCamera.pos.x = aCamera.Position.x;//TBD:: merge pos and Position 
 			//aCamera.pos.y = aCamera.Position.y;
@@ -744,17 +752,23 @@ public:
 		/////~UNREAL STYLE MOUSE
 	}
 
+	bool paused = false;
 
 	void Render(float deltaT, int aX, int aY, int aZ) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		if (!edit) {
 			timeVar += deltaT;
-			Update(deltaT);
-			PhysicsUpdate(deltaT);
-			for (int i = 1; i < nGobs; i++) {
-				GameObject* it = gobs[i];
-				it->Update(deltaT);
+			if (!paused) {
+				Update(deltaT);
+				PhysicsUpdate(deltaT);
+				for (int i = 1; i < nGobs; i++) {
+					GameObject* it = gobs[i];
+					it->Update(deltaT);
+				}
+			}
+			else {
+				bool break1 = true;
 			}
 		}
 		//

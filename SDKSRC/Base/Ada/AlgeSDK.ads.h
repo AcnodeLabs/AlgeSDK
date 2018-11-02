@@ -225,12 +225,13 @@ class Serializable : public PosRotScale {
 };
 
 enum JuiceTypes {
-	JUICE_ROTZ =1,
+	JUICE_ROTZ = 1,
 	JUICE_PULSATE,
 	JUICE_PULSATE_FULLY,
 	JUICE_ROTZ_PULSATE,
 	JUICE_ROTXYZ,
 	JUICE_ROTXYZ_PULSATE_FULLY,
+	JUICE_DIE,
 	JUICE_CANCEL,
 	JUICES_END
 };
@@ -243,6 +244,7 @@ string JuiceName(int j) {
 	if (j == JUICE_ROTXYZ_PULSATE_FULLY) return "JUICE_ROTXYZ_PULSATE_FULLY";
 	if (j == JUICE_ROTXYZ) return "JUICE_ROTXYZ";
 	if (j == JUICE_CANCEL) return "JUICE_CANCEL";
+	if (j == JUICE_DIE) return "JUICE_DIE";
 	if (j == JUICES_END) return "JUICE_END";
 	return "Wrong ID";
 }
