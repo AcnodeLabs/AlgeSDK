@@ -21,9 +21,9 @@ public:
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         static bool done = false;
 		
-		if (gob->modelId == bg.modelId) {
-			inhibitRender = true;
-		}
+		//if (gob->modelId == bg.modelId) {
+		//	inhibitRender = true;
+		//}
 
 		
 
@@ -31,6 +31,7 @@ public:
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
             spikey.pos.y += 50;
+			spikey.hidden = heli.hidden;
         	
 			if (spikey.wasTouched()) {
 				spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
@@ -49,8 +50,15 @@ public:
 			}
 
 			if (heli.actionComplete()) {
-				heli.JuiceType = JuiceTypes::JUICE_DIE;
+		//		heli.JuiceType = JuiceTypes::JUICE_DIE;
 			}
+		}
+
+		if (heli.hidden && bg.wasTouched()) {
+			heli.JuiceType = 0;
+			heli.hidden = false;
+			spikey.hidden = false;
+			heli.pos = getBackgroundSize().half();
 		}
         
         if (gob->modelId==baloons.modelId) {
@@ -66,6 +74,13 @@ public:
 			if (doObjectsIntersect(baloon, &spikey)) {
 				baloon->hidden = true;
 			}
+
+			if (doObjectsIntersect(baloon, &heli)) {
+				heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+				spikey.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+				//spikey.hidden = true;
+			}
+
         }
 	}
 
@@ -78,10 +93,9 @@ public:
 		
 		AddResource(&heli, "heli", 1);
 	
-        spikey.JuiceType = JuiceTypes::JUICE_PULSATE;
         AddResource(&spikey, "spikey",0.5);
-        spikey.JuiceType = JuiceTypes::JUICE_ROTZ_PULSATE;
-        spikey.JuiceSpeed = 10;
+        spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
+        spikey.JuiceSpeed = 20;
         
 		AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
         
@@ -93,8 +107,8 @@ public:
             bp.scale = rndm(0.3, 0.5);
             baloons.AddInstance(bp);
         }
-		//output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav", 0);
-		//output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", 0);
+		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav", 0);
+		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", 0);
    }
 
     virtual i2 getBackgroundSize() {

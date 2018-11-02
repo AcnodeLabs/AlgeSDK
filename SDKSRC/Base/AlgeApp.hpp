@@ -244,20 +244,34 @@ public:
 		pos->y += 0.5 * w * (1 - scaledTo);
 	}
 
-
-
+	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
 		static float juice_sine_angle;
+		static float elapsed = 0;
+		
+		elapsed += deltaT;
+		static float timeNote;
+		static bool timeNoted = false;
+
 		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
 		switch (jprs->JuiceType) {
 
 		case JuiceTypes::JUICE_ROTZ:
 			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
 			break;
+		case JuiceTypes::JUICE_DIE_TEMP:
 		case JuiceTypes::JUICE_DIE:
-			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
-			jprs->hidden = true;
+			if (!timeNoted) { timeNote = elapsed; timeNoted = true;	} if ((elapsed - timeNote) < 5) {
+				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
+				juice_sine_angle += 0.5f;
+				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
+			}	else {
+				if (jprs->JuiceType == JUICE_DIE) jprs->hidden = true;
+				jprs->JuiceType = 0;
+				timeNoted = false;
+				
+			}
 			break;
 		case JuiceTypes::JUICE_ROTXYZ:
 			jprs->rot.x += (deltaT * (jprs->JuiceSpeed));

@@ -54,6 +54,7 @@ public:
 	char xyz[64] = { 0 };
 	void clear() { x = 0; y = 0; z = 0; }
 	f3(float mx, float my, float mz) { x = mx; y = my; z = mz; }
+	f3(i2 m) { x = m.x; y = m.y; z = 0; }
 	string str(string fmt) {
     //sprintf_s(xyz, 64, fmt.c_str(), x, y, z);
     sprintf(xyz, fmt.c_str(), x, y, z);
@@ -232,6 +233,7 @@ enum JuiceTypes {
 	JUICE_ROTXYZ,
 	JUICE_ROTXYZ_PULSATE_FULLY,
 	JUICE_DIE,
+	JUICE_DIE_TEMP,
 	JUICE_CANCEL,
 	JUICES_END
 };
