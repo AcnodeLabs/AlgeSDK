@@ -188,7 +188,7 @@ public:
 class Serializable : public PosRotScale {
     
     public:
-    string UUID;
+
     //can be used externally for Appends
     void readin(FILE *f) {
         fread((void*)&pos,sizeof(pos),1, f);
@@ -312,7 +312,7 @@ public:
     
     
     bool wasTouched() {
-        if (hidden) return false;
+		if (hidden) return false;
         if (m_touched) {m_touched = false;return true;} else return false;
     }
     

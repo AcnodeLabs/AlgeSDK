@@ -522,6 +522,17 @@ public:
 		
 	}
 
+	bool onTouched(string name) {
+		if (touched_bodies.size() > 0) {
+			PosRotScale* bk = touched_bodies.back();
+			if (bk->UUID.find(name) != string::npos) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
     short iSelectedObject = 1;
     
     void ShowMarkerinOrthoMode(float size = 100.0) {
