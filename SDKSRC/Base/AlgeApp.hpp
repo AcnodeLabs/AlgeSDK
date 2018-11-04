@@ -378,6 +378,8 @@ public:
 
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
+		glColor3f(iit->color.x, iit->color.y, iit->color.z);
+
 		if (edit) {
 			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
 		}
@@ -392,6 +394,7 @@ public:
 
 		glPopMatrix();
 		inhibitRender = false;
+		glColor3f(1., 1., 1.);
 
 	}
 	

@@ -4,6 +4,11 @@
    ALGE SDK JD4 Demo :: PoppingTime
 */
 
+enum Sounds {
+	SND_BG,
+	SND_POP
+};
+
 class App : public AlgeApp {
 	
     GameObject bg, spikey, heli, baloons, fan;
@@ -32,17 +37,19 @@ public:
 
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         static bool done = false;
-		
+		static bool faceRight = false;
+
 		if (gob->modelId==spikey.modelId) {
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
             spikey.pos.y += 50;
 			spikey.hidden = heli.hidden;
         } 
-
+		
 		if (gob->modelId == heli.modelId) {
-			bool moveRight = bg.posTouched().x > heli.pos.x;
-			heli.rot.y = moveRight ? 180 : 0;
+			bool moveRight = bg.posTouched().x > heli.pos.x ;
+			if (bg.wasTouched()) faceRight = moveRight;
+			heli.rot.y = faceRight ? 180 : 0;
 		}
 
 		if (gob->modelId == fan.modelId) {
@@ -51,12 +58,14 @@ public:
 			fan.pos.x -= (heli.rot.y==0?15:-15);
 			fan.hidden = heli.hidden;
 		}
+		static bool soundedOuch = false;
 
 		if (heli.hidden && bg.wasTouched()) {
 			heli.JuiceType = 0;
 			heli.hidden = false;
 			spikey.hidden = false;
 			heli.pos = getBackgroundSize().half();
+			soundedOuch = false;
 		}
         
         if (gob->modelId==baloons.modelId) {
@@ -71,17 +80,26 @@ public:
 
 			if (doObjectsIntersect(baloon, &spikey)) {
 				baloon->hidden = true;
+				output.pushP(CMD_SNDPLAY1, $ "pop.wav");
 			}
+			
+			
 
 			if (doObjectsIntersect(baloon, &heli)) {
 				heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 				spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
-				//spikey.hidden = true;
+				if (!soundedOuch) {
+					output.pushP(CMD_SNDPLAY2, $ "aargh.wav");
+					soundedOuch = true;
+				}
+			
 			}
 
         }
 	}
 
+	
+	
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
 		AlInit(STANDARD);
@@ -101,14 +119,18 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 10; i++) {
+        for (int i=0; i< 100; i++) {
             bp.pos.x = randm() * rightSide;
-			bp.pos.y = bottomSide - rndm(10, 200);  //initially place balloons below bottom side
+			bp.pos.y = bottomSide + rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
+			bp.color = f3(randm(), randm(), randm());
             baloons.AddInstance(bp);
         }
-		//output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav", 0);
-		//output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", 0);
+	//	output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+		output.pushP(CMD_SNDSET1, $ "pop.wav");
+		output.pushP(CMD_SNDSET2, $ "aargh.wav");
+
+	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav");
    }
 
     virtual i2 getBackgroundSize() {

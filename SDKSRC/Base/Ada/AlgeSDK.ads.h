@@ -137,10 +137,17 @@ public:
 
 class PosRotScale {
 public:
+	PosRotScale() {
+		color.x = 1.;
+		color.y = 1.;
+		color.z = 1.;
+	}
 
     f3 pos;
     f3 rot;
-    float scale;
+	f3 color;
+
+	float scale;
 	bool hidden = false;
 	int JuiceType;
 	float JuiceSpeed = 1.;
