@@ -6,7 +6,7 @@
 
 class App : public AlgeApp {
 	
-    GameObject bg, spikey, heli, baloons;
+    GameObject bg, spikey, heli, baloons, fan;
     CControls c;
     
 public:
@@ -24,7 +24,7 @@ public:
 				spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
 			}
 
-			if (onTouched("bg.")) {
+			if (onTouched("bg")) {
 				heli.JuiceType = 0;
 				heli.transitionTo(bg.posTouched(), 500);
 			}
@@ -43,6 +43,13 @@ public:
 		if (gob->modelId == heli.modelId) {
 			bool moveRight = bg.posTouched().x > heli.pos.x;
 			heli.rot.y = moveRight ? 180 : 0;
+		}
+
+		if (gob->modelId == fan.modelId) {
+			fan.pos = heli.pos;
+			fan.pos.y -= 35;
+			fan.pos.x -= (heli.rot.y==0?20:-20);
+			fan.hidden = heli.hidden;
 		}
 
 		if (heli.hidden && bg.wasTouched()) {
@@ -68,7 +75,7 @@ public:
 
 			if (doObjectsIntersect(baloon, &heli)) {
 				heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
-				spikey.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+				spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
 				//spikey.hidden = true;
 			}
 
@@ -88,7 +95,10 @@ public:
 		AddResource(&heli, "heli", 1);
 
 		AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
-        
+		AddResource(&fan, "fans");
+		fan.JuiceType = JuiceTypes::JUICE_ROTY;
+		fan.JuiceSpeed = 1500;
+
 		PosRotScale bp;
         bp.CopyFrom(&heli);
         for (int i=0; i< 10; i++) {

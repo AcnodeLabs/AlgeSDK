@@ -260,9 +260,12 @@ public:
 		case JuiceTypes::JUICE_ROTZ:
 			jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
 			break;
+		case JuiceTypes::JUICE_ROTY:
+			jprs->rot.y += (deltaT * (jprs->JuiceSpeed));
+			break;
 		case JuiceTypes::JUICE_DIE_TEMP:
 		case JuiceTypes::JUICE_DIE:
-			if (!timeNoted) { timeNote = elapsed; timeNoted = true;	} if ((elapsed - timeNote) < 5) {
+			if (!timeNoted) { timeNote = elapsed; timeNoted = true;	} if ((elapsed - timeNote) < 2) {
 				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
 				juice_sine_angle += 0.5f;
 				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
@@ -270,7 +273,7 @@ public:
 				if (jprs->JuiceType == JUICE_DIE) jprs->hidden = true;
 				jprs->JuiceType = 0;
 				timeNoted = false;
-				
+			
 			}
 			break;
 		case JuiceTypes::JUICE_ROTXYZ:
@@ -509,15 +512,10 @@ public:
 			//netmsg.Post("Render::=" + it->Name());//Disabled due to perf concerns
 		}
 
-        if (picked>-1) {
-         //   gobs[picked]->m_touched = true;
-		//	picked = -1;
-        }
-        
-		glPopMatrix();
-        
-		//updateBody from phys
 
+		glPopMatrix();
+
+		//allow for touch processing call onTouched(uuid) to determine if body is touched
 		processInput(cmd, deltaT);
 		
 	}

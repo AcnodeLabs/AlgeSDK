@@ -227,6 +227,7 @@ class Serializable : public PosRotScale {
 
 enum JuiceTypes {
 	JUICE_ROTZ = 1,
+	JUICE_ROTY,
 	JUICE_PULSATE,
 	JUICE_PULSATE_FULLY,
 	JUICE_ROTZ_PULSATE,
