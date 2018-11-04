@@ -541,6 +541,9 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 				game.input.pushI(CMD_TOUCHMOVE, xPos, yPos);
 			if (touchingR)
 				game.input.pushI(CMD_TOUCHMOVER, xPos, yPos);
+
+			if (!touching && !touchingR) game.input.pushI(CMD_MOUSEMOVE, xPos, yPos);
+
 		}
 			break;
 

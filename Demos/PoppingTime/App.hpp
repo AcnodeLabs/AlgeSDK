@@ -4,40 +4,46 @@
    ALGE SDK JD4 Demo :: PoppingTime
 */
 
-enum Sounds {
-	SND_BG,
-	SND_POP
-};
-
 class App : public AlgeApp {
 	
-    GameObject bg, spikey, heli, baloons, fan;
-    CControls c;
+    GameObject bg, spikey, heli, baloons, fan, p_time;
     
 public:
-	
-	class GameLogic {
-	public:
-		bool spikeyIsDropping = false;
-
-	} logic;
-
-
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
 			if (onTouched("spikey")) {
 				spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
 			}
 
-			if (onTouched("bg")) {
+			if (onTouched("bg") || onTouched("baloon")) {
 				heli.JuiceType = 0;
 				heli.transitionTof2(bg.posTouched(), 500);
-			}
+			}			
 	}
 
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         static bool done = false;
 		static bool faceRight = false;
+
+
+		if (scene == 0) {
+			if (gob->modelId == heli.modelId ||
+			    gob->modelId == spikey.modelId ||
+				gob->modelId == fan.modelId ||
+				gob->modelId == baloons.modelId) 
+				inhibitRender = true;
+		}
+		else if (scene == 1) {
+			if (gob->modelId == p_time.modelId) {
+				inhibitRender = true; p_time.hidden = true;
+			}
+		}
+				
+		if (scene == 0 && bg.wasTouched()) {
+			scene = 1;
+			output.pushP(CMD_SNDSET0, $ "pop.wav");
+		}
+
 
 		if (gob->modelId==spikey.modelId) {
             gob->rotatefirst = false;
@@ -71,6 +77,7 @@ public:
         if (gob->modelId==baloons.modelId) {
 			//point to y position of baloon
 			PosRotScale *baloon =  gob->getInstancePtr(instanceNo);
+	
 			// rise baloon
             if (!paused) baloon->pos.y -= rndm(0, 3);
 			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
@@ -82,12 +89,10 @@ public:
 				baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav");
 			}
-			
-			
-
+		
 			if (doObjectsIntersect(baloon, &heli)) {
-				heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
-				spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
+			//	heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+			//	spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
 				if (!soundedOuch) {
 					output.pushP(CMD_SNDPLAY2, $ "aargh.wav");
 					soundedOuch = true;
@@ -98,14 +103,18 @@ public:
         }
 	}
 
-	
-	
+	short scene = 0;
+
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
 		AddResource(&bg, "bg", 1);
+
+		AddResource(&p_time, "poppingtime", 1);
+		p_time.JuiceType = JuiceTypes::JUICE_PULSATE;
+		p_time.JuiceSpeed = 500;
 
         AddResource(&spikey, "spikey",0.5);
         spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
@@ -119,18 +128,18 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 100; i++) {
+        for (int i=0; i< 15; i++) {
             bp.pos.x = randm() * rightSide;
 			bp.pos.y = bottomSide + rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
-			bp.color = f3(randm(), randm(), randm());
+			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);
         }
-	//	output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 
-	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav");
+		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav");
    }
 
     virtual i2 getBackgroundSize() {

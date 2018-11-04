@@ -431,6 +431,7 @@ public:
     PosRotScale* AddInstance(PosRotScale &prs) {
         if (prs.scale <= 0) prs.scale = 1.0;
         prs.originalScale = prs.scale;
+		prs.UUID = this->UUID;
         prsInstances.push_back(prs);
         return &prs;
     }
@@ -449,7 +450,7 @@ public:
     
     //getInstance(0) returns main object instances are at 1..n
     PosRotScale* getInstancePtr(int n) {
-        if (n < 0 || n> prsInstances.size()) return ((PosRotScale*)this);
+        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     GameObject() {
@@ -526,7 +527,6 @@ public:
         delete resInf;
     }
     
-
     inline void MoveAhead(float d) {pos.z+=d;}
 	inline void MoveBack(float d) { pos.z -= d; }
     inline void MoveRight(float d) {pos.x+=d;}

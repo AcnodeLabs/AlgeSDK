@@ -378,7 +378,7 @@ public:
 
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
-		glColor3f(iit->color.x, iit->color.y, iit->color.z);
+		glColor3f(it->color.x, it->color.y, it->color.z);
 
 		if (edit) {
 			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
@@ -397,8 +397,7 @@ public:
 		glColor3f(1., 1., 1.);
 
 	}
-	
-        
+	        
     bool doPicking2D(PosRotScale* it, f2 mouse) {
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
         CRect obj = it->getOwnRect(it->UUID);
@@ -520,7 +519,8 @@ public:
 
 		//allow for touch processing call onTouched(uuid) to determine if body is touched
 		processInput(cmd, deltaT);
-		
+			
+
 	}
 
 	bool onTouched(string name) {
