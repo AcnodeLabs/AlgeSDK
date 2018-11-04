@@ -63,7 +63,8 @@ public:
 		desired[1] = 3.2;
 		desired[2] = -4.9;
 
-		Reset(&curre[0], &desired[0],1 );
+	
+	//	Reset(&curre[0], &desired[0],1 ,0);
 		
 		for (int l=0; l<1; l++)
 			Step(0.1);
@@ -80,9 +81,11 @@ public:
 
 	float tTotal, tRun;
 	float startX, startY, startZ;
+	short m_type;
 
-	void Reset(float *current, float* desirable, float speedA) {
-	
+	void Reset(float *current, float* desirable, float speedA, short type = 0) {
+		
+		m_type = type;
 		tTotal = Dist(current,desirable) / speedA;
 	
 		curr = current;
@@ -106,9 +109,24 @@ public:
 	void Step(float dt) {
 		if (active) tRun += dt; else {tTotal = 0;return;}
 		r = tRun / tTotal;
-		curr[0] = LinearTween(r, startX, desired[0]);
-		curr[1] = LinearTween(r, startY, desired[1]);
-        curr[2] = LinearTween(r, startZ, desired[2]);
+
+		switch (m_type) {
+		case 0:
+			curr[0] = LinearTween(r, startX, desired[0]);
+			curr[1] = LinearTween(r, startY, desired[1]);
+			curr[2] = LinearTween(r, startZ, desired[2]);
+			break;
+		case 1:
+			curr[0] = QuadraticEaseIn(r, startX, desired[0]);
+			curr[1] = QuadraticEaseIn(r, startY, desired[1]);
+			curr[2] = QuadraticEaseIn(r, startZ, desired[2]);
+			break;
+		case 2:
+			curr[0] = QuadraticEaseInOut(r, startX, desired[0]);
+			curr[1] = QuadraticEaseInOut(r, startY, desired[1]);
+			curr[2] = QuadraticEaseInOut(r, startZ, desired[2]);
+			break;
+		}
         if (r>=1) {
 			active = false;
 		}

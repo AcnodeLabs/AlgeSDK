@@ -378,25 +378,25 @@ public:
     float mScale[3];
     float tgtScale[3];
     
-    void transitionTo(f2 pos, float speed = 0.3) {
+    void transitionTof2(f2 pos, float speed = 0.3, short type = 0) {
         PosRotScale tgt;
         tgt.CopyFrom(this);
         tgt.pos.x = pos.x;
         tgt.pos.y = pos.y;
-        transitionTo(tgt, speed);
+        transitionTo(tgt, speed, type);
 		m_actionComplete = false;
     }
     
-    void transitionTo(PosRotScale tgt, float speed = 60.) {
+    void transitionTo(PosRotScale tgt, float speed = 60., short type = 0) {
         o2vf(&tgt.pos, tgtPos);
         o2vf(&tgt.rot, tgtRot);
         o2vf(&pos, mPos);
         o2vf(&rot, mRot);
         mScale[0] = mScale[1] = mScale[2] = scale;
         tgtScale[0]=tgtScale[1]=tgtScale[2]= tgt.scale;
-        animPos.Reset(mPos, tgtPos, speed);
-        animRot.Reset(mRot, tgtRot, speed);
-        animScale.Reset(mScale, tgtScale, speed);
+        animPos.Reset(mPos, tgtPos, speed, type);
+        animRot.Reset(mRot, tgtRot, speed, type);
+        animScale.Reset(mScale, tgtScale, speed, type);
     }
     
     void Clone(GameObject* clone) {

@@ -21,12 +21,12 @@ public:
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
 			if (onTouched("spikey")) {
-				spikey.transitionTo(f2(bg.posTouched().x, bottomSide), 500);
+				spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
 			}
 
 			if (onTouched("bg")) {
 				heli.JuiceType = 0;
-				heli.transitionTo(bg.posTouched(), 500);
+				heli.transitionTof2(bg.posTouched(), 500);
 			}
 	}
 
@@ -47,8 +47,8 @@ public:
 
 		if (gob->modelId == fan.modelId) {
 			fan.pos = heli.pos;
-			fan.pos.y -= 35;
-			fan.pos.x -= (heli.rot.y==0?20:-20);
+			fan.pos.y -= 33;
+			fan.pos.x -= (heli.rot.y==0?15:-15);
 			fan.hidden = heli.hidden;
 		}
 
