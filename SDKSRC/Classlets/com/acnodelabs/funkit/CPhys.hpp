@@ -90,6 +90,10 @@ public:
 		pos[2] = z;
 	}
 
+	f3 getPos(string tag) {
+		return f3(pos[0], pos[1], pos[2]);
+	}
+
 	void set_gravity(float x, float y, float z) {
 		gravity[0] = x;
 		gravity[1] = y;

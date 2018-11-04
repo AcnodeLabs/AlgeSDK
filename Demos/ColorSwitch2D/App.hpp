@@ -36,7 +36,7 @@ public:
     }
     
 	virtual void Init(char* path) {
-		alInit(STANDARD);
+		AlInit(STANDARD);
 		SetTitle("ColorSwitch2D");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		screen0cs.AddResourceWithSound(this, "Screen0cs", 0.5);

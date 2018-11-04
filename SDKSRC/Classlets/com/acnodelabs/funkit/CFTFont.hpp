@@ -8,11 +8,13 @@
 
 class CFTFont {
     struct dtx_font *font;
+	bool allok = false;
 public:
     
     CFTFont() : CFTFont((char*)"C:\\OpenSans.ttf", 24) {}
     CFTFont(char* fontname, int size) {
         font = nullptr;
+		allok = false;
         //https://github.com/jtsiomb/libdrawtext/blob/master/examples/simple/simple.c
         /* XXX dtx_open_font opens a font file and returns a pointer to dtx_font */
         if(!(font = dtx_open_font(fontname, size))) {
@@ -25,6 +27,7 @@ public:
          */
        // dtx_prepare(font, size);
         dtx_use_font(font, 24);
+		allok = true;
 	}
     void PrintText(char* text) {
         if (font!=nullptr) dtx_string(text);
@@ -38,7 +41,7 @@ public:
 
     ~CFTFont() {
         dtx_flush();
-        if (font!=nullptr) dtx_close_font(font);
+        if (font!=nullptr && allok) dtx_close_font(font);
     }
 
 };

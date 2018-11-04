@@ -67,6 +67,7 @@ class /*Arkanoid2D*/ App : public AlgeApp {
 	RoundGameObject bal; ResourceInf res;
 	GameObject bric;
     CControls controls;
+	CPhys phys;
 
 	const int xMax = 500;
 	const int xSpd = 10;
@@ -83,11 +84,11 @@ public:
 		if (p->command == CMD_KEYDOWN) {
 			if (p->i1 == AL_KEY_RIGHT) {
 				f2 right{ getBackgroundSize().x - paddleWidth / 2, bat.pos.y };
-				bat.transitionTo(right, 200);
+				bat.transitionTof2(right, 200);
 			}
 			if (p->i1 == AL_KEY_LEFT) {
 				f2 left{ paddleWidth / 2, bat.pos.y };
-				bat.transitionTo(left, 200);
+				bat.transitionTof2(left, 200);
 			}
 		}
 
@@ -98,11 +99,11 @@ public:
             
             if (k==KROSS_RIGHT) {
                 f2 right{ getBackgroundSize().x - paddleWidth / 2, bat.pos.y };
-                bat.transitionTo(right, 200);
+                bat.transitionTof2(right, 200);
             }
             if (k==KROSS_LEFT) {
                 f2 left{ paddleWidth / 2, bat.pos.y };
-                bat.transitionTo(left, 200);
+                bat.transitionTof2(left, 200);
             }
 		}
 		if (p->command == CMD_TOUCH_END) {

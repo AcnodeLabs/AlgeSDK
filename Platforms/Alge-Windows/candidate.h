@@ -2,6 +2,6 @@
 /* 
 ALGE SDK :: CANDIDATE.h
 */
-#include "../../Demos/PoppingTime/app.hpp"
+#include "../../Demos/ColorSwitch2D/app.hpp"
 
 

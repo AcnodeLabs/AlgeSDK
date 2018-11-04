@@ -155,7 +155,7 @@ public:
      float debugUseOnly = 0.;
 	 float m_width;
 	 float m_height;
-	 b2Body* physBodyPtr;
+	 b2Body* physBodyPtr = nullptr;
 	 int m_touchedX;
 	 int m_touchedY;
 	 string UUID;
@@ -449,7 +449,7 @@ public:
     
     //getInstance(0) returns main object instances are at 1..n
     PosRotScale* getInstancePtr(int n) {
-        if (n < 0) return ((PosRotScale*)this);
+        if (n < 0 || n> prsInstances.size()) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     GameObject() {
