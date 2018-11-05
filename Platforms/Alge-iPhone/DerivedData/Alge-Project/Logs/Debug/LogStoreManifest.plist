@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>020E092A-58F4-4AB0-BDF6-5F28D1D9EC33</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>020E092A-58F4-4AB0-BDF6-5F28D1D9EC33.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563131772.407354</real>
+			<key>timeStoppedRecording</key>
+			<real>563132064.77057302</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>020E092A-58F4-4AB0-BDF6-5F28D1D9EC33</string>
+		</dict>
+		<key>0AF3BF73-9359-4591-B0AF-EA8212B1BBD2</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>0AF3BF73-9359-4591-B0AF-EA8212B1BBD2.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563131565.94474304</real>
+			<key>timeStoppedRecording</key>
+			<real>563131615.59334397</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>0AF3BF73-9359-4591-B0AF-EA8212B1BBD2</string>
+		</dict>
+		<key>0BA28B69-D310-486E-A639-67B470107980</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>0BA28B69-D310-486E-A639-67B470107980.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132630.37179995</real>
+			<key>timeStoppedRecording</key>
+			<real>563132676.90528095</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>0BA28B69-D310-486E-A639-67B470107980</string>
+		</dict>
+		<key>1DBCC3C9-200F-4732-B8EB-B446B47B3026</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>1DBCC3C9-200F-4732-B8EB-B446B47B3026.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132163.82771599</real>
+			<key>timeStoppedRecording</key>
+			<real>563132206.88087797</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>1DBCC3C9-200F-4732-B8EB-B446B47B3026</string>
+		</dict>
+		<key>23C0352D-F464-4797-8585-F30BDF2186E7</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>23C0352D-F464-4797-8585-F30BDF2186E7.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132680.58503497</real>
+			<key>timeStoppedRecording</key>
+			<real>563132751.24990106</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>23C0352D-F464-4797-8585-F30BDF2186E7</string>
+		</dict>
+		<key>33B17D4B-E474-4D78-83F1-8AEC72170F9C</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>33B17D4B-E474-4D78-83F1-8AEC72170F9C.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132765.49593699</real>
+			<key>timeStoppedRecording</key>
+			<real>563132786.94390404</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>33B17D4B-E474-4D78-83F1-8AEC72170F9C</string>
+		</dict>
+		<key>33DED904-ADD6-4A9F-84C0-35F464BB816F</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>33DED904-ADD6-4A9F-84C0-35F464BB816F.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132508.70248902</real>
+			<key>timeStoppedRecording</key>
+			<real>563132552.19260895</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>33DED904-ADD6-4A9F-84C0-35F464BB816F</string>
+		</dict>
+		<key>5883EF64-F630-4D1B-89BB-039431186473</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>5883EF64-F630-4D1B-89BB-039431186473.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563133135.05953097</real>
+			<key>timeStoppedRecording</key>
+			<real>563133180.82924294</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>5883EF64-F630-4D1B-89BB-039431186473</string>
+		</dict>
+		<key>667B6152-30C2-45E9-86C7-005AD805450E</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>667B6152-30C2-45E9-86C7-005AD805450E.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563131620.47690797</real>
+			<key>timeStoppedRecording</key>
+			<real>563131641.36997795</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>667B6152-30C2-45E9-86C7-005AD805450E</string>
+		</dict>
+		<key>6B9C008F-4B88-4A9D-B48D-4A1DDFB1DFCF</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>6B9C008F-4B88-4A9D-B48D-4A1DDFB1DFCF.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132798.70112395</real>
+			<key>timeStoppedRecording</key>
+			<real>563132853.84635997</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>6B9C008F-4B88-4A9D-B48D-4A1DDFB1DFCF</string>
+		</dict>
+		<key>7B38F6A9-ABFB-4BEC-960F-2F4AAC60E66B</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>7B38F6A9-ABFB-4BEC-960F-2F4AAC60E66B.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132422.59372604</real>
+			<key>timeStoppedRecording</key>
+			<real>563132446.12732697</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>7B38F6A9-ABFB-4BEC-960F-2F4AAC60E66B</string>
+		</dict>
+		<key>82C92394-1889-4C29-908F-DEF4E9DED2FD</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>82C92394-1889-4C29-908F-DEF4E9DED2FD.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132064.37919605</real>
+			<key>timeStoppedRecording</key>
+			<real>563132067.70023894</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>82C92394-1889-4C29-908F-DEF4E9DED2FD</string>
+		</dict>
+		<key>8AB59BF5-B06D-4E6F-8909-0B9017A807B5</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>8AB59BF5-B06D-4E6F-8909-0B9017A807B5.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132142.29952598</real>
+			<key>timeStoppedRecording</key>
+			<real>563132160.77186596</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>8AB59BF5-B06D-4E6F-8909-0B9017A807B5</string>
+		</dict>
+		<key>9639126F-3FE2-4EAA-BD7B-E95C41BFBFB1</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>9639126F-3FE2-4EAA-BD7B-E95C41BFBFB1.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563133014.11448801</real>
+			<key>timeStoppedRecording</key>
+			<real>563133070.11779296</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>9639126F-3FE2-4EAA-BD7B-E95C41BFBFB1</string>
+		</dict>
+		<key>A5C43F22-87BC-4038-A686-5725654DF0D7</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>A5C43F22-87BC-4038-A686-5725654DF0D7.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132280.66624403</real>
+			<key>timeStoppedRecording</key>
+			<real>563132299.38342202</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>A5C43F22-87BC-4038-A686-5725654DF0D7</string>
+		</dict>
+		<key>A9E53374-8337-4216-858D-C52EEFCFB906</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>A9E53374-8337-4216-858D-C52EEFCFB906.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132261.62383199</real>
+			<key>timeStoppedRecording</key>
+			<real>563132277.83032501</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>A9E53374-8337-4216-858D-C52EEFCFB906</string>
+		</dict>
+		<key>AC0B918F-7079-4D8A-9A4B-4CB1E0E65E14</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>AC0B918F-7079-4D8A-9A4B-4CB1E0E65E14.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563133071.27025294</real>
+			<key>timeStoppedRecording</key>
+			<real>563133121.01993406</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>AC0B918F-7079-4D8A-9A4B-4CB1E0E65E14</string>
+		</dict>
+		<key>C1D855F9-F243-45F8-B302-6CC21F243C30</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>C1D855F9-F243-45F8-B302-6CC21F243C30.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132071.56484497</real>
+			<key>timeStoppedRecording</key>
+			<real>563132134.34337795</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>C1D855F9-F243-45F8-B302-6CC21F243C30</string>
+		</dict>
+		<key>E3091C09-BFD9-486E-934C-E78DEE25DE55</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>E3091C09-BFD9-486E-934C-E78DEE25DE55.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563124408.86526799</real>
+			<key>timeStoppedRecording</key>
+			<real>563124422.64809</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>E3091C09-BFD9-486E-934C-E78DEE25DE55</string>
+		</dict>
+		<key>E47962D1-6A55-47F4-9B31-BE0B39639963</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>E47962D1-6A55-47F4-9B31-BE0B39639963.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563133184.98453295</real>
+			<key>timeStoppedRecording</key>
+			<real>563133247.95474195</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>E47962D1-6A55-47F4-9B31-BE0B39639963</string>
+		</dict>
+		<key>F876FD6F-5C73-453D-B581-B6EEC7FD7E6E</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>F876FD6F-5C73-453D-B581-B6EEC7FD7E6E.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563132855.00768602</real>
+			<key>timeStoppedRecording</key>
+			<real>563133011.06573296</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>F876FD6F-5C73-453D-B581-B6EEC7FD7E6E</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

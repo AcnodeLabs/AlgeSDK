@@ -73,7 +73,7 @@ public:
 			heli.pos = getBackgroundSize().half();
 			soundedOuch = false;
 		}
-        
+       
         if (gob->modelId==baloons.modelId) {
 			//point to y position of baloon
 			PosRotScale *baloon =  gob->getInstancePtr(instanceNo);
@@ -87,14 +87,14 @@ public:
 
 			if (doObjectsIntersect(baloon, &spikey)) {
 				baloon->hidden = true;
-				output.pushP(CMD_SNDPLAY1, $ "pop.wav");
+				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
 			}
 		
 			if (doObjectsIntersect(baloon, &heli)) {
 			//	heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 			//	spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
 				if (!soundedOuch) {
-					output.pushP(CMD_SNDPLAY2, $ "aargh.wav");
+					output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
 					soundedOuch = true;
 				}
 			
@@ -104,13 +104,14 @@ public:
 	}
 
 	short scene = 0;
-
+    int nLoops = 1;
+    
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
-		AddResource(&bg, "bg", 1);
+		AddResource(&bg, "bg", 1.5);
 
 		AddResource(&p_time, "poppingtime", 1);
 		p_time.JuiceType = JuiceTypes::JUICE_PULSATE;
@@ -139,11 +140,11 @@ public:
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 
-		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav");
+		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
    }
 
     virtual i2 getBackgroundSize() {
-        return i2(1024,512);
+        return size_ipad_air.half();
     }
 };
 

@@ -1,5 +1,19 @@
-Box2D is Functional
+Box2D is Functional in Windows, Linked in iOS but not Alive
+Box2D is added as source
+Ivank Demo is Still need checking Box2D
+iPhone Platform is Added
+Picking is Ok
+Sound is Ok in iOS, in Windows only one snd can play at one time
+Clean Checkout:
 
-Picking is Now OK
+select a directory
+git clone .../AlgeSDK
+git clone .../Box2D
+Add Box2D Search Path in Project
+modify Candidate.h if required
+Add Data Folder of candidate App
 
-27 Oct 2018
+Run 
+
+Updated on
+5 Nov 18
