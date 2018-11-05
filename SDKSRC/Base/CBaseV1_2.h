@@ -91,7 +91,7 @@ public:
 		scale = _scale;
 	}
 };
-//#include "Ada/AlgeSDK.ads.h"
+
 #include "UTM.h"
 
 #ifndef IOSMETAL
@@ -111,6 +111,10 @@ public:
 #ifdef XCODE_BUILD
 #include "Ada/AlgeSDK.ads.h"
 #endif
+#ifdef WIN32
+#include "Ada/AlgeSDK.ads.h"
+#endif // WIN32
+
 
 #define AUTO 0
 #define STANDARD 1
@@ -196,8 +200,6 @@ void alBillboardEnd() {
 	glPopMatrix();
 }
 //#endif
-
-
 
 CRect screenRect;
 
