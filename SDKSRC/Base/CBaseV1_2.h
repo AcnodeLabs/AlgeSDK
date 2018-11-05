@@ -91,7 +91,7 @@ public:
 		scale = _scale;
 	}
 };
-#include "Ada/AlgeSDK.ads.h"
+//#include "Ada/AlgeSDK.ads.h"
 #include "UTM.h"
 
 #ifndef IOSMETAL

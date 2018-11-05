@@ -7,9 +7,9 @@
 #include <stdio.h>
 #include <list>
 
-#ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
-#include <Box2D/Box2D.h>
-#endif
+//#ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
+#include <Box2D.h>
+//#endif
 
 using namespace std;
 #define GLfloat float
