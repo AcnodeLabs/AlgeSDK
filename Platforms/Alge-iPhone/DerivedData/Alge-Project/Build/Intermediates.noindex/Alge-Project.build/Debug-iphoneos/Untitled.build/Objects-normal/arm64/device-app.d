@@ -5,6 +5,9 @@ dependencies: \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/app.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/importgl.h \
+  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/UTM.h \
+  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/CCommands.h \
+  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/drawtext.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/AlgeSDK.ads.h \
   /Users/bilal/Desktop/Box2D/Box2D/Box2D.h \
   /Users/bilal/Desktop/Box2D/Box2D/Common/b2Settings.h \
@@ -47,9 +50,6 @@ dependencies: \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/../../Classlets/com/acnodelabs/funkit/CAnimator.hpp \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/../../Classlets/com/acnodelabs/funkit/CVec.hpp \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/../../Base/camera.h \
-  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/UTM.h \
-  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/CCommands.h \
-  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/drawtext.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/../Classlets/com/acnodelabs/funkit/all.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/../../Classlets/com/acnodelabs/funkit/all-pure.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/Ada/../../Classlets/com/acnodelabs/funkit/CAnim9.hpp \
@@ -76,4 +76,4 @@ dependencies: \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/AlgeApp.hpp \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/dimensions.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/CANDIDATE.h \
-  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/Demos/PoppingTime/app.hpp
+  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/Demos/Ivank_Box2D/app.hpp

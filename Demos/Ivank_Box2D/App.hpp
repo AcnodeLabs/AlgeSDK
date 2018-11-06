@@ -12,7 +12,7 @@ class /*IvanK Box2D*/ App : public AlgeApp {
 public:
 
     virtual i2 getBackgroundSize() {
-		return i2(1024, 512);
+		return i2(1024, 1024);
     }
 
 	void processInput(PEG::CMD* p, float deltaT) {
@@ -21,13 +21,13 @@ public:
 
 	virtual void Init(char* path) {
 		AlInit(STANDARD_2D, "IvanK Box2D");
-		
+        wireframe= true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		PhysicsInit();
 		PhysAddGroundWithWalls();
 		
-		AddResource(&winter2, "winter2"); 
-		AddResourceEx(&boxes, "box", 50, false, 1, 0.1);//false::Polygon/Box
+		AddResource(&winter2, "winter2");
+        AddResourceEx(&boxes, "box", 50, false, 1, 0.1);//false::Polygon/Box
 		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);//true:Circle
 	}
 
