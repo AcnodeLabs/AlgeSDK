@@ -122,6 +122,64 @@
 			<key>uniqueIdentifier</key>
 			<string>2EF403B2-8226-4092-AB8C-05DE46A1880E</string>
 		</dict>
+		<key>30BDA47E-5A6B-4EA5-96B7-4DF8FFE5909B</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>30BDA47E-5A6B-4EA5-96B7-4DF8FFE5909B.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563174097.077057</real>
+			<key>timeStoppedRecording</key>
+			<real>563174109.87182999</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>30BDA47E-5A6B-4EA5-96B7-4DF8FFE5909B</string>
+		</dict>
+		<key>3C7BBF48-1859-4095-82C0-C860C12BB142</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>3C7BBF48-1859-4095-82C0-C860C12BB142.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Debug Untitled</string>
+			<key>timeStartedRecording</key>
+			<real>563174250.16177905</real>
+			<key>timeStoppedRecording</key>
+			<real>563174277.84579003</real>
+			<key>title</key>
+			<string>Debug Untitled</string>
+			<key>uniqueIdentifier</key>
+			<string>3C7BBF48-1859-4095-82C0-C860C12BB142</string>
+		</dict>
 		<key>3D66F71C-0270-4071-B430-CB3497EAECEA</key>
 		<dict>
 			<key>className</key>

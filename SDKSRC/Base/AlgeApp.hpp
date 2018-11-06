@@ -845,12 +845,10 @@ public:
 	}
 
 	void PhysicsUpdate(float deltaT) {
-#ifndef NO_BOX2D
         if (world) world->Step(deltaT, velocityIterations, positionIterations);
 		if (world) world->ClearForces();
-#endif
 	}
-#ifndef NO_BOX2D
+
 	b2Body* AddFixturedBody(b2Body* body, float width=1.0, float height = 1.0) {
 		// Define another box shape for our dynamic body.
 		b2PolygonShape dynamicBox;
@@ -872,7 +870,7 @@ public:
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(gob_as_prs->pos.x, gob_as_prs->pos.y);
-		return AddFixturedBody(pWorld->CreateBody(&bodyDef));
+		return AddFixturedBody(world->CreateBody(&bodyDef));
 	}
 
 	b2Body* MakeStaticBody(PosRotScale* gob_as_prs,float width=1.0, float height=1.0) {
@@ -880,9 +878,9 @@ public:
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_staticBody;
 		bodyDef.position.Set(gob_as_prs->pos.x, gob_as_prs->pos.y);
-		return AddFixturedBody(pWorld->CreateBody(&bodyDef), width, height);
+		return AddFixturedBody(world->CreateBody(&bodyDef), width, height);
 	}
-#endif
+
 	int metersX, pixX;
 	int metersY, pixY;
 	

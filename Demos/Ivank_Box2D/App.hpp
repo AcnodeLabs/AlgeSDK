@@ -12,7 +12,7 @@ class /*IvanK Box2D*/ App : public AlgeApp {
 public:
 
     virtual i2 getBackgroundSize() {
-		return i2(1024, 1024);
+		return i2(512, 512);
     }
 
 	void processInput(PEG::CMD* p, float deltaT) {
