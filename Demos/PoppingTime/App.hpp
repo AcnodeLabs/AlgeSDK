@@ -47,6 +47,9 @@ public:
 
 
 		if (gob->modelId==spikey.modelId) {
+			spikey.Hide();
+			inhibitRender = true;
+			return;
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
             spikey.pos.y += 50;
@@ -86,7 +89,7 @@ public:
 				baloon->pos.y = bottomSide + 70; baloon->hidden = false;
 			}
 
-			if (doObjectsIntersect(baloon, &spikey)) {
+			if (false && doObjectsIntersect(baloon, &spikey)) {
 				baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
 			}
@@ -97,8 +100,12 @@ public:
 				if (!soundedOuch) {
 					output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
 					soundedOuch = true;
+					heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 				}
 			
+			}
+			else {
+				soundedOuch = false;
 			}
 
         }
@@ -130,8 +137,8 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 15; i++) {
-            bp.pos.x = randm() * rightSide;
+        for (int i=0; i< 2; i++) {
+			bp.pos.x = 20 + rightSide / 2;// *randm();
 			bp.pos.y = bottomSide + rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
 			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
@@ -145,8 +152,6 @@ public:
 		//output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
    }
 
-    virtual i2 getBackgroundSize() {
-        return size_ipad_air.half();
-    }
+	virtual i2 getBackgroundSize() { return size_ipad_air.half(); }
 };
 
