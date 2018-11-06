@@ -13,6 +13,7 @@ public:
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
 			if (onTouched("spikey")) {
 				spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
+				output.pushP(CMD_SNDPLAY3, $ "drop.wav");
 			}
 
 			if (onTouched("bg") || onTouched("baloon")) {
@@ -41,7 +42,7 @@ public:
 				
 		if (scene == 0 && bg.wasTouched()) {
 			scene = 1;
-			output.pushP(CMD_SNDSET0, $ "pop.wav");
+			
 		}
 
 
@@ -139,8 +140,9 @@ public:
 		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
+		output.pushP(CMD_SNDSET3, $ "drop.wav");
 
-		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
+		//output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
    }
 
     virtual i2 getBackgroundSize() {
