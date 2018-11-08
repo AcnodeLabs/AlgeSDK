@@ -312,6 +312,9 @@ public:
         m_height = fHeight;
     }
     
+	bool is(GameObject& other) {
+		return (this->modelId == other.modelId);
+	}
 
     
     void NextJuice() {
