@@ -12,6 +12,7 @@ class App : public AlgeApp {
 	bool soundedOuch = false;
 	short scene = 0;
 	int nLoops = 1;
+	int numBaloons = 50;
 
 public:
 
@@ -106,6 +107,11 @@ public:
 					heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 					heli.JuiceDuration = 0.75;
 					baloon->hidden = true;
+					for (int i = 0; i < numBaloons; i++) {
+						PosRotScale *b = gob->getInstancePtr(i);
+						f3 loc_to(rightSide - b->pos.x, 800 + bottomSide -b->pos.y,0);
+						b->pos = loc_to;
+					}
 				}
 
 			}
@@ -147,7 +153,7 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 50; i++) {
+        for (int i=0; i< numBaloons; i++) {
 			bp.pos.x = rightSide *randm();
 			bp.pos.y = bottomSide /2 + rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
