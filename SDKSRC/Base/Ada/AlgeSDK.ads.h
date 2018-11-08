@@ -152,6 +152,8 @@ public:
 	bool hidden = false;
 	int JuiceType;
 	float JuiceSpeed = 1.;
+	float JuiceDuration = 3;
+
 	float originalScale = 1.;
      float debugUseOnly = 0.;
 	 float m_width;

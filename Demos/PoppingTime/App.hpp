@@ -47,9 +47,9 @@ public:
 
 
 		if (gob->modelId==spikey.modelId) {
-			spikey.Hide();
-			inhibitRender = true;
-			return;
+			//spikey.Hide();
+			//inhibitRender = true;
+			//return;
             gob->rotatefirst = false;
             spikey.pos = heli.pos;
             spikey.pos.y += 50;
@@ -83,13 +83,13 @@ public:
 			PosRotScale *baloon =  gob->getInstancePtr(instanceNo);
 	
 			// rise baloon
-            if (!paused) baloon->pos.y -= rndm(0, 3);
+          //  if (!paused) baloon->pos.y -= rndm(0, 3);
 			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
 			if (baloon->pos.y < topSide) {
 				baloon->pos.y = bottomSide + 70; baloon->hidden = false;
 			}
 
-			if (false && doObjectsIntersect(baloon, &spikey)) {
+			if (doObjectsIntersect(&spikey, baloon)) {
 				baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
 			}
@@ -101,6 +101,8 @@ public:
 					output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
 					soundedOuch = true;
 					heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+					heli.JuiceDuration = 0.75;
+					baloon->hidden = true;
 				}
 			
 			}
@@ -116,7 +118,7 @@ public:
     
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
-		AlInit(STANDARD);
+		AlInit(STANDARD); wireframe = true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
 		AddResource(&bg, "bg", 1.5);
@@ -137,9 +139,9 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 2; i++) {
-			bp.pos.x = 20 + rightSide / 2;// *randm();
-			bp.pos.y = bottomSide + rndm(10, 500);  //initially place balloons below bottom side
+        for (int i=0; i< 1; i++) {
+			bp.pos.x = rightSide *randm();
+			bp.pos.y = bottomSide - 100;//+ rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
 			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);
