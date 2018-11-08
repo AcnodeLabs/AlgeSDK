@@ -786,7 +786,7 @@ public:
 			timeVar += deltaT;
 			if (!paused) {
 				Update(deltaT);
-				PhysicsUpdate(deltaT);
+				UpdatePhysics(deltaT);
 				for (int i = 1; i < nGobs; i++) {
 					GameObject* it = gobs[i];
 					it->Update(deltaT);
@@ -840,11 +840,11 @@ public:
 	int velocityIterations = 6;
 	int positionIterations = 2;
 
-	void PhysicsInit() {
+	void InitPhysics() {
 		world = new b2World(b2Vec2(0, 10));
 	}
 
-	void PhysicsUpdate(float deltaT) {
+	void UpdatePhysics(float deltaT) {
         if (world) world->Step(deltaT, velocityIterations, positionIterations);
 		if (world) world->ClearForces();
 	}

@@ -2,6 +2,6 @@
 /* 
 ALGE SDK :: CANDIDATE.h
 */
-#include "../../Demos/PoppingTime/app.hpp"
+#include "../../Demos/Ivank_Box2D/app.hpp"
 
 

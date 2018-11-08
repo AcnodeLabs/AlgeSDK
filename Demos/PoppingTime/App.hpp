@@ -7,8 +7,13 @@
 class App : public AlgeApp {
 	
     GameObject bg, spikey, heli, baloons, fan, p_time;
-    
+	FILE* f;
+
 public:
+
+	~App() {
+		if (f) fclose(f);
+	}
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
 			if (onTouched("spikey")) {
@@ -25,7 +30,6 @@ public:
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         static bool done = false;
 		static bool faceRight = false;
-
 
 		if (scene == 0) {
 			if (gob->modelId == heli.modelId ||
@@ -45,14 +49,12 @@ public:
 			
 		}
 
-
 		if (gob->modelId==spikey.modelId) {
-			//spikey.Hide();
-			//inhibitRender = true;
-			//return;
             gob->rotatefirst = false;
-            spikey.pos = heli.pos;
-            spikey.pos.y += 50;
+			if (!spikey.animPos.active) {
+				spikey.pos = heli.pos;
+				spikey.pos.y += 50;
+			}
 			spikey.hidden = heli.hidden;
         } 
 		
@@ -83,7 +85,7 @@ public:
 			PosRotScale *baloon =  gob->getInstancePtr(instanceNo);
 	
 			// rise baloon
-          //  if (!paused) baloon->pos.y -= rndm(0, 3);
+              if (!paused) baloon->pos.y -= rndm(0, 3);
 			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
 			if (baloon->pos.y < topSide) {
 				baloon->pos.y = bottomSide + 70; baloon->hidden = false;
@@ -92,6 +94,10 @@ public:
 			if (doObjectsIntersect(&spikey, baloon)) {
 				baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
+			//fprintf_s(f, "\nMATCH sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
+			}
+			else {
+			//	fprintf_s(f, "\n----- sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
 			}
 		
 			if (doObjectsIntersect(baloon, &heli)) {
@@ -120,6 +126,7 @@ public:
 	virtual void Init(char* path) {
 		AlInit(STANDARD); wireframe = true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+		fopen_s(&f, "spiky-vs-balloon.G", "w+");
 
 		AddResource(&bg, "bg", 1.5);
 
@@ -139,9 +146,9 @@ public:
 
 		PosRotScale bp;
         bp.CopyFrom(&heli);
-        for (int i=0; i< 1; i++) {
+        for (int i=0; i< 50; i++) {
 			bp.pos.x = rightSide *randm();
-			bp.pos.y = bottomSide - 100;//+ rndm(10, 500);  //initially place balloons below bottom side
+			bp.pos.y = bottomSide /2 + rndm(10, 500);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
 			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);

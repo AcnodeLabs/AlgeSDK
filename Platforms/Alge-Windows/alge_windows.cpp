@@ -155,7 +155,8 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 	float newTime = time1.getElapsedTimeInSec();
 	deltaT =  newTime - lastTime;
 	if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
-	
+	//deltaT = 0.1;
+
 #ifdef USING_IRRLICHT
 		ir.driver->beginScene(true, true, SColor(255,100,101,140));
 		game.Render(deltaT, aX,aY,aZ);
