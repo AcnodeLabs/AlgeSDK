@@ -112,8 +112,8 @@ public:
     }
 	int orthoType;
 
-	bool doObjectsIntersect(PosRotScale* prs1, PosRotScale* prs2) {
-		return isCircleIntersectingRect(prs1->pos.x, prs1->pos.y, prs1->m_width / 2, prs2->pos.x, prs2->pos.y, prs2->m_width / 2, prs2->m_height / 2);
+	bool doObjectsIntersect(PosRotScale* prsCircle, PosRotScale* prsRect) {
+		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width / 2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width / 2, prsRect->m_height / 2);
 	}
 
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
@@ -265,15 +265,15 @@ public:
 			break;
 		case JuiceTypes::JUICE_DIE_TEMP:
 		case JuiceTypes::JUICE_DIE:
-			if (!timeNoted) { timeNote = elapsed; timeNoted = true;	} if ((elapsed - timeNote) < 2) {
+			if (jprs->JuiceDuration>0) {
 				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
 				juice_sine_angle += 0.5f;
 				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
+				jprs->JuiceDuration -= deltaT;
 			}	else {
 				if (jprs->JuiceType == JUICE_DIE) jprs->hidden = true;
 				jprs->JuiceType = 0;
-				timeNoted = false;
-			
+				jprs->rot.z = 0;
 			}
 			break;
 		case JuiceTypes::JUICE_ROTXYZ:
@@ -786,7 +786,7 @@ public:
 			timeVar += deltaT;
 			if (!paused) {
 				Update(deltaT);
-				PhysicsUpdate(deltaT);
+				UpdatePhysics(deltaT);
 				for (int i = 1; i < nGobs; i++) {
 					GameObject* it = gobs[i];
 					it->Update(deltaT);
@@ -840,11 +840,11 @@ public:
 	int velocityIterations = 6;
 	int positionIterations = 2;
 
-	void PhysicsInit() {
+	void InitPhysics() {
 		world = new b2World(b2Vec2(0, 10));
 	}
 
-	void PhysicsUpdate(float deltaT) {
+	void UpdatePhysics(float deltaT) {
         if (world) world->Step(deltaT, velocityIterations, positionIterations);
 		if (world) world->ClearForces();
 	}
