@@ -426,7 +426,7 @@ public:
         preProcessInput(cmd, deltaT);
         
 		touched_bodies.clear();
-  
+        
 		
         int picked = -1;
         

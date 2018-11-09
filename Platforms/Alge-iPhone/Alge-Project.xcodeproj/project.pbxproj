@@ -11,8 +11,6 @@
 		2514C27210084DB100A42282 /* ES1Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2514C26E10084DB100A42282 /* ES1Renderer.m */; };
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
-		9C1B3CF82191544A00F6BAAA /* screenshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B3CEC2191544900F6BAAA /* screenshot.jpg */; };
-		9C1B3CF92191544A00F6BAAA /* desktop.ini in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B3CED2191544900F6BAAA /* desktop.ini */; };
 		9C1B3CFA2191544A00F6BAAA /* bigball.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B3CEF2191544900F6BAAA /* bigball.tga */; };
 		9C1B3CFB2191544A00F6BAAA /* bigball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B3CF02191544900F6BAAA /* bigball.png */; };
 		9C1B3CFC2191544A00F6BAAA /* bigball.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B3CF12191544900F6BAAA /* bigball.alx */; };
@@ -106,9 +104,6 @@
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
-		9C1B3CEB2191544900F6BAAA /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
-		9C1B3CEC2191544900F6BAAA /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
-		9C1B3CED2191544900F6BAAA /* desktop.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = desktop.ini; sourceTree = "<group>"; };
 		9C1B3CEF2191544900F6BAAA /* bigball.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigball.tga; sourceTree = "<group>"; };
 		9C1B3CF02191544900F6BAAA /* bigball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigball.png; sourceTree = "<group>"; };
 		9C1B3CF12191544900F6BAAA /* bigball.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bigball.alx; sourceTree = "<group>"; };
@@ -363,9 +358,6 @@
 		9C1B3CEA2191544900F6BAAA /* Ivank_Box2D.Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9C1B3CEB2191544900F6BAAA /* App.hpp */,
-				9C1B3CEC2191544900F6BAAA /* screenshot.jpg */,
-				9C1B3CED2191544900F6BAAA /* desktop.ini */,
 				9C1B3CEE2191544900F6BAAA /* Data */,
 			);
 			name = Ivank_Box2D.Assets;
@@ -648,7 +640,6 @@
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
 				9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */,
 				9C1B3D012191544A00F6BAAA /* box.alx in Resources */,
-				9C1B3CF92191544A00F6BAAA /* desktop.ini in Resources */,
 				9CF1FCA713E29C70005FB6E5 /* Default-Portrait~ipad.png in Resources */,
 				9C735D49142A3C85003CEA26 /* icon114.png in Resources */,
 				9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */,
@@ -657,7 +648,6 @@
 				9C4E38F5143CA659006EDD6F /* AdViewController.xib in Resources */,
 				9C1B3D022191544A00F6BAAA /* box.tga in Resources */,
 				9C4B598F1464136800ECBDB6 /* icon72.png in Resources */,
-				9C1B3CF82191544A00F6BAAA /* screenshot.jpg in Resources */,
 				9C1B3CFE2191544A00F6BAAA /* winter2.jpg in Resources */,
 				FA1054EB1ECA04070059C8C6 /* icon.png in Resources */,
 				FAE5B2CD1EC7176B00C4F14A /* Images.xcassets in Resources */,

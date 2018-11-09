@@ -15,8 +15,12 @@ public:
 		return i2(512, 512);
     }
 
-	void processInput(PEG::CMD* p, float deltaT) {
-		if (p->command == CMD_TOUCH_START) for (auto b : touched_bodies) b->Impulse(f2(0, -2));		
+	virtual void processInput(PEG::CMD* p, float deltaT) {
+        if (p->command == CMD_TOUCH_START) for (auto b : touched_bodies) {
+            b->Impulse(f2(0, -4));
+            if (b->UUID.find("ball")!=string::npos)
+                b->color = f3(randm(),randm(),randm());
+        }
 	}
 
 	virtual void Init(char* path) {
@@ -27,8 +31,8 @@ public:
 		PhysAddGroundWithWalls();
 		
 		AddResource(&winter2, "winter2");
-        AddResourceEx(&boxes, "box", 50, false, 1, 0.1);//false::Polygon/Box
-		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);//true:Circle
+        AddResourceEx(&boxes, "box", 20, false, 1, 0.1);//false::Polygon/Box
+		AddResourceEx(&balls, "bigball", 20, true, 1, 0.3);//true:Circle
 	}
 
 };
