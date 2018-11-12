@@ -133,7 +133,7 @@ public:
 	virtual void Init(char* path) {
 		AlInit(STANDARD); wireframe = true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		fopen_s(&f, "spiky-vs-balloon.G", "w+");
+		//fopen_s(&f, "spiky-vs-balloon.G", "w+");
 
 		AddResource(&bg, "bg", 1.5);
 

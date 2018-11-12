@@ -76,4 +76,4 @@ dependencies: \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/AlgeApp.hpp \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/SDKSRC/Base/dimensions.h \
   /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/CANDIDATE.h \
-  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/Demos/Ivank_Box2D/app.hpp
+  /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-iPhone/../../../AlgeSDK/Demos/PoppingTime/app.hpp
