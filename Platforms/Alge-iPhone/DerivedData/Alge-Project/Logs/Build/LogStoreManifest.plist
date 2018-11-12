@@ -6,7 +6,7 @@
 	<integer>9</integer>
 	<key>logs</key>
 	<dict>
-		<key>8E230BD3-2664-4558-A496-22040D6C1387</key>
+		<key>1B6DBC51-776A-405A-BB02-972DC1F5A7DB</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>8E230BD3-2664-4558-A496-22040D6C1387.xcactivitylog</string>
+			<string>1B6DBC51-776A-405A-BB02-972DC1F5A7DB.xcactivitylog</string>
 			<key>highLevelStatus</key>
 			<string>W</string>
 			<key>schemeIdentifier-containerName</key>
@@ -27,13 +27,42 @@
 			<key>signature</key>
 			<string>Build Alge-Project</string>
 			<key>timeStartedRecording</key>
-			<real>563435025.36612201</real>
+			<real>563719037.61289704</real>
 			<key>timeStoppedRecording</key>
-			<real>563435030.94272006</real>
+			<real>563719048.96965599</real>
 			<key>title</key>
 			<string>Build Alge-Project</string>
 			<key>uniqueIdentifier</key>
-			<string>8E230BD3-2664-4558-A496-22040D6C1387</string>
+			<string>1B6DBC51-776A-405A-BB02-972DC1F5A7DB</string>
+		</dict>
+		<key>580F817C-883F-4EB0-9EA8-F1C130F2B8F3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>580F817C-883F-4EB0-9EA8-F1C130F2B8F3.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>W</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Alge-Project project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Alge-Project</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>Build Alge-Project</string>
+			<key>timeStartedRecording</key>
+			<real>563719059.21004701</real>
+			<key>timeStoppedRecording</key>
+			<real>563719060.65593398</real>
+			<key>title</key>
+			<string>Build Alge-Project</string>
+			<key>uniqueIdentifier</key>
+			<string>580F817C-883F-4EB0-9EA8-F1C130F2B8F3</string>
 		</dict>
 		<key>9441714F-9D16-49BA-9915-349ECD75104C</key>
 		<dict>
@@ -63,64 +92,6 @@
 			<string>Build Alge-Project</string>
 			<key>uniqueIdentifier</key>
 			<string>9441714F-9D16-49BA-9915-349ECD75104C</string>
-		</dict>
-		<key>A6A5B9C9-8D6F-456B-8D91-B5490747DA71</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>A6A5B9C9-8D6F-456B-8D91-B5490747DA71.xcactivitylog</string>
-			<key>highLevelStatus</key>
-			<string>E</string>
-			<key>schemeIdentifier-containerName</key>
-			<string>Alge-Project project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Alge-Project</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>0</integer>
-			<key>signature</key>
-			<string>Build Alge-Project</string>
-			<key>timeStartedRecording</key>
-			<real>563435109.84224296</real>
-			<key>timeStoppedRecording</key>
-			<real>563435111.61301804</real>
-			<key>title</key>
-			<string>Build Alge-Project</string>
-			<key>uniqueIdentifier</key>
-			<string>A6A5B9C9-8D6F-456B-8D91-B5490747DA71</string>
-		</dict>
-		<key>DA5D9EFC-0860-4121-BDFE-DB9AC330E9A3</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>DA5D9EFC-0860-4121-BDFE-DB9AC330E9A3.xcactivitylog</string>
-			<key>highLevelStatus</key>
-			<string>W</string>
-			<key>schemeIdentifier-containerName</key>
-			<string>Alge-Project project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Alge-Project</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>0</integer>
-			<key>signature</key>
-			<string>Build Alge-Project</string>
-			<key>timeStartedRecording</key>
-			<real>563177934.70034802</real>
-			<key>timeStoppedRecording</key>
-			<real>563177937.20487499</real>
-			<key>title</key>
-			<string>Build Alge-Project</string>
-			<key>uniqueIdentifier</key>
-			<string>DA5D9EFC-0860-4121-BDFE-DB9AC330E9A3</string>
 		</dict>
 	</dict>
 </dict>

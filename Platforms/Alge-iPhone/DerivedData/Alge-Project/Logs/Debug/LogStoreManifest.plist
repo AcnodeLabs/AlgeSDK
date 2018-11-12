@@ -35,7 +35,7 @@
 			<key>uniqueIdentifier</key>
 			<string>2D23E846-B402-4881-A01D-D4CA9F967356</string>
 		</dict>
-		<key>5418A1AD-8C18-42EF-AFC9-5574358DCF38</key>
+		<key>EB8E8B79-A2D3-4ACE-8A7C-F9B2A11EF092</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -44,7 +44,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>5418A1AD-8C18-42EF-AFC9-5574358DCF38.xcactivitylog</string>
+			<string>EB8E8B79-A2D3-4ACE-8A7C-F9B2A11EF092.xcactivitylog</string>
 			<key>highLevelStatus</key>
 			<string>S</string>
 			<key>schemeIdentifier-containerName</key>
@@ -56,42 +56,13 @@
 			<key>signature</key>
 			<string>Debug Untitled</string>
 			<key>timeStartedRecording</key>
-			<real>563177936.95165396</real>
+			<real>563719060.43572497</real>
 			<key>timeStoppedRecording</key>
-			<real>563177975.96536303</real>
+			<real>563719182.33863699</real>
 			<key>title</key>
 			<string>Debug Untitled</string>
 			<key>uniqueIdentifier</key>
-			<string>5418A1AD-8C18-42EF-AFC9-5574358DCF38</string>
-		</dict>
-		<key>D0F57920-455B-4DE0-8731-AB7D200A55B8</key>
-		<dict>
-			<key>className</key>
-			<string>DBGConsoleLog</string>
-			<key>documentTypeString</key>
-			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
-			<key>fileName</key>
-			<string>D0F57920-455B-4DE0-8731-AB7D200A55B8.xcactivitylog</string>
-			<key>highLevelStatus</key>
-			<string>S</string>
-			<key>schemeIdentifier-containerName</key>
-			<string>Alge-Project project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Alge-Project</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>0</integer>
-			<key>signature</key>
-			<string>Debug Untitled</string>
-			<key>timeStartedRecording</key>
-			<real>563435030.72809899</real>
-			<key>timeStoppedRecording</key>
-			<real>563435074.685426</real>
-			<key>title</key>
-			<string>Debug Untitled</string>
-			<key>uniqueIdentifier</key>
-			<string>D0F57920-455B-4DE0-8731-AB7D200A55B8</string>
+			<string>EB8E8B79-A2D3-4ACE-8A7C-F9B2A11EF092</string>
 		</dict>
 	</dict>
 </dict>
