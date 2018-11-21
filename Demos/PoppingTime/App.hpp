@@ -140,10 +140,9 @@ public:
 		AddResource(&p_time, "poppingtime", 1);
 		p_time.JuiceType = JuiceTypes::JUICE_PULSATE;
 		p_time.JuiceSpeed = 500;
-		p_time.AddInstance(f2(p_time.pos.x - 3, p_time.pos.y- 3));
+		p_time.AddInstance(f2(p_time.pos.x - 3, p_time.pos.y- 3))->color = f3(0.5, 0.5, 0.5); //grey shadow
 		p_time.AddInstance(f2(p_time.pos.xy()));
-		p_time.getInstancePtr(0)->color = f3(0.5,0.5,0.5);
-
+		
         AddResource(&spikey, "spikey",0.5);
         spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
         spikey.JuiceSpeed = 20;
@@ -163,6 +162,7 @@ public:
 			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);
         }
+
 		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");

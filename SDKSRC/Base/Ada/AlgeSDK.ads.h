@@ -458,7 +458,7 @@ public:
         prst.JuiceSpeed = this->JuiceSpeed;
         prst.originalScale = this->originalScale;
         prsInstances.push_back(prst);
-        return &prst;
+		return &prsInstances.back();
     }
     
     //getInstance(0) returns main object instances are at 1..n
