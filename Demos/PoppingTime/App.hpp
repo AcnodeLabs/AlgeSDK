@@ -72,10 +72,12 @@ public:
 		}
 
 		if (gob->is(fan)) {
-			fan.pos = heli.pos;
-			fan.pos.y -= 33;
-			fan.pos.x -= (heli.rot.y == 0 ? 15 : -15);
-			fan.hidden = heli.hidden;
+			auto &_ = fan; {
+				_.pos = heli.pos;
+				_.pos.y -= 33;
+				_.pos.x -= (heli.rot.y == 0 ? 15 : -15);
+				_.hidden = heli.hidden;
+			}
 		}
 	
 		if (gob->is(baloons)) {
@@ -137,12 +139,14 @@ public:
 
 		AddResource(&bg, "bg", 1.5);
 
-		AddResource(&p_time, "poppingtime", 1);
-		p_time.JuiceType = JuiceTypes::JUICE_PULSATE;
-		p_time.JuiceSpeed = 500;
-		p_time.AddInstance(f2(p_time.pos.x - 3, p_time.pos.y- 3))->color = f3(0.5, 0.5, 0.5); //grey shadow
-		p_time.AddInstance(f2(p_time.pos.xy()));
-		
+		{ auto &_ = p_time;
+			AddResource( &_, "poppingtime", 1);
+			_.JuiceType = JuiceTypes::JUICE_PULSATE;
+			_.JuiceSpeed = 500;
+			_.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
+			_.AddInstance(f2(_.pos.xy()));
+		}
+
         AddResource(&spikey, "spikey",0.5);
         spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
         spikey.JuiceSpeed = 20;
