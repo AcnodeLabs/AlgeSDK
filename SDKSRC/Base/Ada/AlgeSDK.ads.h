@@ -8,9 +8,9 @@
 
 #include <list>
 
-//#ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
+#ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
 #include <Box2D/Box2D.h>
-//#endif
+#endif
 
 using namespace std;
 #define GLfloat float
@@ -76,8 +76,8 @@ public:
         Top = _top; Bottom = _bottom; Left = _left, Right = _right;
     }
     
-    CRect objectToScreen() {}
-    CRect screenToScreen() {}
+ //   CRect objectToScreen() {}
+ //   CRect screenToScreen() {}
     
     CRect scaledRect(CRect s) {
         CRect ret;
@@ -158,7 +158,9 @@ public:
      float debugUseOnly = 0.;
 	 float m_width;
 	 float m_height;
+#ifndef NO_BOX2D
 	 b2Body* physBodyPtr = nullptr;
+#endif
 	 int m_touchedX;
 	 int m_touchedY;
 	 string UUID;
@@ -182,15 +184,19 @@ public:
         originalScale = o->originalScale;
 		m_width = o->m_width;
 		m_height = o->m_height;
+#ifndef NO_BOX2D
 		physBodyPtr = o->physBodyPtr;
+#endif
 		UUID = o->UUID;
     }
 
 	void Impulse(f2 up) {
+#ifndef NO_BOX2D
 		static b2Vec2 bUp;
 		bUp.x = up.x;
 		bUp.y = up.y;
 		if (physBodyPtr) physBodyPtr->ApplyLinearImpulse(bUp, physBodyPtr->GetWorldCenter(), true);
+#endif
 	}
 
 };
@@ -441,17 +447,18 @@ public:
         prsInstances.push_back(prs);
         return &prs;
     }
-    
+
+    PosRotScale prst;
+
     PosRotScale*  AddInstance(f2 pos) {
-        PosRotScale prs;
-        prs.pos.x = pos.x;
-        prs.pos.y = pos.y;
-        prs.scale = this->scale;
-        prs.JuiceType = this->JuiceType;
-        prs.JuiceSpeed = this->JuiceSpeed;
-        prs.originalScale = this->originalScale;
-        prsInstances.push_back(prs);
-        return &prs;
+        prst.pos.x = pos.x;
+        prst.pos.y = pos.y;
+        prst.scale = this->scale;
+        prst.JuiceType = this->JuiceType;
+        prst.JuiceSpeed = this->JuiceSpeed;
+        prst.originalScale = this->originalScale;
+        prsInstances.push_back(prst);
+        return &prst;
     }
     
     //getInstance(0) returns main object instances are at 1..n

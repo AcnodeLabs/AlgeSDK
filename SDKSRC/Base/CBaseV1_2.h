@@ -115,6 +115,12 @@ public:
 #include "Ada/AlgeSDK.ads.h"
 #endif // WIN32
 
+#ifdef ANDROID_VERSIONING_H
+#define NO_BOX2D
+#define ES_ONLY
+#define NO_NATS
+#include "Ada/AlgeSDK.ads.h"
+#endif
 
 #define AUTO 0
 #define STANDARD 1

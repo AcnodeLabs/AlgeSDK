@@ -3,6 +3,7 @@
 /*
    ALGE SDK JD4 Demo :: ColorSwitch2D (Front Screen Only)
 */
+CRect a;
 
 class /*ColorSwitch2D*/ App : public AlgeApp {
 	

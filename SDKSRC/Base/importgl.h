@@ -33,6 +33,12 @@ extern "C" {
 #define DISABLE_IMPORTGL
 #endif
 
+#ifdef ANDROID_VERSIONING_H
+#include <GLES/gl.h>
+#include <GLES/gl.h>
+#endif
+
+
 #ifndef NOGL
  #if defined(__APPLE__)
   #import <OpenGLES/ES1/gl.h>
@@ -43,6 +49,7 @@ extern "C" {
 #endif
 	#include <GLES/gl.h>
 #endif
+
 
 
 #ifndef ANDROID_NDK

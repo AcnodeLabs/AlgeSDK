@@ -13,11 +13,11 @@ extern CNetMsg netmsg;
 
 class AlgeApp {
 public:
-    #ifndef NO_BOX2D
+
+ #ifndef NO_BOX2D
 	b2World* pWorld;
-    #endif
-	
 	b2World* world;
+#endif
 
 	vector<PosRotScale*> touched_bodies;
 
@@ -452,14 +452,14 @@ public:
 			for (int ins = 0; ins < n; ins++) {
 				
 				PosRotScale* prs = it->getInstancePtr(ins);
-				
+#ifndef NO_BOX2D
 				if (prs->physBodyPtr) {
 					b2Body *b = (b2Body*)prs->physBodyPtr;
 					prs->pos.x = b->GetPosition().x * P2S;
 					prs->pos.y = b->GetPosition().y * P2S;
 					prs->rot.z = b->GetAngle() * 57.2958f;
 				}
-
+#endif
 				it->pos.x = prs->pos.x; it->pos.y = prs->pos.y; it->pos.z = prs->pos.z;
 				it->rot.x = prs->rot.x; it->rot.y = prs->rot.y; it->rot.z = prs->rot.z;
 				it->scale = prs->scale;
@@ -483,12 +483,14 @@ public:
 			}
 
 			if (!instanced && !it->hidden) {
+#ifndef NO_BOX2D
 				if (it->physBodyPtr) {
 					b2Body *b = (b2Body*) it->physBodyPtr;
 					it->pos.x = b->GetPosition().x *P2S;
 					it->pos.y = b->GetPosition().y * P2S;
 					it->rot.z = b->GetAngle() * 57.2958f;
 				}
+#endif
 				renderSingleObject(&(*it), deltaT, -1);
 				
 				//Touched flag updated here for principal objects
@@ -841,14 +843,19 @@ public:
 	int positionIterations = 2;
 
 	void InitPhysics() {
+#ifndef NO_BOX2D
 		world = new b2World(b2Vec2(0, 10));
+#endif
 	}
 
 	void UpdatePhysics(float deltaT) {
+#ifndef NO_BOX2D
         if (world) world->Step(deltaT, velocityIterations, positionIterations);
 		if (world) world->ClearForces();
+#endif
 	}
 
+#ifndef NO_BOX2D
 	b2Body* AddFixturedBody(b2Body* body, float width=1.0, float height = 1.0) {
 		// Define another box shape for our dynamic body.
 		b2PolygonShape dynamicBox;
@@ -880,6 +887,7 @@ public:
 		bodyDef.position.Set(gob_as_prs->pos.x, gob_as_prs->pos.y);
 		return AddFixturedBody(world->CreateBody(&bodyDef), width, height);
 	}
+#endif
 
 	int metersX, pixX;
 	int metersY, pixY;
@@ -917,16 +925,17 @@ public:
 #endif
 	}
 	/////////////
+#ifndef NO_BOX2D
 	b2PolygonShape polygon;
 	b2CircleShape circle;
 	b2FixtureDef bxFixDef, blFixDef;
 	b2BodyDef bodyDefBall;
 	b2BodyDef bodyDefBox;
-
+#endif
 	
 	void AddMultiplePhysicalInstances(GameObject* o, int count, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-
-#define max_generate_obj 99
+#ifndef NO_BOX2D
+		#define max_generate_obj 99
 
 		char szuuid[64];
 		static PosRotScale px[max_generate_obj];
@@ -981,8 +990,32 @@ public:
 			o->AddInstance(px[i]);
 
 		}
+#endif
 	}
 
+#ifndef NO_BOX2D
+	b2BodyDef bodyDefWalls;
+	b2PolygonShape shp;
+#endif
+
+	void PhysAddGroundWithWalls() {
+#ifndef NO_BOX2D
+
+		bxFixDef.shape = &shp;
+		// create ground
+		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
+		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+
+		shp.SetAsBox(1 * S2P, bottomSide*S2P);
+		// left wall
+		bodyDefWalls.position.Set(0, bottomSide * S2P / 2);
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+		// right wall
+		bodyDefWalls.position.Set(rightSide * S2P, bottomSide * S2P / 2);
+		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
+#endif
+	}
 
 
 	//https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
@@ -1018,26 +1051,6 @@ public:
 
 	void SetTitle(char * name) {
 		output.pushP(CMD_TITLE, $ name, 0);
-	}
-
-	b2BodyDef bodyDefWalls;
-	b2PolygonShape shp;
-
-	void PhysAddGroundWithWalls() {
-		
-		bxFixDef.shape = &shp;
-		// create ground
-		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
-		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
-		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
-		
-		shp.SetAsBox(1 * S2P, bottomSide*S2P);
-		// left wall
-		bodyDefWalls.position.Set(0, bottomSide * S2P / 2);
-		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
-		// right wall
-		bodyDefWalls.position.Set(rightSide * S2P, bottomSide * S2P / 2);
-		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 	}
 
 
