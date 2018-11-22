@@ -139,12 +139,13 @@ public:
 
 		AddResource(&bg, "bg", 1.5);
 
-		{ auto &_ = p_time;
+		{ 
+			auto &_ = p_time;
 			AddResource( &_, "poppingtime", 1);
-			_.JuiceType = JuiceTypes::JUICE_PULSATE;
-			_.JuiceSpeed = 500;
-			_.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
-			_.AddInstance(f2(_.pos.xy()));
+			 _.JuiceType = JuiceTypes::JUICE_PULSATE;
+			 _.JuiceSpeed = 500;
+			 _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
+			 _.AddInstance(f2(_.pos.xy()));
 		}
 
         AddResource(&spikey, "spikey",0.5);
