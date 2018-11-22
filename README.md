@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.png)
+![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
 ### **Get It, Make a SANDBOX directory and do:** 
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
