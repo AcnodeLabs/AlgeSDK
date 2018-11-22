@@ -2,12 +2,8 @@
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
-####Windows
-setup-deps.bat [First Time Only, will clone ThirdParty Requirements like cnaats, Box2D, Bullet3D etc]
-KickStart.bat
-####OSX
-./setup-deps.sh
-./KickStart.sh
+setup-deps [First Time Only, will clone ThirdParty Requirements like cnaats, Box2D, Bullet3D etc]
+KickStart
 ```
 
 ### **Programming with ALGE Vanilla SDK**
