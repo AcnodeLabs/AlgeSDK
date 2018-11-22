@@ -2,6 +2,8 @@
 
 /* 
    ALGE SDK JD4 Demo :: PoppingTime
+   The Assets Folder Name is PoppingTime.Assets,
+   macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
 */
 
 class App : public AlgeApp {
