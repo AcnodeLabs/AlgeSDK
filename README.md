@@ -2,7 +2,7 @@
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
-setup-deps [First Time Only, will clone ThirdParty Requirements like cnaats, Box2D, Bullet3D etc]
+setup-deps [First Time Only, will clone ThirdParty Requirements like cnats, Box2D, Bullet3D etc]
 KickStart
 ```
 
