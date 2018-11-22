@@ -1,4 +1,15 @@
-﻿### **Programming with ALGE Vanilla SDK**
+###Get It, Make a SANDBOX directory and do: 
+git clone https://github.com/AcnodeLabs/AlgeSDK.git
+cd AlgeSDK
+####Windows
+setup-deps.bat [First Time Only, will clone ThirdParty Requirements like cnaats, Box2D, Bullet3D etc]
+KickStart.bat
+####OSX
+./setup-deps.sh [First Time Only, will clone ThirdParty Requirements like cnaats, Box2D, Bullet3D etc]
+./KickStart.sh
+
+
+### **Programming with ALGE Vanilla SDK**
 ### **Developing Platform Independent**
 ### **3D Graphics Applications**
 
