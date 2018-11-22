@@ -9,6 +9,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="CANDIDATE">
+      <UniqueIdentifier>{2f138803-06bb-4177-b5e7-610b27c36505}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.cpp">
@@ -25,14 +28,12 @@
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="glext.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="candidate.h" />
+    <ClInclude Include="candidate.h">
+      <Filter>CANDIDATE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
-    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">

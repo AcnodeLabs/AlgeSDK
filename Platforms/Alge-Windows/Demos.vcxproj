@@ -108,13 +108,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
     <ClInclude Include="candidate.h" />
-    <ClInclude Include="glext.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
-    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
