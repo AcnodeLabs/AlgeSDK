@@ -65,6 +65,9 @@
 #include <string>
 #include <vector>
 
+#define with {auto &_=*
+#define _with }
+
 using namespace std;
 
 void alPrintText(string text, float scale);

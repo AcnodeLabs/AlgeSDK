@@ -322,6 +322,13 @@ public:
 		return (this->modelId == other.modelId);
 	}
 
+    bool isOneOf(vector<GameObject> other) {
+        bool ret = false;
+        for (auto o : other) {
+            ret = ret || (this->modelId == o.modelId);
+        }
+        return ret;
+    }
     
     void NextJuice() {
         
@@ -462,10 +469,17 @@ public:
     }
     
     //getInstance(0) returns main object instances are at 1..n
+    //deprecated : use Inst(#) instead
     PosRotScale* getInstancePtr(int n) {
         if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
+    
+    PosRotScale* Inst(int n) {
+        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
+        return &prsInstances.at(n);
+    }
+    
     GameObject() {
         pos.clear();
         rot.clear();

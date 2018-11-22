@@ -21,31 +21,29 @@ public:
 	}
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-			if (onTouched("spikey")) {
-				spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
-				output.pushP(CMD_SNDPLAY3, $ "drop.wav");
-			}
+		if (onTouched("spikey")) {
+			spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
+			output.pushP(CMD_SNDPLAY3, $ "drop.wav");
+		}
 
-			if (onTouched("bg") || onTouched("baloon")) {
-				heli.JuiceType = 0;
-				heli.transitionTof2(bg.posTouched(), 500);
+		if (onTouched("bg") || onTouched("baloon")) {
+			heli.JuiceType = 0;
+			heli.transitionTof2(bg.posTouched(), 500);
 				
-				if (heli.hidden) {
-					heli.JuiceType = 0;
-					heli.hidden = false;
-					spikey.hidden = false;
-					heli.pos = getBackgroundSize().half();
-					soundedOuch = false;
-				}
+			if (heli.hidden) {
+				heli.JuiceType = 0;
+				heli.hidden = false;
+				spikey.hidden = false;
+				heli.pos = getBackgroundSize().half();
+				soundedOuch = false;
+			}
 			}			
 	}
 	
 	// First Intro Screen
 	virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
-		if (gob->is(heli) || gob->is(spikey) ||	gob->is(fan) ||	gob->is(baloons))
-			inhibitRender = true;
-
-		if (onTouched("bg")) scene = 1;
+	    if (gob->isOneOf({heli,spikey,fan,baloons})) inhibitRender = true;
+        if (onTouched("bg")) scene = 1;
 	}
 	// GamePlay Screen
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
@@ -82,8 +80,9 @@ public:
 	
 		if (gob->is(baloons)) {
 			//point to y position of baloon
-			PosRotScale *baloon = gob->getInstancePtr(instanceNo);
-
+			//PosRotScale *baloon = gob->getInstancePtr(instanceNo);
+           
+            PosRotScale* baloon = gob->Inst(instanceNo);//Gob==Balloon
 			// rise baloon
 			if (!paused) baloon->pos.y -= rndm(0, 3);
 			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
@@ -92,11 +91,10 @@ public:
 			}
 
 			if (doObjectsIntersect(&spikey, baloon)) {
-				baloon->hidden = true;
+                baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
 				//fprintf_s(f, "\nMATCH sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
-			}
-			else {
+			} else {
 				//	fprintf_s(f, "\n----- sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
 			}
 
@@ -110,64 +108,61 @@ public:
 					heli.JuiceDuration = 0.75;
 					baloon->hidden = true;
 					for (int i = 0; i < numBaloons; i++) {
-						PosRotScale *b = gob->getInstancePtr(i);
+						PosRotScale *b = gob->Inst(i);
 						f3 loc_to(rightSide - b->pos.x, 800 + bottomSide -b->pos.y,0);
 						b->pos = loc_to;
 					}
 				}
 
-			}
-			else {
+			} else {
 				soundedOuch = false;
 			}
-
+            
 		}
-
 	}
 
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        
-		if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
-		if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
-	
-	}
+     if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
+	 if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
+    }
 	
 	virtual void Init(char* path) {
-		AlInit(STANDARD); wireframe = true;
+        AlInit(STANDARD); wireframe = true; f = NULL;
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		//fopen_s(&f, "spiky-vs-balloon.G", "w+");
-
+		
 		AddResource(&bg, "bg", 1.5);
 
-		{ auto &_ = p_time;
-			AddResource( &_, "poppingtime", 1);
+		with AddResource( &p_time, "poppingtime", 1);
 			_.JuiceType = JuiceTypes::JUICE_PULSATE;
 			_.JuiceSpeed = 500;
 			_.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
 			_.AddInstance(f2(_.pos.xy()));
-		}
+		_with
 
-        AddResource(&spikey, "spikey",0.5);
-        spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
-        spikey.JuiceSpeed = 20;
-		AddResource(&heli, "heli", 1);
+        with AddResource(&spikey, "spikey",0.5);
+            _.JuiceType = JuiceTypes::JUICE_ROTZ;
+            _.JuiceSpeed = 20;
+        _with
+        
+        AddResource(&heli, "heli", 1);
 
 		AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
-		AddResource(&fan, "fans");
-		fan.JuiceType = JuiceTypes::JUICE_ROTY;
-		fan.JuiceSpeed = 1500;
-
+		
+        with AddResource(&fan, "fans");
+            _.JuiceType = JuiceTypes::JUICE_ROTY;
+            _.JuiceSpeed = 1500;
+        _with
+        
 		PosRotScale bp;
         bp.CopyFrom(&heli);
         for (int i=0; i< numBaloons; i++) {
-			bp.pos.x = rightSide *randm();
-			bp.pos.y = bottomSide /2 + rndm(10, 500);  //initially place balloons below bottom side
+			bp.pos = f3(rightSide *randm(), bottomSide /2 + rndm(10, 500),0);  //initially place balloons below bottom side
             bp.scale = rndm(0.3, 0.5);
 			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);
         }
 
-		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+        output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 		output.pushP(CMD_SNDSET3, $ "drop.wav");
