@@ -3,5 +3,3 @@
 ALGE SDK :: CANDIDATE.h
 */
 #include "../../Demos/Ivank_Box2D/app.hpp"
-
-
