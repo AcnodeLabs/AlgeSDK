@@ -10,7 +10,7 @@
 		</data>
 		<key>AdViewController.nib</key>
 		<data>
-		v9Q4SESCreE3EndLpMTYSuAGCQg=
+		4QmT7/MaCE2TcaSaLNioD3f4A3E=
 		</data>
 		<key>Default-568h@2x.png</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>MainWindow~ipad.nib</key>
 		<data>
-		ztfSp5jw0VFXarJpiFeYT8tysTw=
+		CbvxN4J3WDMbwOgJDFkJVCAnC9I=
 		</data>
 		<key>MainWindow~iphone.nib</key>
 		<data>
-		TOEFGpPy67fdKBUluIMB3Je+usg=
+		AlWKAJeDNaTBY/mOSJBErEfYPDA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -83,30 +83,6 @@
 		<key>bg.tga</key>
 		<data>
 		ZIX8Lxye4BGdAaXQCGg0sfpXvzI=
-		</data>
-		<key>bigball.alx</key>
-		<data>
-		AuP37qtuHDTbprZ+i2Jo1DJc4eo=
-		</data>
-		<key>bigball.png</key>
-		<data>
-		IkVNTzlFesGXafLBpgwanQUpVd0=
-		</data>
-		<key>bigball.tga</key>
-		<data>
-		QJOYLX3KkKOgWaAzZ57K6haE1mc=
-		</data>
-		<key>box.alx</key>
-		<data>
-		AuP37qtuHDTbprZ+i2Jo1DJc4eo=
-		</data>
-		<key>box.jpg</key>
-		<data>
-		ymU743+dXJMJn8bCV7TKQAmRGdY=
-		</data>
-		<key>box.tga</key>
-		<data>
-		Doc967NEZzkja86rcuup9RYi4pk=
 		</data>
 		<key>drop.wav</key>
 		<data>
@@ -188,18 +164,6 @@
 		<data>
 		G6UYmJ536g12A19y87veT7u377g=
 		</data>
-		<key>winter2.alx</key>
-		<data>
-		2b+evuwlteOtT+RKTt54KD3VDNc=
-		</data>
-		<key>winter2.jpg</key>
-		<data>
-		6jICcFDx5MpUs9BmzcmqszKfS8M=
-		</data>
-		<key>winter2.tga</key>
-		<data>
-		+Ufnm+Bq7xltMq1T4K7lxqNZO2U=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -214,7 +178,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NywFHJ5+ipscEh0fbDvhYLkS4J3gXAYaTuYuoqBEwL4=
+			a+219RvT76TAXpcACB4Vlz1ek2mYzeQRSbJS1iDTfBw=
 			</data>
 		</dict>
 		<key>Default-568h@2x.png</key>
@@ -256,14 +220,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h9+vuNHcZ9pWlmFzDqUsOt6YGfpBk3E+btkf5Y9dzhE=
+			RfrNCdGj2CKE0HMoH9N4qO0bAieTzX8yHCJrZaoFSkg=
 			</data>
 		</dict>
 		<key>MainWindow~iphone.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KlS1EIVy8t/aXvnHRUuj7zeqd7mNqUPgYjAlKSE0OWw=
+			S6z9/Ets85CKt8W8/d80L4eCtwoWKd7IG23ba5QDYtI=
 			</data>
 		</dict>
 		<key>aargh.wav</key>
@@ -327,48 +291,6 @@
 			<key>hash2</key>
 			<data>
 			GG0TBHFSI7zlcTKYQny9lkWQQtCqcsG46GuYbYa3dYg=
-			</data>
-		</dict>
-		<key>bigball.alx</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ZF7QGVzNDGbu/lez3/rsEpdP3aZJOl7a9euLLxMz7D4=
-			</data>
-		</dict>
-		<key>bigball.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			fQ74axV3YiTDdfNMkevws98AZplvi/pabLImihqdDTQ=
-			</data>
-		</dict>
-		<key>bigball.tga</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			4O/HtL5xZxydM4K/tIweFlOrPUFCVkWlXzmEarFnqls=
-			</data>
-		</dict>
-		<key>box.alx</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ZF7QGVzNDGbu/lez3/rsEpdP3aZJOl7a9euLLxMz7D4=
-			</data>
-		</dict>
-		<key>box.jpg</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			X2HNXARLdxKNoU9fpRV7GbhzOiyThwq00Y1f90Xco+M=
-			</data>
-		</dict>
-		<key>box.tga</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Y4dECuKz+bTrSaFLN5nRN5Y8SElYn8sPXOKSPtBgwsM=
 			</data>
 		</dict>
 		<key>drop.wav</key>
@@ -509,27 +431,6 @@
 			<key>hash2</key>
 			<data>
 			tcwA+BFL/63tN+JRfKh2EyJZEmW1mILxm+rcKRjn/S4=
-			</data>
-		</dict>
-		<key>winter2.alx</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Xndt/z0ZhaATfF7p3FPVxaZ36+xEi4LRMbW2uGJ80OQ=
-			</data>
-		</dict>
-		<key>winter2.jpg</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			UlcoJtjiLr8mw6YZQlG25uMVrvL8YN0LZ5Z26T2KT20=
-			</data>
-		</dict>
-		<key>winter2.tga</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			BQNbl8285A6y0RYfYJGDmgtJTQ0OX6jdiNcwFgFVQdU=
 			</data>
 		</dict>
 	</dict>
