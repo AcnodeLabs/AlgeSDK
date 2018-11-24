@@ -3,7 +3,6 @@
 
 #ifdef IOS
 #define NO_NATS
-#define NO_BOX2D
 #define ES_ONLY
 #endif
 
