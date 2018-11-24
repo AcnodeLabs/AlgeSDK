@@ -1,9 +1,8 @@
 ## AlgeSDK: A Truly Native Crossplatform framework 
 
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
-### **Get It, cd into your sandbox directory and do:** 
+### **Get It, clone into your sandbox directory and do:** 
 ```sh
-git clone https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
 setup-deps [First Time Only, will pull ThirdParty Requirements]
 KickStart  [run bat or sh script]
