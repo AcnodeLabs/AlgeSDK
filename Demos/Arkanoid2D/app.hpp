@@ -176,7 +176,7 @@ public:
         float scalefactor_bg = getBackgroundSize().x / 800.;
         AddResource(&bg, "ab_city", scalefactor_bg);
 
-		PhysicsInit();
+		InitPhysics();
 		PhysAddGroundWithWalls();
 
 		AddResource(&bal, "adidas_ball", 10.);

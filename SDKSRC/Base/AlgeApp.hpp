@@ -89,6 +89,10 @@ public:
 		return i2(resolutionReported.x,resolutionReported.y);
 	}
 
+	virtual void onActionComplete(GameObject* obj) {
+		
+	}
+
 	//Preconditions: Dont call before init
 	//Assumption Scene is Saved from same arrangement of Gobs
 	short LoadScene(short n) {
@@ -792,6 +796,10 @@ public:
 				for (int i = 1; i < nGobs; i++) {
 					GameObject* it = gobs[i];
 					it->Update(deltaT);
+					if (it->m_actionComplete) {
+						it->m_actionComplete = false;
+						onActionComplete(it);
+					}
 				}
 			}
 			else {

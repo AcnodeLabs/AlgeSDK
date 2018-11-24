@@ -20,6 +20,12 @@ public:
 		if (f) fclose(f);
 	}
 
+	virtual void onActionComplete(GameObject* obj) {
+		if (obj->is(heli)) {
+			bool ok = true;
+		}
+	}
+
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
 		if (onTouched("spikey")) {
 			spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);

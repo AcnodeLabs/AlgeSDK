@@ -268,6 +268,7 @@ string JuiceName(int j) {
 	return "Wrong ID";
 }
 
+extern class App game;
 
 class GameObject : public Serializable {
     
@@ -375,7 +376,7 @@ public:
         }
 
 		m_actionComplete = (animPos.r>=1 && animRot.r>=1 && animRot.r>=1);
-
+	
 #ifndef NO_BOX2D
         if (phys_body && phys_body->GetType()==b2_dynamicBody) {
             b2Vec2 position = phys_body->GetPosition();
