@@ -17,9 +17,6 @@
 
 #include "app.h"
 
-#define _o extern class
-#define o_ game;
-
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE
 
@@ -32,7 +29,7 @@
 #define PI 3.1415926535897932f
 #define RANDOM_UINT_MAX 65535
 
-App o_
+App game;
 
 /* Capped conversion from float to fixed.
 static long floatToFixed(float value)

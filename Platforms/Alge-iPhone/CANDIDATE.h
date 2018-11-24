@@ -6,4 +6,4 @@
  */
 
 #define CANDIDATE "../../../AlgeSDK/Demos/PoppingTime/App.hpp"  //Change this line to compile a different App
-_o App o_                                //To view App Source Rt Click on 'App' and select Jump to Definition
+class App;                                //To view App Source Rt Click on 'App' and select Jump to Definition
