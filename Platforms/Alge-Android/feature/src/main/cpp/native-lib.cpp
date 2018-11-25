@@ -1,3 +1,5 @@
+#include <GLES/gl.h>
+
 #include <jni.h>
 #include <string>
 
@@ -5,9 +7,13 @@ extern "C" JNIEXPORT jstring
 
 JNICALL
 Java_com_acnodelabs_apps_untitled_feature_MainActivity_stringFromJNI( JNIEnv *env, jobject /* this */) {
-    std::string hello = "Hello from C++ XAL";
+    std::string hello = "Hello from C++ glClear CaXAL";
+    glClear(GL_COLOR_BUFFER_BIT);
     return env->NewStringUTF(hello.c_str());
 }
+
+
+
 /*
 #define RUN_LENGTH  (20 * CAMTRACK_LEN)
 #undef PI
