@@ -5,21 +5,26 @@
 
 #include "../../../../../../SDKSRC/Base/CBaseV1_2.h"
 
+#include "../../../../../../Demos/PoppingTime/App.hpp"
+
+App game;
+
 extern "C" JNIEXPORT jstring
 
 
 JNICALL
 Java_com_acnodelabs_apps_untitled_feature_MainActivity_stringFromJNI( JNIEnv *env, jobject /* this */) {
 
-
     static aL10 a;
+
+    game.Init("Data/");
 
     //float Random(float rGen) { return randm(); }
     int i = int(Random(1.0) * 10);
     std::string hello = "al10 ini ";
-    for (int j=0; j< i ; j++) {
+    for (int j=0; j< game.nGobs ; j++) {
         a.Test2D();
-        hello += " Test2D";
+        hello += game.gobs[j]->UUID;
     }
 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -139,3 +144,84 @@ void appRender(float tick, int width, int height, int accelX, int accelY, int ac
     return;
 }
 */
+
+//defis imported from alge-gnat-mac
+//TODO This code is common in Platforms iOS/device-app.cpp and OSX/alge-mac.cpp
+// This part ahhead can be included from a single file placed in SDKSRC/Ada folder
+
+extern "C++" void alAlphaTest(int set_unset, float fA) {
+
+    if (set_unset) {
+        glAlphaFunc(GL_GREATER, fA);
+        glEnable(GL_ALPHA_TEST);
+        glEnable(GL_DEPTH_TEST);
+        //   glDisable(GL_DEPTH_TEST);
+        //  glEnable(GL_BLEND);
+        //  glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        //  glBlendEquation(GL_FUNC_ADD);
+    } else {
+        glDisable(GL_ALPHA_TEST);
+    }
+}
+
+extern "C++" void alLoadIdentity() {
+    glLoadIdentity();
+}
+
+extern "C++" void alPushMatrix() {
+    glPushMatrix();
+}
+
+extern "C++" void alPopMatrix() {
+    glPopMatrix();
+}
+
+extern "C++" void alLoadModel(char* alx, char* tga, int id, float size) {
+    game.rm.loadAlxModel(alx, tga, id,size );
+}
+
+extern "C++" int alLoadModel(ResourceInf* resInf) {
+    static int counter = 0;
+    alLoadModel((char*)resInf->alx.c_str(), (char*)resInf->tex.c_str(), ++counter, resInf->scale);
+    return counter;
+}
+
+extern "C++" void alDrawModelTranslateRotate(int id, float posx , float posy, float posz,
+                                             float angle,float x, float y,float z,
+                                             int rotatefirst ,
+                                             int billboard )
+{
+    glPushMatrix();
+    if (rotatefirst!=0)  {
+        glRotatef(angle, x,y,z);
+        glTranslatef(posx,posy,posz);
+    } else {
+        glTranslatef(posx,posy,posz);
+        glRotatef(angle, x,y,z);
+    }
+
+    if (game.rm.models[id]->loaded) {
+        if (billboard==1) alBillboardBegin();
+        game.rm.models[id]->glDraw();
+        if (billboard==1) alBillboardEnd();
+    }
+    glPopMatrix();
+}
+
+extern "C++" void alScaleModel(int id, float sx, float sy, float sz) {
+    game.rm.models[id]->SetScale(sx,sy,sz);
+}
+
+extern "C++" void alDrawModel(int id) {
+    game.rm.models[id]->glDraw();
+}
+extern "C++" void alDrawModel(int id, bool wireframe) {
+    game.rm.models[id]->glDraw(wireframe);
+}
+extern "C++" void alTranslateRotate( float posx , float posy, float posz,
+                                     float angle,float x, float y,float z) {
+    glTranslatef(posx,posy,posz);
+    glRotatef(angle,x,y,z);
+}
+
+
