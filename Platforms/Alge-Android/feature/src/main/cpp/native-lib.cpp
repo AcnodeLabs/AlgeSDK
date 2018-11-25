@@ -3,16 +3,22 @@
 #include <jni.h>
 #include <string>
 
+#include "../../../../../../SDKSRC/Base/CBaseV1_2.h"
+
 extern "C" JNIEXPORT jstring
 
 JNICALL
 Java_com_acnodelabs_apps_untitled_feature_MainActivity_stringFromJNI( JNIEnv *env, jobject /* this */) {
-    std::string hello = "Hello from C++ glClear CaXAL";
+
+    //float Random(float rGen) { return randm(); }
+    int i = int(Random(1.0) * 10);
+    std::string hello = "XAL FUNCTION CALL ";
+    for (int j=0; j< i ; j++) hello += " OK";
+
     glClear(GL_COLOR_BUFFER_BIT);
+    glColor4f(1.0,1.0,1.0,1.0);
     return env->NewStringUTF(hello.c_str());
 }
-
-
 
 /*
 #define RUN_LENGTH  (20 * CAMTRACK_LEN)

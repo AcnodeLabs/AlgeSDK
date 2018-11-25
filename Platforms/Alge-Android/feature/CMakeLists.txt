@@ -38,7 +38,7 @@ find_library( # Sets the name of the path variable.
 
               # Specifies the name of the NDK library that
               # you want CMake to locate.
-              GLESv2 )
+              GLESv1_CM )
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
@@ -52,5 +52,5 @@ target_link_libraries( # Specifies the target library.
                        ${log-lib}
 
                         # link the located gl lib for our GLES App
-                       ${gl-lib}
+                       GLESv1_CM
                        )
