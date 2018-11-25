@@ -13,31 +13,6 @@ KickStart  [run bat or sh script]
 ### **3D Graphics Applications**
 
 AcnodeLabs (c)  2018
-## Hefty Skippable Introducion
-
-Assuming you are a developer who has good handle on C/C++ and are perplexed from where to dwell further in App making and monetization. You would like to present your idea to the world as quickly as possible to the app store users.
-
-If u own a Windows Machine you can develop using ALGE and sell your app on Windows Marketplace, Intel AppUp, Android Marketplace right out of the box. If u own a Mac you can test and port your App on iTunes Store, Mac App Store and Android Marketplace. If U own both you can develop on one machine and port to many possible outlets, Windows Marketplace, Tunes App Store, Mac App Store, Android Marketplace and the Intel AppUp Store. You may also distribute the Android Apps to third party stores around the globe.
-
-When u have a ALGE compliant release candidate ready you can use ALGE templates to port it right away. By the way you wont have to rewrite your app as when moving from one machine to another as your App is ALGE compliant i.e Vanilla. So you have maximum reach and a fairly broad user base unmatched by any other SDK offerings. I suspect you are now feeling the Adrenaline rush as part of ALGE process, and Wait the moment you would be finished by the prototype you would be enthralled by the possible prompt porting schemes ready to comply to your instructions. 
-A common repository or version control system on your networked machines is recommended to transfer App codebase. If u prefer to use cloud Windows Live Mesh is a very good way to maintain a common repository for a beginner.
-
-Make your plan to get hold of test devices for every platform you intend to use. You would probably already own a device that supports OpenGL ES. I started from buying a cheap iPod Touch 2G and an Android G1 and released apps for iPhone 4, Galaxy Tab, and even iPad. The Apps paid
-off well for upgrades.
-
-Jumping into Apple territory means you need a Mac (could be cheap Mac Mini) but thats worth investing for a starter. Few SDK paradigms claim to write complete iOS App on Windows PC without even requiring the platform device. Come On!! Getting hold of a low spec device on which you users will actually use and feel your app is not at all a bad
-bet considering the usability and lovability of these devices. After all you are required to invest essentially in App Developer programs and beta testers, why not invest in a device of the OEM in whose ecosystem you are going to benefit from.
-
-As Android tools for both OSX and Windows are available, you can even start developing on a Windows Workstation and release Apps to Android community. Monetizing Android Apps require you to incorporate Ad based services and the Good News is that ALGE SDK has pre-configured Admob (In App Ads)  and Airpush (Out of App Ads) SDK so your first Hello World App also shows up the Ads out of the box.
-
-Platform OEMs always like you to stick to their particular toolset and associated technologies. Apple wants people to use Swift. Objective-C using XCode and Microsoft requires people to use MS Technologies. If u develop a App for Android and then later when it would decide to port it to iPhone, whats your best course of action? Invest in Porting!! And after investing you would also like to retain your platform specific workforce. What does this have to do with vanilla? Take a few steps back and See. You are in the Game of making your product cut through the market and shine before anyone one else does this faster than you, Period !! ALGE SDK enables you to do that. You Think, design, code, debug in a platform independent way and it lets you quickly port your Apps using automation.
-
-Of course you would require the platform for deployment and pre- release testing of your Application. By Vanilla what I mean is to use the platform and tools of your choice for development code the App in pure C / C++ as inherently its a portable language across the OpenGL world.
-
-Visual Studio and XCode are the preferred development environments. 
-
-C++ is a widely used lingua facia for game developers all around the world. It is inherently portable and is designed for portability across platforms. You can achieve unmatched performance in comparison with other languages. You can develop mixed mode structured and object oriented both. OpenGL ES is a C API so you program closer to the
-metal. For 3D graphics certain C++ features are indispensable. Operator overloading makes it possible to perform vector math in a syntactically natural way. Templates allow the reuse of vector and matrix types using a variety of underlying numerical representations. ALGE SDK includes all Glue code necessary to interface your C/C++ vanilla code to the platform specific code, on iOS ALGE uses Objective-C and for Android it uses Java Native Interface to talk to the platform. But as a developer your purview remains only Vanilla C/C++.
 
 ## Quick Start Guide
 
@@ -67,6 +42,8 @@ This book deals with introduction and kickstarts and would introduce the ALGE Pa
 
 
 ## Installing the ALGE SDK
+
+Visual Studio (Windows) , XCode (macOS, iOS),  Android Studio (android) and are the preferred development environments. 
 
 The installation is pretty straightforward. Extract the package to your repository and you are good to Go. First step would be to use and Run existing provided Applications to get the idea of the Caps. Gather your devices, iPod touch, iPhone , Android Phone, iPad, Atom Notebook etc to automatically build an existing App from source. ALGE SDK Folder can be copied to another machine and would run as all paths are
 relative. It also simplifies to zip your App Folder to backup all your work periodically. 
