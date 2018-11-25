@@ -7,13 +7,20 @@
 
 extern "C" JNIEXPORT jstring
 
+
 JNICALL
 Java_com_acnodelabs_apps_untitled_feature_MainActivity_stringFromJNI( JNIEnv *env, jobject /* this */) {
 
+
+    static aL10 a;
+
     //float Random(float rGen) { return randm(); }
     int i = int(Random(1.0) * 10);
-    std::string hello = "XAL FUNCTION CALL ";
-    for (int j=0; j< i ; j++) hello += " OK";
+    std::string hello = "al10 ini ";
+    for (int j=0; j< i ; j++) {
+        a.Test2D();
+        hello += " Test2D";
+    }
 
     glClear(GL_COLOR_BUFFER_BIT);
     glColor4f(1.0,1.0,1.0,1.0);
