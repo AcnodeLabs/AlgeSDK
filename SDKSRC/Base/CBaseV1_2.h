@@ -2084,14 +2084,16 @@ public:
         
 		strcpy(_alxfname, alxfilename);
 
-		if (resourcepath[0]) {
+		if (resourcepath[0]>0) {
 			strcpy(fname, resourcepath);
+			strcat(fname, "/");
             strcpy(fnamed, resourcepath);
 			strcat(fnamed, "/Data/");
 		}
 		else fname[0] = 0;
 
 		strcat(fname, alxfilename);
+		strcat(fnamed, alxfilename);
 
 		models[modelId] = new CModel();
 
