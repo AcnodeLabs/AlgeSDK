@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.acnodelabs.apps.untitled.feature">
-    <uses-sdk android:minSdkVersion="4" />
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:glEsVersion="0x00010000" android:required="true" />
