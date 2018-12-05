@@ -1,4 +1,0 @@
-dependencies {
-    implementation 'com.android.support:support-v4:+'
-    implementation 'com.android.support:support-v13:+'
-}
