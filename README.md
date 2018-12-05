@@ -10,3 +10,7 @@ KickStart  [run bat or sh script]
 ```
 # Happy Coding !!
 
+RELEASE NOTES tag 0.1
+=================
+
+Supported Platforms in tag 0.1 are Windows and iOS 
