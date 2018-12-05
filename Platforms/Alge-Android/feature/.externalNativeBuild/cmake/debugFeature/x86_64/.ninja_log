@@ -1,0 +1,16 @@
+# ninja log v5
+3	782	0	CMakeFiles/native-lib.dir/src/main/cpp/camera.cpp.o	d89fcfab63bf2067
+1	1281	0	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	6837ea33ed9fa992
+1282	1666	0	../../../../build/intermediates/cmake/feature/debug/obj/x86_64/libnative-lib.so	783a759373808d4f
+5	128	0	CMakeFiles/native-lib.dir/src/main/cpp/app-android.c.o	85c4e773e9b4859f
+9	949	0	CMakeFiles/native-lib.dir/src/main/cpp/camera.cpp.o	d89fcfab63bf2067
+11	1525	0	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	6837ea33ed9fa992
+1526	1709	0	../../../../build/intermediates/cmake/feature/debug/obj/x86_64/libnative-lib.so	ab2dfdfab5a3b1
+10	97	0	CMakeFiles/native-lib.dir/src/main/cpp/app-android.c.o	85c4e773e9b4859f
+8	766	0	CMakeFiles/native-lib.dir/src/main/cpp/camera.cpp.o	d89fcfab63bf2067
+6	1328	0	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	6837ea33ed9fa992
+1328	1508	0	../../../../build/intermediates/cmake/feature/debug/obj/x86_64/libnative-lib.so	ab2dfdfab5a3b1
+9	103	0	CMakeFiles/native-lib.dir/src/main/cpp/app-android.c.o	85c4e773e9b4859f
+7	811	0	CMakeFiles/native-lib.dir/src/main/cpp/camera.cpp.o	d89fcfab63bf2067
+5	1357	0	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	6837ea33ed9fa992
+1357	1533	0	../../../../build/intermediates/cmake/feature/debug/obj/x86_64/libnative-lib.so	ab2dfdfab5a3b1

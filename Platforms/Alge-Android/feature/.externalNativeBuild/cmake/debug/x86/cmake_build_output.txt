@@ -1,0 +1,9 @@
+-- Check for working C compiler: D:/AndroidSdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe
+-- Check for working C compiler: D:/AndroidSdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Bilal Ahsan/SANDBOX/AlgeSDK/Platforms/Alge-Android/feature/.externalNativeBuild/cmake/debug/x86

@@ -1,0 +1,3 @@
+C:/Users/Bilal Ahsan/SANDBOX/AlgeSDK/Platforms/Alge-Android/feature/.externalNativeBuild/cmake/debugFeature/x86/CMakeFiles/native-lib.dir
+C:/Users/Bilal Ahsan/SANDBOX/AlgeSDK/Platforms/Alge-Android/feature/.externalNativeBuild/cmake/debugFeature/x86/CMakeFiles/edit_cache.dir
+C:/Users/Bilal Ahsan/SANDBOX/AlgeSDK/Platforms/Alge-Android/feature/.externalNativeBuild/cmake/debugFeature/x86/CMakeFiles/rebuild_cache.dir

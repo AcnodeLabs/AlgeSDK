@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Bilal Ahsan\\SANDBOX\\AlgeSDK\\Platforms\\Alge-Android\\wear\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Bilal Ahsan\\.gradle\\caches\\transforms-1\\files-1.1\\wear-28.0.0.aar\\f041a9074d2e0f27b91c28d7c526ec9d\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,116",
+                        "endOffsets": "159,276"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "156,265",
+                        "endColumns": "108,116",
+                        "endOffsets": "260,377"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Bilal Ahsan\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\bb216577a103423015c8706a7650fac9\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
