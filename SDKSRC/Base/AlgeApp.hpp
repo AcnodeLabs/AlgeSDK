@@ -10,6 +10,7 @@ extern CNetMsg netmsg;
 #define P2S 100
 #define S2P 0.01
 #include "dimensions.h"
+#include "drawtext.h"
 
 class AlgeApp {
 public:
@@ -54,6 +55,9 @@ public:
 
 	GameObject origin;
 
+	struct dtx_font * font;
+
+
 	AlgeApp() :
 		iUnassigned(-1),
 		timeVar(0.0) {
@@ -80,7 +84,15 @@ public:
 		counter = 0;
 		GameObject::windowSize.x = getBackgroundSize().x;
 		GameObject::windowSize.y = getBackgroundSize().y;
-		
+		if (!(font = dtx_open_font_glyphmap("serif_s24.glyphmap"))) {
+			fprintf(stderr, "failed to open font\n");
+		} else
+		dtx_use_font(font, 10);
+	}
+
+	inline void alPrint(const char* text, int size = 10) {
+		if (size!=10) dtx_use_font(font, size);
+		dtx_string(text);
 	}
 
 	void Deinit() {}
@@ -382,8 +394,11 @@ public:
 
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
-		glColor3f(it->color.x, it->color.y, it->color.z);
 
+		
+		glColor3f(it->color.x, it->color.y, it->color.z);
+		
+		
 		if (edit) {
 			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
 		}
