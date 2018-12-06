@@ -1,6 +1,6 @@
 /*
 libdrawtext - a simple library for fast text rendering in OpenGL
-Copyright (C) 2011-2016  John Tsiombikas <nuclear@member.fsf.org>
+Copyright (C) 2011-2018  John Tsiombikas <nuclear@member.fsf.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef LIBDRAWTEXT_H_
 #define LIBDRAWTEXT_H_
 
+#define USE_FREETYPE
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,6 +31,12 @@ enum {
 	DTX_NBF = 0,/* unbuffered */
 	DTX_LBF,	/* line buffered */
 	DTX_FBF		/* fully buffered */
+};
+
+/* glyphmap resize filtering */
+enum {
+	DTX_NEAREST,
+	DTX_LINEAR
 };
 
 struct dtx_box {
@@ -50,10 +58,14 @@ extern "C" {
  * nothing will be rendered.
  */
 struct dtx_font *dtx_open_font(const char *fname, int sz);
+/* same as dtx_open_font, but open from a memory buffer instead of a file */
+struct dtx_font *dtx_open_font_mem(void *ptr, int memsz, int fontsz);
 /* open a font by loading a precompiled glyphmap (see: dtx_save_glyphmap)
  * this works even when compiled without freetype support
  */
 struct dtx_font *dtx_open_font_glyphmap(const char *fname);
+/* same as dtx_open_font_glyphmap, but open from a memory buffer instead of a file */
+struct dtx_font *dtx_open_font_glyphmap_mem(void *ptr, int memsz);
 /* close a font opened by either of the above */
 void dtx_close_font(struct dtx_font *fnt);
 
@@ -61,6 +73,14 @@ void dtx_close_font(struct dtx_font *fnt);
 void dtx_prepare(struct dtx_font *fnt, int sz);
 /* prepare an arbitrary unicode range glyphmap for the specified font size */
 void dtx_prepare_range(struct dtx_font *fnt, int sz, int cstart, int cend);
+
+/* convert all glyphmaps to distance fields for use with the distance field
+ * font rendering algorithm. This is a convenience function which calls
+ * dtx_calc_glyphmap_distfield and
+ * dtx_resize_glyphmap(..., scale_numer, scale_denom, DTX_LINEAR) for each
+ * glyphmap in this font.
+ */
+int dtx_calc_font_distfield(struct dtx_font *fnt, int scale_numer, int scale_denom);
 
 /* Finds the glyphmap that contains the specified character code and matches the requested size
  * Returns null if it hasn't been created (you should call dtx_prepare/dtx_prepare_range).
@@ -72,6 +92,11 @@ struct dtx_glyphmap *dtx_get_font_glyphmap(struct dtx_font *fnt, int sz, int cod
  */
 struct dtx_glyphmap *dtx_get_font_glyphmap_range(struct dtx_font *fnt, int sz, int cstart, int cend);
 
+/* returns the number of glyphmaps in this font */
+int dtx_get_num_glyphmaps(struct dtx_font *fnt);
+/* returns the Nth glyphmap of this font */
+struct dtx_glyphmap *dtx_get_glyphmap(struct dtx_font *fnt, int idx);
+
 /* Creates and returns a glyphmap for a particular unicode range and font size.
  * The generated glyphmap is added to the font's list of glyphmaps.
  */
@@ -79,18 +104,36 @@ struct dtx_glyphmap *dtx_create_glyphmap_range(struct dtx_font *fnt, int sz, int
 /* free a glyphmap */
 void dtx_free_glyphmap(struct dtx_glyphmap *gmap);
 
+/* converts a glyphmap to a distance field glyphmap, for use with the distance
+ * field font rendering algorithm.
+ *
+ * It is recommended to use a fairly large font size glyphmap for this, and
+ * then shrink the resulting distance field glyphmap as needed, with
+ * dtx_resize_glyphmap
+ */
+int dtx_calc_glyphmap_distfield(struct dtx_glyphmap *gmap);
+
+/* resize a glyphmap by the provided scale factor fraction snum/sdenom
+ * in order to maintain the power of 2 invariant, scaling fractions are only
+ * allowed to be of the form 1/x or x/1, where x is a power of 2
+ */
+int dtx_resize_glyphmap(struct dtx_glyphmap *gmap, int snum, int sdenom, int filter);
+
 /* returns a pointer to the raster image of a glyphmap (1 byte per pixel grayscale) */
 unsigned char *dtx_get_glyphmap_image(struct dtx_glyphmap *gmap);
 /* returns the width of the glyphmap image in pixels */
 int dtx_get_glyphmap_width(struct dtx_glyphmap *gmap);
 /* returns the height of the glyphmap image in pixels */
 int dtx_get_glyphmap_height(struct dtx_glyphmap *gmap);
+/* returns the point size represented by this glyphmap */
+int dtx_get_glyphmap_ptsize(struct dtx_glyphmap *gmap);
 
 /* The following functions can be used even when the library is compiled without
  * freetype support.
  */
 struct dtx_glyphmap *dtx_load_glyphmap(const char *fname);
 struct dtx_glyphmap *dtx_load_glyphmap_stream(FILE *fp);
+struct dtx_glyphmap *dtx_load_glyphmap_mem(void *ptr, int memsz);
 int dtx_save_glyphmap(const char *fname, const struct dtx_glyphmap *gmap);
 int dtx_save_glyphmap_stream(FILE *fp, const struct dtx_glyphmap *gmap);
 
@@ -107,6 +150,10 @@ enum dtx_option {
 	/* options for the raster renderer */
 	DTX_RASTER_THRESHOLD, /* opaque/transparent threshold  (default: -1. fully opaque glyphs) */
 	DTX_RASTER_BLEND,     /* glyph alpha blending (0 or 1) (default: 0 (off)) */
+
+	/* generic options */
+	DTX_PADDING = 128,    /* padding between glyphs in pixels (default: 8) */
+	DTX_SAVE_PPM,         /* let dtx_save_glyphmap* save PPM instead of PGM (0 or 1) (default: 0 (PGM)) */
 
 	DTX_FORCE_32BIT_ENUM = 0x7fffffff	/* this is not a valid option */
 };
@@ -125,6 +172,36 @@ void dtx_target_opengl(void);
  * text is rendered with pre-multiplied alpha
  */
 void dtx_target_raster(unsigned char *pixels, int width, int height);
+
+
+/* data structures passed to user-supplied draw callback */
+struct dtx_vertex { float x, y, s, t; };
+struct dtx_pixmap {
+	unsigned char *pixels;	/* pixel buffer pointer (8 bits per pixel) */
+	int width, height;		/* dimensions of the pixel buffer */
+	void *udata;	/* user-supplied pointer to data associated with this
+					 * pixmap. On the first callback invocation this pointer
+					 * will be null. The user may set it to associate any extra
+					 * data to this pixmap (such as texture structures or
+					 * identifiers). Libdrawtext will never modify this pointer.
+					 */
+};
+
+/* user-defined glyph drawing callback type (set with dtx_target_user)
+ * It's called when the output buffer is flushed, with a pointer to the vertex
+ * buffer that needs to be drawn (every 3 vertices forming a triangle), the
+ * number of vertices in the buffer, and a pointer to the current glyphmap
+ * atlas pixmap (see struct dtx_pixmap above).
+ */
+typedef void (*dtx_user_draw_func)(struct dtx_vertex *v, int vcount,
+		struct dtx_pixmap *pixmap, void *cls);
+
+/* set user-supplied draw callback and optional closure pointer, which will
+ * be passed unchanged as the last argument on every invocation of the draw
+ * callback.
+ */
+void dtx_target_user(dtx_user_draw_func drawfunc, void *cls);
+
 
 /* position of the origin of the first character to be printed */
 void dtx_position(float x, float y);
@@ -145,8 +222,8 @@ void dtx_draw_buffering(int mode);
  * data. By default both are -1 which means you don't have to use a shader, and if you
  * do they are accessible through gl_Vertex and gl_MultiTexCoord0, as usual.
  *
- * NOTE: If you are using OpenGL ES 2.x or OpenGL >= 3.1 pure (non-compatibility) context
- * you must specify valid attribute indices.
+ * NOTE: If you are using OpenGL ES 2.x or OpenGL >= 3.1 core (non-compatibility)
+ * context you must specify valid attribute indices.
  *
  * NOTE2: equivalent to:
  *    dtx_set(DTX_GL_ATTR_VERTEX, vert_attr);
@@ -158,6 +235,7 @@ void dtx_vertex_attribs(int vert_attr, int tex_attr);
 void dtx_glyph(int code);
 /* draws a utf-8 string starting at the origin. \n \r and \t are handled appropriately. */
 void dtx_string(const char *str);
+void dtx_substring(const char *str, int start, int end);
 
 void dtx_printf(const char *fmt, ...);
 
@@ -170,14 +248,20 @@ void dtx_flush(void);
 /* returns a pointer to the next character in a utf-8 stream */
 char *dtx_utf8_next_char(char *str);
 
+/* returns a pointer to the previous character in a utf-8 stream */
+char *dtx_utf8_prev_char(char *ptr, char *first);
+
 /* returns the unicode character codepoint of the utf-8 character starting at str */
 int dtx_utf8_char_code(const char *str);
 
 /* returns the number of bytes of the utf-8 character starting at str */
 int dtx_utf8_nbytes(const char *str);
 
-/* returns the number of utf-8 character in a zero-terminated utf-8 string */
+/* returns the number of utf-8 characters in a zero-terminated utf-8 string */
 int dtx_utf8_char_count(const char *str);
+
+/* returns the number of utf-8 characters in the next N bytes starting from str */
+int dtx_utf8_char_count_range(const char *str, int nbytes);
 
 /* Converts a unicode code-point to a utf-8 character by filling in the buffer
  * passed at the second argument, and returns the number of bytes taken by that
@@ -199,6 +283,7 @@ size_t dtx_utf8_from_string(const wchar_t *str, char *buf);
 
 /* ---- metrics ---- */
 float dtx_line_height(void);
+float dtx_baseline(void);
 
 /* rendered dimensions of a single glyph */
 void dtx_glyph_box(int code, struct dtx_box *box);
@@ -207,6 +292,7 @@ float dtx_glyph_height(int code);
 
 /* rendered dimensions of a string */
 void dtx_string_box(const char *str, struct dtx_box *box);
+void dtx_substring_box(const char *str, int start, int end, struct dtx_box *box);
 float dtx_string_width(const char *str);
 float dtx_string_height(const char *str);
 
