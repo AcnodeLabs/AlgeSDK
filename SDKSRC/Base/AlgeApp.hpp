@@ -11,6 +11,7 @@ extern CNetMsg netmsg;
 #define S2P 0.01
 #include "dimensions.h"
 #include "drawtext.h"
+#include <sstream>
 
 class AlgeApp {
 public:
@@ -87,12 +88,16 @@ public:
 		if (!(font = dtx_open_font_glyphmap("serif_s24.glyphmap"))) {
 			fprintf(stderr, "failed to open font\n");
 		} else
-		dtx_use_font(font, 10);
+		dtx_use_font(font, 24);
 	}
 
-	inline void alPrint(const char* text, int size = 10) {
-		if (size!=10) dtx_use_font(font, size);
+	inline void alPrint(const char* text,  int size = 24 ) {
+		if (size!=24) dtx_use_font(font, size);
+		glPushMatrix();
+		
+		glRotatef(180, 1, 0, 0);
 		dtx_string(text);
+		glPopMatrix();
 	}
 
 	void Deinit() {}
@@ -183,6 +188,7 @@ public:
 		return g;
 	}
 	
+
     GameObject* AddClusterResource(int n_duplicates, string tag, GameObject* array_of_objects, float size, int juiceType,bool useinstancing=false) {
         GameObject* g;
         if (!useinstancing) {
