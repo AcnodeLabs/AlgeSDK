@@ -7,8 +7,9 @@
 */
 
 class App : public AlgeApp {
-	
-    GameObject bg, spikey, heli, baloons, fan, p_time;
+	int iScore = 0;
+
+    GameObject bg, spikey, heli, baloons, fan, p_time, score;
 	FILE* f;
 
 	bool soundedOuch = false;
@@ -48,6 +49,8 @@ public:
 			}			
 	}
 	
+	string wall_msg;
+
 	// First Intro Screen
 	virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
 	    if (gob->isOneOf({heli,spikey,fan,baloons})) inhibitRender = true;
@@ -68,6 +71,18 @@ public:
 				spikey.pos.y += 50;
 			}
 			spikey.hidden = heli.hidden;
+		}
+		
+		if (gob->is(score)) {
+			glColor3f(0.0, 0.0, 0.0);
+			std::ostringstream sc;
+			sc << "Score : " << iScore;
+			alPrint(sc.str().c_str());
+			glPushMatrix();
+			glTranslatef(0,30,0);
+			alPrint(wall_msg.c_str());
+			glPopMatrix();
+
 		}
 
 		if (gob->is(heli)) {
@@ -101,6 +116,8 @@ public:
 			if (doObjectsIntersect(&spikey, baloon)) {
                 baloon->hidden = true;
 				output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
+				iScore++;
+				wall_msg = "";
 				//fprintf_s(f, "\nMATCH sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
 			} else {
 				//	fprintf_s(f, "\n----- sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);
@@ -110,6 +127,7 @@ public:
 				//	heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 				//	spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
 				if (!soundedOuch) {
+					wall_msg = "Ouch !!";
 					output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
 					soundedOuch = true;
 					heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
@@ -120,6 +138,8 @@ public:
 						f3 loc_to(rightSide - b->pos.x, 800 + bottomSide -b->pos.y,0);
 						b->pos = loc_to;
 					}
+					iScore /= 2;
+					if (iScore < 0) iScore = 0;
 				}
 
 			} else {
@@ -161,6 +181,10 @@ public:
             _.JuiceSpeed = 1500;
         _with
         
+		score.pos.y = 0.05 * bottomSide;
+		score.pos.x = 0.85 * rightSide;
+		AddObject(&score);
+
 		PosRotScale bp;
         bp.CopyFrom(&heli);
         for (int i=0; i< numBaloons; i++) {
@@ -176,6 +200,9 @@ public:
 		output.pushP(CMD_SNDSET3, $ "drop.wav");
 
 		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
+
+		wall_msg = "Go !!";
+
    }
 
 	virtual i2 getBackgroundSize() { return size_ipad_air.half(); }
