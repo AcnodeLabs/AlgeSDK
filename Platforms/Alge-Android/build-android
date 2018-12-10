@@ -1,6 +1,13 @@
 #!/bin/bash
-NDK_ROOT=/Users/bilal/Downloads/android-ndk-r4-crystax
+export PS1="\h::\W$ "
+NDK_ROOT=/Users/bilal/Downloads/android-ndk-r18b
 SDK_ROOT=/Users/bilal/Library/Android/sdk
+export ANDROID_NDK_ROOT=$NDK_ROOT
+export ANDROID_SDK_ROOT=$SDK_ROOT
+
+export NDK=$NDK_ROOT  
+export PATH=$NDK:$PATH
+
 PACKAGE=$1
 APPNAME=$2
 VERSION=$3
@@ -8,7 +15,7 @@ echo -786-------------- COPYING APP ASSETS
 cd assets
 rm -f *
 rm -f bin/$2*.apk
-cp ../../../Apps/$2/Data/* .
+cp ../../../Apps/$2.Assets/Data/* .
 cp icon.png ../res/drawable-ldpi
 cd ..
 echo ------------------ CONFIGURING BUILD
@@ -19,6 +26,7 @@ cd ..
 echo CHECK $USERSRC
 rm -f jni/CANDIDATE.h
 ./configdroid $PACKAGE $APPNAME $VERSION
+vi AndroidManifest.xml
 echo ------------------ COMPILING LIBRARIES
 $NDK_ROOT/ndk-build clean
 $NDK_ROOT/ndk-build
@@ -26,6 +34,7 @@ echo ------------------- BUILDING RELEASE
 rm -f res/.DS_Store
 rm -f assets/.DS_Store
 rm -f res/drawable-ldpi/.DS_Store
+vi build.xml
 ant -q release
 echo ------------------- SIGNING
 rm -f bin/$2.apk

@@ -9,8 +9,10 @@ LOCAL_PATH       := $(ROOT_PATH)
 LOCAL_SRC_FILES  := importgl.c \
     device-app.cpp \
     app-android.c \
+    ../../../SDKSRC/Base/camera.cpp \
 
-LOCAL_CFLAGS     := -DANDROID_NDK -DDISABLE_IMPORTGL
+LOCAL_CFLAGS     := -DANDROID_NDK -DDISABLE_IMPORTGL -Wnonportable-include-path -Wimplicit-function-declaration -Wpointer-sign
+LOCAL_CPPFLAGS     := -DANDROID_NDK -DDISABLE_IMPORTGL -Wnonportable-include-path -Wimplicit-function-declaration -Wpointer-sign
 LOCAL_LDLIBS     := -lGLESv1_CM -ldl -llog -Wl,-s
 
 include $(BUILD_SHARED_LIBRARY)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TicTacToe" default="help">
+<project name="PoppingTime" default="help">
 <property file="local.properties" />
 <property file="build.properties" />
 <property file="default.properties" />
@@ -8,8 +8,8 @@
 <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
 <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
 </path>
-<taskdef name="setup"
-classname="com.android.ant.SetupTask"
-classpathref="android.antlibs" />
-<setup />
+
+
+
+
 </project>
