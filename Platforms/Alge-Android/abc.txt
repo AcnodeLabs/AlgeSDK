@@ -1,0 +1,70 @@
+-786-------------- COPYING APP ASSETS
+------------------ CONFIGURING BUILD
+CHECK com/algkit/demos/physics
+Generated AndroidManifest.xml
+CANDIDATE SET
+Generated Build.xml
+
+>>src/com/algkit/demos/physics/Physics.java------------------ COMPILING LIBRARIES
+Clean: alge_app [armeabi]
+Compile thumb  : alge_app <= /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/jni/importgl.c
+Compile thumb  : alge_app <= /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/jni/app-android.c
+Compile++ thumb: alge_app <= /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/jni/device-app.cpp
+SharedLibrary  : libalge_app.so
+Install        : libalge_app.so => /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/libs/armeabi
+------------------- BUILDING RELEASE
+     [echo] Creating output directories if needed...
+     [echo] Generating R.java / Manifest.java from the resources...
+     [null]     (skipping hidden file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/res/.DS_Store')
+     [null]     (skipping hidden file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/res/drawable-ldpi/.DS_Store')
+     [echo] Compiling aidl files into Java classes...
+Warning: Reference out.dex.jar.input.ref has not been set at runtime, but was found during
+build file parsing, attempting to resolve. Future versions of Ant may support
+ referencing ids defined in non-executed targets.
+     [echo] Converting compiled files and external libraries into /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/bin/classes.dex...
+     [echo] Packaging resources
+     [null]     (skipping hidden file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/assets/.DS_Store')
+     [null]     (skipping index file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/assets/Thumbs.db')
+     [null]     (skipping hidden file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/res/.DS_Store')
+     [null]     (skipping hidden file '/Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/res/drawable-ldpi/.DS_Store')
+     [echo] No key.store and key.alias properties found in build.properties.
+     [echo] Please sign /Users/Bilal/Documents/REPOSITORY/ALGE-R1/Platforms/Alge-Android/bin/Physics-unsigned.apk manually
+     [echo] and run zipalign from the Android SDK tools.
+
+BUILD SUCCESSFUL
+Total time: 6 seconds
+------------------- SIGNING
+   adding: META-INF/MANIFEST.MF
+   adding: META-INF/DEMOS.SF
+   adding: META-INF/DEMOS.RSA
+  signing: assets/star.alx
+  signing: assets/star.tga
+  signing: res/layout/main.xml
+  signing: res/raw/acnode.jpg
+  signing: AndroidManifest.xml
+  signing: resources.arsc
+  signing: res/drawable-ldpi/icon.png
+  signing: classes.dex
+  signing: lib/armeabi/libalge_app.so
+Verifying alignment of bin/Physics.apk (4)...
+      50 META-INF/MANIFEST.MF (OK - compressed)
+     539 META-INF/DEMOS.SF (OK - compressed)
+    1093 META-INF/DEMOS.RSA (OK - compressed)
+    1795 assets/star.alx (OK - compressed)
+    1978 assets/star.tga (OK - compressed)
+   11684 res/layout/main.xml (OK - compressed)
+   12064 res/raw/acnode.jpg (OK)
+   41277 AndroidManifest.xml (OK - compressed)
+   41932 resources.arsc (OK)
+   43108 res/drawable-ldpi/icon.png (OK)
+   49995 classes.dex (OK - compressed)
+   61601 lib/armeabi/libalge_app.so (OK - compressed)
+Verification succesful
+bin/Physics.apk -> ../Packages/Physics.apk
+-------------------- ALGE ACTIONS COMPLETED [Placed Physics.apk in Packages/]
+Good Luck !!
+Attempting to Upgrade App on Real Device Connected on USB
+Success
+	pkg: /data/local/tmp/Physics.apk
+Success
+Check App on your Device
