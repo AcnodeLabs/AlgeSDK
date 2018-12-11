@@ -2,5 +2,5 @@
 /* 
 ALGE SDK :: CANDIDATE.h
 */
-#include "../../Demos/PoppingTime/App.hpp"
+#include "../../Demos/PoppingTime/Raw3d.hpp"
 class App;

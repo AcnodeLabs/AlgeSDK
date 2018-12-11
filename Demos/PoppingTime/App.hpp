@@ -199,7 +199,7 @@ public:
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 		output.pushP(CMD_SNDSET3, $ "drop.wav");
 
-		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
+	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
 
 		wall_msg = "Go !!";
 
