@@ -1,0 +1,45 @@
+#!/bin/bash
+NDK_ROOT=~/Downloads/android-ndk-r4b
+SDK_ROOT=~/Downloads/android-sdk-mac_x86
+PACKAGE=com.acnodelabs.apps.iphone.spurtac
+APPNAME=TicTacToe
+VERSION=1
+echo -786-------------- COPYING APP ASSETS
+rm -rf assets
+mkdir assets
+cd assets
+rm -f *
+rm -f bin/$2*.apk
+cp ../../../Apps/TicTacToe/Data/* .
+cp icon.png ../res/drawable-ldpi
+cp ../../../Apps/TicTacToe/Data/Data_Coverflow .
+cd ..
+
+echo ------------------ CONFIGURING BUILD
+USERSRC=${PACKAGE//'.'/'/'}
+cd src
+mkdir -p $USERSRC
+cd ..
+echo CHECK $USERSRC
+rm -f jni/CANDIDATE.h
+./configdroid $PACKAGE $APPNAME $VERSION
+echo ------------------ COMPILING LIBRARIES
+$NDK_ROOT/ndk-build clean
+$NDK_ROOT/ndk-build
+echo ------------------- BUILDING RELEASE
+rm -f res/.DS_Store
+rm -f assets/.DS_Store
+rm -f res/drawable-ldpi/.DS_Store
+ant -q release
+echo ------------------- SIGNING
+rm -f bin/TicTacToe.apk
+jarsigner -verbose -keystore ~/algeandroidapps.keystore bin/$2-unsigned.apk demos
+$SDK_ROOT/tools/zipalign -v 4 bin/$2-unsigned.apk bin/$2.apk
+cp -vf bin/$2.apk ../Packages/$2.apk
+echo -------------------- ALGE ACTIONS COMPLETED [Placed $2.apk in Packages/]
+echo Good Luck !!
+rm -rf $USERSRC/$2.java
+echo install check 
+echo $SDK_ROOT/platform-tools/adb uninstall $PACKAGE
+$SDK_ROOT/platform-tools/adb install bin/$2.apk
+echo Check App on your Device

@@ -7,15 +7,16 @@
 */
 
 class App : public AlgeApp {
-	int iScore = 0;
+	
 
     GameObject bg, spikey, heli, baloons, fan, p_time, score;
 	FILE* f;
 
-	bool soundedOuch = false;
-	short scene = 0;
-	int nLoops = 1;
-	int numBaloons = 50;
+	bool soundedOuch;
+	short scene;
+	int nLoops;
+	int numBaloons;
+	int iScore;
 
 public:
 
@@ -155,6 +156,13 @@ public:
     }
 	
 	virtual void Init(char* path) {
+
+		 soundedOuch = false;
+		 scene = 0;
+		 nLoops = 1;
+		 numBaloons = 50;
+		 iScore = 0;
+
         AlInit(STANDARD); wireframe = true; f = NULL;
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		

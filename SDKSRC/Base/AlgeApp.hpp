@@ -56,8 +56,9 @@ public:
 
 	GameObject origin;
 
+#ifndef NO_FONTLIB
 	struct dtx_font * font;
-
+#endif
 
 	AlgeApp() :
 		iUnassigned(-1),
@@ -85,19 +86,23 @@ public:
 		counter = 0;
 		GameObject::windowSize.x = getBackgroundSize().x;
 		GameObject::windowSize.y = getBackgroundSize().y;
+		#ifndef NO_FONTLIB
 		if (!(font = dtx_open_font_glyphmap("serif_s24.glyphmap"))) {
 			fprintf(stderr, "failed to open font\n");
 		} else
 		dtx_use_font(font, 24);
+		#endif
 	}
 
 	inline void alPrint(const char* text,  int size = 24 ) {
+		#ifndef NO_FONTLIB
 		if (size!=24) dtx_use_font(font, size);
 		glPushMatrix();
 		
 		glRotatef(180, 1, 0, 0);
 		dtx_string(text);
 		glPopMatrix();
+		#endif
 	}
 
 	void Deinit() {}

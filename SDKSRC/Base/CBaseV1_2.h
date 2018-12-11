@@ -62,7 +62,6 @@
 #include <memory.h>
 #include <string>
 #include <math.h>
-#include <string>
 #include <vector>
 
 //SomeHelper Defines
@@ -119,7 +118,7 @@ public:
 #include "Ada/AlgeSDK.ads.h"
 #endif // WIN32
 
-#ifdef ANDROID_VERSIONING_H
+#ifdef ANDROID
 #define NO_BOX2D
 #define ES_ONLY
 #define NO_NATS
