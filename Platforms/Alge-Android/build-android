@@ -15,9 +15,9 @@ APPNAME=$2
 VERSION=$3
 echo -786-------------- COPYING APP ASSETS
 cd assets
-rm -f *
-rm -f bin/$2*.apk
-cp ../../../Apps/$2.Assets/Data/* .
+rm -vf *
+rm -vf bin/$2*.apk
+cp -v ../../../Apps/$2.Assets/Data/* .
 cp icon.png ../res/drawable-ldpi
 cd ..
 echo ------------------ CONFIGURING NATIVE BUILD
@@ -26,9 +26,11 @@ cd src
 mkdir -p $USERSRC
 cd ..
 echo CHECK $USERSRC
-rm -f jni/CANDIDATE.h
+mv -f jni/CANDIDATE.h jni/CAND.h
 ./configdroid $PACKAGE $APPNAME $VERSION
-echo press enter and change minsdkversion from 4 to 16 manually till new configdroid is available
+mv -f jni/CAND.h jni/CANDIDATE.h
+echo "..."
+echo change minsdkversion from 4 to 16 manually till new configdroid is available
 read -p ""
 vi AndroidManifest.xml
 echo ------------------ COMPILING NATIVE CODES

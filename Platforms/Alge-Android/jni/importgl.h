@@ -41,10 +41,6 @@ extern "C" {
 #include <GLES/gl.h>
 #endif
 	
-	//#include <GLES/gl.h>
-	
-	
-	
 #ifndef ANDROID_NDK
 	//#include <OpenGLES/EAGL.h> //ADD
 	//#include <GLES/egl.h>

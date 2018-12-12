@@ -40,14 +40,13 @@ extern "C" {
 
 
 #ifndef NOGL
- #if defined(__APPLE__)
-  #import <OpenGLES/ES1/gl.h>
-  #import <OpenGLES/ES1/glext.h>
- #else
-	//#include <GLES/egl.h>
+#if defined(__APPLE__)
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+#else
+    //#include <GLES/egl.h>
 #include <GLES/gl.h>
 #endif
-	#include <GLES/gl.h>
 #endif
 
 
