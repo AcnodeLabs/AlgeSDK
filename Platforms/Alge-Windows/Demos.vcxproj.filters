@@ -31,6 +31,9 @@
     <ClInclude Include="candidate.h">
       <Filter>CANDIDATE</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Demos\PoppingTime\Raw3D.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
+    <ClInclude Include="..\..\Demos\PoppingTime\Raw3D.hpp" />
     <ClInclude Include="candidate.h" />
   </ItemGroup>
   <ItemGroup>
