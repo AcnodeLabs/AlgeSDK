@@ -8,8 +8,8 @@
 <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
 <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
 </path>
-
-
-
-
+<taskdef name="setup"
+classname="com.android.ant.SetupTask"
+classpathref="android.antlibs" />
+<setup />
 </project>

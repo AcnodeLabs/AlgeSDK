@@ -4,6 +4,7 @@ NDK_ROOT=/Users/bilal/Downloads/android-ndk-r18b
 SDK_ROOT=/Users/bilal/Library/Android/sdk
 export ANDROID_NDK_ROOT=$NDK_ROOT
 export ANDROID_SDK_ROOT=$SDK_ROOT
+export PATH=$PATH:/$SDK_ROOT/tools
 
 export NDK=$NDK_ROOT  
 export PATH=$NDK:$PATH
@@ -30,12 +31,14 @@ vi AndroidManifest.xml
 echo ------------------ COMPILING LIBRARIES
 $NDK_ROOT/ndk-build clean
 $NDK_ROOT/ndk-build
+exit
 echo ------------------- BUILDING RELEASE
 rm -f res/.DS_Store
 rm -f assets/.DS_Store
 rm -f res/drawable-ldpi/.DS_Store
 vi build.xml
 ant -q release
+exit
 echo ------------------- SIGNING
 rm -f bin/$2.apk
 jarsigner -verbose -keystore ~/algeandroidapps.keystore bin/$2-unsigned.apk demos
