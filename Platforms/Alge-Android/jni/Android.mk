@@ -1,4 +1,4 @@
-TARGET_PLATFORM := android-16
+TARGET_PLATFORM := android-4
 ROOT_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -11,9 +11,9 @@ LOCAL_SRC_FILES  := importgl.c \
     app-android.c \
     ../../../SDKSRC/Base/camera.cpp \
 
-LOCAL_CFLAGS     := -std=c17 -DANDROID_NDK -DDISABLE_IMPORTGL -Wno-pointer-sign -Wno-nonportable-include-path -Wno-implicit-function-declaration -Wpointer-sign
-LOCAL_CPPFLAGS     := -std=c++17 -DANDROID_NDK -DDISABLE_IMPORTGL -Wno-pointer-sign -Wno-nonportable-include-path -Wno-implicit-function-declaration -Wpointer-sign
+LOCAL_CFLAGS     := -DANDROID_NDK -DDISABLE_IMPORTGL -Wnonportable-include-path -Wimplicit-function-declaration -Wpointer-sign
+LOCAL_CPPFLAGS     := -DANDROID_NDK -DDISABLE_IMPORTGL -Wnonportable-include-path -Wimplicit-function-declaration -Wpointer-sign
 LOCAL_LDLIBS     := -lGLESv1_CM -ldl -llog -Wl,-s
-APP_CPPFLAGS += -std=c++17
+
 
 include $(BUILD_SHARED_LIBRARY)
