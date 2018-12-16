@@ -33,6 +33,16 @@
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/PoppingTime/R$attr.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/PoppingTime/R$drawable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/AccelerometerManager.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$id.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$raw.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/NeheLesson19.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/BuildConfig.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$styleable.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$string.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$layout.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$attr.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson19/R$drawable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/ResMgr.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/BaseActivity.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson09/R.class \

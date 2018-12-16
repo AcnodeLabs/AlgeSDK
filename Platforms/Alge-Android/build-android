@@ -13,6 +13,9 @@ export PATH=$NDK:$PATH
 PACKAGE=$1
 APPNAME=$2
 VERSION=$3
+
+$SDK_ROOT/platform-tools/adb uninstall $PACKAGE
+
 echo -786-------------- COPYING APP ASSETS
 cd assets
 rm -vf *
@@ -57,6 +60,6 @@ $SDK_ROOT/build-tools/28.0.0/zipalign -v 4 bin/$2-release-unsigned.apk bin/$2.ap
 echo Good Luck !!
 rm -rf $USERSRC/$2.java
 echo install check 
-echo $SDK_ROOT/platform-tools/adb uninstall $PACKAGE
+
 $SDK_ROOT/platform-tools/adb install bin/$2.apk
 echo Check App on your Device

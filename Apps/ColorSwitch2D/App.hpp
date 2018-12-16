@@ -6,7 +6,7 @@
 CRect a;
 
 class /*ColorSwitch2D*/ App : public AlgeApp {
-	
+
 	GameObjectSnd  screen0cs;
 	GameObject stars[10];
 	GameObject ring4color;
@@ -20,29 +20,31 @@ public:
         object.ring4color.applyTopLeftCorrectionWRTorigin = false;
         PosRotScale ringPrs;
         ringPrs.JuiceType = JuiceTypes::JUICE_ROTZ;
-        
+
         int anchorRingsCenterPointY = 0.95* object.originY;
         ringPrs.pos = f3(object.originX,anchorRingsCenterPointY,0);
         ringPrs.scale = 0.995;
         ringPrs.JuiceSpeed = -75;
         object.ring4color.AddInstance(ringPrs);
-        
+
         ringPrs.scale = 0.886;
         ringPrs.JuiceSpeed = 70;
         object.ring4color.AddInstance(ringPrs);
-        
+
         ringPrs.scale = 0.786;
         ringPrs.JuiceSpeed = -85;
         object.ring4color.AddInstance(ringPrs);
     }
-    
+
 	virtual void Init(char* path) {
-		AlInit(STANDARD);
-		SetTitle("ColorSwitch2D");
-		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		screen0cs.AddResourceWithSound(this, "Screen0cs", 0.5);
-        AddClusterResource(20, "star", stars, 15., JuiceTypes::JUICE_PULSATE_FULLY, false);
-     	
+        rm.Init(path);
+        AlInit(STANDARD);
+
+	AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+        screen0cs.AddResourceWithSound(this, "Screen0cs", 0.5);
+
+        //AddClusterResource(20, "star", stars, 15., JuiceTypes::JUICE_PULSATE_FULLY, false);
+        //return;
         AddRings(*this, ring4color);
 
         int anchorGameModeBannerY = (originY + bottomSide) / 2  + 18;
@@ -55,15 +57,15 @@ public:
         starL.pos = f3(0.175*rightSide, anchorGameModeBannerY,0);
         starL.JuiceType = JuiceTypes::JUICE_ROTZ;
         starL.JuiceSpeed = -100;
-        
+
 		AddResource(&gamemodesbanner, "gamemodesbanner", 27);
 		gamemodesbanner.pos.y = anchorGameModeBannerY;
 		gamemodesbanner.JuiceType = JuiceTypes::JUICE_PULSATE;
-        
+
 	}
-    
+
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-		gob->rotatefirst = false;
+        gob->rotatefirst = false;
         if (gamemodesbanner.wasTouched()) {
             PosRotScale tgt;
             tgt.CopyFrom(gob);
@@ -71,14 +73,14 @@ public:
             tgt.pos.y = randm() * bottomSide;
             gamemodesbanner.transitionTo(tgt);
         };
-      
+
 	}
 
 	virtual i2 getBackgroundSize() {
         return //size_ipad_air();
         i2(935, 1110).half();
 	}
-		
+
 
 
 };

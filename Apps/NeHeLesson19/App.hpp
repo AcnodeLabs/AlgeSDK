@@ -1,6 +1,6 @@
 // Copyright (c) 2012 AcnodLabs Inc
 
-/* 
+/*
 ALGE SDK Demo :: NeHeLesson19 - Particles
 */
 
@@ -51,7 +51,7 @@ public:
 	float	zoom;				// Used To Zoom Out
 
 	GLuint	loop;						// Misc Loop Variable
-	GLuint	col;	
+	GLuint	col;
 	float points[45][45][3];    // The Array For The Points On The Grid Of Our "Wave"
 
 	//////ALGE FUNCS
@@ -60,7 +60,7 @@ public:
 		int command = p->command;
 		void* p1 = input.pulled_param1;
 		void* p2 = input.pulled_param2;
-			
+
 		if (command==CMD_TOUCH_START)
 
 			{
@@ -100,13 +100,13 @@ public:
 
 				}
 
-				
+
 		}
 
 	};
 
 	void InitParticles() {
-		
+
 		rm.loadAlxModel((char*) "star.alx", AUTO, 0, 0.5);
 
 		for (loop=0;loop<MAX_PARTICLES;loop++)				// Initials All The Textures
@@ -128,8 +128,9 @@ public:
 	}
 
 	void Init(char* path) {
+		SetTitle(path);
 		glEnable(GL_TEXTURE_2D);
-		output.pushP(CMD_TITLE, $ "Lesson 19 Alge Port", 0);
+	//	output.pushP(CMD_TITLE, $ "Lesson 19 Alge Port", 0);
 
 		glShadeModel(GL_SMOOTH);							// Enable Smooth Shading
 		glClearColor(0.0f,0.0f,0.0f,0.0f);					// Black Background
@@ -139,45 +140,45 @@ public:
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);	// Really Nice Perspective Calculations
 		glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);				// Really Nice Point Smoothing
 		glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping
-	
+
 		slowdown = 2.0f;
 		zoom =-20.0f;
 
 		rm.Init(path);
 
-		InitParticles();	
-		
+		InitParticles();
+
 		output.pushP(CMD_SNDSET0, (char*) "explosion.wav", 0);
-		
+
 	};
 
 	void Deinit() {
 	};
 
 	void Render(float dt, int ax, int ay, int az) {
-		
+
 		processInput();
 		glLoadIdentity();										// Reset The ModelView Matrix
 
 		glClear(GL_COLOR_BUFFER_BIT);
-		
+
 
 		for (loop=0;loop<MAX_PARTICLES;loop++)					// Loop Through All The Particles
 		{
-		
+
 			if (particle[loop].active)							// If The Particle Is Active
 			{
 				float x=particle[loop].x;						// Grab Our Particle X Position
 				float y=particle[loop].y;						// Grab Our Particle Y Position
 				float z=particle[loop].z+zoom;					// Particle Z Pos + Zoom
-							
+
 				glLoadIdentity();
-				
+
 				glTranslatef(x,y,zoom);
 
 				// Draw The Particle Using Our RGB Values, Fade The Particle Based On It's Life
 				glColor4f(particle[loop].r,particle[loop].g,particle[loop].b,particle[loop].life);
-	
+
 				rm.models[0]->glDraw();
 
 				//glBegin(GL_TRIANGLE_STRIP);						// Build Quad From A Triangle Strip
@@ -217,5 +218,3 @@ public:
 
 	};
 };
-
-
