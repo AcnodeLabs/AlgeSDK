@@ -811,9 +811,13 @@ public:
 
 	bool paused = false;
 
+	char msg[128];
+    
 	void Render(float deltaT, int aX, int aY, int aZ) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+		//deltaT = 0.1234f;
+		sprintf(msg, "Render819@ %.4f", deltaT);
+        output.pushP(CMD_TITLE, msg, msg);
 		if (!edit) {
 			timeVar += deltaT;
 			if (!paused) {

@@ -64,7 +64,10 @@ public:
 
 	}
 
+    
+
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
+        
         gob->rotatefirst = false;
         if (gamemodesbanner.wasTouched()) {
             PosRotScale tgt;

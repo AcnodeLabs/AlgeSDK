@@ -33,14 +33,7 @@ static long sTimeOffset   = 0;
 static int  sTimeOffsetInit = 0;
 static long sTimeStopped  = 0;
 
-static long
-_getTime(void)
-{
-    struct timeval  now;
 
-    gettimeofday(&now, NULL);
-    return (long)(now.tv_sec*1000 + now.tv_usec/1000);
-}
 
 /* Call to initialize the graphics state */
 void
@@ -117,44 +110,37 @@ Java_com_acnodelabs_alge_DemoGLSurfaceView_nativePause( JNIEnv*  env )
     if (sDemoStopped) {
         /* we paused the animation, so store the current
          * time in sTimeStopped for future nativeRender calls */
-        sTimeStopped = _getTime();
+ //       sTimeStopped = _getTime();
     } else {
         /* we resumed the animation, so adjust the time offset
          * to take care of the pause interval. */
-        sTimeOffset -= _getTime() - sTimeStopped;
+  //      sTimeOffset -= _getTime() - sTimeStopped;
     }
+}
+
+static float _getElapsedTime() {
+    static float OldTime = 0;
+    struct timeval  now;
+    gettimeofday(&now, NULL);
+    int seconds = ((int)now.tv_sec);
+    int microseconds = ((int)now.tv_usec);
+    float time = microseconds / 1000.0;
+    float elapsed = time - OldTime;
+    if (elapsed<=0) elapsed = 0.0166666667;
+    OldTime = time;
+    return elapsed;
 }
 
 /* Call to render the next GL frame */
 void
 Java_com_acnodelabs_alge_DemoRenderer_nativeRender( JNIEnv*  env, jobject  thiz, jint ax100, jint ay100, jint az100)
 {
-    long   curTime;
-
-    /* NOTE: if sDemoStopped is TRUE, then we re-render the same frame
-     *       on each iteration.
-     */
-    if (sDemoStopped) {
-        curTime = sTimeStopped + sTimeOffset;
-    } else {
-        curTime = _getTime() + sTimeOffset;
-        if (sTimeOffsetInit == 0) {
-            sTimeOffsetInit = 1;
-            sTimeOffset     = -curTime;
-            curTime         = 0;
-        }
-    }
-
-    //__android_log_print(ANDROID_LOG_INFO, "SanAngeles", "curTime=%ld", curTime);
-
 	float accelX = ax100 / 100.0f;
 	float accelY = ay100 / 100.0f;
 	float accelZ = az100 / 100.0f;
 	
-	//sscanf(accelSz3, "%.2f,%.2f,%.2f", &accelX, &accelY, accelZ);
-	//static char accelSz3[64];
-	//sprintf(accelSz3, "%.2f,%.2f,%.2f", ax, ay, az);
-	//appAccelerometerSz(accelSz3);
-    appRender(curTime, sWindowWidth, sWindowHeight, ax100,ay100,az100);
+   int ielapsed = _getElapsedTime() * 1E6 / 1E3;
+   // if (sDemoStopped) elapsed = 0;
+	appRenderJ( ielapsed, sWindowWidth, sWindowHeight, ax100,ay100,az100);
 
 }

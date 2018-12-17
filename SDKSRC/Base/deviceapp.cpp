@@ -124,12 +124,19 @@ static void prepareFrame(int width, int height)
 }
 
 
+
 void appRender(float tick, int width, int height, int accelX, int accelY, int accelZ)
 {
 	prepareFrame(width,height);
 	if (accelX==0 && accelY==0 && accelZ==0) accelY = -9.8*100;
 	game.Render(tick, accelX , accelY , accelZ );
 	return;
+}
+
+void appRenderJ(int tickE6, int width, int height, int accelX, int accelY, int accelZ)
+{
+    float tick = (tickE6 / 1000000.0f);
+	appRender( tick, width, height, accelX, accelY, accelZ);
 }
 
 //defis imported from alge-gnat-mac

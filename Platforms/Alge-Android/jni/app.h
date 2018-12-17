@@ -9,8 +9,8 @@ extern "C" {
 extern void appInit(char*);
 extern void appDeinit();
 extern void appAccelerometerSz(char*);
-//extern void appRender(int accelX, int accelY, int accelZ);
-extern void	appRender(float tick, int width, int height, int accelX, int accelY, int accelZ);
+extern void appRender(float tick, int width, int height, int accelX, int accelY, int accelZ);
+extern void appRenderJ(int tickE6, int width, int height, int accelX, int accelY, int accelZ);
 extern int appPull();
 extern void appPushI(int,int,int);
 extern char* appSzlastP1();	
