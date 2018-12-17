@@ -158,7 +158,7 @@ public:
 	virtual void Init(char* path) {
 
 		 soundedOuch = false;
-		 scene = 0;
+		 scene = 1;
 		 nLoops = 1;
 		 numBaloons = 50;
 		 iScore = 0;

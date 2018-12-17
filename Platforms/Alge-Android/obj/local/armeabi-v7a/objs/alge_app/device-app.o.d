@@ -96,7 +96,7 @@
   /Users/bilal/Downloads/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__bsd_locale_fallbacks.h \
   /Users/bilal/Downloads/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/bitset \
   /Users/bilal/Downloads/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/istream \
-  jni/CANDIDATE.h jni/../../../Apps/ColorSwitch2D/App.hpp
+  jni/CANDIDATE.h jni/../../../Apps/PoppingTime/App.hpp
 
 jni/../../../../AlgeSDK/SDKSRC/Base/deviceapp.cpp:
 
@@ -296,4 +296,4 @@ jni/../../../../AlgeSDK/SDKSRC/Base/dimensions.h:
 
 jni/CANDIDATE.h:
 
-jni/../../../Apps/ColorSwitch2D/App.hpp:
+jni/../../../Apps/PoppingTime/App.hpp:

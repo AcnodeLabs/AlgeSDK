@@ -1,4 +1,4 @@
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/gen/com/acnodelabs/alge/ColorSwitch2D/R.java \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/gen/com/acnodelabs/alge/MotoX3/R.java \
  : /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/layout/main.xml \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/values/strings.xml \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/values/attrs.xml \

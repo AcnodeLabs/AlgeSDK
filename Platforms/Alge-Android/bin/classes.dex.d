@@ -59,6 +59,16 @@
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/AccelerometerManager$1.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/DemoGLSurfaceView$Puller.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/ALlistener.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/MotoX3.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$id.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$raw.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/BuildConfig.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$styleable.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$string.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$layout.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$attr.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/MotoX3/R$drawable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/ActivityMonitor.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/DemoGLSurfaceView.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/ColorSwitch2D/R.class \

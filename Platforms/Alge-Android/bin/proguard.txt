@@ -1,5 +1,5 @@
 # view AndroidManifest.xml #generated:5
--keep class com.acnodelabs.alge.ColorSwitch2D.ColorSwitch2D { <init>(...); }
+-keep class com.acnodelabs.alge.MotoX3.MotoX3 { <init>(...); }
 
 # view AndroidManifest.xml #generated:11
 -keep class com.admob.android.ads.AdMobActivity { <init>(...); }

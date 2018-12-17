@@ -1,1 +1,1 @@
-#define CANDIDATE "../../../Apps/ColorSwitch2D/App.hpp"
+#define CANDIDATE "../../../Apps/PoppingTime/App.hpp"
