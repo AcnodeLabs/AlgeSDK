@@ -4,6 +4,8 @@
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
 ### **Get It, clone into your sandbox directory and do:** 
 ```sh
+Prerequisite: git client installed and accessable from command line
+git clone https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
 setup-deps [First Time Only, will pull ThirdParty Requirements]
 KickStart  [run bat or sh script]
