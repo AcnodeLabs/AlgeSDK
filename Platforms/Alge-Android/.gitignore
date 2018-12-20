@@ -6,6 +6,7 @@
 gen/
 bin/
 assets/
-?gradle/
-?idea/
+,gradle/
+.idea/
+.vscode/
 src/com/acnodelabs
