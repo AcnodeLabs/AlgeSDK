@@ -13,6 +13,11 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
+import android.view.Window;  
+import android.view.WindowManager; 
+
+import android.os.Bundle;  
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.*;
 
@@ -42,6 +47,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class BaseActivity extends Activity implements ALlistener {
 	private  Context mContext;
@@ -116,7 +122,10 @@ public class BaseActivity extends Activity implements ALlistener {
 	     AccelerometerManager.startListening((AccelerometerListener)mGLView);
 	     milli100 = new Timer("m100",true);
 	     TT tt = new TT(this);
-	     milli100.scheduleAtFixedRate(tt, 0, 2000); 
+		 milli100.scheduleAtFixedRate(tt, 0, 2000); 
+		 
+
+		// requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title   
 	     //UserToast(this.getBaseContext(), "TIMER@100ms");
 	}   
 
@@ -144,8 +153,9 @@ public class BaseActivity extends Activity implements ALlistener {
 	}
 	
 	public void SetTitle(String chars) {
-        this.setTitleColor(Color.WHITE);
-        this.setTitle(chars);
+		
+        //this.setTitleColor(Color.WHITE);
+        //this.setTitle(chars);
 	} 
 	  
 	public boolean onKeyDown(int code, KeyEvent event) {
@@ -258,10 +268,9 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
 	    mSoundPool = new SoundPool(16, AudioManager.STREAM_MUSIC, 0); 
 	 	touchmoves = 0;
 		 
-		 android.util.DisplayMetrics display = this.getResources().getDisplayMetrics();
-
-		 int width = display.widthPixels;
-		 int height = display.heightPixels;
+		android.util.DisplayMetrics display = this.getResources().getDisplayMetrics();
+		int width = display.widthPixels;
+		int height = display.heightPixels;
 		nativePushI(CMD_SCREENSIZE, width, height);
 
 		nativePushI(CMD_BEGIN,0,0);   
@@ -329,8 +338,6 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
 			String a = e.getMessage();
 		}
 	}     
-
-	
 	
 	if (cmd==CMD_VIDSET){
 	    vmp = new MediaPlayer(); 
@@ -447,7 +454,8 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
     	if (event.getAction() == MotionEvent.ACTION_UP) nativePushI(CMD_TOUCH_END, x,y);
                 	
         return true; 
-    }
+	}
+	
     int touchmoves;
     DemoRenderer mRenderer;
 

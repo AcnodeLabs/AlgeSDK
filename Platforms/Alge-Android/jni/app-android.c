@@ -41,12 +41,12 @@ Java_com_acnodelabs_alge_DemoRenderer_nativeInit( JNIEnv*  env , jobject thiz, j
 {
     importGLInit();
 	// convert Java string to UTF-8
-    const jbyte *utf8 = (*env)->GetStringUTFChars(env, uri, NULL);
+    const jbyte *utf8 = (jbyte*)(*env)->GetStringUTFChars(env, uri, NULL);
     appInit(utf8);
     gAppAlive    = 1;
     sDemoStopped = 0;
     sTimeOffsetInit = 0;
-	(*env)->ReleaseStringUTFChars(env, uri, utf8);
+	(*env)->ReleaseStringUTFChars(env, uri, (const char*)utf8);
 	
 }
 

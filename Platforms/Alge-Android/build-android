@@ -46,7 +46,7 @@ rm -f assets/.DS_Store
 rm -f res/drawable-ldpi/.DS_Store
 echo ---- compiling java files in src folder
 cd src/com/acnodelabs/alge
-javac -classpath /Users/bilal/Library/Android/sdk/platforms/android-14/android.jar *.java
+javac -classpath /Users/bilal/Library/Android/sdk/platforms/android-28/android.jar *.java
 cd ../../../..
 echo --- generating new ant build.xml
 rm build.xml

@@ -207,12 +207,12 @@ public:
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 		output.pushP(CMD_SNDSET3, $ "drop.wav");
 
-	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
+		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
 
 		wall_msg = "Go !!";
 
    }
 
-    virtual i2 getBackgroundSize() { return size_iphone5s; }
+    virtual i2 getBackgroundSize() { return size_nokia5; }
 };
 

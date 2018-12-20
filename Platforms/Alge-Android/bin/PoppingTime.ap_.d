@@ -5,6 +5,7 @@
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/drawable-ldpi/icon.png \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/raw/acnode.jpg \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/res/drawable-ldpi/icon.png \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/icon.png \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/baloon_red.png \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/fans.alx \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/fans.tga \
