@@ -6,4 +6,6 @@
 gen/
 bin/
 assets/
+?gradle/
+?idea/
 src/com/acnodelabs

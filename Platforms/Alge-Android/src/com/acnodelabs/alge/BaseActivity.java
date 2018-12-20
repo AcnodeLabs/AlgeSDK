@@ -202,6 +202,7 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
 	int CMD_TOUCH_START =0x3300;
 	int CMD_TOUCH_END =0x3301;
 	int CMD_TOUCHMOVE =0x3321;
+	int CMD_SCREENSIZE = 0x3993;
 	BaseActivity dem;
 	ALlistener al;
  
@@ -256,10 +257,14 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
         soundid = new int[16];
 	    mSoundPool = new SoundPool(16, AudioManager.STREAM_MUSIC, 0); 
 	 	touchmoves = 0;
-	 	
-		
-	    nativePushI(CMD_BEGIN,0,0);   
-      
+		 
+		 android.util.DisplayMetrics display = this.getResources().getDisplayMetrics();
+
+		 int width = display.widthPixels;
+		 int height = display.heightPixels;
+		nativePushI(CMD_SCREENSIZE, width, height);
+
+		nativePushI(CMD_BEGIN,0,0);   
     }
    
 	private synchronized void Play(int id) {

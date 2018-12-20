@@ -429,7 +429,10 @@ public:
 	}
 	        
     bool doPicking2D(PosRotScale* it, f2 mouse) {
+        static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
+        sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
+        SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
@@ -500,7 +503,11 @@ public:
 
 				//Touched flag updated here for instances
 				if (cmd->command == CMD_TOUCH_START) {
-					if (!it->hidden)
+                    
+                 
+                    
+                    
+                    if (!it->hidden)
 						if (doPicking2D(prs, f2(cmd->i1, cmd->i2))) {
 							touched_bodies.push_back(prs);
 							picked = i; //will be overriden by last ordered object
@@ -617,7 +624,7 @@ public:
 		msg[0] = dm.directionX;
 		msg[1] = dm.directionY;
 		msg[2] = 0;
-		output.pushP(CMD_TITLE, msg, 0);
+	//	output.pushP(CMD_TITLE, msg, 0);
 		dm.magnitudeX = (newX - oldX) / 5.;
 		dm.magnitudeY = (newY - oldY) / 10.;
 		if (dm.directionX == ' ') dm.magnitudeX = 0.f;
