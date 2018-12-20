@@ -79,10 +79,10 @@ public:
 
 	}
 
-	virtual i2 getBackgroundSize() {
+    virtual i2 getBackgroundSize() {
         return //size_ipad_air();
         i2(935, 1110).half();
-	}
+    }
 
 
 

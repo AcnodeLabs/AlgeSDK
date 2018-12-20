@@ -213,6 +213,6 @@ public:
 
    }
 
-	virtual i2 getBackgroundSize() { return size_ipad_air.half(); }
+    virtual i2 getBackgroundSize() { return size_iphone5s; }
 };
 

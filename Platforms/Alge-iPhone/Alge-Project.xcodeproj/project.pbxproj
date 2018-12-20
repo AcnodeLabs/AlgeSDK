@@ -70,6 +70,16 @@
 		9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB1BBD21432EFC00032B4BD /* icon57.png */; };
 		9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */; };
 		9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */; };
+		9CB46B3B21C94DD900C68147 /* screenshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3021C94DD900C68147 /* screenshot.jpg */; };
+		9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3121C94DD900C68147 /* desktop.ini */; };
+		9CB46B3D21C94DD900C68147 /* bigball.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3321C94DD900C68147 /* bigball.tga */; };
+		9CB46B3E21C94DD900C68147 /* bigball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3421C94DD900C68147 /* bigball.png */; };
+		9CB46B3F21C94DD900C68147 /* bigball.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3521C94DD900C68147 /* bigball.alx */; };
+		9CB46B4021C94DD900C68147 /* winter2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3621C94DD900C68147 /* winter2.tga */; };
+		9CB46B4121C94DD900C68147 /* winter2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3721C94DD900C68147 /* winter2.alx */; };
+		9CB46B4221C94DD900C68147 /* box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3821C94DD900C68147 /* box.jpg */; };
+		9CB46B4321C94DD900C68147 /* box.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3921C94DD900C68147 /* box.alx */; };
+		9CB46B4421C94DD900C68147 /* box.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3A21C94DD900C68147 /* box.tga */; };
 		9CC6B534135B3C850099EA7E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B52C135B3C840099EA7E /* AVFoundation.framework */; };
 		9CC6B535135B3C850099EA7E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B52D135B3C840099EA7E /* CoreFoundation.framework */; };
 		9CC6B536135B3C850099EA7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B52E135B3C840099EA7E /* CoreGraphics.framework */; };
@@ -206,6 +216,17 @@
 		9CB1BBD21432EFC00032B4BD /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
 		9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~iphone.xib"; sourceTree = "<group>"; };
+		9CB46B2F21C94DD900C68147 /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		9CB46B3021C94DD900C68147 /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
+		9CB46B3121C94DD900C68147 /* desktop.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = desktop.ini; sourceTree = "<group>"; };
+		9CB46B3321C94DD900C68147 /* bigball.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigball.tga; sourceTree = "<group>"; };
+		9CB46B3421C94DD900C68147 /* bigball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigball.png; sourceTree = "<group>"; };
+		9CB46B3521C94DD900C68147 /* bigball.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bigball.alx; sourceTree = "<group>"; };
+		9CB46B3621C94DD900C68147 /* winter2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = winter2.tga; sourceTree = "<group>"; };
+		9CB46B3721C94DD900C68147 /* winter2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = winter2.alx; sourceTree = "<group>"; };
+		9CB46B3821C94DD900C68147 /* box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = box.jpg; sourceTree = "<group>"; };
+		9CB46B3921C94DD900C68147 /* box.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = box.alx; sourceTree = "<group>"; };
+		9CB46B3A21C94DD900C68147 /* box.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = box.tga; sourceTree = "<group>"; };
 		9CC6B52C135B3C840099EA7E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9CC6B52D135B3C840099EA7E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9CC6B52E135B3C840099EA7E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -369,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
+				9CB46B2E21C94DD900C68147 /* Ivank_Box2D.Assets */,
 				9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */,
 				9C380B0A21C123E900E4D705 /* PoppingTime.Assets */,
 				9CBCE83C20E4B9F70062EEAD /* App Icons */,
@@ -519,6 +541,33 @@
 			children = (
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		9CB46B2E21C94DD900C68147 /* Ivank_Box2D.Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9CB46B2F21C94DD900C68147 /* App.hpp */,
+				9CB46B3021C94DD900C68147 /* screenshot.jpg */,
+				9CB46B3121C94DD900C68147 /* desktop.ini */,
+				9CB46B3221C94DD900C68147 /* Data */,
+			);
+			name = Ivank_Box2D.Assets;
+			path = ../../Apps/Ivank_Box2D.Assets;
+			sourceTree = "<group>";
+		};
+		9CB46B3221C94DD900C68147 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9CB46B3321C94DD900C68147 /* bigball.tga */,
+				9CB46B3421C94DD900C68147 /* bigball.png */,
+				9CB46B3521C94DD900C68147 /* bigball.alx */,
+				9CB46B3621C94DD900C68147 /* winter2.tga */,
+				9CB46B3721C94DD900C68147 /* winter2.alx */,
+				9CB46B3821C94DD900C68147 /* box.jpg */,
+				9CB46B3921C94DD900C68147 /* box.alx */,
+				9CB46B3A21C94DD900C68147 /* box.tga */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		9CBCE83B20E4B9B60062EEAD /* LaunchScreen Images */ = {
@@ -756,19 +805,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C380B2721C123EA00E4D705 /* heli.tga in Resources */,
+				9CB46B3B21C94DD900C68147 /* screenshot.jpg in Resources */,
 				9C380B5621C123F800E4D705 /* scaling.png in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9C380B2621C123EA00E4D705 /* fans.tga in Resources */,
 				9C380B6C21C123F800E4D705 /* star5.png in Resources */,
+				9CB46B4021C94DD900C68147 /* winter2.tga in Resources */,
 				9C380B6421C123F800E4D705 /* Screen0cs.tga in Resources */,
 				9C380B6721C123F800E4D705 /* star.alx in Resources */,
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
 				9C380B6B21C123F800E4D705 /* star5.alx in Resources */,
 				9C380B5721C123F800E4D705 /* gamemodesbanner.tga in Resources */,
+				9CB46B3E21C94DD900C68147 /* bigball.png in Resources */,
 				9C380B6121C123F800E4D705 /* ring4color.alx in Resources */,
 				9C380B6621C123F800E4D705 /* star.tga in Resources */,
+				9CB46B4321C94DD900C68147 /* box.alx in Resources */,
 				9C380B3821C123EA00E4D705 /* baloon.tga in Resources */,
 				9C380B2421C123EA00E4D705 /* baloon_red.png in Resources */,
+				9CB46B3F21C94DD900C68147 /* bigball.alx in Resources */,
 				9C380B5D21C123F800E4D705 /* skydome.alx in Resources */,
 				9C380B2521C123EA00E4D705 /* fans.alx in Resources */,
 				9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */,
@@ -778,6 +832,7 @@
 				9C380B3721C123EA00E4D705 /* drop.wav in Resources */,
 				9C380B3A21C123EA00E4D705 /* pop.wav in Resources */,
 				9C735D49142A3C85003CEA26 /* icon114.png in Resources */,
+				9CB46B4221C94DD900C68147 /* box.jpg in Resources */,
 				9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */,
 				9C380B3221C123EA00E4D705 /* aargh.wav in Resources */,
 				FA4AB2221EBCD846006141FA /* Default-568h@2x.png in Resources */,
@@ -793,20 +848,24 @@
 				9C380B3921C123EA00E4D705 /* bg.tga in Resources */,
 				9C380B2B21C123EA00E4D705 /* spikey.jpg in Resources */,
 				9C380B3321C123EA00E4D705 /* 4.jpg in Resources */,
+				9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */,
 				9C380B6321C123F800E4D705 /* YellowStar.PNG in Resources */,
 				9C380B5821C123F800E4D705 /* Trophy.PNG in Resources */,
 				FA1054EB1ECA04070059C8C6 /* icon.png in Resources */,
 				9C380B3021C123EA00E4D705 /* font.tga in Resources */,
+				9CB46B4121C94DD900C68147 /* winter2.alx in Resources */,
 				9C380B5921C123F800E4D705 /* GameModesBanner.PNG in Resources */,
 				FAE5B2CD1EC7176B00C4F14A /* Images.xcassets in Resources */,
 				9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */,
 				9C380B3521C123EA00E4D705 /* baloon.alx in Resources */,
 				9C380B2921C123EA00E4D705 /* heli.alx in Resources */,
 				9C380B6D21C123F800E4D705 /* font.blend in Resources */,
+				9CB46B4421C94DD900C68147 /* box.tga in Resources */,
 				9C380B6521C123F800E4D705 /* Screen0cs.alx in Resources */,
 				9C380B2E21C123EA00E4D705 /* poppingtime.png in Resources */,
 				9C380B6A21C123F800E4D705 /* Screen0cs.wav in Resources */,
 				9C221B08153751F300EFEA23 /* Default@2x.png in Resources */,
+				9CB46B3D21C94DD900C68147 /* bigball.tga in Resources */,
 				9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */,
 				9C380B2C21C123EA00E4D705 /* spikey.alx in Resources */,
 				9C380B6021C123F800E4D705 /* ring4color.tga in Resources */,
@@ -984,7 +1043,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = DemoHotSpots;
+				PRODUCT_NAME = ColorSwitch2D;
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "68AF5C93-3754-493B-A406-F2D50289B10D";
 				SDKROOT = iphoneos;
@@ -1058,7 +1117,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = DemoHotSpots;
+				PRODUCT_NAME = ColorSwitch2D;
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos4.2]" = "";
 				SDKROOT = iphoneos;
@@ -1099,7 +1158,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				PRODUCT_NAME = DemoHotSpots;
+				PRODUCT_NAME = ColorSwitch2D;
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;

@@ -786,8 +786,9 @@ public:
 		}
 
 		///UNREAL STYLE MOUSE
-		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCHMOVER) {
-			if (mousepass1) { mX = p->i1; mY = p->i2; mousepass1 = false; return; }
+		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCH_START || p->command == CMD_TOUCHMOVER) {
+			if (p->command != CMD_TOUCH_START)
+				if (mousepass1) { mX = p->i1; mY = p->i2; mousepass1 = false; return; }
 			DirectionMagnitude dm = getMouseIntent(p->i1, p->i2, mX, mY);
 			if (dm.directionY != ' ') {
 				if (p->command == CMD_TOUCHMOVE) aCamera.MoveForwards(dm.magnitudeY);//Forwards back
@@ -815,9 +816,7 @@ public:
     
 	void Render(float deltaT, int aX, int aY, int aZ) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		//deltaT = 0.1234f;
-		sprintf(msg, "Render819@ %.4f", deltaT);
-        output.pushP(CMD_TITLE, msg, msg);
+		
 		if (!edit) {
 			timeVar += deltaT;
 			if (!paused) {

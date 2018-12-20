@@ -433,7 +433,7 @@ class DemoGLSurfaceView extends GLSurfaceView implements AccelerometerListener {
         	touchmoves++;
         	//Only send fifth move point as every call is expensive
         	//if (touchmoves>=5) {
-        		nativePushI(CMD_TOUCHMOVE, x,y);
+				nativePushI(CMD_TOUCHMOVE, x,y);
         		touchmoves=0;
         	//}
         }  

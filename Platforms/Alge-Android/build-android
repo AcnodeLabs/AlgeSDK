@@ -13,6 +13,8 @@ export PATH=$NDK:$PATH
 PACKAGE=$1
 APPNAME=$2
 VERSION=$3
+SDKVER=$4
+ORIENT=$5
 
 $SDK_ROOT/platform-tools/adb uninstall $PACKAGE
 
@@ -30,12 +32,10 @@ mkdir -p $USERSRC
 cd ..
 echo CHECK $USERSRC
 mv -f jni/CANDIDATE.h jni/CAND.h
-./configdroid $PACKAGE $APPNAME $VERSION
+echo Generating Manifest
+rm AndroidManifest.xml
+./cfgdroid $PACKAGE $APPNAME $VERSION $SDKVER $ORIENT > AndroidManifest.xml
 mv -f jni/CAND.h jni/CANDIDATE.h
-echo "..."
-echo change minsdkversion from 4 to 16 manually till new configdroid is available
-read -p ""
-vi AndroidManifest.xml
 echo ------------------ COMPILING NATIVE CODES
 $NDK_ROOT/ndk-build clean
 $NDK_ROOT/ndk-build
