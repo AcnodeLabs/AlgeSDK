@@ -63,8 +63,7 @@ public:
 		gamemodesbanner.JuiceType = JuiceTypes::JUICE_PULSATE;
 
 	}
-
-    
+   
 
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         
@@ -80,10 +79,7 @@ public:
 	}
 
     virtual i2 getBackgroundSize() {
-        return //size_ipad_air();
-        i2(935, 1110).half();
+        return i2(1280, 720);
     }
-
-
 
 };

@@ -17,7 +17,7 @@ public:
 	
 	//Play Original https://bit.ly/2yKoV23
 	virtual void Init(char* path) {
-		alInit(STANDARD);
+		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		AddResource(&Screen0, "Screen0");
         AddResource(&sel_lvl, "sel-lvl");

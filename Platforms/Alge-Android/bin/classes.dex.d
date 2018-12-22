@@ -21,6 +21,16 @@
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson05/R$layout.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson05/R$attr.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/NeheLesson05/R$drawable.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$id.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$raw.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/BuildConfig.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$styleable.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$string.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/Arkanoid2D.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$layout.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$attr.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Arkanoid2D/R$drawable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/AccelerometerListener.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/R.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/R$id.class \
@@ -34,6 +44,7 @@
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/Ivank_Box2D/R$attr.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/Ivank_Box2D/R$drawable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/R$raw.class \
+/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/Ivank_Box2D.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/BuildConfig.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/R$styleable.class \
 /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/classes/com/acnodelabs/alge/Ivank_Box2D/R$string.class \
