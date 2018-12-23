@@ -135,6 +135,7 @@ public:
 					heli.JuiceDuration = 0.75;
 					baloon->hidden = true;
 					for (int i = 0; i < numBaloons; i++) {
+						continue;
 						PosRotScale *b = gob->Inst(i);
 						f3 loc_to(rightSide - b->pos.x, 800 + bottomSide -b->pos.y,0);
 						b->pos = loc_to;
