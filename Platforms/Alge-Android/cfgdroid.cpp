@@ -28,7 +28,7 @@ if (argc<6) {
 ln("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 ln("<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\" android:versionCode=\""+version+"\" android:versionName=\""+version+ "\" package=\"" + package + "\">");
 ln("<uses-sdk android:minSdkVersion=\""+sdkver+"\" />");
-ln("<application  android:theme=\"@style/android:Theme.Black.NoTitleBar\" android:label=\""+appname+"\" android:debuggable=\"false\" android:icon=\"@drawable/icon\">");
+ln("<application  android:theme=\"@style/android:Theme.Black.NoTitleBar.Fullscreen\" android:label=\""+appname+"\" android:debuggable=\"false\" android:icon=\"@drawable/icon\">");
 ln("<activity android:label=\""+appname+"\" android:screenOrientation=\""+orientation+"\" android:name=\""+appname+"\">");
 ln("<intent-filter>");
 ln("<action android:name=\"android.intent.action.MAIN\" />");

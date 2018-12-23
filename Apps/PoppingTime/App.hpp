@@ -142,6 +142,7 @@ public:
 					}
 					iScore /= 2;
 					if (iScore < 0) iScore = 0;
+					output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
 				}
 
 			} else {
@@ -159,8 +160,7 @@ public:
 	virtual void Init(char* path) {
 
 		 soundedOuch = false;
-		 scene = 1;
-		 nLoops = 1;
+		 nLoops = 100;
 		 numBaloons = 50;
 		 iScore = 0;
 
