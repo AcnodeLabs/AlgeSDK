@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.acnodelabs.alge.PoppingTime">
-<<<<<<< HEAD
 <uses-sdk android:minSdkVersion="27" />
 <application  android:theme="@style/android:Theme.Black.NoTitleBar" android:label="PoppingTime" android:debuggable="false" android:icon="@drawable/icon">
-=======
-<uses-sdk android:minSdkVersion="16" />
-<application  android:theme="@style/android:Theme.Black.NoTitleBar.Fullscreen" android:label="PoppingTime" android:debuggable="false" android:icon="@drawable/icon">
->>>>>>> 0a030e80c5f9802ffc0632ace4c1a37d88b353b0
 <activity android:label="PoppingTime" android:screenOrientation="landscape" android:name="PoppingTime">
 <intent-filter>
 <action android:name="android.intent.action.MAIN" />

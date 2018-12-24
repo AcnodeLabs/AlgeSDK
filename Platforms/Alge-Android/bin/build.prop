@@ -1,9 +1,10 @@
 #Last build type
-<<<<<<< HEAD
+#Mon, 24 Dec 2018 10:30:42 +0500
+<<<<<<<=HEAD
 #Sun, 23 Dec 2018 19:39:11 +0500
-=======
+=\=\=\=\=\=\=
 #Sat, 22 Dec 2018 19:24:11 +0500
->>>>>>> 0a030e80c5f9802ffc0632ace4c1a37d88b353b0
+>>>>>>>=0a030e80c5f9802ffc0632ace4c1a37d88b353b0
 
 build.last.target=release
 
