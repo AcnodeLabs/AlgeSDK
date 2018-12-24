@@ -9,8 +9,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="CANDIDATE">
+    <Filter Include="CANDIDATE WINDOWS">
       <UniqueIdentifier>{2f138803-06bb-4177-b5e7-610b27c36505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CANDIDATE ANDROID">
+      <UniqueIdentifier>{c3982fd4-6878-45aa-bfdc-ac5a055902bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -29,10 +32,13 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="candidate.h">
-      <Filter>CANDIDATE</Filter>
+      <Filter>CANDIDATE WINDOWS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Demos\PoppingTime\Raw3D.hpp">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h">
+      <Filter>CANDIDATE ANDROID</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

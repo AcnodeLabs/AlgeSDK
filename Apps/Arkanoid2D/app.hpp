@@ -4,6 +4,8 @@
    ALGE SDK JD3 Demo :: Arkanoid2D
 */
 
+#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
+
 constexpr float paddleWidth{ 60.f }, paddleHeight{ 20.f }, paddleVelocity{ 6.f };
 constexpr float blockWidth{ 60.f }, blockHeight{ 20.f };
 constexpr int countBlocksX{ 1 }, countBlocksY{ 5 };

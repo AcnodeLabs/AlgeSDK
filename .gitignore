@@ -4,7 +4,7 @@
 Platforms/Alge-iPhone/DerivedData
 Platforms/Alge-Android/AndroidManifest.xml
 Platforms/Alge-Android/algeandroidapps.keystore
-Platforms/Alge-Android/bin
+Platforms/Alge-Android/bin/*
 *.so
 *.dex
 *.dex.d

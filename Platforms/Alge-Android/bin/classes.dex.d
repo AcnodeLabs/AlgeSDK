@@ -4,6 +4,16 @@ C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acno
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\AccelerometerManager.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\ActivityMonitor.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\ALlistener.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\Arkanoid2D.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\BuildConfig.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$attr.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$drawable.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$id.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$layout.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$raw.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$string.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R$styleable.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Arkanoid2D\R.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\BaseActivity$1.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\BaseActivity$TT.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\BaseActivity.class \
