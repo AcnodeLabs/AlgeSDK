@@ -12,10 +12,11 @@ extern CNetMsg netmsg;
 #include "dimensions.h"
 #include "drawtext.h"
 #include <sstream>
+#include <iomanip>
 
 class AlgeApp {
 public:
-
+	string wall_msg;
  #ifndef NO_BOX2D
 	b2World* pWorld;
 	b2World* world;
@@ -446,7 +447,7 @@ public:
         static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
         sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
-        SetTitle(msg);
+      //  SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
@@ -793,6 +794,20 @@ public:
 	}
 
 	void preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f) {
+
+		stringstream ss;
+		int c = input.cmd[input.indx_r - 1].command;
+		ss << "c";
+		ss << "0x" << std::uppercase << std::setfill('0') << std::setw(4) << std::hex << c;
+
+		ss << "r";
+		ss << input.indx_r;
+
+		ss << "w";
+		ss << input.indx_w;
+
+		if (c) wall_msg = ss.str();
+
 		static string fmt = "%.1f,%.1f,%.1f";
 		static int mX, mY;
 		static bool mousepass1 = true;

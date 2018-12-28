@@ -13,7 +13,7 @@ class App : public AlgeApp {
 	
 	bool soundedOuch;
 	int scene, nLoops, numBaloons, iScore, nRemaining;
-	string wall_msg;
+
 
 public:
 	
@@ -66,12 +66,12 @@ public:
 
 		nRemaining = baloons.prsInstances.size() - 1;
 
-		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+	//	output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
 		output.pushP(CMD_SNDSET3, $ "drop.wav");
 
-		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
 
 		wall_msg = "Go !!";
 
@@ -112,6 +112,8 @@ public:
 	// GamePlay Screen
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
 		
+
+
 		if (gob->is(p_time)) { 
 			p_time.Hide();
 			inhibitRender = true; 
@@ -191,22 +193,13 @@ public:
 			}
 
 			if (doObjectsIntersect(baloon, &heli)) {
-				//	heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
-				//	spikey.JuiceType = JuiceTypes::JUICE_ROTZ;
-				if (!soundedOuch) {
-				//	wall_msg = "Ouch !!";
-					output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
-					soundedOuch = true;
-					heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
-					heli.JuiceDuration = 0.75;
-
-					iScore /= 2;
-					if (iScore < 0) iScore = 0;
-					output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav",&nLoops);
-				}
-
-			} else {
-				soundedOuch = false;
+				if (heli.JuiceType == 0) output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
+				soundedOuch = true;
+				heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
+				heli.JuiceDuration = 0.75;
+				iScore /= 2;
+				if (iScore < 0) iScore = 0;
+				//output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
 			}
             
 		}

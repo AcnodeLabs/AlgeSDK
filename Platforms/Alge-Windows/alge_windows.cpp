@@ -113,47 +113,7 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 {
 	static char fullres[64];
 	game.edit = false;
-	int command = game.output.pull()->command;
-	void* p1 = game.output.pulled_param1;
-	void* p2 = game.output.pulled_param2;
-	
-	//	int port;
 
-	if (command==CMD_TOAST) {
-		SetWindowTextA(GetDlgItem(hToast,IDC_EDIT1),(LPCSTR) p1);
-		ShowWindow(hToast, SW_SHOW);
-		DlgProc(hToast, CMD_TOAST,CMD_TOAST, CMD_TOAST);
-	}
-
-	if (command == CMD_MOUSE_REPOSITION) {
-		GetCursorPos(&p_mouse);
-		r_mouse = 0;
-		pn_mouse.x = game.output.pulled_i1;
-		pn_mouse.y = game.output.pulled_i2;
-	}
-
-	if (command==CMD_SPAWN) {
-		ShellExecuteA(hWnd, "open", (LPCSTR) p1, "", "C:\\", SW_SHOWNORMAL);
-	}
-
-	if (command==CMD_MSG) {
-		MessageBoxA(hWnd, (LPCSTR) p1, "Notification", MB_ICONINFORMATION);
-	} else if (command==CMD_END) {
-		game.Deinit();
-		PostQuitMessage(0);
-	} else if (command>=CMD_SNDSET0 && command<=CMD_SNDSET0+15) {
-		sprintf(soundfiles[command-CMD_SNDSET0],"%s/%s",ResPath+1,(char*)p1);
-	} else if (command>=CMD_SNDPLAY0 && command<=CMD_SNDPLAY0+15) {
-		//sndPlaySoundA((char*)soundfiles[command-CMD_SNDPLAY0],SND_ASYNC);
-		//PlaySoundA(NULL,0,0);
-		PlaySoundA(soundfiles[command-CMD_SNDPLAY0], NULL, SND_NOSTOP | SND_ASYNC | SND_FILENAME);
-	//	ShellExecuteA(hWnd, "open", soundfiles[command-CMD_SNDPLAY0], "", "C:\\", SW_SHOWNORMAL);
-	} else if (command==CMD_VIDPLAY) {
-		ShellExecuteA(hWnd, "open", "C:\\acnode\\Alge_Demos\\Data\\video1.mp4", "", "C:\\", SW_SHOWNORMAL);
-	} else if (command==CMD_TITLE) {
-		SetWindowTextA(hWnd,(LPCSTR) p1); 	
-	} else if (command==CMD_TEXSET0) {		
-	}
 
 	float newTime = time1.getElapsedTimeInSec();
 	deltaT =  newTime - lastTime;
@@ -178,6 +138,59 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 	
 
 	lastTime = newTime;
+
+	int command = -1;
+	while (command != 0) {
+		command = game.output.pull()->command;
+		void* p1 = game.output.pulled_param1;
+		void* p2 = game.output.pulled_param2;
+
+		//	int port;
+
+		if (command == CMD_TOAST) {
+			SetWindowTextA(GetDlgItem(hToast, IDC_EDIT1), (LPCSTR)p1);
+			ShowWindow(hToast, SW_SHOW);
+			DlgProc(hToast, CMD_TOAST, CMD_TOAST, CMD_TOAST);
+		}
+
+		if (command == CMD_MOUSE_REPOSITION) {
+			GetCursorPos(&p_mouse);
+			r_mouse = 0;
+			pn_mouse.x = game.output.pulled_i1;
+			pn_mouse.y = game.output.pulled_i2;
+		}
+
+		if (command == CMD_SPAWN) {
+			ShellExecuteA(hWnd, "open", (LPCSTR)p1, "", "C:\\", SW_SHOWNORMAL);
+		}
+
+		if (command == CMD_MSG) {
+			MessageBoxA(hWnd, (LPCSTR)p1, "Notification", MB_ICONINFORMATION);
+		}
+		else if (command == CMD_END) {
+			game.Deinit();
+			PostQuitMessage(0);
+		}
+		else if (command >= CMD_SNDSET0 && command <= CMD_SNDSET0 + 15) {
+			sprintf(soundfiles[command - CMD_SNDSET0], "%s/%s", ResPath + 1, (char*)p1);
+		}
+		else if (command >= CMD_SNDPLAY0 && command <= CMD_SNDPLAY0 + 15) {
+			//sndPlaySoundA((char*)soundfiles[command-CMD_SNDPLAY0],SND_ASYNC);
+			//PlaySoundA(NULL,0,0);
+			PlaySoundA(soundfiles[command - CMD_SNDPLAY0], NULL, SND_NOSTOP | SND_ASYNC | SND_FILENAME);
+			//	ShellExecuteA(hWnd, "open", soundfiles[command-CMD_SNDPLAY0], "", "C:\\", SW_SHOWNORMAL);
+		}
+		else if (command == CMD_VIDPLAY) {
+			ShellExecuteA(hWnd, "open", "C:\\acnode\\Alge_Demos\\Data\\video1.mp4", "", "C:\\", SW_SHOWNORMAL);
+		}
+		else if (command == CMD_TITLE) {
+			SetWindowTextA(hWnd, (LPCSTR)p1);
+		}
+		else if (command == CMD_TEXSET0) {
+		}
+	}
+
+
 	return TRUE;										// Keep Going
 }
 
