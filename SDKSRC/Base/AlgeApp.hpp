@@ -93,6 +93,9 @@ public:
 		dtx_use_font(font, 24);
 		#endif
 	}
+		
+	CModel* fontModel;
+	char sz1[128];
 
 	inline void alPrint(const char* text,  int size = 24 ) {
 		#ifndef NO_FONTLIB
@@ -103,6 +106,16 @@ public:
 		dtx_string(text);
 		glPopMatrix();
 		#endif
+		return;
+		//if (size != 24) dtx_use_font(font, size);
+		//glPushMatrix();
+		//glRotatef(180, 1, 0, 0);
+		//strcpy(sz1, text);
+		//fonts.print(sz1);
+		//glScalef(15,15,15);
+		//fontModel->glDraw();
+		//glPopMatrix();
+		
 	}
 
 	void Deinit() {}
@@ -386,6 +399,7 @@ public:
 
 		//it->Update(deltaT);
 		UpdateCustom(iit, instanceNo, deltaT);
+		
 	
 		
 //	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
@@ -598,6 +612,10 @@ public:
 		aCamera.custom_type = 0xCA;
 		aCamera.windowWidth = getBackgroundSize().x;
 		aCamera.windowHeight = getBackgroundSize().y;
+
+		//Font v1 init
+	//	fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, (numModels-1), 1);	// Fonts Loaded just like Model load at tail of models array
+	//	fonts.usetexof(fontModel);						// Associate texure of Loaded Model to FontMap
 	}
 
 	virtual void Init(char* path) {};

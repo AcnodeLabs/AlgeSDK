@@ -17,12 +17,16 @@ C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\bg.tga \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\drop.wav \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\fans.alx \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\fans.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.blend \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.blend1 \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.tga \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\happy-sandbox.wav \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.alx \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.png \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.tga \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\icon.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\logo512.png \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\pop.wav \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.alx \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.png \
