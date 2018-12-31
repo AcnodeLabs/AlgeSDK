@@ -7,13 +7,18 @@
 */
 #include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 
+#include "PoppingTimeLayer1.hpp"
+
+
+// Scrum Page https://scrumy.com/PoppingTime
+
 class App : public AlgeApp {
 	
-    GameObject bg, spikey, heli, baloons, fan, p_time, score;
+    GameObject bg, ratings,spikey, heli, baloons, fan, p_time, score;
 	
 	bool soundedOuch;
 	int scene, nLoops, numBaloons, iScore, nRemaining;
-
+	PoppingTimeLayer1 l1;
 
 public:
 	
@@ -22,13 +27,16 @@ public:
 
 		soundedOuch = false;
 		nLoops = 100;
-		numBaloons = 50;
+		numBaloons = 1;
 		iScore = 0;
 
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
 		AddResource(&bg, "bg", 1.5);
+		with AddResource(&ratings, "ratings", 0.7);
+			_.pos.y = 0.1 * bottomSide;
+		_with
 
 		with AddResource(&p_time, "poppingtime", 1);
 		_.JuiceType = JuiceTypes::JUICE_PULSATE;
@@ -55,17 +63,9 @@ public:
 		score.pos.x = 0.85 * rightSide;
 		AddObject(&score);
 
-		PosRotScale bp;
-		bp.CopyFrom(&heli);
-		for (int i = 0; i < numBaloons; i++) {
-			bp.pos = f3(rightSide *randm(), bottomSide + rndm(10, 500), 0);  //initially place balloons below bottom side
-			bp.scale = rndm(0.3, 0.5);
-			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
-			baloons.AddInstance(bp);
-		}
-
-		nRemaining = baloons.prsInstances.size() - 1;
-
+		//MakeBaloons(numBaloons);
+		MakeBaloons(3);
+	
 	//	output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
@@ -76,6 +76,21 @@ public:
 		wall_msg = "Go !!";
 
 	}
+
+	void MakeBaloons(int n) {
+		baloons.prsInstances.clear();
+		PosRotScale bp;
+		bp.CopyFrom(&heli);
+		for (int i = 0; i < n; i++) {
+			bp.pos = f3(rightSide *randm(), bottomSide + rndm(10, 500), 0);  //initially place balloons below bottom side
+			bp.scale = rndm(0.3, 0.5);
+			bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
+			baloons.AddInstance(bp);
+		}
+		nRemaining = baloons.prsInstances.size() - 1;
+	}
+
+	
 	virtual void onActionComplete(GameObject* obj) {
 		if (obj->is(heli)) {
 			bool ok = true;
@@ -112,10 +127,9 @@ public:
 	// GamePlay Screen
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
 		
-
-
 		if (gob->is(p_time)) { 
 			p_time.Hide();
+			ratings.Hide();
 			inhibitRender = true; 
 		}
 
@@ -181,10 +195,7 @@ public:
 
 					nRemaining--;
 					if (nRemaining < 0) {
-						for (int i = 0; i < numBaloons; i++) {
-							gob->Inst(i)->hidden = false;
-						}
-						nRemaining = baloons.prsInstances.size() -1;
+						MakeBaloons((numBaloons++)*5);
 					}
 
 				//fprintf_s(f, "\nMATCH sp{%.1f,%.1f, bl{%.1f,%.1f}", spikey.pos.x, spikey.pos.y, baloon->pos.x, baloon->pos.y);

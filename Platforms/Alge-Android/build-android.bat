@@ -65,8 +65,5 @@ del bin\%APPNAME%.apk
 echo ------------------- SIGNING
 call jarsigner -verbose -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
 call %SDK_ROOT%\build-tools\25.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
-echo Good Luck !!
-echo install check 
-
+echo installing signed %APPNAME%.apk on device
 %SDK_ROOT%\platform-tools\adb install bin\%APPNAME%.apk
-echo Check App on your Device

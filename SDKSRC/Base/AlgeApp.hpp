@@ -794,7 +794,7 @@ public:
 	}
 
 	void preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f) {
-
+		/*
 		stringstream ss;
 		int c = input.cmd[input.indx_r - 1].command;
 		ss << "c";
@@ -807,7 +807,7 @@ public:
 		ss << input.indx_w;
 
 		if (c) wall_msg = ss.str();
-
+		*/
 		static string fmt = "%.1f,%.1f,%.1f";
 		static int mX, mY;
 		static bool mousepass1 = true;

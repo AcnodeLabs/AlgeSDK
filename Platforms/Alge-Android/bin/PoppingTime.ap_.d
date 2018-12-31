@@ -31,6 +31,8 @@ C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\pop.wav \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.alx \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.png \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\ratings.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\ratings.tga \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.alx \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.jpg \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.tga \

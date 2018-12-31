@@ -472,7 +472,7 @@ public:
     //getInstance(0) returns main object instances are at 1..n
     //deprecated : use Inst(#) instead
     PosRotScale* getInstancePtr(int n) {
-        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
+        if (n < 0 || n >= int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     
