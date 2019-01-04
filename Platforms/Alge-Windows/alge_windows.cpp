@@ -788,10 +788,17 @@ extern "C++" void alLoadModel(char* alx, char* tga, int id, float size) {
 	else //generic 
 		game.rm.loadGenericAsset(fname, id);
 }
+
+int model_counter = -1;
+
 int alLoadModel(ResourceInf* resInf) {
-	static int counter = -1;
-	alLoadModel((char*)resInf->alx.c_str(), (char*)resInf->tex.c_str(), ++counter, resInf->scale);
-	return counter;
+	alLoadModel((char*)resInf->alx.c_str(), (char*)resInf->tex.c_str(), ++model_counter, resInf->scale);
+	return model_counter;
+}
+
+int alReserveModelId() {
+	++model_counter;
+	return model_counter;
 }
 
 extern "C++" void alDrawModelTranslateRotate(int id, float posx, float posy, float posz,

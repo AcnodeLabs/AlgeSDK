@@ -29,7 +29,7 @@ public:
 	short renderSchemeVersion;//1=> Render processInput 2->UpdateCustom GOB's
 	CAnimator can;
 	CTimed animStepTimed;
-	FontMap16x16 fonts;
+	FontMap10x10 fonts;
 	int keyframe, nseq, screenX, screenY;
 	f3 eye, eyerot, tgt, up;
 	float timeVar, animstep, deltaT;
@@ -617,7 +617,7 @@ public:
 		aCamera.windowHeight = getBackgroundSize().y;
 
 		//Font v1 init
-		fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, (numModels-1), 1);	// Fonts Loaded just like Model load at tail of models array
+		fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, alReserveModelId(), 1);	// Fonts Loaded just like Model load but it doesnt involve managed resource 
 		fonts.usetexof(fontModel);						// Associate texure of Loaded Model to FontMap
 	}
 

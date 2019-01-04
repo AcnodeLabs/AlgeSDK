@@ -8,5 +8,5 @@ Platforms/Alge-Android/bin/*
 *.so
 *.dex
 *.dex.d
-
+mApps/*
 

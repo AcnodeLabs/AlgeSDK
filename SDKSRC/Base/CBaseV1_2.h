@@ -1045,11 +1045,12 @@ public:
 	float _scaleX, _scaleY, _scaleZ = 1.0;
 
 	void scale(float v) {
+		
 		for (int i = 0; i< n_vertices * 3; i++)
 		{
-			vertex_array[i] *= v;
+			vertex_array[i] = (vertex_array[i] * v);
 		}
-		fscale *= v;
+		fscale = (fscale * v);
 		//phys.boundz*=v;
 	}
 
@@ -1651,7 +1652,7 @@ public:
 	void SetScale(float _scale) {
 		scale = _scale;
 		spacing = 1.5f * scale;
-		width = 256 * scale;
+		width = 512 * scale;
 	}
 
 	FontMap10x10() {
@@ -1672,11 +1673,11 @@ public:
 		m = mod;
 #ifndef NOGL
 #ifndef METRO
-		glEnable(GL_ALPHA_TEST);
-		glAlphaFunc(GL_GREATER, 0.0f);
+	//	glEnable(GL_ALPHA_TEST);
+	//	glAlphaFunc(GL_GREATER, 0.0f);
 #endif
 #endif
-		mod->noVBO = true;
+		mod->noVBO = false;// true;
 	}
 
 	void chardata(short indx, char c) {
@@ -1686,8 +1687,8 @@ public:
 		short ro = mapY[seq];
 		float left = co / 10.0f;
 		float top = ro / 10.0f;
-		float down = top + 1.0f / 10.0f;
-		float right = left + 1.0f / 10.0f;
+		float down = top + 1.0f / 10.0f - 0.01;
+		float right = left + 1.0f / 10.0f - 0.01;
 		top = 1.0f - top;
 		down = 1.0f - down;
 
@@ -1709,52 +1710,47 @@ public:
 		m->uv_array[index12 + 11] = down;
 		m->n_uv = 6 * (indx + 1);
 
-		short cx = indx;
+		short cx = indx ;
 
 		//FILL VERTEXARRAY/NORMALS OF CMODEL
-		m->vertex_array[index + 0] = cx + 1;
+		float span = 0.8;
+
+		m->vertex_array[index + 0] = cx + span;
 		m->vertex_array[index + 1] = 1;
 		m->vertex_array[index + 2] = 0;
 		m->normals_array[index + 0] = 0;
 		m->normals_array[index + 1] = 0;
 		m->normals_array[index + 2] = 1;
 
-		m->vertex_array[index + 3] = cx - 1;
+		m->vertex_array[index + 3] = cx - span;
 		m->vertex_array[index + 4] = 1;
 		m->vertex_array[index + 5] = 0;
 		m->normals_array[index + 3] = 0;
 		m->normals_array[index + 4] = 0;
 		m->normals_array[index + 5] = 1;
 
-		m->vertex_array[index + 6] = cx - 1;
+		m->vertex_array[index + 6] = cx - span;
 		m->vertex_array[index + 7] = -1;
 		m->vertex_array[index + 8] = 0;
 		m->normals_array[index + 6] = 0;
 		m->normals_array[index + 7] = 0;
 		m->normals_array[index + 8] = 1;
 
-		m->vertex_array[index + 9] = cx + 1;
+		m->vertex_array[index + 9] = cx + span;
 		m->vertex_array[index + 10] = 1;
 		m->vertex_array[index + 11] = 0;
 		m->normals_array[index + 9] = 0;
 		m->normals_array[index + 10] = 0;
 		m->normals_array[index + 11] = 1;
 
-		m->vertex_array[index + 12] = cx - 1;
+		m->vertex_array[index + 12] = cx - span;
 		m->vertex_array[index + 13] = -1;
 		m->vertex_array[index + 14] = 0;
 		m->normals_array[index + 12] = 0;
 		m->normals_array[index + 13] = 0;
 		m->normals_array[index + 14] = 1;
 
-		m->vertex_array[index + 12] = cx - 1;
-		m->vertex_array[index + 13] = -1;
-		m->vertex_array[index + 14] = 0;
-		m->normals_array[index + 12] = 0;
-		m->normals_array[index + 13] = 0;
-		m->normals_array[index + 14] = 1;
-
-		m->vertex_array[index + 15] = cx + 1;
+		m->vertex_array[index + 15] = cx + span;
 		m->vertex_array[index + 16] = -1;
 		m->vertex_array[index + 17] = 0;
 		m->normals_array[index + 15] = 0;
@@ -1771,8 +1767,11 @@ public:
 	public:
 	void print(char* sz) {
 		int l = int(strlen(sz));
-		for (int i = 0; i<l; i++)
+		
+		for (int i = 0; i < l; i++) {
 			chardata(i, sz[i]);
+		}
+		
 	 	m->scale(scale);
 	}
 };

@@ -671,6 +671,7 @@ char* New_String(const char* sz) {return ((char*)sz);}
 void alPushI (int cmd, int x, int y);
 void alPushP (int cmd, void* param1, void* param2);
 int alLoadModel(ResourceInf* r);
+int alReserveModelId(void);
 void alDrawModel (int ident, bool wireframe = false);
 /*
 void alBillBoardBegin();

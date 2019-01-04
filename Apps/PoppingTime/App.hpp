@@ -73,7 +73,7 @@ public:
 
 	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
 
-		wall_msg = "Go !!";
+		wall_msg = "Go";
 
 	}
 
