@@ -3,5 +3,5 @@
 ALGE SDK ANDROID:: CANDIDATE.h
 */
 
-#define CANDIDATE "../../../Apps/PoppingTime/App.hpp"
+#define CANDIDATE "../../../mApps/SNGPLBill/App.hpp"
 class App;

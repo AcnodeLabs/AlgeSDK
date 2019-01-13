@@ -14,7 +14,7 @@
 #include "CANDIDATE.h"
 #include "Timer.h"
 #include <stdio.h>
-
+#define ALGE_WINDOWS
 
 
 char ResPath[256];
@@ -26,6 +26,11 @@ CNetMsg netmsg;
 CFTFont font;
 
 App		game;
+
+#define EXTERNIT extern "C"
+//#include "../../SDKSRC/Base/externit.cpp"
+
+
 HDC			hDC=NULL;		// Private GDI Device Context
 HGLRC		hRC=NULL;		// Permanent Rendering Context
 HWND		hWnd=NULL;		// Holds Our Window Handle
@@ -53,6 +58,8 @@ float lastTime;
 Timer time1;
 
 char msg[128];
+
+
 
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
 {
