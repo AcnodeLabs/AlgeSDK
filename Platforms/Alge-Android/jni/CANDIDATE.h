@@ -13,3 +13,4 @@ ALGE SDK ANDROID:: CANDIDATE.h
 
 #define CANDIDATE "../../../Apps/Planets/App.hpp"
 class App;
+class AlgeApp;

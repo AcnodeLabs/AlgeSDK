@@ -74,7 +74,7 @@ public:
 	//	output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
 
 		wall_msg = "Go";
-
+		glDisable(GL_CULL_FACE);
 	}
 
 	void MakeBaloons(int n) {

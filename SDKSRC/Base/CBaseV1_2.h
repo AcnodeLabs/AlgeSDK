@@ -920,11 +920,19 @@ class CModel {
 public:
 	int index;
 	char name[64];
-	float vertex_array[512 * 512 * 6];
-	float normals_array[512 * 512 * 6];
-	unsigned char color_array[512 * 512 * 5];
-	unsigned short indices_array[1024 * 3];
-	float uv_array[512 * 512 * 4];
+	
+	float _vertex_array[512 * 512 * 6];
+	float _normals_array[512 * 512 * 6];
+	unsigned char _color_array[512 * 512 * 5];
+	unsigned short _indices_array[1024 * 3];
+	float _uv_array[512 * 512 * 4];
+	
+	float *vertex_array;// [512 * 512 * 6];
+	float *normals_array;// [512 * 512 * 6];
+	unsigned char *color_array;// [512 * 512 * 5];
+	unsigned short *indices_array;//[1024 * 3];
+	float *uv_array;// [512 * 512 * 4];
+
 
 	float vertex_array_gl[1];
 	float normals_array_gl[1];
@@ -962,6 +970,12 @@ public:
 		_scaleY = 1;
 		_scaleZ = 1;
 		DRAWMODE = GL_TRIANGLES;
+		
+		vertex_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 6);// _vertex_array;// 	float *vertex_array;// [512 * 512 * 6];
+		normals_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 6);// _normals_array;//float *normals_array;// [512 * 512 * 6];
+		color_array = nullptr;// (unsigned char*)malloc(sizeof(unsigned char) * 512 * 512 * 5);// unsigned char *color_array;// [512 * 512 * 5];
+		indices_array = nullptr;// (unsigned short*)malloc(sizeof(unsigned short) * 1024 * 3);// _indices_array;//unsigned short *indices_array;//[1024 * 3];
+		uv_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 4);// _uv_array;// float *uv_array;// [512 * 512 * 4];
 	}
 	
 	CModel() {
@@ -975,6 +989,11 @@ public:
 		glDeleteBuffers(1, &vboNormals);
 #endif
 #endif
+		if (vertex_array!=nullptr) free(vertex_array);
+		if (normals_array != nullptr) free(normals_array);
+		if (color_array != nullptr) free(color_array);
+		if (indices_array != nullptr) free(indices_array);
+		if (uv_array != nullptr) free(uv_array);
 	}
 
 	//called by resourcemanager
@@ -1188,7 +1207,6 @@ public:
 			loadSeg(f, ver, 'N', normals_array_gl);
 			loadSeg(f, ver, 'T', uv_array_gl);
 			loadSeg(f, ver, 'I', indices_array_gl);
-
 			fclose(f);
 		}
 
@@ -2246,7 +2264,7 @@ public:
 			int color_i = 0;
 			int ind_i = 0;
 			int uv_i = 0;
-
+			///////////////////////////////////////////////////////  PASS 1 - CALC number of values
 			while (!feof(file)) {
 				line[0] = 0;
 				//  fgets(line, 1280, file);
@@ -2261,6 +2279,111 @@ public:
                     if (line[5] == 'T')models[modelId]->DRAWMODE = GL_TRIANGLES;
 #ifndef ES_ONLY
                     if (line[5] == 'P')models[modelId]->DRAWMODE = GL_POLYGON;
+					if (line[5] == 'Q')models[modelId]->DRAWMODE = GL_QUADS;
+#endif
+				}
+
+				if (strcmp(line, "obj[") == 0) {
+					fscanf(file, "%s", line);
+					strcpy(models[modelId]->name, line);
+				}
+
+				if (strcmp(line, "t[") == 0) {
+					int zoom = 1;
+					fscanf(file, "%s", line);
+					//models[modelId]->uv_array[uv_i] = atof(line)*zoom;
+					fscanf(file, "%s", line);
+					//models[modelId]->uv_array[uv_i + 1] = atof(line)*zoom;
+					uv_i += 2;
+				}
+
+
+				if (strcmp(line, "n[") == 0) {
+					int zoom = 1;
+					fscanf(file, "%s", line);
+					//models[modelId]->normals_array[vn_i] = atof(line)*zoom;
+					fscanf(file, "%s", line);
+					//models[modelId]->normals_array[vn_i + 1] = atof(line)*zoom;
+					fscanf(file, "%s", line);
+					//models[modelId]->normals_array[vn_i + 2] = atof(line)*zoom;
+					vn_i += 3;
+				}
+
+
+				if (strcmp(line, "v[") == 0) {
+					int zoom = 1;
+					fscanf(file, "%s", line);
+					//models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
+					fscanf(file, "%s", line);
+					//models[modelId]->vertex_array[vx_i + 1] = atof(line)*zoom;
+					fscanf(file, "%s", line);
+					//models[modelId]->vertex_array[vx_i + 2] = atof(line)*zoom;
+					vx_i += 3;
+				}
+
+				if (strcmp(line, "c[") == 0) {
+					fscanf(file, "%s", line);
+					//models[modelId]->color_array[color_i] = atof(line);
+					fscanf(file, "%s", line);
+					//models[modelId]->color_array[color_i + 1] = atof(line);
+					fscanf(file, "%s", line);
+					//models[modelId]->color_array[color_i + 2] = atof(line);
+					//models[modelId]->color_array[color_i + 3] = 255;
+					color_i += 4;
+				}
+
+				if (strcmp(line, "ni[") == 0) {
+					fscanf(file, "%s", line);
+					models[modelId]->n_indices = atoi(line);
+					fscanf(file, "%s", line);
+					models[modelId]->INDICES_DRAWMODE = atoi(line);
+				}
+
+				if (strcmp(line, "i[") == 0) {
+					fscanf(file, "%s", line);
+					int ind_i_n = atoi(line);
+					for (int j = 0; j<ind_i_n; j++) {
+						fscanf(file, "%s", line);
+						//models[modelId]->indices_array[ind_i + j] = atof(line);
+					}
+					ind_i += ind_i_n;
+				}
+			}
+
+			if (vx_i>0) {
+				models[modelId]->n_vertices = (vx_i - 1) / 3 + 1;
+				models[modelId]->n_normals = (vn_i - 1) / 3 + 1;
+				models[modelId]->n_uv = (uv_i - 1) / 2 + 1;
+				models[modelId]->n_colors = (color_i - 1) / 4 + 1;
+				models[modelId]->n_indices = ind_i;
+
+				///////////////////////////// alloc as per values
+				models[modelId]->uv_array = (float*)malloc(sizeof(float) * models[modelId]->n_uv * 4);// _uv_array;// float *uv_array;// [512 * 512 * 4];
+				models[modelId]->normals_array = (float*)malloc(sizeof(float) * models[modelId]->n_normals * 6);// _normals_array;//float *normals_array;// [512 * 512 * 6];
+				models[modelId]->vertex_array = (float*)malloc(sizeof(float) * models[modelId]->n_vertices * 6);// _vertex_array;// 	float *vertex_array;// [512 * 512 * 6];
+				models[modelId]->indices_array = (unsigned short*)malloc(sizeof(unsigned short) * models[modelId]->n_indices * 3);// _indices_array;//unsigned short *indices_array;//[1024 * 3];
+				models[modelId]->color_array = (unsigned char*)malloc(sizeof(unsigned char) * models[modelId]->n_colors * 5);// unsigned char *color_array;// [512 * 512 * 5];
+				
+			}
+						
+
+			///////////////////////////////////////////////////
+			fseek(file, 0, SEEK_SET); //reset CURSOR to re-do procedure
+			///////////////////////////////////////////////////////  PASS 2 - FILL values
+			while (!feof(file)) {
+				line[0] = 0;
+				//  fgets(line, 1280, file);
+				fscanf(file, "%s", line);
+				//std::cout << line << "\n";
+
+				if (strcmp(line, "Good Luck") == 0) {
+					break;
+				}
+
+				if (strstr(line, "Mode=") != NULL) {
+					if (line[5] == 'T')models[modelId]->DRAWMODE = GL_TRIANGLES;
+#ifndef ES_ONLY
+					if (line[5] == 'P')models[modelId]->DRAWMODE = GL_POLYGON;
 					if (line[5] == 'Q')models[modelId]->DRAWMODE = GL_QUADS;
 #endif
 				}
@@ -2324,7 +2447,7 @@ public:
 				if (strcmp(line, "i[") == 0) {
 					fscanf(file, "%s", line);
 					int ind_i_n = atoi(line);
-					for (int j = 0; j<ind_i_n; j++) {
+					for (int j = 0; j < ind_i_n; j++) {
 						fscanf(file, "%s", line);
 						models[modelId]->indices_array[ind_i + j] = atof(line);
 					}
@@ -2332,7 +2455,7 @@ public:
 				}
 			}
 
-			if (vx_i>0) {
+			if (vx_i > 0) {
 				models[modelId]->n_vertices = (vx_i - 1) / 3 + 1;
 				models[modelId]->n_normals = (vn_i - 1) / 3 + 1;
 				models[modelId]->n_uv = (uv_i - 1) / 2 + 1;

@@ -11,3 +11,4 @@ ALGE SDK WINDOWS:: CANDIDATE.h
 */
 #include "../../Apps/Planets/App.hpp"
 class App;
+class AlgeApp;
