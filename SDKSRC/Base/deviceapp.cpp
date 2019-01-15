@@ -171,13 +171,23 @@ extern "C++" void alPopMatrix() {
 }
 
 extern "C++" void alLoadModel(char* alx, char* tga, int id, float size) {
-    game.rm.loadAlxModel(alx, tga, id,size );
+	string fname = string(alx);
+	if (fname.find(".alx") != string::npos)
+		game.rm.loadAlxModel((char*)alx, (char*)tga, id, size);
+	else //generic 
+		game.rm.loadGenericAsset(fname, id);
 }
 
-extern "C++" int alLoadModel(ResourceInf* resInf) {
-    static int counter = 0;
-    alLoadModel((char*)resInf->alx.c_str(), (char*)resInf->tex.c_str(), ++counter, resInf->scale);
-    return counter;
+int model_counter = -1;
+
+int alLoadModel(ResourceInf* resInf) {
+	alLoadModel((char*)resInf->alx.c_str(), (char*)resInf->tex.c_str(), ++model_counter, resInf->scale);
+	return model_counter;
+}
+
+int alReserveModelId() {
+	++model_counter;
+	return model_counter;
 }
 
 extern "C++" void alDrawModelTranslateRotate(int id, float posx , float posy, float posz,

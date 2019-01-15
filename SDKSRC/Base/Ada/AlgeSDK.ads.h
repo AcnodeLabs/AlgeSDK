@@ -224,7 +224,7 @@ class Serializable : public PosRotScale {
         if (this->UUID.size()>0) {
             FILE* f = fopen(this->UUID.c_str(), "rb");
             if (f) {
-                readin(f);
+              //  readin(f);
                 fclose(f);
             }
         }

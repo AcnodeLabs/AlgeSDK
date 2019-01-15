@@ -36,11 +36,11 @@ public:
 	
 	void AddPlanet(GameObject& pl, string name, int scale = 200) {
 		planets.push_back(&pl);
-		with AddResource(&pl, name, scale);
-		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		_.JuiceSpeed *= 2;
-		_.Hide();
-		_with
+		GameObject* g =  AddResource(&pl, name, scale);
+		g->JuiceType = JuiceTypes::JUICE_ROTY;
+		g->JuiceSpeed *= 2;
+	//	_.Hide();
+		
 		pnum++;
 	}
 
@@ -51,26 +51,26 @@ public:
 
 		AlInit(STANDARD);
 		
-		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		//glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
-		AddPlanet(mercury, "mercury");
-		AddPlanet(venus, "venus");
-		AddPlanet(earth, "earth");
-		AddPlanet(moon, "moon");
-		AddPlanet(mars, "mars");
-		AddPlanet(jupiter, "jupiter");
-		AddPlanet(saturn, "saturn");
-		AddPlanet(uranus, "uranus");
-		AddPlanet(neptune, "neptune");
-		AddPlanet(pluto, "pluto");
-		
-		pnum_max = pnum;
+	
+		AddPlanet(mercury, "mercury", 100 * 3);
+		AddPlanet(venus, "venus", 90 * 3);
+		AddPlanet(earth, "earth", 80 * 3);
+		AddPlanet(moon, "moon", 70 * 3);
+		AddPlanet(mars, "mars", 60 * 3);
+		AddPlanet(jupiter, "jupiter", 50 * 3);
+		AddPlanet(saturn, "saturn", 40 * 3);
+		AddPlanet(uranus, "uranus", 30 * 3);
+		AddPlanet(neptune, "neptune", 20 * 3);
+		//AddPlanet(pluto, "pluto", 10 * 3);
 
-			
+		pnum_max = pnum;
+					
 		with AddResource(&satringsFr, "satrings", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
 		_.JuiceSpeed *= 2;
