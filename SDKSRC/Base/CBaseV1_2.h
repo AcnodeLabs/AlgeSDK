@@ -2509,6 +2509,9 @@ void AlInit(int TYPE, std::string title = "") {
 #endif
 	}
 
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
+
 	//To add these two lines refactoring would be needed: PENDED
 	//if (TYPE == STANDARD_2D) game.AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 	//SetTitle(title);

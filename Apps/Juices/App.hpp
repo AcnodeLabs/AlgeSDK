@@ -127,7 +127,8 @@ public:
         if (p->command == CMD_TOUCH_START)
         switch (c.KROSS_(true, p->i1, p->i2)) {
             case KROSS_RIGHT:
-                star.NextJuice();
+				star.Show();
+				star.NextJuice();
                 break;
         }
         

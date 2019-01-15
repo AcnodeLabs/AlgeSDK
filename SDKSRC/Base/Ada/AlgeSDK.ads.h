@@ -153,7 +153,7 @@ public:
 	int JuiceType;
 	float JuiceSpeed = 1.;
 	float JuiceDuration = 3;
-
+	
 	float originalScale = 1.;
      float debugUseOnly = 0.;
 	 float m_width;
@@ -243,6 +243,8 @@ class Serializable : public PosRotScale {
 
 enum JuiceTypes {
 	JUICE_ROTZ = 1,
+	JUICE_FLY_OUT,
+	JUICE_SCALE_IN,
 	JUICE_ROTY,
 	JUICE_PULSATE,
 	JUICE_PULSATE_FULLY,
@@ -332,7 +334,6 @@ public:
     }
     
     void NextJuice() {
-        
         JuiceType ++;
         if (JuiceType == JuiceTypes::JUICES_END)
             JuiceType = 0;
@@ -498,6 +499,7 @@ public:
         billboard = false;
         applyTopLeftCorrectionWRTorigin = false;
         m_touched = false;
+		resInf = nullptr;
     }
     
     string Name() {

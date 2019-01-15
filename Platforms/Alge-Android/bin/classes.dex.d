@@ -50,6 +50,16 @@ C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acno
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\NeheLesson09\R$string.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\NeheLesson09\R$styleable.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\NeheLesson09\R.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\BuildConfig.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\Planets.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$attr.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$drawable.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$id.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$layout.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$raw.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$string.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R$styleable.class \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\Planets\R.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\PoppingTime\BuildConfig.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\PoppingTime\PoppingTime.class \
 C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\classes\com\acnodelabs\alge\PoppingTime\R$attr.class \

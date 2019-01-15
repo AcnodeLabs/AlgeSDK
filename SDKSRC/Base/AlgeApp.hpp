@@ -194,6 +194,7 @@ public:
 		return g;
 	}
 
+
 	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
 		ResourceInf res;
 		res.Set(name, name + ".alx", name + ".tga", scale);
@@ -287,17 +288,23 @@ public:
 		pos->y += 0.5 * w * (1 - scaledTo);
 	}
 
+	float juice_sine_angle;
+
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
-		static float juice_sine_angle;
-		static float elapsed = 0;
 		
+		static float elapsed = 0;
+		static int juice_frame[JuiceTypes::JUICES_END];
+
 		elapsed += deltaT;
 		static float timeNote;
 		static bool timeNoted = false;
+		static float x_pos_on_arrival = -1;
 
 		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
+
+
 		switch (jprs->JuiceType) {
 
 		case JuiceTypes::JUICE_ROTZ:
@@ -340,10 +347,30 @@ public:
 			juice_sine_angle += (0.01 * deltaT * jprs->JuiceSpeed);
 			glScalef(1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle));
 			break;
+		case JuiceTypes::JUICE_SCALE_IN:
+			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
+			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
+			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
+			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) juice_sine_angle = 0;
+			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			break;
 		case JuiceTypes::JUICE_PULSATE_FULLY:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
-            glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			break;
+		case JuiceTypes::JUICE_FLY_OUT:
+			
+			if (jprs->pos.x > -999) {
+				if (x_pos_on_arrival==-1) x_pos_on_arrival = jprs->pos.x;
+				jprs->pos.x -= (1000.0 * deltaT * jprs->JuiceSpeed);
+			}
+			else {
+				//jprs->pos.x = x_pos_on_arrival;
+				//jprs->JuiceType = 0;
+				//x_pos_on_arrival = -1;
+				//jprs->hidden = false;
+			}
 			break;
 		case JuiceTypes::JUICE_CANCEL:
 			jprs->rot.x = 0;
@@ -1128,7 +1155,7 @@ public:
 		output.pushP(CMD_SNDPLAY0+idx, $ name, 0);
 	}
 
-	void SetTitle(char * name) {
+	void SetTitle(const char * name) {
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
 

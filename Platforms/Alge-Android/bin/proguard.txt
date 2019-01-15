@@ -1,5 +1,5 @@
 # view AndroidManifest.xml #generated:5
--keep class com.acnodelabs.alge.PoppingTime.PoppingTime { <init>(...); }
+-keep class com.acnodelabs.alge.Planets.Planets { <init>(...); }
 
 # view AndroidManifest.xml #generated:11
 -keep class com.admob.android.ads.AdMobActivity { <init>(...); }
