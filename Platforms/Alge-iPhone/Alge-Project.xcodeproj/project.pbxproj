@@ -211,6 +211,7 @@
 		9C735D48142A3C85003CEA26 /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon114.png; sourceTree = "<group>"; };
 		9C759F9221858FD9004DA337 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../AlgeSDK/SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
 		9C759F9321858FD9004DA337 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camera.h; path = ../../../AlgeSDK/SDKSRC/Base/camera.h; sourceTree = "<group>"; };
+		9C9D5B1621CE829300277EED /* CANDIDATE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CANDIDATE.h; path = "../Alge-Android/jni/CANDIDATE.h"; sourceTree = "<group>"; };
 		9CB01E3113A9B899006EDC2E /* AccelerometerFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerFilter.h; sourceTree = "<group>"; };
 		9CB01E3213A9B899006EDC2E /* AccelerometerFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerFilter.m; sourceTree = "<group>"; };
 		9CB1BBD21432EFC00032B4BD /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
@@ -390,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
+				9C9D5B1621CE829300277EED /* CANDIDATE.h */,
 				9CB46B2E21C94DD900C68147 /* Ivank_Box2D.Assets */,
 				9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */,
 				9C380B0A21C123E900E4D705 /* PoppingTime.Assets */,

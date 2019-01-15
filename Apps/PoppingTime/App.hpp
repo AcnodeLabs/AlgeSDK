@@ -213,6 +213,7 @@ public:
 
    }
 
-    virtual i2 getBackgroundSize() { return size_nokia5; }
+    virtual i2 getBackgroundSize() { return size_iphone5s; }
+	//virtual i2 getBackgroundSize() { return i2(resolutionReported.x, resolutionReported.y); }
 };
 

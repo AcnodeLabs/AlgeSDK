@@ -1089,6 +1089,7 @@ public:
 	}
 
 	void PlaySndEx(char * name, int idx = 0) {
+        return;
 		output.pushP(CMD_SNDSET0+idx, $ name, 0);
 		output.pushP(CMD_SNDPLAY0+idx, $ name, 0);
 	}
