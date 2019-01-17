@@ -19,12 +19,7 @@ type jni\CANDIDATE.h
 
 echo ------------------ SLATE CLEAN
 %SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
-del assets\*.jpg
-del assets\*.png
-del assets\*.alx
-del assets\*.tga
-del assets\*.wav
-del assets\*.mp3
+del /Q assets\*.*
 
 echo ------------------ COPYING APP ASSETS
 cd assets
@@ -45,7 +40,7 @@ del jni\CANDIDATE.h
 
 del AndroidManifest.xml
 cfgdroid.exe %PACKAGE% %APPNAME% %VERSION% %SDKVER% %ORIENT% > AndroidManifest.xml
-notepad AndroidManifest.xml
+echo notepad AndroidManifest.xml
 copy jni\CAND.h jni\CANDIDATE.h
 del jni\CAND.h
 

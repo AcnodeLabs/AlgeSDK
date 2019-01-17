@@ -503,11 +503,11 @@ public:
     }
     
     string Name() {
+		if (UUID.size()) return UUID;
         if (Text.size()) return Text;
         if (!resInf) return "Undefined";
-        if (resInf->name.size()) return resInf->name;
+       // if (resInf->name.size()) return resInf->name;
         if (resInf) if (resInf->alx.size()) return resInf->alx;
-        if (UUID.size()) return UUID;
         return "Undefined";
     }
     

@@ -21,10 +21,11 @@ class CNetMsg {
 	natsMsg             *msg = NULL;
 	natsStatus          s;
 
-	string prepend;
+	
 	string appname;
 		
 public:
+	string prepend;
 
 	CNetMsg();
 	
@@ -33,6 +34,7 @@ public:
 	void Post(string subject, string data);
 
 	int Connect(string _appname, bool local);
+	int Connect(string _appname);
 
 	int SubscribeConnect(string _appname, bool local);
 

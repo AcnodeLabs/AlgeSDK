@@ -197,7 +197,7 @@ public:
 
 	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
 		ResourceInf res;
-		res.Set(name, name + ".alx", name + ".tga", scale);
+		res.Set(string(name), string(name + ".alx"), string(name + ".tga"), scale);
 		g->modelId = LoadModel(g, &res);
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
@@ -695,7 +695,7 @@ public:
 		string("\r\n[w]ireframe [t/f] 'wf: wireframe false'") +
 		string("\r\n[v]erbosity [l/m/h] 'vx: verbosity low/med/high' default is medium") +
 		"";
-	char verbosity_lmh;
+	char verbosity_lmh = 'h';
 	long counter = 0;
 	int fps = 30;
 
@@ -907,7 +907,7 @@ public:
 		//
 #define DV /1.0
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) {
-			ViewOrthoBegin(aCamera.windowWidth, aCamera.windowHeight, 1000); // Must End
+			ViewOrthoBegin(aCamera.windowWidth, aCamera.windowHeight, 1100); // Must End
 		}
 
 		if (aCamera.GetMode() == Camera::CAM_MODE_FPS) {

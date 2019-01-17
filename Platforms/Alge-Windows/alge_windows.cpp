@@ -681,10 +681,10 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 		FindAppName();
 	}
 
-	//MessageBoxA(NULL, "Use a.e to monitor\na.e.In to command", "NATS", MB_ICONINFORMATION);
-	//netmsg.Connect("e");// "Evolution");
+	MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
+	netmsg.Connect("e", true);// "Evolution");
 	
-	//callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
+	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 
 	// Ask The User Which Screen Mode They Prefer
 	//if (MessageBox(NULL,"Would You Like To Run In Fullscreen Mode?", "Start FullScreen?",MB_YESNO|MB_ICONQUESTION)==IDNO)

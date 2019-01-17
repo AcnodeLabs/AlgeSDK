@@ -1,1 +1,3 @@
-﻿  CNetMsg.vcxproj -> D:\AlgeSDK_JD3C\Tools\CNetMsg\Debug\CNetMsg.lib
+﻿  CNetMsg.cpp
+  stdafx.cpp
+  CNetMsg.vcxproj -> C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Tools\CNetMsg\Debug\CNetMsg.lib

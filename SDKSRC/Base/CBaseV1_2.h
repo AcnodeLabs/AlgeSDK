@@ -80,17 +80,17 @@ public:
 	std::string alx;
 	ResourceInf() {};
 	ResourceInf(std::string _name, std::string _alx, std::string _tex, float _scale = 1.0f) {
-		Set(_name, _alx, _tex, _scale);
+		Set(string(_name), string(_alx), string(_tex), _scale);
 	};
 
 	void Set(std::string _filed_name, float _scale = 1.0f) {
-		Set(_filed_name, _filed_name + ".alx", _filed_name + ".tga", _scale);
+		Set(string(_filed_name), string(_filed_name + ".alx"), string(_filed_name + ".tga"), _scale);
 	}
 
 	void Set(std::string _name, std::string _alx, std::string _tex, float _scale = 1.0f) {
-		tex = _tex;
-		name = _name;
-		alx = _alx;
+		tex = string(_tex);
+		name = string(_name);
+		alx = string(_alx);
 		scale = _scale;
 	}
 };
@@ -2632,8 +2632,8 @@ void AlInit(int TYPE, std::string title = "") {
 #endif
 	}
 
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_FRONT);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_FRONT);
 
 	//To add these two lines refactoring would be needed: PENDED
 	//if (TYPE == STANDARD_2D) game.AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);

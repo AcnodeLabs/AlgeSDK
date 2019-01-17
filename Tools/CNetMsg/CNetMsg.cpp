@@ -1,6 +1,7 @@
 #ifdef WIN32
 #include "stdafx.h"
 #endif
+
 #ifndef NO_NATS
 
 #ifdef CNETMSG_CPP_INCLUDED

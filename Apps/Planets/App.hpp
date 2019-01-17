@@ -24,7 +24,7 @@ class App : public AlgeApp {
 	vector<GameObject*> planets;
 	GameObject mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune, pluto;
 
-	GameObject voyager, starman;
+	GameObject voyager, starman, skydome;
 	GameObject satringsFr, satringsBk;
 	
 	int scene, nLoops;
@@ -39,8 +39,7 @@ public:
 		GameObject* g =  AddResource(&pl, name, scale);
 		g->JuiceType = JuiceTypes::JUICE_ROTY;
 		g->JuiceSpeed *= 2;
-	//	_.Hide();
-		
+		g->Hide();
 		pnum++;
 	}
 
@@ -55,35 +54,58 @@ public:
 		//glEnable(GL_CULL_FACE);
 		//glCullFace(GL_BACK);
 
-		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-
+		AddDefaultCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 	
-		AddPlanet(mercury, "mercury", 100 * 3);
-		AddPlanet(venus, "venus", 90 * 3);
-		AddPlanet(earth, "earth", 80 * 3);
-		AddPlanet(moon, "moon", 70 * 3);
-		AddPlanet(mars, "mars", 60 * 3);
-		AddPlanet(jupiter, "jupiter", 50 * 3);
-		AddPlanet(saturn, "saturn", 40 * 3);
-		AddPlanet(uranus, "uranus", 30 * 3);
-		AddPlanet(neptune, "neptune", 20 * 3);
-		//AddPlanet(pluto, "pluto", 10 * 3);
+	/*	RotatedX	178.200287	float
+		RotatedY	-194.000092	float
+		RotatedZ	0.000000000	float
+		Position	{x=604.876953 y=354.229645 z=125.174820 }	SF3dVector
+	*/
+
+		aCamera.Position = { 605,354,125 };
+		aCamera.RotatedX = 178.2;
+		aCamera.RotatedY = -194.0;
+		aCamera.RotatedZ = 0.0;
+
+
+		AddPlanet(mercury, "e", 7 * 3);
+		AddPlanet(venus, "ea", 10 * 3);
+		AddPlanet(earth, "earth", 10 * 3);
+		AddPlanet(moon, "earthe", 4 * 3);
+		AddPlanet(mars, "mars", 10 * 3);
+		AddPlanet(jupiter, "jupiter", 20 * 3);
+		AddPlanet(saturn, "ee", 15 * 3);
+		AddPlanet(uranus, "eart", 10 * 3);
+		AddPlanet(neptune, "eeee", 10 * 3);
+		AddPlanet(pluto, "eeeee", 6 * 3);
+	///	AddPlanet(voyager, "hh", 10 * 3);
 
 		pnum_max = pnum;
+
+		with AddResource(&skydome, "etetet", 1200);
+		_.JuiceType = JuiceTypes::JUICE_ROTXYZ;
+		_.JuiceSpeed *= 2;
+		_with
 					
-		with AddResource(&satringsFr, "satrings", 500);
+		with AddResource(&satringsFr, "erererer", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
 		_.JuiceSpeed *= 2;
 		_.Hide();
 		_with
 
-		with AddResource(&satringsBk, "satrings", 500);
+		with AddResource(&satringsBk, "erererer", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
 		_.JuiceSpeed *= 2;
 		_.Hide();
 		_with
+		
 
 		//w.e.f
+
+		
+
+		pnum_max = pnum;
+
 		pnum = 0;
 		planets.at(pnum)->Show();
 	}
