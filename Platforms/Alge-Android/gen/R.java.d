@@ -1,8 +1,8 @@
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\gen\com\acnodelabs\alge\Planets\R.java \
- : C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\drawable-ldpi\icon.png \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\layout\main.xml \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\raw\acnode.jpg \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\attrs.xml \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\strings.xml \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\res\drawable-ldpi\icon.png \
-C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\AndroidManifest.xml \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\gen\com\acnodelabs\alge\SettingsScreen\R.java \
+ : c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\drawable-ldpi\icon.png \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\layout\main.xml \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\raw\acnode.jpg \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\attrs.xml \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\strings.xml \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\res\drawable-ldpi\icon.png \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\AndroidManifest.xml \

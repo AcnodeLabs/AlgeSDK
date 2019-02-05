@@ -29,7 +29,7 @@ public:
     }
     
     CAxis() {
-        setSize(100);
+        setSize(10);
     }
     
 #ifndef NOGL
@@ -57,7 +57,7 @@ public:
         _mDesign.colorZ = colorZ;
     }
     
-    void glDrawGroundAsGrid(void)
+    void glDrawGroundAsGrid(int gridsize = 10000)
     {
         static GLfloat color[4];
         glGetFloatv(GL_CURRENT_COLOR, color);
@@ -70,9 +70,9 @@ public:
 #ifdef WIN32
         glBegin (GL_LINES);
         glColor3f (0.2f,0.2f,0.2f);
-        for (float x=-100.; x<=100.; x+=10) {
-            ORG[0] = x;ORG[1] = 0;ORG[2] = -100;
-            XP[0] = x;XP[1] = 0;XP[2] = +100;
+        for (float x=-gridsize; x<= gridsize; x+= gridsize/ 10) {
+            ORG[0] = x;ORG[1] = 0;ORG[2] = -gridsize;
+            XP[0] = x;XP[1] = 0;XP[2] = +gridsize;
             glVertex3fv (ORG);
             glVertex3fv (XP );
         }
@@ -81,9 +81,9 @@ public:
         //glVertex3fv (ORG);
         //glVertex3fv (YP );
         //glColor3f (_mDesign.colorZ.x,_mDesign.colorZ.y,_mDesign.colorZ.z);
-        for (float z=-100.; z<=100.; z+=10) {
-            ORG[0] = -100;ORG[1] = 0;ORG[2] = z;
-            ZP[0] = +100;ZP[1] = 0;ZP[2] = z;
+        for (float z=-gridsize; z<= gridsize; z+=gridsize/10) {
+            ORG[0] = -gridsize;ORG[1] = 0;ORG[2] = z;
+            ZP[0] = +gridsize;ZP[1] = 0;ZP[2] = z;
             glVertex3fv (ORG);
             glVertex3fv (ZP );
         }

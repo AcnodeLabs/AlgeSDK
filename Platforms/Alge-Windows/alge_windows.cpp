@@ -9,6 +9,10 @@
 #include <winerror.h>
 #pragma comment(lib, "comctl32.lib")
 #include  <commctrl.h>
+#include <Gamepad.h>
+
+#define NO_BOX2D
+
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
 #include "CANDIDATE.h"
@@ -78,7 +82,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 	glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
 	glLoadIdentity();									// Reset The Projection Matrix
 	// Calculate The Aspect Ratio Of The Window
-	gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.001f,10000.0f);
+	gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.001f,100000000.0f);
 	//glOrtho(0, width, height, 0, 0, -100);
 	glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
 	glLoadIdentity();									// Reset The Modelview Matrix
@@ -114,14 +118,47 @@ void UpdateMouse(float deltaT) {
 	SetCursorPos(p_mouse.x, p_mouse.y);
 	ShowCursor(true);
 }
+//GamePad Fucntions
+static bool verbose = false;
+
+void onButtonDown(struct Gamepad_device * device, unsigned int buttonID, double timestamp, void * context) {
+	game.input.pushI(CMD_GAMEPAD_EVENT, buttonID, (int)(context));
+	if (verbose) {
+		printf("Button %u down on device %u at %f with context %p\n", buttonID, device->deviceID, timestamp, context);
+	}
+}
+
+void onButtonUp(struct Gamepad_device * device, unsigned int buttonID, double timestamp, void * context) {
+	if (verbose) {
+		printf("Button %u up on device %u at %f with context %p\n", buttonID, device->deviceID, timestamp, context);
+	}
+}
+
+void onAxisMoved(struct Gamepad_device * device, unsigned int axisID, float value, float lastValue, double timestamp, void * context) {
+	if (verbose) {
+		printf("Axis %u moved from %f to %f on device %u at %f with context %p\n", axisID, lastValue, value, device->deviceID, timestamp, context);
+	}
+}
+
+void onDeviceAttached(struct Gamepad_device * device, void * context) {
+	if (verbose) {
+		printf("Device ID %u attached (vendor = 0x%X; product = 0x%X) with context %p\n", device->deviceID, device->vendorID, device->productID, context);
+	}
+}
+
+void onDeviceRemoved(struct Gamepad_device * device, void * context) {
+	if (verbose) {
+		printf("Device ID %u removed with context %p\n", device->deviceID, context);
+	}
+}
+//end of GamePad Fucntions
+
 //////////////////////~~ Mouse reposition
 
 int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 {
 	static char fullres[64];
-	game.edit = false;
-
-
+	
 	float newTime = time1.getElapsedTimeInSec();
 	deltaT =  newTime - lastTime;
 	if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
@@ -137,6 +174,7 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		
 	if (game.nGobs > 0) {
 		UpdateMouse(deltaT);
+		Gamepad_processEvents();
 		game.Render(deltaT, aX, aY, aZ);
 	}
 	
@@ -193,7 +231,13 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		else if (command == CMD_TITLE) {
 			SetWindowTextA(hWnd, (LPCSTR)p1);
 		}
-		else if (command == CMD_TEXSET0) {
+		else if (command == CMD_USEGAMEPAD) {
+			Gamepad_deviceAttachFunc(onDeviceAttached, (void *)0x1);
+			Gamepad_deviceRemoveFunc(onDeviceRemoved, (void *)0x2);
+			Gamepad_buttonDownFunc(onButtonDown, (void *)0x3);
+			Gamepad_buttonUpFunc(onButtonUp, (void *)0x4);
+			Gamepad_axisMoveFunc(onAxisMoved, (void *)0x5);
+			Gamepad_init();
 		}
 	}
 
@@ -600,6 +644,7 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 		case WM_CLOSE:								// Did We Receive A Close Message?
 		{
 			PostQuitMessage(0);						// Send A Quit Message
+			Gamepad_shutdown();
 			return 0;								// Jump Back
 		}
 
@@ -650,6 +695,7 @@ void FindAppName() {
 				if (r) {
 					r[0] = 0;
 					sprintf_s(ResPath, 256, "%s.Assets/Data/", line);
+					//sprintf_s(ResPath, 256, "%s.Assets/", line); //resource mgr is programmed to seek /Data within it and fallback to it
 				}
 				break;
 			}
@@ -681,7 +727,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 		FindAppName();
 	}
 
-	MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
+	//MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
 	netmsg.Connect("e", true);// "Evolution");
 	
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme

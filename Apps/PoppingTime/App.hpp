@@ -19,6 +19,7 @@ class App : public AlgeApp {
 	bool soundedOuch;
 	int scene, nLoops, numBaloons, iScore, nRemaining;
 	PoppingTimeLayer1 l1;
+	DPad dPad;
 
 public:
 	
@@ -66,6 +67,11 @@ public:
 		//MakeBaloons(numBaloons);
 		MakeBaloons(3);
 	
+		with dPad.LoadIn(this);
+			_.color = { 1,1,1 };
+			_.Hide();
+		 _with
+
 	//	output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
 		output.pushP(CMD_SNDSET1, $ "pop.wav");
 		output.pushP(CMD_SNDSET2, $ "aargh.wav");
@@ -122,7 +128,9 @@ public:
 	// First Intro Screen
 	virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
 		if (gob->is(heli) || gob->is(spikey) || gob->is(fan) || gob->is(baloons)) inhibitRender = true;
-		if (onTouched("bg")) scene = 1;
+		if (onTouched("bg")) {
+			scene = 1; dPad.Show();
+		}
 	}
 	// GamePlay Screen
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {

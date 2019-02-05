@@ -188,35 +188,38 @@ public:
 		}
 	}
 
-	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-		AddResource(g, name);
+	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
+		AddResource(g, alx_name,tga_name);
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
 		return g;
 	}
 
 
-	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
+	GameObject* AddResource(GameObject* g, string tag, float scale = 1.0) {
+		return AddResource(g, tag, tag, scale);
+	}
+
+	GameObject* AddResource(GameObject* g, string alx_name, string tga_name, float scale = 1.0) {
 		ResourceInf res;
-		res.Set(string(name), string(name + ".alx"), string(name + ".tga"), scale);
+		res.Set(string(tga_name), string(alx_name + ".alx"), string(tga_name + ".tga"), scale);
 		g->modelId = LoadModel(g, &res);
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;
 		g->originalScale = scale;
         g->JuiceType = 0;
-        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), name);
-        g->UUID = name + ".G";
-
+        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
+        g->UUID = alx_name +"_"+ tga_name + ".G";
 		return g;
 	}
 	
 
-    GameObject* AddClusterResource(int n_duplicates, string tag, GameObject* array_of_objects, float size, int juiceType,bool useinstancing=false) {
+    GameObject* AddClusterResource(int n_duplicates, string alxtag, string tgatag, GameObject* array_of_objects, float size, int juiceType,bool useinstancing=false) {
         GameObject* g;
         if (!useinstancing) {
             for (int i = 0; i < n_duplicates; i++) {
                 g = (array_of_objects+i);
-                AddResource(g, tag, size);
+                AddResource(g, alxtag,tgatag, size);
                 g->pos.x = randm() * rightSide;
                 g->pos.y = randm() * bottomSide;
                 g->applyTopLeftCorrectionWRTorigin = false;
@@ -350,7 +353,7 @@ public:
 		case JuiceTypes::JUICE_SCALE_IN:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
-			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
+			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed); else break;
 			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) juice_sine_angle = 0;
 			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
 			break;
@@ -381,6 +384,8 @@ public:
 	}
 
 	void renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1) {
+
+		if (iit->hud) hudBegin(0, rightSide, bottomSide, 0);
 
 		PosRotScale* it = iit->getInstancePtr(instanceNo);
 
@@ -450,16 +455,16 @@ public:
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
 
-		
 		glColor3f(it->color.x, it->color.y, it->color.z);
-		
-		
+
 		if (edit) {
-			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
+			xyz.glDraw();
 		}
-		else {
-			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, false);
-		}
+	
+		if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
+		
+		if (iit->hud) hudEnd();
+
 		if (iit->billboard) alBillboardEnd();
 
 		it->JuiceType = m_j;//restore *1 <<<<<
@@ -602,9 +607,30 @@ public:
 
 		//allow for touch processing call onTouched(uuid) to determine if body is touched
 		processInput(cmd, deltaT);
-			
+		
+		bool postTouchData = true;
+		if (postTouchData) {
+			if (cmd->command == CMD_TOUCH_START) {
+				td.x = cmd->i1; td.y = cmd->i2;
+				ostringstream oss;
+				oss << "[TOUCHED x:" << cmd->i1 << " y:" << cmd->i2;
+#ifdef NATS_EXTERN
+				netmsg.Post(oss.str());
+#endif
+			}
+			if (cmd->command == CMD_TOUCH_END) {
+				ostringstream oss;
+				CRect r(td.y, cmd->i2, td.x, cmd->i2);
+				oss << r.toStr();
+#ifdef NATS_EXTERN
+				netmsg.Post( "[" + oss.str() + "]]"); 
+#endif
+				td = { 0,0 };
+			}
+		}
 
 	}
+	i2 td;//used by postTouchData
 
 	bool onTouched(string name) {
 		if (touched_bodies.size() > 0) {
@@ -701,7 +727,7 @@ public:
 
 	//THINK ON WHICH REMOTE COMMANDS ARE TO BE HANDLED AND WHY
 	void preProcessRemoteCommand(char* r) {
-		static char tval[128];
+		char tval[512];
 		if (r[0] == 'r') //report
 		{
 			if (r[1] == 'f') {// fps
@@ -719,7 +745,7 @@ public:
 			if (r[1] == '2') aCamera.SetMode(Camera::CAM_MODE_2D);
 
 
-			CCamera* cc = ((CCamera*)(&aCamera));
+			Camera* cc = ((Camera*)(&aCamera));
 			float val = 0.0f;
 			if (r[2] >= '0' && r[2] <= '9') val = atof(r + 2);
 
@@ -730,18 +756,41 @@ public:
 			if (r[1] == 's') cc->StrafeRight(val);
 		};
 
+		if (r[0] == 'd') //dump
+		{
+			if (r[1] == 'v') //vertices
+			{
+				//char vertices[256];
+				for (int i = 0; i < rm.models[selectedObject->modelId]->n_vertices; i+=3) {
+					//sprintf_s(vertices, 128, "v[%d]={%.2f,%.2f,%.2f}", rm.models[selectedObject->modelId]->vertex_array[i], rm.models[selectedObject->modelId]->vertex_array[i + 1], rm.models[selectedObject->modelId]->vertex_array[i + 2]);
+			//		netmsg.Post("string(vertices)");
+					if (i > 64) {
+			//			netmsg.Post(" Dump Stopped beyond i>64");
+						break;
+					}
+				}
+			}
+		};
+
 		if (r[0] == 's') //Select
 		{
 			int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
-			if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
-			selectedObject = gobs[iSelectedObject];
+			if (iSel != '?' - 'a') {
+				if (iSel >= 0 && iSel <= nGobs) {
+					iSelectedObject = iSel;
+					selectedObject = gobs[iSelectedObject];
+				}
+			}
+			string name = selectedObject->Name();
+//			netmsg.Post("Selected " +name);
 		};
 
 		if (r[0] == 't') //transform
 		{
-			int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
-			if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
+			//int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
+			//if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
 			float val = atof(r + 2);
+			bool cam = (iSelectedObject==0);
 
 			if (r[1] == 's') //Scale
 			{
@@ -752,21 +801,41 @@ public:
 			if (r[1] == 'x') //Transform Move x
 			{
 				selectedObject->pos.x += val;
+				if (cam) aCamera.Position.x = selectedObject->pos.x;
 			};
 
 			if (r[1] == 'y') //Transform Move y
 			{
 				selectedObject->pos.y += val;
+				if (cam) aCamera.Position.y = selectedObject->pos.y;
 			};
 
 			if (r[1] == 'z') //Transform Move z
 			{
 				selectedObject->pos.z += val;
+				if (cam) aCamera.Position.z = selectedObject->pos.z;
+			};
+
+			if (r[1] == 'r') //Transform Rot r
+			{
+				selectedObject->rot.x += val;
+				if (cam) aCamera.RotatedX = selectedObject->rot.x;
+			};
+
+			if (r[1] == 't') //Transform Rot t
+			{
+				selectedObject->rot.y += val;
+				if (cam) aCamera.RotatedY = selectedObject->rot.y;
+			};
+
+			if (r[1] == 'p') //Transform Rot p
+			{
+				selectedObject->rot.z += val;
+				if (cam) aCamera.RotatedZ = selectedObject->rot.z;
 			};
 
 			if (r[1] == 'o' && r[2] == '?') //Transform Move z
 			{
-				char tval[128];
 				sprintf(tval, "tranform(Object:%s) pos(%.1f,%.1f,%.1f) rot(%.1f,%.1f,%.1f) scale(%.1f)",
 					selectedObject->Name().c_str(),
 					selectedObject->pos.x, selectedObject->pos.y, selectedObject->pos.z,
@@ -779,11 +848,12 @@ public:
 			};
 			if (r[1] == 'c' && r[2] == '?') //Transform Move z
 			{
-				char tval[128];
-				sprintf(tval, "tranform(Camera:%s) pos(%.1f,%.1f,%.1f) rot(%.1f,%.1f,%.1f)",
-					aCamera.Name().c_str(),
-					aCamera.pos.x, aCamera.pos.y, aCamera.pos.z,
-					aCamera.rot.x, aCamera.rot.y, aCamera.rot.z
+				static char tval[200];
+				f3 campos = aCamera.getPos();
+				f3 camrot = aCamera.getRot();
+				sprintf(tval, "PosRotScale({%.1f,%.1f,%.1f},{%.1f,%.1f,%.1f})",
+					campos.x, campos.y, campos.z,
+					camrot.x, camrot.x, camrot.z
 				);
 #ifndef NO_NATS
 				netmsg.Post(string(tval));
@@ -795,9 +865,9 @@ public:
 		if (r[0] == 'n') //Select
 		{
 			string names = "gobs {";
-			char c[64];
-			for (int i = 0; i < nGobs; i++) {
-				sprintf(c, "%c:%s\r\n", ('a' + i), gobs[i]->Name().c_str());
+			char c[128];
+			for (int i = 1; i < nGobs; i++) {
+				sprintf(c, "%c%c:%s {%d vets}\r\n", gobs[i]->hidden?'_':' ',('a' + i), gobs[i]->Name().c_str(), rm.models[gobs[i]->modelId]->n_vertices);
 				names += string(c);
 			}
 			names += "}";
@@ -815,11 +885,13 @@ public:
 		};
 
 		if (r[0] == 'w') wireframe = (r[1] == 't');
+		if (r[0] == 'e') edit = (r[1] == 't');
 
 		if (r[0] == 'v') //Verbosity 
 		{
 			verbosity_lmh = r[1];
 		};
+
 	}
 
 	void preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f) {
@@ -851,11 +923,11 @@ public:
 			//aCamera.pos.y = aCamera.Position.y;
 			//aCamera.pos.z = aCamera.Position.y;
 
-			aCamera.MoveForwards(p->i1 / -10.0);
+			aCamera.MoveForwards(p->i1 / -1.0);
 		}
 
 		///UNREAL STYLE MOUSE
-		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCH_START || p->command == CMD_TOUCHMOVER) {
+		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCHMOVER) {
 			if (p->command != CMD_TOUCH_START)
 				if (mousepass1) { mX = p->i1; mY = p->i2; mousepass1 = false; return; }
 			DirectionMagnitude dm = getMouseIntent(p->i1, p->i2, mX, mY);
@@ -884,6 +956,14 @@ public:
 	char msg[128];
     
 	void Render(float deltaT, int aX, int aY, int aZ) {
+
+		
+	//	((GameObject*)&aCamera)->Update(deltaT);
+
+		if (aCamera.GetMode() == Camera::CAM_MODE_LOOKAT) {
+			int t = aZ;
+		}
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		if (!edit) {
@@ -891,9 +971,15 @@ public:
 			if (!paused) {
 				Update(deltaT);
 				UpdatePhysics(deltaT);
-				for (int i = 1; i < nGobs; i++) {
+				
+				for (int i = 0; i < nGobs; i++) {
 					GameObject* it = gobs[i];
 					it->Update(deltaT);
+					if (i == 0) {
+						aCamera.Update(deltaT, &aCamera);
+					//	aCamera.OnPosRotChanged();
+						
+					}
 					if (it->m_actionComplete) {
 						it->m_actionComplete = false;
 						onActionComplete(it);
@@ -919,16 +1005,20 @@ public:
 		}
 
 		if (aCamera.GetMode() == Camera::CAM_MODE_LOOKAT) {
-
+			glLoadIdentity();
+			f3 cp = aCamera.getPos();
+			aluLookAt(cp.x, cp.y, cp.z, selectedObject->pos.x, selectedObject->pos.y, selectedObject->pos.z, 0., 1., 0.);
+			aCamera.pos = cp;
 		}
 
 		//glClearColor(0.0,0,0.,1);
 		//	
-
 		//processInput(p);
+		
 		renderObjects(deltaT, true);
 		fps = 1.0 / deltaT;
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) ViewOrthoEnd();
+	//	if (!edit) aCamera.PosRot({ aCamera.pos.x, aCamera.pos.y, aCamera.pos.z }, { aCamera.rot.x, aCamera.rot.y, aCamera.rot.z });
 	}
 
 	int LoadModel(GameObject* go, ResourceInf* res) {
@@ -943,8 +1033,7 @@ public:
 
 	////////////////////////////PHYSICS 2D Box2D
 	//Phys2D phys;
-	
-	
+		
 	int velocityIterations = 6;
 	int positionIterations = 2;
 
@@ -1173,13 +1262,162 @@ public:
     GameObject obj;
     string tag;// filenames derived from tag
     
-    void AddResourceWithSound(AlgeApp* app, string tag, float scale) {
+    void AddResourceWithSound(AlgeApp* app, string alx_tag, string tga_tag, float scale) {
         obj.JuiceType = 0;
-        app->AddResource(&obj, tag, scale);
+        app->AddResource(&obj, alx_tag, tga_tag, scale);
         app->PlaySnd(tag+".wav");
     }
 };
 class FontObject : public GameObject {
 public:
     
+};
+
+
+class DPad : public GameObject {
+	
+public:
+	string m_tag;
+	DPad() {};
+
+	DPad(string filetag) {
+		m_tag = filetag;
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz) {
+		if (m_tag.size() == 0) m_tag = "dpad";
+		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
+		pos.x = thiz->rightSide - 64;
+		JuiceType = JuiceTypes::JUICE_SCALE_IN;
+		JuiceSpeed *= 2;
+		color = f3(0.9, 0.9, 0.9);
+		center = pos;
+		hud = true;
+		return d;
+	}
+
+	f3 center;
+
+	void Update(float deltaT) {
+		if (wasTouched()) {
+			int t = UDLRC();
+		}
+		else {
+			rot.x = 0;
+			rot.y = 0;
+			rot.z = 0;
+		}
+	}
+
+	//udlr = updownleftrt
+	char UDLRC() {
+		f2 p = posTouched();
+		f2 pt = f2(p.x - center.x, center.y - p.y);
+		int row, col = 0;
+		int a = this->m_width / 6;
+		if (pt.x <= -a) col = 0; else
+			if (pt.x > -a && pt.x < a) col = 1; else
+				if (pt.x >= a) col = 2;
+
+		if (pt.y >= a) row = 0; else
+			if (pt.y > -a && pt.y < a) row = 1; else
+				if (pt.y <= a) row = 2;
+
+		char ret = ' ';
+		if (col == 0) {
+			if (row == 1) ret = 'L';
+		}
+		if (col == 1) {
+			if (row == 0) ret = 'U';
+			if (row == 1) ret = 'C';
+			if (row == 2) ret = 'D';
+		}
+		if (col == 2) {
+			if (row == 1) ret = 'R';
+		}
+
+		Swivel(ret);
+
+		return ret;
+	}
+
+	void Swivel(char dir) {
+		rot.z = 0;
+		if (dir == 'U') rot.x = -20;
+		if (dir == 'D') rot.x = +20;
+		if (dir == 'L') rot.y = -20;
+		if (dir == 'R') rot.y = +20;
+		if (dir == 'C' || dir == ' ') {
+			rot.x = 0; rot.y = 0;
+		}
+	}
+
+
+};
+
+class DPointer : public GameObject {
+	string m_tag;
+
+public:
+
+	DPointer() {};
+
+	DPointer(string filetag) {
+		m_tag = filetag;
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz) {
+		if (m_tag.size() == 0) m_tag = "pointer";
+		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
+		pos.x = thiz->rightSide - 64;
+		pos.y = thiz->topSide + 64;
+		JuiceType = JuiceTypes::JUICE_SCALE_IN;
+		JuiceSpeed *= 2;
+		color = f3(0.9, 0.9, 0.9);
+		hud = true;
+		return d;
+	}
+	
+	void SetDirection(int angle) {
+		rot.z = angle;//??
+	//	rot.x = degrees;//??
+	//	rot.y = degrees;//??
+	}
+	
+};
+
+//added 04 Feb 2014
+class SettingScreen : public GameObject {
+	DPointer p1,p2,p3;
+public:
+	string m_tag;
+	float x[3] = {0,0,0};
+
+	SettingScreen() {};
+
+	SettingScreen(string filetag) {
+		m_tag = filetag;
+	}
+	f3 center;
+
+	GameObject* LoadIn(AlgeApp* thiz) {
+		if (m_tag.size() == 0) m_tag = "settings";
+		GameObject* d = thiz->AddResource(this, m_tag);
+		center = pos;
+		//hud = true;
+		p1.LoadIn(thiz);
+		p2.LoadIn(thiz);
+		p3.LoadIn(thiz);
+		p1.pos.y = thiz->bottomSide * 2 / 5;
+		p2.pos.y = thiz->bottomSide * 3 / 5;
+		p3.pos.y = thiz->bottomSide * 4 / 5;
+		p1.pos.x = thiz->originX;
+		p2.pos.x = thiz->originX;
+		p3.pos.x = thiz->originX;
+		p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+		p2.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+		p3.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+		return d;
+	}
+
 };
