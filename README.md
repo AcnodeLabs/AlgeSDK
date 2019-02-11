@@ -1,4 +1,5 @@
-## AlgeSDK: A Truly Native Crossplatform framework 
+## AlgeSDK: A truly native crossplatform graphics framework (iOS, macOS, Windows, Android, Linux, QNX) 
+## Languages involved - SDK Core :C/C++/Ada  Platforms=+ Java/ObjectiveC
 ### **A FrameWork for Developing Platform Independent 3D Graphics Applications**
 
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
