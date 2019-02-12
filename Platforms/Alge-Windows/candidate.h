@@ -9,5 +9,5 @@
 
 ALGE SDK WINDOWS:: CANDIDATE.h
 */
-#include "../../Apps/SettingsScreen/App.hpp"
+#include "../../Apps/PoppingTime/App.hpp"
 class App;

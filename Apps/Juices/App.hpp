@@ -115,7 +115,7 @@ public:
 				if (currentJuice >= JuiceTypes::JUICES_END) currentJuice = 1;
 				sel->JuiceType = currentJuice;
 				jn = JuiceName(currentJuice);
-				output.pushP(CMD_TOAST, $ jn.c_str(), 0);
+			//	output.pushP(CMD_TOAST, $ jn.c_str(), 0);
 			}
 			if (p->i1 == AL_KEY_DOWN) {
 				currentJuice--;

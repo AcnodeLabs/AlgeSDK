@@ -14,6 +14,7 @@
 
 class App : public AlgeApp {
 	
+	SettingScreen settings;
     GameObject bg, ratings,spikey, heli, baloons, fan, p_time, score;
 	
 	bool soundedOuch;
@@ -81,6 +82,9 @@ public:
 
 		wall_msg = "Go";
 		glDisable(GL_CULL_FACE);
+		settings.LoadIn(this, false);
+		
+		output.pushI(CMD_USEGAMEPAD, 0, 0);
 	}
 
 	void MakeBaloons(int n) {
@@ -102,13 +106,39 @@ public:
 			bool ok = true;
 		}
 	}
+
+	void DropSpikey() {
+		if (spikey.animPos.active) return;
+		spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
+		output.pushP(CMD_SNDPLAY3, $ "drop.wav");
+		settings.ShowHide(true);
+	}
+	 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-		if (onTouched("spikey") || onTouched("heli")) {
-			spikey.transitionTof2(f2(bg.posTouched().x, bottomSide), 500);
-			output.pushP(CMD_SNDPLAY3, $ "drop.wav");
+
+		if (cmd->command == CMD_GAMEPAD_EVENT) {
+			if (scene == 0) { scene++; return; }
+
+			if (cmd->i1 == MyGamePad::EventTypes::BTN) {
+				if (cmd->i2 == MyGamePad::EventCodes::BTN_X) DropSpikey();
+			}
 		}
 
+		if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
+			if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
+				bg.m_touchedX = (cmd->i2 == MyGamePad::EventCodes::PAD_LT? leftSide:rightSide);
+				heli.transitionTof2(f2(bg.m_touchedX, heli.pos.y), 500);
+			}
+			if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
+				bg.m_touchedY = (cmd->i2 == MyGamePad::EventCodes::PAD_UP ? topSide : bottomSide);
+				heli.transitionTof2(f2(heli.pos.x, bg.m_touchedY), 500);
+			}
+		}
+
+		if (onTouched("spikey") || onTouched("heli")) DropSpikey();
+
 		if (onTouched("bg") || onTouched("baloon")) {
+							
 			heli.JuiceType = 0;
 			heli.transitionTof2(bg.posTouched(), 500);
 				
@@ -164,7 +194,8 @@ public:
 		if (gob->is(heli)) {
 			static bool faceRight = false;
 			bool moveRight = bg.posTouched().x > heli.pos.x;
-			if (bg.wasTouched()) faceRight = moveRight;
+			//if (bg.wasTouched()) 
+			faceRight = moveRight;
 			heli.rot.y = faceRight ? 180 : 0;
 		}
 

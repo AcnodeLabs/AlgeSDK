@@ -94,7 +94,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
-	game.Init0(ResPath+1,'W');
+	game.Init0(ResPath + 1, 'W');
 	ReSizeGLScene(game.getBackgroundSize().x, game.getBackgroundSize().y);
 	return TRUE;										// Initialization Went OK
 }
@@ -118,11 +118,13 @@ void UpdateMouse(float deltaT) {
 	SetCursorPos(p_mouse.x, p_mouse.y);
 	ShowCursor(true);
 }
+
+
 //GamePad Fucntions
 static bool verbose = false;
 
 void onButtonDown(struct Gamepad_device * device, unsigned int buttonID, double timestamp, void * context) {
-	game.input.pushI(CMD_GAMEPAD_EVENT, buttonID, (int)(context));
+	game.input.pushI(CMD_GAMEPAD_EVENT, MyGamePad::get_i1(buttonID,-1,0,context), MyGamePad::get_i2(buttonID, -1, 0, context));
 	if (verbose) {
 		printf("Button %u down on device %u at %f with context %p\n", buttonID, device->deviceID, timestamp, context);
 	}
@@ -135,6 +137,7 @@ void onButtonUp(struct Gamepad_device * device, unsigned int buttonID, double ti
 }
 
 void onAxisMoved(struct Gamepad_device * device, unsigned int axisID, float value, float lastValue, double timestamp, void * context) {
+	if (lastValue==0) game.input.pushI(CMD_GAMEPAD_EVENT, MyGamePad::get_i1(-1, axisID, value, context), MyGamePad::get_i2(-1, axisID, value, context));
 	if (verbose) {
 		printf("Axis %u moved from %f to %f on device %u at %f with context %p\n", axisID, lastValue, value, device->deviceID, timestamp, context);
 	}
@@ -175,7 +178,9 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 	if (game.nGobs > 0) {
 		UpdateMouse(deltaT);
 		Gamepad_processEvents();
+	
 		game.Render(deltaT, aX, aY, aZ);
+
 	}
 	
 
@@ -710,6 +715,7 @@ void onRemoteCommand(string cmd) {
 	game.input.pushP(CMD_REMOTE_COMMAND, (void*)remoteCommand, 0);
 }
 
+
 int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 					_In_opt_ HINSTANCE	hPrevInstance,		// Previous Instance
 					_In_ LPSTR		lpCmdLine,			// Command Line Parameters
@@ -717,6 +723,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 {
 	MSG		msg;									// Windows Message Structure
 	BOOL	done=FALSE;								// Bool Variable To Exit Loop
+
 
 	//nats1();
 	r_mouse = 2.0;//means mouse update will not disturb 
@@ -810,6 +817,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	KillGLWindow();									// Kill The Window
 	return (msg.wParam);							// Exit The Program
 }
+
 
 extern "C++" void alAlphaTest(int set_unset, float fA) {
 	if (set_unset) {

@@ -335,7 +335,9 @@ public:
 #endif
     
     void Show() {hidden = false;}
-    void Hide() {hidden = true;}
+    void Hide() {
+		hidden = true;
+	}
     void HideFor(GameObject* next) {
         Hide();
         next->hidden = false;

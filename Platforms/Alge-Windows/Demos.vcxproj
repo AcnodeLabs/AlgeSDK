@@ -49,7 +49,7 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ExecutablePath)</ExecutablePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;..\..\..\libstem_gamepad\source\gamepad;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;..\..\..\libstem_gamepad\source\gamepad;..\..\..\imgui;$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Tools\CNetMsg\Debug;libs\win_x86_dbg;..\..\..\libstem_gamepad\msvc\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

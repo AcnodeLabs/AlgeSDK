@@ -122,8 +122,17 @@ public:
 	}
 
 	void Deinit() {}
+	
+	
+	virtual void onSettingChanged(string setting, int value) {
+		static char msg[128];
+		sprintf(msg, "%s = %d", setting.c_str(), value);
+		output.pushP(CMD_SETTINGS_SCREEN, $ msg , $ msg);
+	}
 
 	virtual i2 getBackgroundSize() {
+		static char msg[128];
+		sprintf(msg, "Bg Size %d = %d", resolutionReported.x, resolutionReported.y);
 		return i2(resolutionReported.x,resolutionReported.y);
 	}
 
@@ -1355,20 +1364,20 @@ public:
 
 };
 
-class DPointer : public GameObject {
+class DBtn : public GameObject {
 	string m_tag;
 
 public:
 
-	DPointer() {};
+	DBtn() {};
 
-	DPointer(string filetag) {
+	DBtn(string filetag) {
 		m_tag = filetag;
 	}
 
-	GameObject* LoadIn(AlgeApp* thiz) {
+	GameObject* LoadIn(AlgeApp* thiz, string m_tag, float scale = 1.0) {
 		if (m_tag.size() == 0) m_tag = "pointer";
-		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
+		GameObject* d = thiz->AddResource(this, m_tag, m_tag, scale);
 		pos.x = thiz->rightSide - 64;
 		pos.y = thiz->topSide + 64;
 		JuiceType = JuiceTypes::JUICE_SCALE_IN;
@@ -1386,37 +1395,271 @@ public:
 	
 };
 
+
+// specs:
+// i1=='p' AND i2= 'U' : Pad Up //'D' : Pad Dn // 'L' : Pad Up //'R' : Pad Dn 
+// i1=='b' AND i2 = buttonID
+class MyGamePad {
+public:
+	enum EventTypes { PAD = 'p', BTN = 'b' };
+	enum EventCodes { PAD_UP = 'U', PAD_DN = 'D', PAD_LT = 'L', PAD_RT = 'R' , BTN_DELTA=0, BTN_SQUARE=3, BTN_X=2, BTN_CIRCLE=1 };
+
+	static char get_i1(unsigned int buttonID, int axisID, float value, void* context) {
+		static char i1 = '?';
+		if (buttonID == -1) {//axis
+			i1 = EventTypes::PAD;
+		}
+		else {//button
+			i1 = EventTypes::BTN;
+		}
+		return i1;
+	}
+	
+	static char get_i2(unsigned int buttonID, int axisID, float value, void* context) {
+		static char i2 = '?';
+		if (buttonID == -1) {//axis
+			if (axisID == 5 && value == -1.0) i2 = PAD_UP;
+			if (axisID == 5 && value == 1.0) i2 = PAD_DN;
+			if (axisID == 4 && value == 1.0) i2 = PAD_RT;
+			if (axisID == 4 && value == -1.0) i2 = PAD_LT;
+		}
+		else {//button
+			i2 = buttonID;
+		}
+		return i2;
+	}
+};
+
 //added 04 Feb 2014
 class SettingScreen : public GameObject {
-	DPointer p1,p2,p3;
+	DBtn p1, p2, p3;
+	DBtn ico;
 public:
 	string m_tag;
 	float x[3] = {0,0,0};
+	DBtn *p;
 
 	SettingScreen() {};
+	int ix[3] = { 0,0,0 };
+
+	
+	int getSettingOfOrientation() {
+		return ix[1] == 0 ? 0 : 1;
+	}
+
+	int getSettingOfDifficulty() {
+		return ix[2];
+	}
+
+	int getSettingOfControlMode() {
+		return ix[0];
+	}
 
 	SettingScreen(string filetag) {
 		m_tag = filetag;
 	}
 	f3 center;
+	
+	void RollDown() { 
+		p->JuiceType = 0;
+		if (p == &p2) p = &p3;
+		if (p == &p1) p = &p2;
+		p->JuiceType = JUICE_PULSATE_FULLY;
+	}
+	void RollUp() {
+		p->JuiceType = 0;
+		if (p == &p2) p = &p1;
+		if (p == &p3) p = &p2;
+		p->JuiceType = JUICE_PULSATE_FULLY;
+	}
 
-	GameObject* LoadIn(AlgeApp* thiz) {
+	int Which() {
+		int which = 0;
+		if (p1.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 1;
+		if (p2.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 2;
+		if (p3.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 3;
+		return which;
+	}
+
+	void NotifyApp(int ptrId) {
+		
+		switch (ptrId) {
+		case 0:
+			m_thiz->onSettingChanged("controlmode", getSettingOfControlMode());
+				break;
+		case 1:
+			m_thiz->onSettingChanged("orientation", getSettingOfOrientation());
+				break;
+		case 2:
+			m_thiz->onSettingChanged("difficulty", getSettingOfDifficulty());
+				break;
+
+		default:
+			break;
+		}
+	}
+
+
+
+	void RollLeft() {
+		int ip = Which() - 1;
+		ix[ip]--;
+		if (ix[ip] < 0) ix[ip] = 0;
+		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
+		NotifyApp(ip);
+	}
+
+	void RollRight() {
+		int ip = Which() - 1;
+		ix[ip]++;
+		if (ix[ip] > 2) ix[ip] = 2;
+		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
+		NotifyApp(ip);
+	}
+
+	void processInput(int command, i2 loc) {
+		if (command == CMD_GAMEPAD_EVENT) {
+			processGamePadEvent(loc.x,loc.y);
+		}
+		if (command == CMD_TOUCH_START) {
+			processTouchEvent(loc);
+		}
+	}
+
+	void processGamePadEvent(char type, char code) {
+		if (type==MyGamePad::EventTypes::PAD) {
+			if (code == MyGamePad::EventCodes::PAD_UP) RollUp();
+			if (code == MyGamePad::EventCodes::PAD_DN) RollDown();
+			if (code == MyGamePad::EventCodes::PAD_LT) RollLeft();
+			if (code == MyGamePad::EventCodes::PAD_RT) RollRight();
+		}
+	}
+		
+
+	string processTouchEvent(i2 point) {
+		ostringstream oss;
+		//find the nearest anchor
+		int Yoffset = (anchors_v1[1][0].y - anchors_v1[0][0].y) / 2;
+		i2 b(point.x,point.y + Yoffset);//Buttons are Yoffset above pointers
+		
+		bool hit(false);
+		int im =0, jm=0, dmin = 1E3;
+		for (int i=0; i<3; i++) for (int j = 0; j < 3; j++) {
+			i2 a = anchors_v1[i][j];
+			//float pt2[2];
+			//pt2[0] = float(a.x);
+			//pt2[1] = float(a.y);
+			float dist = sqrt(pow(a.x - b.x, 2.0) + pow(a.y - b.y, 2.0));// sqrt(1234); CAnimator::Dist(pt1, pt2);
+			oss << dist << "/" << dmin << ";";
+			if (dist < dmin) {
+				dmin = dist; im = i; jm = j; hit = true;
+			}
+		}
+	//	oss << "im:" << im << " jm:" << jm << " hit:" << hit;
+		//move to achor and select it
+		f3 pt(anchors_v1[im][jm]);
+	//	oss << " pt:"<< pt.str("%.1f,%.1f");
+		p->JuiceType = 0;
+		if (p1.pos.y == pt.y) { p1.pos = pt; p = &p1; NotifyApp(0);}
+		if (p2.pos.y == pt.y) { p2.pos = pt; p = &p2; NotifyApp(1);}
+		if (p3.pos.y == pt.y) { p3.pos = pt; p = &p3; NotifyApp(2);}
+		p->JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+
+		if (point.x < 240 && point.y>583) {
+			this->JuiceType = JuiceTypes::JUICE_FLY_OUT;
+			p1.Hide();
+			p2.Hide();
+			p3.Hide();
+		}
+
+		return oss.str();
+	}
+
+//	#include "../../Apps/SettingsScreen.Assets/Data/settings.anchors"
+	//anchorpoints for settings.alx & settings.tga screen
+	i2 anch_size = { 1024,512 };
+	i2 anchors_v1[3][3] = {
+	 {{465,185},{655,185},{835,185}},
+	 {{465,315},{655,315},{655,315}},
+	 {{465,460},{655,460},{845,460}}
+	};//row col
+
+	void setXY(int col) {
+		p1.pos.x = anchors_v1[0][col].x;
+		p2.pos.x = anchors_v1[1][col].x;
+		p3.pos.x = anchors_v1[2][col].x;
+		p1.pos.y = anchors_v1[0][col].y;// thiz->bottomSide * 2 / 6;
+		p2.pos.y = anchors_v1[1][col].y;// thiz->bottomSide * 4 / 6;
+		p3.pos.y = anchors_v1[2][col].y;// thiz->bottomSide * 5 / 6;
+	}
+
+	void resize2Dmodel(CModel* m, i2 now) {
+		for (int i = 0; i < m->n_vertices * 3; i += 3) {
+			f3 vert = f3(m->vertex_array[i] / float(anch_size.x) * float(now.x), m->vertex_array[i + 1] / float(anch_size.y) * float(now.y), m->vertex_array[i + 2]);
+			m->vertex_array[i] =  vert.x ;
+			m->vertex_array[i + 1] = vert.y ;
+		}
+	}
+	AlgeApp* m_thiz;
+
+	void ShowHide(bool showit) {
+		
+		if (showit == true) {
+			ico.Hide();
+			setXY(0);
+			//	GameObject::Show();
+
+			p = &p1;
+			p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+			p1.JuiceSpeed = 2; p2.JuiceSpeed = 2; p3.JuiceSpeed = 2;
+			p2.JuiceType = 0;
+			p3.JuiceType = 0;
+			this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
+			p1.scale = 0.8;
+			p2.scale = p1.scale;
+			p3.scale = p1.scale;
+
+			p1.Show();
+			p2.Show();
+			p3.Show();
+			Show();
+		}
+		else {
+			ico.Show();
+			this->JuiceType = 0;
+			Hide();
+			p1.Hide();
+			p2.Hide();
+			p3.Hide();
+		}
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz, bool showit = true) {
+		m_thiz = thiz;
+		i2 now = thiz->getBackgroundSize();
+		//rescale anchordata as per our new screensize
+		for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++) {
+			float xo = anchors_v1[i][j].x;
+			float yo = anchors_v1[i][j].y;
+			float xn = (xo / anch_size.x)*now.x;
+			float yn = (yo / anch_size.y)*now.y;
+			anchors_v1[i][j].x = int(xn);
+			anchors_v1[i][j].y = int(yn);
+		}
+
 		if (m_tag.size() == 0) m_tag = "settings";
-		GameObject* d = thiz->AddResource(this, m_tag);
+		GameObject* d = thiz->AddResource(this, m_tag, 1.);
+	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
+
 		center = pos;
 		//hud = true;
-		p1.LoadIn(thiz);
-		p2.LoadIn(thiz);
-		p3.LoadIn(thiz);
-		p1.pos.y = thiz->bottomSide * 2 / 5;
-		p2.pos.y = thiz->bottomSide * 3 / 5;
-		p3.pos.y = thiz->bottomSide * 4 / 5;
-		p1.pos.x = thiz->originX;
-		p2.pos.x = thiz->originX;
-		p3.pos.x = thiz->originX;
-		p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
-		p2.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
-		p3.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+		p1.LoadIn(thiz, "pointer");
+		p2.LoadIn(thiz, "pointer");
+		p3.LoadIn(thiz, "pointer");
+		ico.LoadIn(thiz, "settings_icon", 0.75);
+		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
+		ico.JuiceSpeed *= 3;
+		ShowHide(showit);//hidden 
 		return d;
 	}
 
