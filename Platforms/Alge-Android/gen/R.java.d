@@ -1,4 +1,4 @@
-c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\gen\com\acnodelabs\alge\SettingsScreen\R.java \
+c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\gen\com\acnodelabs\alge\PoppingTime\R.java \
  : c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\drawable-ldpi\icon.png \
 c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\layout\main.xml \
 c:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\raw\acnode.jpg \

@@ -40,7 +40,7 @@ del jni\CANDIDATE.h
 
 del AndroidManifest.xml
 cfgdroid.exe %PACKAGE% %APPNAME% %VERSION% %SDKVER% %ORIENT% > AndroidManifest.xml
-echo notepad AndroidManifest.xml
+notepad AndroidManifest.xml
 copy jni\CAND.h jni\CANDIDATE.h
 del jni\CAND.h
 

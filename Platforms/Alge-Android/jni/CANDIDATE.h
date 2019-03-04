@@ -11,6 +11,6 @@
 ALGE SDK ANDROID:: CANDIDATE.h
 */
 
-#define CANDIDATE "../../../Apps/SettingsScreen/App.hpp"
+#define CANDIDATE "../../../Apps/PoppingTime/App.hpp"
 class App;
 class AlgeApp;

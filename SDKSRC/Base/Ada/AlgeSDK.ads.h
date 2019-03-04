@@ -28,11 +28,13 @@ public:
 	int x, y;
 	void clear() { x = 0; y = 0; }
 	i2() { clear(); };
+	
 	i2(int mx, int my) { x = mx; y = my; }
     void CopyFrom(i2 p) { x = p.x; y = p.y; }
     i2 half() { return i2(x / 2, y / 2); }
 	i2 twice() { return i2(x * 2, y * 2); }
     i2 flip() {return i2(y,x);}
+	bool isZero() { return (x == 0 && y == 0); }
 };
 
 
@@ -352,10 +354,10 @@ public:
 		return (this->modelId == other.modelId);
 	}
 
-    bool isOneOf(vector<GameObject> other) {
+    bool isOneOf(vector<GameObject*> other) {
         bool ret = false;
         for (auto o : other) {
-            ret = ret || (this->modelId == o.modelId);
+            ret = ret || (this->modelId == o->modelId);
         }
         return ret;
     }
@@ -496,15 +498,9 @@ public:
 		return &prsInstances.back();
     }
     
-    //getInstance(0) returns main object instances are at 1..n
-    //deprecated : use Inst(#) instead
+    //getInstance(-1) returns main object instances are at 0..n-1
     PosRotScale* getInstancePtr(int n) {
         if (n < 0 || n >= int(prsInstances.size())) return ((PosRotScale*)this);
-        return &prsInstances.at(n);
-    }
-    
-    PosRotScale* Inst(int n) {
-        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     

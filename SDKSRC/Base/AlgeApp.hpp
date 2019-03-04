@@ -40,6 +40,7 @@ public:
     
 	CAxis xyz;
 
+	
 	short currentscene;
 
 	int iUnassigned;
@@ -48,10 +49,14 @@ public:
 	PEG input, output;
 	CResourceManager rm;
 	aL10 AL10;
+	int backgroundModelId = 0;//used for dimming
 
 	bool inhibitRender = false;
 	bool edit;
 	bool wireframe = false;
+	float timeMultiplier = 1.0;
+
+
 
 	Camera aCamera;
 
@@ -124,10 +129,47 @@ public:
 	void Deinit() {}
 	
 	
+	void setTiming(float timeMultiplier) {
+		this->timeMultiplier = timeMultiplier;
+	}
+
+	vector<bool> dimmed_states;
+
+	//caution: No New objects should be added between the Dim and Undim call
+	void Dim() {
+		int i0 = 0;
+		for (int i = 0; i < nGobs; i++) {
+			dimmed_states.push_back(gobs[i]->hidden); 
+			if (gobs[i]->modelId != backgroundModelId) gobs[i]->hidden = true;
+			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+				dimmed_states.push_back(gobs[i]->prsInstances[j].hidden);
+				gobs[i]->prsInstances[j].hidden = true;
+				i0++;
+			}
+			i0++;
+		}
+		paused = true;
+	}
+
+	void UnDim() {
+		if (dimmed_states.size()<=0) return;
+		int i0 = 0;
+		for (int i = 0; i < nGobs; i++) {
+			gobs[i]->hidden = dimmed_states[i0];
+			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+				gobs[i]->prsInstances[j].hidden = dimmed_states[i0];
+				i0++;
+			}
+			i0++;
+		}
+		dimmed_states.clear();
+		paused = false;
+	}
+
 	virtual void onSettingChanged(string setting, int value) {
-		static char msg[128];
-		sprintf(msg, "%s = %d", setting.c_str(), value);
-		output.pushP(CMD_SETTINGS_SCREEN, $ msg , $ msg);
+	//	static char msg[128];
+	//	static int value;
+	//	output.pushP(CMD_SETTINGS_SCREEN, $ setting.c_str() , (void*) value);
 	}
 
 	virtual i2 getBackgroundSize() {
@@ -301,14 +343,13 @@ public:
 	}
 
 	float juice_sine_angle;
-
+	int juice_frame[JuiceTypes::JUICES_END];
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
 		
 		static float elapsed = 0;
-		static int juice_frame[JuiceTypes::JUICES_END];
-
+		
 		elapsed += deltaT;
 		static float timeNote;
 		static bool timeNoted = false;
@@ -329,7 +370,7 @@ public:
 		case JuiceTypes::JUICE_DIE:
 			if (jprs->JuiceDuration>0) {
 				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
-				juice_sine_angle += 0.5f;
+				juice_sine_angle += (0.5f * jprs->JuiceSpeed);
 				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
 				jprs->JuiceDuration -= deltaT;
 			}	else {
@@ -376,6 +417,12 @@ public:
 			if (jprs->pos.x > -999) {
 				if (x_pos_on_arrival==-1) x_pos_on_arrival = jprs->pos.x;
 				jprs->pos.x -= (1000.0 * deltaT * jprs->JuiceSpeed);
+				if (jprs->pos.x < (-x_pos_on_arrival)) {
+					jprs->pos.x = x_pos_on_arrival;
+					jprs->JuiceType = JuiceTypes::JUICE_CANCEL;
+					juice_sine_angle = 0;
+					jprs->hidden = true;
+				}
 			}
 			else {
 				//jprs->pos.x = x_pos_on_arrival;
@@ -384,10 +431,12 @@ public:
 				//jprs->hidden = false;
 			}
 			break;
+		
 		case JuiceTypes::JUICE_CANCEL:
 			jprs->rot.x = 0;
 			jprs->rot.y = 0;
 			jprs->rot.z = 0;
+			juice_sine_angle = 0;
 			break;
 		}
 	}
@@ -442,9 +491,11 @@ public:
 
 
 		//it->Update(deltaT);
+		if (iit->modelId == backgroundModelId) {
+			iit->color = (dimmed_states.size() > 0) ? f3(0.5, 0.5, 0.5) : f3(1, 1, 1);
+		}
+
 		UpdateCustom(iit, instanceNo, deltaT);
-		
-	
 		
 //	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
 //			PosRotScale* i = iit->getInstancePtr(instanceNo);
@@ -470,7 +521,7 @@ public:
 			xyz.glDraw();
 		}
 	
-		if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
+		if (iit->modelId >= 0 && !inhibitRender && !iit->hidden) alDrawModel(iit->modelId, wireframe);
 		
 		if (iit->hud) hudEnd();
 
@@ -517,8 +568,7 @@ public:
         preProcessInput(cmd, deltaT);
         
 		touched_bodies.clear();
-        
-		
+        		
         int picked = -1;
         
         for (int i = 1; i < nGobs; i++) {
@@ -791,7 +841,9 @@ public:
 				}
 			}
 			string name = selectedObject->Name();
-//			netmsg.Post("Selected " +name);
+#ifndef NO_NATS
+			netmsg.Post("Selected " +name);
+#endif
 		};
 
 		if (r[0] == 't') //transform
@@ -876,7 +928,7 @@ public:
 			string names = "gobs {";
 			char c[128];
 			for (int i = 1; i < nGobs; i++) {
-				sprintf(c, "%c%c:%s {%d vets}\r\n", gobs[i]->hidden?'_':' ',('a' + i), gobs[i]->Name().c_str(), rm.models[gobs[i]->modelId]->n_vertices);
+				sprintf(c, "%c%c:%s i/%d {%d vets}\r\n", gobs[i]->hidden?'-':'+',('a' + i), gobs[i]->Name().c_str(), gobs[i]->prsInstances.size(), gobs[i]->modelId>=0?rm.models[gobs[i]->modelId]->n_vertices:0);
 				names += string(c);
 			}
 			names += "}";
@@ -899,6 +951,16 @@ public:
 		if (r[0] == 'v') //Verbosity 
 		{
 			verbosity_lmh = r[1];
+		};
+
+		if (r[0] == 'p' || r[1] == 'h') //hidden status Property Hidden
+		{
+			static ostringstream oss;
+			oss.clear();
+			oss << "slected object " << gobs[iSelectedObject]->UUID	<< " is "<< ((gobs[iSelectedObject]->hidden==true)?"":"NOT") << " hidden";
+#ifndef NO_NATS
+			netmsg.Post(oss.str());
+#endif
 		};
 
 	}
@@ -964,8 +1026,27 @@ public:
 
 	char msg[128];
     
-	void Render(float deltaT, int aX, int aY, int aZ) {
+	class RunningAverage {
+		unsigned long int counter = 0;
+		long double sum = 0;
+		long double r;
+	public:
+		void Put(float x) {
+			counter++;
+			sum += x;
+			r = sum / counter;
+		}
+		float Get() {
+			return float(r);
+		}
+	};
 
+	RunningAverage tAvg;
+
+	void Render(float dT, int aX, int aY, int aZ) {
+
+		tAvg.Put(dT);
+		float deltaT = tAvg.Get() * timeMultiplier;  //Always use running average of incoming dt
 		
 	//	((GameObject*)&aCamera)->Update(deltaT);
 
@@ -975,8 +1056,10 @@ public:
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		timeVar += deltaT;
+
 		if (!edit) {
-			timeVar += deltaT;
+			
 			if (!paused) {
 				Update(deltaT);
 				UpdatePhysics(deltaT);
@@ -1286,18 +1369,21 @@ public:
 class DPad : public GameObject {
 	
 public:
+	bool enabled;
+
 	string m_tag;
 	DPad() {};
 
 	DPad(string filetag) {
 		m_tag = filetag;
+		enabled = true;
 	}
 
 	GameObject* LoadIn(AlgeApp* thiz) {
 		if (m_tag.size() == 0) m_tag = "dpad";
 		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
 		pos.x = thiz->rightSide - 64;
-		JuiceType = JuiceTypes::JUICE_SCALE_IN;
+		JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
 		JuiceSpeed *= 2;
 		color = f3(0.9, 0.9, 0.9);
 		center = pos;
@@ -1307,7 +1393,8 @@ public:
 
 	f3 center;
 
-	void Update(float deltaT) {
+	virtual void Update(float deltaT) {
+
 		if (wasTouched()) {
 			int t = UDLRC();
 		}
@@ -1345,7 +1432,7 @@ public:
 			if (row == 1) ret = 'R';
 		}
 
-		Swivel(ret);
+	//	Swivel(ret);
 
 		return ret;
 	}
@@ -1432,9 +1519,15 @@ public:
 
 //added 04 Feb 2014
 class SettingScreen : public GameObject {
+public:
+
+	enum EventNames {
+		Exiting = 1
+	};
+
 	DBtn p1, p2, p3;
 	DBtn ico;
-public:
+
 	string m_tag;
 	float x[3] = {0,0,0};
 	DBtn *p;
@@ -1443,20 +1536,33 @@ public:
 	int ix[3] = { 0,0,0 };
 
 	
-	int getSettingOfOrientation() {
+	int getIdFromX(int x) {
+		if (abs(x - 1056) < 50) return 2;
+		if (abs(x - 818) < 50) return 1;
+		if (abs(x - 581) < 50) return 0;
+		return -1;
+	}
+	/*
+	int getSettingOfOrientation(int posx) {
+		ix[1] = getIdFromX(posx);
 		return ix[1] == 0 ? 0 : 1;
 	}
 
-	int getSettingOfDifficulty() {
+	int getSettingOfDifficulty(int posx) {
+		ix[2] = getIdFromX(posx); 
 		return ix[2];
 	}
 
-	int getSettingOfControlMode() {
+	int getSettingOfControlMode(int posx) {
+		ix[0] = getIdFromX(posx); 
 		return ix[0];
 	}
-
+	*/
 	SettingScreen(string filetag) {
 		m_tag = filetag;
+		valueControlMethod = 1;// Touch
+		valueDifficulty = 0;//Easy
+		valueOrientation = 0;//landscape
 	}
 	f3 center;
 	
@@ -1481,19 +1587,18 @@ public:
 		return which;
 	}
 
-	void NotifyApp(int ptrId) {
+	void NotifyApp(int ptrId, int posx) {
 		
 		switch (ptrId) {
 		case 0:
-			m_thiz->onSettingChanged("controlmode", getSettingOfControlMode());
-				break;
+			valueControlMethod = getIdFromX(posx);
+			break;
 		case 1:
-			m_thiz->onSettingChanged("orientation", getSettingOfOrientation());
-				break;
+			valueOrientation = getIdFromX(posx);
+			break;
 		case 2:
-			m_thiz->onSettingChanged("difficulty", getSettingOfDifficulty());
-				break;
-
+			valueDifficulty = getIdFromX(posx);
+			break;
 		default:
 			break;
 		}
@@ -1506,7 +1611,7 @@ public:
 		ix[ip]--;
 		if (ix[ip] < 0) ix[ip] = 0;
 		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
-		NotifyApp(ip);
+		NotifyApp(ip, p->pos.x);
 	}
 
 	void RollRight() {
@@ -1514,14 +1619,16 @@ public:
 		ix[ip]++;
 		if (ix[ip] > 2) ix[ip] = 2;
 		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
-		NotifyApp(ip);
+		NotifyApp(ip, p->pos.x);
 	}
 
 	void processInput(int command, i2 loc) {
+		if (p->hidden) return;
 		if (command == CMD_GAMEPAD_EVENT) {
 			processGamePadEvent(loc.x,loc.y);
 		}
 		if (command == CMD_TOUCH_START) {
+			
 			processTouchEvent(loc);
 		}
 	}
@@ -1538,6 +1645,39 @@ public:
 
 	string processTouchEvent(i2 point) {
 		ostringstream oss;
+
+		if (m_thiz->onTouched("settings_icon")) {
+			//	SetVisible(true,backgr);
+				oss << "settings_icon;";
+				m_thiz->input.pushI(CMD_SETTINGS_SCREEN, 1, 1);
+				return oss.str();
+		}
+		
+		
+		CRect btnExit;
+		btnExit.Right = (0.1875 * m_thiz->rightSide);
+		btnExit.Top = (0.8 * m_thiz->bottomSide);
+		
+		if (point.x < btnExit.Right && point.y> btnExit.Top) {
+			this->JuiceType = JuiceTypes::JUICE_FLY_OUT;
+			p1.Hide();
+			p2.Hide();
+			p3.Hide();
+			ico.Show();
+			valueControlMethod = getIdFromX(p1.pos.x);
+			valueOrientation = getIdFromX(p2.pos.x);
+			valueDifficulty = getIdFromX(p3.pos.x);
+			lastPointerX[0] = p1.pos.x;
+			lastPointerX[1] = p2.pos.x;
+			lastPointerX[2] = p3.pos.x;
+			oss << "settings_exit[ controlmode=" << valueControlMethod << ", orientation=" << valueOrientation << ", difficulty=" << valueDifficulty << "];";
+			m_thiz->UnDim();
+			m_thiz->onSettingChanged("controlmode", valueControlMethod);
+			m_thiz->onSettingChanged("orientation", valueOrientation);
+			m_thiz->onSettingChanged("difficulty", valueDifficulty);
+			return oss.str();
+		}
+				
 		//find the nearest anchor
 		int Yoffset = (anchors_v1[1][0].y - anchors_v1[0][0].y) / 2;
 		i2 b(point.x,point.y + Yoffset);//Buttons are Yoffset above pointers
@@ -1560,17 +1700,12 @@ public:
 		f3 pt(anchors_v1[im][jm]);
 	//	oss << " pt:"<< pt.str("%.1f,%.1f");
 		p->JuiceType = 0;
-		if (p1.pos.y == pt.y) { p1.pos = pt; p = &p1; NotifyApp(0);}
-		if (p2.pos.y == pt.y) { p2.pos = pt; p = &p2; NotifyApp(1);}
-		if (p3.pos.y == pt.y) { p3.pos = pt; p = &p3; NotifyApp(2);}
+		if (p1.pos.y == pt.y) { p1.pos = pt; p = &p1; NotifyApp(0, p1.pos.x);}
+		if (p2.pos.y == pt.y) { p2.pos = pt; p = &p2; NotifyApp(1, p2.pos.x);}
+		if (p3.pos.y == pt.y) { p3.pos = pt; p = &p3; NotifyApp(2, p3.pos.x);}
 		p->JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
 
-		if (point.x < 240 && point.y>583) {
-			this->JuiceType = JuiceTypes::JUICE_FLY_OUT;
-			p1.Hide();
-			p2.Hide();
-			p3.Hide();
-		}
+
 
 		return oss.str();
 	}
@@ -1579,10 +1714,13 @@ public:
 	//anchorpoints for settings.alx & settings.tga screen
 	i2 anch_size = { 1024,512 };
 	i2 anchors_v1[3][3] = {
-	 {{465,185},{655,185},{835,185}},
-	 {{465,315},{655,315},{655,315}},
+	 {{465,185},{655,185},{655,185}},
+	 {{465,315},{465,315},{465,315}},
 	 {{465,460},{655,460},{845,460}}
 	};//row col
+
+	short valueOrientation = 0, valueDifficulty = 0, valueControlMethod = 1;
+	int lastPointerX[3];
 
 	void setXY(int col) {
 		p1.pos.x = anchors_v1[0][col].x;
@@ -1601,40 +1739,49 @@ public:
 		}
 	}
 	AlgeApp* m_thiz;
+	GameObject* backgr;
+	bool m_visible;
 
-	void ShowHide(bool showit) {
-		
+	void SetVisible(bool showit, GameObject* background = nullptr) {
+		m_visible = showit;
+		if (showit) m_thiz->Dim(); else m_thiz->UnDim();
+
 		if (showit == true) {
-			ico.Hide();
+
+			//ico.Hide();
 			setXY(0);
 			//	GameObject::Show();
 
-			p = &p1;
 			p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
 			p1.JuiceSpeed = 2; p2.JuiceSpeed = 2; p3.JuiceSpeed = 2;
 			p2.JuiceType = 0;
 			p3.JuiceType = 0;
 			this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
+			m_thiz->juice_sine_angle = 0; //resetPrev Juice Effect 
 			p1.scale = 0.8;
 			p2.scale = p1.scale;
 			p3.scale = p1.scale;
-
 			p1.Show();
 			p2.Show();
 			p3.Show();
+
+			p1.pos.x = lastPointerX[0];
+			p2.pos.x = lastPointerX[1];
+			p3.pos.x = lastPointerX[2];
+			
 			Show();
-		}
-		else {
+		} 	else {
 			ico.Show();
 			this->JuiceType = 0;
-			Hide();
+			HideFor(&ico);
 			p1.Hide();
 			p2.Hide();
 			p3.Hide();
 		}
+		
 	}
 
-	GameObject* LoadIn(AlgeApp* thiz, bool showit = true) {
+	GameObject* LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true) {
 		m_thiz = thiz;
 		i2 now = thiz->getBackgroundSize();
 		//rescale anchordata as per our new screensize
@@ -1647,6 +1794,10 @@ public:
 			anchors_v1[i][j].y = int(yn);
 		}
 
+		lastPointerX[0] = anchors_v1[0][valueControlMethod].x;
+		lastPointerX[1] = anchors_v1[1][valueOrientation].x;
+		lastPointerX[2] = anchors_v1[2][valueDifficulty].x;
+		
 		if (m_tag.size() == 0) m_tag = "settings";
 		GameObject* d = thiz->AddResource(this, m_tag, 1.);
 	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
@@ -1656,11 +1807,55 @@ public:
 		p1.LoadIn(thiz, "pointer");
 		p2.LoadIn(thiz, "pointer");
 		p3.LoadIn(thiz, "pointer");
-		ico.LoadIn(thiz, "settings_icon", 0.75);
+		p = &p1;
+		ico.LoadIn(thiz, "settings_icon", 0.6);
 		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
 		ico.JuiceSpeed *= 3;
-		ShowHide(showit);//hidden 
+		SetVisible(showit, background);//hidden 
 		return d;
 	}
+
+};
+
+
+class StartScreen {
+public:
+	GameObject bg;
+	GameObject start;
+
+	GameObject ratings;
+
+	void LoadIn(AlgeApp* thiz) {
+		with thiz->AddResource(&bg, "bg", 1.5);
+			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
+		_with;
+		
+		with thiz->AddResource(&ratings, "ratings", 0.7);
+			_.pos.y = 0.1 * thiz->bottomSide;
+		_with
+
+		with thiz->AddResource(&start, "start", 0.7);
+		 _.pos.y = 0.8 * thiz->bottomSide;
+		 _.JuiceType = JuiceTypes::JUICE_PULSATE;
+		 _.JuiceSpeed =1000;
+		_with
+
+
+	}
+	
+	
+
+	void SetVisible(bool visible = true) {
+		if (visible) {
+			ratings.Show();
+			start.Show();
+			bg.Hide(); 
+		} else {
+			ratings.Hide();
+			start.Hide();
+			bg.Hide();
+		}
+	}
+	
 
 };

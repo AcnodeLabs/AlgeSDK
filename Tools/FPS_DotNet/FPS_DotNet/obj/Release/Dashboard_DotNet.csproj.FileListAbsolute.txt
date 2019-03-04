@@ -1,0 +1,12 @@
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\bin\Release\Dashboard_DotNet.exe.config
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\bin\Release\Dashboard_DotNet.exe
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\bin\Release\Dashboard_DotNet.pdb
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.csprojResolveAssemblyReference.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.Form1.resources
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.Properties.Resources.resources
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.csproj.GenerateResource.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.csproj.CoreCompileInputs.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.csproj.CopyComplete
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.exe
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\obj\Release\Dashboard_DotNet.pdb
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\Dashboard_DotNet\Dashboard_DotNet\bin\Release\NATS.Client.dll
