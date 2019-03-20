@@ -1,0 +1,125 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U canimator%b		canimator.adb		029afcb6 NE OO PK
+
+U canimator%s		canimator.ads		c2ae8497 EE OO PF PK
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-numeri.ads		20160516092928 bb51c45a ada.numerics%s
+D a-nuelfu.ads		20160516092928 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20160516092931 b8fdcb46 ada.numerics.generic_elementary_functions%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D canimator.ads		20170216174918 c146b98b canimator%s
+D canimator.adb		20170216175019 c3dc453d canimator%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092931 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stratt.ads		20160516092927 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 19e8 9|1r6 2r5 10|87r16
+X 3 a-numeri.ads
+16K13*Numerics 32e17 9|1r10 2r9 10|87r20
+X 4 a-nuelfu.ads
+18K22*Elementary_Functions[5|39] 9|1w19 2r18 10|87r29
+X 5 a-ngelfu.ads
+42V13*Sqrt{float} 10|87s50[4|18]
+X 9 canimator.ads
+4K9*CAnimator 29l5 29e14 10|1b14 94l5 94t14
+5A9*vec3(float)<integer> 11r32 24r29 24r47 27r27 27r42 10|50r29 50r47 85r27
+. 85r42
+6A9*vec2(float)<integer> 20r42 20r53 20r66 21r46 21r57 21r70 22r49 22r60
+. 22r73 10|26r42 26r53 26r66 27r10 34r46 34r57 34r70 35r10 42r49 42r60 42r73
+. 43r11
+8R9*CAnim 14e17 24r80 25r42 10|50r80 70r42
+10f4*speed{float} 10|55m11
+11a4*curr{5A9} 10|54m11 74m11 75m11 76m11
+11a10*desired{5A9} 10|57m11 58m11 59m11 74r59 75r59 76r59
+11a19*d{5A9}
+11a22*v{5A9}
+11a24*start{5A9} 10|61m11 62m11 63m11 74r45 75r45 76r45
+12b4*active{boolean} 10|67m11 72r14 77m30
+13f4*r{float} 10|73m11 74r38 75r38 76r38 77r14
+13f6*tTotal{float} 10|52m11 72m62 73r31
+13f13*tRun{float} 10|65m11 72m30 72r42 73r20
+16V13*LinearTween{float} 16>25 16>35 16>49 10|3b13 7l8 7t19 11s14 21s32 23s11
+. 29s14 30s14 74s22 75s22 76s22
+16f25 t{float} 10|3b25 5r10 6r14 6r26
+16f35 starts{float} 10|3b35 6r29
+16f49 ends{float} 10|3b49 5r29 6r16
+17V13*QuadraticEaseIn{float} 17>29 17>39 17>53 10|9b13 12l8 12t23 37s14 38s14
+17f29 t{float} 10|9b29 11r26 11r28
+17f39 starts{float} 10|9b39 11r30
+17f53 ends{float} 10|9b53 11r37
+18V13*QuadraticEaseInOut{float} 18>32 18>42 18>56 10|14b13 24l5 24t23 45s15
+. 46s15
+18f32 t{float} 10|14b32 18r11 20r15
+18f42 starts{float} 10|14b42 19r16 21r50
+18f56 ends{float} 10|14b56 19r23 23r36
+20V13*LinearTween{6A9} 20>25 20>35 20>48 10|26b13 32l8 32t19
+20f25 t{float} 10|26b25 29r26 30r26
+20a35 starts{6A9} 10|26b35 29r29 30r29
+20a48 ends{6A9} 10|26b48 29r40 30r40
+21V13*QuadraticEaseIn{6A9} 21>29 21>39 21>52 10|34b13 40l8 40t23
+21f29 t{float} 10|34b29 37r30 38r30
+21a39 starts{6A9} 10|34b39 37r33 38r33
+21a52 ends{6A9} 10|34b52 37r44 38r44
+22V13*QuadraticEaseInOut{6A9} 22>32 22>42 22>55 10|42b13 48l8 48t26
+22f32 t{float} 10|42b32 45r34 46r34
+22a42 starts{6A9} 10|42b42 45r37 46r37
+22a55 ends{6A9} 10|42b55 45r48 46r48
+24U14*Reset 24>20 24>35 24>53 24=68 10|50b14 68l8 68t13
+24a20 current{5A9} 10|50b20 52r30 54r25 61r27 62r27 63r27
+24a35 desirable{5A9} 10|50b35 52r38 57r25 58r25 59r25
+24f53 speedA{float} 10|50b53 52r51 55r25
+24c68 can<8R9> 10|50b68 52m7 54m7 55m7 57m7 58m7 59m7 61m7 62m7 63m7 65m7
+. 67m7
+25U14*Step 25>19 25=30 10|70b14 78l8 78t12
+25f19 dt{float} 10|70b19 72r49
+25c30 can<8R9> 10|70b30 72r10 72m26 72r38 72m58 73m7 73r16 73r27 74m7 74r34
+. 74r41 74r55 75m7 75r34 75r41 75r55 76m7 76r34 76r41 76r55 77r10 77m26
+26V13*Sqr{float} 26>17 10|80b13 83l8 83t11 88s29 89s29 90s29
+26f17 x{float} 10|80b17 82r14 82r16
+27V13*Dist{float} 27>18 27>33 10|52s25 85b13 92l8 92t12
+27a18 current{5A9} 10|85b18 88r44 89r44 90r44
+27a33 desired{5A9} 10|85b33 88r33 89r33 90r33
+X 10 canimator.adb
+15f7 middle{float} 19m7 21r57 23r29
+16f7 tt{float} 18m7 20m7 21r10 21r44 21r47 22m7 22r12 23r23 23r26
+27a7 r{9|6A9} 29m6 30m6 31r13
+35a7 r{9|6A9} 37m6 38m6 39r13
+43a8 r{9|6A9} 45m7 46m7 47r12
+

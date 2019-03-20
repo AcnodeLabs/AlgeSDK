@@ -1,0 +1,191 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U algesdk%s		algesdk.ads		c94d1b72 EE OO PF PK
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.containers.vectors%s
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W cmd%s			cmd.ads			cmd.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W interfaces.c.strings%s  i-cstrin.adb		i-cstrin.ali
+W system%s		system.ads		system.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-charac.ads		20160516092931 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20160516092927 61e5e089 ada.containers%s
+D a-cgarso.ads		20160516092927 9129bfa8 ada.containers.generic_array_sort%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-convec.adb		20160516092927 1450cb2b ada.containers.vectors%b
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092931 bf4f806b ada.finalization%s
+D a-iteint.ads		20160516092929 7c7305e9 ada.iterator_interfaces%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092931 f15a5ed1 ada.unchecked_deallocation%s
+D algesdk.ads		20170508035824 7ca8b85c algesdk%s
+D cmd.ads		20160920153708 94636470 cmd%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-finmas.ads		20160516092931 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092931 4ff27390 system.finalization_root%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092931 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092927 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092927 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 19e8 19|4r6 4r33 5r6 5r34
+X 4 a-contai.ads
+16K13*Containers 24e19 19|5r10 5r38
+X 7 a-convec.ads
+46k24*Vectors 518e27 19|5w21
+X 11 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[7|72]>
+X 13 a-string.ads
+16K13*Strings 35e16 19|4r10 4r37
+X 15 a-strunb.ads
+76K21*Unbounded 489e26 19|4w18 4r45
+X 19 algesdk.ads
+8K10*AlgeSDK 92l7 92e14
+10f4*FACTOR_RADIANS_DEGREES{float}
+12R9*f3 15e17 19r19 24r19
+14f10*x{float}
+14f12*y{float}
+14f14*z{float}
+17R9*Position 20e17 30r16
+19r10*values{12R9}
+22R9*Orientation 25e17 31r17
+24r10*values{12R9}
+28R9*GameObject 34e17
+30r10*pos{17R9}
+31r10*rot{22R9}
+32i10*modelId{22|35I9}
+33f10*scale{float}
+39U13*alPushI 39>22 39>32 39>40 69b<c,PushI>22
+39i22 cmd{22|35I9}
+39i32 x{22|35I9}
+39i40 y{22|35I9}
+40U13*alPushP 40>22 40>32 40>59 68b<c,PushP>22
+40i22 cmd{22|35I9}
+40p32 param1{23|47P9}
+40p59 param2{23|47P9}
+42U13*alBillBoardBegin 76b<c,alBillBoardBegin>22
+43U13*alBillBoardEnd 77b<c,alBillBoardEnd>22
+44U14*alLoadIdentity 75b<c,alLoadIdentity>22
+45U14*alPushMatrix 88b<c,alPushMatrix>22
+46U14*alPopMatrix 89b<c,alPopMatrix>22
+47U13*alaluLookAt 47>25 47>38 47>50 47>63 47>76 47>89 47>101 47>113 47>125
+. 78b<c,alaluLookAt>22
+47f25 x1{22|64F9}
+47f38 y1{22|64F9}
+47f50 z1{22|64F9}
+47f63 x2{22|64F9}
+47f76 y2{22|64F9}
+47f89 z2{22|64F9}
+47f101 x{22|64F9}
+47f113 y{22|64F9}
+47f125 z{22|64F9}
+48U13*alTriangle 48>24 70b<c,alTriangle>22
+48f24 size{22|64F9}
+49U13*alLine 49>20 49>33 49>46 49>59 71b<c,alLine>22
+49f20 x1{22|64F9}
+49f33 y1{22|64F9}
+49f46 x2{22|64F9}
+49f59 y2{22|64F9}
+50U13*alCircle 50>22 50>33 72b<c,alCircle>22
+50f22 r{22|64F9}
+50i33 segments{22|35I9}
+51U13*alRect 51>20 51>31 73b<c,alRect>22
+51f20 w{22|64F9}
+51f31 h{22|64F9}
+52U13*alLoadModel 52>25 52>49 52>74 52>83 83b<c,alLoadModel>22
+52p25 alx{23|47P9}
+52p49 tga{23|47P9}
+52i74 id{22|35I9}
+52f83 size{22|64F9}
+53U14*alDrawModel 53>27 84b<c,alDrawModel>22
+53i27 id{22|35I9}
+54U14*alScaleModel 54>27 54>36 54>49 54>61 87b<c,alScaleModel>22
+54i27 id{22|35I9}
+54f36 sx{22|64F9}
+54f49 sy{22|64F9}
+54f61 sz{22|64F9}
+55U14*alAlphaTest 55>27 55>40 80b<c,alAlphaTest>22
+55i27 enable{22|35I9}
+55f40 fA{22|64F9}
+56V12*alModelBounds{float} 56>26 79b<c,alModelBounds>22
+56i26 id{22|35I9}
+57U13*alDrawModelTranslateRotate 57>41 58>44 58>66 58>89 59>44 59>66 59>85
+. 59>104 60>44 60>67 85b<c,alDrawModelTranslateRotate>22
+57i41 id{22|35I9}
+58f44 posx{22|64F9}
+58f66 posy{22|64F9}
+58f89 posz{22|64F9}
+59f44 angle{22|64F9}
+59f66 x{22|64F9}
+59f85 y{22|64F9}
+59f104 z{22|64F9}
+60i44 rotatefirst{22|35I9}
+60i67 billboard{22|35I9}
+63U15*alTranslateRotate 64>44 64>66 64>89 65>44 65>66 65>85 65>104 86b<c,alTranslateRotate>22
+64f44 posx{22|64F9}
+64f66 posy{22|64F9}
+64f89 posz{22|64F9}
+65f44 angle{22|64F9}
+65f66 x{22|64F9}
+65f85 y{22|64F9}
+65f104 z{22|64F9}
+X 20 cmd.ads
+3K9*CMD 19|6w6 6r15 20|49e8
+X 21 interfac.ads
+38K9*Interfaces 19|2r6 2r24 3r6 3r32 21|184e15
+X 22 i-c.ads
+18K20*C 19|2w17 2r35 3r17 3r43 22|230e17
+35I9*int<integer> 19|32r20 39r27 39r35 39r43 40r27 50r43 52r78 53r31 54r31
+. 55r35 56r30 57r45 60r57 60r78
+64F9*C_float<float> 19|47r29 47r42 47r54 47r67 47r80 47r92 47r104 47r116
+. 47r127 48r30 49r24 49r37 49r50 49r63 50r25 51r23 51r34 52r89 54r40 54r53
+. 54r65 55r44 58r50 58r73 58r95 59r51 59r69 59r88 59r107 64r50 64r73 64r95
+. 65r51 65r69 65r88 65r107
+X 23 i-cstrin.ads
+36K22*Strings 19|3w19 3r45 40r40 40r67 52r30 52r54 23|106e25
+47P9*chars_ptr 19|40r48 40r75 52r38 52r62
+
