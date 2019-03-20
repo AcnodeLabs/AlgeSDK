@@ -1045,11 +1045,12 @@ public:
 	float _scaleX, _scaleY, _scaleZ = 1.0;
 
 	void scale(float v) {
+		
 		for (int i = 0; i< n_vertices * 3; i++)
 		{
-			vertex_array[i] *= v;
+			vertex_array[i] = (vertex_array[i] * v);
 		}
-		fscale *= v;
+		fscale = (fscale * v);
 		//phys.boundz*=v;
 	}
 
@@ -1495,8 +1496,6 @@ public:
 
 #endif //nogl
 
-
-
 class FontMap16x16 {
 
 public:
@@ -1519,8 +1518,8 @@ public:
 		m = 0;
 		int run = 32;
 		SetScale(1);
-		for (int row = 0; row<16; row++) {
-			for (int col = 0; col<16; col++) {
+		for (int row = 0; row < 16; row++) {
+			for (int col = 0; col < 16; col++) {
 				lut[row][col] = run;
 				mapX[run - 32] = col;
 				mapY[run - 32] = row;
@@ -1624,8 +1623,142 @@ public:
 		m->n_normals = 6 * (indx + 1);
 		m->n_vertices = 6 * (indx + 1);
 
+	}
 
+	int x1, y1;
+	float scale;
+	//
+public:
+	void print(char* sz) {
+		int l = int(strlen(sz));
+		for (int i = 0; i < l; i++)
+			chardata(i, sz[i]);
+		m->scale(scale);
+	}
+};
 
+class FontMap10x10 {
+
+public:
+	CModel* m;
+	short seq;
+	short row1;
+	short lut[10][10];
+	short mapX[10 * 10];
+	short mapY[10 * 10];
+	short width;
+	short spacing;
+
+	void SetScale(float _scale) {
+		scale = _scale;
+		spacing = 1.5f * scale;
+		width = 512 * scale;
+	}
+
+	FontMap10x10() {
+		m = 0;
+		int run = ' ';
+		SetScale(1);
+		for (int row = 0; row<10; row++) {
+			for (int col = 0; col<10; col++) {
+				lut[row][col] = run;
+				mapX[run - ' '] = col;
+				mapY[run - ' '] = row;
+				run++;
+			}
+		}
+	}
+
+	void usetexof(CModel* mod) {
+		m = mod;
+#ifndef NOGL
+#ifndef METRO
+	//	glEnable(GL_ALPHA_TEST);
+	//	glAlphaFunc(GL_GREATER, 0.0f);
+#endif
+#endif
+		mod->noVBO = false;// true;
+	}
+
+	void chardata(short indx, char c) {
+		if (m == 0) return;
+		seq = c - ' ';
+		short co = mapX[seq];
+		short ro = mapY[seq];
+		float left = co / 10.0f;
+		float top = ro / 10.0f;
+		float down = top + 1.0f / 10.0f - 0.01;
+		float right = left + 1.0f / 10.0f - 0.01;
+		top = 1.0f - top;
+		down = 1.0f - down;
+
+		short index12 = indx * 12;
+		short index = indx * 18;
+
+		m->uv_array[index12 + 0] = right;
+		m->uv_array[index12 + 1] = top;
+		m->uv_array[index12 + 2] = left;
+		m->uv_array[index12 + 3] = top;
+		m->uv_array[index12 + 4] = left;
+		m->uv_array[index12 + 5] = down;
+
+		m->uv_array[index12 + 6] = right;
+		m->uv_array[index12 + 7] = top;
+		m->uv_array[index12 + 8] = left;
+		m->uv_array[index12 + 9] = down;
+		m->uv_array[index12 + 10] = right;
+		m->uv_array[index12 + 11] = down;
+		m->n_uv = 6 * (indx + 1);
+
+		short cx = indx ;
+
+		//FILL VERTEXARRAY/NORMALS OF CMODEL
+		float span = 0.8;
+
+		m->vertex_array[index + 0] = cx + span;
+		m->vertex_array[index + 1] = 1;
+		m->vertex_array[index + 2] = 0;
+		m->normals_array[index + 0] = 0;
+		m->normals_array[index + 1] = 0;
+		m->normals_array[index + 2] = 1;
+
+		m->vertex_array[index + 3] = cx - span;
+		m->vertex_array[index + 4] = 1;
+		m->vertex_array[index + 5] = 0;
+		m->normals_array[index + 3] = 0;
+		m->normals_array[index + 4] = 0;
+		m->normals_array[index + 5] = 1;
+
+		m->vertex_array[index + 6] = cx - span;
+		m->vertex_array[index + 7] = -1;
+		m->vertex_array[index + 8] = 0;
+		m->normals_array[index + 6] = 0;
+		m->normals_array[index + 7] = 0;
+		m->normals_array[index + 8] = 1;
+
+		m->vertex_array[index + 9] = cx + span;
+		m->vertex_array[index + 10] = 1;
+		m->vertex_array[index + 11] = 0;
+		m->normals_array[index + 9] = 0;
+		m->normals_array[index + 10] = 0;
+		m->normals_array[index + 11] = 1;
+
+		m->vertex_array[index + 12] = cx - span;
+		m->vertex_array[index + 13] = -1;
+		m->vertex_array[index + 14] = 0;
+		m->normals_array[index + 12] = 0;
+		m->normals_array[index + 13] = 0;
+		m->normals_array[index + 14] = 1;
+
+		m->vertex_array[index + 15] = cx + span;
+		m->vertex_array[index + 16] = -1;
+		m->vertex_array[index + 17] = 0;
+		m->normals_array[index + 15] = 0;
+		m->normals_array[index + 16] = 0;
+		m->normals_array[index + 17] = 1;
+		m->n_normals = 6 * (indx + 1);
+		m->n_vertices = 6 * (indx + 1);
+				
 	}
 
 	int x1, y1;
@@ -1634,9 +1767,12 @@ public:
 	public:
 	void print(char* sz) {
 		int l = int(strlen(sz));
-		for (int i = 0; i<l; i++)
+		
+		for (int i = 0; i < l; i++) {
 			chardata(i, sz[i]);
-		m->scale(scale);
+		}
+		
+	 	m->scale(scale);
 	}
 };
 
@@ -2372,6 +2508,9 @@ void AlInit(int TYPE, std::string title = "") {
 #endif
 #endif
 	}
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
 
 	//To add these two lines refactoring would be needed: PENDED
 	//if (TYPE == STANDARD_2D) game.AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);

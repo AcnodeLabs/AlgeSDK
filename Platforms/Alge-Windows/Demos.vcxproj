@@ -74,7 +74,7 @@
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>CNetMsg.lib;Box2D.lib;BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;assimp-vc140-mt.lib;libdrawtext.lib;opengl32.lib;glu32.lib;winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libdrawtext.lib;CNetMsg.lib;Box2D.lib;BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;assimp-vc140-mt.lib;opengl32.lib;glu32.lib;winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -111,6 +111,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
     <ClInclude Include="..\..\Demos\PoppingTime\Raw3D.hpp" />
+    <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h" />
     <ClInclude Include="candidate.h" />
   </ItemGroup>
   <ItemGroup>

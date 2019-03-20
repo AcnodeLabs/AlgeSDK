@@ -1,33 +1,48 @@
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/PoppingTime.ap_ \
- : /Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/layout/main.xml \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/values/strings.xml \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/values/attrs.xml \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/drawable-ldpi/icon.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/res/raw/acnode.jpg \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/res/drawable-ldpi/icon.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/icon.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/baloon_red.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/fans.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/fans.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/heli.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/spikey.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/heli.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/heli.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/spikey.jpg \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/spikey.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/poppingtime.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/poppingtime.png \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/poppingtime.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/font.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/happy-sandbox.wav \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/aargh.wav \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/4.jpg \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/aarhg.aiff \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/baloon.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/baloon.jpg \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/drop.wav \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/baloon.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/bg.tga \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/pop.wav \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/assets/bg.alx \
-/Users/bilal/Desktop/AlgeSDK/Platforms/Alge-Android/bin/AndroidManifest.xml \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\PoppingTime.ap_ \
+ : C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\drawable-ldpi\icon.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\layout\main.xml \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\raw\acnode.jpg \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\attrs.xml \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\res\values\strings.xml \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\res\drawable-ldpi\icon.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\4.jpg \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\aargh.wav \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\aarhg.aiff \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\baloon.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\baloon.jpg \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\baloon.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\baloon_red.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\bg.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\bg.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\crudefont.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\drop.wav \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\fans.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\fans.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\finefont.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.blend \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.blend1 \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\font.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\happy-sandbox.wav \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\heli.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\icon.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\logo512.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\lucidagrande.jpg \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\misc.xcf \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\pop.wav \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.png \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\poppingtime.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\ratings.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\ratings.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\satrings.blend \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\satrings.blend1 \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.alx \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.jpg \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\spikey.tga \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\tabbar.blend \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\tabbar.blend1 \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\assets\voyager2.xcf \
+C:\Users\Bilal Ahsan\SANDBOX\AlgeSDK\Platforms\Alge-Android\bin\AndroidManifest.xml \

@@ -153,7 +153,7 @@ public:
 	int JuiceType;
 	float JuiceSpeed = 1.;
 	float JuiceDuration = 3;
-
+	
 	float originalScale = 1.;
      float debugUseOnly = 0.;
 	 float m_width;
@@ -243,6 +243,8 @@ class Serializable : public PosRotScale {
 
 enum JuiceTypes {
 	JUICE_ROTZ = 1,
+	JUICE_FLY_OUT,
+	JUICE_SCALE_IN,
 	JUICE_ROTY,
 	JUICE_PULSATE,
 	JUICE_PULSATE_FULLY,
@@ -332,7 +334,6 @@ public:
     }
     
     void NextJuice() {
-        
         JuiceType ++;
         if (JuiceType == JuiceTypes::JUICES_END)
             JuiceType = 0;
@@ -472,7 +473,7 @@ public:
     //getInstance(0) returns main object instances are at 1..n
     //deprecated : use Inst(#) instead
     PosRotScale* getInstancePtr(int n) {
-        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
+        if (n < 0 || n >= int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     
@@ -498,6 +499,7 @@ public:
         billboard = false;
         applyTopLeftCorrectionWRTorigin = false;
         m_touched = false;
+		resInf = nullptr;
     }
     
     string Name() {
@@ -671,6 +673,7 @@ char* New_String(const char* sz) {return ((char*)sz);}
 void alPushI (int cmd, int x, int y);
 void alPushP (int cmd, void* param1, void* param2);
 int alLoadModel(ResourceInf* r);
+int alReserveModelId(void);
 void alDrawModel (int ident, bool wireframe = false);
 /*
 void alBillBoardBegin();

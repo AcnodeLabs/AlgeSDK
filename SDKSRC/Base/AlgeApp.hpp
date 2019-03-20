@@ -1,3 +1,4 @@
+
 #ifndef NO_BOX2D
 #include <Box2D/Box2D.h>
 #endif
@@ -12,10 +13,11 @@ extern CNetMsg netmsg;
 #include "dimensions.h"
 #include "drawtext.h"
 #include <sstream>
+#include <iomanip>
 
 class AlgeApp {
 public:
-
+	string wall_msg;
  #ifndef NO_BOX2D
 	b2World* pWorld;
 	b2World* world;
@@ -28,7 +30,7 @@ public:
 	short renderSchemeVersion;//1=> Render processInput 2->UpdateCustom GOB's
 	CAnimator can;
 	CTimed animStepTimed;
-	FontMap16x16 fonts;
+	FontMap10x10 fonts;
 	int keyframe, nseq, screenX, screenY;
 	f3 eye, eyerot, tgt, up;
 	float timeVar, animstep, deltaT;
@@ -93,6 +95,11 @@ public:
 		dtx_use_font(font, 24);
 		#endif
 	}
+		
+	CModel* fontModel;
+	char sz1[128];
+
+#define NO_FONTLIB
 
 	inline void alPrint(const char* text,  int size = 24 ) {
 		#ifndef NO_FONTLIB
@@ -102,6 +109,16 @@ public:
 		glRotatef(180, 1, 0, 0);
 		dtx_string(text);
 		glPopMatrix();
+		#else
+		glPushMatrix();
+		glRotatef(180, 1, 0, 0);
+		strcpy(sz1, text);
+	//	fonts.print(sz1);
+		glColor3f(0.5, 0.5, 0.5);
+		glScalef(15,15,15);
+	//	fontModel->glDraw();
+		glPopMatrix();
+		glColor3f(1., 1., 1.);
 		#endif
 	}
 
@@ -177,6 +194,7 @@ public:
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
 		return g;
 	}
+
 
 	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
 		ResourceInf res;
@@ -271,17 +289,23 @@ public:
 		pos->y += 0.5 * w * (1 - scaledTo);
 	}
 
+	float juice_sine_angle;
+
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
-		static float juice_sine_angle;
-		static float elapsed = 0;
 		
+		static float elapsed = 0;
+		static int juice_frame[JuiceTypes::JUICES_END];
+
 		elapsed += deltaT;
 		static float timeNote;
 		static bool timeNoted = false;
+		static float x_pos_on_arrival = -1;
 
 		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
+
+
 		switch (jprs->JuiceType) {
 
 		case JuiceTypes::JUICE_ROTZ:
@@ -324,10 +348,30 @@ public:
 			juice_sine_angle += (0.01 * deltaT * jprs->JuiceSpeed);
 			glScalef(1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle));
 			break;
+		case JuiceTypes::JUICE_SCALE_IN:
+			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
+			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
+			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
+			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) juice_sine_angle = 0;
+			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			break;
 		case JuiceTypes::JUICE_PULSATE_FULLY:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
-            glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			break;
+		case JuiceTypes::JUICE_FLY_OUT:
+			
+			if (jprs->pos.x > -999) {
+				if (x_pos_on_arrival==-1) x_pos_on_arrival = jprs->pos.x;
+				jprs->pos.x -= (1000.0 * deltaT * jprs->JuiceSpeed);
+			}
+			else {
+				//jprs->pos.x = x_pos_on_arrival;
+				//jprs->JuiceType = 0;
+				//x_pos_on_arrival = -1;
+				//jprs->hidden = false;
+			}
 			break;
 		case JuiceTypes::JUICE_CANCEL:
 			jprs->rot.x = 0;
@@ -386,6 +430,7 @@ public:
 
 		//it->Update(deltaT);
 		UpdateCustom(iit, instanceNo, deltaT);
+		
 	
 		
 //	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
@@ -432,7 +477,7 @@ public:
         static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
         sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
-        SetTitle(msg);
+      //  SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
@@ -598,6 +643,10 @@ public:
 		aCamera.custom_type = 0xCA;
 		aCamera.windowWidth = getBackgroundSize().x;
 		aCamera.windowHeight = getBackgroundSize().y;
+
+		//Font v1 init
+		fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, alReserveModelId(), 1);	// Fonts Loaded just like Model load but it doesnt involve managed resource 
+		fonts.usetexof(fontModel);						// Associate texure of Loaded Model to FontMap
 	}
 
 	virtual void Init(char* path) {};
@@ -775,6 +824,20 @@ public:
 	}
 
 	void preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f) {
+		/*
+		stringstream ss;
+		int c = input.cmd[input.indx_r - 1].command;
+		ss << "c";
+		ss << "0x" << std::uppercase << std::setfill('0') << std::setw(4) << std::hex << c;
+
+		ss << "r";
+		ss << input.indx_r;
+
+		ss << "w";
+		ss << input.indx_w;
+
+		if (c) wall_msg = ss.str();
+		*/
 		static string fmt = "%.1f,%.1f,%.1f";
 		static int mX, mY;
 		static bool mousepass1 = true;
@@ -1094,7 +1157,7 @@ public:
 		output.pushP(CMD_SNDPLAY0+idx, $ name, 0);
 	}
 
-	void SetTitle(char * name) {
+	void SetTitle(const char * name) {
 		output.pushP(CMD_TITLE, $ name, 0);
 	}
 

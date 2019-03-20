@@ -10,3 +10,4 @@ assets/
 .idea/
 .vscode/
 src/com/acnodelabs
+obj/
