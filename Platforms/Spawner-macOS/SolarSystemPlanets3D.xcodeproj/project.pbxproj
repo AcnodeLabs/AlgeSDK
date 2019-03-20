@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C1788EC1F50880900B6BD35 /* Planets.app in Resources */ = {isa = PBXBuildFile; fileRef = 9C1788EB1F50880900B6BD35 /* Planets.app */; };
+		9C1788F01F5088AD00B6BD35 /* Planets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1788EF1F5088AD00B6BD35 /* Planets */; };
+		9C8F41EA1F23AADE0085DD75 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8F41E91F23AADE0085DD75 /* ApplicationServices.framework */; };
+		9CB619AE1F2A5600004661EE /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB619AD1F2A5600004661EE /* ServiceManagement.framework */; };
+		9CB619B01F2A5623004661EE /* Planets-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CB619AF1F2A5623004661EE /* Planets-Info.plist */; };
+		9CB619B31F2A57DF004661EE /* SMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB619B21F2A57DF004661EE /* SMAppController.m */; };
+		FA207FEE1E880EB600650467 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA207FED1E880EB600650467 /* AppDelegate.m */; };
+		FA207FF11E880EB600650467 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA207FF01E880EB600650467 /* main.m */; };
+		FA207FF31E880EB600650467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA207FF21E880EB600650467 /* Assets.xcassets */; };
+		FA207FF61E880EB600650467 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA207FF41E880EB600650467 /* MainMenu.xib */; };
+		FAA42F231E8AE01F00790DF1 /* MyIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAA42F221E8AE01F00790DF1 /* MyIcon.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9C1788EB1F50880900B6BD35 /* Planets.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Planets.app; sourceTree = "<group>"; };
+		9C1788EF1F5088AD00B6BD35 /* Planets */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = Planets; sourceTree = "<group>"; };
+		9C8F41E91F23AADE0085DD75 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		9C8F41EB1F23BF890085DD75 /* Planets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Planets.entitlements; sourceTree = "<group>"; };
+		9CB619AD1F2A5600004661EE /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		9CB619AF1F2A5623004661EE /* Planets-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Planets-Info.plist"; sourceTree = "<group>"; };
+		9CB619B11F2A57DF004661EE /* SMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppController.h; sourceTree = "<group>"; };
+		9CB619B21F2A57DF004661EE /* SMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SMAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FA0A33071EA7E4360098EEA5 /* SolarSystemPlanets3D.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SolarSystemPlanets3D.entitlements; sourceTree = "<group>"; };
+		FA207FE91E880EB600650467 /* SolarSystemPlanets3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolarSystemPlanets3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA207FEC1E880EB600650467 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = planetsplus/AppDelegate.h; sourceTree = "<group>"; };
+		FA207FED1E880EB600650467 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FA207FF01E880EB600650467 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA207FF21E880EB600650467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA207FF51E880EB600650467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA207FF71E880EB600650467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAA42F221E8AE01F00790DF1 /* MyIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MyIcon.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA207FE61E880EB600650467 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CB619AE1F2A5600004661EE /* ServiceManagement.framework in Frameworks */,
+				9C8F41EA1F23AADE0085DD75 /* ApplicationServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C8F41E81F23AADE0085DD75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CB619AD1F2A5600004661EE /* ServiceManagement.framework */,
+				9C8F41E91F23AADE0085DD75 /* ApplicationServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA207FE01E880EB600650467 = {
+			isa = PBXGroup;
+			children = (
+				9C1788EB1F50880900B6BD35 /* Planets.app */,
+				9CB619B11F2A57DF004661EE /* SMAppController.h */,
+				9CB619B21F2A57DF004661EE /* SMAppController.m */,
+				FA0A33071EA7E4360098EEA5 /* SolarSystemPlanets3D.entitlements */,
+				FA207FEC1E880EB600650467 /* AppDelegate.h */,
+				9C8F41EB1F23BF890085DD75 /* Planets.entitlements */,
+				9CB619AF1F2A5623004661EE /* Planets-Info.plist */,
+				9C1788EF1F5088AD00B6BD35 /* Planets */,
+				FA207FEB1E880EB600650467 /* planetsplus */,
+				FA207FEA1E880EB600650467 /* Products */,
+				9C8F41E81F23AADE0085DD75 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA207FEA1E880EB600650467 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA207FE91E880EB600650467 /* SolarSystemPlanets3D.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA207FEB1E880EB600650467 /* planetsplus */ = {
+			isa = PBXGroup;
+			children = (
+				FA207FED1E880EB600650467 /* AppDelegate.m */,
+				FA207FF21E880EB600650467 /* Assets.xcassets */,
+				FAA42F221E8AE01F00790DF1 /* MyIcon.icns */,
+				FA207FF41E880EB600650467 /* MainMenu.xib */,
+				FA207FF71E880EB600650467 /* Info.plist */,
+				FA207FEF1E880EB600650467 /* Supporting Files */,
+			);
+			path = planetsplus;
+			sourceTree = "<group>";
+		};
+		FA207FEF1E880EB600650467 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA207FF01E880EB600650467 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA207FE81E880EB600650467 /* SolarSystemPlanets3D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA207FFA1E880EB600650467 /* Build configuration list for PBXNativeTarget "SolarSystemPlanets3D" */;
+			buildPhases = (
+				FA207FE51E880EB600650467 /* Sources */,
+				FA207FE61E880EB600650467 /* Frameworks */,
+				FA207FE71E880EB600650467 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SolarSystemPlanets3D;
+			productName = planetsplus;
+			productReference = FA207FE91E880EB600650467 /* SolarSystemPlanets3D.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA207FE11E880EB600650467 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					New,
+				);
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = alex;
+				TargetAttributes = {
+					FA207FE81E880EB600650467 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = G84BL5U52X;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = FA207FE41E880EB600650467 /* Build configuration list for PBXProject "SolarSystemPlanets3D" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA207FE01E880EB600650467;
+			productRefGroup = FA207FEA1E880EB600650467 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA207FE81E880EB600650467 /* SolarSystemPlanets3D */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA207FE71E880EB600650467 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C1788F01F5088AD00B6BD35 /* Planets in Resources */,
+				FA207FF31E880EB600650467 /* Assets.xcassets in Resources */,
+				FAA42F231E8AE01F00790DF1 /* MyIcon.icns in Resources */,
+				9C1788EC1F50880900B6BD35 /* Planets.app in Resources */,
+				FA207FF61E880EB600650467 /* MainMenu.xib in Resources */,
+				9CB619B01F2A5623004661EE /* Planets-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA207FE51E880EB600650467 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA207FF11E880EB600650467 /* main.m in Sources */,
+				9CB619B31F2A57DF004661EE /* SMAppController.m in Sources */,
+				FA207FEE1E880EB600650467 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA207FF41E880EB600650467 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA207FF51E880EB600650467 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA207FF81E880EB600650467 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "8b4bf762-5e61-4244-b855-66f4b52b6180";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FA207FF91E880EB600650467 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f3845a77-e3aa-454e-a3ca-6e13ff11590e";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FA207FFB1E880EB600650467 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SolarSystemPlanets3D.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G84BL5U52X;
+				INFOPLIST_FILE = planetsplus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.mac.AlgeAppPlanets;
+				PRODUCT_NAME = SolarSystemPlanets3D;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		FA207FFC1E880EB600650467 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SolarSystemPlanets3D.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G84BL5U52X;
+				INFOPLIST_FILE = planetsplus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.mac.AlgeAppPlanets;
+				PRODUCT_NAME = SolarSystemPlanets3D;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA207FE41E880EB600650467 /* Build configuration list for PBXProject "SolarSystemPlanets3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA207FF81E880EB600650467 /* Debug */,
+				FA207FF91E880EB600650467 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA207FFA1E880EB600650467 /* Build configuration list for PBXNativeTarget "SolarSystemPlanets3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA207FFB1E880EB600650467 /* Debug */,
+				FA207FFC1E880EB600650467 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA207FE11E880EB600650467 /* Project object */;
+}

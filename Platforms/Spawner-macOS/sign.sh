@@ -1,0 +1,1 @@
+codesign -f -s "3rd Party Mac Developer Application: Bilal Ahsan (G84BL5U52X)" --entitlements Planets.entitlements Planets

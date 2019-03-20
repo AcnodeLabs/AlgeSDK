@@ -1,0 +1,26 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build alge-gnat-mac",
+            "type": "shell",
+            "command": "gprbuild -d Untitled.gpr",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+        ,
+        {
+            "label": "run alge-gnat-mac",
+            "type": "shell",
+            "command": "./obj/alge-gnat-mac",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        }
+    ]
+}

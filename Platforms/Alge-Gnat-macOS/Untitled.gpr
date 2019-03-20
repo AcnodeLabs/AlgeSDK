@@ -1,12 +1,12 @@
 project Untitled is
 
-   for Source_Dirs use ("src", "../../SDKSRC/Classlets/com/acnodelabs/funkit", "../../../com_acnodelabs/PlanetsAda/AdaLogic/src", "../../SDKSRC/Base", "../../SDKSRC/Base/Ada", "../Alge-OSX");
+   for Source_Dirs use ("src", "../../../com_acnodelabs/PlanetsAda", "../../SDKSRC/Classlets/com/acnodelabs/funkit", "../../../com_acnodelabs/PlanetsAda/AdaLogic/src", "../../SDKSRC/Base", "../../SDKSRC/Base/Ada", "../Alge-OSX");
    for Object_Dir use "obj";
-   for Main use ("PlanetsAda.cpp");
+   for Main use ("algegnatmac.cpp");
    for Languages use ("Ada", "C", "C++");
-   for Source_Files use ("AdaApp.adb", "AdaApp.ads", "alge-gnat-mac.cpp", "AlgeSDK.ads", "CANDIDATE.h", "CAnimator.adb", "CAnimator.ads", "CBaseV1_2.h", "CMD.ads", "CTimed.adb", "CTimed.ads", "hittestcode.adb", "hittestcode.ads", 
-      "menu_remover.c", "menu_remover.h", "PlanetsAda.cpp", "resource.h", "structdefs_h.ads", "t.adb", "t.ads", "Timer.cpp", "Timer.h", "t-th.adb", "t-th.ads");
-
+   for Source_Files use ("AdaApp.adb", "AdaApp.ads", "algegnatmac.cpp", "AlgeSDK.ads", "CANDIDATE.h", "CAnimator.adb", "CAnimator.ads", "CBaseV1_2.h", "CMD.ads", "CTimed.adb", "CTimed.ads", "hittestcode.adb", "hittestcode.ads", 
+      "menu_remover.c", "menu_remover.h", "resource.h", "structdefs_h.ads", "Timer.cpp", "Timer.h",
+      "stars.adb", "stars.ads" );
    package Naming is
       for Spec_Suffix ("c++") use ".h";
       for Body_Suffix ("c++") use ".cpp";
