@@ -80,17 +80,17 @@ public:
 	std::string alx;
 	ResourceInf() {};
 	ResourceInf(std::string _name, std::string _alx, std::string _tex, float _scale = 1.0f) {
-		Set(_name, _alx, _tex, _scale);
+		Set(string(_name), string(_alx), string(_tex), _scale);
 	};
 
 	void Set(std::string _filed_name, float _scale = 1.0f) {
-		Set(_filed_name, _filed_name + ".alx", _filed_name + ".tga", _scale);
+		Set(string(_filed_name), string(_filed_name + ".alx"), string(_filed_name + ".tga"), _scale);
 	}
 
 	void Set(std::string _name, std::string _alx, std::string _tex, float _scale = 1.0f) {
-		tex = _tex;
-		name = _name;
-		alx = _alx;
+		tex = string(_tex);
+		name = string(_name);
+		alx = string(_alx);
 		scale = _scale;
 	}
 };
@@ -920,11 +920,20 @@ class CModel {
 public:
 	int index;
 	char name[64];
-	float vertex_array[512 * 512 * 6];
-	float normals_array[512 * 512 * 6];
-	unsigned char color_array[512 * 512 * 5];
-	unsigned short indices_array[1024 * 3];
-	float uv_array[512 * 512 * 4];
+	
+	//float _vertex_array[512 * 512 * 6];
+	//float _normals_array[512 * 512 * 6];
+	//unsigned char _color_array[512 * 512 * 5];
+	//unsigned short _indices_array[1024 * 3];
+	//float _uv_array[512 * 512 * 4];
+	
+	float *vertex_array;// [512 * 512 * 6];
+	float *normals_array;// [512 * 512 * 6];
+	unsigned char *color_array;// [512 * 512 * 5];
+	unsigned short *indices_array;//[1024 * 3];
+	float *uv_array;// [512 * 512 * 4];
+
+	bool last_alx_same_as_this_alx;//used when this model uses a previously loaded buffers // see usage in loadAlxModel
 
 	float vertex_array_gl[1];
 	float normals_array_gl[1];
@@ -962,6 +971,12 @@ public:
 		_scaleY = 1;
 		_scaleZ = 1;
 		DRAWMODE = GL_TRIANGLES;
+		last_alx_same_as_this_alx = false;
+		vertex_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 6);// _vertex_array;// 	float *vertex_array;// [512 * 512 * 6];
+		normals_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 6);// _normals_array;//float *normals_array;// [512 * 512 * 6];
+		color_array = nullptr;// (unsigned char*)malloc(sizeof(unsigned char) * 512 * 512 * 5);// unsigned char *color_array;// [512 * 512 * 5];
+		indices_array = nullptr;// (unsigned short*)malloc(sizeof(unsigned short) * 1024 * 3);// _indices_array;//unsigned short *indices_array;//[1024 * 3];
+		uv_array = nullptr;// (float*)malloc(sizeof(float) * 512 * 512 * 4);// _uv_array;// float *uv_array;// [512 * 512 * 4];
 	}
 	
 	CModel() {
@@ -975,6 +990,13 @@ public:
 		glDeleteBuffers(1, &vboNormals);
 #endif
 #endif
+		if (last_alx_same_as_this_alx == false) {
+			if (vertex_array != nullptr) free(vertex_array);
+			if (normals_array != nullptr) free(normals_array);
+			if (color_array != nullptr) free(color_array);
+			if (indices_array != nullptr) free(indices_array);
+			if (uv_array != nullptr) free(uv_array);
+		}
 	}
 
 	//called by resourcemanager
@@ -1188,7 +1210,6 @@ public:
 			loadSeg(f, ver, 'N', normals_array_gl);
 			loadSeg(f, ver, 'T', uv_array_gl);
 			loadSeg(f, ver, 'I', indices_array_gl);
-
 			fclose(f);
 		}
 
@@ -2212,6 +2233,11 @@ public:
 	CModel* loadAlxModel(char* alxfilename, char* tgafilename, short modelId, float fscale)
 	{
 
+		static int last_modelId;
+		static string last_alxfilename;
+
+		bool last_alx_same_as_this_alx = (string(alxfilename) == last_alxfilename);
+				
 		static int numloads = 1;
 
 		char _alxfname[128];
@@ -2246,7 +2272,7 @@ public:
 			int color_i = 0;
 			int ind_i = 0;
 			int uv_i = 0;
-
+			///////////////////////////////////////////////////////  PASS 1 - CALC number of values
 			while (!feof(file)) {
 				line[0] = 0;
 				//  fgets(line, 1280, file);
@@ -2273,9 +2299,9 @@ public:
 				if (strcmp(line, "t[") == 0) {
 					int zoom = 1;
 					fscanf(file, "%s", line);
-					models[modelId]->uv_array[uv_i] = atof(line)*zoom;
+					//models[modelId]->uv_array[uv_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);
-					models[modelId]->uv_array[uv_i + 1] = atof(line)*zoom;
+					//models[modelId]->uv_array[uv_i + 1] = atof(line)*zoom;
 					uv_i += 2;
 				}
 
@@ -2283,11 +2309,11 @@ public:
 				if (strcmp(line, "n[") == 0) {
 					int zoom = 1;
 					fscanf(file, "%s", line);
-					models[modelId]->normals_array[vn_i] = atof(line)*zoom;
+					//models[modelId]->normals_array[vn_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);
-					models[modelId]->normals_array[vn_i + 1] = atof(line)*zoom;
+					//models[modelId]->normals_array[vn_i + 1] = atof(line)*zoom;
 					fscanf(file, "%s", line);
-					models[modelId]->normals_array[vn_i + 2] = atof(line)*zoom;
+					//models[modelId]->normals_array[vn_i + 2] = atof(line)*zoom;
 					vn_i += 3;
 				}
 
@@ -2295,22 +2321,22 @@ public:
 				if (strcmp(line, "v[") == 0) {
 					int zoom = 1;
 					fscanf(file, "%s", line);
-					models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
+					//models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);
-					models[modelId]->vertex_array[vx_i + 1] = atof(line)*zoom;
+					//models[modelId]->vertex_array[vx_i + 1] = atof(line)*zoom;
 					fscanf(file, "%s", line);
-					models[modelId]->vertex_array[vx_i + 2] = atof(line)*zoom;
+					//models[modelId]->vertex_array[vx_i + 2] = atof(line)*zoom;
 					vx_i += 3;
 				}
 
 				if (strcmp(line, "c[") == 0) {
 					fscanf(file, "%s", line);
-					models[modelId]->color_array[color_i] = atof(line);
+					//models[modelId]->color_array[color_i] = atof(line);
 					fscanf(file, "%s", line);
-					models[modelId]->color_array[color_i + 1] = atof(line);
+					//models[modelId]->color_array[color_i + 1] = atof(line);
 					fscanf(file, "%s", line);
-					models[modelId]->color_array[color_i + 2] = atof(line);
-					models[modelId]->color_array[color_i + 3] = 255;
+					//models[modelId]->color_array[color_i + 2] = atof(line);
+					//models[modelId]->color_array[color_i + 3] = 255;
 					color_i += 4;
 				}
 
@@ -2326,7 +2352,7 @@ public:
 					int ind_i_n = atoi(line);
 					for (int j = 0; j<ind_i_n; j++) {
 						fscanf(file, "%s", line);
-						models[modelId]->indices_array[ind_i + j] = atof(line);
+						//models[modelId]->indices_array[ind_i + j] = atof(line);
 					}
 					ind_i += ind_i_n;
 				}
@@ -2338,9 +2364,137 @@ public:
 				models[modelId]->n_uv = (uv_i - 1) / 2 + 1;
 				models[modelId]->n_colors = (color_i - 1) / 4 + 1;
 				models[modelId]->n_indices = ind_i;
-			}
 
+				if (last_alx_same_as_this_alx) //use prev mem
+				{
+					models[modelId]->uv_array = models[last_modelId]->uv_array;
+					models[modelId]->normals_array = models[last_modelId]->normals_array;
+					models[modelId]->vertex_array = models[last_modelId]->vertex_array;
+					models[modelId]->indices_array = models[last_modelId]->indices_array;
+					models[modelId]->color_array = models[last_modelId]->color_array;
+				}
+				else {
+					///////////////////////////// alloc new mem as per values
+					models[modelId]->uv_array = (float*)malloc(sizeof(float) * models[modelId]->n_uv * 4);// _uv_array;// float *uv_array;// [512 * 512 * 4];
+					models[modelId]->normals_array = (float*)malloc(sizeof(float) * models[modelId]->n_normals * 6);// _normals_array;//float *normals_array;// [512 * 512 * 6];
+					models[modelId]->vertex_array = (float*)malloc(sizeof(float) * models[modelId]->n_vertices * 6);// _vertex_array;// 	float *vertex_array;// [512 * 512 * 6];
+					models[modelId]->indices_array = (unsigned short*)malloc(sizeof(unsigned short) * models[modelId]->n_indices * 3);// _indices_array;//unsigned short *indices_array;//[1024 * 3];
+					models[modelId]->color_array = (unsigned char*)malloc(sizeof(unsigned char) * models[modelId]->n_colors * 5);// unsigned char *color_array;// [512 * 512 * 5];
+				}
+
+			}
+			if (last_alx_same_as_this_alx == false) //use prev mem
+			{
+
+				vx_i = 0;
+				vn_i = 0;
+				color_i = 0;
+				ind_i = 0;
+				uv_i = 0;
+				///////////////////////////////////////////////////
+				fseek(file, 0, SEEK_SET); //reset CURSOR to re-do procedure
+				///////////////////////////////////////////////////////  PASS 2 - FILL values
+				while (!feof(file)) {
+					line[0] = 0;
+					//  fgets(line, 1280, file);
+					fscanf(file, "%s", line);
+					//std::cout << line << "\n";
+
+					if (strcmp(line, "Good Luck") == 0) {
+						break;
+					}
+
+					if (strstr(line, "Mode=") != NULL) {
+						if (line[5] == 'T')models[modelId]->DRAWMODE = GL_TRIANGLES;
+#ifndef ES_ONLY
+						if (line[5] == 'P')models[modelId]->DRAWMODE = GL_POLYGON;
+						if (line[5] == 'Q')models[modelId]->DRAWMODE = GL_QUADS;
+#endif
+					}
+
+					if (strcmp(line, "obj[") == 0) {
+						fscanf(file, "%s", line);
+						strcpy(models[modelId]->name, line);
+					}
+
+					if (strcmp(line, "t[") == 0) {
+						int zoom = 1;
+						fscanf(file, "%s", line);
+						models[modelId]->uv_array[uv_i] = atof(line)*zoom;
+						fscanf(file, "%s", line);
+						models[modelId]->uv_array[uv_i + 1] = atof(line)*zoom;
+						uv_i += 2;
+					}
+
+
+					if (strcmp(line, "n[") == 0) {
+						int zoom = 1;
+						fscanf(file, "%s", line);
+						models[modelId]->normals_array[vn_i] = atof(line)*zoom;
+						fscanf(file, "%s", line);
+						models[modelId]->normals_array[vn_i + 1] = atof(line)*zoom;
+						fscanf(file, "%s", line);
+						models[modelId]->normals_array[vn_i + 2] = atof(line)*zoom;
+						vn_i += 3;
+					}
+
+
+					if (strcmp(line, "v[") == 0) {
+						int zoom = 1;
+						fscanf(file, "%s", line);
+						models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
+						fscanf(file, "%s", line);
+						models[modelId]->vertex_array[vx_i + 1] = atof(line)*zoom;
+						fscanf(file, "%s", line);
+						models[modelId]->vertex_array[vx_i + 2] = atof(line)*zoom;
+						vx_i += 3;
+					}
+
+					if (strcmp(line, "c[") == 0) {
+						fscanf(file, "%s", line);
+						models[modelId]->color_array[color_i] = atof(line);
+						fscanf(file, "%s", line);
+						models[modelId]->color_array[color_i + 1] = atof(line);
+						fscanf(file, "%s", line);
+						models[modelId]->color_array[color_i + 2] = atof(line);
+						models[modelId]->color_array[color_i + 3] = 255;
+						color_i += 4;
+					}
+
+					if (strcmp(line, "ni[") == 0) {
+						fscanf(file, "%s", line);
+						models[modelId]->n_indices = atoi(line);
+						fscanf(file, "%s", line);
+						models[modelId]->INDICES_DRAWMODE = atoi(line);
+					}
+
+					if (strcmp(line, "i[") == 0) {
+						fscanf(file, "%s", line);
+						int ind_i_n = atoi(line);
+						for (int j = 0; j < ind_i_n; j++) {
+							fscanf(file, "%s", line);
+							models[modelId]->indices_array[ind_i + j] = atof(line);
+						}
+						ind_i += ind_i_n;
+					}
+				}
+
+				if (vx_i > 0) {
+					models[modelId]->n_vertices = (vx_i - 1) / 3 + 1;
+					models[modelId]->n_normals = (vn_i - 1) / 3 + 1;
+					models[modelId]->n_uv = (uv_i - 1) / 2 + 1;
+					models[modelId]->n_colors = (color_i - 1) / 4 + 1;
+					models[modelId]->n_indices = ind_i;
+				}
+			}	else { // if last_alx_same_as_this just copy counts no need to re-parse
+					models[modelId]->n_vertices = models[last_modelId]->n_vertices;
+					models[modelId]->n_normals = models[last_modelId]->n_normals;
+					models[modelId]->n_uv = models[last_modelId]->n_uv;
+					models[modelId]->n_colors = models[last_modelId]->n_colors;
+					models[modelId]->n_indices = models[last_modelId]->n_indices;
+			}
 			fclose(file);
+
 			int l = int(strlen(fname));
 			if (l>3) {
 				fname[l - 3] = 't';
@@ -2383,6 +2537,9 @@ public:
 		memset(_alxfname, 0, 64);
 		models[modelId]->index = modelId;
 		models[modelId]->onLoad();
+
+		last_alxfilename = string(alxfilename);//store
+		last_modelId = modelId;
 
 		return models[modelId];
 	}
@@ -2509,8 +2666,8 @@ void AlInit(int TYPE, std::string title = "") {
 #endif
 	}
 
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_FRONT);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_FRONT);
 
 	//To add these two lines refactoring would be needed: PENDED
 	//if (TYPE == STANDARD_2D) game.AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);

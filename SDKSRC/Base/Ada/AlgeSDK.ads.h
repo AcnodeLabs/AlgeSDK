@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 #include <stdio.h>
-
+#include <sstream>
 #include <list>
 
 #ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
@@ -28,11 +28,13 @@ public:
 	int x, y;
 	void clear() { x = 0; y = 0; }
 	i2() { clear(); };
+	
 	i2(int mx, int my) { x = mx; y = my; }
     void CopyFrom(i2 p) { x = p.x; y = p.y; }
     i2 half() { return i2(x / 2, y / 2); }
 	i2 twice() { return i2(x * 2, y * 2); }
     i2 flip() {return i2(y,x);}
+	bool isZero() { return (x == 0 && y == 0); }
 };
 
 
@@ -133,6 +135,24 @@ public:
                   (Rect1.Right < Rect2.Left));
     }
     
+	bool improper() {
+		bool ret;
+		int w = Right - Left;
+		int h = Bottom - Top;
+		ret = !(w > 0 && h > 0);
+		return ret;
+	}
+
+	std::string toStr() {
+		ostringstream oss;
+		int w = Right - Left;
+		int h = Bottom - Top;
+		int cx = Left + w / 2;
+		int cy = Top + h / 2;
+		oss << "Top:" << Top << " Bottom:" << Bottom << " Left:" << Left << " Right:" << Right << " w:" << w << " h:" << h << " cx:" << cx << " cy:" << cy;
+		return oss.str();
+	}
+
 };
 
 
@@ -142,6 +162,13 @@ public:
 		color.x = 1.;
 		color.y = 1.;
 		color.z = 1.;
+	}
+
+	PosRotScale(f3 pos, f3 rot, float scale = 1.0) {
+		PosRotScale();
+		this->pos = pos;
+		this->rot = rot;
+		this->scale = scale;
 	}
 
     f3 pos;
@@ -224,7 +251,7 @@ class Serializable : public PosRotScale {
         if (this->UUID.size()>0) {
             FILE* f = fopen(this->UUID.c_str(), "rb");
             if (f) {
-                readin(f);
+              //  readin(f);
                 fclose(f);
             }
         }
@@ -282,7 +309,7 @@ public:
 
     int m_touchedX;//deprecated
     int m_touchedY;//deprecated
-    
+	bool hud = false;
     //Add PRS to multiple drawing of same model
     //use getInstancePtr to access instances
     vector<PosRotScale> prsInstances;
@@ -310,7 +337,9 @@ public:
 #endif
     
     void Show() {hidden = false;}
-    void Hide() {hidden = true;}
+    void Hide() {
+		hidden = true;
+	}
     void HideFor(GameObject* next) {
         Hide();
         next->hidden = false;
@@ -325,10 +354,10 @@ public:
 		return (this->modelId == other.modelId);
 	}
 
-    bool isOneOf(vector<GameObject> other) {
+    bool isOneOf(vector<GameObject*> other) {
         bool ret = false;
         for (auto o : other) {
-            ret = ret || (this->modelId == o.modelId);
+            ret = ret || (this->modelId == o->modelId);
         }
         return ret;
     }
@@ -367,8 +396,7 @@ public:
             animRot.Step(dt);
             rot.x = mRot[0];
             rot.y = mRot[1];
-            rot.z = mRot[2];
-			
+            rot.z = mRot[2];			
         }
         if (animScale.active) {
             animScale.Step(dt);
@@ -470,15 +498,9 @@ public:
 		return &prsInstances.back();
     }
     
-    //getInstance(0) returns main object instances are at 1..n
-    //deprecated : use Inst(#) instead
+    //getInstance(-1) returns main object instances are at 0..n-1
     PosRotScale* getInstancePtr(int n) {
         if (n < 0 || n >= int(prsInstances.size())) return ((PosRotScale*)this);
-        return &prsInstances.at(n);
-    }
-    
-    PosRotScale* Inst(int n) {
-        if (n < 0 || n > int(prsInstances.size())) return ((PosRotScale*)this);
         return &prsInstances.at(n);
     }
     
@@ -503,11 +525,11 @@ public:
     }
     
     string Name() {
+		if (UUID.size()) return UUID;
         if (Text.size()) return Text;
         if (!resInf) return "Undefined";
-        if (resInf->name.size()) return resInf->name;
+       // if (resInf->name.size()) return resInf->name;
         if (resInf) if (resInf->alx.size()) return resInf->alx;
-        if (UUID.size()) return UUID;
         return "Undefined";
     }
     
@@ -519,9 +541,9 @@ public:
 i2 GameObject::windowSize;
 
 
-class Camera : public GameObject, public CCamera {
+class Camera : public GameObject, public CFpsCamera {
 	short mode;
-
+	
 public:
 	int windowWidth;//for 2D ortho setup
 	int windowHeight;
@@ -544,32 +566,42 @@ public:
 		return this->mode;
 	}
 
-    Camera(int MODE) {
+	Camera(int MODE) {
 		SetMode(MODE);
 		pos.z = 10;
-        resInf = new ResourceInf();
+		Position.z = pos.z;
+		resInf = new ResourceInf();
         resInf->Set("Camera", "", "",1);
     }
     
+	f3 getPos() {
+		return f3(Position.x, Position.y, Position.z);
+	}
+
+	f3 getRot() {
+		return f3(RotatedX, RotatedY, RotatedZ);
+	}
+
+
     Camera() : Camera(CAM_MODE_NULL) {}
     
     ~Camera() {
         delete resInf;
     }
     
-    inline void MoveAhead(float d) {pos.z+=d;}
-	inline void MoveBack(float d) { pos.z -= d; }
-    inline void MoveRight(float d) {pos.x+=d;}
-    inline void MoveLeft(float d) {pos.x-=d;}
-    inline void MoveDown(float d) {pos.y-=d;}
-    inline void MoveUp(float d) {pos.y+=d;}
+	inline void MoveAhead(float d) { pos.z += d; Position.z = pos.z; }
+	inline void MoveBack(float d) { pos.z-= d; Position.z = pos.z;}
+    inline void MoveRight(float d) {pos.x+=d; Position.x = pos.x;}
+    inline void MoveLeft(float d) {pos.x-=d; Position.x = pos.x;}
+    inline void MoveDown(float d) {pos.y-=d; Position.y = pos.y;}
+    inline void MoveUp(float d) {pos.y+=d; Position.y = pos.y;}
     
-    inline void RollRight(float d) {rot.z+=d;}
-    inline void RollLeft(float d) {rot.z-=d;}
-    inline void PitchUp(float d) {rot.x-=d;}
-    inline void PitchDown(float d) {rot.x+=d;}
-    inline void YawRight(float d) {rot.y+=d;}
-    inline void YawLeft(float d) {rot.y-=d;}
+	inline void RollRight(float d) { rot.z += d; RotatedZ = rot.z; }
+    inline void RollLeft(float d) {rot.z-=d; RotatedZ = rot.z;}
+    inline void PitchUp(float d) {rot.x-=d; RotatedX = rot.x;}
+    inline void PitchDown(float d) {rot.x+=d; RotatedX = rot.x;}
+    inline void YawRight(float d) {rot.y+=d; RotatedY = rot.y;}
+    inline void YawLeft(float d) {rot.y-=d; RotatedY = rot.y;}
     
     void ViewFromCurrent() {
         glRotatef(rot.x, 1., 0., 0.);
@@ -578,19 +610,30 @@ public:
         glTranslatef(-pos.x, -pos.y, -pos.z);
     }
     
+	void OnPosRotChanged() {
+		Position.x = pos.x;
+		Position.y = pos.y;
+		Position.z = pos.y;
+		RotatedX = rot.x;
+		RotatedY = rot.y;
+		RotatedZ = rot.z;
+	}
+
     void Update(float deltaT, GameObject* obj) {
-   //     if (obj==this) return;
+		if (obj == this) {
+			OnPosRotChanged();
+		}
         if (mode==CAM_MODE_LOOKAT) {
-            aluLookAt(pos.x, pos.y, pos.z, obj->pos.x, obj->pos.y, obj->pos.z, 0.,1.,0.);
+           // aluLookAt(pos.x, pos.y, pos.z, obj->pos.x, obj->pos.y, obj->pos.z, 0.,1.,0.);
         }
 
 		if (mode == CAM_MODE_2D) {
 		//	aluLookAt(0., 0., 0., obj->pos.x, obj->pos.y, obj->pos.z, 0., 1., 0.);
-			//ViewFromCurrent();
+		//	ViewFromCurrent();
 		}
         
         if (mode==CAM_MODE_FPS || mode==CAM_MODE_FLY) {
-            ViewFromCurrent();
+         //   ViewFromCurrent();
         }
         
     }

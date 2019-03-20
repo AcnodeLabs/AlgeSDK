@@ -32,7 +32,7 @@ void AddF3dVectorToVector ( SF3dVector * Dst, SF3dVector * V2)
 
 /***************************************************************************************/
 
-CCamera::CCamera()
+CFpsCamera::CFpsCamera()
 {
 	//Init with standard OGL values:
 	Position = F3dVector (	0.0, 
@@ -47,7 +47,7 @@ CCamera::CCamera()
 	
 }
 
-void CCamera::GetViewDir( void )
+void CFpsCamera::GetViewDir( void )
 {
 	SF3dVector Step1, Step2;
 	//Rotate around Y-axis:
@@ -61,24 +61,24 @@ void CCamera::GetViewDir( void )
 	//Rotation around Z-axis not yet implemented, so:
 	ViewDir = Step2;
 }
-void CCamera::Move (SF3dVector Direction)
+void CFpsCamera::Move (SF3dVector Direction)
 {
 	AddF3dVectorToVector(&Position, &Direction );
 }
 
-void CCamera::RotateY (float Angle)
+void CFpsCamera::RotateY (float Angle)
 {
 	RotatedY += Angle;
 	ViewDirChanged = true;
 }
 
-void CCamera::RotateX (float Angle)
+void CFpsCamera::RotateX (float Angle)
 {
 	RotatedX += Angle;
 	ViewDirChanged = true;
 }
 /*
-void CCamera::Render( void )
+void CFpsCamera::Render( void )
 {
 	glRotatef(-RotatedX , 1.0, 0.0, 0.0);
 	glRotatef(-RotatedY , 0.0, 1.0, 0.0);
@@ -86,7 +86,7 @@ void CCamera::Render( void )
 	glTranslatef( -Position.x, -Position.y, -Position.z );
 }
 */
-void CCamera::MoveForwards( float Distance )
+void CFpsCamera::MoveForwards( float Distance )
 {
 	if (ViewDirChanged) GetViewDir();
 	SF3dVector MoveVector;
@@ -96,7 +96,7 @@ void CCamera::MoveForwards( float Distance )
 	AddF3dVectorToVector(&Position, &MoveVector );
 }
 
-void CCamera::StrafeRight ( float Distance )
+void CFpsCamera::StrafeRight ( float Distance )
 {
 	if (ViewDirChanged) GetViewDir();
 	SF3dVector MoveVector;
@@ -106,7 +106,12 @@ void CCamera::StrafeRight ( float Distance )
 	AddF3dVectorToVector(&Position, &MoveVector );
 }
 
-void CCamera::KeyDownCcam(unsigned char key, float d)
+void CFpsCamera::PosRot(SF3dVector pos, SF3dVector rot) {
+	Position = pos;
+	RotatedX = rot.x; RotatedY = rot.y; RotatedZ = rot.z;
+}
+
+void CFpsCamera::KeyDownCcam(unsigned char key, float d)
 {
 	key = key + 81;
 	switch (key)

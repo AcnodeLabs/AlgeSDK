@@ -11,3 +11,5 @@ assets/
 .vscode/
 src/com/acnodelabs
 obj/
+*.prop
+*.so

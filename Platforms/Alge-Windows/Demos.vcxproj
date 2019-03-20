@@ -49,8 +49,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ExecutablePath)</ExecutablePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;$(IncludePath)</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Tools\CNetMsg\Debug;libs\win_x86_dbg;$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;..\..\..\libstem_gamepad\source\gamepad;..\..\..\imgui;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Tools\CNetMsg\Debug;libs\win_x86_dbg;..\..\..\libstem_gamepad\msvc\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ExcludePath>$(ExcludePath)</ExcludePath>
@@ -74,7 +74,7 @@
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libdrawtext.lib;CNetMsg.lib;Box2D.lib;BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;assimp-vc140-mt.lib;opengl32.lib;glu32.lib;winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libstem_gamepad.lib;libdrawtext.lib;CNetMsg.lib;Box2D.lib;BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;assimp-vc140-mt.lib;opengl32.lib;glu32.lib;winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>

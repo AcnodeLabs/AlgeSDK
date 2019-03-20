@@ -41,6 +41,7 @@ public:
     
 	CAxis xyz;
 
+	
 	short currentscene;
 
 	int iUnassigned;
@@ -49,10 +50,14 @@ public:
 	PEG input, output;
 	CResourceManager rm;
 	aL10 AL10;
+	int backgroundModelId = 0;//used for dimming
 
 	bool inhibitRender = false;
 	bool edit;
 	bool wireframe = false;
+	float timeMultiplier = 1.0;
+
+
 
 	Camera aCamera;
 
@@ -123,8 +128,54 @@ public:
 	}
 
 	void Deinit() {}
+	
+	
+	void setTiming(float timeMultiplier) {
+		this->timeMultiplier = timeMultiplier;
+	}
+
+	vector<bool> dimmed_states;
+
+	//caution: No New objects should be added between the Dim and Undim call
+	void Dim() {
+		int i0 = 0;
+		for (int i = 0; i < nGobs; i++) {
+			dimmed_states.push_back(gobs[i]->hidden); 
+			if (gobs[i]->modelId != backgroundModelId) gobs[i]->hidden = true;
+			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+				dimmed_states.push_back(gobs[i]->prsInstances[j].hidden);
+				gobs[i]->prsInstances[j].hidden = true;
+				i0++;
+			}
+			i0++;
+		}
+		paused = true;
+	}
+
+	void UnDim() {
+		if (dimmed_states.size()<=0) return;
+		int i0 = 0;
+		for (int i = 0; i < nGobs; i++) {
+			gobs[i]->hidden = dimmed_states[i0];
+			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+				gobs[i]->prsInstances[j].hidden = dimmed_states[i0];
+				i0++;
+			}
+			i0++;
+		}
+		dimmed_states.clear();
+		paused = false;
+	}
+
+	virtual void onSettingChanged(string setting, int value) {
+	//	static char msg[128];
+	//	static int value;
+	//	output.pushP(CMD_SETTINGS_SCREEN, $ setting.c_str() , (void*) value);
+	}
 
 	virtual i2 getBackgroundSize() {
+		static char msg[128];
+		sprintf(msg, "Bg Size %d = %d", resolutionReported.x, resolutionReported.y);
 		return i2(resolutionReported.x,resolutionReported.y);
 	}
 
@@ -189,35 +240,38 @@ public:
 		}
 	}
 
-	GameObject* AddResourceEx(GameObject* g, string name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-		AddResource(g, name);
+	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
+		AddResource(g, alx_name,tga_name);
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
 		return g;
 	}
 
 
-	GameObject* AddResource(GameObject* g, string name, float scale = 1.0) {
+	GameObject* AddResource(GameObject* g, string tag, float scale = 1.0) {
+		return AddResource(g, tag, tag, scale);
+	}
+
+	GameObject* AddResource(GameObject* g, string alx_name, string tga_name, float scale = 1.0) {
 		ResourceInf res;
-		res.Set(name, name + ".alx", name + ".tga", scale);
+		res.Set(string(tga_name), string(alx_name + ".alx"), string(tga_name + ".tga"), scale);
 		g->modelId = LoadModel(g, &res);
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;
 		g->originalScale = scale;
         g->JuiceType = 0;
-        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), name);
-        g->UUID = name + ".G";
-
+        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
+        g->UUID = alx_name +"_"+ tga_name + ".G";
 		return g;
 	}
 	
 
-    GameObject* AddClusterResource(int n_duplicates, string tag, GameObject* array_of_objects, float size, int juiceType,bool useinstancing=false) {
+    GameObject* AddClusterResource(int n_duplicates, string alxtag, string tgatag, GameObject* array_of_objects, float size, int juiceType,bool useinstancing=false) {
         GameObject* g;
         if (!useinstancing) {
             for (int i = 0; i < n_duplicates; i++) {
                 g = (array_of_objects+i);
-                AddResource(g, tag, size);
+                AddResource(g, alxtag,tgatag, size);
                 g->pos.x = randm() * rightSide;
                 g->pos.y = randm() * bottomSide;
                 g->applyTopLeftCorrectionWRTorigin = false;
@@ -290,14 +344,13 @@ public:
 	}
 
 	float juice_sine_angle;
-
+	int juice_frame[JuiceTypes::JUICES_END];
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
 		static float juice_sine;
 		
 		static float elapsed = 0;
-		static int juice_frame[JuiceTypes::JUICES_END];
-
+		
 		elapsed += deltaT;
 		static float timeNote;
 		static bool timeNoted = false;
@@ -318,7 +371,7 @@ public:
 		case JuiceTypes::JUICE_DIE:
 			if (jprs->JuiceDuration>0) {
 				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
-				juice_sine_angle += 0.5f;
+				juice_sine_angle += (0.5f * jprs->JuiceSpeed);
 				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
 				jprs->JuiceDuration -= deltaT;
 			}	else {
@@ -351,7 +404,7 @@ public:
 		case JuiceTypes::JUICE_SCALE_IN:
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
-			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed);
+			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed); else break;
 			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) juice_sine_angle = 0;
 			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
 			break;
@@ -365,6 +418,12 @@ public:
 			if (jprs->pos.x > -999) {
 				if (x_pos_on_arrival==-1) x_pos_on_arrival = jprs->pos.x;
 				jprs->pos.x -= (1000.0 * deltaT * jprs->JuiceSpeed);
+				if (jprs->pos.x < (-x_pos_on_arrival)) {
+					jprs->pos.x = x_pos_on_arrival;
+					jprs->JuiceType = JuiceTypes::JUICE_CANCEL;
+					juice_sine_angle = 0;
+					jprs->hidden = true;
+				}
 			}
 			else {
 				//jprs->pos.x = x_pos_on_arrival;
@@ -373,15 +432,19 @@ public:
 				//jprs->hidden = false;
 			}
 			break;
+		
 		case JuiceTypes::JUICE_CANCEL:
 			jprs->rot.x = 0;
 			jprs->rot.y = 0;
 			jprs->rot.z = 0;
+			juice_sine_angle = 0;
 			break;
 		}
 	}
 
 	void renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1) {
+
+		if (iit->hud) hudBegin(0, rightSide, bottomSide, 0);
 
 		PosRotScale* it = iit->getInstancePtr(instanceNo);
 
@@ -429,9 +492,11 @@ public:
 
 
 		//it->Update(deltaT);
+		if (iit->modelId == backgroundModelId) {
+			iit->color = (dimmed_states.size() > 0) ? f3(0.5, 0.5, 0.5) : f3(1, 1, 1);
+		}
+
 		UpdateCustom(iit, instanceNo, deltaT);
-		
-	
 		
 //	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
 //			PosRotScale* i = iit->getInstancePtr(instanceNo);
@@ -451,16 +516,16 @@ public:
 		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		
 
-		
 		glColor3f(it->color.x, it->color.y, it->color.z);
-		
-		
+
 		if (edit) {
-			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, wireframe);
+			xyz.glDraw();
 		}
-		else {
-			if (iit->modelId >= 0 && !inhibitRender) alDrawModel(iit->modelId, false);
-		}
+	
+		if (iit->modelId >= 0 && !inhibitRender && !iit->hidden) alDrawModel(iit->modelId, wireframe);
+		
+		if (iit->hud) hudEnd();
+
 		if (iit->billboard) alBillboardEnd();
 
 		it->JuiceType = m_j;//restore *1 <<<<<
@@ -504,8 +569,7 @@ public:
         preProcessInput(cmd, deltaT);
         
 		touched_bodies.clear();
-        
-		
+        		
         int picked = -1;
         
         for (int i = 1; i < nGobs; i++) {
@@ -603,9 +667,30 @@ public:
 
 		//allow for touch processing call onTouched(uuid) to determine if body is touched
 		processInput(cmd, deltaT);
-			
+		
+		bool postTouchData = true;
+		if (postTouchData) {
+			if (cmd->command == CMD_TOUCH_START) {
+				td.x = cmd->i1; td.y = cmd->i2;
+				ostringstream oss;
+				oss << "[TOUCHED x:" << cmd->i1 << " y:" << cmd->i2;
+#ifdef NATS_EXTERN
+				netmsg.Post(oss.str());
+#endif
+			}
+			if (cmd->command == CMD_TOUCH_END) {
+				ostringstream oss;
+				CRect r(td.y, cmd->i2, td.x, cmd->i2);
+				oss << r.toStr();
+#ifdef NATS_EXTERN
+				netmsg.Post( "[" + oss.str() + "]]"); 
+#endif
+				td = { 0,0 };
+			}
+		}
 
 	}
+	i2 td;//used by postTouchData
 
 	bool onTouched(string name) {
 		if (touched_bodies.size() > 0) {
@@ -696,13 +781,13 @@ public:
 		string("\r\n[w]ireframe [t/f] 'wf: wireframe false'") +
 		string("\r\n[v]erbosity [l/m/h] 'vx: verbosity low/med/high' default is medium") +
 		"";
-	char verbosity_lmh;
+	char verbosity_lmh = 'h';
 	long counter = 0;
 	int fps = 30;
 
 	//THINK ON WHICH REMOTE COMMANDS ARE TO BE HANDLED AND WHY
 	void preProcessRemoteCommand(char* r) {
-		static char tval[128];
+		char tval[512];
 		if (r[0] == 'r') //report
 		{
 			if (r[1] == 'f') {// fps
@@ -720,7 +805,7 @@ public:
 			if (r[1] == '2') aCamera.SetMode(Camera::CAM_MODE_2D);
 
 
-			CCamera* cc = ((CCamera*)(&aCamera));
+			Camera* cc = ((Camera*)(&aCamera));
 			float val = 0.0f;
 			if (r[2] >= '0' && r[2] <= '9') val = atof(r + 2);
 
@@ -731,18 +816,43 @@ public:
 			if (r[1] == 's') cc->StrafeRight(val);
 		};
 
+		if (r[0] == 'd') //dump
+		{
+			if (r[1] == 'v') //vertices
+			{
+				//char vertices[256];
+				for (int i = 0; i < rm.models[selectedObject->modelId]->n_vertices; i+=3) {
+					//sprintf_s(vertices, 128, "v[%d]={%.2f,%.2f,%.2f}", rm.models[selectedObject->modelId]->vertex_array[i], rm.models[selectedObject->modelId]->vertex_array[i + 1], rm.models[selectedObject->modelId]->vertex_array[i + 2]);
+			//		netmsg.Post("string(vertices)");
+					if (i > 64) {
+			//			netmsg.Post(" Dump Stopped beyond i>64");
+						break;
+					}
+				}
+			}
+		};
+
 		if (r[0] == 's') //Select
 		{
 			int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
-			if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
-			selectedObject = gobs[iSelectedObject];
+			if (iSel != '?' - 'a') {
+				if (iSel >= 0 && iSel <= nGobs) {
+					iSelectedObject = iSel;
+					selectedObject = gobs[iSelectedObject];
+				}
+			}
+			string name = selectedObject->Name();
+#ifndef NO_NATS
+			netmsg.Post("Selected " +name);
+#endif
 		};
 
 		if (r[0] == 't') //transform
 		{
-			int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
-			if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
+			//int iSel = r[1] - 'a';//A=Select 0, B=Select 1, C=Select 2
+			//if (iSel >= 0 && iSel <= nGobs) iSelectedObject = iSel;
 			float val = atof(r + 2);
+			bool cam = (iSelectedObject==0);
 
 			if (r[1] == 's') //Scale
 			{
@@ -753,21 +863,41 @@ public:
 			if (r[1] == 'x') //Transform Move x
 			{
 				selectedObject->pos.x += val;
+				if (cam) aCamera.Position.x = selectedObject->pos.x;
 			};
 
 			if (r[1] == 'y') //Transform Move y
 			{
 				selectedObject->pos.y += val;
+				if (cam) aCamera.Position.y = selectedObject->pos.y;
 			};
 
 			if (r[1] == 'z') //Transform Move z
 			{
 				selectedObject->pos.z += val;
+				if (cam) aCamera.Position.z = selectedObject->pos.z;
+			};
+
+			if (r[1] == 'r') //Transform Rot r
+			{
+				selectedObject->rot.x += val;
+				if (cam) aCamera.RotatedX = selectedObject->rot.x;
+			};
+
+			if (r[1] == 't') //Transform Rot t
+			{
+				selectedObject->rot.y += val;
+				if (cam) aCamera.RotatedY = selectedObject->rot.y;
+			};
+
+			if (r[1] == 'p') //Transform Rot p
+			{
+				selectedObject->rot.z += val;
+				if (cam) aCamera.RotatedZ = selectedObject->rot.z;
 			};
 
 			if (r[1] == 'o' && r[2] == '?') //Transform Move z
 			{
-				char tval[128];
 				sprintf(tval, "tranform(Object:%s) pos(%.1f,%.1f,%.1f) rot(%.1f,%.1f,%.1f) scale(%.1f)",
 					selectedObject->Name().c_str(),
 					selectedObject->pos.x, selectedObject->pos.y, selectedObject->pos.z,
@@ -780,11 +910,12 @@ public:
 			};
 			if (r[1] == 'c' && r[2] == '?') //Transform Move z
 			{
-				char tval[128];
-				sprintf(tval, "tranform(Camera:%s) pos(%.1f,%.1f,%.1f) rot(%.1f,%.1f,%.1f)",
-					aCamera.Name().c_str(),
-					aCamera.pos.x, aCamera.pos.y, aCamera.pos.z,
-					aCamera.rot.x, aCamera.rot.y, aCamera.rot.z
+				static char tval[200];
+				f3 campos = aCamera.getPos();
+				f3 camrot = aCamera.getRot();
+				sprintf(tval, "PosRotScale({%.1f,%.1f,%.1f},{%.1f,%.1f,%.1f})",
+					campos.x, campos.y, campos.z,
+					camrot.x, camrot.x, camrot.z
 				);
 #ifndef NO_NATS
 				netmsg.Post(string(tval));
@@ -796,9 +927,9 @@ public:
 		if (r[0] == 'n') //Select
 		{
 			string names = "gobs {";
-			char c[64];
-			for (int i = 0; i < nGobs; i++) {
-				sprintf(c, "%c:%s\r\n", ('a' + i), gobs[i]->Name().c_str());
+			char c[128];
+			for (int i = 1; i < nGobs; i++) {
+				sprintf(c, "%c%c:%s i/%d {%d vets}\r\n", gobs[i]->hidden?'-':'+',('a' + i), gobs[i]->Name().c_str(), gobs[i]->prsInstances.size(), gobs[i]->modelId>=0?rm.models[gobs[i]->modelId]->n_vertices:0);
 				names += string(c);
 			}
 			names += "}";
@@ -816,11 +947,23 @@ public:
 		};
 
 		if (r[0] == 'w') wireframe = (r[1] == 't');
+		if (r[0] == 'e') edit = (r[1] == 't');
 
 		if (r[0] == 'v') //Verbosity 
 		{
 			verbosity_lmh = r[1];
 		};
+
+		if (r[0] == 'p' || r[1] == 'h') //hidden status Property Hidden
+		{
+			static ostringstream oss;
+			oss.clear();
+			oss << "slected object " << gobs[iSelectedObject]->UUID	<< " is "<< ((gobs[iSelectedObject]->hidden==true)?"":"NOT") << " hidden";
+#ifndef NO_NATS
+			netmsg.Post(oss.str());
+#endif
+		};
+
 	}
 
 	void preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f) {
@@ -852,11 +995,11 @@ public:
 			//aCamera.pos.y = aCamera.Position.y;
 			//aCamera.pos.z = aCamera.Position.y;
 
-			aCamera.MoveForwards(p->i1 / -10.0);
+			aCamera.MoveForwards(p->i1 / -1.0);
 		}
 
 		///UNREAL STYLE MOUSE
-		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCH_START || p->command == CMD_TOUCHMOVER) {
+		if (p->command == CMD_TOUCHMOVE || p->command == CMD_TOUCHMOVER) {
 			if (p->command != CMD_TOUCH_START)
 				if (mousepass1) { mX = p->i1; mY = p->i2; mousepass1 = false; return; }
 			DirectionMagnitude dm = getMouseIntent(p->i1, p->i2, mX, mY);
@@ -884,17 +1027,52 @@ public:
 
 	char msg[128];
     
-	void Render(float deltaT, int aX, int aY, int aZ) {
+	class RunningAverage {
+		unsigned long int counter = 0;
+		long double sum = 0;
+		long double r;
+	public:
+		void Put(float x) {
+			counter++;
+			sum += x;
+			r = sum / counter;
+		}
+		float Get() {
+			return float(r);
+		}
+	};
+
+	RunningAverage tAvg;
+
+	void Render(float dT, int aX, int aY, int aZ) {
+
+		tAvg.Put(dT);
+		float deltaT = tAvg.Get() * timeMultiplier;  //Always use running average of incoming dt
+		
+	//	((GameObject*)&aCamera)->Update(deltaT);
+
+		if (aCamera.GetMode() == Camera::CAM_MODE_LOOKAT) {
+			int t = aZ;
+		}
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		timeVar += deltaT;
+
 		if (!edit) {
-			timeVar += deltaT;
+			
 			if (!paused) {
 				Update(deltaT);
 				UpdatePhysics(deltaT);
-				for (int i = 1; i < nGobs; i++) {
+				
+				for (int i = 0; i < nGobs; i++) {
 					GameObject* it = gobs[i];
 					it->Update(deltaT);
+					if (i == 0) {
+						aCamera.Update(deltaT, &aCamera);
+					//	aCamera.OnPosRotChanged();
+						
+					}
 					if (it->m_actionComplete) {
 						it->m_actionComplete = false;
 						onActionComplete(it);
@@ -908,7 +1086,7 @@ public:
 		//
 #define DV /1.0
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) {
-			ViewOrthoBegin(aCamera.windowWidth, aCamera.windowHeight, 1000); // Must End
+			ViewOrthoBegin(aCamera.windowWidth, aCamera.windowHeight, 1100); // Must End
 		}
 
 		if (aCamera.GetMode() == Camera::CAM_MODE_FPS) {
@@ -920,16 +1098,20 @@ public:
 		}
 
 		if (aCamera.GetMode() == Camera::CAM_MODE_LOOKAT) {
-
+			glLoadIdentity();
+			f3 cp = aCamera.getPos();
+			aluLookAt(cp.x, cp.y, cp.z, selectedObject->pos.x, selectedObject->pos.y, selectedObject->pos.z, 0., 1., 0.);
+			aCamera.pos = cp;
 		}
 
 		//glClearColor(0.0,0,0.,1);
 		//	
-
 		//processInput(p);
+		
 		renderObjects(deltaT, true);
 		fps = 1.0 / deltaT;
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) ViewOrthoEnd();
+	//	if (!edit) aCamera.PosRot({ aCamera.pos.x, aCamera.pos.y, aCamera.pos.z }, { aCamera.rot.x, aCamera.rot.y, aCamera.rot.z });
 	}
 
 	int LoadModel(GameObject* go, ResourceInf* res) {
@@ -944,8 +1126,7 @@ public:
 
 	////////////////////////////PHYSICS 2D Box2D
 	//Phys2D phys;
-	
-	
+		
 	int velocityIterations = 6;
 	int positionIterations = 2;
 
@@ -1175,13 +1356,508 @@ public:
     GameObject obj;
     string tag;// filenames derived from tag
     
-    void AddResourceWithSound(AlgeApp* app, string tag, float scale) {
+    void AddResourceWithSound(AlgeApp* app, string alx_tag, string tga_tag, float scale) {
         obj.JuiceType = 0;
-        app->AddResource(&obj, tag, scale);
+        app->AddResource(&obj, alx_tag, tga_tag, scale);
         app->PlaySnd(tag+".wav");
     }
 };
 class FontObject : public GameObject {
 public:
     
+};
+
+
+class DPad : public GameObject {
+	
+public:
+	bool enabled;
+
+	string m_tag;
+	DPad() {};
+
+	DPad(string filetag) {
+		m_tag = filetag;
+		enabled = true;
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz) {
+		if (m_tag.size() == 0) m_tag = "dpad";
+		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
+		pos.x = thiz->rightSide - 64;
+		JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
+		JuiceSpeed *= 2;
+		color = f3(0.9, 0.9, 0.9);
+		center = pos;
+		hud = true;
+		return d;
+	}
+
+	f3 center;
+
+	virtual void Update(float deltaT) {
+
+		if (wasTouched()) {
+			int t = UDLRC();
+		}
+		else {
+			rot.x = 0;
+			rot.y = 0;
+			rot.z = 0;
+		}
+	}
+
+	//udlr = updownleftrt
+	char UDLRC() {
+		f2 p = posTouched();
+		f2 pt = f2(p.x - center.x, center.y - p.y);
+		int row, col = 0;
+		int a = this->m_width / 6;
+		if (pt.x <= -a) col = 0; else
+			if (pt.x > -a && pt.x < a) col = 1; else
+				if (pt.x >= a) col = 2;
+
+		if (pt.y >= a) row = 0; else
+			if (pt.y > -a && pt.y < a) row = 1; else
+				if (pt.y <= a) row = 2;
+
+		char ret = ' ';
+		if (col == 0) {
+			if (row == 1) ret = 'L';
+		}
+		if (col == 1) {
+			if (row == 0) ret = 'U';
+			if (row == 1) ret = 'C';
+			if (row == 2) ret = 'D';
+		}
+		if (col == 2) {
+			if (row == 1) ret = 'R';
+		}
+
+	//	Swivel(ret);
+
+		return ret;
+	}
+
+	void Swivel(char dir) {
+		rot.z = 0;
+		if (dir == 'U') rot.x = -20;
+		if (dir == 'D') rot.x = +20;
+		if (dir == 'L') rot.y = -20;
+		if (dir == 'R') rot.y = +20;
+		if (dir == 'C' || dir == ' ') {
+			rot.x = 0; rot.y = 0;
+		}
+	}
+
+
+};
+
+class DBtn : public GameObject {
+	string m_tag;
+
+public:
+
+	DBtn() {};
+
+	DBtn(string filetag) {
+		m_tag = filetag;
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz, string m_tag, float scale = 1.0) {
+		if (m_tag.size() == 0) m_tag = "pointer";
+		GameObject* d = thiz->AddResource(this, m_tag, m_tag, scale);
+		pos.x = thiz->rightSide - 64;
+		pos.y = thiz->topSide + 64;
+		JuiceType = JuiceTypes::JUICE_SCALE_IN;
+		JuiceSpeed *= 2;
+		color = f3(0.9, 0.9, 0.9);
+		hud = true;
+		return d;
+	}
+	
+	void SetDirection(int angle) {
+		rot.z = angle;//??
+	//	rot.x = degrees;//??
+	//	rot.y = degrees;//??
+	}
+	
+};
+
+
+// specs:
+// i1=='p' AND i2= 'U' : Pad Up //'D' : Pad Dn // 'L' : Pad Up //'R' : Pad Dn 
+// i1=='b' AND i2 = buttonID
+class MyGamePad {
+public:
+	enum EventTypes { PAD = 'p', BTN = 'b' };
+	enum EventCodes { PAD_UP = 'U', PAD_DN = 'D', PAD_LT = 'L', PAD_RT = 'R' , BTN_DELTA=0, BTN_SQUARE=3, BTN_X=2, BTN_CIRCLE=1 };
+
+	static char get_i1(unsigned int buttonID, int axisID, float value, void* context) {
+		static char i1 = '?';
+		if (buttonID == -1) {//axis
+			i1 = EventTypes::PAD;
+		}
+		else {//button
+			i1 = EventTypes::BTN;
+		}
+		return i1;
+	}
+	
+	static char get_i2(unsigned int buttonID, int axisID, float value, void* context) {
+		static char i2 = '?';
+		if (buttonID == -1) {//axis
+			if (axisID == 5 && value == -1.0) i2 = PAD_UP;
+			if (axisID == 5 && value == 1.0) i2 = PAD_DN;
+			if (axisID == 4 && value == 1.0) i2 = PAD_RT;
+			if (axisID == 4 && value == -1.0) i2 = PAD_LT;
+		}
+		else {//button
+			i2 = buttonID;
+		}
+		return i2;
+	}
+};
+
+//added 04 Feb 2014
+class SettingScreen : public GameObject {
+public:
+
+	enum EventNames {
+		Exiting = 1
+	};
+
+	DBtn p1, p2, p3;
+	DBtn ico;
+
+	string m_tag;
+	float x[3] = {0,0,0};
+	DBtn *p;
+
+	SettingScreen() {};
+	int ix[3] = { 0,0,0 };
+
+	
+	int getIdFromX(int x) {
+		if (abs(x - 1056) < 50) return 2;
+		if (abs(x - 818) < 50) return 1;
+		if (abs(x - 581) < 50) return 0;
+		return -1;
+	}
+	/*
+	int getSettingOfOrientation(int posx) {
+		ix[1] = getIdFromX(posx);
+		return ix[1] == 0 ? 0 : 1;
+	}
+
+	int getSettingOfDifficulty(int posx) {
+		ix[2] = getIdFromX(posx); 
+		return ix[2];
+	}
+
+	int getSettingOfControlMode(int posx) {
+		ix[0] = getIdFromX(posx); 
+		return ix[0];
+	}
+	*/
+	SettingScreen(string filetag) {
+		m_tag = filetag;
+		valueControlMethod = 1;// Touch
+		valueDifficulty = 0;//Easy
+		valueOrientation = 0;//landscape
+	}
+	f3 center;
+	
+	void RollDown() { 
+		p->JuiceType = 0;
+		if (p == &p2) p = &p3;
+		if (p == &p1) p = &p2;
+		p->JuiceType = JUICE_PULSATE_FULLY;
+	}
+	void RollUp() {
+		p->JuiceType = 0;
+		if (p == &p2) p = &p1;
+		if (p == &p3) p = &p2;
+		p->JuiceType = JUICE_PULSATE_FULLY;
+	}
+
+	int Which() {
+		int which = 0;
+		if (p1.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 1;
+		if (p2.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 2;
+		if (p3.JuiceType == JuiceTypes::JUICE_PULSATE_FULLY) which = 3;
+		return which;
+	}
+
+	void NotifyApp(int ptrId, int posx) {
+		
+		switch (ptrId) {
+		case 0:
+			valueControlMethod = getIdFromX(posx);
+			break;
+		case 1:
+			valueOrientation = getIdFromX(posx);
+			break;
+		case 2:
+			valueDifficulty = getIdFromX(posx);
+			break;
+		default:
+			break;
+		}
+	}
+
+
+
+	void RollLeft() {
+		int ip = Which() - 1;
+		ix[ip]--;
+		if (ix[ip] < 0) ix[ip] = 0;
+		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
+		NotifyApp(ip, p->pos.x);
+	}
+
+	void RollRight() {
+		int ip = Which() - 1;
+		ix[ip]++;
+		if (ix[ip] > 2) ix[ip] = 2;
+		p->pos = f3(anchors_v1[ip][ix[ip]].x, anchors_v1[ip][ix[ip]].y, 0.0);
+		NotifyApp(ip, p->pos.x);
+	}
+
+	void processInput(int command, i2 loc) {
+		if (p->hidden) return;
+		if (command == CMD_GAMEPAD_EVENT) {
+			processGamePadEvent(loc.x,loc.y);
+		}
+		if (command == CMD_TOUCH_START) {
+			
+			processTouchEvent(loc);
+		}
+	}
+
+	void processGamePadEvent(char type, char code) {
+		if (type==MyGamePad::EventTypes::PAD) {
+			if (code == MyGamePad::EventCodes::PAD_UP) RollUp();
+			if (code == MyGamePad::EventCodes::PAD_DN) RollDown();
+			if (code == MyGamePad::EventCodes::PAD_LT) RollLeft();
+			if (code == MyGamePad::EventCodes::PAD_RT) RollRight();
+		}
+	}
+		
+
+	string processTouchEvent(i2 point) {
+		ostringstream oss;
+
+		if (m_thiz->onTouched("settings_icon")) {
+			//	SetVisible(true,backgr);
+				oss << "settings_icon;";
+				m_thiz->input.pushI(CMD_SETTINGS_SCREEN, 1, 1);
+				return oss.str();
+		}
+		
+		
+		CRect btnExit;
+		btnExit.Right = (0.1875 * m_thiz->rightSide);
+		btnExit.Top = (0.8 * m_thiz->bottomSide);
+		
+		if (point.x < btnExit.Right && point.y> btnExit.Top) {
+			this->JuiceType = JuiceTypes::JUICE_FLY_OUT;
+			p1.Hide();
+			p2.Hide();
+			p3.Hide();
+			ico.Show();
+			valueControlMethod = getIdFromX(p1.pos.x);
+			valueOrientation = getIdFromX(p2.pos.x);
+			valueDifficulty = getIdFromX(p3.pos.x);
+			lastPointerX[0] = p1.pos.x;
+			lastPointerX[1] = p2.pos.x;
+			lastPointerX[2] = p3.pos.x;
+			oss << "settings_exit[ controlmode=" << valueControlMethod << ", orientation=" << valueOrientation << ", difficulty=" << valueDifficulty << "];";
+			m_thiz->UnDim();
+			m_thiz->onSettingChanged("controlmode", valueControlMethod);
+			m_thiz->onSettingChanged("orientation", valueOrientation);
+			m_thiz->onSettingChanged("difficulty", valueDifficulty);
+			return oss.str();
+		}
+				
+		//find the nearest anchor
+		int Yoffset = (anchors_v1[1][0].y - anchors_v1[0][0].y) / 2;
+		i2 b(point.x,point.y + Yoffset);//Buttons are Yoffset above pointers
+		
+		bool hit(false);
+		int im =0, jm=0, dmin = 1E3;
+		for (int i=0; i<3; i++) for (int j = 0; j < 3; j++) {
+			i2 a = anchors_v1[i][j];
+			//float pt2[2];
+			//pt2[0] = float(a.x);
+			//pt2[1] = float(a.y);
+			float dist = sqrt(pow(a.x - b.x, 2.0) + pow(a.y - b.y, 2.0));// sqrt(1234); CAnimator::Dist(pt1, pt2);
+			oss << dist << "/" << dmin << ";";
+			if (dist < dmin) {
+				dmin = dist; im = i; jm = j; hit = true;
+			}
+		}
+	//	oss << "im:" << im << " jm:" << jm << " hit:" << hit;
+		//move to achor and select it
+		f3 pt(anchors_v1[im][jm]);
+	//	oss << " pt:"<< pt.str("%.1f,%.1f");
+		p->JuiceType = 0;
+		if (p1.pos.y == pt.y) { p1.pos = pt; p = &p1; NotifyApp(0, p1.pos.x);}
+		if (p2.pos.y == pt.y) { p2.pos = pt; p = &p2; NotifyApp(1, p2.pos.x);}
+		if (p3.pos.y == pt.y) { p3.pos = pt; p = &p3; NotifyApp(2, p3.pos.x);}
+		p->JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+
+
+
+		return oss.str();
+	}
+
+//	#include "../../Apps/SettingsScreen.Assets/Data/settings.anchors"
+	//anchorpoints for settings.alx & settings.tga screen
+	i2 anch_size = { 1024,512 };
+	i2 anchors_v1[3][3] = {
+	 {{465,185},{655,185},{655,185}},
+	 {{465,315},{465,315},{465,315}},
+	 {{465,460},{655,460},{845,460}}
+	};//row col
+
+	short valueOrientation = 0, valueDifficulty = 0, valueControlMethod = 1;
+	int lastPointerX[3];
+
+	void setXY(int col) {
+		p1.pos.x = anchors_v1[0][col].x;
+		p2.pos.x = anchors_v1[1][col].x;
+		p3.pos.x = anchors_v1[2][col].x;
+		p1.pos.y = anchors_v1[0][col].y;// thiz->bottomSide * 2 / 6;
+		p2.pos.y = anchors_v1[1][col].y;// thiz->bottomSide * 4 / 6;
+		p3.pos.y = anchors_v1[2][col].y;// thiz->bottomSide * 5 / 6;
+	}
+
+	void resize2Dmodel(CModel* m, i2 now) {
+		for (int i = 0; i < m->n_vertices * 3; i += 3) {
+			f3 vert = f3(m->vertex_array[i] / float(anch_size.x) * float(now.x), m->vertex_array[i + 1] / float(anch_size.y) * float(now.y), m->vertex_array[i + 2]);
+			m->vertex_array[i] =  vert.x ;
+			m->vertex_array[i + 1] = vert.y ;
+		}
+	}
+	AlgeApp* m_thiz;
+	GameObject* backgr;
+	bool m_visible;
+
+	void SetVisible(bool showit, GameObject* background = nullptr) {
+		m_visible = showit;
+		if (showit) m_thiz->Dim(); else m_thiz->UnDim();
+
+		if (showit == true) {
+
+			//ico.Hide();
+			setXY(0);
+			//	GameObject::Show();
+
+			p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
+			p1.JuiceSpeed = 2; p2.JuiceSpeed = 2; p3.JuiceSpeed = 2;
+			p2.JuiceType = 0;
+			p3.JuiceType = 0;
+			this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
+			m_thiz->juice_sine_angle = 0; //resetPrev Juice Effect 
+			p1.scale = 0.8;
+			p2.scale = p1.scale;
+			p3.scale = p1.scale;
+			p1.Show();
+			p2.Show();
+			p3.Show();
+
+			p1.pos.x = lastPointerX[0];
+			p2.pos.x = lastPointerX[1];
+			p3.pos.x = lastPointerX[2];
+			
+			Show();
+		} 	else {
+			ico.Show();
+			this->JuiceType = 0;
+			HideFor(&ico);
+			p1.Hide();
+			p2.Hide();
+			p3.Hide();
+		}
+		
+	}
+
+	GameObject* LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true) {
+		m_thiz = thiz;
+		i2 now = thiz->getBackgroundSize();
+		//rescale anchordata as per our new screensize
+		for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++) {
+			float xo = anchors_v1[i][j].x;
+			float yo = anchors_v1[i][j].y;
+			float xn = (xo / anch_size.x)*now.x;
+			float yn = (yo / anch_size.y)*now.y;
+			anchors_v1[i][j].x = int(xn);
+			anchors_v1[i][j].y = int(yn);
+		}
+
+		lastPointerX[0] = anchors_v1[0][valueControlMethod].x;
+		lastPointerX[1] = anchors_v1[1][valueOrientation].x;
+		lastPointerX[2] = anchors_v1[2][valueDifficulty].x;
+		
+		if (m_tag.size() == 0) m_tag = "settings";
+		GameObject* d = thiz->AddResource(this, m_tag, 1.);
+	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
+
+		center = pos;
+		//hud = true;
+		p1.LoadIn(thiz, "pointer");
+		p2.LoadIn(thiz, "pointer");
+		p3.LoadIn(thiz, "pointer");
+		p = &p1;
+		ico.LoadIn(thiz, "settings_icon", 0.6);
+		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
+		ico.JuiceSpeed *= 3;
+		SetVisible(showit, background);//hidden 
+		return d;
+	}
+
+};
+
+
+class StartScreen {
+public:
+	GameObject bg;
+	GameObject start;
+
+	GameObject ratings;
+
+	void LoadIn(AlgeApp* thiz) {
+		with thiz->AddResource(&bg, "bg", 1.5);
+			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
+		_with;
+		
+		with thiz->AddResource(&ratings, "ratings", 0.7);
+			_.pos.y = 0.1 * thiz->bottomSide;
+		_with
+
+		with thiz->AddResource(&start, "start", 0.7);
+		 _.pos.y = 0.8 * thiz->bottomSide;
+		 _.JuiceType = JuiceTypes::JUICE_PULSATE;
+		 _.JuiceSpeed =1000;
+		_with
+
+
+	}
+	
+	
+
+	void SetVisible(bool visible = true) {
+		if (visible) {
+			ratings.Show();
+			start.Show();
+			bg.Hide(); 
+		} else {
+			ratings.Hide();
+			start.Hide();
+			bg.Hide();
+		}
+	}
+	
+
 };

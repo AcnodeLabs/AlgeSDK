@@ -1,3 +1,3 @@
 ﻿  stdafx.cpp
   CNetMsg.cpp
-d:\algesdk_jd3c\tools\cnetmsg\cnetmsg.h(6): fatal error C1083: Cannot open include file: 'nats.h': No such file or directory
+c:\users\bilal ahsan\sandbox\algesdk\tools\cnetmsg\cnetmsg.cpp(3): fatal error C1020: unexpected #endif

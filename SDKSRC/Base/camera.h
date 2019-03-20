@@ -15,7 +15,7 @@ struct SF2dVector
 	float x,y;
 };
 
-class CCamera
+class CFpsCamera
 {
 private:
 	
@@ -26,7 +26,7 @@ private:
 	
 	void GetViewDir ( void );
 public:
-	CCamera();				//inits the values (Position: (0|0|0) Target: (0|0|-1) )
+	CFpsCamera();				//inits the values (Position: (0|0|0) Target: (0|0|-1) )
 	//void Render ( void );	//executes some glRotates and a glTranslate command
 							//Note: You should call glLoadIdentity before using Render
 	void Move ( SF3dVector Direction );
@@ -39,6 +39,7 @@ public:
 	void KeyDownCcam(unsigned char key, float d);
 	float RotatedX, RotatedY, RotatedZ;
 	SF3dVector Position;
+	void PosRot(SF3dVector pos, SF3dVector rot);
 };
 
 

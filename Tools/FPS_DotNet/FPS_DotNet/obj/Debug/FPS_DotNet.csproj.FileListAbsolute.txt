@@ -1,0 +1,12 @@
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\bin\Debug\NATS.Client.dll
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.csprojResolveAssemblyReference.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.csproj.GenerateResource.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.csproj.CoreCompileInputs.cache
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.csproj.CopyComplete
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\bin\Debug\FPS_DotNet.exe.config
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\bin\Debug\FPS_DotNet.exe
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\bin\Debug\FPS_DotNet.pdb
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.Properties.Resources.resources
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.exe
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.pdb
+C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Debug\FPS_DotNet.Form1.resources
