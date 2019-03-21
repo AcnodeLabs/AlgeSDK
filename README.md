@@ -2,7 +2,17 @@
 
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
 ### **Get It, clone into your sandbox directory and do:** 
+
+## Stable Version (iOS, Win)
 ```sh
+git clone https://github.com/AcnodeLabs/AlgeSDK.git
+cd AlgeSDK
+setup-deps [First Time Only, will pull ThirdParty Requirements]
+KickStart  [run bat or sh script]
+```
+## Bleeding Edge (iOS, macOS, GNAT-macOS (Ada), Win, Android)
+```sh
+git clone -b develop https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
 setup-deps [First Time Only, will pull ThirdParty Requirements]
 KickStart  [run bat or sh script]
