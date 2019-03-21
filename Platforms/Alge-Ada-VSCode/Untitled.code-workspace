@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "/Users/bilal/Desktop/xalgit/com_acnodelabs/PlanetsAda/AdaLogic/src"
+			"path": "../../Apps/PlanetsAda/AdaLogic/src"
 		},
 		{
-			"path": "/Users/bilal/Desktop/xalgit/AlgeSDK/SDKSRC/Base/Ada"
+			"path": "../../SDKSRC/Base/Ada"
 		}
 	],
 	"settings": {
