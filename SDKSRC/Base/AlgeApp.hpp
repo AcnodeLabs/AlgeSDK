@@ -1,4 +1,7 @@
 
+#include "Ada/AlgeSDK.ads.h"
+#include "camera.h"
+
 #ifndef NO_BOX2D
 #include <Box2D/Box2D.h>
 #endif

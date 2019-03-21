@@ -1,2 +1,2 @@
 #define PROJ_NAME "PlanetsAda"
-#define CANDIDATE "../../../../com_acnodelabs/PlanetsAda/App.cpp"
+#define CANDIDATE "../../../Apps/PlanetsAda/App.cpp"

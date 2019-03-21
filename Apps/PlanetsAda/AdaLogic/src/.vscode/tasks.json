@@ -6,7 +6,7 @@
         {
             "label": "gprbuild",
             "type": "shell",
-            "command": "gprbuild /Users/bilal/Desktop/xalgit/AlgeSDK/Platforms/Alge-Gnat-macOS/Untitled.gpr",
+            "command": "gprbuild ../../../../Platforms/Alge-Gnat-macOS/Untitled.gpr",
             "problemMatcher": [
                 "$gcc"
             ],

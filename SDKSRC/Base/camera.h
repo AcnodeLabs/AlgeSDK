@@ -1,4 +1,5 @@
-
+#ifndef ACAMERA_H
+#define ACAMERA_H
 #define PI 3.1415265359
 #define PIdiv180 3.1415265359/180.0
 
@@ -46,3 +47,4 @@ public:
 SF3dVector F3dVector ( float x, float y, float z );
 SF3dVector AddF3dVectors ( SF3dVector * u, SF3dVector * v);
 void AddF3dVectorToVector ( SF3dVector * Dst, SF3dVector * V2);
+#endif

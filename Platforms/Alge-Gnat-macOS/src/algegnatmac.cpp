@@ -13,6 +13,8 @@
 //#define GLES3
 #define ADA
 #define CPP11
+#define NO_BOX2D
+#define NO_NATS
 
 #include "../../../SDKSRC/Base/CBaseV1_2.h"
 

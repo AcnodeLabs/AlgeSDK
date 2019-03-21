@@ -14,14 +14,11 @@
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
 		9C317A49135B4DC7005DD266 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C317A48135B4DC7005DD266 /* Default.png */; };
-		9C380B2421C123EA00E4D705 /* baloon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B0C21C123E900E4D705 /* baloon_red.png */; };
 		9C380B2521C123EA00E4D705 /* fans.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B0D21C123E900E4D705 /* fans.alx */; };
 		9C380B2621C123EA00E4D705 /* fans.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B0E21C123E900E4D705 /* fans.tga */; };
 		9C380B2721C123EA00E4D705 /* heli.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B0F21C123E900E4D705 /* heli.tga */; };
 		9C380B2821C123EA00E4D705 /* spikey.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1021C123E900E4D705 /* spikey.tga */; };
 		9C380B2921C123EA00E4D705 /* heli.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1121C123E900E4D705 /* heli.alx */; };
-		9C380B2A21C123EA00E4D705 /* heli.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1221C123E900E4D705 /* heli.png */; };
-		9C380B2B21C123EA00E4D705 /* spikey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1321C123E900E4D705 /* spikey.jpg */; };
 		9C380B2C21C123EA00E4D705 /* spikey.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1421C123E900E4D705 /* spikey.alx */; };
 		9C380B2D21C123EA00E4D705 /* poppingtime.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1521C123E900E4D705 /* poppingtime.alx */; };
 		9C380B2E21C123EA00E4D705 /* poppingtime.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1621C123E900E4D705 /* poppingtime.png */; };
@@ -30,7 +27,6 @@
 		9C380B3121C123EA00E4D705 /* happy-sandbox.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1921C123E900E4D705 /* happy-sandbox.wav */; };
 		9C380B3221C123EA00E4D705 /* aargh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1A21C123E900E4D705 /* aargh.wav */; };
 		9C380B3321C123EA00E4D705 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1B21C123E900E4D705 /* 4.jpg */; };
-		9C380B3421C123EA00E4D705 /* aarhg.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1C21C123E900E4D705 /* aarhg.aiff */; };
 		9C380B3521C123EA00E4D705 /* baloon.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1D21C123E900E4D705 /* baloon.alx */; };
 		9C380B3621C123EA00E4D705 /* baloon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1E21C123E900E4D705 /* baloon.jpg */; };
 		9C380B3721C123EA00E4D705 /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C380B1F21C123E900E4D705 /* drop.wav */; };
@@ -70,7 +66,6 @@
 		9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB1BBD21432EFC00032B4BD /* icon57.png */; };
 		9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */; };
 		9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */; };
-		9CB46B3B21C94DD900C68147 /* screenshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3021C94DD900C68147 /* screenshot.jpg */; };
 		9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3121C94DD900C68147 /* desktop.ini */; };
 		9CB46B3D21C94DD900C68147 /* bigball.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3321C94DD900C68147 /* bigball.tga */; };
 		9CB46B3E21C94DD900C68147 /* bigball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3421C94DD900C68147 /* bigball.png */; };
@@ -155,14 +150,11 @@
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		9C27BA4F130A8B7E00B89793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C317A48135B4DC7005DD266 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9C380B0C21C123E900E4D705 /* baloon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baloon_red.png; sourceTree = "<group>"; };
 		9C380B0D21C123E900E4D705 /* fans.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fans.alx; sourceTree = "<group>"; };
 		9C380B0E21C123E900E4D705 /* fans.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = fans.tga; sourceTree = "<group>"; };
 		9C380B0F21C123E900E4D705 /* heli.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = heli.tga; sourceTree = "<group>"; };
 		9C380B1021C123E900E4D705 /* spikey.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = spikey.tga; sourceTree = "<group>"; };
 		9C380B1121C123E900E4D705 /* heli.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heli.alx; sourceTree = "<group>"; };
-		9C380B1221C123E900E4D705 /* heli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heli.png; sourceTree = "<group>"; };
-		9C380B1321C123E900E4D705 /* spikey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spikey.jpg; sourceTree = "<group>"; };
 		9C380B1421C123E900E4D705 /* spikey.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spikey.alx; sourceTree = "<group>"; };
 		9C380B1521C123E900E4D705 /* poppingtime.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = poppingtime.alx; sourceTree = "<group>"; };
 		9C380B1621C123E900E4D705 /* poppingtime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poppingtime.png; sourceTree = "<group>"; };
@@ -171,7 +163,6 @@
 		9C380B1921C123E900E4D705 /* happy-sandbox.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "happy-sandbox.wav"; sourceTree = "<group>"; };
 		9C380B1A21C123E900E4D705 /* aargh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = aargh.wav; sourceTree = "<group>"; };
 		9C380B1B21C123E900E4D705 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
-		9C380B1C21C123E900E4D705 /* aarhg.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = aarhg.aiff; sourceTree = "<group>"; };
 		9C380B1D21C123E900E4D705 /* baloon.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baloon.alx; sourceTree = "<group>"; };
 		9C380B1E21C123E900E4D705 /* baloon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = baloon.jpg; sourceTree = "<group>"; };
 		9C380B1F21C123E900E4D705 /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
@@ -218,7 +209,6 @@
 		9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~iphone.xib"; sourceTree = "<group>"; };
 		9CB46B2F21C94DD900C68147 /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
-		9CB46B3021C94DD900C68147 /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.jpg; sourceTree = "<group>"; };
 		9CB46B3121C94DD900C68147 /* desktop.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = desktop.ini; sourceTree = "<group>"; };
 		9CB46B3321C94DD900C68147 /* bigball.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigball.tga; sourceTree = "<group>"; };
 		9CB46B3421C94DD900C68147 /* bigball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigball.png; sourceTree = "<group>"; };
@@ -466,14 +456,11 @@
 		9C380B0B21C123E900E4D705 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				9C380B0C21C123E900E4D705 /* baloon_red.png */,
 				9C380B0D21C123E900E4D705 /* fans.alx */,
 				9C380B0E21C123E900E4D705 /* fans.tga */,
 				9C380B0F21C123E900E4D705 /* heli.tga */,
 				9C380B1021C123E900E4D705 /* spikey.tga */,
 				9C380B1121C123E900E4D705 /* heli.alx */,
-				9C380B1221C123E900E4D705 /* heli.png */,
-				9C380B1321C123E900E4D705 /* spikey.jpg */,
 				9C380B1421C123E900E4D705 /* spikey.alx */,
 				9C380B1521C123E900E4D705 /* poppingtime.alx */,
 				9C380B1621C123E900E4D705 /* poppingtime.png */,
@@ -482,7 +469,6 @@
 				9C380B1921C123E900E4D705 /* happy-sandbox.wav */,
 				9C380B1A21C123E900E4D705 /* aargh.wav */,
 				9C380B1B21C123E900E4D705 /* 4.jpg */,
-				9C380B1C21C123E900E4D705 /* aarhg.aiff */,
 				9C380B1D21C123E900E4D705 /* baloon.alx */,
 				9C380B1E21C123E900E4D705 /* baloon.jpg */,
 				9C380B1F21C123E900E4D705 /* drop.wav */,
@@ -549,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB46B2F21C94DD900C68147 /* App.hpp */,
-				9CB46B3021C94DD900C68147 /* screenshot.jpg */,
 				9CB46B3121C94DD900C68147 /* desktop.ini */,
 				9CB46B3221C94DD900C68147 /* Data */,
 			);
@@ -807,7 +792,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C380B2721C123EA00E4D705 /* heli.tga in Resources */,
-				9CB46B3B21C94DD900C68147 /* screenshot.jpg in Resources */,
 				9C380B5621C123F800E4D705 /* scaling.png in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9C380B2621C123EA00E4D705 /* fans.tga in Resources */,
@@ -823,7 +807,6 @@
 				9C380B6621C123F800E4D705 /* star.tga in Resources */,
 				9CB46B4321C94DD900C68147 /* box.alx in Resources */,
 				9C380B3821C123EA00E4D705 /* baloon.tga in Resources */,
-				9C380B2421C123EA00E4D705 /* baloon_red.png in Resources */,
 				9CB46B3F21C94DD900C68147 /* bigball.alx in Resources */,
 				9C380B5D21C123F800E4D705 /* skydome.alx in Resources */,
 				9C380B2521C123EA00E4D705 /* fans.alx in Resources */,
@@ -839,7 +822,6 @@
 				9C380B3221C123EA00E4D705 /* aargh.wav in Resources */,
 				FA4AB2221EBCD846006141FA /* Default-568h@2x.png in Resources */,
 				9C380B6921C123F800E4D705 /* square.alx in Resources */,
-				9C380B3421C123EA00E4D705 /* aarhg.aiff in Resources */,
 				9C380B6821C123F800E4D705 /* star5.tga in Resources */,
 				9C380B5A21C123F800E4D705 /* gamemodesbanner.alx in Resources */,
 				9C380B2F21C123EA00E4D705 /* poppingtime.tga in Resources */,
@@ -848,7 +830,6 @@
 				9C380B2821C123EA00E4D705 /* spikey.tga in Resources */,
 				9C380B2D21C123EA00E4D705 /* poppingtime.alx in Resources */,
 				9C380B3921C123EA00E4D705 /* bg.tga in Resources */,
-				9C380B2B21C123EA00E4D705 /* spikey.jpg in Resources */,
 				9C380B3321C123EA00E4D705 /* 4.jpg in Resources */,
 				9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */,
 				9C380B6321C123F800E4D705 /* YellowStar.PNG in Resources */,
@@ -871,7 +852,6 @@
 				9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */,
 				9C380B2C21C123EA00E4D705 /* spikey.alx in Resources */,
 				9C380B6021C123F800E4D705 /* ring4color.tga in Resources */,
-				9C380B2A21C123EA00E4D705 /* heli.png in Resources */,
 				9C380B5C21C123F800E4D705 /* Stripes.PNG in Resources */,
 				9C380B3B21C123EA00E4D705 /* bg.alx in Resources */,
 				9C380B5B21C123F800E4D705 /* Screen0.jpg in Resources */,
