@@ -16,8 +16,8 @@
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 
-#define kWindowWidth	(320)
-#define kWindowHeight	(480)
+#define kWindowWidth	(1920)
+#define kWindowHeight	(1080)
 #include CANDIDATE
 
 #define TIMERMSECS 33
@@ -234,6 +234,14 @@ void FindAppName() {
 	fclose(f);
 	}
 }
+void reset_window_title(int para)
+{
+    glutSetWindowTitle(APP_TITLE);
+    glutFullScreen();
+    glutReshapeWindow(kWindowWidth, kWindowHeight);
+    glutPositionWindow(0,0);
+    //HandleReshape(kWindowWidth, kWindowHeight);
+}
 
 int main( int argc, char** argv )
 {
@@ -251,6 +259,8 @@ int main( int argc, char** argv )
   glutSpecialFunc( HandleSpecialKey );
   glutMouseFunc( HandleMouse );
   glutMotionFunc( HandleMotion );
+  
+  glutTimerFunc(0, reset_window_title, 50);
     
   HandleMotion( 0, 0 );
     
@@ -269,7 +279,7 @@ int main( int argc, char** argv )
    l = strrchr(app.rm.resourcepath, '/');
   if (l) l[0] = 0;
 	
-  strcat(app.rm.resourcepath, "/Data");
+  strcat(app.rm.resourcepath, "/Evolution.app/Contents/Resources");
   
   initAL(app.rm.resourcepath);
  
