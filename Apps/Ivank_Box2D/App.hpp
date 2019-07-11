@@ -16,16 +16,15 @@ public:
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
-        if (p->command == CMD_TOUCH_START) for (auto b : touched_bodies) {
-            b->Impulse(f2(0, -4));
-            if (b->UUID.find("ball")!=string::npos)
-                b->color = f3(randm(),randm(),randm());
-        }
+        if (p->command == CMD_TOUCH_START)
+            for (auto b : touched_bodies) {
+                b->Impulse(f2(0, -4));
+                if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
+            }
 	}
 
 	virtual void Init(char* path) {
 		AlInit(STANDARD_2D, "IvanK Box2D");
-       // wireframe= true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		InitPhysics();
 		PhysAddGroundWithWalls();
