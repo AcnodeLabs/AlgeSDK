@@ -5,5 +5,5 @@
  DONT FORGET TO Drop Assets Directory of the candidate app in xcode project
  */
 
-#define CANDIDATE "../../Apps/NeheLesson09/App.hpp"  //Change this line to compile a different App
+#define CANDIDATE "../../Apps/Ivank_Box2D/App.hpp"  //Change this line to compile a different App
 class App;                                //To view App Source Rt Click on 'App' and select Jump to Definition

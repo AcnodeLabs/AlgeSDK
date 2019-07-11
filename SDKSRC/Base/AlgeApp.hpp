@@ -243,6 +243,10 @@ public:
 		}
 	}
 
+    GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
+        AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, density, restitution);
+    }
+    
 	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
 		AddResource(g, alx_name,tga_name);
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
@@ -1359,7 +1363,7 @@ public:
     GameObject obj;
     string tag;// filenames derived from tag
     
-    void AddResourceWithSound(AlgeApp* app, string alx_tag, string tga_tag, float scale) {
+    void AddResourceWithSound(AlgeApp* app, string alx_tag, string tga_tag, float scale = 1.0) {
         obj.JuiceType = 0;
         app->AddResource(&obj, alx_tag, tga_tag, scale);
         app->PlaySnd(tag+".wav");

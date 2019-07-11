@@ -41,7 +41,7 @@ public:
         AlInit(STANDARD);
 
 	AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-        screen0cs.AddResourceWithSound(this, "Screen0cs", 0.5);
+        screen0cs.AddResourceWithSound(this, "Screen0cs","Screen0cs", 0.5);
 
         //AddClusterResource(20, "star", stars, 15., JuiceTypes::JUICE_PULSATE_FULLY, false);
         //return;

@@ -25,7 +25,7 @@ public:
 
 	virtual void Init(char* path) {
 		AlInit(STANDARD_2D, "IvanK Box2D");
-        wireframe= true;
+       // wireframe= true;
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		InitPhysics();
 		PhysAddGroundWithWalls();
