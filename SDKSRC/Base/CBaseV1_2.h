@@ -1962,7 +1962,7 @@ public:
 	{
 		string fname = string(resourcepath) + filename;
 		CAsset * anAsset = new CAsset();
-		models[modelId] = (CModel*)(anAsset->ImportSceneFromFile(fname), modelId);
+        models[modelId] = (CModel*)(static_cast<void>(anAsset->ImportSceneFromFile(fname)), modelId);
 		return models[modelId];
 	}
 
@@ -2297,7 +2297,7 @@ public:
 				}
 
 				if (strcmp(line, "t[") == 0) {
-					int zoom = 1;
+					//int zoom = 1;
 					fscanf(file, "%s", line);
 					//models[modelId]->uv_array[uv_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);
@@ -2307,7 +2307,7 @@ public:
 
 
 				if (strcmp(line, "n[") == 0) {
-					int zoom = 1;
+					//int zoom = 1;
 					fscanf(file, "%s", line);
 					//models[modelId]->normals_array[vn_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);
@@ -2319,7 +2319,7 @@ public:
 
 
 				if (strcmp(line, "v[") == 0) {
-					int zoom = 1;
+					//int zoom = 1;
 					fscanf(file, "%s", line);
 					//models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
 					fscanf(file, "%s", line);

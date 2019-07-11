@@ -60,8 +60,6 @@ public:
 	bool wireframe = false;
 	float timeMultiplier = 1.0;
 
-
-
 	Camera aCamera;
 
 	GameObject origin;
@@ -244,7 +242,7 @@ public:
 	}
 
     GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-        AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, density, restitution);
+        return AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, density, restitution);
     }
     
 	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
@@ -354,13 +352,13 @@ public:
 	int juice_frame[JuiceTypes::JUICES_END];
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
-		static float juice_sine;
+	//	static float juice_sine;
 		
 		static float elapsed = 0;
 		
 		elapsed += deltaT;
-		static float timeNote;
-		static bool timeNoted = false;
+	//	static float timeNote;
+	//	static bool timeNoted = false;
 		static float x_pos_on_arrival = -1;
 
 		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
@@ -455,7 +453,7 @@ public:
 
 		PosRotScale* it = iit->getInstancePtr(instanceNo);
 
-		static float wobble = 0.;
+	//	static float wobble = 0.;
 		glPushMatrix();
 		f3 relPos, relRot;
 	
@@ -593,7 +591,7 @@ public:
 			origPRS.JuiceType = it->JuiceType;
 			origPRS.hidden = it->hidden;
 
-			int n = it->prsInstances.size();
+			int n = (int)it->prsInstances.size();
 			bool instanced = (n > 0);
 			
 			
@@ -936,7 +934,7 @@ public:
 			string names = "gobs {";
 			char c[128];
 			for (int i = 1; i < nGobs; i++) {
-				sprintf(c, "%c%c:%s i/%d {%d vets}\r\n", gobs[i]->hidden?'-':'+',('a' + i), gobs[i]->Name().c_str(), gobs[i]->prsInstances.size(), gobs[i]->modelId>=0?rm.models[gobs[i]->modelId]->n_vertices:0);
+				sprintf(c, "%c%c:%s i/%d {%d vets}\r\n", gobs[i]->hidden?'-':'+',('a' + i), gobs[i]->Name().c_str(), (int)gobs[i]->prsInstances.size(), gobs[i]->modelId>=0?rm.models[gobs[i]->modelId]->n_vertices:0);
 				names += string(c);
 			}
 			names += "}";
@@ -1059,7 +1057,7 @@ public:
 	//	((GameObject*)&aCamera)->Update(deltaT);
 
 		if (aCamera.GetMode() == Camera::CAM_MODE_LOOKAT) {
-			int t = aZ;
+		//	int t = aZ;
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1087,7 +1085,7 @@ public:
 				}
 			}
 			else {
-				bool break1 = true;
+			//	bool break1 = true;
 			}
 		}
 		//
@@ -1199,8 +1197,8 @@ public:
 		
 		int dirY = -1;
 		
-		int32 velocityIterations = 6;
-		int32 positionIterations = 2;
+	//	int32 velocityIterations = 6;
+	//	int32 positionIterations = 2;
 		f2 ownerSize;
 
 		gravity.x = 0.0; gravity.y = 100.0 * dirY;
@@ -1405,7 +1403,7 @@ public:
 	virtual void Update(float deltaT) {
 
 		if (wasTouched()) {
-			int t = UDLRC();
+	//		int t = UDLRC();
 		}
 		else {
 			rot.x = 0;

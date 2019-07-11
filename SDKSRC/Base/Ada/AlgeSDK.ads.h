@@ -75,7 +75,7 @@ public:
     float Top, Bottom, Left, Right;
     CRect() {};
     CRect(float _top, float _bottom, float _left, float _right) {
-        Top = _top; Bottom = _bottom; Left = _left, Right = _right;
+        Top = _top; Bottom = _bottom; Left = _left; Right = _right;
     }
     
  //   CRect objectToScreen() {}

@@ -12,7 +12,7 @@ class /*IvanK Box2D*/ App : public AlgeApp {
 public:
 
     virtual i2 getBackgroundSize() {
-		return i2(512, 512);
+        return size_ipad_air.half();
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
@@ -30,8 +30,7 @@ public:
 		PhysAddGroundWithWalls();
 		
 		AddResource(&winter2, "winter2");
-        AddResourceEx(&boxes, "box", 50, false, 1, 0.1);//false::Polygon/Box
-		AddResourceEx(&balls, "bigball", 50, true, 1, 0.3);//true:Circle
+        AddResourceEx(&boxes, "box", 50, false, 1, 0.2);//false::Polygon/Box
+		AddResourceEx(&balls, "bigball", 50, true, 1, 0.6);//true:Circle
 	}
-
 };

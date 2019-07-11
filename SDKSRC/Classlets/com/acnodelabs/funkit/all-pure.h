@@ -4,7 +4,7 @@
 #include "CAnimator.hpp"
 #include "CCollide.hpp"
 #include "CHotSpot.hpp"
-#include "CBalloonText.hpp"
+#include "cballoontext.hpp"
 #include "CRainMaker.hpp"
 #include "CQuaternion.hpp"
 #include "CTrackBall.hpp"
