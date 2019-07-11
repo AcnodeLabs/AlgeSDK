@@ -1962,8 +1962,10 @@ public:
 	{
 		string fname = string(resourcepath) + filename;
 		CAsset * anAsset = new CAsset();
-        models[modelId] = (CModel*)(static_cast<void>(anAsset->ImportSceneFromFile(fname)), modelId);
-		return models[modelId];
+        CModel* m = anAsset->ImportSceneFromFile(fname);
+     //   CModel* m = (static_cast<void>(anAsset->ImportSceneFromFile(fname)), modelId);
+        models[modelId] = m;
+        return models[modelId];
 	}
 
 	void loadColladaModel(const char* fname, int modelId)

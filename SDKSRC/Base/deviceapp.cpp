@@ -24,7 +24,7 @@ using namespace std;
 
 App game;
 
-// Capped conversion from float to fixed.
+/* Capped conversion from float to fixed.
 static long floatToFixed(float value)
 {
     if (value < -32768) value = -32768;
@@ -33,7 +33,7 @@ static long floatToFixed(float value)
 }
 
 #define FIXED(value) floatToFixed(value)
-
+*/
 
 char respath[256];
 
