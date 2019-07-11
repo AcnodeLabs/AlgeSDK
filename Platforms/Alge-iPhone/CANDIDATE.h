@@ -1,7 +1,7 @@
 // Copyright (c) 2012 AcnodeLabs Inc
 /*
  ALGE SDK :: CANDIDATE.h
- RIGHT Click _o 'App' o_ to open candidate app to view/ edit
+ RIGHT Click class 'App' to open candidate app to view/ edit
  DONT FORGET TO Drop Assets Directory of the candidate app in xcode project
 
  _ ____  _                         __  _ ____           _

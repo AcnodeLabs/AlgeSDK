@@ -2262,8 +2262,9 @@ public:
 		models[modelId] = new CModel();
 
 		FILE* file = fopen(fnamed, "r");//try data folder first
+        if (file) printf("\n%s found", fnamed);
         if (!file) file = fopen(fname, "r"); //fallbcak to root
-        
+        if (file) printf("\n%s found", fname);
 		char line[1280];
 
 		if (file)
@@ -2495,6 +2496,7 @@ public:
 					models[modelId]->n_colors = models[last_modelId]->n_colors;
 					models[modelId]->n_indices = models[last_modelId]->n_indices;
 			}
+            if (!file) printf("\n%s or %s WAS NOT found", fname, fnamed);
 			fclose(file);
 
 			int l = int(strlen(fname));

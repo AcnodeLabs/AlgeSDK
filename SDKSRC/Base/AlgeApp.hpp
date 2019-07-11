@@ -41,6 +41,7 @@ public:
 	GameObject* gobs[128]; short nGobs;
 	GameObject* selectedObject;
     i2 resolutionReported;
+    bool landscape ;
     
 	CAxis xyz;
 
@@ -92,8 +93,8 @@ public:
 		currentscene = 0;
 		LoadScene(currentscene);
 		counter = 0;
-		GameObject::windowSize.x = getBackgroundSize().x;
-		GameObject::windowSize.y = getBackgroundSize().y;
+        landscape = true;
+            
 		#ifndef NO_FONTLIB
 		if (!(font = dtx_open_font_glyphmap("serif_s24.glyphmap"))) {
 			fprintf(stderr, "failed to open font\n");
@@ -176,7 +177,9 @@ public:
 
 	virtual i2 getBackgroundSize() {
 		static char msg[128];
-		sprintf(msg, "Bg Size %d = %d", resolutionReported.x, resolutionReported.y);
+		printf("Bg Size reported = %d ,%d", resolutionReported.x, resolutionReported.y);
+        if (resolutionReported.x<1) resolutionReported.x = size_ipad_air.x;
+        if (resolutionReported.y<1) resolutionReported.y = size_ipad_air.y;
 		return i2(resolutionReported.x,resolutionReported.y);
 	}
 
@@ -731,9 +734,11 @@ public:
 		netmsg.Post(help);
 #endif
 		aCamera.custom_type = 0xCA;
+        
+        
 		aCamera.windowWidth = getBackgroundSize().x;
 		aCamera.windowHeight = getBackgroundSize().y;
-
+        
 		//Font v1 init
 		fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, alReserveModelId(), 1);	// Fonts Loaded just like Model load but it doesnt involve managed resource 
 		fonts.usetexof(fontModel);						// Associate texure of Loaded Model to FontMap
@@ -1020,9 +1025,9 @@ public:
 			mousepass1 = true;
 		}
         
+        //Screen Size may have changed
         if (p->command == CMD_SCREENSIZE) {
-            resolutionReported.x = p->i1;
-            resolutionReported.y = p->i2;
+          
         }
         
 		/////~UNREAL STYLE MOUSE

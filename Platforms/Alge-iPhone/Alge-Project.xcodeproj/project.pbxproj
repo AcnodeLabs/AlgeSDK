@@ -66,7 +66,6 @@
 		9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB1BBD21432EFC00032B4BD /* icon57.png */; };
 		9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */; };
 		9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */; };
-		9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3121C94DD900C68147 /* desktop.ini */; };
 		9CB46B3D21C94DD900C68147 /* bigball.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3321C94DD900C68147 /* bigball.tga */; };
 		9CB46B3E21C94DD900C68147 /* bigball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3421C94DD900C68147 /* bigball.png */; };
 		9CB46B3F21C94DD900C68147 /* bigball.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CB46B3521C94DD900C68147 /* bigball.alx */; };
@@ -129,8 +128,20 @@
 		9CDFBA3B21908FA90005176E /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFBA0B21908FA90005176E /* b2BroadPhase.cpp */; };
 		9CDFBA3C21908FA90005176E /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFBA0E21908FA90005176E /* b2CollideEdge.cpp */; };
 		9CDFBA3D21908FA90005176E /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFBA0F21908FA90005176E /* b2Collision.cpp */; };
+		9CE08E0822D7A51600FDFE85 /* sbg.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CE08E0622D7A51600FDFE85 /* sbg.alx */; };
+		9CE08E0922D7A51600FDFE85 /* sbg.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CE08E0722D7A51600FDFE85 /* sbg.tga */; };
 		9CF1FCA713E29C70005FB6E5 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF1FCA613E29C70005FB6E5 /* Default-Portrait~ipad.png */; };
 		9CF4C76D143B653700877BF1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4C76C143B653700877BF1 /* iAd.framework */; };
+		9CF9706022D747EE00125653 /* settings.anchors in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705422D747CE00125653 /* settings.anchors */; };
+		9CF9706122D747EE00125653 /* settings.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705522D747CE00125653 /* settings.alx */; };
+		9CF9706222D747EE00125653 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705622D747CE00125653 /* settings.png */; };
+		9CF9706322D747EE00125653 /* settings.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705722D747CE00125653 /* settings.tga */; };
+		9CF9706422D747EE00125653 /* settings_icon.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705822D747CE00125653 /* settings_icon.tga */; };
+		9CF9706522D747EE00125653 /* settings_icon.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705922D747CE00125653 /* settings_icon.alx */; };
+		9CF9706622D747EE00125653 /* pointer.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705A22D747CE00125653 /* pointer.alx */; };
+		9CF9706722D747EE00125653 /* pointer.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705B22D747CE00125653 /* pointer.tga */; };
+		9CF9706822D747EE00125653 /* settings_icon.xcf in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705C22D747CE00125653 /* settings_icon.xcf */; };
+		9CF9706922D747EE00125653 /* settings.xcf in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9705D22D747CE00125653 /* settings.xcf */; };
 		FA1054EB1ECA04070059C8C6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1054EA1ECA04070059C8C6 /* icon.png */; };
 		FA4AB21D1EBCD44B006141FA /* device-app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB21C1EBCD44B006141FA /* device-app.cpp */; };
 		FA4AB2221EBCD846006141FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4AB2211EBCD846006141FA /* Default-568h@2x.png */; };
@@ -202,14 +213,11 @@
 		9C735D48142A3C85003CEA26 /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon114.png; sourceTree = "<group>"; };
 		9C759F9221858FD9004DA337 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../AlgeSDK/SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
 		9C759F9321858FD9004DA337 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camera.h; path = ../../../AlgeSDK/SDKSRC/Base/camera.h; sourceTree = "<group>"; };
-		9C9D5B1621CE829300277EED /* CANDIDATE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CANDIDATE.h; path = "../Alge-Android/jni/CANDIDATE.h"; sourceTree = "<group>"; };
 		9CB01E3113A9B899006EDC2E /* AccelerometerFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerFilter.h; sourceTree = "<group>"; };
 		9CB01E3213A9B899006EDC2E /* AccelerometerFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerFilter.m; sourceTree = "<group>"; };
 		9CB1BBD21432EFC00032B4BD /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
 		9CB4344C135CAAB200F8C12F /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		9CB4344D135CAAB200F8C12F /* MainWindow~iphone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow~iphone.xib"; sourceTree = "<group>"; };
-		9CB46B2F21C94DD900C68147 /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
-		9CB46B3121C94DD900C68147 /* desktop.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = desktop.ini; sourceTree = "<group>"; };
 		9CB46B3321C94DD900C68147 /* bigball.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigball.tga; sourceTree = "<group>"; };
 		9CB46B3421C94DD900C68147 /* bigball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigball.png; sourceTree = "<group>"; };
 		9CB46B3521C94DD900C68147 /* bigball.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bigball.alx; sourceTree = "<group>"; };
@@ -319,8 +327,20 @@
 		9CDFBA0D21908FA90005176E /* b2Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Distance.h; sourceTree = "<group>"; };
 		9CDFBA0E21908FA90005176E /* b2CollideEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2CollideEdge.cpp; sourceTree = "<group>"; };
 		9CDFBA0F21908FA90005176E /* b2Collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Collision.cpp; sourceTree = "<group>"; };
+		9CE08E0622D7A51600FDFE85 /* sbg.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sbg.alx; sourceTree = "<group>"; };
+		9CE08E0722D7A51600FDFE85 /* sbg.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sbg.tga; sourceTree = "<group>"; };
 		9CF1FCA613E29C70005FB6E5 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		9CF4C76C143B653700877BF1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		9CF9705422D747CE00125653 /* settings.anchors */ = {isa = PBXFileReference; lastKnownFileType = text; path = settings.anchors; sourceTree = "<group>"; };
+		9CF9705522D747CE00125653 /* settings.alx */ = {isa = PBXFileReference; lastKnownFileType = text; path = settings.alx; sourceTree = "<group>"; };
+		9CF9705622D747CE00125653 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		9CF9705722D747CE00125653 /* settings.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = settings.tga; sourceTree = "<group>"; };
+		9CF9705822D747CE00125653 /* settings_icon.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = settings_icon.tga; sourceTree = "<group>"; };
+		9CF9705922D747CE00125653 /* settings_icon.alx */ = {isa = PBXFileReference; lastKnownFileType = text; path = settings_icon.alx; sourceTree = "<group>"; };
+		9CF9705A22D747CE00125653 /* pointer.alx */ = {isa = PBXFileReference; lastKnownFileType = text; path = pointer.alx; sourceTree = "<group>"; };
+		9CF9705B22D747CE00125653 /* pointer.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = pointer.tga; sourceTree = "<group>"; };
+		9CF9705C22D747CE00125653 /* settings_icon.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = settings_icon.xcf; sourceTree = "<group>"; };
+		9CF9705D22D747CE00125653 /* settings.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = settings.xcf; sourceTree = "<group>"; };
 		FA1054EA1ECA04070059C8C6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		FA4AB21B1EBCD44B006141FA /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		FA4AB21C1EBCD44B006141FA /* device-app.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "device-app.cpp"; sourceTree = "<group>"; };
@@ -381,7 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
-				9C9D5B1621CE829300277EED /* CANDIDATE.h */,
+				9CF9705222D747CE00125653 /* SettingsScreen.Assets */,
 				9CB46B2E21C94DD900C68147 /* Ivank_Box2D.Assets */,
 				9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */,
 				9C380B0A21C123E900E4D705 /* PoppingTime.Assets */,
@@ -534,8 +554,6 @@
 		9CB46B2E21C94DD900C68147 /* Ivank_Box2D.Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9CB46B2F21C94DD900C68147 /* App.hpp */,
-				9CB46B3121C94DD900C68147 /* desktop.ini */,
 				9CB46B3221C94DD900C68147 /* Data */,
 			);
 			name = Ivank_Box2D.Assets;
@@ -736,6 +754,34 @@
 			path = Shapes;
 			sourceTree = "<group>";
 		};
+		9CF9705222D747CE00125653 /* SettingsScreen.Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9CF9705322D747CE00125653 /* Data */,
+			);
+			name = SettingsScreen.Assets;
+			path = ../../Apps/SettingsScreen.Assets;
+			sourceTree = "<group>";
+		};
+		9CF9705322D747CE00125653 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9CF9705422D747CE00125653 /* settings.anchors */,
+				9CF9705522D747CE00125653 /* settings.alx */,
+				9CF9705622D747CE00125653 /* settings.png */,
+				9CF9705722D747CE00125653 /* settings.tga */,
+				9CF9705822D747CE00125653 /* settings_icon.tga */,
+				9CE08E0622D7A51600FDFE85 /* sbg.alx */,
+				9CE08E0722D7A51600FDFE85 /* sbg.tga */,
+				9CF9705922D747CE00125653 /* settings_icon.alx */,
+				9CF9705A22D747CE00125653 /* pointer.alx */,
+				9CF9705B22D747CE00125653 /* pointer.tga */,
+				9CF9705C22D747CE00125653 /* settings_icon.xcf */,
+				9CF9705D22D747CE00125653 /* settings.xcf */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -762,7 +808,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = G84BL5U52X;
@@ -772,11 +818,11 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Alge-Project" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -792,6 +838,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF9706022D747EE00125653 /* settings.anchors in Resources */,
+				9CF9706122D747EE00125653 /* settings.alx in Resources */,
+				9CF9706222D747EE00125653 /* settings.png in Resources */,
+				9CF9706322D747EE00125653 /* settings.tga in Resources */,
+				9CF9706422D747EE00125653 /* settings_icon.tga in Resources */,
+				9CF9706522D747EE00125653 /* settings_icon.alx in Resources */,
+				9CF9706622D747EE00125653 /* pointer.alx in Resources */,
+				9CF9706722D747EE00125653 /* pointer.tga in Resources */,
+				9CF9706822D747EE00125653 /* settings_icon.xcf in Resources */,
+				9CF9706922D747EE00125653 /* settings.xcf in Resources */,
 				9C380B2721C123EA00E4D705 /* heli.tga in Resources */,
 				9C380B5621C123F800E4D705 /* scaling.png in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
@@ -803,6 +859,7 @@
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
 				9C380B6B21C123F800E4D705 /* star5.alx in Resources */,
 				9C380B5721C123F800E4D705 /* gamemodesbanner.tga in Resources */,
+				9CE08E0922D7A51600FDFE85 /* sbg.tga in Resources */,
 				9CB46B3E21C94DD900C68147 /* bigball.png in Resources */,
 				9C380B6121C123F800E4D705 /* ring4color.alx in Resources */,
 				9C380B6621C123F800E4D705 /* star.tga in Resources */,
@@ -832,7 +889,6 @@
 				9C380B2D21C123EA00E4D705 /* poppingtime.alx in Resources */,
 				9C380B3921C123EA00E4D705 /* bg.tga in Resources */,
 				9C380B3321C123EA00E4D705 /* 4.jpg in Resources */,
-				9CB46B3C21C94DD900C68147 /* desktop.ini in Resources */,
 				9C380B6321C123F800E4D705 /* YellowStar.PNG in Resources */,
 				9C380B5821C123F800E4D705 /* Trophy.PNG in Resources */,
 				FA1054EB1ECA04070059C8C6 /* icon.png in Resources */,
@@ -852,6 +908,7 @@
 				9CB46B3D21C94DD900C68147 /* bigball.tga in Resources */,
 				9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */,
 				9C380B2C21C123EA00E4D705 /* spikey.alx in Resources */,
+				9CE08E0822D7A51600FDFE85 /* sbg.alx in Resources */,
 				9C380B6021C123F800E4D705 /* ring4color.tga in Resources */,
 				9C380B5C21C123F800E4D705 /* Stripes.PNG in Resources */,
 				9C380B3B21C123EA00E4D705 /* bg.alx in Resources */,
@@ -936,6 +993,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -971,6 +1029,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -997,15 +1056,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1041,6 +1103,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator4.2]" = "";
@@ -1069,15 +1132,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1113,15 +1179,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;

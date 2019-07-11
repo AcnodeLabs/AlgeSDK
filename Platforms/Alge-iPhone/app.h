@@ -7,7 +7,8 @@ extern "C" {
 #endif
 
 extern void appInit(char*);
-    extern void appDeinit(void);
+extern void appSize(int,int);
+extern void appDeinit(void);
 extern void appAccelerometerSz(char*);
 //extern void appRender(int accelX, int accelY, int accelZ);
 extern void	appRender(float tick, int width, int height, int accelX, int accelY, int accelZ);

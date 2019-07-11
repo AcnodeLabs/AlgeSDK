@@ -102,6 +102,8 @@
 		if (backingWidth==0) backingWidth = applicationFrame.size.width;
 		if (backingHeight==0) backingHeight = applicationFrame.size.height;
 		
+        appSize(backingWidth, backingHeight);
+        
 		glRenderbufferStorageOES(GL_RENDERBUFFER_OES,GL_DEPTH_COMPONENT16_OES,backingWidth,backingHeight);
 		
 		// Create default framebuffer object. The backing will be allocated for the current layer in -resizeFromLayer
@@ -120,7 +122,7 @@
 		OldTime = CACurrentMediaTime();
      //   strcat(sz, "/Data/");
 		appInit((char*)sz);
-		
+        
 	}
 		
 //	baseURL = (CFURLRef) [NSURL alloc];

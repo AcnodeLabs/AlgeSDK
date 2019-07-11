@@ -42,7 +42,16 @@ void appInit(char *sz) {
 	strcpy(respath, sz);
     game.rm.Init(sz);
     game.Init(sz);
-	
+}
+
+void appSize(int w, int h) {
+    if (game.landscape) {
+        game.resolutionReported.y = w;
+        game.resolutionReported.x = h;
+    } else {
+        game.resolutionReported.x = w;
+        game.resolutionReported.y = h;
+    }
 }
 void appDeinit(){}
 

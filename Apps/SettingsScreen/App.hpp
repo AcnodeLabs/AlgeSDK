@@ -34,16 +34,18 @@ class App : public AlgeApp {
 		
 public:
 	
-	virtual i2 getBackgroundSize() { return size_nokia5; }
+	//virtual i2 getBackgroundSize() { return size_ipad_air; }
 	virtual void Init(char* path) {
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		
-		with AddResource(&bg, "bg", 1.5);
+		with AddResource(&bg, "sbg", 1.0);
 			settings.LoadIn(this,&_, false);
+            settings.SetVisible(true);
 		_with
 
 		glClearColor(COLOR_CORNFLOWERBLUE);
+       
 	}
 
 	string ret;
@@ -52,7 +54,7 @@ public:
 		settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
 	}
 	virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
-		if (gob->is(bg)) bg.color = (settings.hidden ? f3(1, 1, 1): f3(0.8, 0.8, 0.8));
+		if (gob->is(bg)) bg.color = (settings.hidden ? f3(1, 1, 1): f3(0.6, 0.6, 0.6));
 	}
 };
 
