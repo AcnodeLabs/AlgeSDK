@@ -176,8 +176,8 @@ public:
 	}
 
 	virtual i2 getBackgroundSize() {
-		static char msg[128];
-		printf("Bg Size reported = %d ,%d", resolutionReported.x, resolutionReported.y);
+	//	static char msg[128];
+	//	printf("Bg Size reported = %d ,%d", resolutionReported.x, resolutionReported.y);
         if (resolutionReported.x<1) resolutionReported.x = size_ipad_air.x;
         if (resolutionReported.y<1) resolutionReported.y = size_ipad_air.y;
 		return i2(resolutionReported.x,resolutionReported.y);
@@ -244,16 +244,15 @@ public:
 		}
 	}
 
-    GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-        return AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, density, restitution);
+    GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1) {
+        return AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, scale, density, restitution);
     }
     
-	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1) {
-		AddResource(g, alx_name,tga_name);
+	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1) {
+		AddResource(g, alx_name,tga_name, scale);
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
 		return g;
 	}
-
 
 	GameObject* AddResource(GameObject* g, string tag, float scale = 1.0) {
 		return AddResource(g, tag, tag, scale);
@@ -549,7 +548,7 @@ public:
     bool doPicking2D(PosRotScale* it, f2 mouse) {
         static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
-        sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
+      //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
       //  SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
@@ -583,8 +582,6 @@ public:
         for (int i = 1; i < nGobs; i++) {
 			GameObject* it = gobs[i];
 			if (inhibitRender) { inhibitRender = false; continue; }
-            
-            
             
             PosRotScale origPRS;
 			origPRS.pos.x = it->pos.x; origPRS.pos.y = it->pos.y; origPRS.pos.z = it->pos.z;

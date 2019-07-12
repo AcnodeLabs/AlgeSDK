@@ -32,9 +32,19 @@ int pinchDist;
     UITouch *touch1 = [[[event allTouches] allObjects] objectAtIndex:0];
     CGPoint location = [touch1 locationInView:self.view];
     
+  //  CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+  //  CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+    
+    location.x *= screenScale;
+    location.y *= screenScale;
+    
+    
     if ([[event allTouches] count]==2) {
         UITouch *touch2 = [[[event allTouches] allObjects] objectAtIndex:1];
         CGPoint location2 = [touch2 locationInView:self.view];
+        location2.x *= screenScale;
+        location2.y *= screenScale;
         appPushI(CMD_TOUCH_START2,(int)location2.x, (int)location2.y);
         pinchDist = (int) sqrt((location.x-location2.x) * (location.x-location2.x) +
                   (location.y-location2.y) * (location.y-location2.y) );

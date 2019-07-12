@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.994817"
+            timestampString = "584606699.535085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "252"
             endingLineNumber = "252"
-            landmarkName = "AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float density = 1.0, float restitution = 0.1)"
+            landmarkName = "AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.9950531"
+            timestampString = "584606699.535146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "class AlgeApp"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995104"
+            timestampString = "584606699.53519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "668"
-            endingLineNumber = "668"
+            startingLineNumber = "665"
+            endingLineNumber = "665"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995145"
+            timestampString = "584606699.535231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "632"
+            endingLineNumber = "632"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995183"
+            timestampString = "584606699.535269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "UpdateJuices(GameObject* it, int instanceNo, float deltaT)"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,7 +120,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995249"
+            timestampString = "584606699.53534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995288"
+            timestampString = "584606699.535396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "675"
-            endingLineNumber = "675"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995325"
+            timestampString = "584606699.535435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "UpdateJuices(GameObject* it, int instanceNo, float deltaT)"
             landmarkType = "7">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.9954081"
+            timestampString = "584606699.535503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "834"
-            endingLineNumber = "834"
+            startingLineNumber = "831"
+            endingLineNumber = "831"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,7 +230,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.9954489"
+            timestampString = "584606699.5355459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "350"
@@ -246,7 +246,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.9956059"
+            timestampString = "584606699.53558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
@@ -262,7 +262,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.9956419"
+            timestampString = "584606699.535612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
@@ -278,7 +278,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.995674"
+            timestampString = "584606699.535642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
@@ -294,7 +294,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.995705"
+            timestampString = "584606699.535673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "328"
@@ -342,11 +342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995773"
+            timestampString = "584606699.535727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "942"
-            endingLineNumber = "942"
+            startingLineNumber = "939"
+            endingLineNumber = "939"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -358,7 +358,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995813"
+            timestampString = "584606699.535768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -374,7 +374,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995849"
+            timestampString = "584606699.535807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -390,11 +390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995885"
+            timestampString = "584606699.535845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "988"
-            endingLineNumber = "988"
+            startingLineNumber = "985"
+            endingLineNumber = "985"
             landmarkName = "preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f)"
             landmarkType = "7">
          </BreakpointContent>
@@ -406,11 +406,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995922"
+            timestampString = "584606699.5358829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "797"
-            endingLineNumber = "797"
+            startingLineNumber = "794"
+            endingLineNumber = "794"
             landmarkName = "class AlgeApp"
             landmarkType = "3">
          </BreakpointContent>
@@ -422,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995959"
+            timestampString = "584606699.53592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "828"
-            endingLineNumber = "828"
+            startingLineNumber = "825"
+            endingLineNumber = "825"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -438,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.995995"
+            timestampString = "584606699.5359581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "UpdateJuices(GameObject* it, int instanceNo, float deltaT)"
             landmarkType = "7">
          </BreakpointContent>
@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996031"
+            timestampString = "584606699.535996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1)"
             landmarkType = "7">
          </BreakpointContent>
@@ -518,7 +518,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/CBaseV1_2.h"
-            timestampString = "584534098.59635"
+            timestampString = "584606699.536067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2266"
@@ -550,11 +550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996284"
+            timestampString = "584606699.53611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1639"
-            endingLineNumber = "1639"
+            startingLineNumber = "1636"
+            endingLineNumber = "1636"
             landmarkName = "processInput(int command, i2 loc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -566,11 +566,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996326"
+            timestampString = "584606699.5361511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1644"
-            endingLineNumber = "1644"
+            startingLineNumber = "1641"
+            endingLineNumber = "1641"
             landmarkName = "processInput(int command, i2 loc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -598,11 +598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996402"
+            timestampString = "584606699.536201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1817"
-            endingLineNumber = "1817"
+            startingLineNumber = "1814"
+            endingLineNumber = "1814"
             landmarkName = "LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true)"
             landmarkType = "7">
          </BreakpointContent>
@@ -614,11 +614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996437"
+            timestampString = "584606699.53624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1130"
-            endingLineNumber = "1130"
+            startingLineNumber = "1127"
+            endingLineNumber = "1127"
             landmarkName = "LoadModel(GameObject* go, ResourceInf* res)"
             landmarkType = "7">
          </BreakpointContent>
@@ -630,11 +630,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996474"
+            timestampString = "584606699.536279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1128"
-            endingLineNumber = "1128"
+            startingLineNumber = "1125"
+            endingLineNumber = "1125"
             landmarkName = "LoadModel(GameObject* go, ResourceInf* res)"
             landmarkType = "7">
          </BreakpointContent>
@@ -646,7 +646,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.9965121"
+            timestampString = "584606699.536317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
@@ -662,11 +662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996552"
+            timestampString = "584606699.536355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "736"
-            endingLineNumber = "736"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
             landmarkName = "Init0(char* path, char platcode)"
             landmarkType = "7">
          </BreakpointContent>
@@ -678,11 +678,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996591"
+            timestampString = "584606699.536393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "729"
-            endingLineNumber = "729"
+            startingLineNumber = "726"
+            endingLineNumber = "726"
             landmarkName = "Init0(char* path, char platcode)"
             landmarkType = "7">
          </BreakpointContent>
@@ -694,7 +694,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/ES1Renderer.m"
-            timestampString = "584559208.996629"
+            timestampString = "584606699.536432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -710,11 +710,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996662"
+            timestampString = "584606699.536464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1030"
-            endingLineNumber = "1030"
+            startingLineNumber = "1027"
+            endingLineNumber = "1027"
             landmarkName = "preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f)"
             landmarkType = "7">
          </BreakpointContent>
@@ -722,11 +722,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.9966969"
+            timestampString = "584606699.536503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -742,12 +742,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584559208.996731"
+            timestampString = "584606699.53654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
             landmarkName = "getBackgroundSize()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Apps/Ivank_Box2D/App.hpp"
+            timestampString = "584606699.53658"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "processInput(PEG::CMD* p, float deltaT)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "App::processInput(PEG::CMD*, float)"
+                  moduleName = "Untitled"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Catalina/SANDBOX/AlgeSDK/Apps/Ivank_Box2D/App.hpp"
+                  timestampString = "584605045.911482"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "App::processInput(PEG::CMD*, float)"
+                  moduleName = "Untitled"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Catalina/SANDBOX/AlgeSDK/Apps/Ivank_Box2D/App.hpp"
+                  timestampString = "584605045.912623"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Apps/Ivank_Box2D/App.hpp"
+            timestampString = "584606699.536862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "processInput(PEG::CMD* p, float deltaT)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584606699.537058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
+            landmarkName = "doPicking2D(PosRotScale* it, f2 mouse)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/UIViewController_RootViewController.m"
+            timestampString = "584606699.537099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
