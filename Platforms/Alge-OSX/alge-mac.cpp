@@ -16,8 +16,8 @@
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 
-#define kWindowWidth	(1920)
-#define kWindowHeight	(1080)
+int kWindowWidth =	(1920);
+int kWindowHeight = (1080);
 #include CANDIDATE
 
 #define TIMERMSECS 33
@@ -169,12 +169,29 @@ static void HandleIdle() {
  glutPostRedisplay();
 }
 
+void appSize(int w, int h) {
+    if (app.landscape) {
+        app.resolutionReported.x = w;
+        app.resolutionReported.y = h;
+  
+    } else {
+        app.resolutionReported.x = w;
+        app.resolutionReported.y = h;
+    
+    }
+    
+}
+
 static void HandleReshape( const int width, const int height )
 {
-    if (height>0)										// Prevent A Divide By Zero By
+    if (height>0 && width!=height)										// Prevent A Divide By Zero By
     {
        glViewport(0,0,width,height);						// Reset The Current Viewport
-       app.input.pushI(CMD_SCREENSIZE, width , height);
+        appSize(width, height);
+        kWindowWidth = width;
+        kWindowHeight = height;
+        printf("[%dx%d]", width, height);
+        app.input.pushI(CMD_SCREENSIZE, width , height);
        glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
        glLoadIdentity();									// Reset The Projection Matrix
        gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.1f,100.0f);
@@ -238,7 +255,8 @@ void reset_window_title(int para)
 {
     glutSetWindowTitle(APP_TITLE);
     glutFullScreen();
-    glutReshapeWindow(kWindowWidth, kWindowHeight);
+    
+  //  glutReshapeWindow(kWindowWidth, kWindowHeight);
     glutPositionWindow(0,0);
     //HandleReshape(kWindowWidth, kWindowHeight);
 }
@@ -246,10 +264,15 @@ void reset_window_title(int para)
 int main( int argc, char** argv )
 {
   glutInit( &argc, argv );
-  glutInitWindowSize( kWindowWidth, kWindowHeight );
+  app.landscape = true;
+  
+  kWindowWidth = glutGet(GLUT_WINDOW_WIDTH);
+  kWindowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+  
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     
   int theWindowHandle = glutCreateWindow( APP_TITLE );
+  glutInitWindowSize( kWindowWidth, kWindowHeight );
     
   glutSetWindow( theWindowHandle );
   glutDisplayFunc( HandleDisplay );
@@ -286,7 +309,7 @@ int main( int argc, char** argv )
   app.rm.Init(app.rm.resourcepath);
   app.Init(app.rm.resourcepath);
 	
-  HandleReshape(kWindowWidth, kWindowHeight);
+  //HandleReshape(kWindowWidth, kWindowHeight);
     
   startTime = glutGet(GLUT_ELAPSED_TIME);
   deltaT = 0;

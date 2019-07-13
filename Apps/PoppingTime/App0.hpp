@@ -33,74 +33,83 @@ class App : public AlgeApp {
 
 public:
 	
-	virtual i2 getBackgroundSize() { 
-		return bgSize.isZero()?size_nokia5:bgSize; 
-	}
-
-
+    void LoadObjects() {
+        startScreen.LoadIn(this);
+        settings.LoadIn(this, &startScreen.bg, false);
+        
+        AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
+        MakeBaloons();
+        
+        AddResource(&cloud, "cloud");
+        MakeClouds(7);
+        
+        with AddResource(&spikey, "spikey", 0.5);
+        _.JuiceType = JuiceTypes::JUICE_ROTZ;
+        _.JuiceSpeed = 20;
+        _with
+        
+        AddResource(&heli, "heli", 1);
+        
+        with AddResource(&fan, "fans");
+        _.JuiceType = JuiceTypes::JUICE_ROTY;
+        _.JuiceSpeed = 1500;
+        _with
+        
+        score.pos.y = 0.05 * bottomSide;
+        score.pos.x = 0.85 * rightSide;
+        AddObject(&score);
+        
+        with dPad.LoadIn(this);
+        dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
+        _.color = { 1,1,1 };
+        _with
+        
+        with AddResource(&p_time, "poppingtime", 1.2);
+        _.JuiceType = JuiceTypes::JUICE_PULSATE;
+        _.JuiceSpeed = 200;
+        _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
+        _.AddInstance(f2(_.pos.xy()));
+        _with
+        
+        with AddResource(&getready, "getready");
+        //_.JuiceType = JuiceTypes::JUICE_DIE;
+        _.JuiceSpeed = 0.1;
+        _.hidden = true;
+        _with
+    }
+    
+    void RepositionObjects() {
+        startScreen.ratings.pos.y = 0.1 * bottomSide;
+        startScreen.start.pos.x = 0.5 * rightSide;
+        startScreen.start.pos.y = 0.9 * bottomSide;
+        score.pos.y = 0.05 * bottomSide;
+        score.pos.x = 0.85 * rightSide;
+    }
+    
 	virtual void Init(char* path) {
 	//	fopen_s(&f, "dbg.txt", "w");
 		soundedOuch = false;
 		nLoops = 100;
 		level = 1;
 		iScore = 0;
-
+   //     wireframe = true;
+        
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 
-		startScreen.LoadIn(this);
-		settings.LoadIn(this, &startScreen.bg, false);
+        
+        output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+        output.pushP(CMD_SNDSET1, $ "pop.wav");
+        output.pushP(CMD_SNDSET2, $ "aargh.wav");
+        output.pushP(CMD_SNDSET3, $ "drop.wav");
+        output.pushP(CMD_SNDSET4, $ "entry.wav");
 
-		AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
-		MakeBaloons();
-		
-		AddResource(&cloud, "cloud");
-		MakeClouds(7);
+        output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+        wall_msg = "Go";
+        //glDisable(GL_CULL_FACE);
+        output.pushI(CMD_USEGAMEPAD, 0, 0);
 
-		with AddResource(&spikey, "spikey", 0.5);
-		_.JuiceType = JuiceTypes::JUICE_ROTZ;
-		_.JuiceSpeed = 20;
-		_with
-
-		AddResource(&heli, "heli", 1);
-			
-		with AddResource(&fan, "fans");
-		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		_.JuiceSpeed = 1500;
-		_with
-
-		score.pos.y = 0.05 * bottomSide;
-		score.pos.x = 0.85 * rightSide;
-		AddObject(&score);
-		
-		with dPad.LoadIn(this);
-			dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
-			_.color = { 1,1,1 };
-		_with
-		
-		with AddResource(&p_time, "poppingtime", 1.2);
-			_.JuiceType = JuiceTypes::JUICE_PULSATE;
-			_.JuiceSpeed = 200;
-			_.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
-			_.AddInstance(f2(_.pos.xy()));
-		_with
-
-		with AddResource(&getready, "getready");
-			//_.JuiceType = JuiceTypes::JUICE_DIE;
-			_.JuiceSpeed = 0.1;
-			_.hidden = true;
-		_with
-
-		output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
-		output.pushP(CMD_SNDSET1, $ "pop.wav");
-		output.pushP(CMD_SNDSET2, $ "aargh.wav");
-		output.pushP(CMD_SNDSET3, $ "drop.wav");
-		output.pushP(CMD_SNDSET4, $ "entry.wav");
-
-		output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
-		wall_msg = "Go";
-		glDisable(GL_CULL_FACE);
-		output.pushI(CMD_USEGAMEPAD, 0, 0);
+        scene = 0;
 	}
 
 	void MakeClouds(int n) {
@@ -157,10 +166,22 @@ public:
 	}
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-		
-		if (cmd->command == CMD_SCREENSIZE) {
-			bgSize = i2(cmd->i1, cmd->i2);
-		}
+        static bool objectsNotLoaded = true;
+        if (cmd->command == CMD_SCREENSIZE) {
+            bgSize = i2(cmd->i1, cmd->i2);
+            resolutionReported.x = cmd->i1;
+            resolutionReported.y = cmd->i2;
+          //  startScreen.start.pos.x = bgSize.x;
+          //  startScreen.start.pos.y = bgSize.y;
+            SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
+            if (objectsNotLoaded) {LoadObjects();objectsNotLoaded = false;}
+            RepositionObjects();
+        }
+        
+        if (cmd->command == CMD_TOUCH_START) {
+          //  startScreen.start.pos.x = cmd->i1;
+          //  startScreen.start.pos.y = cmd->i2;
+        }
 
 		//test dimming
 		if (cmd->command == CMD_KEYDOWN) {
@@ -250,15 +271,20 @@ public:
 
 	// First Intro Screen
 	virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
+        if (scene!=0) return;
 		if (gob->isOneOf({ &heli,&spikey,&fan,&baloons,&dPad })) inhibitRender = true;
 
-		if (onTouched("start")) {
+ 		if (onTouched("start"))
+        {
 			scene = 1; //dPad.Show();
 			output.pushP(CMD_SNDPLAY4, $ "entry.wav");
+            paused = false;
+
 		}
 	}
 	// GamePlay Scene
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
+        if (scene!=1) return;
 		if (gob->isOneOf({ &p_time,&startScreen.ratings,&startScreen.start })) inhibitRender = true;
 
 		if (gob->is(dPad)) {

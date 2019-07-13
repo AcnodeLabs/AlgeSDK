@@ -214,6 +214,7 @@ public:
 		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width / 2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width / 2, prsRect->m_height / 2);
 	}
 
+    
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
 		orthoType = _orthoType;
 		static bool once = false;
@@ -223,27 +224,31 @@ public:
 			AddObject(&aCamera);
 			once = true;
 		}
-		aCamera.windowWidth = getBackgroundSize().x;
-		aCamera.windowHeight = getBackgroundSize().y;
-
-		if (orthoType == ORIGIN_IN_MIDDLE_OF_SCREEN) {
-			leftSide = -aCamera.windowWidth / 2.0;
-			rightSide = aCamera.windowWidth / 2.0;
-			bottomSide = -aCamera.windowHeight / 2.0;
-			topSide = aCamera.windowHeight / 2.0;
-			originX = 0;
-			originY = 0;
-		}
-		if (orthoType == ORIGIN_IN_TOP_LEFT_OF_SCREEN) {
-			leftSide = 0;
-			rightSide = aCamera.windowWidth;
-			bottomSide = aCamera.windowHeight;
-			topSide = 0;
-			originX = rightSide / 2;
-			originY = bottomSide / 2;
-		}
+      //  SetCamera(camMode, _orthoType);
 	}
 
+    void SetCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
+        aCamera.windowWidth = getBackgroundSize().x;
+        aCamera.windowHeight = getBackgroundSize().y;
+        
+        if (orthoType == ORIGIN_IN_MIDDLE_OF_SCREEN) {
+            leftSide = -aCamera.windowWidth / 2.0;
+            rightSide = aCamera.windowWidth / 2.0;
+            bottomSide = -aCamera.windowHeight / 2.0;
+            topSide = aCamera.windowHeight / 2.0;
+            originX = 0;
+            originY = 0;
+        }
+        if (orthoType == ORIGIN_IN_TOP_LEFT_OF_SCREEN) {
+            leftSide = 0;
+            rightSide = aCamera.windowWidth;
+            bottomSide = aCamera.windowHeight;
+            topSide = 0;
+            originX = rightSide / 2;
+            originY = bottomSide / 2;
+        }
+    }
+    
     GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1) {
         return AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, scale, density, restitution);
     }
@@ -546,6 +551,8 @@ public:
 	}
 	        
     bool doPicking2D(PosRotScale* it, f2 mouse) {
+        if (it->touchable==false) return false;
+        TRAP(it, "start");
         static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
       //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
@@ -554,6 +561,12 @@ public:
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
         return ret;
+    }
+    
+    void TRAP(PosRotScale* prs, string name) {
+        if (prs->UUID.find(name)!= string::npos) {
+            printf("trap of %s", name.c_str());
+        }
     }
     
 	void renderObjects(float deltaT, bool btrackball) {
@@ -618,7 +631,6 @@ public:
 				//Touched flag updated here for instances
 				if (cmd->command == CMD_TOUCH_START) {
                     
-                 
                     
                     
                     if (!it->hidden)
@@ -1638,7 +1650,8 @@ public:
 		}
 		if (command == CMD_TOUCH_START) {
 			
-			processTouchEvent(loc);
+			string ret = processTouchEvent(loc);
+            printf(ret.c_str());
 		}
 	}
 
@@ -1723,8 +1736,8 @@ public:
 	//anchorpoints for settings.alx & settings.tga screen
 	i2 anch_size = { 1024,512 };
 	i2 anchors_v1[3][3] = {
-	 {{465,185},{655,185},{655,185}},
-	 {{465,315},{465,315},{465,315}},
+	 {{465,185},{655,185},{845,185}},
+	 {{465,315},{655,315},{845,315}},
 	 {{465,460},{655,460},{845,460}}
 	};//row col
 
@@ -1835,20 +1848,21 @@ public:
 	GameObject ratings;
 
 	void LoadIn(AlgeApp* thiz) {
-		with thiz->AddResource(&bg, "bg", 1.5);
+		with thiz->AddResource(&bg, "bg", 1);
 			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
+            bg.touchable = false;
 		_with;
 		
 		with thiz->AddResource(&ratings, "ratings", 0.7);
 			_.pos.y = 0.1 * thiz->bottomSide;
 		_with
 
-		with thiz->AddResource(&start, "start", 0.7);
-		 _.pos.y = 0.8 * thiz->bottomSide;
+		with thiz->AddResource(&start, "start");
+        _.pos.x = 0;//thiz->rightSide;
+        _.pos.y = thiz->bottomSide;
 		 _.JuiceType = JuiceTypes::JUICE_PULSATE;
 		 _.JuiceSpeed =1000;
 		_with
-
 
 	}
 	

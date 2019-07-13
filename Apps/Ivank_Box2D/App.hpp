@@ -18,7 +18,7 @@ public:
 	virtual void processInput(PEG::CMD* p, float deltaT) {
         if (p->command == CMD_TOUCH_START) {
             for (auto b : touched_bodies) {
-                printf(b->UUID.c_str());
+                printf("\ttch:%s",b->UUID.c_str());
                 b->Impulse(f2(0, -20));
                 if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
             }
