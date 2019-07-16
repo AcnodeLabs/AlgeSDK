@@ -11,14 +11,70 @@
 
 // Scrum Page https://scrumy.com/PoppingTime
 
+class MockUpOne {
+public:
+    GameObject score, titl;
+    
+    SettingScreen settings;
+    StartScreen startScreen;
+    
+    void LoadObjects(AlgeApp* thiz) {
+        with thiz->AddResource(&titl, "poppingtime", 1.2);
+        _.JuiceType = JuiceTypes::JUICE_PULSATE;
+        _.JuiceSpeed = 200;
+        _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
+        _.AddInstance(f2(_.pos.xy()));
+        _with
+    }
+    
+    
+    void SetVisibleGameName(bool visible = true) {
+        if (visible) {
+            titl.Show();
+            titl.getInstancePtr(1)->hidden = false;
+        }
+        else {
+            titl.Hide();
+            titl.getInstancePtr(1)->hidden = true;
+        }
+    }
+    
+    void RepositionObjects(int rightSide, int bottomSide) {
+        startScreen.ratings.pos.y = 0.1 * bottomSide;
+        startScreen.start.pos.x = 0.5 * rightSide;
+        startScreen.start.pos.y = 0.9 * bottomSide;
+        score.pos.y = 0.05 * bottomSide;
+        score.pos.x = 0.85 * rightSide;
+    }
+    void LoadObjects2(AlgeApp* thiz) {
+        settings.LoadIn(thiz, &startScreen.bg, false);
+        score.pos.y = 0.05 * thiz->bottomSide;
+        score.pos.x = 0.85 * thiz->rightSide;
+        thiz->AddObject(&score);
+    }
+    
+    void CmdSettingsScreen(int i1) {
+        if (i1 == 1) {
+            SetVisibleGameName(false);
+            startScreen.SetVisible(false);
+            startScreen.bg.Show();
+            
+        }
+        if (i1 == 2) {
+            SetVisibleGameName(true);
+            startScreen.SetVisible(true);
+            startScreen.bg.Show();
+        }
+    }
+};
+
+
 class App : public AlgeApp {
 	
 	GameLogic logic;
-
-	SettingScreen settings;
-	StartScreen startScreen;
-
-    GameObject spikey, heli, baloons, fan, score, cloud, getready, p_time;
+    MockUpOne mock;
+    
+    GameObject spikey, heli, baloons, fan, cloud, getready;
 	
 	bool soundedOuch;
 	int scene, nLoops, level, iScore, nRemaining;
@@ -34,8 +90,8 @@ class App : public AlgeApp {
 public:
 	
     void LoadObjects() {
-        startScreen.LoadIn(this);
-        settings.LoadIn(this, &startScreen.bg, false);
+        mock.startScreen.LoadIn(this);
+        
         
         AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
         MakeBaloons();
@@ -55,36 +111,23 @@ public:
         _.JuiceSpeed = 1500;
         _with
         
-        score.pos.y = 0.05 * bottomSide;
-        score.pos.x = 0.85 * rightSide;
-        AddObject(&score);
-        
-        with dPad.LoadIn(this);
-        dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
-        _.color = { 1,1,1 };
-        _with
-        
-        with AddResource(&p_time, "poppingtime", 1.2);
-        _.JuiceType = JuiceTypes::JUICE_PULSATE;
-        _.JuiceSpeed = 200;
-        _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
-        _.AddInstance(f2(_.pos.xy()));
-        _with
-        
+        mock.LoadObjects(this);
+       
         with AddResource(&getready, "getready");
         //_.JuiceType = JuiceTypes::JUICE_DIE;
         _.JuiceSpeed = 0.1;
         _.hidden = true;
         _with
+        
+        with dPad.LoadIn(this);
+            dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
+            _.color = { 1,1,1 };
+        _with
+       
+        mock.LoadObjects2(this);
+        
     }
     
-    void RepositionObjects() {
-        startScreen.ratings.pos.y = 0.1 * bottomSide;
-        startScreen.start.pos.x = 0.5 * rightSide;
-        startScreen.start.pos.y = 0.9 * bottomSide;
-        score.pos.y = 0.05 * bottomSide;
-        score.pos.x = 0.85 * rightSide;
-    }
     
 	virtual void Init(char* path) {
 	//	fopen_s(&f, "dbg.txt", "w");
@@ -124,8 +167,8 @@ public:
 	}
 
 	void MakeBaloons() {
-		int n = (level++) * 5 * (settings.valueDifficulty + 1);
-		rightSide1 = settings.ico.getOwnRect().Left - heli.m_width;
+		int n = (level++) * 5 * (mock.settings.valueDifficulty + 1);
+		rightSide1 = mock.settings.ico.getOwnRect().Left - heli.m_width;
 		leftSide1 = heli.m_width / 2;
 		baloons.prsInstances.clear();
 		PosRotScale bp;
@@ -144,7 +187,7 @@ public:
 	
 	void DropSpikey() {
 		if (spikey.animPos.active) return;
-		spikey.transitionTof2(f2(startScreen.bg.posTouched().x, bottomSide), 500);
+		spikey.transitionTof2(f2(mock.startScreen.bg.posTouched().x, bottomSide), 500);
 		output.pushP(CMD_SNDPLAY3, $ "drop.wav");
 	}
 
@@ -154,16 +197,7 @@ public:
 		}
 	}
 	
-	void SetVisibleGameName(bool visible = true) {
-		if (visible) {
-			p_time.Show();
-			p_time.getInstancePtr(1)->hidden = false;
-		}
-		else {
-			p_time.Hide();
-			p_time.getInstancePtr(1)->hidden = true;
-		}
-	}
+	
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
@@ -175,7 +209,7 @@ public:
           //  startScreen.start.pos.y = bgSize.y;
             SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
             if (objectsNotLoaded) {LoadObjects();objectsNotLoaded = false;}
-            RepositionObjects();
+            mock.RepositionObjects(rightSide, bottomSide);
         }
         
         if (cmd->command == CMD_TOUCH_START) {
@@ -188,19 +222,9 @@ public:
 			//dPad.hidden = !dPad.hidden;
 		}
 
-		if (cmd->command == CMD_SETTINGS_SCREEN) {
-			if (cmd->i1 == 1) {
-				SetVisibleGameName(false);
-				startScreen.SetVisible(false);
-				startScreen.bg.Show();
-				
-			}
-			if (cmd->i1 == 2) {
-				SetVisibleGameName(true);
-				startScreen.SetVisible(true);
-				startScreen.bg.Show();
-			}
-		}
+        
+        
+        if (cmd->command == CMD_SETTINGS_SCREEN) mock.CmdSettingsScreen(cmd->i1);
 
 		if (cmd->command == CMD_GAMEPAD_EVENT) {
 			if (scene == 0) { scene++; return; }
@@ -212,17 +236,17 @@ public:
 
 		if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
 			if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
-				startScreen.bg.m_touchedX = (cmd->i2 == MyGamePad::EventCodes::PAD_LT? leftSide:rightSide);
-				heli.transitionTof2(f2(startScreen.bg.m_touchedX, heli.pos.y), 500);
+				mock.startScreen.bg.m_touchedX = (cmd->i2 == MyGamePad::EventCodes::PAD_LT? leftSide:rightSide);
+				heli.transitionTof2(f2(mock.startScreen.bg.m_touchedX, heli.pos.y), 500);
 			}
 			if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
-				startScreen.bg.m_touchedY = (cmd->i2 == MyGamePad::EventCodes::PAD_UP ? topSide : bottomSide);
-				heli.transitionTof2(f2(heli.pos.x, startScreen.bg.m_touchedY), 500);
+				mock.startScreen.bg.m_touchedY = (cmd->i2 == MyGamePad::EventCodes::PAD_UP ? topSide : bottomSide);
+				heli.transitionTof2(f2(heli.pos.x, mock.startScreen.bg.m_touchedY), 500);
 			}
 		}
 
 		if (onTouched("settings_icon")) {
-			settings.SetVisible(true);
+			mock.settings.SetVisible(true);
 		}
 
 		if (onTouched("spikey") || onTouched("heli")) DropSpikey();
@@ -230,7 +254,7 @@ public:
 		if (onTouched("bg") || onTouched("baloon")) {
 							
 			heli.JuiceType = 0;
-			f2 postouch = startScreen.bg.posTouched();
+			f2 postouch = mock.startScreen.bg.posTouched();
 			if (postouch.x > rightSide1) postouch.x = rightSide1;
 			if (postouch.x < leftSide1) postouch.x = leftSide1;
 			int topSide1 = topSide + (heli.m_height);
@@ -247,7 +271,7 @@ public:
 				soundedOuch = false;
 			}
 		}
-	    if (settings.m_visible)	settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
+	    if (mock.settings.m_visible) mock.settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
 	}
 
 	virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
@@ -259,6 +283,7 @@ public:
 			for (int i = 0; i < cloud.prsInstances.size(); i++) {
 				PosRotScale* cloudprs = cloud.getInstancePtr(i);
 				cloudprs->pos.x -= (deltaT * i);
+                cloudprs->rot.z = 0;
 				if (cloudprs->pos.x < -(leftSide * 0.2)) cloudprs->pos.x = rightSide * 1.2;
 			}
 		}
@@ -285,11 +310,11 @@ public:
 	// GamePlay Scene
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=1) return;
-		if (gob->isOneOf({ &p_time,&startScreen.ratings,&startScreen.start })) inhibitRender = true;
+		if (gob->isOneOf({ &mock.titl,&mock.startScreen.ratings,&mock.startScreen.start })) inhibitRender = true;
 
 		if (gob->is(dPad)) {
 			//when come here when dPad.will be visible
-			if (settings.valueControlMethod > 0) inhibitRender = true;
+			if (mock.settings.valueControlMethod > 0) inhibitRender = true;
 		}
 
 		if (gob->is(spikey)) {
@@ -301,7 +326,7 @@ public:
 			spikey.hidden = heli.hidden;
 		}
 		
-		if (gob->is(score)) {
+		if (gob->is(mock.score)) {
 			glColor3f(0.0, 0.0, 0.0);
 			std::ostringstream sc;
 			sc << "Score : " << iScore;
@@ -314,7 +339,7 @@ public:
 
 		if (gob->is(heli)) {
 			static bool faceRight = false;
-			bool moveRight = startScreen.bg.posTouched().x > heli.pos.x;
+			bool moveRight = mock.startScreen.bg.posTouched().x > heli.pos.x;
 			//if (bg.wasTouched()) 
 			faceRight = moveRight;
 			heli.rot.y = faceRight ? 180 : 0;
@@ -335,7 +360,7 @@ public:
 		
             PosRotScale* baloon = gob->getInstancePtr(instanceNo);//Gob==Balloon
 			// rise baloon
-			if (!paused) baloon->pos.y -= (1 + (pow(settings.valueDifficulty, 2) * deltaT * 100));
+			if (!paused) baloon->pos.y -= (1 + (pow(mock.settings.valueDifficulty, 2) * deltaT * 100));
 			// if baloon reaches topside teleport it 70 units below the bottom and let it rise again
 			
 			//static ostringstream oss;

@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.289978"
+            timestampString = "584901726.360063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "252"
             endingLineNumber = "252"
-            landmarkName = "AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1)"
+            landmarkName = "AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290042"
+            timestampString = "584901726.3604341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "346"
             endingLineNumber = "346"
-            landmarkName = "class AlgeApp"
-            landmarkType = "3">
+            landmarkName = "UndoInheritedRotation(GameObject* it)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290086"
+            timestampString = "584901726.3606631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "665"
-            endingLineNumber = "665"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.2901241"
+            timestampString = "584901726.3608789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "632"
-            endingLineNumber = "632"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290162"
+            timestampString = "584901726.361088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "375"
@@ -120,7 +120,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290213"
+            timestampString = "584901726.3613189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.2902499"
+            timestampString = "584901726.361534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "672"
-            endingLineNumber = "672"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
             landmarkName = "renderObjects(float deltaT, bool btrackball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,7 +152,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290287"
+            timestampString = "584901726.361748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290352"
+            timestampString = "584901726.361984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "831"
-            endingLineNumber = "831"
+            startingLineNumber = "838"
+            endingLineNumber = "838"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,11 +342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290449"
+            timestampString = "584901726.362258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
+            startingLineNumber = "946"
+            endingLineNumber = "946"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -358,7 +358,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290489"
+            timestampString = "584901726.362473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -374,7 +374,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290527"
+            timestampString = "584901726.3626781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -390,43 +390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.2905639"
+            timestampString = "584901726.362882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "985"
-            endingLineNumber = "985"
-            landmarkName = "preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "794"
-            endingLineNumber = "794"
-            landmarkName = "class AlgeApp"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "825"
-            endingLineNumber = "825"
+            startingLineNumber = "992"
+            endingLineNumber = "992"
             landmarkName = "preProcessRemoteCommand(char* r)"
             landmarkType = "7">
          </BreakpointContent>
@@ -438,7 +406,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290671"
+            timestampString = "584901726.363097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "801"
+            endingLineNumber = "801"
+            landmarkName = "class AlgeApp"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.363313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "832"
+            endingLineNumber = "832"
+            landmarkName = "preProcessRemoteCommand(char* r)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.363523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "439"
@@ -454,7 +454,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290706"
+            timestampString = "584901726.363742"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "458"
@@ -486,7 +486,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/Ada/AlgeSDK.ads.h"
-            timestampString = "584531330.187407"
+            timestampString = "584902191.978804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -550,12 +550,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290787"
+            timestampString = "584901726.364225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1636"
-            endingLineNumber = "1636"
-            landmarkName = "processInput(int command, i2 loc)"
+            startingLineNumber = "1643"
+            endingLineNumber = "1643"
+            landmarkName = "RollLeft()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -566,12 +566,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290826"
+            timestampString = "584901726.36444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1641"
-            endingLineNumber = "1641"
-            landmarkName = "processInput(int command, i2 loc)"
+            startingLineNumber = "1648"
+            endingLineNumber = "1648"
+            landmarkName = "RollRight()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -598,11 +598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290874"
+            timestampString = "584901726.364661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1815"
-            endingLineNumber = "1815"
+            startingLineNumber = "1822"
+            endingLineNumber = "1822"
             landmarkName = "LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true)"
             landmarkType = "7">
          </BreakpointContent>
@@ -614,12 +614,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290912"
+            timestampString = "584901726.3648731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1127"
-            endingLineNumber = "1127"
-            landmarkName = "LoadModel(GameObject* go, ResourceInf* res)"
+            startingLineNumber = "1134"
+            endingLineNumber = "1134"
+            landmarkName = "Render(float dT, int aX, int aY, int aZ)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -630,12 +630,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.290949"
+            timestampString = "584901726.3650891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1125"
-            endingLineNumber = "1125"
-            landmarkName = "LoadModel(GameObject* go, ResourceInf* res)"
+            startingLineNumber = "1132"
+            endingLineNumber = "1132"
+            landmarkName = "Render(float dT, int aX, int aY, int aZ)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -646,7 +646,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.2909859"
+            timestampString = "584901726.365304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
@@ -662,13 +662,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291021"
+            timestampString = "584901726.365509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "733"
-            endingLineNumber = "733"
-            landmarkName = "Init0(char* path, char platcode)"
-            landmarkType = "7">
+            startingLineNumber = "740"
+            endingLineNumber = "740"
+            landmarkName = "class AlgeApp"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -678,12 +678,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291057"
+            timestampString = "584901726.365724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "726"
-            endingLineNumber = "726"
-            landmarkName = "Init0(char* path, char platcode)"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
+            landmarkName = "ShowMarkerinOrthoMode(float size = 100.0)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -710,11 +710,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291104"
+            timestampString = "584901726.365947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1027"
-            endingLineNumber = "1027"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
             landmarkName = "preProcessInput(PEG::CMD* p = NULL, float deltaT = 0.0f)"
             landmarkType = "7">
          </BreakpointContent>
@@ -726,7 +726,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291141"
+            timestampString = "584901726.36616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -742,7 +742,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291177"
+            timestampString = "584901726.366364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -822,12 +822,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291234"
+            timestampString = "584901726.366588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "550"
-            endingLineNumber = "550"
-            landmarkName = "doPicking2D(PosRotScale* it, f2 mouse)"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
+            landmarkName = "renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -854,12 +854,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Apps/PoppingTime/App0.hpp"
-            timestampString = "584720464.174623"
+            timestampString = "584902191.9792221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "MakeBaloons()"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "MakeClouds(int n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -870,28 +870,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1796"
-            endingLineNumber = "1796"
-            landmarkName = "LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
-            timestampString = "584698948.291654"
+            timestampString = "584901726.366828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1803"
             endingLineNumber = "1803"
-            landmarkName = "LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true)"
+            landmarkName = "SetVisible(bool showit, GameObject* background = nullptr)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.367039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1810"
+            endingLineNumber = "1810"
+            landmarkName = "SetVisible(bool showit, GameObject* background = nullptr)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.367247"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "AddResource(GameObject* g, string tag, float scale = 1.0)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.367453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "AddResource(GameObject* g, string alx_name, string tga_name, float scale = 1.0)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.367661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
+            landmarkName = "renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../SDKSRC/Base/AlgeApp.hpp"
+            timestampString = "584901726.367873"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "renderSingleObject(GameObject* iit, float deltaT = 0.1f, int instanceNo = -1)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

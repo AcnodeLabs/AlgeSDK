@@ -88,7 +88,7 @@
 #define AL_KEY_DOWN (-9)
 #define AL_KEY_ALPHA (16)
 #define ALKEY(k) (AL_KEY_ALPHA + (k-'A'))
-
+#define AUTO_SCALING_FULLSCREEN -1
 
 #define $ (void*)(char*)
 /*

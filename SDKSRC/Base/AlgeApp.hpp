@@ -519,8 +519,15 @@ public:
 //		}
         
 		if (iit->billboard) alBillboardBegin();
-
-		glScalef(it->scale, it->scale, it->scale);
+        
+        if (it->scale == AUTO_SCALING_FULLSCREEN) {
+            
+            float sx =  - rightSide / 1 ;
+            float sy = - bottomSide / 1.78;
+            glScalef(sx, sy, 1);
+        } else
+            glScalef(it->scale, it->scale, it->scale);
+    
 
 		int m_j = it->JuiceType;//save  *1 >>>>>
 		if ((edit && it == gobs[iSelectedObject])) it->JuiceType = JuiceTypes::JUICE_PULSATE;
@@ -1848,7 +1855,8 @@ public:
 	GameObject ratings;
 
 	void LoadIn(AlgeApp* thiz) {
-		with thiz->AddResource(&bg, "bg", 1);
+		with thiz->AddResource(&bg, "bg");
+            bg.scale = AUTO_SCALING_FULLSCREEN;
 			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
             bg.touchable = false;
 		_with;

@@ -1089,7 +1089,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.apps.untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -1121,7 +1121,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.apps.untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1196,7 +1196,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.apps.untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphonesimulator4.2]" = "37C021F2-6B9D-415A-8946-E822A76C7B1A";
