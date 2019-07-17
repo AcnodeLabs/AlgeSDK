@@ -1810,7 +1810,7 @@ public:
 		
 	}
 
-	GameObject* LoadIn(AlgeApp* thiz, GameObject* background = nullptr, bool showit = true) {
+	GameObject* LoadIn(AlgeApp* thiz, string tagSettings, string tagPointer, string tagIcon, GameObject* background = nullptr, bool showit = true) {
 		m_thiz = thiz;
 		i2 now = thiz->getBackgroundSize();
 		//rescale anchordata as per our new screensize
@@ -1827,17 +1827,17 @@ public:
 		lastPointerX[1] = anchors_v1[1][valueOrientation].x;
 		lastPointerX[2] = anchors_v1[2][valueDifficulty].x;
 		
-		if (m_tag.size() == 0) m_tag = "settings";
+		if (m_tag.size() == 0) m_tag = tagSettings;
 		GameObject* d = thiz->AddResource(this, m_tag, 1.);
 	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
 
 		center = pos;
 		//hud = true;
-		p1.LoadIn(thiz, "pointer");
-		p2.LoadIn(thiz, "pointer");
-		p3.LoadIn(thiz, "pointer");
+		p1.LoadIn(thiz, tagPointer);
+		p2.LoadIn(thiz, tagPointer);
+		p3.LoadIn(thiz, tagPointer);
 		p = &p1;
-		ico.LoadIn(thiz, "settings_icon", 0.6);
+		ico.LoadIn(thiz, tagIcon, 0.6);
 		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
 		ico.JuiceSpeed *= 3;
 		SetVisible(showit, background);//hidden 
@@ -1890,3 +1890,93 @@ public:
 	
 
 };
+
+
+class MockUpOne {
+public:
+    GameObject score, titl;
+    
+    SettingScreen settings;
+    StartScreen startScreen;
+    DPad dPad;
+    AlgeApp* app;
+    
+    void Load(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
+        app = thiz;
+        startScreen.LoadIn(thiz);
+        
+        with thiz->AddResource(&titl, titleTag.c_str(), 1.2);
+        _.JuiceType = JuiceTypes::JUICE_PULSATE;
+        _.JuiceSpeed = 200;
+        _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
+        _.AddInstance(f2(_.pos.xy()));
+        _with
+        
+        settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon,&startScreen.bg, false);
+        
+        score.pos.y = 0.05 * thiz->bottomSide;
+        score.pos.x = 0.85 * thiz->rightSide;
+        thiz->AddObject(&score);
+        
+        with dPad.LoadIn(thiz);
+        dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
+        _.color = { 1,1,1 };
+        _with
+        
+    }
+    
+    void processInput(PEG::CMD* cmd, float deltaT) {
+        if (!app) return;
+        if (cmd->command == CMD_SCREENSIZE) RepositionObjects(app->rightSide, app->bottomSide);
+        
+        if (cmd->command == CMD_SETTINGS_SCREEN) {
+            if (cmd->i1 == 1) {
+                ShowTitle(false);
+                startScreen.SetVisible(false);
+                startScreen.bg.Show();
+                
+            }
+            if (cmd->i1 == 2) {
+                ShowTitle(true);
+                startScreen.SetVisible(true);
+                startScreen.bg.Show();
+            }
+        }
+        
+        if (cmd->command == CMD_TOUCH_START)
+            if (app->onTouched("settings_icon")) {
+                settings.SetVisible(true);
+            }
+        
+        if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
+                startScreen.bg.m_touchedX = (cmd->i2 == MyGamePad::EventCodes::PAD_LT? app->leftSide:app->rightSide);
+            }
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
+                startScreen.bg.m_touchedY = (cmd->i2 == MyGamePad::EventCodes::PAD_UP ? app->topSide : app->bottomSide);
+            }
+        }
+        
+        if (settings.m_visible) settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
+    }
+    
+    void ShowTitle(bool visible = true) {
+        if (visible) {
+            titl.Show();
+            titl.getInstancePtr(1)->hidden = false;
+        }
+        else {
+            titl.Hide();
+            titl.getInstancePtr(1)->hidden = true;
+        }
+    }
+    
+    void RepositionObjects(int rightSide, int bottomSide) {
+        startScreen.ratings.pos.y = 0.1 * bottomSide;
+        startScreen.start.pos.x = 0.5 * rightSide;
+        startScreen.start.pos.y = 0.9 * bottomSide;
+        score.pos.y = 0.05 * bottomSide;
+        score.pos.x = 0.85 * rightSide;
+    }
+};
+

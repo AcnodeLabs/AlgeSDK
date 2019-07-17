@@ -257,6 +257,7 @@ class Serializable : public PosRotScale {
             }
         }
     }
+    
     ~Serializable() {
         if (UUID.size()>0) {
             FILE* f = fopen(UUID.c_str(), "wb");

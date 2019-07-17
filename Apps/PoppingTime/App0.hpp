@@ -11,83 +11,6 @@
 
 // Scrum Page https://scrumy.com/PoppingTime
 
-class MockUpOne {
-public:
-    GameObject score, titl;
-    
-    SettingScreen settings;
-    StartScreen startScreen;
-    DPad dPad;
-    AlgeApp* app;
-    
-    void Load(AlgeApp* thiz, string titleTag) {
-        app = thiz;
-        startScreen.LoadIn(thiz);
-        
-        with thiz->AddResource(&titl, titleTag.c_str(), 1.2);
-        _.JuiceType = JuiceTypes::JUICE_PULSATE;
-        _.JuiceSpeed = 200;
-        _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
-        _.AddInstance(f2(_.pos.xy()));
-        _with
-        
-        settings.LoadIn(thiz, &startScreen.bg, false);
-        
-        score.pos.y = 0.05 * thiz->bottomSide;
-        score.pos.x = 0.85 * thiz->rightSide;
-        thiz->AddObject(&score);
-        
-        with dPad.LoadIn(thiz);
-        dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
-        _.color = { 1,1,1 };
-        _with
-        
-    }
-    
-    void processInput(PEG::CMD* cmd, float deltaT) {
-        if (cmd->command == CMD_SETTINGS_SCREEN) {
-            if (cmd->i1 == 1) {
-                ShowTitle(false);
-                startScreen.SetVisible(false);
-                startScreen.bg.Show();
-                
-            }
-            if (cmd->i1 == 2) {
-                ShowTitle(true);
-                startScreen.SetVisible(true);
-                startScreen.bg.Show();
-            }
-        }
-        
-        if (cmd->command == CMD_TOUCH_START)
-        if (app->onTouched("settings_icon")) {
-            settings.SetVisible(true);
-        }
-        
-         if (settings.m_visible) settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
-    }
-    
-    void ShowTitle(bool visible = true) {
-        if (visible) {
-            titl.Show();
-            titl.getInstancePtr(1)->hidden = false;
-        }
-        else {
-            titl.Hide();
-            titl.getInstancePtr(1)->hidden = true;
-        }
-    }
-    
-    void RepositionObjects(int rightSide, int bottomSide) {
-        startScreen.ratings.pos.y = 0.1 * bottomSide;
-        startScreen.start.pos.x = 0.5 * rightSide;
-        startScreen.start.pos.y = 0.9 * bottomSide;
-        score.pos.y = 0.05 * bottomSide;
-        score.pos.x = 0.85 * rightSide;
-    }
-
-   
-};
 
 class PoppingGame {
 public:
@@ -132,12 +55,25 @@ public:
                 heli.hidden = false;
                 spikey.hidden = false;
                 heli.pos = app->getBackgroundSize().half();
-              //  app->soundedOuch = false;
+                
+               // soundedOuch = false;
             }
         }
         
+        if (cmd->command == CMD_GAMEPAD_EVENT) {
+            if (cmd->i1 == MyGamePad::EventTypes::BTN) {
+                if (cmd->i2 == MyGamePad::EventCodes::BTN_X) DropSpikey();
+            }
+        }
+        if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
+                heli.transitionTof2(f2(mock->startScreen.bg.m_touchedX, heli.pos.y), 500);
+            }
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
+                heli.transitionTof2(f2(heli.pos.x, mock->startScreen.bg.m_touchedY), 500);
+            }
+        }
     }
-    
     
     void MakeBaloons() {
         int n = (level++) * 5 * (mock->settings.valueDifficulty + 1);
@@ -174,23 +110,19 @@ public:
 
 class App : public AlgeApp {
 	
-	
-    MockUpOne mock;
-    PoppingGame pp;
-	
 	int scene, nLoops, level, iScore, nRemaining;
-	
 	i2 bgSize;
-
-
 	FILE* f;
 
 public:
-//	bool soundedOuch;
+    MockUpOne mock;
+    PoppingGame pp;
+    
+	bool soundedOuch;
     void LoadObjects() {
         
         //FIRST LOAD MOCK
-        mock.Load(this, "poppingtime");
+        mock.Load(this, "poppingtime", "settings", "poniter" , "settings_icon");
         
         ///LOAD PLAY OBJECTS
         AddResource(&pp.baloons, "baloon");// , 10, true, 1, 0.3);
@@ -216,16 +148,13 @@ public:
         _.JuiceSpeed = 0.1;
         _.hidden = true;
         _with
-        
-       
     }
-    
     
 	virtual void Init(char* path) {
         pp.app = this;
         pp.mock = &mock;
 	//	fopen_s(&f, "dbg.txt", "w");
-	//	soundedOuch = false;
+		soundedOuch = false;
 		nLoops = 100;
 		level = 1;
 		iScore = 0;
@@ -247,51 +176,31 @@ public:
 
         scene = 0;
 	}
-
-
-
+    
     virtual void onActionComplete(GameObject* obj) {
         pp.onActionComplete(obj);
     }
 	
-
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-        
-        mock.processInput(cmd,deltaT);
-        pp.processInput(cmd,deltaT);
-        
         static bool objectsNotLoaded = true;
+        
+        if (cmd->command == CMD_GAMEPAD_EVENT) {
+            if (scene == 0) { scene++; return; }
+        }
+        
         if (cmd->command == CMD_SCREENSIZE) {
             bgSize = i2(cmd->i1, cmd->i2);
             resolutionReported.x = cmd->i1;
             resolutionReported.y = cmd->i2;
-          //  startScreen.start.pos.x = bgSize.x;
-          //  startScreen.start.pos.y = bgSize.y;
+            //  startScreen.start.pos.x = bgSize.x;
+            //  startScreen.start.pos.y = bgSize.y;
             SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
             if (objectsNotLoaded) {LoadObjects();objectsNotLoaded = false;}
-            mock.RepositionObjects(rightSide, bottomSide);
         }
+    
+        mock.processInput(cmd,deltaT);
+        pp.processInput(cmd,deltaT);
         
-		if (cmd->command == CMD_GAMEPAD_EVENT) {
-			if (scene == 0) { scene++; return; }
-
-			if (cmd->i1 == MyGamePad::EventTypes::BTN) {
-				if (cmd->i2 == MyGamePad::EventCodes::BTN_X) pp.DropSpikey();
-			}
-		}
-
-		if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
-			if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
-				mock.startScreen.bg.m_touchedX = (cmd->i2 == MyGamePad::EventCodes::PAD_LT? leftSide:rightSide);
-				pp.heli.transitionTof2(f2(mock.startScreen.bg.m_touchedX, pp.heli.pos.y), 500);
-			}
-			if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
-				mock.startScreen.bg.m_touchedY = (cmd->i2 == MyGamePad::EventCodes::PAD_UP ? topSide : bottomSide);
-				pp.heli.transitionTof2(f2(pp.heli.pos.x, mock.startScreen.bg.m_touchedY), 500);
-			}
-		}
-		
-	   
 	}
 
 	virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
@@ -327,6 +236,7 @@ public:
 
 		}
 	}
+    
 	// GamePlay Scene
 	virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=1) return;
@@ -414,7 +324,7 @@ public:
 
 			if (doObjectsIntersect(baloon, &pp.heli)) {
 				if (pp.heli.JuiceType == 0) output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
-				//soundedOuch = true;
+				soundedOuch = true;
 				pp.heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
 				pp.heli.JuiceDuration = 0.75;
 				iScore /= 2;
