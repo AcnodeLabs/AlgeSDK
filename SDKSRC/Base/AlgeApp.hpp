@@ -717,7 +717,7 @@ public:
 	i2 td;//used by postTouchData
 
 	bool onTouched(string name) {
-		if (touched_bodies.size() > 0) {
+        if (touched_bodies.size() > 0) {
 			PosRotScale* bk = touched_bodies.back();
 			if (bk->UUID.find(name) != string::npos) {
 				return true;
