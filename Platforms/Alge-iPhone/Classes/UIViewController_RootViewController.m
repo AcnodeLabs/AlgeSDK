@@ -36,8 +36,8 @@ int pinchDist;
     CGFloat screenScale = [[UIScreen mainScreen] scale];
   //  CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
     
-    location.x *= screenScale;
-    location.y *= screenScale;
+   // location.x *= screenScale;
+   // location.y *= screenScale;
     
     
     if ([[event allTouches] count]==2) {
