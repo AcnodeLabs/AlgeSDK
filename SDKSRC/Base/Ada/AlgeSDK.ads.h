@@ -183,7 +183,8 @@ public:
     bool touchable = true;
     
 	float originalScale = 1.;
-     float debugUseOnly = 0.;
+    float originalAspect = 1.78;
+    float debugUseOnly = 0.;
 	 float m_width;
 	 float m_height;
 #ifndef NO_BOX2D
@@ -194,7 +195,13 @@ public:
 	 string UUID;
 
 	 CRect getOwnRect(string name = "") {
-		 CRect own(pos.y - m_height / 2.0, pos.y + m_height / 2.0, pos.x - m_width / 2.0, pos.x + m_width / 2.0);
+         int mm_height = m_height;
+         int mm_width  = m_width;
+         if (scale==AUTO_SCALING_FULLSCREEN) {
+             mm_width = originalScale;
+             mm_height = originalScale / originalAspect;
+         }
+		 CRect own(pos.y - mm_height / 2.0, pos.y + mm_height / 2.0, pos.x - mm_width / 2.0, pos.x + mm_width / 2.0);
 		 return own;
 	 }
 
@@ -210,6 +217,7 @@ public:
         JuiceType = o->JuiceType;
         JuiceSpeed = o->JuiceSpeed;
         originalScale = o->originalScale;
+        originalAspect = o->originalAspect;
 		m_width = o->m_width;
 		m_height = o->m_height;
 #ifndef NO_BOX2D
@@ -482,6 +490,7 @@ public:
     PosRotScale* AddInstance(PosRotScale &prs) {
         if (prs.scale <= 0) prs.scale = 1.0;
         prs.originalScale = prs.scale;
+       //?? prs.originalAspect = prs.originalAspect
 		prs.UUID = this->UUID;
         prsInstances.push_back(prs);
         return &prs;
@@ -496,6 +505,7 @@ public:
         prst.JuiceType = this->JuiceType;
         prst.JuiceSpeed = this->JuiceSpeed;
         prst.originalScale = this->originalScale;
+        prst.originalAspect = this->originalAspect;
         prsInstances.push_back(prst);
 		return &prsInstances.back();
     }

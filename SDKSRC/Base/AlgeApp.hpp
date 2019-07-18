@@ -521,9 +521,10 @@ public:
 		if (iit->billboard) alBillboardBegin();
         
         if (it->scale == AUTO_SCALING_FULLSCREEN) {
-            
+            it->originalAspect = 1.78;//Assumed
             float sx =  - rightSide / 1 ;
-            float sy = - bottomSide / 1.78;
+            float sy = - bottomSide / it->originalAspect;
+            it->originalScale = rightSide;
             glScalef(sx, sy, 1);
         } else
             glScalef(it->scale, it->scale, it->scale);
@@ -558,8 +559,8 @@ public:
 	}
 	        
     bool doPicking2D(PosRotScale* it, f2 mouse) {
-        if (it->touchable==false) return false;
-        TRAP(it, "start");
+        //if (it->touchable==false) return false;
+        TRAP(it, "bg");
         static char msg[128];
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
       //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
@@ -637,8 +638,6 @@ public:
 
 				//Touched flag updated here for instances
 				if (cmd->command == CMD_TOUCH_START) {
-                    
-                    
                     
                     if (!it->hidden)
 						if (doPicking2D(prs, f2(cmd->i1, cmd->i2))) {
@@ -722,6 +721,7 @@ public:
 			if (bk->UUID.find(name) != string::npos) {
 				return true;
 			}
+            printf(",Touch:%s", name.c_str());
 		}
 		return false;
 	}
@@ -1858,7 +1858,7 @@ public:
 		with thiz->AddResource(&bg, "bg");
             bg.scale = AUTO_SCALING_FULLSCREEN;
 			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
-            bg.touchable = false;
+         //   bg.touchable = false;
 		_with;
 		
 		with thiz->AddResource(&ratings, "ratings", 0.7);
@@ -1901,7 +1901,7 @@ public:
     DPad dPad;
     AlgeApp* app;
     
-    void Load(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
+    void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
         app = thiz;
         startScreen.LoadIn(thiz);
         
@@ -1926,6 +1926,7 @@ public:
     }
     
     void processInput(PEG::CMD* cmd, float deltaT) {
+       
         if (!app) return;
         if (cmd->command == CMD_SCREENSIZE) RepositionObjects(app->rightSide, app->bottomSide);
         
@@ -1958,6 +1959,7 @@ public:
         }
         
         if (settings.m_visible) settings.processInput(cmd->command, i2(cmd->i1, cmd->i2));
+       
     }
     
     void ShowTitle(bool visible = true) {
