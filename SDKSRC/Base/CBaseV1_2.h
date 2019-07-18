@@ -2161,7 +2161,7 @@ public:
 		}
 		free(texture->imageData);
 #endif
-		printf("\nTGA:%s[%dx%d]", filename, texture->width, texture->height);
+	//	printf("\nTGA:%s[%dx%d]", filename, texture->width, texture->height);
 		return true;											// Texture Building Went Ok, Return True
 	}
 
@@ -2262,9 +2262,9 @@ public:
 		models[modelId] = new CModel();
 
 		FILE* file = fopen(fnamed, "r");//try data folder first
-        if (file) printf("\n%s found", fnamed);
+     //   if (file) printf("\n%s found", fnamed);
         if (!file) file = fopen(fname, "r"); //fallbcak to root
-        if (file) printf("\n%s found", fname);
+    //    if (file) printf("\n%s found", fname);
 		char line[1280];
 
 		if (file)
@@ -2536,7 +2536,7 @@ public:
 			models[modelId]->scale(fscale);
 		}
 		else {
-			printf("\n%s", fname);
+			printf("\n%s NOT LOADED", fname);
 		}
 		memset(_alxfname, 0, 64);
 		models[modelId]->index = modelId;

@@ -78,6 +78,7 @@
 		9CE79C6C1F9DED0800B87310 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
 		9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA991E1FAB603D00C52351 /* libfreeimage.a */; };
+		9CFB727E22E0514900426B8F /* pointer.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB727C22E0514900426B8F /* pointer.tga */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -179,6 +180,10 @@
 		9CE79C6B1F9DED0800B87310 /* UTM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTM.h; sourceTree = "<group>"; };
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
+		9CFB727922E04FFF00426B8F /* App0.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = App0.hpp; path = ../../Apps/PoppingTime/App0.hpp; sourceTree = "<group>"; };
+		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		9CFB727B22E0514900426B8F /* pointer.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pointer.alx; sourceTree = "<group>"; };
+		9CFB727C22E0514900426B8F /* pointer.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = pointer.tga; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +215,8 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				9CFB727922E04FFF00426B8F /* App0.hpp */,
+				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C59977F22DCE926006614F8 /* Data */,
 				9C5C2F5F20314C36005DAC2C /* CANDIDATE.h */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
@@ -310,6 +317,8 @@
 		9C59977F22DCE926006614F8 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9CFB727B22E0514900426B8F /* pointer.alx */,
+				9CFB727C22E0514900426B8F /* pointer.tga */,
 				9C59978022DCE926006614F8 /* icon.png */,
 				9C59978122DCE926006614F8 /* settings.anchors */,
 				9C59978222DCE926006614F8 /* settings.alx */,
@@ -409,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5997B822DCE926006614F8 /* pointer.alx in Resources */,
 				9C5997BD22DCE926006614F8 /* pointer.tga in Resources */,
 				9C5997CF22DCE926006614F8 /* bg.tga in Resources */,
 				9C5997B522DCE926006614F8 /* fans.tga in Resources */,
@@ -446,6 +456,7 @@
 				9C5997D322DCE926006614F8 /* bg.alx in Resources */,
 				9C3281D513F275F900A53E54 /* MainMenu.xib in Resources */,
 				9C5997C022DCE926006614F8 /* poppingtime.png in Resources */,
+				9CFB727E22E0514900426B8F /* pointer.tga in Resources */,
 				9C5997B222DCE926006614F8 /* settings_icon.alx in Resources */,
 				9C5997AB22DCE926006614F8 /* settings.anchors in Resources */,
 				9CDB499513F28138009F3058 /* screen820480.png in Resources */,

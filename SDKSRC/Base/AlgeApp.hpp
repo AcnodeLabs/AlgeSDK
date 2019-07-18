@@ -1828,7 +1828,8 @@ public:
 		lastPointerX[2] = anchors_v1[2][valueDifficulty].x;
 		
 		if (m_tag.size() == 0) m_tag = tagSettings;
-		GameObject* d = thiz->AddResource(this, m_tag, 1.);
+		GameObject* d = thiz->AddResource(this, m_tag);
+        d->scale = AUTO_SCALING_FULLSCREEN;
 	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
 
 		center = pos;
