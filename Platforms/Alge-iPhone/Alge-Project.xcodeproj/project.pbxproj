@@ -169,6 +169,8 @@
 		28FD14FC0DC6FC130079059D /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6C34850822E2F6B200221846 /* App0.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = App0.hpp; path = ../../Apps/PoppingTime/App0.hpp; sourceTree = "<group>"; };
+		6C34850922E2F6CB00221846 /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -426,6 +428,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
+				6C34850822E2F6B200221846 /* App0.hpp */,
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
 				9CEE3B1D22D9C66500494E0A /* PoppingTime.Assets */,
 				9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */,

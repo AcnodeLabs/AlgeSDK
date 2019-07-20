@@ -23,6 +23,37 @@ public:
     int leftSide1;
     int level = 1;
     
+    void LoadIn(AlgeApp* that) {
+        //FIRST LOAD MOCK
+        LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
+        
+        ///LOAD PLAY OBJECTS
+        that->AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
+        MakeBaloons();
+        
+        that->AddResource(&cloud, "cloud");
+        MakeClouds(7);
+        
+        with that->AddResource(&spikey, "spikey", 0.5);
+        _.JuiceType = JuiceTypes::JUICE_ROTZ;
+        _.JuiceSpeed = 20;
+        _with
+        
+        that->AddResource(&heli, "heli", 1);
+        
+        with that->AddResource(&fan, "fans");
+        _.JuiceType = JuiceTypes::JUICE_ROTY;
+        _.JuiceSpeed = 1500;
+        _with
+        
+        with that->AddResource(&getready, "getready");
+        //_.JuiceType = JuiceTypes::JUICE_DIE;
+        _.JuiceSpeed = 0.1;
+        _.hidden = true;
+        _with
+    }
+    
+    
     void MakeClouds(int n) {
         cloud.prsInstances.clear();
         PosRotScale bp;
@@ -36,12 +67,11 @@ public:
     
     void processInput(PEG::CMD* cmd, float deltaT) {
         
-        {
-            if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
+        if (cmd->command == CMD_TOUCH_START) {
             
-            
-            if (cmd->command == CMD_TOUCH_START) {
+            {
           //      heli.pos = i2(cmd->i1, cmd->i2);
+                if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
             }
             
             
@@ -67,9 +97,6 @@ public:
                     // soundedOuch = false;
                 }
             }
-            
-            
-            
             
         }
         
@@ -143,41 +170,9 @@ public:
     PoppingGame pp;
     
     bool soundedOuch;
-    void LoadObjects() {
-        
-        //FIRST LOAD MOCK
-        // LoadMock(AlgeApp* thiz   , string titleTag, string tagSettings   , string tagPointer     , string tagIcon)
-        pp.LoadMock(this            ,   "poppingtime",      "settings"      ,       "pointer"       , "settings_icon");
-        
-        ///LOAD PLAY OBJECTS
-        AddResource(&pp.baloons, "baloon");// , 10, true, 1, 0.3);
-        pp.MakeBaloons();
-        
-        AddResource(&pp.cloud, "cloud");
-        pp.MakeClouds(7);
-        
-        with AddResource(&pp.spikey, "spikey", 0.5);
-        _.JuiceType = JuiceTypes::JUICE_ROTZ;
-        _.JuiceSpeed = 20;
-        _with
-        
-        AddResource(&pp.heli, "heli", 1);
-        
-        with AddResource(&pp.fan, "fans");
-        _.JuiceType = JuiceTypes::JUICE_ROTY;
-        _.JuiceSpeed = 1500;
-        _with
-        
-        with AddResource(&pp.getready, "getready");
-        //_.JuiceType = JuiceTypes::JUICE_DIE;
-        _.JuiceSpeed = 0.1;
-        _.hidden = true;
-        _with
-        
-    }
     
     virtual void Init(char* path) {
-        pp.app = this;
+     //   pp.app = this;
         
         //	fopen_s(&f, "dbg.txt", "w");
         soundedOuch = false;
@@ -225,14 +220,17 @@ public:
             //  startScreen.start.pos.x = bgSize.x;
             //  startScreen.start.pos.y = bgSize.y;
             SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
-            if (objectsNotLoaded) {LoadObjects();objectsNotLoaded = false;}
+            if (objectsNotLoaded) {
+                pp.LoadIn(this);objectsNotLoaded = false;
+                
+            }
         }
         pp.processInput(cmd,deltaT);
         
     }
     
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
-        doInhibitLogic(gob);
+     //   doInhibitLogic(gob);
         if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
         if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
         

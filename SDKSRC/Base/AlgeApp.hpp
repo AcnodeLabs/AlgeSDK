@@ -717,6 +717,7 @@ public:
 	i2 td;//used by postTouchData
 
 	bool onTouched(string name) {
+       
         if (touched_bodies.size() > 0) {
 			PosRotScale* bk = touched_bodies.back();
 			if (bk->UUID.find(name) != string::npos) {
@@ -1829,10 +1830,12 @@ public:
 		lastPointerX[2] = anchors_v1[2][valueDifficulty].x;
 		
 		if (m_tag.size() == 0) m_tag = tagSettings;
-		GameObject* d = thiz->AddResource(this, m_tag);
+        GameObject* d;
+        d = thiz->AddResource(this, m_tag);
         d->scale = AUTO_SCALING_FULLSCREEN;
-	//	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
-
+	////	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
+        SetVisible(showit, background);//hidden
+        
 		center = pos;
 		//hud = true;
 		p1.LoadIn(thiz, tagPointer);
@@ -1842,7 +1845,7 @@ public:
 		ico.LoadIn(thiz, tagIcon, 0.6);
 		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
 		ico.JuiceSpeed *= 3;
-		SetVisible(showit, background);//hidden 
+		
 		return d;
 	}
 
@@ -1915,8 +1918,6 @@ public:
         _.AddInstance(f2(_.pos.xy()));
         _with
       
-      //  settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon, &startScreen.bg, false);
-        return;
         score.pos.y = 0.05 * thiz->bottomSide;
         score.pos.x = 0.85 * thiz->rightSide;
         thiz->AddObject(&score);
@@ -1926,6 +1927,8 @@ public:
         _.color = f3( 1,1,1);
         _with
         
+        settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon, &startScreen.bg, false);
+     
     }
     
     void processInput(PEG::CMD* cmd, float deltaT) {
