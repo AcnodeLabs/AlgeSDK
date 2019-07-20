@@ -10,4 +10,4 @@ Platforms/Alge-Gnat-macOS/obj/*
 *.dex
 *.dex.d
 mApps/*
-
+*xcuserdata*
