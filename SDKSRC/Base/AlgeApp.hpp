@@ -561,8 +561,9 @@ public:
     bool doPicking2D(PosRotScale* it, f2 mouse) {
         //if (it->touchable==false) return false;
         TRAP(it, "bg");
-        static char msg[128];
+    
         f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
+      //   static char msg[128];
       //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
       //  SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
@@ -708,7 +709,7 @@ public:
 #ifdef NATS_EXTERN
 				netmsg.Post( "[" + oss.str() + "]]"); 
 #endif
-				td = { 0,0 };
+				td = i2( 0,0 );
 			}
 		}
 
@@ -1658,7 +1659,7 @@ public:
 		if (command == CMD_TOUCH_START) {
 			
 			string ret = processTouchEvent(loc);
-            printf(ret.c_str());
+            printf("%s",ret.c_str());
 		}
 	}
 
@@ -1741,11 +1742,11 @@ public:
 
 //	#include "../../Apps/SettingsScreen.Assets/Data/settings.anchors"
 	//anchorpoints for settings.alx & settings.tga screen
-	i2 anch_size = { 1024,512 };
+	i2 anch_size = i2(1024,512);
 	i2 anchors_v1[3][3] = {
-	 {{465,185},{655,185},{845,185}},
-	 {{465,315},{655,315},{845,315}},
-	 {{465,460},{655,460},{845,460}}
+        {i2(465,185),i2(655,185),i2(845,185)},
+        {i2(465,315),i2(655,315),i2(845,315)},
+        {i2(465,460),i2(655,460),i2(845,460)},
 	};//row col
 
 	short valueOrientation = 0, valueDifficulty = 0, valueControlMethod = 1;
@@ -1856,22 +1857,22 @@ public:
 	GameObject ratings;
 
 	void LoadIn(AlgeApp* thiz) {
-		with thiz->AddResource(&bg, "bg");
+        with thiz->AddResource(&bg, "bg");
             bg.scale = AUTO_SCALING_FULLSCREEN;
-			thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
+            thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
          //   bg.touchable = false;
-		_with;
-		
-		with thiz->AddResource(&ratings, "ratings", 0.7);
-			_.pos.y = 0.1 * thiz->bottomSide;
-		_with
+        _with;
+        
+        with thiz->AddResource(&ratings, "ratings", 0.7);
+            _.pos.y = 0.1 * thiz->bottomSide;
+        _with
 
-		with thiz->AddResource(&start, "start");
+        with thiz->AddResource(&start, "start");
         _.pos.x = 0;//thiz->rightSide;
         _.pos.y = thiz->bottomSide;
-		 _.JuiceType = JuiceTypes::JUICE_PULSATE;
-		 _.JuiceSpeed =1000;
-		_with
+         _.JuiceType = JuiceTypes::JUICE_PULSATE;
+         _.JuiceSpeed =1000;
+        _with
 
 	}
 	
@@ -1904,6 +1905,7 @@ public:
     
     void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
         app = thiz;
+        
         startScreen.LoadIn(thiz);
         
         with thiz->AddResource(&titl, titleTag.c_str(), 1.2);
@@ -1912,16 +1914,16 @@ public:
         _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
         _.AddInstance(f2(_.pos.xy()));
         _with
-        
-        settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon,&startScreen.bg, false);
-        
+      
+      //  settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon, &startScreen.bg, false);
+        return;
         score.pos.y = 0.05 * thiz->bottomSide;
         score.pos.x = 0.85 * thiz->rightSide;
         thiz->AddObject(&score);
         
         with dPad.LoadIn(thiz);
         dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
-        _.color = { 1,1,1 };
+        _.color = f3( 1,1,1);
         _with
         
     }

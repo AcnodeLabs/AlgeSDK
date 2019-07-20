@@ -11,7 +11,9 @@ class CFTFont {
 	bool allok = false;
 public:
     
-    CFTFont() : CFTFont((char*)"C:\\OpenSans.ttf", 24) {}
+    CFTFont()  {
+        CFTFont((char*)"C:\\OpenSans.ttf", 24);
+    }
     CFTFont(char* fontname, int size) {
         font = nullptr;
 		allok = false;

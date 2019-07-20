@@ -12,7 +12,6 @@
 
 #import "../../../SDKSRC/Base/CCommands.h"
 #import "UIViewController_RootViewController.h"
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 @implementation EAGLView
 
@@ -215,14 +214,6 @@ extern int gAppAlive;
     return self;
 }
 
-
-
--(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-{
-	[m_filter addAcceleration:acceleration];
- //   [(ES1Renderer*)renderer setAccel:(int)(m_filter.x * 100) withY:(int)(m_filter.y * 100) withZ:(int)(m_filter.z * 100)];
-	//m_phi = atan2(renderer.az,-renderer.ax)*180.0f / M_PI;
-}
 
 /*
 -(void) alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)b

@@ -63,7 +63,7 @@ public:
     sprintf(xyz, fmt.c_str(), x, y, z);
 		return string(xyz);
 	}
-	f2 xy() {return f2{ x,y }; }
+	f2 xy() {return f2( x,y ); }
 	f3* ref() { return this; }
 
     f3() {clear();};
@@ -595,7 +595,9 @@ public:
 	}
 
 
-    Camera() : Camera(CAM_MODE_NULL) {}
+    Camera()  {
+        SetMode(CAM_MODE_NULL);
+    }
     
     ~Camera() {
         delete resInf;

@@ -39,10 +39,17 @@ public:
         {
             if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
             
+            
+            if (cmd->command == CMD_TOUCH_START) {
+          //      heli.pos = i2(cmd->i1, cmd->i2);
+            }
+            
+            
             if (app->onTouched("bg") || app->onTouched("baloon")) {
                 
                 heli.JuiceType = 0;
                 f2 postouch = startScreen.bg.posTouched();
+                
                 if (postouch.x > rightSide1) postouch.x = rightSide1;
                 if (postouch.x < leftSide1) postouch.x = leftSide1;
                 int topSide1 = app->topSide + (heli.m_height);
@@ -55,12 +62,27 @@ public:
                     heli.JuiceType = 0;
                     heli.hidden = false;
                     spikey.hidden = false;
-                    heli.pos = app->getBackgroundSize().half();
+                    heli.pos = app->getBackgroundSize().half();// pos in middle of screen
                     
                     // soundedOuch = false;
                 }
             }
+            
+            
+            
+            
         }
+        
+        if (cmd->command == CMD_KEYDOWN) {
+            if (cmd->i1 == MAC_KEY_PLUS) {
+                for (int i=0; i< baloons.prsInstances.size(); i++) {
+                    baloons.getInstancePtr(i)->hidden = false;
+                    app->output.pushP(CMD_SNDPLAY3, $ "drop.wav");
+                }
+            }
+        }
+        
+        
         if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (cmd->i1 == MyGamePad::EventTypes::BTN) {
                 if (cmd->i2 == MyGamePad::EventCodes::BTN_X) DropSpikey();
@@ -90,7 +112,7 @@ public:
             bp.color = f3(rndm(0.3, 0.99), rndm(0.3, 0.99), rndm(0.3, 0.99));
             baloons.AddInstance(bp);
         }
-        nRemaining = baloons.prsInstances.size();
+        nRemaining = (int) baloons.prsInstances.size();
         getready.Show();
         getready.JuiceType = JuiceTypes::JUICE_DIE;
         getready.JuiceDuration = 2;
@@ -98,7 +120,7 @@ public:
     
     void onActionComplete(GameObject* obj) {
         if (obj->is(heli)) {
-            bool ok = true;
+           // bool ok = true;
         }
     }
     
@@ -151,6 +173,7 @@ public:
         _.JuiceSpeed = 0.1;
         _.hidden = true;
         _with
+        
     }
     
     virtual void Init(char* path) {
@@ -161,7 +184,7 @@ public:
         nLoops = 100;
         level = 1;
         iScore = 0;
-        //   wireframe = true;
+       // wireframe = true;
         
         AlInit(STANDARD);
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
@@ -172,7 +195,7 @@ public:
         output.pushP(CMD_SNDSET3, $ "drop.wav");
         output.pushP(CMD_SNDSET4, $ "entry.wav");
         
-        output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+      //  output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
         wall_msg = "Go";
         //glDisable(GL_CULL_FACE);
         output.pushI(CMD_USEGAMEPAD, 0, 0);
@@ -183,6 +206,10 @@ public:
     virtual void onActionComplete(GameObject* obj) {
         pp.onActionComplete(obj);
     }
+    
+//    virtual i2 getBackgroundSize() {
+//        return size_ipad_air;
+//    }
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
@@ -217,6 +244,7 @@ public:
                 if (cloudprs->pos.x < -(leftSide * 0.2)) cloudprs->pos.x = rightSide * 1.2;
             }
         }
+       // inhibitRender = false;//Show ALL for DEBUG
     }
     
     void doInhibitLogic(GameObject* gob) {
@@ -227,8 +255,7 @@ public:
     // First Intro Screen
     virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=0) return;
-        if (gob->isOneOf({ &pp.heli,&pp.spikey,&pp.fan,&pp.baloons,&pp.dPad })) inhibitRender = true;
-        
+        if ((gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)|| gob->is(pp.MockUpOne::dPad))) inhibitRender = true;
         if (onTouched("start"))
         {
             scene = 1; //dPad.Show();
@@ -241,7 +268,8 @@ public:
     // GamePlay Scene
     virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=1) return;
-        if (gob->isOneOf({ &pp.titl,&pp.startScreen.ratings,&pp.startScreen.start })) inhibitRender = true;
+      //  if (gob->isOneOf({ &pp.titl,&pp.startScreen.ratings,&pp.startScreen.start }))
+        if (gob->is(pp.titl) || gob->is(pp.startScreen.ratings) || gob->is(pp.startScreen.start)) inhibitRender = true;
         
         if (gob->is(pp.dPad)) {
             //when come here when dPad.will be visible

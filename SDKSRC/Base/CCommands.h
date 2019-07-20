@@ -79,6 +79,7 @@
 #define MAC_KEY_PGDN 105
 #define MAC_KEY_0 48
 #define MAC_KEY_9 57
+#define MAC_KEY_PLUS 43
 
 #define AL_KEY_PLUS (58)
 #define AL_KEY_MINUS (60)

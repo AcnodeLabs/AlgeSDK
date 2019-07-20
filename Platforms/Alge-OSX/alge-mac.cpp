@@ -227,7 +227,8 @@ static void HandleMotion( const int inPosX, const int inPosY )
 {
   int x = inPosX;
   int y = inPosY;
-  app.input.pushI(CMD_TOUCHMOVE, x, y);
+  if (x!=0 || y!=0)
+      app.input.pushI(CMD_TOUCHMOVE, x, y);
 }
 
 char ResPath[256];
@@ -285,7 +286,7 @@ int main( int argc, char** argv )
   
   glutTimerFunc(0, reset_window_title, 50);
     
-  HandleMotion( 0, 0 );
+ // HandleMotion( 0, 0 );
     
   glClearColor( 0.3f, 0.3f, 0.3f, 1.0 );
   glEnable( GL_DEPTH_TEST );

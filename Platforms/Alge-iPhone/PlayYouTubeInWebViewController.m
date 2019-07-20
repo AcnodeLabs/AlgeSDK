@@ -66,15 +66,12 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)supportedInterfaceOrientations:(UIInterfaceOrientationMask)interfaceOrientation
 {
+    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 @end

@@ -21,14 +21,8 @@
 		9C3FB9B01FAEFFF50098B256 /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3FB9AF1FAEFFF50098B256 /* libbz2.a */; };
 		9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636B81FBA0AF6008FB5EF /* AudioToolbox.framework */; };
 		9C4637221FBA0E4B008FB5EF /* alge-mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C4637211FBA0E4B008FB5EF /* alge-mac.cpp */; };
-		9C4637231FBA0E65008FB5EF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C61FBA0CF6008FB5EF /* OpenGL.framework */; };
-		9C4637241FBA0E6E008FB5EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636CB1FBA0D16008FB5EF /* Foundation.framework */; };
-		9C4637251FBA0E71008FB5EF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636CA1FBA0D14008FB5EF /* CoreData.framework */; };
 		9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C91FBA0D11008FB5EF /* AppKit.framework */; };
 		9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C41FBA0CF0008FB5EF /* CoreAudio.framework */; };
-		9C4637281FBA0E7F008FB5EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636BE1FBA0BEA008FB5EF /* CoreFoundation.framework */; };
-		9C4637291FBA0E82008FB5EF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636BA1FBA0B00008FB5EF /* GLUT.framework */; };
-		9C46372A1FBA0E9A008FB5EF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C71FBA0CF9008FB5EF /* OpenAL.framework */; };
 		9C46498813F2AF22004CE3D7 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C46498613F2AF22004CE3D7 /* Timer.cpp */; };
 		9C46498C13F2B271004CE3D7 /* MyOpenALSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C46498B13F2B271004CE3D7 /* MyOpenALSupport.cpp */; };
 		9C5997AA22DCE926006614F8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C59978022DCE926006614F8 /* icon.png */; };
@@ -75,6 +69,13 @@
 		9C5997D322DCE926006614F8 /* bg.alx in Resources */ = {isa = PBXBuildFile; fileRef = 9C5997A922DCE926006614F8 /* bg.alx */; };
 		9CDB499513F28138009F3058 /* screen820480.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB499413F28138009F3058 /* screen820480.png */; };
 		9CDB499813F28159009F3058 /* icon100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB499713F28159009F3058 /* icon100.png */; };
+		9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE59E5922E06297000FB6F1 /* CoreGraphics.framework */; };
+		9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687C922E0ED5D0046E542 /* OpenGL.framework */; };
+		9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687CB22E0ED7F0046E542 /* OpenAL.framework */; };
+		9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687CD22E0ED9E0046E542 /* Foundation.framework */; };
+		9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687CF22E0EDBA0046E542 /* CoreData.framework */; };
+		9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */; };
+		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C6C1F9DED0800B87310 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
 		9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA991E1FAB603D00C52351 /* libfreeimage.a */; };
@@ -176,6 +177,12 @@
 		9C7680231FAF6E8D007BFCD4 /* AppleGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleGothic.ttf; sourceTree = "<group>"; };
 		9CDB499413F28138009F3058 /* screen820480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen820480.png; sourceTree = "<group>"; };
 		9CDB499713F28159009F3058 /* icon100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon100.png; sourceTree = "<group>"; };
+		9CE59E5922E06297000FB6F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9CE687C922E0ED5D0046E542 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		9CE687CB22E0ED7F0046E542 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		9CE687CD22E0ED9E0046E542 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9CE687CF22E0EDBA0046E542 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9CE687D222E0EDE10046E542 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		9CE79C6A1F9DED0800B87310 /* UTM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UTM.cpp; sourceTree = "<group>"; };
 		9CE79C6B1F9DED0800B87310 /* UTM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTM.h; sourceTree = "<group>"; };
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
@@ -191,13 +198,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */,
+				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
+				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
+				9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */,
+				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
+				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
+				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
 				9C3FB9A71FAEFC390098B256 /* libdrawtext.a in Frameworks */,
-				9C4637231FBA0E65008FB5EF /* OpenGL.framework in Frameworks */,
-				9C46372A1FBA0E9A008FB5EF /* OpenAL.framework in Frameworks */,
-				9C4637241FBA0E6E008FB5EF /* Foundation.framework in Frameworks */,
-				9C4637251FBA0E71008FB5EF /* CoreData.framework in Frameworks */,
-				9C4637281FBA0E7F008FB5EF /* CoreFoundation.framework in Frameworks */,
-				9C4637291FBA0E82008FB5EF /* GLUT.framework in Frameworks */,
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
@@ -240,6 +248,12 @@
 		9C3281BD13F275F900A53E54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CE687D222E0EDE10046E542 /* GLUT.framework */,
+				9CE687CF22E0EDBA0046E542 /* CoreData.framework */,
+				9CE687CD22E0ED9E0046E542 /* Foundation.framework */,
+				9CE687CB22E0ED7F0046E542 /* OpenAL.framework */,
+				9CE687C922E0ED5D0046E542 /* OpenGL.framework */,
+				9CE59E5922E06297000FB6F1 /* CoreGraphics.framework */,
 				9C4636CB1FBA0D16008FB5EF /* Foundation.framework */,
 				9C4636CA1FBA0D14008FB5EF /* CoreData.framework */,
 				9C4636C91FBA0D11008FB5EF /* AppKit.framework */,
@@ -523,7 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -544,12 +558,12 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -561,7 +575,7 @@
 					../../SDKSRC/Tools/CNetMsg,
 				);
 				INFOPLIST_FILE = "Mars-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -571,7 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -591,9 +605,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -601,7 +615,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Mars-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -610,7 +624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -625,7 +639,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.apps.mac.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -636,7 +650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -651,7 +665,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.apps.mac.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

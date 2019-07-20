@@ -58,7 +58,7 @@ class vec3 {
 public:
 	float x,y,z;
     
-    vec3() : vec3(0.,0.,0.) {}
+    vec3() { }
     
     vec3(float xx, float yy, float zz) {set(xx,yy,zz);}
 	
