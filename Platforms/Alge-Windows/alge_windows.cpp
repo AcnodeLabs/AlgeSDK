@@ -575,7 +575,7 @@ BOOL CALLBACK DlgProc(	HWND	hWnd,			// Handle For This Window
 	return FALSE;
 }
 
-
+HWND hwnd;
 bool touching = false;
 bool touchingR = false;
 
@@ -589,6 +589,7 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 	{
 
 		case WM_CREATE:
+			hwnd = hWnd;
 #ifdef USING_IRRLICHT
 			ir.Init(0, ResPath+1);
 #endif
@@ -830,15 +831,40 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 			if (keys[VK_F1])						// Is F1 Being Pressed?
 			{
 				keys[VK_F1]=FALSE;					// If So Make Key FALSE
-				KillGLWindow();						// Kill Our Current Window
+				//KillGLWindow();						// Kill Our Current Window
 				fullscreen=!fullscreen;				// Toggle Fullscreen / Windowed Mode
-				// Recreate Our OpenGL Window
-				RECT WindowRect;
-				GetWindowRect(GetDesktopWindow(), &WindowRect);
-				if (!CreateGLWindow("Alge Container", WindowRect,16,fullscreen))
 				{
-					return 0;						// Quit If Window Was Not Created
+					
+					static WINDOWPLACEMENT g_wpPrev;
+					DWORD dwStyle = GetWindowLong(hwnd, GWL_STYLE);
+					if (dwStyle & WS_OVERLAPPEDWINDOW) {
+						MONITORINFO mi = { sizeof(mi) };
+						if (GetWindowPlacement(hwnd, &g_wpPrev) &&
+							GetMonitorInfo(MonitorFromWindow(hwnd,
+								MONITOR_DEFAULTTOPRIMARY), &mi)) {
+							SetWindowLong(hwnd, GWL_STYLE,
+								dwStyle & ~WS_OVERLAPPEDWINDOW);
+							SetWindowPos(hwnd, HWND_TOP,
+								mi.rcMonitor.left, mi.rcMonitor.top,
+								mi.rcMonitor.right - mi.rcMonitor.left,
+								mi.rcMonitor.bottom - mi.rcMonitor.top,
+								SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+						}
+					}
+					else {
+						SetWindowLong(hwnd, GWL_STYLE,
+							dwStyle | WS_OVERLAPPEDWINDOW);
+						SetWindowPlacement(hwnd, &g_wpPrev);
+						SetWindowPos(hwnd, NULL, 0, 0, 0, 0,
+							SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
+							SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+					}
 				}
+
+			//	if (!CreateGLWindow("Alge Container", WindowRect,16,fullscreen))
+			//	{
+			//		return 0;						// Quit If Window Was Not Created
+			//	}
 			}
 		}
 	}
