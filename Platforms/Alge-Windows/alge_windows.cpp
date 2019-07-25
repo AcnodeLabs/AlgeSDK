@@ -834,7 +834,8 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 				//KillGLWindow();						// Kill Our Current Window
 				fullscreen=!fullscreen;				// Toggle Fullscreen / Windowed Mode
 				{
-					
+					//Q: How do I switch a window between normal and fullscreen?
+					//A: https://devblogs.microsoft.com/oldnewthing/20100412-00/?p=14353
 					static WINDOWPLACEMENT g_wpPrev;
 					DWORD dwStyle = GetWindowLong(hwnd, GWL_STYLE);
 					if (dwStyle & WS_OVERLAPPEDWINDOW) {
