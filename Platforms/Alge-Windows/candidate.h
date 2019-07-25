@@ -9,5 +9,5 @@
 
 ALGE SDK WINDOWS:: CANDIDATE.h
 */
-#include "../../Apps/PoppingTime/App0.hpp"
+#include "../../Apps/Ivank_Box2D/App.hpp"
 class App;
