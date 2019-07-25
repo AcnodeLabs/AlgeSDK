@@ -317,7 +317,7 @@ GLvoid KillGLWindow(GLvoid)								// Properly Kill The Window
  *	bits			- Number Of Bits To Use For Color (8/16/24/32)			*
  *	fullscreenflag	- Use Fullscreen Mode (TRUE) Or Windowed Mode (FALSE)	*/
  
-BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscreenflag)
+BOOL CreateGLWindow(char* title, RECT WindowRect, int bits, bool fullscreenflag)
 {
 		
 	
@@ -325,12 +325,13 @@ BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscree
 	WNDCLASS	wc;						// Windows Class Structure
 	DWORD		dwExStyle;				// Window Extended Style
 	DWORD		dwStyle;				// Window Style
-	RECT		WindowRect;				// Grabs Rectangle Upper Left / Lower Right Values
-	WindowRect.left=(long)0;//1280 - width/2;			// Set Left Value To 0
-	WindowRect.right=(long)game.getBackgroundSize().x;		// Set Right Value To Requested Width
-	WindowRect.top=(long)0;//800 - height /2;				// Set Top Value To 0
-	WindowRect.bottom=(long)game.getBackgroundSize().y;		// Set Bottom Value To Requested Height
-
+//	RECT		WindowRect;				// Grabs Rectangle Upper Left / Lower Right Values
+//	WindowRect.left = (long)0;// 1280 - width / 2;			// Set Left Value To 0
+//	WindowRect.right=(long)game.getBackgroundSize().x;		// Set Right Value To Requested Width
+//	WindowRect.top = (long)0;// 800 - height / 2;				// Set Top Value To 0
+//	WindowRect.bottom=(long)game.getBackgroundSize().y;		// Set Bottom Value To Requested Height
+	GetWindowRect(GetDesktopWindow(), &WindowRect);
+	
 	fullscreen=fullscreenflag;			// Set The Global Fullscreen Flag
 
 	hInstance			= GetModuleHandle(NULL);				// Grab An Instance For Our Window
@@ -355,14 +356,18 @@ BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscree
 	{
 		DEVMODE dmScreenSettings;								// Device Mode
 		memset(&dmScreenSettings,0,sizeof(dmScreenSettings));	// Makes Sure Memory's Cleared
+
 		dmScreenSettings.dmSize=sizeof(dmScreenSettings);		// Size Of The Devmode Structure
-		dmScreenSettings.dmPelsWidth	= width;				// Selected Screen Width
-		dmScreenSettings.dmPelsHeight	= height;				// Selected Screen Height
+		dmScreenSettings.dmPelsWidth	= game.resolutionReported.x;				// Selected Screen Width
+		dmScreenSettings.dmPelsHeight	= game.resolutionReported.y;				// Selected Screen Height
 		dmScreenSettings.dmBitsPerPel	= bits;					// Selected Bits Per Pixel
 		dmScreenSettings.dmFields=DM_BITSPERPEL|DM_PELSWIDTH|DM_PELSHEIGHT;
 
 		// Try To Set Selected Mode And Get Results.  NOTE: CDS_FULLSCREEN Gets Rid Of Start Bar.
-		if (ChangeDisplaySettings(&dmScreenSettings,CDS_FULLSCREEN)!=DISP_CHANGE_SUCCESSFUL)
+		EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dmScreenSettings);
+
+		LONG full = ChangeDisplaySettings(&dmScreenSettings, CDS_FULLSCREEN);
+		if (full!=DISP_CHANGE_SUCCESSFUL)
 		{
 			// If The Mode Fails, Offer Two Options.  Quit Or Use Windowed Mode.
 			if (MessageBoxA(NULL,"The Requested Fullscreen Mode Is Not Supported By\nYour Video Card. Use Windowed Mode Instead?","NeHe GL",MB_YESNO|MB_ICONEXCLAMATION)==IDYES)
@@ -472,7 +477,7 @@ BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscree
 	}
 
 	//ShowCursor(FALSE);
-	SetWindowPos(hWnd,NULL, (1280-320)/2, (800-480)/2,0,0,SW_SHOW);
+//	SetWindowPos(hWnd,NULL, (1280-320)/2, (800-480)/2,0,0,SW_SHOW);
 	ShowWindow(hWnd,SW_SHOW);						// Show The Window
 	SetForegroundWindow(hWnd);						// Slightly Higher Priority
 	SetFocus(hWnd);									// Sets Keyboard Focus To The Window
@@ -761,15 +766,20 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 
 	// Ask The User Which Screen Mode They Prefer
-	//if (MessageBox(NULL,"Would You Like To Run In Fullscreen Mode?", "Start FullScreen?",MB_YESNO|MB_ICONQUESTION)==IDNO)
+	if (MessageBoxA(NULL, "Would You Like To Run In Fullscreen Mode?", "Start FullScreen?", MB_YESNO | MB_ICONQUESTION) == IDNO)
 	{
-		fullscreen=FALSE;							// Windowed Mode
+		fullscreen = TRUE;							// Windowed Mode
 	}
+	else fullscreen = FALSE;
+
+	RECT WindowRect;
+	GetWindowRect(GetDesktopWindow(), &WindowRect);
+	game.resolutionReported.x = abs(WindowRect.right - WindowRect.left);
+	game.resolutionReported.y = abs(WindowRect.bottom - WindowRect.top);
 
 	// Create Our OpenGL Window
-	if (!CreateGLWindow("Alge Prototype",
-		game.getBackgroundSize().x,
-		game.getBackgroundSize().y,
+	if (!CreateGLWindow("Alge Prototype", 
+		WindowRect,
 		16,fullscreen))
 	{
 		return 0;									// Quit If Window Was Not Created
@@ -826,7 +836,9 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 				KillGLWindow();						// Kill Our Current Window
 				fullscreen=!fullscreen;				// Toggle Fullscreen / Windowed Mode
 				// Recreate Our OpenGL Window
-				if (!CreateGLWindow("Alge Container",game.getBackgroundSize().x,game.getBackgroundSize().y,16,fullscreen))
+				RECT WindowRect;
+				GetWindowRect(GetDesktopWindow(), &WindowRect);
+				if (!CreateGLWindow("Alge Container", WindowRect,16,fullscreen))
 				{
 					return 0;						// Quit If Window Was Not Created
 				}
