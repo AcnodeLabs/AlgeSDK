@@ -22,8 +22,6 @@
 #include <Gamepad.h>
 #endif
 
-#define NO_BOX2D
-
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
 #include "CANDIDATE.h"
@@ -774,6 +772,10 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	GetWindowRect(GetDesktopWindow(), &WindowRect);
 	game.resolutionReported.x = abs(WindowRect.right - WindowRect.left);
 	game.resolutionReported.y = abs(WindowRect.bottom - WindowRect.top);
+	game.topSide = WindowRect.top;
+	game.bottomSide = WindowRect.bottom;
+	game.leftSide = WindowRect.left;
+	game.rightSide = WindowRect.right;
 
 	// Create Our OpenGL Window
 	if (!CreateGLWindow("Alge Prototype", 

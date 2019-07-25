@@ -19,7 +19,7 @@ public:
         if (p->command == CMD_TOUCH_START) {
             for (auto b : touched_bodies) {
                 printf("\ttch:%s",b->UUID.c_str());
-                b->Impulse(f2(0, -20));
+                b->Impulse(f2(0, -10));
                 if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
             }
         }
@@ -32,7 +32,7 @@ public:
 		InitPhysics();
 		PhysAddGroundWithWalls();
 		
-		AddResource(&winter2, "winter2", size_ipad_air.x);
+		AddResource(&winter2, "winter2", AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
         oSize /= 20; //nullify alx size
         float density = 1.0;
