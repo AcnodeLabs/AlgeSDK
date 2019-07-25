@@ -271,7 +271,7 @@ public:
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;
 		g->originalScale = scale;
-        g->JuiceType = 0;
+		g->JuiceType = 0;
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
         g->UUID = alx_name +"_"+ tga_name + ".G";
 		return g;
@@ -520,11 +520,15 @@ public:
         
 		if (iit->billboard) alBillboardBegin();
         
-        if (it->scale == AUTO_SCALING_FULLSCREEN) {
-            it->originalAspect = 1.78;//Assumed
+        if (it->originalScale == AUTO_SCALING_FULLSCREEN) {
+			it->originalAspect = rightSide / bottomSide;
             float sx =  - rightSide / 1 ;
             float sy = - bottomSide / it->originalAspect;
-            it->originalScale = rightSide;
+          //  it->originalScale = rightSide;
+			if (orthoType == OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN) {
+				it->pos.x = rightSide / 2;
+				it->pos.y = bottomSide / 2;
+			}
             glScalef(sx, sy, 1);
         } else
             glScalef(it->scale, it->scale, it->scale);
