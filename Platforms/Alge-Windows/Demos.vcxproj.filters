@@ -34,9 +34,6 @@
     <ClInclude Include="candidate.h">
       <Filter>CANDIDATE WINDOWS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Demos\PoppingTime\Raw3D.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h">
       <Filter>CANDIDATE ANDROID</Filter>
     </ClInclude>

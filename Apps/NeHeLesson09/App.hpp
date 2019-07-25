@@ -94,6 +94,7 @@ public:
 		{
 			glLoadIdentity();								// Reset The View Before We Draw Each Star
 			glTranslatef(0.0f,0.0f,zoom);					// Zoom Into The Screen (Using The Value In 'zoom')
+			rm.models[0]->glDraw();
 			glRotatef(tilt,1.0f,0.0f,0.0f);					// Tilt The View (Using The Value In 'tilt')
 			glRotatef(star[loop].angle,0.0f,1.0f,0.0f);		// Rotate To The Current Stars Angle
 			glTranslatef(star[loop].dist,0.0f,0.0f);		// Move Forward On The X Plane
@@ -109,7 +110,7 @@ public:
 			glRotatef(spin,0.0f,0.0f,1.0f);
 			glColor4ub(star[loop].r,star[loop].g,star[loop].b,255);
 
-			rm.models[0]->glDraw();
+			rm.models[0]->glDraw(true);
 
 			spin+=0.01f;
 			star[loop].angle+=float(loop)/num;
@@ -132,15 +133,6 @@ public:
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 		glEnable(GL_BLEND);
 
-		for (loop=0; loop<num; loop++)
-		{
-			star[loop].angle=0.0f;
-			star[loop].dist=(float(loop)/num)*5.0f;
-			star[loop].r=rand()%256;
-			star[loop].g=rand()%256;
-			star[loop].b=rand()%256;
-		}
-
 		output.pushP(CMD_TITLE, $ "Alge Nehe Lesson09",0);
 		output.pushP(CMD_TOAST, $ "Keys L(ight), B(lend), T(winkle)", 0);
 		xrot=0;
@@ -156,6 +148,16 @@ public:
 		twinkle = 0;
 		rm.Init(path);
 		rm.loadAlxModel((char*) "star.alx",AUTO, 0, 1);
+
+		for (loop = 0; loop < num; loop++)
+		{
+			star[loop].angle = 0.0f;
+			star[loop].dist = (float(loop) / num) * 5.0f;
+			star[loop].r = rand() % 256;
+			star[loop].g = rand() % 256;
+			star[loop].b = rand() % 256;
+		}
+
 	}
 
 	void Deinit() {

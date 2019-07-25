@@ -2196,9 +2196,7 @@ public:
 	return 0;
 	}
 	// Now we can access the file's contents.
-
-
-
+	   
 	// We're done. Everything will be cleaned up by the importer destructor
 	return 0;
 	}

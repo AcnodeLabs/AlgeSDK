@@ -749,7 +749,12 @@ public:
 		rm.Init(path);
 		Init(path);
 #ifndef NO_NATS
-		netmsg.Post(help);
+		try {
+	//		netmsg.Post(help);
+		}
+		catch (...) {
+			printf("Could not Post netmsg");
+		}
 #endif
 		aCamera.custom_type = 0xCA;
         

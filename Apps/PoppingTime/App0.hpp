@@ -366,7 +366,7 @@ public:
     }
     
     ~App() {
-        fclose(f);
+        if (f) fclose(f);
     }
 };
 

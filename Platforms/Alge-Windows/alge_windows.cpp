@@ -9,7 +9,18 @@
 #include <winerror.h>
 #pragma comment(lib, "comctl32.lib")
 #include  <commctrl.h>
+#include <stdio.h>
+
+#define NO_NATS
+
+#define NO_GAMEPAD
+//https://stackoverflow.com/questions/30450042/unresolved-external-symbol-imp-iob-func-referenced-in-function-openssldie/35339896
+//FILE _iob[] = { *stdin, *stdout, *stderr };
+//extern "C" FILE* __cdecl __iob_func(void) { return _iob; }
+
+#ifndef NO_GAMEPAD
 #include <Gamepad.h>
+#endif
 
 #define NO_BOX2D
 
@@ -17,15 +28,17 @@
 #include CBASE 
 #include "CANDIDATE.h"
 #include "Timer.h"
-#include <stdio.h>
-#define ALGE_WINDOWS
 
+#define ALGE_WINDOWS
 
 char ResPath[256];
 
 extern void(*callBackIn)(string);
-
+#ifndef NO_NATS
 CNetMsg netmsg;
+
+#endif // !
+
 
 CFTFont font;
 
@@ -77,7 +90,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 
 	game.input.pushI(CMD_SCREENSIZE, width , height);
 	sprintf(msg, "ScreenSize(%d,%d)", width, height);
-	if (game.verbosity_lmh == 'h') netmsg.Post(string(msg));
+//	if (game.verbosity_lmh == 'h') netmsg.Post(string(msg));
 #ifndef USING_IRRLICHT
 	glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
 	glLoadIdentity();									// Reset The Projection Matrix
@@ -119,7 +132,7 @@ void UpdateMouse(float deltaT) {
 	ShowCursor(true);
 }
 
-
+#ifndef NO_GAMEPAD
 //GamePad Fucntions
 static bool verbose = false;
 
@@ -155,6 +168,7 @@ void onDeviceRemoved(struct Gamepad_device * device, void * context) {
 	}
 }
 //end of GamePad Fucntions
+#endif
 
 //////////////////////~~ Mouse reposition
 
@@ -175,10 +189,12 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		ir.driver->endScene();
 	#else
 		
-	if (game.nGobs > 0) {
+	//if (game.nGobs > 0) 
+	{
 		UpdateMouse(deltaT);
+#ifndef NO_GAMEPAD
 		Gamepad_processEvents();
-	
+#endif
 		game.Render(deltaT, aX, aY, aZ);
 
 	}
@@ -237,12 +253,14 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 			SetWindowTextA(hWnd, (LPCSTR)p1);
 		}
 		else if (command == CMD_USEGAMEPAD) {
+#ifndef NO_GAMEPAD
 			Gamepad_deviceAttachFunc(onDeviceAttached, (void *)0x1);
 			Gamepad_deviceRemoveFunc(onDeviceRemoved, (void *)0x2);
 			Gamepad_buttonDownFunc(onButtonDown, (void *)0x3);
 			Gamepad_buttonUpFunc(onButtonUp, (void *)0x4);
 			Gamepad_axisMoveFunc(onAxisMoved, (void *)0x5);
 			Gamepad_init();
+#endif
 		}
 	}
 
@@ -649,7 +667,10 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 		case WM_CLOSE:								// Did We Receive A Close Message?
 		{
 			PostQuitMessage(0);						// Send A Quit Message
+#ifndef NO_GAMEPAD
 			Gamepad_shutdown();
+#endif // !NO_GAMEPAD
+						
 			return 0;								// Jump Back
 		}
 
@@ -735,7 +756,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	}
 
 	//MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
-	netmsg.Connect("e", true);// "Evolution");
+//	netmsg.Connect("e", true);// "Evolution");
 	
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 

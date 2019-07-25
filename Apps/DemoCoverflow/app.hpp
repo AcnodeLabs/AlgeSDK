@@ -301,7 +301,7 @@ public:
 
 		void Init(char* path) {
 		
-		alInit(STANDARD_WITH_TEXTURES);	
+		AlInit(STANDARD_WITH_TEXTURES);	
 		zed = 0;
 		yrot=0;
 		xrot=0;
