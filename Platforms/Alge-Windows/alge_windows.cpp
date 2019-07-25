@@ -87,7 +87,8 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 #ifndef USING_IRRLICHT
 	glViewport(0,0,width,height);						// Reset The Current Viewport
 #endif
-
+	game.resolutionReported.x = width;
+	game.resolutionReported.y = height;
 	game.input.pushI(CMD_SCREENSIZE, width , height);
 	sprintf(msg, "ScreenSize(%d,%d)", width, height);
 //	if (game.verbosity_lmh == 'h') netmsg.Post(string(msg));
@@ -641,7 +642,7 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 			if (!touching && !touchingR) game.input.pushI(CMD_MOUSEMOVE, xPos, yPos);
 
 		}
-			break;
+		break;
 
 		case WM_ACTIVATE:							// Watch For Window Activate Message
 		{
@@ -766,11 +767,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 
 	// Ask The User Which Screen Mode They Prefer
-	if (MessageBoxA(NULL, "Would You Like To Run In Fullscreen Mode?", "Start FullScreen?", MB_YESNO | MB_ICONQUESTION) == IDNO)
-	{
-		fullscreen = TRUE;							// Windowed Mode
-	}
-	else fullscreen = FALSE;
+	fullscreen = MessageBoxA(NULL, "Would You Like To Run In Fullscreen Mode?", "Start FullScreen?", MB_YESNO | MB_ICONQUESTION) == IDYES;
 
 	RECT WindowRect;
 	GetWindowRect(GetDesktopWindow(), &WindowRect);
