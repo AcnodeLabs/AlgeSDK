@@ -9,5 +9,5 @@
 
 ALGE SDK WINDOWS:: CANDIDATE.h
 */
-#include "../../Apps/Ivank_Box2D/App.hpp"
+#include "../../Apps/MotoX3/App.hpp"
 class App;

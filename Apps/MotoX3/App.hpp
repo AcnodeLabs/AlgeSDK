@@ -19,14 +19,11 @@ public:
 	virtual void Init(char* path) {
 		AlInit(STANDARD);
 		AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		AddResource(&Screen0, "Screen0");
+		AddResource(&Screen0, "Screen0", AUTO_SCALING_FULLSCREEN);
         AddResource(&sel_lvl, "sel-lvl");
         AddResource(&start0, "start0");
         sel_lvl.Hide(); start0.Hide();
         PlaySnd("race-track.wav");
 	}
 
-    virtual i2 getBackgroundSize() {
-        return i2(512,512);
-    }
 };
