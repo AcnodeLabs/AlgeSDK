@@ -18,6 +18,8 @@ extern CNetMsg netmsg;
 #include <sstream>
 #include <iomanip>
 
+#include "XFunctions.hpp"
+
 class AlgeApp {
 public:
 	string wall_msg;
@@ -274,6 +276,7 @@ public:
 		g->JuiceType = 0;
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
         g->UUID = alx_name +"_"+ tga_name + ".G";
+		XFunction_AutoScalingToFullScreen::GameObjectAdded(g, scale);
 		return g;
 	}
 	
@@ -520,15 +523,15 @@ public:
         
 		if (iit->billboard) alBillboardBegin();
         
-        if (it->originalScale == AUTO_SCALING_FULLSCREEN) {
-			it->originalAspect = rightSide / bottomSide;
-            float sx =  - rightSide / 1 ;
-            float sy = - bottomSide / it->originalAspect;
-          //  it->originalScale = rightSide;
-			if (orthoType == OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN) {
-				it->pos.x = rightSide / 2;
-				it->pos.y = bottomSide / 2;
-			}
+        if (it->originalScale == XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN) {
+			//	it->originalAspect = float(rightSide) / float(bottomSide);
+			//  it->originalScale = rightSide;
+            float sx = rightSide ;
+            float sy = bottomSide / it->originalAspect;
+         	if (orthoType == OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN) {
+				it->pos.x = rightSide /2;
+				it->pos.y = bottomSide /2;
+			} //else no need to adjust pos
             glScalef(sx, sy, 1);
         } else
             glScalef(it->scale, it->scale, it->scale);
@@ -1422,6 +1425,7 @@ public:
 		if (m_tag.size() == 0) m_tag = "dpad";
 		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
 		pos.x = thiz->rightSide - 64;
+		pos.y = thiz->bottomSide / 2;
 		JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
 		JuiceSpeed *= 2;
 		color = f3(0.9, 0.9, 0.9);
@@ -1840,8 +1844,8 @@ public:
 		
 		if (m_tag.size() == 0) m_tag = tagSettings;
         GameObject* d;
-        d = thiz->AddResource(this, m_tag);
-        d->scale = AUTO_SCALING_FULLSCREEN;
+        d = thiz->AddResource(this, m_tag, XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+        
 	////	resize2Dmodel(thiz->rm.models[d->modelId], thiz->getBackgroundSize());
         SetVisible(showit, background);//hidden
         
@@ -1869,32 +1873,31 @@ public:
 	GameObject ratings;
 
 	void LoadIn(AlgeApp* thiz) {
-        with thiz->AddResource(&bg, "bg");
-            bg.scale = AUTO_SCALING_FULLSCREEN;
-            thiz->backgroundModelId = _.modelId;//backgroundModelId used for dimming
-         //   bg.touchable = false;
+        
+		with thiz->AddResource(&bg, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         _with;
         
+		int middleX = thiz->rightSide / 2;
+
         with thiz->AddResource(&ratings, "ratings", 0.7);
+			_.pos.x = middleX;
             _.pos.y = 0.1 * thiz->bottomSide;
         _with
 
         with thiz->AddResource(&start, "start");
-        _.pos.x = 0;//thiz->rightSide;
-        _.pos.y = thiz->bottomSide;
+		_.pos.x = middleX;
+        _.pos.y =  0.9 * thiz->bottomSide;
          _.JuiceType = JuiceTypes::JUICE_PULSATE;
          _.JuiceSpeed =1000;
         _with
 
 	}
 	
-	
-
 	void SetVisible(bool visible = true) {
 		if (visible) {
 			ratings.Show();
 			start.Show();
-			bg.Hide(); 
+			bg.Show(); 
 		} else {
 			ratings.Hide();
 			start.Hide();
@@ -1915,6 +1918,12 @@ public:
     DPad dPad;
     AlgeApp* app;
     
+	///
+	   	//A mock is a set of Screen and associated interactions
+		//e.g a standard setting screen which shows
+		// a start screen with a title and ratings image and a Start button and a settings icon on top right
+		// s setting screen that shows up and has user clickable regions defined by anchors
+
     void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
         app = thiz;
         
@@ -1949,13 +1958,12 @@ public:
             if (cmd->i1 == 1) {
                 ShowTitle(false);
                 startScreen.SetVisible(false);
-                startScreen.bg.Show();
-                
+                //startScreen.bg.Show();              
             }
             if (cmd->i1 == 2) {
                 ShowTitle(true);
                 startScreen.SetVisible(true);
-                startScreen.bg.Show();
+                //startScreen.bg.Show();
             }
         }
         
@@ -1989,6 +1997,11 @@ public:
     }
     
     void RepositionObjects(int rightSide, int bottomSide) {
+		const int shadowSize = 3;
+		for (int i = 0; i < 2; i++) {
+			titl.getInstancePtr(i)->pos.x = rightSide / 2.0 + i * shadowSize;
+			titl.getInstancePtr(i)->pos.y = bottomSide / 2.0 + i * shadowSize;
+		}
         startScreen.ratings.pos.y = 0.1 * bottomSide;
         startScreen.start.pos.x = 0.5 * rightSide;
         startScreen.start.pos.y = 0.9 * bottomSide;

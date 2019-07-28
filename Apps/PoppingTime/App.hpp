@@ -25,7 +25,7 @@ public:
     
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
-        LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
+		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
         
         ///LOAD PLAY OBJECTS
         that->AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
@@ -172,14 +172,11 @@ public:
     bool soundedOuch;
     
     virtual void Init(char* path) {
-     //   pp.app = this;
-        
-        //	fopen_s(&f, "dbg.txt", "w");
+  
         soundedOuch = false;
         nLoops = 100;
         level = 1;
         iScore = 0;
-       // wireframe = true;
         
         AlInit(STANDARD);
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
@@ -190,9 +187,10 @@ public:
         output.pushP(CMD_SNDSET3, $ "drop.wav");
         output.pushP(CMD_SNDSET4, $ "entry.wav");
         
-      //  output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+        output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
         wall_msg = "Go";
-        //glDisable(GL_CULL_FACE);
+        
+		glDisable(GL_CULL_FACE);
         output.pushI(CMD_USEGAMEPAD, 0, 0);
         
         scene = 0;

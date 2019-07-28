@@ -18,6 +18,8 @@ using namespace std;
 #include "../../Classlets/com/acnodelabs/funkit/CAnimator.hpp"
 #include "../../Base/camera.h"
 
+
+
 const float FACTOR_RADIANS_DEGREES = 57.295779513082;
 void inline aluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez,
                       GLfloat centerx, GLfloat centery, GLfloat centerz,
@@ -197,11 +199,12 @@ public:
 	 CRect getOwnRect(string name = "") {
          int mm_height = m_height;
          int mm_width  = m_width;
-         if (scale==AUTO_SCALING_FULLSCREEN) {
-             mm_width = originalScale;
-             mm_height = originalScale / originalAspect;
-         }
-		 CRect own(pos.y - mm_height / 2.0, pos.y + mm_height / 2.0, pos.x - mm_width / 2.0, pos.x + mm_width / 2.0);
+		 //XFunction_AutoScalingToFullScreen::GetDimensionsOf((PosRotScale*)this, &mm_width, &mm_height);
+		 if (scale == -1) {  //AUTOSCALING = -1
+			 mm_width = originalScale;
+			 mm_height = originalScale / originalAspect;
+		 }
+         CRect own(pos.y - mm_height / 2.0, pos.y + mm_height / 2.0, pos.x - mm_width / 2.0, pos.x + mm_width / 2.0);
 		 return own;
 	 }
 
@@ -719,6 +722,8 @@ public:
        }
     }
 };
+
+#include "XFunctions.hpp"
 
 #define C_float float
 #define Sin sin
