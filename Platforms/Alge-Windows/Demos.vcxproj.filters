@@ -37,6 +37,9 @@
     <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h">
       <Filter>CANDIDATE ANDROID</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

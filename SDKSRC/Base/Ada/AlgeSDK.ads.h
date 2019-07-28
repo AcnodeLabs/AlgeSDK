@@ -199,11 +199,9 @@ public:
 	 CRect getOwnRect(string name = "") {
          int mm_height = m_height;
          int mm_width  = m_width;
-		 //XFunction_AutoScalingToFullScreen::GetDimensionsOf((PosRotScale*)this, &mm_width, &mm_height);
-		 if (scale == -1) {  //AUTOSCALING = -1
-			 mm_width = originalScale;
-			 mm_height = originalScale / originalAspect;
-		 }
+	//	 if (scale == -1) {  //AUTOSCALING = -1
+	//	    XFunction_AutoScalingToFullScreen::GetDimensionsOf((PosRotScale*)this, &mm_width, &mm_height);
+	//	 }
          CRect own(pos.y - mm_height / 2.0, pos.y + mm_height / 2.0, pos.x - mm_width / 2.0, pos.x + mm_width / 2.0);
 		 return own;
 	 }
@@ -384,7 +382,10 @@ public:
     
     bool wasTouched() {
 		if (hidden) return false;
-        if (m_touched) {m_touched = false;return true;} else return false;
+        if (m_touched) {
+			m_touched = false;
+			return true;
+		} else return false;
     }
     
 	bool actionComplete() {

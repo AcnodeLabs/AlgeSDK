@@ -574,6 +574,12 @@ public:
       //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
       //  SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
+		if (it->scale == XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN) {
+			obj.Top = topSide;
+			obj.Bottom = bottomSide;
+			obj.Right = rightSide;
+			obj.Left = leftSide;
+		}
         bool ret = (CRect::PTInRect(pt_in_world.x, pt_in_world.y, obj, it->UUID));
         if (ret) {it->m_touchedX =pt_in_world.x; it->m_touchedY = pt_in_world.y;}
         return ret;
@@ -1874,16 +1880,12 @@ public:
 
 	void LoadIn(AlgeApp* thiz) {
         
-		with thiz->AddResource(&bg, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-        _with;
-        
+		thiz->AddResource(&bg, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		        
 		int middleX = thiz->rightSide / 2;
 
-        with thiz->AddResource(&ratings, "ratings", 0.7);
-			_.pos.x = middleX;
-            _.pos.y = 0.1 * thiz->bottomSide;
-        _with
-
+        thiz->AddResource(&ratings, "ratings", 0.7)->pos = f3(middleX, 0.1 * thiz->bottomSide, 0);
+     
         with thiz->AddResource(&start, "start");
 		_.pos.x = middleX;
         _.pos.y =  0.9 * thiz->bottomSide;

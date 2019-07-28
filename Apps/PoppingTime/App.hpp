@@ -12,7 +12,6 @@
 
 // Scrum Page https://scrumy.com/PoppingTime
 
-
 class PoppingGame : public MockUpOne {
 public:
     GameLogic logic;
@@ -26,7 +25,7 @@ public:
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
 		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
-        
+		
         ///LOAD PLAY OBJECTS
         that->AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
         MakeBaloons();
@@ -51,6 +50,7 @@ public:
         _.JuiceSpeed = 0.1;
         _.hidden = true;
         _with
+
     }
     
     
