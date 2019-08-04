@@ -3,6 +3,9 @@
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
 ### **Get It, clone into your sandbox directory and do:** 
 
+## Recommended Environments 
+Visual Studio 2019 version 16.2 released July 24, 2019
+  
 ## Stable Version (iOS, Win)
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
