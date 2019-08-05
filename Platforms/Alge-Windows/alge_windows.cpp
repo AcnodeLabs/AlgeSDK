@@ -195,7 +195,6 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		Gamepad_processEvents();
 #endif
 		game.Render(deltaT, aX, aY, aZ);
-
 	}
 	
 
@@ -736,6 +735,7 @@ void FindAppName() {
 	}
 }
 static char remoteCommand[256];
+
 void onRemoteCommand(string cmd) {
 	strcpy(remoteCommand, cmd.c_str());
 	game.input.pushP(CMD_REMOTE_COMMAND, (void*)remoteCommand, 0);

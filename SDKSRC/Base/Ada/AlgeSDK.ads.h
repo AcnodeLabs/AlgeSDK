@@ -353,7 +353,7 @@ public:
 	}
     void HideFor(GameObject* next) {
         Hide();
-        next->hidden = false;
+		next->Show();
     }
     
     void SetBounds(float fWidth, float fHeight, string name= "") {
@@ -382,8 +382,9 @@ public:
     
     bool wasTouched() {
 		if (hidden) return false;
-        if (m_touched) {
-			m_touched = false;
+		bool m_touched_act = m_touched;
+		m_touched = false;
+        if (m_touched_act) {
 			return true;
 		} else return false;
     }

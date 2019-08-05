@@ -146,7 +146,7 @@ public:
 		for (int i = 0; i < nGobs; i++) {
 			dimmed_states.push_back(gobs[i]->hidden); 
 			if (gobs[i]->modelId != backgroundModelId) gobs[i]->hidden = true;
-			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+			for (unsigned short j = 0; j < gobs[i]->prsInstances.size(); j++) {
 				dimmed_states.push_back(gobs[i]->prsInstances[j].hidden);
 				gobs[i]->prsInstances[j].hidden = true;
 				i0++;
@@ -161,7 +161,7 @@ public:
 		int i0 = 0;
 		for (int i = 0; i < nGobs; i++) {
 			gobs[i]->hidden = dimmed_states[i0];
-			for (int j = 0; j < gobs[i]->prsInstances.size(); j++) {
+			for (unsigned short j = 0; j < gobs[i]->prsInstances.size(); j++) {
 				gobs[i]->prsInstances[j].hidden = dimmed_states[i0];
 				i0++;
 			}
@@ -277,6 +277,7 @@ public:
         g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
         g->UUID = alx_name +"_"+ tga_name + ".G";
 		XFunction_AutoScalingToFullScreen::GameObjectAdded(g, scale);
+		g->m_touched = false;
 		return g;
 	}
 	
@@ -386,13 +387,18 @@ public:
 		case JuiceTypes::JUICE_DIE:
 			if (jprs->JuiceDuration>0) {
 				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
-				juice_sine_angle += (0.5f * jprs->JuiceSpeed);
-				glScalef(1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle), 1. + 0.2 * sin(juice_sine_angle));
+				juice_sine_angle += 0.01;/// (0.5f * jprs->JuiceSpeed);
+				if (juice_sine_angle >= 6.28319) juice_sine_angle = 0.0; //rotate on 360 degree i.e 6.28319 radians
+				float fsin = float(1.0 + 0.2 * sin(juice_sine_angle));
+				glScalef(fsin, fsin, fsin);
 				jprs->JuiceDuration -= deltaT;
 			}	else {
-				if (jprs->JuiceType == JUICE_DIE) jprs->hidden = true;
-				jprs->JuiceType = 0;
-				jprs->rot.z = 0;
+				if (jprs->JuiceType == JUICE_DIE) {
+					jprs->hidden = true;
+					jprs->JuiceType = 0;
+					jprs->rot.z = 0;
+					juice_sine_angle = 0.;
+				}
 			}
 			break;
 		case JuiceTypes::JUICE_ROTXYZ:
@@ -681,6 +687,7 @@ public:
 					if (!it->hidden)
 						if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
 							touched_bodies.push_back(it);
+							MessageBeep(MB_OK);
 							picked = i; //will be overriden by last ordered object
 							it->m_touched = true;
 							it->m_touchedX = cmd->i1;
@@ -1158,6 +1165,7 @@ public:
 		fps = 1.0 / deltaT;
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) ViewOrthoEnd();
 	//	if (!edit) aCamera.PosRot({ aCamera.pos.x, aCamera.pos.y, aCamera.pos.z }, { aCamera.rot.x, aCamera.rot.y, aCamera.rot.z });
+		
 	}
 
 	int LoadModel(GameObject* go, ResourceInf* res) {
@@ -1584,7 +1592,12 @@ public:
 	SettingScreen() {};
 	int ix[3] = { 0,0,0 };
 
-	
+	void RepositionObject(int rightSide, int bottomSide) {
+		int w = ico.getOwnRect().Right - ico.getOwnRect().Left;
+		int h = ico.getOwnRect().Bottom - ico.getOwnRect().Top;
+		ico.pos.x = rightSide - w;
+		ico.pos.y = h;
+	}
 	int getIdFromX(int x) {
 		if (abs(x - 1056) < 50) return 2;
 		if (abs(x - 818) < 50) return 1;
@@ -1673,6 +1686,7 @@ public:
 
 	void processInput(int command, i2 loc) {
 		if (p->hidden) return;
+
 		if (command == CMD_GAMEPAD_EVENT) {
 			processGamePadEvent(loc.x,loc.y);
 		}
@@ -1884,7 +1898,10 @@ public:
 		        
 		int middleX = thiz->rightSide / 2;
 
-        thiz->AddResource(&ratings, "ratings", 0.7)->pos = f3(middleX, 0.1 * thiz->bottomSide, 0);
+		with thiz->AddResource(&ratings, "ratings", 0.7);
+		 _.pos.x = middleX;
+		 _.pos.y = 0.1 * thiz->bottomSide;
+		_with
      
         with thiz->AddResource(&start, "start");
 		_.pos.x = middleX;
@@ -1954,7 +1971,11 @@ public:
     void processInput(PEG::CMD* cmd, float deltaT) {
        
         if (!app) return;
-        if (cmd->command == CMD_SCREENSIZE) RepositionObjects(app->rightSide, app->bottomSide);
+		if (cmd->command == CMD_SCREENSIZE) {
+			RepositionObjects(app->rightSide, app->bottomSide);
+			settings.RepositionObject(app->rightSide, app->bottomSide);
+			
+		}
         
         if (cmd->command == CMD_SETTINGS_SCREEN) {
             if (cmd->i1 == 1) {
@@ -2006,6 +2027,7 @@ public:
 		}
         startScreen.ratings.pos.y = 0.1 * bottomSide;
         startScreen.start.pos.x = 0.5 * rightSide;
+		startScreen.ratings.pos.x = startScreen.start.pos.x;
         startScreen.start.pos.y = 0.9 * bottomSide;
         score.pos.y = 0.05 * bottomSide;
         score.pos.x = 0.85 * rightSide;

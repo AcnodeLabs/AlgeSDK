@@ -6,6 +6,7 @@ Platforms/Alge-Android/AndroidManifest.xml
 Platforms/Alge-Android/algeandroidapps.keystore
 Platforms/Alge-Android/bin/*
 Platforms/Alge-Gnat-macOS/obj/*
+Platforms/Alge-Windows/Rules.txt
 *.so
 *.dex
 *.dex.d

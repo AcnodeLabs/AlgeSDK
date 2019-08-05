@@ -12,6 +12,8 @@
 
 // Scrum Page https://scrumy.com/PoppingTime
 
+//FOCUS REMINDER : <Jitter in GetReady Splash>
+
 class PoppingGame : public MockUpOne {
 public:
     GameLogic logic;
@@ -46,8 +48,8 @@ public:
         _with
         
         with that->AddResource(&getready, "getready");
-        //_.JuiceType = JuiceTypes::JUICE_DIE;
-        _.JuiceSpeed = 0.1;
+        _.JuiceType = JuiceTypes::JUICE_DIE;
+        _.JuiceSpeed = 0.005;
         _.hidden = true;
         _with
 
@@ -102,7 +104,7 @@ public:
         
         if (cmd->command == CMD_KEYDOWN) {
             if (cmd->i1 == MAC_KEY_PLUS) {
-                for (int i=0; i< baloons.prsInstances.size(); i++) {
+                for (unsigned int i=0; i< baloons.prsInstances.size(); i++) {
                     baloons.getInstancePtr(i)->hidden = false;
                     app->output.pushP(CMD_SNDPLAY3, $ "drop.wav");
                 }
@@ -143,6 +145,7 @@ public:
         getready.Show();
         getready.JuiceType = JuiceTypes::JUICE_DIE;
         getready.JuiceDuration = 2;
+		getready.JuiceSpeed = 0.005;
     }
     
     void onActionComplete(GameObject* obj) {
@@ -206,7 +209,7 @@ public:
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
-        
+		
         if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (scene == 0) { scene++; return; }
         }
@@ -217,12 +220,19 @@ public:
             resolutionReported.y = cmd->i2;
             //  startScreen.start.pos.x = bgSize.x;
             //  startScreen.start.pos.y = bgSize.y;
-            SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
+            SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
             if (objectsNotLoaded) {
                 pp.LoadIn(this);objectsNotLoaded = false;
-                
             }
         }
+
+		if (cmd->command == CMD_TOUCHMOVE) {
+			if (!pp.heli.hidden) {
+				pp.heli.animPos.active = false;
+				pp.heli.pos = i2(cmd->i1, cmd->i2);
+			}
+		}
+
         pp.processInput(cmd,deltaT);
         
     }
@@ -233,7 +243,7 @@ public:
         if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
         
         if (gob->is(pp.cloud)) {
-            for (int i = 0; i < pp.cloud.prsInstances.size(); i++) {
+            for (unsigned short i = 0; i < pp.cloud.prsInstances.size(); i++) {
                 PosRotScale* cloudprs = pp.cloud.getInstancePtr(i);
                 cloudprs->pos.x -= (deltaT * i);
                 cloudprs->rot.z = 0;
@@ -340,7 +350,7 @@ public:
                 //	wall_msg = ss.str();
                 
                 pp.nRemaining = 0;
-                for (int i=0; i< gob->prsInstances.size(); i++) {
+                for (unsigned short i=0; i< gob->prsInstances.size(); i++) {
                     if (!gob->getInstancePtr(i)->hidden) pp.nRemaining++;
                 }
                 

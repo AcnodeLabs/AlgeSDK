@@ -13,9 +13,13 @@ public:
 	virtual void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         if (ss.bg.wasTouched()) { 
 			ss.bg.HideFor(&sel_lvl);
+			return;
 		}
-        if (sel_lvl.wasTouched()) { 
-			sel_lvl.HideFor(&start0); PlaySnd("motorbike.wav");
+		if (sel_lvl.m_touched) {
+			if (sel_lvl.wasTouched()) {
+				sel_lvl.HideFor(&start0); PlaySnd("motorbike.wav");
+				return;
+			}
 		}
 	}
 	
