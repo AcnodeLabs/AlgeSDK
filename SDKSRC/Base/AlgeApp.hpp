@@ -172,9 +172,10 @@ public:
 	}
 
 	virtual void onSettingChanged(string setting, int value) {
-	//	static char msg[128];
-	//	static int value;
-	//	output.pushP(CMD_SETTINGS_SCREEN, $ setting.c_str() , (void*) value);
+		static char msg[128];
+		static int _value = value;
+		strcpy_s(msg, 128, setting.c_str());
+		output.pushP(CMD_SETTINGS_SCREEN, $ msg , (void*) _value);
 	}
 
 	virtual i2 getBackgroundSize() {

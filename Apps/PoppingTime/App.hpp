@@ -12,8 +12,6 @@
 
 // Scrum Page https://scrumy.com/PoppingTime
 
-//FOCUS REMINDER : <Jitter in GetReady Splash>
-
 class PoppingGame : public MockUpOne {
 public:
     GameLogic logic;
@@ -95,8 +93,7 @@ public:
                     heli.hidden = false;
                     spikey.hidden = false;
                     heli.pos = app->getBackgroundSize().half();// pos in middle of screen
-                    
-                    // soundedOuch = false;
+
                 }
             }
             
@@ -111,7 +108,11 @@ public:
             }
         }
         
-        
+		if (cmd->command == CMD_SETTINGS_SCREEN) {
+			//anything changes in settings 
+	//		nRemaining = (int)baloons.prsInstances.size();
+		}
+
         if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (cmd->i1 == MyGamePad::EventTypes::BTN) {
                 if (cmd->i2 == MyGamePad::EventCodes::BTN_X) DropSpikey();
@@ -193,9 +194,7 @@ public:
         output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
         wall_msg = "Go";
         
-		glDisable(GL_CULL_FACE);
-        output.pushI(CMD_USEGAMEPAD, 0, 0);
-        
+		output.pushI(CMD_USEGAMEPAD, 0, 0);
         scene = 0;
     }
     
