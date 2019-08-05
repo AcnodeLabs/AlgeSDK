@@ -3,6 +3,10 @@
 ![alt text](https://raw.githubusercontent.com/AcnodeLabs/AlgeSDK/master/_acnode_/GetIt.PNG)
 ### **Get It, clone into your sandbox directory and do:** 
 
+## Verified Desktop Environments 
+Windows: Win10SDK_10.0.18362 on Visual Studio 2019 version 16.2 on Microsoft WIndows 10 Pro Build 18362
+macOS:
+
 ## Stable Version (iOS, Win)
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
