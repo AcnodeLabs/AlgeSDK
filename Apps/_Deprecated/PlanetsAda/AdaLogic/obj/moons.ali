@@ -1,0 +1,50 @@
+V "GNAT Lib v2016"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U moons%b		moons.adb		326a53d6 NE OO PK
+
+U moons%s		moons.ads		0f8066cd EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W structdefs_h%s	structdefs_h.ads	structdefs_h.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D moons.ads		20160701121642 1c417f1d moons%s
+D moons.adb		20160701121642 2e2b2ccb moons%b
+D structdefs_h.ads	20160628125848 d74c6fdc structdefs_h%s
+D system.ads		20160516092930 2da59038 system%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+X 1 ada.ads
+16K9*Ada 19e8 6|1r6
+X 2 a-string.ads
+16K13*Strings 35e16 6|1w10
+X 4 interfac.ads
+38K9*Interfaces 184e15 6|2r6
+X 5 i-c.ads
+18K20*C 230e17 6|2w17
+X 6 moons.ads
+6K9*Moons 21l5 21e10 7|1b14 20l5 20t10
+8A9*Str(character)<integer><integer> 13r24
+13a5*Planets{8A9}
+15V12*MoonsOf{integer} 15>20 16i27 7|3b13 18l8 18t15
+15i20 planet_num{integer} 7|3b21 7r12
+X 7 moons.adb
+4i7 num{integer} 8m17 9m17 10m17 11m17 12m17 13m17 14m22 17r14
+X 8 structdefs_h.ads
+8K9*StructDefs_h 6|3w6 4r5 8|18e17
+

@@ -13,5 +13,5 @@
 
  */
 
-#include "../../Apps/Juices/App.hpp"
+#include "../../Apps/Ivank_Box2D/App.hpp"
 class App; 

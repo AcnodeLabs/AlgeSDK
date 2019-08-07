@@ -1,0 +1,37 @@
+V "GNAT Lib v2016"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U structdefs_h%s	structdefs_h.ads	836d7e47 NE OO PK
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D structdefs_h.ads	20160628125848 d74c6fdc structdefs_h%s
+D system.ads		20160516092930 2da59038 system%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+X 3 interfac.ads
+38K9*Interfaces 184e15 5|6r6 6r24
+X 4 i-c.ads
+18K20*C 230e17 5|6w17 6r35
+35I9*int<integer> 5|11r33 12r41 13r29
+X 5 structdefs_h.ads
+8K9*StructDefs_h 18l5 18e17
+10R9*MoonInfo 15e14 16r39
+11i7*Year_Discovered{4|35I9}
+12i7*Distance_From_Planet_km{4|35I9}
+13i7*Diameter_km{4|35I9}
+14f7*Orbital_Period_days{float}
+
