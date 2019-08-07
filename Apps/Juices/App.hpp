@@ -10,7 +10,6 @@
    (Quoted from https://bit.ly/2A27Ke4)
 */
 
-
 class InstanceIterator {
 	static short idx;
 	static short iidx;// instance
@@ -28,7 +27,7 @@ public:
 
 	GameObject* Next() {
 		idx++;
-		if (idx >= (list.capacity()-1)) idx = 0;
+		if (idx >= (short(list.capacity())-1)) idx = 0;
 		GameObject* it = list.at(idx);
 		it->hidden = false;
 		return it;
@@ -145,7 +144,7 @@ public:
 			}
 			if (p->i1 == AL_KEY_UP) {
 				sel->JuiceType++;
-				if (sel->JuiceType >= JuiceTypes::JUICES_END) {
+				if (sel->JuiceType >= JuiceTypes::JUICES_CANCEL) {
 					sel->JuiceType = 0;
 					resetPosRotSpeed(sel);
 				}

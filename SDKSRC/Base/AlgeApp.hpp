@@ -360,7 +360,6 @@ public:
 		pos->y += 0.5 * w * (1 - scaledTo);
 	}
 
-	float juice_sine_angle;
 	int juice_frame[JuiceTypes::JUICES_END];
 	
 	void UpdateJuices(GameObject* it, int instanceNo, float deltaT) {
@@ -375,22 +374,24 @@ public:
 
 		PosRotScale* jprs = (instanceNo < 0) ? reinterpret_cast<PosRotScale*>(it) : (it->getInstancePtr(instanceNo));
 
+		float speedDt = (deltaT * (jprs->JuiceSpeed * 100));
+		float angleDt = speedDt * 0.1;
 
 		switch (jprs->JuiceType) {
 
 		case JuiceTypes::JUICE_ROTZ:
-			jprs->rot.z += (deltaT * (jprs->JuiceSpeed * 100));
+			jprs->rot.z += speedDt;
 			break;
 		case JuiceTypes::JUICE_ROTY:
-			jprs->rot.y += (deltaT * (jprs->JuiceSpeed * 100));
+			jprs->rot.y += speedDt;
 			break;
 		case JuiceTypes::JUICE_DIE_TEMP:
 		case JuiceTypes::JUICE_DIE:
 			if (jprs->JuiceDuration>0) {
-				jprs->rot.z += (deltaT * (jprs->JuiceSpeed));
-				juice_sine_angle += 0.01;/// (0.5f * jprs->JuiceSpeed);
-				if (juice_sine_angle >= 6.28319) juice_sine_angle = 0.0; //rotate on 360 degree i.e 6.28319 radians
-				float fsin = float(1.0 + 0.2 * sin(juice_sine_angle));
+				jprs->rot.z += speedDt;
+				jprs->juice_sine_angle += 0.01;/// (0.5f * jprs->JuiceSpeed);
+				if (jprs->juice_sine_angle >= 6.28319) jprs->juice_sine_angle = 0.0; //rotate on 360 degree i.e 6.28319 radians
+				float fsin = float(1.0 + 0.2 * sin(jprs->juice_sine_angle));
 				glScalef(fsin, fsin, fsin);
 				jprs->JuiceDuration -= deltaT;
 			}	else {
@@ -398,53 +399,70 @@ public:
 					jprs->hidden = true;
 					jprs->JuiceType = 0;
 					jprs->rot.z = 0;
-					juice_sine_angle = 0.;
+					jprs->juice_sine_angle = 0.;
 				}
 			}
 			break;
 		case JuiceTypes::JUICE_ROTXYZ:
-			jprs->rot.x += (deltaT * (jprs->JuiceSpeed * 100));
-			jprs->rot.y += (deltaT * (jprs->JuiceSpeed * 100));
-			jprs->rot.z += (deltaT * (jprs->JuiceSpeed * 100));
+			jprs->rot.x += speedDt;
+			jprs->rot.y += speedDt;
+			jprs->rot.z += speedDt;
 		break;
 		case JuiceTypes::JUICE_ROTXYZ_PULSATE_FULLY:
-			jprs->rot.x += (deltaT * (jprs->JuiceSpeed* 100));
-			jprs->rot.y += (deltaT * (jprs->JuiceSpeed* 100));
-			jprs->rot.z += (deltaT * (jprs->JuiceSpeed*100));
-			juice_sine_angle += 0.02f;
-			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));		break;
+		{
+			jprs->rot.x += speedDt;
+			jprs->rot.y += speedDt;
+			jprs->rot.z += speedDt;
+			jprs->juice_sine_angle += angleDt / 2.;
+			float sinj = sin(jprs->juice_sine_angle);
+			glScalef(abs(sinj), abs(sinj), abs(sinj));
+			break;
+		}
 		case JuiceTypes::JUICE_ROTZ_PULSATE:
-			jprs->rot.z += (deltaT * (jprs->JuiceSpeed*100));
-			juice_sine_angle += 0.2f;
-			glScalef(1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle), 1. + 0.02 * sin(juice_sine_angle));
+		{
+			jprs->rot.z += (deltaT * (jprs->JuiceSpeed * 100));
+			jprs->juice_sine_angle += angleDt;
+			float sinjx = 1. + 0.02 * sin(jprs->juice_sine_angle);
+			glScalef(sinjx, sinjx, sinjx);
 			break;
+		}
 		case JuiceTypes::JUICE_PULSATE:
+		{
+			jprs->juice_sine_angle += angleDt;
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
-			juice_sine_angle += (10*deltaT * jprs->JuiceSpeed);
-			glScalef(1. + 0.03 * sin(juice_sine_angle), 1. + 0.03 * sin(juice_sine_angle), 1. + 0.03 * sin(juice_sine_angle));
+			float sinjx = 1. + 0.02 * sin(jprs->juice_sine_angle);
+			glScalef(sinjx, sinjx, sinjx);
 			break;
+		}
+		/*
 		case JuiceTypes::JUICE_SCALE_IN:
+		{
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
 			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
-			if (juice_sine_angle < 1.5708) juice_sine_angle += (0.5 * deltaT * jprs->JuiceSpeed); else break;
-			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) juice_sine_angle = 0;
-			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			if (jprs->juice_sine_angle < 1.5708) jprs->juice_sine_angle += angleDt; else break;
+			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) jprs->juice_sine_angle = 0;
+			float sinj = sin(jprs->juice_sine_angle);
+			glScalef(abs(sinj), abs(sinj), abs(sinj));
 			break;
+		}
+		*/
 		case JuiceTypes::JUICE_PULSATE_FULLY:
+		{
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
-			juice_sine_angle += (deltaT * jprs->JuiceSpeed);
-			glScalef(abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)), abs(sin(juice_sine_angle)));
+			jprs->juice_sine_angle += angleDt / 2.;
+			float sinj = sin(jprs->juice_sine_angle);
+			glScalef(abs(sinj), abs(sinj), abs(sinj));
 			break;
+		}
 		case JuiceTypes::JUICE_FLY_OUT:
 			
 			if (jprs->pos.x > -999) {
 				if (x_pos_on_arrival==-1) x_pos_on_arrival = jprs->pos.x;
-				jprs->pos.x -= (1000.0 * deltaT * jprs->JuiceSpeed);
+				jprs->pos.x -= speedDt * 50;
 				if (jprs->pos.x < (-x_pos_on_arrival)) {
 					jprs->pos.x = x_pos_on_arrival;
-					jprs->JuiceType = JuiceTypes::JUICE_CANCEL;
-					juice_sine_angle = 0;
-					jprs->hidden = true;
+					jprs->JuiceType = JuiceTypes::JUICES_CANCEL;
+					jprs->juice_sine_angle = 0;
 				}
 			}
 			else {
@@ -455,11 +473,11 @@ public:
 			}
 			break;
 		
-		case JuiceTypes::JUICE_CANCEL:
+		case JuiceTypes::JUICES_CANCEL:
 			jprs->rot.x = 0;
 			jprs->rot.y = 0;
 			jprs->rot.z = 0;
-			juice_sine_angle = 0;
+			jprs->juice_sine_angle = 0;
 			jprs->hidden = false;
 			break;
 		}
@@ -1823,7 +1841,7 @@ public:
 			p2.JuiceType = 0;
 			p3.JuiceType = 0;
 			this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
-			m_thiz->juice_sine_angle = 0; //resetPrev Juice Effect 
+			this->juice_sine_angle = 0; //resetPrev Juice Effect 
 			p1.scale = 0.8;
 			p2.scale = p1.scale;
 			p3.scale = p1.scale;

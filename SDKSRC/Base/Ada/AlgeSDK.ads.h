@@ -183,7 +183,7 @@ public:
 	float JuiceSpeed = 1.;
 	float JuiceDuration = 3;
     bool touchable = true;
-    
+	double juice_sine_angle = 0.0;
 	float originalScale = 1.;
     float originalAspect = 1.78;
     float debugUseOnly = 0.;
@@ -291,7 +291,7 @@ enum JuiceTypes {
 	JUICE_DIE,
 	JUICE_DIE_TEMP,
 	JUICE_FLY_OUT,
-	JUICE_CANCEL,
+	JUICES_CANCEL,
 	JUICES_END
 };
 
@@ -308,7 +308,7 @@ string JuiceName(int j) {
 	if (j == JUICE_DIE) return "JUICE_DIE";
 	if (j == JUICE_DIE_TEMP) return "JUICE_DIE_TEMP";
 	if (j == JUICE_FLY_OUT) return "JUICE_FLY_OUT";
-	if (j == JUICE_CANCEL) return "JUICE_CANCEL";
+	if (j == JUICES_CANCEL) return "JUICE_CANCEL";
 	if (j == JUICES_END) return "JUICE_END";
 	return "Wrong ID "+ std::to_string(j);
 }
