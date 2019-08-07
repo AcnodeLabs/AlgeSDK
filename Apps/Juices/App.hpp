@@ -7,7 +7,7 @@
    It makes the player feel powerful and in control of the world, 
    and it coaches them through the rules of the game by constantly 
    letting them know on a per-interaction basis how they are doing.”
-   (Quoteed from https://bit.ly/2A27Ke4)
+   (Quoted from https://bit.ly/2A27Ke4)
 */
 
 
@@ -67,83 +67,109 @@ class /*Juices*/ App : public AlgeApp {
 	
 	InstanceIterator iit;
 
-	GameObject star;
-	GameObject ring;
-	GameObject *sel;
+	GameObject objct;
+	GameObject background;
+	PosRotScale *sel;
 	
-	int currentJuice;
+	int currentJuice[2];
 
 public:
 
 		virtual void Init(char* path) {
 		
-		currentJuice = 0;
+		currentJuice[0] = 0;
+		currentJuice[1] = 0;
+
 		AlInit(STANDARD);
 		SetTitle("Juices");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 	
-        float scale = getBackgroundSize().x / 800.0;
-		iit.Track(AddResource(&ring, "ab_city", scale));
-	
-		AddResource(&star, "adidas_ball", 100);
-		iit.Track((GameObject*)ring.AddInstance(f2(originX - 100, originY)));
-		iit.Track((GameObject*)ring.AddInstance(f2(originX + 100, originY)));
-            star.JuiceSpeed = 10;
-		//iit.clearPosofAll();
+      //  float scale = getBackgroundSize().x / 800.0;
+		//iit.Track(
+		AddResource(&background, "juices", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		//);
+		
+		iit.Track(
+			AddResource(&objct, "slice")
+		);
+		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.25, bottomSide/2)));
+		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.75, bottomSide/2)));
+		objct.getInstancePtr(0)->UUID = "LEFT";
+		objct.getInstancePtr(1)->UUID = "RIGHT";
+		objct.JuiceSpeed = 1;
 		sel = iit.First();
-		//sel->pos = f3(originX, originY, 0.0);
-
+		resetPosRotSpeed(0);
+		resetPosRotSpeed(1);
 		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
-
 	}
 
+	void resetPosRotSpeed(PosRotScale* p) {
+		p->pos.y = bottomSide / 2;
+		p->pos.z = 0;
+		p->rot.x = 0;
+		p->rot.y = 0;
+		p->rot.z = 0;
+		p->hidden = false;
+	}
+	
+	void resetPosRotSpeed(int j) {
+		PosRotScale* p = objct.getInstancePtr(j);
+		resetPosRotSpeed(p);
+		p->pos.x = rightSide * (j == 0 ? 0.25 : 0.75);
+	}
+	
 	string jn;
     CControls c;
     
 	void processInput(PEG::CMD* p, float deltaT) {
 		if (p->command == CMD_KEYDOWN) {
+
+			if (p->i1 == AL_KEY_PLUS) {
+				sel->JuiceSpeed *= 2;
+				jn = "[x2] JuiceSpeed=" + std::to_string(sel->JuiceSpeed);
+			}
+			if (p->i1 == AL_KEY_MINUS) {
+				sel->JuiceSpeed /= 2;
+				jn = "[/2] JuiceSpeed=" + std::to_string(sel->JuiceSpeed);
+			}
+
 			if (p->i1 == AL_KEY_RIGHT) {
-				sel->pos.clear();
-				sel = iit.Next();
-				sel->pos = f3(originX, originY, 0.0);
+				sel = objct.getInstancePtr(1);
+				resetPosRotSpeed(1);
+				jn = "SELECTED RIGHT";
 			}
 			if (p->i1 == AL_KEY_LEFT) {
-                
+				sel = objct.getInstancePtr(0);
+				resetPosRotSpeed(0);
+				jn = "SELECTED LEFT";
 			}
 			if (p->i1 == AL_KEY_UP) {
-				currentJuice++;
-				if (currentJuice >= JuiceTypes::JUICES_END) currentJuice = 1;
-				sel->JuiceType = currentJuice;
-				jn = JuiceName(currentJuice);
-			//	output.pushP(CMD_TOAST, $ jn.c_str(), 0);
+				sel->JuiceType++;
+				if (sel->JuiceType >= JuiceTypes::JUICES_END) {
+					sel->JuiceType = 0;
+					resetPosRotSpeed(sel);
+				}
+				jn = sel->UUID + ":" + JuiceName(sel->JuiceType);
 			}
 			if (p->i1 == AL_KEY_DOWN) {
-				currentJuice--;
-				if (currentJuice <= 1) currentJuice = 1;
-				sel->JuiceType = currentJuice;
+				sel->JuiceType--;
+				if (sel->JuiceType < 0) {
+					sel->JuiceType = 0;
+					resetPosRotSpeed(sel);
+				}
 			}
+			output.pushP(CMD_TITLE, $ jn.c_str(), 0);
 		}
         
-        if (p->command == CMD_TOUCH_START)
-        switch (c.KROSS_(true, p->i1, p->i2)) {
-            case KROSS_RIGHT:
-				star.Show();
-				star.NextJuice();
-                break;
-        }
-        
+		if (p->command == CMD_TOUCH_START) {
+					
+		}
+
 	}
 
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-		gob->rotatefirst = false;
-        
-	//	gob->applyTopLeftCorrectionWRTorigin = true;
+		if (gob->is(background)) 
+			glColor3f(0.8, 0.8, 0.8);//dim 80%
 	}
-
-	virtual i2 getBackgroundSize() {
-		return i2(1024, 1024);
-	}
-		
-
 
 };
