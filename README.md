@@ -7,7 +7,7 @@
 Windows: Win10SDK_10.0.18362 on Visual Studio 2019 version 16.2 on Microsoft WIndows 10 Pro Build 18362
 macOS:
 
-## Stable Version (iOS, Win)
+## Basic Version (iOS, Win)
 ```sh
 git clone https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
