@@ -46,7 +46,7 @@ public:
 
 	void AddText() {
 		line.Setup(this, "Hello World", SkyDome.modelId+1);
-		AddObject(&line);
+	//	AddObject(&line);
 		PosRotScale y10;
 		y10.pos.y = 10.;
 	}
@@ -55,7 +55,7 @@ public:
 		AlInit(STANDARD);
 		output.pushP(CMD_TITLE, $ "DemoFont",0);
 		AddDefaultCamera();
-		AddResource(&SkyDome, "skydome"); 
+	//	AddResource(&SkyDome, "skydome"); 
 		AddText();
 	}
 

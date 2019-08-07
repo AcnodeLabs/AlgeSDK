@@ -68,7 +68,7 @@ class App : public AlgeApp {
 	SolarDB db;
 	vector<GameObject*> planets;
 	DPad dpad;
-	DPointer dpointer;
+//	DPointer dpointer;
 	Views v;
 
 	GameObject mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune, pluto;
@@ -113,7 +113,7 @@ public:
 
 	virtual void Init(char* path) {
 	
-		edit = true;
+	//	edit = true;
 	//	wireframe = true;
 
 		nLoops = 100;
@@ -162,7 +162,7 @@ public:
 		_with
 
 		dpad.LoadIn(this);
-		dpointer.LoadIn(this);
+	//	dpointer.LoadIn(this);
 		
 
 		f3 center = {0,0,0};
@@ -273,10 +273,10 @@ public:
 
 		if (gob->is(dpad)) dpad.Update(deltaT);
 		
-		if (gob->is(dpointer)) {
-			zRot += deltaT;
-			dpointer.SetDirection(aCamera.RotatedY);			
-		}
+//		if (gob->is(dpointer)) {
+//			zRot += deltaT;
+//			dpointer.SetDirection(aCamera.RotatedY);			
+//		}
 
 	}
 

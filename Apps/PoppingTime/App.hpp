@@ -93,7 +93,6 @@ public:
                     heli.hidden = false;
                     spikey.hidden = false;
                     heli.pos = app->getBackgroundSize().half();// pos in middle of screen
-
                 }
             }
             

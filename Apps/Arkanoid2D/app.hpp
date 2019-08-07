@@ -168,8 +168,7 @@ public:
 	char bricTag[64];
 
 	virtual void Init(char* path) {
-		wireframe = true;
-
+		
 		AlInit(STANDARD);
 
 		output.pushP(CMD_TITLE, $ "Arkanoid", 0);

@@ -37,20 +37,16 @@ CNetMsg netmsg;
 
 #endif // !
 
-
 CFTFont font;
-
 App		game;
 
 #define EXTERNIT extern "C"
 //#include "../../SDKSRC/Base/externit.cpp"
 
-
 HDC			hDC=NULL;		// Private GDI Device Context
 HGLRC		hRC=NULL;		// Permanent Rendering Context
 HWND		hWnd=NULL;		// Holds Our Window Handle
 HINSTANCE	hInstance;		// Holds The Instance Of The Application
-FILE* a;
 
 #ifdef USING_IRRLICHT
 MyIrrHello ir;
@@ -73,8 +69,6 @@ float lastTime;
 Timer time1;
 
 char msg[128];
-
-
 
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
 {
@@ -101,8 +95,6 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 #endif
 
 }
-
-
 
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {

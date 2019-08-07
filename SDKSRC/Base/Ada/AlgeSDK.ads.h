@@ -111,7 +111,7 @@ public:
     }
     
     //updated top is 0 and bottom is max
-    static bool PTInRect(float x1, float y1, CRect aRect, string uuid) {
+    static bool PTInRect(float x1, float y1, CRect aRect, string uuid = "") {
         //((y1 >= aRect.Top) && (y1<aRect.Bottom) && (x1 >= aRect.Left) && (x1<aRect.Right));
         bool ret1 = (y1 >= aRect.Top);
         bool ret2 = (y1 <  aRect.Bottom);// && (x1 >= aRect.Left) && (x1<aRect.Right));

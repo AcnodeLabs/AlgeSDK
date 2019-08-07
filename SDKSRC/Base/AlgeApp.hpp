@@ -688,7 +688,7 @@ public:
 					if (!it->hidden)
 						if (doPicking2D(it, f2(cmd->i1, cmd->i2))) {
 							touched_bodies.push_back(it);
-							MessageBeep(MB_OK);
+							//MessageBeep(MB_OK);
 							picked = i; //will be overriden by last ordered object
 							it->m_touched = true;
 							it->m_touchedX = cmd->i1;
@@ -778,7 +778,6 @@ public:
 		}
 #endif
 		aCamera.custom_type = 0xCA;
-        
         
 		aCamera.windowWidth = getBackgroundSize().x;
 		aCamera.windowHeight = getBackgroundSize().y;

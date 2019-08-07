@@ -265,7 +265,7 @@ Now its time to break the Good News!!
 **Render method provides you maximum opportunity to draw your stuff and run app logic, the moment ALGE code gets execution handle it processes your output queue acts on all pending commands and again re-enters your Render function with a time elapsed variable.
 
 **The FPS is not restricted to a fixed value, rather you get elapsed time variable to perform frame rate independent animations. Essentially this elapsed time is equivalent to 
-processing time of all pending ALGE output queue messages.
+processing time of all pending ALGE output queue messages and re-entry in render loop
 
 **DeInit provides you the last opportunity to de-init your objects and allocation before exit.
 

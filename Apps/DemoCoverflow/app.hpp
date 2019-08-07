@@ -223,18 +223,50 @@ public:
 
 };
 
+class CPushButton {
+	bool touchdown;
+	CRect _rect;
+public:
+
+	void Init(CResourceManager* rm, std::string resTag, int modelID, float scale, CRect rect) {
+		rm->loadAlxModel((char*)(resTag + ".alx").c_str(), 0, modelID,scale);
+		_rect = rect;
+	}
+	
+	void onRender() {
+		if (touchdown) glColor4f(0.6, 0.6, 0.6, 1); else glColor4f(1, 1, 1, 1);
+	}
+
+	void processInput(PEG::CMD* p) {
+		switch (p->command) {
+		case CMD_TOUCH_END:
+		{
+			touchdown = false;
+		}
+		break;
+
+		case CMD_TOUCH_START:
+		{
+			if (_rect.PTInRect(p->i1,p->i2,_rect))
+				touchdown = true;
+		}
+		break;
+		}
+	}
+};
+
+
 class /*DemoCoverFlow*/ App : public AlgeApp { 
 
 	CControls controls;
 	CCoverFlowController cfc;
+	CPushButton btn;
 
 	GLfloat	yrot;
 	GLfloat	xrot;
 	
 	GLfloat	z;	
-    
-    CHotSpot hsSet;
-
+ 
 public:
 
     char szMsg[128];
@@ -243,29 +275,13 @@ public:
 	void processInput() {
 		PEG::CMD* p = input.pull();
 		switch (p->command) {
-            case CMD_SCREENSIZE:
-                screen[0] = p->i1;
-                screen[1] = p->i2;
-                CHotSpot::Res(screen[0], screen[1]);
-                break;
 			case CMD_KEYDOWN:
 				if (p->i1==-9) {cfc.Fold();}
 				if (p->i1==-11) {cfc.UnFold();}
 				if (p->i1 == -12) { cfc.Prev(); }
 				if (p->i1 == -10) { cfc.Next(); }
 				break;
-			case CMD_TOUCH_END:
-					{
-						touchdown = false;
-					}
-			break;
-
-			case CMD_TOUCH_START:
-				{
-					if (p->i2<64) touchdown = true; 
-				}
-				break;
-			
+						
 			case CMD_TOUCHMOVE:
 				{
 					if (!cfc.isAnimating()) {
@@ -277,10 +293,10 @@ public:
 				}
 				break;
 		}
+		btn.processInput(p);
 	}
 
 	float zed;
-	bool touchdown;
 
 	void Render(float tick, int aX, int aY, int aZ) {
 		glColor4f(1,1,1,1);
@@ -290,7 +306,7 @@ public:
 		cfc.Update(tick);// Animation needs time
 		cfc.glDraw(&rm);
 		glLoadIdentity();
-		if (touchdown) glColor4f(0.6,0.6,0.6,1); else glColor4f(1,1,1,1);
+		btn.onRender();		
 		if (!cfc.isAnimating() && cfc.currentId>0) {
 		 	hudBegin(screen);
 				glTranslatef(0,screen[1]/2-32,0);
@@ -299,13 +315,15 @@ public:
 		}
 	}
 
-		void Init(char* path) {
+	void Init(char* path) {
 		
 		AlInit(STANDARD_WITH_TEXTURES);	
 		zed = 0;
 		yrot=0;
 		xrot=0;
 		z=-3.5f;		
+
+		//Add Resources Directly require rm to be inited by the app so that it knows where to find resources
 		rm.Init(path);
 
 		char img[32];
@@ -316,9 +334,8 @@ public:
 			cfc.item[i].modelId = i;
 		}
 
-		rm.loadAlxModel("apply.alx", 0, nITEMS+1, 0.75);
-		
-	  	hsSet.Set(320,480,0,22,64,(32+52));
+		btn.Init(&rm, "apply", nITEMS+1, 0.75, CRect(0,64,0,rightSide));
+
 		output.pushP(CMD_TOAST, $ "Use Rt/Left Arrow Keys to browse", 0);
 	}
 
