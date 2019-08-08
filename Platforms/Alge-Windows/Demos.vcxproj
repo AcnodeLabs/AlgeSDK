@@ -105,6 +105,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.cpp" />
+    <ClCompile Include="..\..\..\libdrawtext\src\draw.c" />
+    <ClCompile Include="..\..\..\libdrawtext\src\drawgl.c" />
+    <ClCompile Include="..\..\..\libdrawtext\src\drawrast.c" />
+    <ClCompile Include="..\..\..\libdrawtext\src\font.c" />
+    <ClCompile Include="..\..\..\libdrawtext\src\tpool.c" />
+    <ClCompile Include="..\..\..\libdrawtext\src\utf8.c" />
     <ClCompile Include="alge_windows.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>

@@ -15,6 +15,9 @@
     <Filter Include="CANDIDATE ANDROID">
       <UniqueIdentifier>{c3982fd4-6878-45aa-bfdc-ac5a055902bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libdrawtext">
+      <UniqueIdentifier>{9aa98122-540d-466f-9280-50f70482aab1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.cpp">
@@ -25,6 +28,24 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\draw.c">
+      <Filter>libdrawtext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\drawgl.c">
+      <Filter>libdrawtext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\drawrast.c">
+      <Filter>libdrawtext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\font.c">
+      <Filter>libdrawtext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\tpool.c">
+      <Filter>libdrawtext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libdrawtext\src\utf8.c">
+      <Filter>libdrawtext</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

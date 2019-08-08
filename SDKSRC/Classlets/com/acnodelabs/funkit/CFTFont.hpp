@@ -12,14 +12,15 @@ class CFTFont {
 public:
     
     CFTFont()  {
-        CFTFont((char*)"C:\\OpenSans.ttf", 24);
+        CFTFont((char*)"serif_s24.glyphmap", 24);
     }
     CFTFont(char* fontname, int size) {
         font = nullptr;
 		allok = false;
         //https://github.com/jtsiomb/libdrawtext/blob/master/examples/simple/simple.c
         /* XXX dtx_open_font opens a font file and returns a pointer to dtx_font */
-        if(!(font = dtx_open_font(fontname, size))) {
+		
+        if(!(font = dtx_open_font_glyphmap(fontname))) {
             fprintf(stderr, "failed to open font\n");
             // return 1;
         }
@@ -34,10 +35,12 @@ public:
     void PrintText(char* text) {
         if (font!=nullptr) dtx_string(text);
     }
-	void PrintTextGl(string text, float scale = 1.0) {
+	void PrintTextGl(string txt, float scale = 1.0) {
 		glPushMatrix();
 		glScalef(scale, scale, scale);
-		if (font != nullptr) dtx_string(text.c_str());
+		glRotatef(180.0, 1, 0, 0);
+	//	if (font != nullptr) 
+		dtx_string(txt.c_str());
 		glPopMatrix();
 	}
 

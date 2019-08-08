@@ -27,6 +27,7 @@ public:
 	b2World* pWorld;
 	b2World* world;
 #endif
+	CFTFont text;
 
 	vector<PosRotScale*> touched_bodies;
 
@@ -202,7 +203,7 @@ public:
 		return 0;
 	}
 
-	void AddObject(GameObject *o, GameObject* parent = nullptr) {
+	GameObject* AddObject(GameObject *o, GameObject* parent = nullptr) {
 		nGobs++;
 		if (nGobs >= 128) nGobs = 127;
 		gobs[nGobs - 1] = o;
@@ -210,6 +211,7 @@ public:
 #ifndef NO_NATS
 		netmsg.Post(string("AddObject::") + o->Name());
 #endif
+		return o;
     }
 	int orthoType;
 
@@ -434,18 +436,29 @@ public:
 			glScalef(sinjx, sinjx, sinjx);
 			break;
 		}
-		/*
+		
+		//for this to work also set jprs->scale = 0 to start effect
 		case JuiceTypes::JUICE_SCALE_IN:
 		{
-			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
-			juice_frame[JuiceTypes::JUICE_SCALE_IN]++;
-			if (jprs->juice_sine_angle < 1.5708) jprs->juice_sine_angle += angleDt; else break;
-			if (juice_frame[JuiceTypes::JUICE_SCALE_IN] == 1) jprs->juice_sine_angle = 0;
-			float sinj = sin(jprs->juice_sine_angle);
-			glScalef(abs(sinj), abs(sinj), abs(sinj));
+			if (jprs->scale < jprs->originalScale) {
+				jprs->scale *= 1.02;
+			} else {
+				jprs->scale = jprs->originalScale;
+			}
 			break;
 		}
-		*/
+
+		case JuiceTypes::JUICE_SCALE_OUT:
+		{
+			if (jprs->scale > 0) {
+				jprs->scale /= 1.02;
+			}
+			else {
+				jprs->scale = jprs->originalScale;
+			}
+			break;
+		}
+
 		case JuiceTypes::JUICE_PULSATE_FULLY:
 		{
 			//jprs->rot.z += (deltaT * jprs->JuiceSpeed);
@@ -463,6 +476,7 @@ public:
 					jprs->pos.x = x_pos_on_arrival;
 					jprs->JuiceType = JuiceTypes::JUICES_CANCEL;
 					jprs->juice_sine_angle = 0;
+					x_pos_on_arrival = -1;
 				}
 			}
 			else {
@@ -1837,10 +1851,10 @@ public:
 			//	GameObject::Show();
 
 			p1.JuiceType = JuiceTypes::JUICE_PULSATE_FULLY;
-			p1.JuiceSpeed = 2; p2.JuiceSpeed = 2; p3.JuiceSpeed = 2;
+			p1.JuiceSpeed /= 2; p2.JuiceSpeed /= 2; p3.JuiceSpeed /= 2;
 			p2.JuiceType = 0;
 			p3.JuiceType = 0;
-			this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
+			this->scale = 0; this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
 			this->juice_sine_angle = 0; //resetPrev Juice Effect 
 			p1.scale = 0.8;
 			p2.scale = p1.scale;
@@ -1897,7 +1911,7 @@ public:
 		p = &p1;
 		ico.LoadIn(thiz, tagIcon, 0.6);
 		ico.JuiceType = JuiceTypes::JUICE_ROTZ;
-		ico.JuiceSpeed *= 3;
+		ico.JuiceSpeed /= 3;
 		
 		return d;
 	}
@@ -1927,7 +1941,6 @@ public:
 		_.pos.x = middleX;
         _.pos.y =  0.9 * thiz->bottomSide;
          _.JuiceType = JuiceTypes::JUICE_PULSATE;
-         _.JuiceSpeed =1000;
         _with
 
 	}
@@ -1970,7 +1983,6 @@ public:
         
         with thiz->AddResource(&titl, titleTag.c_str(), 1.2);
         _.JuiceType = JuiceTypes::JUICE_PULSATE;
-        _.JuiceSpeed = 200;
         _.AddInstance(f2(_.pos.x - 3, _.pos.y - 3))->color = f3(0.7, 0.7, 0.7); //grey shadow
         _.AddInstance(f2(_.pos.xy()));
         _with
@@ -1980,7 +1992,7 @@ public:
         thiz->AddObject(&score);
         
         with dPad.LoadIn(thiz);
-        dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
+		dPad.JuiceType = 0;// JuiceTypes::JUICE_SCALE_IN;
         _.color = f3( 1,1,1);
         _with
         

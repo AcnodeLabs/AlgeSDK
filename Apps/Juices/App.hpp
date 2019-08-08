@@ -95,10 +95,14 @@ public:
 		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.75, bottomSide/2)));
 		objct.getInstancePtr(0)->UUID = "LEFT";
 		objct.getInstancePtr(1)->UUID = "RIGHT";
+		
+		objct.getInstancePtr(1)->JuiceType = 0;
+		
 		objct.JuiceSpeed = 1;
 		sel = iit.First();
 		resetPosRotSpeed(0);
 		resetPosRotSpeed(1);
+
 		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
 	}
 
@@ -144,6 +148,7 @@ public:
 			}
 			if (p->i1 == AL_KEY_UP) {
 				sel->JuiceType++;
+				if (sel->JuiceType == JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
 				if (sel->JuiceType >= JuiceTypes::JUICES_CANCEL) {
 					sel->JuiceType = 0;
 					resetPosRotSpeed(sel);
@@ -152,12 +157,14 @@ public:
 			}
 			if (p->i1 == AL_KEY_DOWN) {
 				sel->JuiceType--;
+				if (sel->JuiceType = JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
 				if (sel->JuiceType < 0) {
 					sel->JuiceType = 0;
 					resetPosRotSpeed(sel);
 				}
 			}
 			output.pushP(CMD_TITLE, $ jn.c_str(), 0);
+			output.pushP(CMD_TOAST, $ jn.c_str(), 0);
 		}
         
 		if (p->command == CMD_TOUCH_START) {

@@ -37,7 +37,6 @@ CNetMsg netmsg;
 
 #endif // !
 
-CFTFont font;
 App		game;
 
 #define EXTERNIT extern "C"
@@ -205,7 +204,7 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 
 		if (command == CMD_TOAST) {
 			SetWindowTextA(GetDlgItem(hToast, IDC_EDIT1), (LPCSTR)p1);
-			ShowWindow(hToast, SW_SHOW);
+			ShowWindow(hToast, SW_SHOWNORMAL);
 			DlgProc(hToast, CMD_TOAST, CMD_TOAST, CMD_TOAST);
 		}
 

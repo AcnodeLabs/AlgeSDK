@@ -157,6 +157,43 @@ public:
 
 };
 
+enum JuiceTypes {
+	JUICE_ROTZ = 1,
+	JUICE_SCALE_OUT,
+	JUICE_SCALE_IN,
+	JUICE_FLY_OUT,
+	JUICE_FLY_IN,
+	JUICE_ROTY,
+	JUICE_PULSATE,
+	JUICE_PULSATE_FULLY,
+	JUICE_ROTZ_PULSATE,
+	JUICE_ROTXYZ,
+	JUICE_ROTXYZ_PULSATE_FULLY,
+	JUICE_DIE,
+	JUICE_DIE_TEMP,
+	JUICES_CANCEL,
+	JUICES_END
+};
+
+string JuiceName(int j) {
+	if (j == 0) return "NIL";
+	if (j == JUICE_ROTZ) return "JUICE_ROTZ";
+	if (j == JUICE_SCALE_IN) return "JUICE_SCALE_IN";
+	if (j == JUICE_SCALE_OUT) return "JUICE_SCALE_OUT";
+	if (j == JUICE_FLY_IN) return "JUICE_FLY_IN";
+	if (j == JUICE_FLY_OUT) return "JUICE_FLY_OUT";
+	if (j == JUICE_ROTY) return "JUICE_ROTY";
+	if (j == JUICE_PULSATE) return "JUICE_PULSATE";
+	if (j == JUICE_PULSATE_FULLY) return "JUICE_PULSATE_FULLY";
+	if (j == JUICE_ROTZ_PULSATE) return "JUICE_ROTZ_PULSATE";
+	if (j == JUICE_ROTXYZ) return "JUICE_ROTXYZ";
+	if (j == JUICE_ROTXYZ_PULSATE_FULLY) return "JUICE_ROTXYZ_PULSATE_FULLY";
+	if (j == JUICE_DIE) return "JUICE_DIE";
+	if (j == JUICE_DIE_TEMP) return "JUICE_DIE_TEMP";
+	if (j == JUICES_CANCEL) return "JUICE_CANCEL";
+	if (j == JUICES_END) return "JUICE_END";
+	return "Wrong ID " + std::to_string(j);
+}
 
 class PosRotScale {
 public:
@@ -204,6 +241,11 @@ public:
 	//	 }
          CRect own(pos.y - mm_height / 2.0, pos.y + mm_height / 2.0, pos.x - mm_width / 2.0, pos.x + mm_width / 2.0);
 		 return own;
+	 }
+
+	 void SetJuiceScaleIn() {
+		 this->scale = 0.1;
+		 this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
 	 }
 
     void CopyFrom(PosRotScale* o) {
@@ -279,39 +321,7 @@ class Serializable : public PosRotScale {
     }
 };
 
-enum JuiceTypes {
-	JUICE_ROTZ = 1,
-	JUICE_ROTY,
-	JUICE_PULSATE,
-	JUICE_PULSATE_FULLY,
-	JUICE_ROTZ_PULSATE,
-	JUICE_ROTXYZ,
-	JUICE_ROTXYZ_PULSATE_FULLY,
-	JUICE_SCALE_IN,
-	JUICE_DIE,
-	JUICE_DIE_TEMP,
-	JUICE_FLY_OUT,
-	JUICES_CANCEL,
-	JUICES_END
-};
 
-string JuiceName(int j) {
-	if (j == 0) return "NIL";
-	if (j == JUICE_ROTZ) return "JUICE_ROTZ";
-	if (j == JUICE_SCALE_IN) return "JUICE_SCALE_IN";
-	if (j == JUICE_ROTY) return "JUICE_ROTY";
-	if (j == JUICE_PULSATE) return "JUICE_PULSATE";
-	if (j == JUICE_PULSATE_FULLY) return "JUICE_PULSATE_FULLY";
-	if (j == JUICE_ROTZ_PULSATE) return "JUICE_ROTZ_PULSATE";
-	if (j == JUICE_ROTXYZ) return "JUICE_ROTXYZ";
-	if (j == JUICE_ROTXYZ_PULSATE_FULLY) return "JUICE_ROTXYZ_PULSATE_FULLY";
-	if (j == JUICE_DIE) return "JUICE_DIE";
-	if (j == JUICE_DIE_TEMP) return "JUICE_DIE_TEMP";
-	if (j == JUICE_FLY_OUT) return "JUICE_FLY_OUT";
-	if (j == JUICES_CANCEL) return "JUICE_CANCEL";
-	if (j == JUICES_END) return "JUICE_END";
-	return "Wrong ID "+ std::to_string(j);
-}
 
 extern class App game;
 

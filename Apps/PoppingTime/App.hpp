@@ -16,7 +16,8 @@ class PoppingGame : public MockUpOne {
 public:
     GameLogic logic;
     GameObject spikey, heli, baloons, fan, cloud, getready;
-    
+	GameObject fps_text;
+
     int nRemaining;
     int rightSide1;
     int leftSide1;
@@ -35,22 +36,26 @@ public:
         
         with that->AddResource(&spikey, "spikey", 0.5);
         _.JuiceType = JuiceTypes::JUICE_ROTZ;
-        _.JuiceSpeed = 20;
+        //_.JuiceSpeed = 20;
         _with
         
         that->AddResource(&heli, "heli", 1);
         
         with that->AddResource(&fan, "fans");
         _.JuiceType = JuiceTypes::JUICE_ROTY;
-        _.JuiceSpeed = 1500;
+        _.JuiceSpeed *= 15;
         _with
         
         with that->AddResource(&getready, "getready");
-        _.JuiceType = JuiceTypes::JUICE_DIE;
-        _.JuiceSpeed = 0.005;
-        _.hidden = true;
-        _with
+		 _.JuiceType = JuiceTypes::JUICE_DIE;
+		  //_.JuiceSpeed = 0.005;
+		  _.hidden = true;
+		_with
 
+		with that->AddObject(&fps_text);
+			_.pos.x = that->rightSide / 2;
+		_with
+		
     }
     
     
@@ -190,7 +195,7 @@ public:
         output.pushP(CMD_SNDSET3, $ "drop.wav");
         output.pushP(CMD_SNDSET4, $ "entry.wav");
         
-        output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+        //output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
         wall_msg = "Go";
         
 		output.pushI(CMD_USEGAMEPAD, 0, 0);
@@ -235,6 +240,8 @@ public:
         
     }
     
+	//CFTFont font;
+
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
      //   doInhibitLogic(gob);
         if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
@@ -248,6 +255,14 @@ public:
                 if (cloudprs->pos.x < -(leftSide * 0.2)) cloudprs->pos.x = rightSide * 1.2;
             }
         }
+
+		if (gob->is(pp.fps_text)) {
+			string x  = string("DT = TIME ") + std::to_string(1/deltaT);
+			glPushMatrix();
+			text.PrintTextGl(x.c_str(),2);
+			glPopMatrix();
+		}
+
        // inhibitRender = false;//Show ALL for DEBUG
     }
     
@@ -264,8 +279,7 @@ public:
         {
             scene = 1; //dPad.Show();
             output.pushP(CMD_SNDPLAY4, $ "entry.wav");
-            paused = false;
-            
+            paused = false;      
         }
     }
     
