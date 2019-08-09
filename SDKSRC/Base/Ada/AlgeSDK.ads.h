@@ -377,7 +377,11 @@ public:
     }
     
 	bool is(GameObject& other) {
-		return (this->modelId == other.modelId);
+		if (this->modelId == -1) {
+			return (this->UUID == other.UUID);
+		} else {
+			return (this->modelId == other.modelId);
+		}
 	}
 
     bool isOneOf(vector<GameObject*> other) {

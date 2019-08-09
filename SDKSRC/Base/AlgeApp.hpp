@@ -211,6 +211,7 @@ public:
 #ifndef NO_NATS
 		netmsg.Post(string("AddObject::") + o->Name());
 #endif
+		o->UUID = "GOB#" + to_string(nGobs - 1);
 		return o;
     }
 	int orthoType;

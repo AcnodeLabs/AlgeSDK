@@ -54,6 +54,7 @@ public:
 
 		with that->AddObject(&fps_text);
 			_.pos.x = that->rightSide / 2;
+			_.pos.y = that->bottomSide / 2;
 		_with
 		
     }
@@ -174,7 +175,10 @@ class App : public AlgeApp {
     FILE* f;
     
 public:
-    
+	void printDebug() {
+		
+	}
+
     PoppingGame pp;
     
     bool soundedOuch;
@@ -213,7 +217,8 @@ public:
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
 		
-        if (cmd->command == CMD_GAMEPAD_EVENT) {
+			
+		if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (scene == 0) { scene++; return; }
         }
         
