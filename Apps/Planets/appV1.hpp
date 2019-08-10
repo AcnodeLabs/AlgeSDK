@@ -1,4 +1,4 @@
-#include "../../AlgeSDK_1701/SDKSRC/Base/cbasev1_2.h"
+#include "../../SDKSRC/Base/cbasev1_2.h"
 #include <string>
 //#include <future>
 

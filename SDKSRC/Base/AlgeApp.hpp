@@ -670,8 +670,6 @@ public:
 
 			int n = (int)it->prsInstances.size();
 			bool instanced = (n > 0);
-			
-			
 
 			for (int ins = 0; ins < n; ins++) {
 				

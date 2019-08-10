@@ -130,14 +130,14 @@ public:
 		aCamera.PosRot({ 6660.3,-28.1,7029.0 }, { 2.0, 958.4, 0.0 });;
 		string sphere = "earth";
 
-		AddPlanet(mercury, "e", "e", "mercury", db.getSize(0));
-		AddPlanet(venus, "ea", "ea", "venus", db.getSize(1));
-		AddPlanet(earth, "earth", "earth", "earth", db.getSize(2));
-		AddPlanet(mars, "mars", "mars", "mars", db.getSize(3));
-		AddPlanet(jupiter, "jupiter", "jupiter", "jupiter", db.getSize(4));
-		AddPlanet(saturn, "ee", "ee", "saturn", db.getSize(5));
-		AddPlanet(uranus, "eart", "eart", "uranus", db.getSize(6));
-		AddPlanet(neptune, "eeee", "eeee", "neptune", db.getSize(7));
+		AddPlanet(mercury, "sphere", "mercury", "mercury", db.getSize(0));
+		AddPlanet(venus, "sphere", "venusea", "venus", db.getSize(1));
+		AddPlanet(earth, "sphere", "earth", "earth", db.getSize(2));
+		AddPlanet(mars, "sphere", "mars", "mars", db.getSize(3));
+		AddPlanet(jupiter, "sphere", "jupiter", "jupiter", db.getSize(4));
+		AddPlanet(saturn, "sphere", "saturn", "saturn", db.getSize(5));
+		AddPlanet(uranus, "sphere", "uranus", "uranus", db.getSize(6));
+		AddPlanet(neptune, "sphere", "neptune", "neptune", db.getSize(7));
 
 
 //		AddPlanet(pluto, "eeeee", 6 * scal);
@@ -149,13 +149,13 @@ public:
 
 		AddSkyDome();
 
-		with AddResource(&satringsFr, "erererer", "erererer", 500);
+		with AddResource(&satringsFr, "satrings", "satrings", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
 		_.JuiceSpeed *= 2;
 	//	_.Hide();
 		_with
 
-			with AddResource(&satringsBk, "erererer", "erererer", 500);
+			with AddResource(&satringsBk, "satrings", "satrings", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
 		_.JuiceSpeed *= 2;
 	//	_.Hide();
@@ -184,7 +184,7 @@ public:
 		pnum = 0;
 		selectedObject = planets[pnum];
 
-		//planets.at(pnum)->Show();
+		planets.at(pnum)->Show();
 	}
 
 	PosRotScale graveyard;
@@ -197,7 +197,7 @@ public:
 		if (false && cmd->command == CMD_TOUCH_START) {
 			planets[pnum]->JuiceType = JuiceTypes::JUICE_FLY_OUT;
 			planets[pnum]->JuiceSpeed = 3;
-			juice_sine_angle = 0; //ResetJuiceParameters //TODO add proper fn
+			planets[pnum]->juice_sine_angle = 0; //ResetJuiceParameters //TODO add proper fn
 			pnum++;
 			sprintf(tit1, "#%d", pnum);
 			SetTitle(tit1);
@@ -206,7 +206,7 @@ public:
 
 			planets[pnum]->pos = f3(originX, originY, 0.0);
 			planets[pnum]->Show();
-			juice_sine_angle = 0;
+			planets[pnum]->juice_sine_angle = 0;
 			planets[pnum]->pos = f3(originX, originY, 0);
 			planets[pnum]->JuiceType = JuiceTypes::JUICE_SCALE_IN;
 			planets[pnum]->JuiceSpeed = 3;

@@ -61,7 +61,7 @@
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Apps\PoppingTime\App.hpp">
+    <ClInclude Include="..\..\Apps\Planets\App.hpp">
       <Filter>CANDIDATE WINDOWS</Filter>
     </ClInclude>
   </ItemGroup>

@@ -60,7 +60,6 @@ public:
 		
     }
     
-    
     void MakeClouds(int n) {
         cloud.prsInstances.clear();
         PosRotScale bp;
@@ -77,16 +76,13 @@ public:
         if (cmd->command == CMD_TOUCH_START) {
             
             {
-          //      heli.pos = i2(cmd->i1, cmd->i2);
                 if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
             }
             
             
             if (app->onTouched("bg") || app->onTouched("baloon")) {
-                
                 heli.JuiceType = 0;
                 f2 postouch = startScreen.bg.posTouched();
-                
                 if (postouch.x > rightSide1) postouch.x = rightSide1;
                 if (postouch.x < leftSide1) postouch.x = leftSide1;
                 int topSide1 = app->topSide + (heli.m_height);
@@ -115,8 +111,6 @@ public:
         }
         
 		if (cmd->command == CMD_SETTINGS_SCREEN) {
-			//anything changes in settings 
-	//		nRemaining = (int)baloons.prsInstances.size();
 		}
 
         if (cmd->command == CMD_GAMEPAD_EVENT) {
