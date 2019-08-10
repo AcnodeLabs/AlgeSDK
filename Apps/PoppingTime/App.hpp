@@ -53,8 +53,9 @@ public:
 		_with
 
 		with that->AddObject(&fps_text);
-			_.pos.x = that->rightSide / 2;
-			_.pos.y = that->bottomSide / 2;
+			_.pos.x = that->rightSide / 20;
+			_.pos.y = that->bottomSide / 20;
+			_.color = f3(0, 0, 0);
 		_with
 		
     }
@@ -261,18 +262,18 @@ public:
             }
         }
 
-		if (gob->is(pp.fps_text)) {
-			string x  = string("DT = TIME ") + std::to_string(1/deltaT);
-			glPushMatrix();
-			text.PrintTextGl(x.c_str(),2);
-			glPopMatrix();
+		if (scene!=0 && gob->is(pp.fps_text)) {
+			string x = string("LEFT= ") + to_string(pp.nRemaining);
+				glPushMatrix();
+				text.PrintTextGl(x.c_str(), f3(0,0,0), 2);
+				glPopMatrix();
 		}
 
        // inhibitRender = false;//Show ALL for DEBUG
     }
     
     void doInhibitLogic(GameObject* gob) {
-        if ((scene==0) &&(gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)))
+        if ((scene==0) && (gob->is(pp.heli) || gob->is(pp.fps_text)|| gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)))
             inhibitRender = true;
     }
 
@@ -381,8 +382,8 @@ public:
             if (doObjectsIntersect(baloon, &pp.heli)) {
                 if (pp.heli.JuiceType == 0) output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
                 soundedOuch = true;
-                pp.heli.JuiceType = JuiceTypes::JUICE_DIE_TEMP;
-                pp.heli.JuiceDuration = 0.75;
+            //    pp.heli.JuiceType = JuiceTypes::JUICE_DIE;
+            //    pp.heli.JuiceDuration = 0.75;
                 iScore /= 2;
                 if (iScore < 0) iScore = 0;
             }

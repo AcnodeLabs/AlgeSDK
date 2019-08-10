@@ -35,7 +35,7 @@ public:
     void PrintText(char* text) {
         if (font!=nullptr) dtx_string(text);
     }
-	void PrintTextGl(string txt, float scale = 1.0) {
+	void PrintTextGl(string txt, f3 color = f3(0.5,0.5,0.5), float scale = 1.0) {
 		glPushMatrix();
 		glScalef(scale, scale, scale);
 		glRotatef(180.0, 1, 0, 0);
