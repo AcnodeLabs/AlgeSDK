@@ -865,6 +865,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 
 	// Shutdown
 	KillGLWindow();									// Kill The Window
+	game.Deinit();
 	return (msg.wParam);							// Exit The Program
 }
 

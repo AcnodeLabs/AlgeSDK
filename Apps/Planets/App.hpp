@@ -94,28 +94,34 @@ public:
 		planets.push_back(&pl);
 		GameObject* g = AddResource(&pl, alxtag, tgatag, scale);
 		g->JuiceType = JuiceTypes::JUICE_ROTY;
-		g->JuiceSpeed *= 2;
+		g->JuiceSpeed /= 10;
 		g->UUID = name + ".G";
 		pnum++;
 	}
 	
 	void AddSkyDome() {
-		with AddResource(&skydome, "etetet","etetet", db.getMaxDist()* 1.3);
-			//_.JuiceType = JuiceTypes::JUICE_ROTXYZ;
-			_.JuiceSpeed *= 2;
-			_.UUID = "SkyDome";
+		with AddResource(&skydome, "stardome","stardome", db.getMaxDist()* 1.3);
+			_.JuiceType = JuiceTypes::JUICE_ROTXYZ;
+			_.UUID = "StarDome";
 		_with
 		PosRotScale* pUp = skydome.AddInstance(skydome);
-		pUp->UUID = "skydomeUp";
+		pUp->UUID = "StarDomeUp";
 		PosRotScale* pDn = skydome.AddInstance(skydome);
-		pUp->UUID = "skydomeDn";
+		pUp->UUID = "StarDomeDn";
+	}
+
+	void MakeVisible(int pnum) {
+		for (auto p : planets) {
+			p->hidden = true;
+		}
+		planets.at(pnum)->hidden = false;
 	}
 
 	virtual void Init(char* path) {
 	
 	//	edit = true;
 	//	wireframe = true;
-
+		
 		nLoops = 100;
 		pnum = -1;
 
@@ -125,9 +131,10 @@ public:
 	//	glEnable(GL_CULL_FACE);
 	//	glCullFace(GL_BACK);
 
-		AddDefaultCamera(Camera::CAM_MODE_LOOKAT, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+		AddDefaultCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
 
-		aCamera.PosRot({ 6660.3,-28.1,7029.0 }, { 2.0, 958.4, 0.0 });;
+		PositionCamera({ 0,0,-10000 }, { 0.0, 0.0, 0.0 });
+		
 		string sphere = "earth";
 
 		AddPlanet(mercury, "sphere", "mercury", "mercury", db.getSize(0));
@@ -147,17 +154,17 @@ public:
 
 		pnum_max = pnum;
 
-		AddSkyDome();
+	//	AddSkyDome();
 
 		with AddResource(&satringsFr, "satrings", "satrings", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		_.JuiceSpeed *= 2;
+		
 	//	_.Hide();
 		_with
 
-			with AddResource(&satringsBk, "satrings", "satrings", 500);
+		with AddResource(&satringsBk, "satrings", "satrings", 500);
 		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		_.JuiceSpeed *= 2;
+		
 	//	_.Hide();
 		_with
 
@@ -168,23 +175,22 @@ public:
 		f3 center = {0,0,0};
 		float rad = 0;
 		
-
 		int i = 0;
-		for (int angle = 0; angle <360; angle+= (360/8)) {
-			int dist = db.getDist(i);
-			f2 r = getXZ(angle);
-			planets[i]->pos.x = r.x * dist;
-			planets[i]->pos.y = 0; 
-			planets[i]->pos.z = r.y * dist;
-			i++;
-		}
+		//for (int angle = 0; angle <360; angle+= (360/8)) {
+		//	int dist = db.getDist(i);
+		//	f2 r = getXZ(angle);
+		//	planets[i]->pos.x = r.x * dist;
+		//	planets[i]->pos.y = 0; 
+		//	planets[i]->pos.z = r.y * dist;
+		//	i++;
+		//}
 		
 		pnum_max = pnum;
 
 		pnum = 0;
 		selectedObject = planets[pnum];
-
-		planets.at(pnum)->Show();
+		MakeVisible(pnum);
+		
 	}
 
 	PosRotScale graveyard;
@@ -194,9 +200,8 @@ public:
 	}
 
 	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-		if (false && cmd->command == CMD_TOUCH_START) {
-			planets[pnum]->JuiceType = JuiceTypes::JUICE_FLY_OUT;
-			planets[pnum]->JuiceSpeed = 3;
+		if (cmd->command == CMD_TOUCH_START) {
+		//	planets[pnum]->JuiceType = JuiceTypes::JUICE_FLY_OUT;
 			planets[pnum]->juice_sine_angle = 0; //ResetJuiceParameters //TODO add proper fn
 			pnum++;
 			sprintf(tit1, "#%d", pnum);
@@ -204,13 +209,13 @@ public:
 
 			if (pnum > pnum_max) pnum = 0;
 
-			planets[pnum]->pos = f3(originX, originY, 0.0);
-			planets[pnum]->Show();
+		//	planets[pnum]->pos = f3(originX, originY, 0.0);
+			MakeVisible(pnum);
 			planets[pnum]->juice_sine_angle = 0;
-			planets[pnum]->pos = f3(originX, originY, 0);
-			planets[pnum]->JuiceType = JuiceTypes::JUICE_SCALE_IN;
+	//		planets[pnum]->pos = f3(originX, originY, 0);
+	/*		planets[pnum]->JuiceType = JuiceTypes::JUICE_SCALE_IN;
 			planets[pnum]->JuiceSpeed = 3;
-		}
+	*/	}
 
 		if (cmd->command == CMD_KEYDOWN) {
 		

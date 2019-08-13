@@ -116,7 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
-    <ClInclude Include="..\..\Apps\Planets\App.hpp" />
+    <ClInclude Include="..\..\Apps\DodgeTheCreeps\App.hpp" />
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp" />
     <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h" />
     <ClInclude Include="candidate.h" />

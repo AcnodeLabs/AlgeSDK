@@ -13,5 +13,5 @@
 
  */
 
-#include "../../Apps/Planets/App.hpp"
+#include "../../Apps/DodgeTheCreeps/App.hpp"
 class App; 

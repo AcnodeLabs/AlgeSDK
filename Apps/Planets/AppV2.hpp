@@ -17,7 +17,7 @@ using namespace std;
 #define EXTERNIT extern "C"
 #include "../../SDKSRC/Base/externit.cpp"
 
-class App : AlgeApp {
+class App : public AlgeApp {
     
     //CONSTANTS
     const int iUnassigned = -1;
@@ -252,7 +252,7 @@ public:
         
         alPushMatrix();
          alTranslateRotate(0.0,0.0,0.0,angle1,0.0,1.0,0.0);
-         alDrawModelTranslateRotate(voyager.modelId, 0.0,0.0,1.4, 180.0,  0.0,1.0,0.0);
+         alDrawModelTranslateRotate(voyager.modelId, 0.0,0.0,1.4, 180.0,  0.0,1.0,0.0,0,0);
         alPopMatrix();//undo rotation
         
         alPopMatrix();
@@ -263,7 +263,7 @@ public:
             alPushMatrix();
         //    alBillBoardBegin();
             glScalef(1.35, 1.0, 1.0);
-            alDrawModelTranslateRotate(cockpit.modelId,0.0,0.0,-2.4);
+            alDrawModelTranslateRotate(cockpit.modelId,0.0,0.0,-2.4,0,0,0,0,0,0);
         //    alBillBoardEnd();
             alPopMatrix();
         }
@@ -400,7 +400,7 @@ public:
         planetInf.push_back(ResourceInf("Neptune", "neptune.tga", sphere, 1.0));
         planetInf.push_back(ResourceInf("Pluto", "pluto.tga", sphere, 1.0));
         
-        alAlphaTest(1);
+      //  alAlphaTest(1, GL_ONE_MINUS_SRC_ALPHA);
         
         for (auto &res : planetInf) // access by reference to avoid copying
         {

@@ -28,7 +28,7 @@ public:
 	b2World* world;
 #endif
 	CFTFont text;
-
+	FILE* f;
 	vector<PosRotScale*> touched_bodies;
 
 	CTrackBall trackball;
@@ -104,6 +104,7 @@ public:
 		} else
 		dtx_use_font(font, 24);
 		#endif
+		fopen_s(&f, "AlgeApp.log", "w");
 	}
 		
 	CModel* fontModel;
@@ -132,7 +133,9 @@ public:
 		#endif
 	}
 
-	void Deinit() {}
+	void Deinit() {
+		fclose(f);
+	}
 	
 	
 	void setTiming(float timeMultiplier) {
@@ -220,7 +223,11 @@ public:
 		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width / 2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width / 2, prsRect->m_height / 2);
 	}
 
-    
+	void PositionCamera(f3 position, f3 rotation) {
+		aCamera.PosRot({position.x,position.y,position.z}, {rotation.x, rotation.y, rotation.z});
+		aCamera.pos = position;
+		aCamera.rot = rotation;
+	}
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
 		orthoType = _orthoType;
 		static bool once = false;
@@ -1153,6 +1160,9 @@ public:
 				
 				for (int i = 0; i < nGobs; i++) {
 					GameObject* it = gobs[i];
+#ifndef NO_LOGS
+				//	fprintf(f, "\n%f:G#%d pos=%s", timeVar,i, it->pos.str("%f,%f,%f").c_str());
+#endif
 					it->Update(deltaT);
 					if (i == 0) {
 						aCamera.Update(deltaT, &aCamera);
@@ -1207,6 +1217,10 @@ public:
 		go->custom_type = go->modelId;
 #ifndef NO_NATS
 		netmsg.Post(string("App::LoadModel:") + string(res->alx) + "," + string(res->tex));
+#endif
+
+#ifndef NO_LOGS
+		fprintf(f,"\n%s,modelID=%d,n_vertices=%d",(string("App::LoadModel:") + string(res->alx) + "," + string(res->tex)).c_str(), go->modelId, rm.models[0]->n_vertices);
 #endif
 		return go->modelId;
 	}

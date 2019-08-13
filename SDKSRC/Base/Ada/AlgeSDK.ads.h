@@ -651,7 +651,7 @@ public:
 	void OnPosRotChanged() {
 		Position.x = pos.x;
 		Position.y = pos.y;
-		Position.z = pos.y;
+		Position.z = pos.z;
 		RotatedX = rot.x;
 		RotatedY = rot.y;
 		RotatedZ = rot.z;
@@ -661,6 +661,7 @@ public:
 		if (obj == this) {
 			OnPosRotChanged();
 		}
+
         if (mode==CAM_MODE_LOOKAT) {
            // aluLookAt(pos.x, pos.y, pos.z, obj->pos.x, obj->pos.y, obj->pos.z, 0.,1.,0.);
         }
@@ -671,7 +672,7 @@ public:
 		}
         
         if (mode==CAM_MODE_FPS || mode==CAM_MODE_FLY) {
-         //   ViewFromCurrent();
+            ViewFromCurrent();
         }
         
     }

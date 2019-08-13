@@ -11,6 +11,6 @@
 ALGE SDK ANDROID:: CANDIDATE.h
 */
 
-#define CANDIDATE "../../../Apps/Ivank_Box2D/App.hpp"
+#define CANDIDATE "../../../Apps/DodgeTheCreeps/App.hpp"
 class App;
 
