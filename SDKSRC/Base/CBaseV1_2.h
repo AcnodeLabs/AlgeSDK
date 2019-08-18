@@ -68,6 +68,10 @@
 #define with {auto &_=*
 #define _with }
 
+#define batch(...) for (int i=0; i<__VA_ARGS__; i++) {
+//#define batch for (int i=0; i<3; i++) {
+#define _batch }
+
 using namespace std;
 
 void alPrintText(string text, float scale);
