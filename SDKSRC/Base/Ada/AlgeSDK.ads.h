@@ -61,8 +61,8 @@ public:
 	f3(float mx, float my, float mz) { x = mx; y = my; z = mz; }
 	f3(i2 m) { x = m.x; y = m.y; z = 0; }
 	string str(string fmt) {
-    //sprintf_s(xyz, 64, fmt.c_str(), x, y, z);
-    sprintf(xyz, fmt.c_str(), x, y, z);
+    snprintf(xyz, 64, fmt.c_str(), x, y, z);
+    //sprintf(xyz, fmt.c_str(), x, y, z);
 		return string(xyz);
 	}
 	f2 xy() {return f2( x,y ); }
@@ -745,7 +745,7 @@ public:
     }
 };
 
-#include "XFunctions.hpp"
+#include "..\XFunctions.hpp"
 
 #define C_float float
 #define Sin sin

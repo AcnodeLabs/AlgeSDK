@@ -1,3 +1,4 @@
+#ifndef NO_FONTLIB
 #ifdef CFTFONT_INCLUDED
 #else
 #define CFTFONT_INCLUDED
@@ -52,4 +53,16 @@ public:
     }
 
 };
+#endif
+#else
+//BLANK FUNCTIONS
+class CFTFont {
+    public:
+    CFTFont()  {}
+    ~CFTFont() {}
+    void PrintTextGl(string txt, f3 color = f3(0.5,0.5,0.5), float scale = 1.0) {}
+    void PrintText(char* text) {}
+    CFTFont(char* fontname, int size) {}
+};
+
 #endif

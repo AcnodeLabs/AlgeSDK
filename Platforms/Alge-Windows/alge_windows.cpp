@@ -750,9 +750,9 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 
 	//nats1();
 	r_mouse = 2.0;//means mouse update will not disturb 
-		
+	
 	if (lpCmdLine[0]) {
-		game.input.pushP(CMD_COMMANDLINE, lpCmdLine, 0);
+		game.input.pushP(CMD_COMMANDLINE, GetCommandLineA(), 0);
 	} else {
 		FindAppName();
 	}

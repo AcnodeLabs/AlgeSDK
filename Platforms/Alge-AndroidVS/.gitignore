@@ -1,0 +1,12 @@
+*.class
+*.apk
+*.ap_
+*.apk.d
+*.ap_d
+gen/
+bin/
+assets/
+,gradle/
+.idea/
+.vscode/
+src/com/acnodelabs

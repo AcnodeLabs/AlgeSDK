@@ -104,7 +104,7 @@ public:
 		} else
 		dtx_use_font(font, 24);
 		#endif
-		fopen_s(&f, "AlgeApp.log", "w");
+		f = fopen("AlgeApp.log", "w");
 	}
 		
 	CModel* fontModel;
@@ -178,7 +178,7 @@ public:
 	virtual void onSettingChanged(string setting, int value) {
 		static char msg[128];
 		static int _value = value;
-		strcpy_s(msg, 128, setting.c_str());
+		strcpy(msg, setting.c_str());
 		output.pushP(CMD_SETTINGS_SCREEN, $ msg , (void*) _value);
 	}
 
