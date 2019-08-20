@@ -3,29 +3,6 @@
 //Clone of GoDot's Example found at https://docs.godotengine.org/en/3.1/getting_started/step_by_step/your_first_game.html
 
 //////////////////////////////XTimer
-#include <functional>
-
-class XTimer {
-	float m_sec;
-	float timeVar = 0;
-	void (*m_callback)(void);
-
-public:
-
-	void Start(float sec, void (*callback)(void)) {
-		m_sec = sec;
-		m_callback = callback;
-	}
-
-	void Update(float deltaT) {
-		timeVar += deltaT;
-		if (timeVar > m_sec) {
-			m_callback();
-			timeVar = 0;
-		}
-	}
-};
-//////////////////////////////////
 
 class BiSprite {
 	f3 MyPos;
@@ -48,10 +25,7 @@ public:
 	float timeVar;
 
 	bool IsItYou(GameObject* g) {
-		return (
-			g == &flip ||
-			g == &flop
-			);
+		return ( g == &flip ||  g == &flop );
 	}
 
 	void Update(float dt, AlgeApp* app) {
@@ -62,9 +36,7 @@ public:
 			if (toggle) {
 				flip.hidden = true;
 				flop.hidden = false;
-			}
-			else
-			{
+			} else 	{
 				flip.hidden = false;
 				flop.hidden = true;
 			}
@@ -88,7 +60,7 @@ public:
 
 class Sprite {
 	f3 MyPos;
-	char UDLR = 'U';
+	char UDLR = ' ';
 	GameObject playerGrey_up1, playerGrey_up2, playerGrey_walk1, playerGrey_walk2;
 public: 
 	
@@ -97,12 +69,7 @@ public:
 	}
 
 	bool IsItYou(GameObject* g) {
-		return (
-			g == &playerGrey_up1 ||
-			g == &playerGrey_up2 ||
-			g == &playerGrey_walk1 ||
-			g == &playerGrey_walk2 
-			);
+		return (g == &playerGrey_up1 ||	g == &playerGrey_up2 || g == &playerGrey_walk1 || g == &playerGrey_walk2 );
 	}
 
 	void SetVisibility() {
@@ -111,11 +78,11 @@ public:
 		playerGrey_walk1.hidden = true;
 		playerGrey_walk2.hidden = true;
 		
-		if (UDLR == 'U' &&  toggle) {
+		if ((UDLR == 'U' || UDLR == ' ') &&  toggle) {
 			playerGrey_up1.hidden = false; playerGrey_up1.rot.z = 0;
 			return;
 		}
-		if (UDLR == 'U' && !toggle) {
+		if ((UDLR == 'U' || UDLR == ' ') && !toggle) {
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 0;
 			return;
 		}
@@ -149,27 +116,32 @@ public:
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
 			return;
 		}
+
 	}
 
-	
 	bool toggle;
 	float timeVar = 0;
 
 	void Update(float dt, AlgeApp* app) {
 		timeVar += dt;
-		if (timeVar > 0.5) {
+		
+		const int dd = 10;
+
+		if (UDLR == 'U') 
+			SetPos(f3(MyPos.x,		MyPos.y>0?MyPos.y-dd:MyPos.y,					MyPos.z));
+		if (UDLR == 'D')
+			SetPos(f3(MyPos.x,		MyPos.y<app->bottomSide?MyPos.y+dd:MyPos.y,		MyPos.z));
+		if (UDLR == 'L')
+			SetPos(f3(MyPos.x>0?MyPos.x-dd:MyPos.x,					MyPos.y, MyPos.z));
+		if (UDLR == 'R')
+			SetPos(f3(MyPos.x<app->rightSide?MyPos.x+dd:MyPos.x,	MyPos.y, MyPos.z));
+		
+		if (timeVar >= 1.0) {
 			timeVar = 0.0;
 			toggle = !toggle;
 		}
+
 		SetVisibility();
-		if (UDLR == 'U') 
-			SetPos(f3(MyPos.x,		MyPos.y>0?MyPos.y-10:MyPos.y,					MyPos.z));
-		if (UDLR == 'D')
-			SetPos(f3(MyPos.x,		MyPos.y<app->bottomSide?MyPos.y+10:MyPos.y,		MyPos.z));
-		if (UDLR == 'L')
-			SetPos(f3(MyPos.x>0?MyPos.x-10:MyPos.x,					MyPos.y, MyPos.z));
-		if (UDLR == 'R')
-			SetPos(f3(MyPos.x<app->rightSide?MyPos.x+10:MyPos.x,	MyPos.y, MyPos.z));
 	}
 
 	void SetPos(f3 pos) {
@@ -186,6 +158,7 @@ public:
 
 	void WasHit() {
 		playerGrey_up1.JuiceType = JuiceTypes::JUICE_SCALE_IN;
+		UDLR = ' ';
 	}
 	
 	float playerGrey_up1_width = 10.;
@@ -214,7 +187,6 @@ class /*DodgeTheCreeps*/ App : public AlgeApp {
 	BiSprite enemyFlyingAlt[3], enemySwimming[3], enemyWalking[3];
 	GameObject count_text;
 	
-
 public:
 
 	void MakeTrail() {
@@ -241,11 +213,11 @@ public:
 
 		playerGrey.LoadIn(this, "playerGrey_up", "playerGrey_walk");
 
-		batch(3)
+		for_i(3)
 			enemyFlyingAlt[i].LoadIn(this, "enemyFlyingAlt_");
 			enemySwimming[i].LoadIn(this, "enemySwimming_");
 			enemyWalking[i].LoadIn(this, "enemyWalking_");
-		_batch
+		_for
 
 		with AddObject(&count_text);
 			_.scale = 2.0;
@@ -298,7 +270,7 @@ public:
 		f3 p = playerGrey.GetPos();
 		int w = playerGrey.GetWidth();
 
-		for (int i = 0; i < playerTrail.prsInstances.size();i++) {
+		for (int i = 0; i < int(playerTrail.prsInstances.size());i++) {
 			float inv = 0.9 / sqrt(i+1);
 			with (playerTrail.getInstancePtr(i));
 				_.scale = sqrt(inv);
@@ -308,8 +280,10 @@ public:
 	 	}
 	}
 
+	
 	void intersectLogic(GameObject* gob) {
-		if (doObjectsIntersect(gob, (PosRotScale*)& playerGrey)) {
+		
+		if (doObjectsIntersect((PosRotScale*)& playerGrey,gob) ){
 			timeVar = 0;
 			output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
 			playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
@@ -325,13 +299,16 @@ public:
 			text.PrintTextGl(x.c_str(), f3(0, 0, 0), 2);
 			glPopMatrix();
 		}
-		
+
+		if (gob->is(playerTrail)) {
+			trailLogic(deltaT);
+		}
+
 		if (playerGrey.IsItYou(gob)) {
 			playerGrey.Update(deltaT, this);
-			return;
 		}
-		
-		batch(3)
+
+		for_i(3)
 			if (enemyFlyingAlt[i].IsItYou(gob)) {
 				enemyFlyingAlt[i].Update(deltaT, this);
 				intersectLogic(gob);
@@ -346,11 +323,7 @@ public:
 				enemyWalking[i].Update(deltaT, this);
 				intersectLogic(gob);
 			}
-		_batch
-
-		if (gob->is(playerTrail)) {
-			trailLogic(deltaT);
-		}
+		_for
 	}
 
 };

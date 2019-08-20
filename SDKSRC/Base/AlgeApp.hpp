@@ -560,6 +560,7 @@ public:
 		}
 		
 		glColor3f(it->color.x, it->color.y, it->color.z);
+		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
 		UpdateCustom(iit, instanceNo, deltaT);
 		
 //	if (instanceNo>0 && it->applyTopLeftCorrectionWRTorigin) {//
@@ -589,7 +590,7 @@ public:
 		int m_j = it->JuiceType;//save  *1 >>>>>
 		if ((edit && it == gobs[iSelectedObject])) it->JuiceType = JuiceTypes::JUICE_PULSATE;
 
-		if (iit != &aCamera) UpdateJuices(iit, instanceNo, deltaT);
+		
 		
 
 		

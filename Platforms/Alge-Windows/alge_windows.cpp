@@ -98,6 +98,12 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
 	game.Init0(ResPath + 1, 'W');
+	SYSTEMTIME now0;
+	GetLocalTime(&now0);
+	int hr = now0.wHour;
+	int min = now0.wMinute;
+	game.input.pushI(CMD_SYSTEMTIME, hr,min );
+
 	ReSizeGLScene(game.getBackgroundSize().x, game.getBackgroundSize().y);
 	return TRUE;										// Initialization Went OK
 }

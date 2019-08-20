@@ -68,9 +68,8 @@
 #define with {auto &_=*
 #define _with }
 
-#define batch(...) for (int i=0; i<__VA_ARGS__; i++) {
-//#define batch for (int i=0; i<3; i++) {
-#define _batch }
+#define for_i(...) for (int i=0; i<__VA_ARGS__; i++) {
+#define _for }
 
 using namespace std;
 

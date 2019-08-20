@@ -29,7 +29,7 @@ public:
          * dtx_prepare(font, size) once.
          */
        // dtx_prepare(font, size);
-        dtx_use_font(font, 24);
+        dtx_use_font(font, 12);
 		allok = true;
 	}
     void PrintText(char* text) {
@@ -40,7 +40,9 @@ public:
 		glScalef(scale, scale, scale);
 		glRotatef(180.0, 1, 0, 0);
 	//	if (font != nullptr) 
+		glColor3f(color.x, color.y, color.z);
 		dtx_string(txt.c_str());
+		glColor3f(1.,1.,1.);
 		glPopMatrix();
 	}
 
