@@ -83,10 +83,12 @@ del build.xml
 call %SDK_ROOT%\tools\android update project --target android-27 --path .
 echo --- generating apk 
 call %ANT_EXE% -q release
-del bin\%APPNAME%.apk
+del /Q bin\%APPNAME%.apk
 echo ------------------- SIGNING
-call jarsigner -verbose -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
-call %SDK_ROOT%\build-tools\25.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
+echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
+call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
+echo %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
+call %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 echo Good Luck !!
 echo install check 
 
