@@ -55,14 +55,11 @@
     <ClInclude Include="candidate.h">
       <Filter>CANDIDATE WINDOWS</Filter>
     </ClInclude>
-    <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h">
-      <Filter>CANDIDATE ANDROID</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Apps\DodgeTheCreeps\App.hpp">
-      <Filter>CANDIDATE WINDOWS</Filter>
+    <ClInclude Include="..\Alge-AndroidVS\jni\CANDIDATE.h">
+      <Filter>CANDIDATE ANDROID</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

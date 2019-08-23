@@ -280,5 +280,5 @@ rename tools to tools1
 rename platform-tools to platform-tools1
 Download Tools from google (tools_r22.0.5-windows) Repository extract to %SDK_ROOT% (i.e tools)
 Download Platform-Tools (platform-tools_r22-windows) from google Repository (see wget entry in setup-deps)
-
 Change line containing zipalign version number as per the installed directrory in build-andrroid.bat
+make sure ANT_HOME is set also

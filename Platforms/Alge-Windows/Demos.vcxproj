@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Untitled</ProjectName>
+    <ProjectName>DodgeTheCreeps</ProjectName>
     <ProjectGuid>{EEF0E769-EAA3-47E8-A7DA-4A335BD98196}</ProjectGuid>
     <RootNamespace>Demos</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -116,9 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h" />
-    <ClInclude Include="..\..\Apps\DodgeTheCreeps\App.hpp" />
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp" />
-    <ClInclude Include="..\Alge-Android\jni\CANDIDATE.h" />
+    <ClInclude Include="..\Alge-AndroidVS\jni\CANDIDATE.h" />
     <ClInclude Include="candidate.h" />
   </ItemGroup>
   <ItemGroup>

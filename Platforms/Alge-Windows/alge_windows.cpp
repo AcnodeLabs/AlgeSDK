@@ -754,9 +754,9 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	if (lpCmdLine[0]) {
 		game.input.pushP(CMD_COMMANDLINE, GetCommandLineA(), 0);
 	} else {
-		FindAppName();
+		
 	}
-
+	FindAppName();
 	//MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
 //	netmsg.Connect("e", true);// "Evolution");
 	
