@@ -808,8 +808,7 @@ public:
 	void Init0(char* path, char platcode) {
 		edit = false;
 		PlatformCode = platcode;
-		rm.Init(path);
-		Init(path);
+
 #ifndef NO_NATS
 		try {
 	//		netmsg.Post(help);
@@ -822,7 +821,8 @@ public:
         
 		aCamera.windowWidth = getBackgroundSize().x;
 		aCamera.windowHeight = getBackgroundSize().y;
-        
+		rm.Init(path);
+		Init(path);
 		//Font v1 init
 		fontModel =  rm.loadAlxModel((char*) "font.alx", AUTO, alReserveModelId(), 1);	// Fonts Loaded just like Model load but it doesnt involve managed resource 
 		fonts.usetexof(fontModel);						// Associate texure of Loaded Model to FontMap
