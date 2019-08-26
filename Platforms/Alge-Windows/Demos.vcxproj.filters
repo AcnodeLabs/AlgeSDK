@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
+    <None Include="..\Alge-AndroidVS\build-android.bat">
+      <Filter>CANDIDATE ANDROID</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">

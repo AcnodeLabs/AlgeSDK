@@ -1,3 +1,4 @@
 #define NO_FONTLIB
-#define CANDIDATE "../../../Apps/NeheLesson05/App.hpp"
+#define NO_LOGS
+#define CANDIDATE "../../../Apps/Juices/App.hpp"
 class App;

@@ -763,7 +763,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 
 	// Ask The User Which Screen Mode They Prefer
-	fullscreen = MessageBoxA(NULL, "Would You Like To Run In Fullscreen Mode?", "Start FullScreen?", MB_YESNO | MB_ICONQUESTION) == IDYES;
+	fullscreen = false;// MessageBoxA(NULL, "Would You Like To Run In Fullscreen Mode?", "Start FullScreen?", MB_YESNO | MB_ICONQUESTION) == IDYES;
 
 	RECT WindowRect;
 	GetWindowRect(GetDesktopWindow(), &WindowRect);

@@ -81,9 +81,10 @@ public:
 
 		AlInit(STANDARD);
 		SetTitle("Juices");
+		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
+		
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-	
-      //  float scale = getBackgroundSize().x / 800.0;
+		      //  float scale = getBackgroundSize().x / 800.0;
 		//iit.Track(
 		AddResource(&background, "juices", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
 		//);
@@ -103,7 +104,7 @@ public:
 		resetPosRotSpeed(0);
 		resetPosRotSpeed(1);
 
-		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
+		
 	}
 
 	void resetPosRotSpeed(PosRotScale* p) {
@@ -157,7 +158,7 @@ public:
 			}
 			if (p->i1 == AL_KEY_DOWN) {
 				sel->JuiceType--;
-				if (sel->JuiceType = JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
+				if (sel->JuiceType == JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
 				if (sel->JuiceType < 0) {
 					sel->JuiceType = 0;
 					resetPosRotSpeed(sel);

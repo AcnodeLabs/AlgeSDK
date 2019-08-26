@@ -283,12 +283,12 @@ public:
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;
-		g->originalScale = scale;
-		g->JuiceType = 0;
-        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
-        g->UUID = alx_name +"_"+ tga_name + ".G";
-		XFunction_AutoScalingToFullScreen::GameObjectAdded(g, scale);
-		g->m_touched = false;
+	//	g->originalScale = scale;
+	//	g->JuiceType = 0;
+        //g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
+        //g->UUID = alx_name +"_"+ tga_name + ".G";
+		//XFunction_AutoScalingToFullScreen::GameObjectAdded(g, scale);
+	//	g->m_touched = false;
 		return g;
 	}
 	
@@ -1221,7 +1221,7 @@ public:
 #endif
 
 #ifndef NO_LOGS
-		fprintf(f,"\n%s,modelID=%d,n_vertices=%d",(string("App::LoadModel:") + string(res->alx) + "," + string(res->tex)).c_str(), go->modelId, rm.models[0]->n_vertices);
+		//fprintf(f,"\n%s,modelID=%d,n_vertices=%d",(string("App::LoadModel:") + string(res->alx) + "," + string(res->tex)).c_str(), go->modelId, rm.models[0]->n_vertices);
 #endif
 		return go->modelId;
 	}

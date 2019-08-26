@@ -93,8 +93,8 @@ echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_
 call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -storepass %PASSW% -keypass %PASSW%
 echo %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 call %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
-
 %SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
+echo Deploying...
 %SDK_ROOT%\platform-tools\adb install bin\%APPNAME%.apk
 %SDK_ROOT%\platform-tools\adb shell am start -n %PACKAGE%/.%APPNAME%
 echo Check App on your Device

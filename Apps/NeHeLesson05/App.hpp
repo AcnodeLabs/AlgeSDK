@@ -58,7 +58,7 @@ public:
 //		glCullFace(GL_BACK);
 		t0= 0;
 		glClearColor(COLOR_CORNFLOWERBLUE);
-		glClearColor(1,1,1,1);
+		
 	}
 
 	void Deinit() {

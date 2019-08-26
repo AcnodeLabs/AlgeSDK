@@ -58,7 +58,7 @@ Java_com_acnodelabs_alge_DemoRenderer_nativeInit( JNIEnv*  env , jobject thiz, j
     //for (int i = 0; i < length; ++i)
    //     fprintf(stderr, "%d: %02x\n", i, pBytes[i]);
 
-    (*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT); 
+    (*env)->ReleaseByteArrayElements(env, stringJbytes,(jbyte*) pBytes, JNI_ABORT); 
     (*env)->DeleteLocalRef(env, stringJbytes);
 
 

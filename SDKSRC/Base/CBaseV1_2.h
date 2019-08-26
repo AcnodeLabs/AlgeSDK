@@ -1025,9 +1025,9 @@ public:
 #endif
 		}
 		if (n_indices == 0) {
-			for (int i = 0; i<n_vertices; i++) {
+		//	for (int i = 0; i<n_vertices; i++) {
 
-			}
+		//	}
 		}
 
 	}
