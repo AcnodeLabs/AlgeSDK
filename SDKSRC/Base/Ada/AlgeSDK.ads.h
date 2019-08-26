@@ -745,7 +745,7 @@ public:
     }
 };
 
-#include "..\XFunctions.hpp"
+#include "../XFunctions.hpp"
 
 #define C_float float
 #define Sin sin

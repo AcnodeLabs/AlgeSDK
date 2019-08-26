@@ -40,6 +40,9 @@ char respath[256];
 void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
 void appInit(char *sz) { 
 	strcpy(respath, sz);
+    game.aCamera.custom_type = 0xCA;
+    game.aCamera.windowWidth = game.getBackgroundSize().x;
+    game.aCamera.windowHeight = game.getBackgroundSize().y;
     game.rm.Init(sz);
     game.Init(sz);
 }

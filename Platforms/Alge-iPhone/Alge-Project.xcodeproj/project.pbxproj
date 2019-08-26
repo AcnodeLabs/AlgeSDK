@@ -10,6 +10,15 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		2514C27210084DB100A42282 /* ES1Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2514C26E10084DB100A42282 /* ES1Renderer.m */; };
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
+		881D78D62313C777005DDB67 /* font.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78CD2313C776005DDB67 /* font.alx */; };
+		881D78D72313C777005DDB67 /* juices.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78CE2313C776005DDB67 /* juices.tga */; };
+		881D78D82313C777005DDB67 /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78CF2313C776005DDB67 /* icon114.png */; };
+		881D78D92313C777005DDB67 /* font.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D02313C776005DDB67 /* font.tga */; };
+		881D78DA2313C777005DDB67 /* slice.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D12313C776005DDB67 /* slice.alx */; };
+		881D78DB2313C777005DDB67 /* slice.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D22313C776005DDB67 /* slice.tga */; };
+		881D78DC2313C777005DDB67 /* slice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D32313C777005DDB67 /* slice.jpg */; };
+		881D78DD2313C777005DDB67 /* square.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D42313C777005DDB67 /* square.alx */; };
+		881D78DE2313C777005DDB67 /* juices.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D52313C777005DDB67 /* juices.alx */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -169,8 +178,16 @@
 		28FD14FC0DC6FC130079059D /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6C34850822E2F6B200221846 /* App0.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = App0.hpp; path = ../../Apps/PoppingTime/App0.hpp; sourceTree = "<group>"; };
 		6C34850922E2F6CB00221846 /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		881D78CD2313C776005DDB67 /* font.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = font.alx; path = ../../Apps/Juices.Assets/Data/font.alx; sourceTree = "<group>"; };
+		881D78CE2313C776005DDB67 /* juices.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = juices.tga; path = ../../Apps/Juices.Assets/Data/juices.tga; sourceTree = "<group>"; };
+		881D78CF2313C776005DDB67 /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon114.png; path = ../../Apps/Juices.Assets/Data/icon114.png; sourceTree = "<group>"; };
+		881D78D02313C776005DDB67 /* font.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = font.tga; path = ../../Apps/Juices.Assets/Data/font.tga; sourceTree = "<group>"; };
+		881D78D12313C776005DDB67 /* slice.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = slice.alx; path = ../../Apps/Juices.Assets/Data/slice.alx; sourceTree = "<group>"; };
+		881D78D22313C776005DDB67 /* slice.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = slice.tga; path = ../../Apps/Juices.Assets/Data/slice.tga; sourceTree = "<group>"; };
+		881D78D32313C777005DDB67 /* slice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = slice.jpg; path = ../../Apps/Juices.Assets/Data/slice.jpg; sourceTree = "<group>"; };
+		881D78D42313C777005DDB67 /* square.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = square.alx; path = ../../Apps/Juices.Assets/Data/square.alx; sourceTree = "<group>"; };
+		881D78D52313C777005DDB67 /* juices.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = juices.alx; path = ../../Apps/Juices.Assets/Data/juices.alx; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -428,8 +445,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				881D78DF2313C84D005DDB67 /* Juices.Assets */,
 				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
-				6C34850822E2F6B200221846 /* App0.hpp */,
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
 				9CEE3B1D22D9C66500494E0A /* PoppingTime.Assets */,
 				9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */,
@@ -489,6 +506,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		881D78DF2313C84D005DDB67 /* Juices.Assets */ = {
+			isa = PBXGroup;
+			children = (
+				881D78CD2313C776005DDB67 /* font.alx */,
+				881D78D02313C776005DDB67 /* font.tga */,
+				881D78CF2313C776005DDB67 /* icon114.png */,
+				881D78D52313C777005DDB67 /* juices.alx */,
+				881D78CE2313C776005DDB67 /* juices.tga */,
+				881D78D12313C776005DDB67 /* slice.alx */,
+				881D78D32313C777005DDB67 /* slice.jpg */,
+				881D78D22313C776005DDB67 /* slice.tga */,
+				881D78D42313C777005DDB67 /* square.alx */,
+			);
+			name = Juices.Assets;
 			sourceTree = "<group>";
 		};
 		9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */ = {
@@ -854,6 +887,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881D78D62313C777005DDB67 /* font.alx in Resources */,
+				881D78D72313C777005DDB67 /* juices.tga in Resources */,
+				881D78D82313C777005DDB67 /* icon114.png in Resources */,
+				881D78D92313C777005DDB67 /* font.tga in Resources */,
+				881D78DA2313C777005DDB67 /* slice.alx in Resources */,
+				881D78DB2313C777005DDB67 /* slice.tga in Resources */,
+				881D78DC2313C777005DDB67 /* slice.jpg in Resources */,
+				881D78DD2313C777005DDB67 /* square.alx in Resources */,
+				881D78DE2313C777005DDB67 /* juices.alx in Resources */,
 				9CEE3B7822D9C66500494E0A /* font.tga in Resources */,
 				9CEE3B8E22D9C66500494E0A /* ScreenShot1.PNG in Resources */,
 				9CEE3B8322D9C66500494E0A /* entry.wav in Resources */,
@@ -1040,7 +1082,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -1072,7 +1114,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1147,7 +1189,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.poppingtime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
 				PRODUCT_NAME = Untitled;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphonesimulator4.2]" = "37C021F2-6B9D-415A-8946-E822A76C7B1A";
