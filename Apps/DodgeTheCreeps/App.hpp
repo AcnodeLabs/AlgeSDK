@@ -4,6 +4,8 @@
 
 //////////////////////////////XTimer
 
+// on device : respath = /data/user/0/com.acnodelabs.DodgeTheCreeps/files
+
 class BiSprite {
 	f3 MyPos;
 	float heading; //0 to 180
@@ -56,7 +58,6 @@ public:
 		flop.rot.z = heading;
 	}
 };
-
 
 class Sprite {
 	f3 MyPos;
@@ -202,7 +203,6 @@ public:
 	}
 
 	virtual void Init(char* path) {
-	//	wireframe = true;
 		AlInit(STANDARD);
 		SetTitle("DodgeTheCreeps");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);

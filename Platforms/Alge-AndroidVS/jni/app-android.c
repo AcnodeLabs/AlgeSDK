@@ -37,16 +37,37 @@ static long sTimeStopped  = 0;
 
 /* Call to initialize the graphics state */
 void
-Java_com_acnodelabs_alge_DemoRenderer_nativeInit( JNIEnv*  env , jobject thiz, jstring uri)
+Java_com_acnodelabs_alge_DemoRenderer_nativeInit( JNIEnv*  env , jobject thiz, jstring _s)
 {
     importGLInit();
 	// convert Java string to UTF-8
-    const jbyte *utf8 = (jbyte*)(*env)->GetStringUTFChars(env, uri, NULL);
-    appInit(utf8);
+    //const jbyte *utf8 = (jbyte*)(*env)->GetStringUTFChars(env, uri, NULL);
+    //const char *utf8 = (*env)->GetStringUTFChars(env,uri, NULL);
+
+    //https://stackoverflow.com/questions/32205446/getting-true-utf-8-characters-in-java-jni
+    const jclass stringClass = (*env)->GetObjectClass(env, _s);
+    const jmethodID getBytes = (*env)->GetMethodID(env, stringClass, "getBytes", "(Ljava/lang/String;)[B");
+
+    const jstring charsetName = (*env)->NewStringUTF(env, "UTF-8");
+    const jbyteArray stringJbytes = (jbyteArray) (*env)->CallObjectMethod(env, _s, getBytes, charsetName);
+    (*env)->DeleteLocalRef(env, charsetName);
+
+    const jsize length = (*env)->GetArrayLength(env, stringJbytes);
+    const jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL); 
+
+    //for (int i = 0; i < length; ++i)
+   //     fprintf(stderr, "%d: %02x\n", i, pBytes[i]);
+
+    (*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT); 
+    (*env)->DeleteLocalRef(env, stringJbytes);
+
+
+
+    appInit(pBytes);
     gAppAlive    = 1;
     sDemoStopped = 0;
     sTimeOffsetInit = 0;
-	(*env)->ReleaseStringUTFChars(env, uri, (const char*)utf8);
+	//(*env)->ReleaseStringUTFChars(env, uri, (const char*)utf8);
 	
 }
 

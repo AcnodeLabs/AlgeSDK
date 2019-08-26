@@ -54,10 +54,11 @@ public:
 		AlInit(STANDARD);
 		output.pushP(CMD_TITLE, $ "Alge Nehe Lesson05",0);
 		rot = 0;
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+//		glEnable(GL_CULL_FACE);
+//		glCullFace(GL_BACK);
 		t0= 0;
 		glClearColor(COLOR_CORNFLOWERBLUE);
+		glClearColor(1,1,1,1);
 	}
 
 	void Deinit() {

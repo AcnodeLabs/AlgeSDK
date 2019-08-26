@@ -21,6 +21,7 @@ set SDKVER=%4
 echo SDKVER=%SDKVER%
 set ORIENT=%5
 echo ORIENT=%ORIENT%
+set PASSW=%6
 
 type jni\CANDIDATE.h
 echo Checking .. src\%PACKAGE:.=\%\%APPNAME%.java
@@ -40,12 +41,11 @@ cd %PWD%
 echo src\%PACKAGE:.=\%\%APPNAME%.java
 type src\%PACKAGE:.=\%\%APPNAME%.java
 echo ...
-set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
-if not %var%==y exit /B
+echo set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
+echo if not %var%==y exit /B
 
 echo ------------------ SLATE CLEAN --- Ignore if Exception is raised on %PACKAGEQ%
-echo %SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
-%SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
+
 del /Q assets\*.jpg
 del /Q assets\*.png
 del /Q assets\*.alx
@@ -89,12 +89,12 @@ echo --- generating apk
 call %ANT_EXE% -q release
 del /Q bin\%APPNAME%.apk
 echo ------------------- SIGNING
-echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
-call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME%
+echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -keypass %PASSW%
+call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -storepass %PASSW% -keypass %PASSW%
 echo %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 call %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
-echo Good Luck !!
-echo install check 
 
+%SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
 %SDK_ROOT%\platform-tools\adb install bin\%APPNAME%.apk
+%SDK_ROOT%\platform-tools\adb shell am start -n %PACKAGE%/.%APPNAME%
 echo Check App on your Device

@@ -110,7 +110,7 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\..\Apps\DodgeTheCreeps\App.hpp
+  jni\..\..\..\Apps\NeheLesson05\App.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -338,4 +338,4 @@ jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp:
 
 jni\CANDIDATE.h:
 
-jni\..\..\..\Apps\DodgeTheCreeps\App.hpp:
+jni\..\..\..\Apps\NeheLesson05\App.hpp:
