@@ -8,7 +8,7 @@
 
 #define MACOSX
 #define XCODE_BUILD
-#define NO_BOX2D
+//#define NO_BOX2D
 #define NO_NATS
 #define glOrthof glOrtho
 #include "../../SDKSRC/Base/CBaseV1_2.h"
