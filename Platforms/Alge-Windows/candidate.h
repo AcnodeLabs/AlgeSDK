@@ -13,6 +13,5 @@
 
  */
 
-#include "../../Apps/PoppingTime/App.hpp" 
-//#include "../../../com_acnodelabs/Apps/CodedSchedule/App.hpp"
+#include "../candidate.h" 
 class App; 

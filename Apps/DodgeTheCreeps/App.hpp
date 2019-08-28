@@ -190,6 +190,16 @@ class /*DodgeTheCreeps*/ App : public AlgeApp {
 	
 public:
 
+
+	virtual i2 getBackgroundSize() {
+		switch (PlatformCode) {
+		case 'A':
+			return size_nokia5;
+			break;
+		}
+		return size_ipad_air;
+	}
+
 	void MakeTrail() {
 		playerTrail.prsInstances.clear();
 		return;
@@ -207,7 +217,7 @@ public:
 		SetTitle("DodgeTheCreeps");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		AddResource(&background, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-
+		
 		//AddResource(&playerTrail, "playerGrey_up1", 1);
 		//MakeTrail();
 

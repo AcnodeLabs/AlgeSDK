@@ -97,7 +97,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
-	game.Init0(ResPath + 1, 'W');
+	game.Init0(ResPath, 'W');
 	SYSTEMTIME now0;
 	GetLocalTime(&now0);
 	int hr = now0.wHour;
@@ -707,7 +707,7 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 
 void FindAppName() {
 
-	FILE* f = fopen("CANDIDATE.h", "r");
+	FILE* f = fopen("../CANDIDATE.h", "r");
 	if (f)
 	{
 		char line[256] = { 0 };
@@ -715,13 +715,13 @@ void FindAppName() {
 		for (int i=0; i<100; i++) {
 			int ret = fscanf(f, "%s", line);
 			char* pn = strstr(line, ".hpp");
-			strcpy(ResPath, line);
+			strcpy(ResPath, line+1);//ignore "
 			if (pn) {
 				pn[0] = 0;
 				char* r = strrchr(line, '/');
 				if (r) {
 					r[0] = 0;
-					sprintf_s(ResPath, 256, "%s.Assets/Data/", line);
+					sprintf_s(ResPath, 256, "../%s.Assets/Data/", line+1);
 					//sprintf_s(ResPath, 256, "%s.Assets/", line); //resource mgr is programmed to seek /Data within it and fallback to it
 				}
 				break;

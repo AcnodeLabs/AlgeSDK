@@ -9,12 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="CANDIDATE WINDOWS">
-      <UniqueIdentifier>{2f138803-06bb-4177-b5e7-610b27c36505}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CANDIDATE ANDROID">
-      <UniqueIdentifier>{c3982fd4-6878-45aa-bfdc-ac5a055902bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="libdrawtext">
       <UniqueIdentifier>{9aa98122-540d-466f-9280-50f70482aab1}</UniqueIdentifier>
     </Filter>
@@ -52,21 +46,13 @@
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="candidate.h">
-      <Filter>CANDIDATE WINDOWS</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Alge-AndroidVS\jni\CANDIDATE.h">
-      <Filter>CANDIDATE ANDROID</Filter>
-    </ClInclude>
+    <ClInclude Include="..\candidate.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
-    <None Include="..\Alge-AndroidVS\build-android.bat">
-      <Filter>CANDIDATE ANDROID</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">

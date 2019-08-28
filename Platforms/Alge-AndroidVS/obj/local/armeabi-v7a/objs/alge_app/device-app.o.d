@@ -110,9 +110,7 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\..\Apps\PoppingTime\App.hpp \
-  jni\..\..\..\Apps\PoppingTime\..\..\..\AlgeSDK\SDKSRC\Base\CBaseV1_2.h \
-  jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp
+  jni\..\..\candidate.h jni\..\..\..\Apps\DodgeTheCreeps\App.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -340,8 +338,6 @@ jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp:
 
 jni\CANDIDATE.h:
 
-jni\..\..\..\Apps\PoppingTime\App.hpp:
+jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\PoppingTime\..\..\..\AlgeSDK\SDKSRC\Base\CBaseV1_2.h:
-
-jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp:
+jni\..\..\..\Apps\DodgeTheCreeps\App.hpp:

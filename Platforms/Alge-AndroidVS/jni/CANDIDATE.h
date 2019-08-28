@@ -1,4 +1,4 @@
 #define NO_FONTLIB
 #define NO_LOGS
-#define CANDIDATE "../../../Apps/PoppingTime/App.hpp"
+#include "../../candidate.h"
 class App;

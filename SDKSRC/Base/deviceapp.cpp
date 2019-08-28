@@ -15,7 +15,7 @@ using namespace std;
 #endif
 #include CBASE
 #include "CANDIDATE.h"
-#include CANDIDATE
+//#include CANDIDATE
 
 #define RUN_LENGTH  (20 * CAMTRACK_LEN)
 #undef PI

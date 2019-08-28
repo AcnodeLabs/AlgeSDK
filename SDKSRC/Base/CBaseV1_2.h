@@ -74,6 +74,7 @@
 using namespace std;
 
 void alPrintText(string text, float scale);
+extern class App game;
 
 class ResourceInf {
 public:
@@ -2537,7 +2538,7 @@ public:
 			models[modelId]->scale(fscale);
 		}
 		else {
-			printf("\n%s NOT LOADED", fname);
+			static string err = (string(fname) + " NOT LOADED");
 		}
 		memset(_alxfname, 0, 64);
 		models[modelId]->index = modelId;
