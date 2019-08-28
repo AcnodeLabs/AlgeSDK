@@ -120,7 +120,7 @@
 		if (l>14) sz[l-14] = 0;
 		
 		OldTime = CACurrentMediaTime();
-     //   strcat(sz, "/Data/");
+        strcat(sz, "/Data/");
 		appInit((char*)sz);
         
 	}

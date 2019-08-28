@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88AB79CA2316CB8F004A0239 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD62316684D009AEDF6 /* Data */; };
 		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
-		88BBEFD523166514009AEDF6 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD423166514009AEDF6 /* Data */; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
 		9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3281BE13F275F900A53E54 /* Cocoa.framework */; };
 		9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281C713F275F900A53E54 /* InfoPlist.strings */; };
@@ -48,7 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				88BBEFD523166514009AEDF6 /* Data in CopyFiles */,
+				88AB79CA2316CB8F004A0239 /* Data in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 /* Begin PBXFileReference section */
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
-		88BBEFD423166514009AEDF6 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/DodgeTheCreeps.Assets/Data; sourceTree = "<group>"; };
+		88BBEFD62316684D009AEDF6 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Ivank_Box2D.Assets/Data; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
 		9C3281BA13F275F900A53E54 /* Alge-OSX-XCode9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-OSX-XCode9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -140,7 +140,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				88BBEFD423166514009AEDF6 /* Data */,
+				88BBEFD62316684D009AEDF6 /* Data */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
