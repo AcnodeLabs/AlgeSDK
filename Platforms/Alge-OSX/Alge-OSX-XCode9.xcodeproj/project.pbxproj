@@ -227,9 +227,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88AB7B092316E13F004A0239 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88BBEF8623165163009AEDF6 /* candidate.h */,
+				88AB7B092316E13F004A0239 /* Other Sources */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
 				88AB7AF72316E046004A0239 /* b2CircleContact.cpp */,
@@ -276,7 +285,6 @@
 				88AB7AB12316DFAD004A0239 /* b2StackAllocator.cpp */,
 				88AB7AB32316DFAD004A0239 /* b2Timer.cpp */,
 				88BBEFD62316684D009AEDF6 /* Data */,
-				88BBEF8623165163009AEDF6 /* candidate.h */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
 				9C4636BF1FBA0C68008FB5EF /* CBaseV1_2.h */,
