@@ -214,7 +214,7 @@ void alBillboardEnd() {
 }
 //#endif
 
-CRect screenRect;
+class CRect screenRect;
 
 float fromScreenX(float x) {
 	return x - (screenRect.Right - screenRect.Left) / 2.0f;

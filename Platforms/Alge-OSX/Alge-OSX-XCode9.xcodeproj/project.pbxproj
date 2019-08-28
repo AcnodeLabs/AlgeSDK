@@ -97,8 +97,9 @@
 
 /* Begin PBXFileReference section */
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
+		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
-		9C3281BA13F275F900A53E54 /* Evolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Evolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3281BA13F275F900A53E54 /* Alge-OSX-XCode9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-OSX-XCode9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C3281C813F275F900A53E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mars-Prefix.pch"; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		9C5997A722DCE926006614F8 /* start.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.alx; sourceTree = "<group>"; };
 		9C5997A822DCE926006614F8 /* finefont.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = finefont.alx; sourceTree = "<group>"; };
 		9C5997A922DCE926006614F8 /* bg.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bg.alx; sourceTree = "<group>"; };
-		9C5C2F5F20314C36005DAC2C /* CANDIDATE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CANDIDATE.h; sourceTree = "<group>"; };
 		9C7680231FAF6E8D007BFCD4 /* AppleGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleGothic.ttf; sourceTree = "<group>"; };
 		9CDB499413F28138009F3058 /* screen820480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen820480.png; sourceTree = "<group>"; };
 		9CDB499713F28159009F3058 /* icon100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon100.png; sourceTree = "<group>"; };
@@ -224,9 +224,9 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88BBEF8623165163009AEDF6 /* candidate.h */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C59977F22DCE926006614F8 /* Data */,
-				9C5C2F5F20314C36005DAC2C /* CANDIDATE.h */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
 				9C4636BF1FBA0C68008FB5EF /* CBaseV1_2.h */,
 				9C4637211FBA0E4B008FB5EF /* alge-mac.cpp */,
@@ -240,7 +240,7 @@
 		9C3281BB13F275F900A53E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3281BA13F275F900A53E54 /* Evolution.app */,
+				9C3281BA13F275F900A53E54 /* Alge-OSX-XCode9.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,9 +384,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C3281B913F275F900A53E54 /* Evolution */ = {
+		9C3281B913F275F900A53E54 /* Alge-OSX-XCode9 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Evolution" */;
+			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Alge-OSX-XCode9" */;
 			buildPhases = (
 				9C3281B613F275F900A53E54 /* Sources */,
 				9C3281B713F275F900A53E54 /* Frameworks */,
@@ -397,9 +397,9 @@
 			);
 			dependencies = (
 			);
-			name = Evolution;
+			name = "Alge-OSX-XCode9";
 			productName = AlgeAppPlanets;
-			productReference = 9C3281BA13F275F900A53E54 /* Evolution.app */;
+			productReference = 9C3281BA13F275F900A53E54 /* Alge-OSX-XCode9.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -410,7 +410,7 @@
 			attributes = {
 				LastUpgradeCheck = 1020;
 			};
-			buildConfigurationList = 9C3281B413F275F900A53E54 /* Build configuration list for PBXProject "Evolution" */;
+			buildConfigurationList = 9C3281B413F275F900A53E54 /* Build configuration list for PBXProject "Alge-OSX-XCode9" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -423,7 +423,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C3281B913F275F900A53E54 /* Evolution */,
+				9C3281B913F275F900A53E54 /* Alge-OSX-XCode9 */,
 			);
 		};
 /* End PBXProject section */
@@ -677,7 +677,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C3281B413F275F900A53E54 /* Build configuration list for PBXProject "Evolution" */ = {
+		9C3281B413F275F900A53E54 /* Build configuration list for PBXProject "Alge-OSX-XCode9" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D613F275F900A53E54 /* Debug */,
@@ -686,7 +686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Evolution" */ = {
+		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Alge-OSX-XCode9" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D913F275F900A53E54 /* Debug */,

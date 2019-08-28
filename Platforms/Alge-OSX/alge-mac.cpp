@@ -7,9 +7,15 @@
 //
 
 #define MACOSX
-
-#include "CANDIDATE.h"
+#define XCODE_BUILD
+#define NO_BOX2D
+#define NO_NATS
+#define glOrthof glOrtho
 #include "../../SDKSRC/Base/CBaseV1_2.h"
+#include "CANDIDATE.h"
+
+
+
 #include <GLUT/glut.h>
 #include <stdio.h>
 
@@ -18,7 +24,7 @@
 
 int kWindowWidth =	(1920);
 int kWindowHeight = (1080);
-#include CANDIDATE
+//#include CANDIDATE
 
 #define TIMERMSECS 33
 
@@ -254,7 +260,7 @@ void FindAppName() {
 }
 void reset_window_title(int para)
 {
-    glutSetWindowTitle(APP_TITLE);
+ //   glutSetWindowTitle(APP_TITLE);
     glutFullScreen();
     
   //  glutReshapeWindow(kWindowWidth, kWindowHeight);
@@ -272,7 +278,7 @@ int main( int argc, char** argv )
   
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     
-  int theWindowHandle = glutCreateWindow( APP_TITLE );
+  int theWindowHandle = glutCreateWindow( "Alge-OSX" );
   glutInitWindowSize( kWindowWidth, kWindowHeight );
     
   glutSetWindow( theWindowHandle );
@@ -291,9 +297,9 @@ int main( int argc, char** argv )
   glClearColor( 0.3f, 0.3f, 0.3f, 1.0 );
   glEnable( GL_DEPTH_TEST );
     
-  FILE* f = fopen("CANDIDATE.h", "w");
-   fputs(FULLYQUALIFIEDPATH, f);
-  fclose(f);
+ // FILE* f = fopen("CANDIDATE.h", "w");
+ //  fputs(FULLYQUALIFIEDPATH, f);
+//  fclose(f);
     
   FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
   
