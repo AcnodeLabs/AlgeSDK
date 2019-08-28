@@ -28,14 +28,14 @@ if (argc<6) {
 ln("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 ln("<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\" android:versionCode=\""+version+"\" android:versionName=\""+version+ "\" package=\"" + package + "\">");
 ln("<uses-sdk android:minSdkVersion=\""+sdkver+"\" />");
-ln("<application  android:theme=\"@style/android:Theme.Black.NoTitleBar\" android:label=\""+appname+"\" android:debuggable=\"false\" android:icon=\"@drawable/icon\">");
+ln("<application  android:theme=\"@style/android:Theme.Black.NoTitleBar.Fullscreen\" android:label=\""+appname+"\" android:debuggable=\"false\" android:icon=\"@drawable/icon\">");
 ln("<activity android:label=\""+appname+"\" android:screenOrientation=\""+orientation+"\" android:name=\""+appname+"\">");
 ln("<intent-filter>");
 ln("<action android:name=\"android.intent.action.MAIN\" />");
 ln("<category android:name=\"android.intent.category.LAUNCHER\" />");
 ln("</intent-filter>");
 ln("</activity>");
-ln("<activity android:name=\"com.paypal.android.MEP.PayPalActivity\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar\" android:configChanges=\"keyboardHidden|orientation\"/><!-- The application's publisher ID assigned by AdMob --><meta-data android:value=\"a14d6546c142771\" android:name=\"ADMOB_PUBLISHER_ID\" /><!-- AdMobActivity definition --><activity android:name=\"com.admob.android.ads.AdMobActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:configChanges=\"orientation|keyboard|keyboardHidden\" /><!-- Track Market installs --><receiver android:name=\"com.admob.android.ads.analytics.InstallReceiver\" android:exported=\"true\"><intent-filter> <action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter> </receiver></application>");
+ln("<activity android:name=\"com.paypal.android.MEP.PayPalActivity\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar.Fullscreen\" android:configChanges=\"keyboardHidden|orientation\"/><!-- The application's publisher ID assigned by AdMob --><meta-data android:value=\"a14d6546c142771\" android:name=\"ADMOB_PUBLISHER_ID\" /><!-- AdMobActivity definition --><activity android:name=\"com.admob.android.ads.AdMobActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:configChanges=\"orientation|keyboard|keyboardHidden\" /><!-- Track Market installs --><receiver android:name=\"com.admob.android.ads.analytics.InstallReceiver\" android:exported=\"true\"><intent-filter> <action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter> </receiver></application>");
 ln("<uses-permission android:name=\"android.permission.INTERNET\"/> <uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>");
 ln("</manifest>");
     return 0;
