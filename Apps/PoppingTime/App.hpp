@@ -223,7 +223,7 @@ public:
             resolutionReported.y = cmd->i2;
             //  startScreen.start.pos.x = bgSize.x;
             //  startScreen.start.pos.y = bgSize.y;
-            SetCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+            SetCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
             if (objectsNotLoaded) {
                 pp.LoadIn(this);objectsNotLoaded = false;
             }

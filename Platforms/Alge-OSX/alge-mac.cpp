@@ -309,11 +309,13 @@ int main( int argc, char** argv )
    l = strrchr(app.rm.resourcepath, '/');
   if (l) l[0] = 0;
 	
-  strcat(app.rm.resourcepath, "/Evolution.app/Contents/Resources");
+  strcat(app.rm.resourcepath, "/Alge-OSX-XCode9.app/Contents/Resources/Data");
   
   initAL(app.rm.resourcepath);
  
   app.rm.Init(app.rm.resourcepath);
+    app.resolutionReported.x = 1024;
+    app.resolutionReported.y = 768;
   app.Init(app.rm.resourcepath);
 	
   //HandleReshape(kWindowWidth, kWindowHeight);

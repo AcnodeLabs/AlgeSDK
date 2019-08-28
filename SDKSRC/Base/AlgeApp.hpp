@@ -235,6 +235,7 @@ public:
 		aCamera.pos = position;
 		aCamera.rot = rotation;
 	}
+    
 	void AddDefaultCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
 		orthoType = _orthoType;
 		static bool once = false;
@@ -244,7 +245,7 @@ public:
 			AddObject(&aCamera);
 			once = true;
 		}
-      //  SetCamera(camMode, _orthoType);
+        SetCamera(camMode, _orthoType);
 	}
 
     void SetCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
