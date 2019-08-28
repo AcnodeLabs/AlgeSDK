@@ -28,7 +28,6 @@
 		881D790B2313D49B005DDB67 /* enemyFlyingAlt_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E82313D498005DDB67 /* enemyFlyingAlt_2.png */; };
 		881D790C2313D49B005DDB67 /* playerGrey_walk1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E92313D498005DDB67 /* playerGrey_walk1.alx */; };
 		881D790D2313D49B005DDB67 /* enemySwimming_1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EA2313D498005DDB67 /* enemySwimming_1.alx */; };
-		881D790E2313D49B005DDB67 /* house.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EB2313D498005DDB67 /* house.ogg */; };
 		881D790F2313D49B005DDB67 /* enemyWalking_1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EC2313D498005DDB67 /* enemyWalking_1.alx */; };
 		881D79102313D49B005DDB67 /* playerGrey_up2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78ED2313D498005DDB67 /* playerGrey_up2.tga */; };
 		881D79112313D49B005DDB67 /* playerGrey_walk2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EE2313D498005DDB67 /* playerGrey_walk2.alx */; };
@@ -1037,7 +1036,6 @@
 				9CEE3B7522D9C66500494E0A /* poppingtime.alx in Resources */,
 				9CEE3B7A22D9C66500494E0A /* happy-sandbox.wav in Resources */,
 				881D791D2313D49B005DDB67 /* enemyWalking_2.alx in Resources */,
-				881D790E2313D49B005DDB67 /* house.ogg in Resources */,
 				9CEE3B7B22D9C66500494E0A /* crudefont.tga in Resources */,
 				9CEE3B6522D9C66500494E0A /* ratings.tga in Resources */,
 				881D79162313D49B005DDB67 /* enemySwimming_2.alx in Resources */,
