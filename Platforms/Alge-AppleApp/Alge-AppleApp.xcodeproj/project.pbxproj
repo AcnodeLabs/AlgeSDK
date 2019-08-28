@@ -1,0 +1,916 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88DE0FF32314FCC800BE7C1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FF22314FCC800BE7C1E /* AppDelegate.m */; };
+		88DE0FF62314FCC800BE7C1E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FF52314FCC800BE7C1E /* GameViewController.m */; };
+		88DE0FF92314FCC800BE7C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FF72314FCC800BE7C1E /* Main.storyboard */; };
+		88DE0FFC2314FCC800BE7C1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FFA2314FCC800BE7C1E /* LaunchScreen.storyboard */; };
+		88DE0FFF2314FCC800BE7C1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FFE2314FCC800BE7C1E /* main.m */; };
+		88DE10032314FCC800BE7C1E /* Alge-AppleApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 88DE10022314FCC800BE7C1E /* Alge-AppleApp.app */; };
+		88DE10092314FCC800BE7C1E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE10072314FCC800BE7C1E /* Interface.storyboard */; };
+		88DE10102314FCC800BE7C1E /* Alge-AppleApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 88DE100F2314FCC800BE7C1E /* Alge-AppleApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		88DE10162314FCC800BE7C1E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10152314FCC800BE7C1E /* InterfaceController.m */; };
+		88DE10192314FCC800BE7C1E /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10182314FCC800BE7C1E /* ExtensionDelegate.m */; };
+		88DE10232314FCC800BE7C1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10222314FCC800BE7C1E /* AppDelegate.m */; };
+		88DE10262314FCC800BE7C1E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10252314FCC800BE7C1E /* GameViewController.m */; };
+		88DE10292314FCC800BE7C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE10272314FCC800BE7C1E /* Main.storyboard */; };
+		88DE102C2314FCC800BE7C1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE102B2314FCC800BE7C1E /* main.m */; };
+		88DE10352314FCC800BE7C1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10342314FCC800BE7C1E /* AppDelegate.m */; };
+		88DE10382314FCC800BE7C1E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE10372314FCC800BE7C1E /* GameViewController.m */; };
+		88DE103B2314FCC800BE7C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DE10392314FCC800BE7C1E /* Main.storyboard */; };
+		88DE103E2314FCC800BE7C1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE103D2314FCC800BE7C1E /* main.m */; };
+		88DE103F2314FCC800BE7C1E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE52314FCC600BE7C1E /* Actions.sks */; };
+		88DE10402314FCC800BE7C1E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE52314FCC600BE7C1E /* Actions.sks */; };
+		88DE10412314FCC800BE7C1E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE52314FCC600BE7C1E /* Actions.sks */; };
+		88DE10422314FCC800BE7C1E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE62314FCC600BE7C1E /* GameScene.sks */; };
+		88DE10432314FCC800BE7C1E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE62314FCC600BE7C1E /* GameScene.sks */; };
+		88DE10442314FCC800BE7C1E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE62314FCC600BE7C1E /* GameScene.sks */; };
+		88DE10452314FCC800BE7C1E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE62314FCC600BE7C1E /* GameScene.sks */; };
+		88DE10462314FCC800BE7C1E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FE82314FCC600BE7C1E /* GameScene.m */; };
+		88DE10472314FCC800BE7C1E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FE82314FCC600BE7C1E /* GameScene.m */; };
+		88DE10482314FCC800BE7C1E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FE82314FCC600BE7C1E /* GameScene.m */; };
+		88DE10492314FCC800BE7C1E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE0FE82314FCC600BE7C1E /* GameScene.m */; };
+		88DE104A2314FCC800BE7C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE92314FCC800BE7C1E /* Assets.xcassets */; };
+		88DE104B2314FCC800BE7C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE92314FCC800BE7C1E /* Assets.xcassets */; };
+		88DE104C2314FCC800BE7C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE92314FCC800BE7C1E /* Assets.xcassets */; };
+		88DE104D2314FCC800BE7C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DE0FE92314FCC800BE7C1E /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88DE10042314FCC800BE7C1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88DE0FE02314FCC600BE7C1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88DE10012314FCC800BE7C1E;
+			remoteInfo = "Alge-AppleApp watchOS App";
+		};
+		88DE10112314FCC800BE7C1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88DE0FE02314FCC600BE7C1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88DE100E2314FCC800BE7C1E;
+			remoteInfo = "Alge-AppleApp watchOS App Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88DE10532314FCC800BE7C1E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				88DE10102314FCC800BE7C1E /* Alge-AppleApp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE10572314FCC800BE7C1E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				88DE10032314FCC800BE7C1E /* Alge-AppleApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		88DE0FE52314FCC600BE7C1E /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		88DE0FE62314FCC600BE7C1E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		88DE0FE72314FCC600BE7C1E /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		88DE0FE82314FCC600BE7C1E /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		88DE0FE92314FCC800BE7C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88DE0FEE2314FCC800BE7C1E /* Alge-AppleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-AppleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DE0FF12314FCC800BE7C1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88DE0FF22314FCC800BE7C1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		88DE0FF42314FCC800BE7C1E /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		88DE0FF52314FCC800BE7C1E /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		88DE0FF82314FCC800BE7C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88DE0FFB2314FCC800BE7C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88DE0FFD2314FCC800BE7C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE0FFE2314FCC800BE7C1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88DE10022314FCC800BE7C1E /* Alge-AppleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-AppleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DE10082314FCC800BE7C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		88DE100A2314FCC800BE7C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE100F2314FCC800BE7C1E /* Alge-AppleApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Alge-AppleApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DE10142314FCC800BE7C1E /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		88DE10152314FCC800BE7C1E /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		88DE10172314FCC800BE7C1E /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		88DE10182314FCC800BE7C1E /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		88DE101A2314FCC800BE7C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE101F2314FCC800BE7C1E /* Alge-AppleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-AppleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DE10212314FCC800BE7C1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88DE10222314FCC800BE7C1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		88DE10242314FCC800BE7C1E /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		88DE10252314FCC800BE7C1E /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		88DE10282314FCC800BE7C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88DE102A2314FCC800BE7C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE102B2314FCC800BE7C1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88DE10312314FCC800BE7C1E /* Alge-AppleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-AppleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DE10332314FCC800BE7C1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88DE10342314FCC800BE7C1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		88DE10362314FCC800BE7C1E /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		88DE10372314FCC800BE7C1E /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		88DE103A2314FCC800BE7C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88DE103C2314FCC800BE7C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DE103D2314FCC800BE7C1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88DE0FEB2314FCC800BE7C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE100C2314FCC800BE7C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE101C2314FCC800BE7C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE102E2314FCC800BE7C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88DE0FDF2314FCC600BE7C1E = {
+			isa = PBXGroup;
+			children = (
+				88DE0FE42314FCC600BE7C1E /* Alge-AppleApp Shared */,
+				88DE0FF02314FCC800BE7C1E /* Alge-AppleApp iOS */,
+				88DE10062314FCC800BE7C1E /* Alge-AppleApp watchOS App */,
+				88DE10132314FCC800BE7C1E /* Alge-AppleApp watchOS App Extension */,
+				88DE10202314FCC800BE7C1E /* Alge-AppleApp tvOS */,
+				88DE10322314FCC800BE7C1E /* Alge-AppleApp macOS */,
+				88DE0FEF2314FCC800BE7C1E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88DE0FE42314FCC600BE7C1E /* Alge-AppleApp Shared */ = {
+			isa = PBXGroup;
+			children = (
+				88DE0FE52314FCC600BE7C1E /* Actions.sks */,
+				88DE0FE62314FCC600BE7C1E /* GameScene.sks */,
+				88DE0FE72314FCC600BE7C1E /* GameScene.h */,
+				88DE0FE82314FCC600BE7C1E /* GameScene.m */,
+				88DE0FE92314FCC800BE7C1E /* Assets.xcassets */,
+			);
+			path = "Alge-AppleApp Shared";
+			sourceTree = "<group>";
+		};
+		88DE0FEF2314FCC800BE7C1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88DE0FEE2314FCC800BE7C1E /* Alge-AppleApp.app */,
+				88DE10022314FCC800BE7C1E /* Alge-AppleApp.app */,
+				88DE100F2314FCC800BE7C1E /* Alge-AppleApp Extension.appex */,
+				88DE101F2314FCC800BE7C1E /* Alge-AppleApp.app */,
+				88DE10312314FCC800BE7C1E /* Alge-AppleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88DE0FF02314FCC800BE7C1E /* Alge-AppleApp iOS */ = {
+			isa = PBXGroup;
+			children = (
+				88DE0FF12314FCC800BE7C1E /* AppDelegate.h */,
+				88DE0FF22314FCC800BE7C1E /* AppDelegate.m */,
+				88DE0FF42314FCC800BE7C1E /* GameViewController.h */,
+				88DE0FF52314FCC800BE7C1E /* GameViewController.m */,
+				88DE0FF72314FCC800BE7C1E /* Main.storyboard */,
+				88DE0FFA2314FCC800BE7C1E /* LaunchScreen.storyboard */,
+				88DE0FFD2314FCC800BE7C1E /* Info.plist */,
+				88DE0FFE2314FCC800BE7C1E /* main.m */,
+			);
+			path = "Alge-AppleApp iOS";
+			sourceTree = "<group>";
+		};
+		88DE10062314FCC800BE7C1E /* Alge-AppleApp watchOS App */ = {
+			isa = PBXGroup;
+			children = (
+				88DE10072314FCC800BE7C1E /* Interface.storyboard */,
+				88DE100A2314FCC800BE7C1E /* Info.plist */,
+			);
+			path = "Alge-AppleApp watchOS App";
+			sourceTree = "<group>";
+		};
+		88DE10132314FCC800BE7C1E /* Alge-AppleApp watchOS App Extension */ = {
+			isa = PBXGroup;
+			children = (
+				88DE10142314FCC800BE7C1E /* InterfaceController.h */,
+				88DE10152314FCC800BE7C1E /* InterfaceController.m */,
+				88DE10172314FCC800BE7C1E /* ExtensionDelegate.h */,
+				88DE10182314FCC800BE7C1E /* ExtensionDelegate.m */,
+				88DE101A2314FCC800BE7C1E /* Info.plist */,
+			);
+			path = "Alge-AppleApp watchOS App Extension";
+			sourceTree = "<group>";
+		};
+		88DE10202314FCC800BE7C1E /* Alge-AppleApp tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				88DE10212314FCC800BE7C1E /* AppDelegate.h */,
+				88DE10222314FCC800BE7C1E /* AppDelegate.m */,
+				88DE10242314FCC800BE7C1E /* GameViewController.h */,
+				88DE10252314FCC800BE7C1E /* GameViewController.m */,
+				88DE10272314FCC800BE7C1E /* Main.storyboard */,
+				88DE102A2314FCC800BE7C1E /* Info.plist */,
+				88DE102B2314FCC800BE7C1E /* main.m */,
+			);
+			path = "Alge-AppleApp tvOS";
+			sourceTree = "<group>";
+		};
+		88DE10322314FCC800BE7C1E /* Alge-AppleApp macOS */ = {
+			isa = PBXGroup;
+			children = (
+				88DE10332314FCC800BE7C1E /* AppDelegate.h */,
+				88DE10342314FCC800BE7C1E /* AppDelegate.m */,
+				88DE10362314FCC800BE7C1E /* GameViewController.h */,
+				88DE10372314FCC800BE7C1E /* GameViewController.m */,
+				88DE10392314FCC800BE7C1E /* Main.storyboard */,
+				88DE103C2314FCC800BE7C1E /* Info.plist */,
+				88DE103D2314FCC800BE7C1E /* main.m */,
+			);
+			path = "Alge-AppleApp macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88DE0FED2314FCC800BE7C1E /* Alge-AppleApp iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DE10582314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp iOS" */;
+			buildPhases = (
+				88DE0FEA2314FCC800BE7C1E /* Sources */,
+				88DE0FEB2314FCC800BE7C1E /* Frameworks */,
+				88DE0FEC2314FCC800BE7C1E /* Resources */,
+				88DE10572314FCC800BE7C1E /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88DE10052314FCC800BE7C1E /* PBXTargetDependency */,
+			);
+			name = "Alge-AppleApp iOS";
+			productName = "Alge-AppleApp iOS";
+			productReference = 88DE0FEE2314FCC800BE7C1E /* Alge-AppleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88DE10012314FCC800BE7C1E /* Alge-AppleApp watchOS App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DE10542314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp watchOS App" */;
+			buildPhases = (
+				88DE10002314FCC800BE7C1E /* Resources */,
+				88DE10532314FCC800BE7C1E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88DE10122314FCC800BE7C1E /* PBXTargetDependency */,
+			);
+			name = "Alge-AppleApp watchOS App";
+			productName = "Alge-AppleApp watchOS App";
+			productReference = 88DE10022314FCC800BE7C1E /* Alge-AppleApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		88DE100E2314FCC800BE7C1E /* Alge-AppleApp watchOS App Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DE10502314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp watchOS App Extension" */;
+			buildPhases = (
+				88DE100B2314FCC800BE7C1E /* Sources */,
+				88DE100C2314FCC800BE7C1E /* Frameworks */,
+				88DE100D2314FCC800BE7C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Alge-AppleApp watchOS App Extension";
+			productName = "Alge-AppleApp watchOS App Extension";
+			productReference = 88DE100F2314FCC800BE7C1E /* Alge-AppleApp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		88DE101E2314FCC800BE7C1E /* Alge-AppleApp tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DE105B2314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp tvOS" */;
+			buildPhases = (
+				88DE101B2314FCC800BE7C1E /* Sources */,
+				88DE101C2314FCC800BE7C1E /* Frameworks */,
+				88DE101D2314FCC800BE7C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Alge-AppleApp tvOS";
+			productName = "Alge-AppleApp tvOS";
+			productReference = 88DE101F2314FCC800BE7C1E /* Alge-AppleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88DE10302314FCC800BE7C1E /* Alge-AppleApp macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DE105E2314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp macOS" */;
+			buildPhases = (
+				88DE102D2314FCC800BE7C1E /* Sources */,
+				88DE102E2314FCC800BE7C1E /* Frameworks */,
+				88DE102F2314FCC800BE7C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Alge-AppleApp macOS";
+			productName = "Alge-AppleApp macOS";
+			productReference = 88DE10312314FCC800BE7C1E /* Alge-AppleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88DE0FE02314FCC600BE7C1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = xal;
+				TargetAttributes = {
+					88DE0FED2314FCC800BE7C1E = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					88DE10012314FCC800BE7C1E = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					88DE100E2314FCC800BE7C1E = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					88DE101E2314FCC800BE7C1E = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					88DE10302314FCC800BE7C1E = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 88DE0FE32314FCC600BE7C1E /* Build configuration list for PBXProject "Alge-AppleApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 88DE0FDF2314FCC600BE7C1E;
+			productRefGroup = 88DE0FEF2314FCC800BE7C1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88DE0FED2314FCC800BE7C1E /* Alge-AppleApp iOS */,
+				88DE10012314FCC800BE7C1E /* Alge-AppleApp watchOS App */,
+				88DE100E2314FCC800BE7C1E /* Alge-AppleApp watchOS App Extension */,
+				88DE101E2314FCC800BE7C1E /* Alge-AppleApp tvOS */,
+				88DE10302314FCC800BE7C1E /* Alge-AppleApp macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88DE0FEC2314FCC800BE7C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10422314FCC800BE7C1E /* GameScene.sks in Resources */,
+				88DE0FF92314FCC800BE7C1E /* Main.storyboard in Resources */,
+				88DE103F2314FCC800BE7C1E /* Actions.sks in Resources */,
+				88DE0FFC2314FCC800BE7C1E /* LaunchScreen.storyboard in Resources */,
+				88DE104A2314FCC800BE7C1E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE10002314FCC800BE7C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE104B2314FCC800BE7C1E /* Assets.xcassets in Resources */,
+				88DE10092314FCC800BE7C1E /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE100D2314FCC800BE7C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10432314FCC800BE7C1E /* GameScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE101D2314FCC800BE7C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10292314FCC800BE7C1E /* Main.storyboard in Resources */,
+				88DE10442314FCC800BE7C1E /* GameScene.sks in Resources */,
+				88DE104C2314FCC800BE7C1E /* Assets.xcassets in Resources */,
+				88DE10402314FCC800BE7C1E /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE102F2314FCC800BE7C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE103B2314FCC800BE7C1E /* Main.storyboard in Resources */,
+				88DE10452314FCC800BE7C1E /* GameScene.sks in Resources */,
+				88DE104D2314FCC800BE7C1E /* Assets.xcassets in Resources */,
+				88DE10412314FCC800BE7C1E /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88DE0FEA2314FCC800BE7C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE0FF62314FCC800BE7C1E /* GameViewController.m in Sources */,
+				88DE0FFF2314FCC800BE7C1E /* main.m in Sources */,
+				88DE10462314FCC800BE7C1E /* GameScene.m in Sources */,
+				88DE0FF32314FCC800BE7C1E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE100B2314FCC800BE7C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10192314FCC800BE7C1E /* ExtensionDelegate.m in Sources */,
+				88DE10472314FCC800BE7C1E /* GameScene.m in Sources */,
+				88DE10162314FCC800BE7C1E /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE101B2314FCC800BE7C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10262314FCC800BE7C1E /* GameViewController.m in Sources */,
+				88DE102C2314FCC800BE7C1E /* main.m in Sources */,
+				88DE10482314FCC800BE7C1E /* GameScene.m in Sources */,
+				88DE10232314FCC800BE7C1E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DE102D2314FCC800BE7C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DE10382314FCC800BE7C1E /* GameViewController.m in Sources */,
+				88DE103E2314FCC800BE7C1E /* main.m in Sources */,
+				88DE10492314FCC800BE7C1E /* GameScene.m in Sources */,
+				88DE10352314FCC800BE7C1E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88DE10052314FCC800BE7C1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88DE10012314FCC800BE7C1E /* Alge-AppleApp watchOS App */;
+			targetProxy = 88DE10042314FCC800BE7C1E /* PBXContainerItemProxy */;
+		};
+		88DE10122314FCC800BE7C1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88DE100E2314FCC800BE7C1E /* Alge-AppleApp watchOS App Extension */;
+			targetProxy = 88DE10112314FCC800BE7C1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		88DE0FF72314FCC800BE7C1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88DE0FF82314FCC800BE7C1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		88DE0FFA2314FCC800BE7C1E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88DE0FFB2314FCC800BE7C1E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		88DE10072314FCC800BE7C1E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88DE10082314FCC800BE7C1E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		88DE10272314FCC800BE7C1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88DE10282314FCC800BE7C1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		88DE10392314FCC800BE7C1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88DE103A2314FCC800BE7C1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		88DE104E2314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		88DE104F2314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+			};
+			name = Release;
+		};
+		88DE10512314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Alge-AppleApp watchOS App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "Alge-AppleApp Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Debug;
+		};
+		88DE10522314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Alge-AppleApp watchOS App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "Alge-AppleApp Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Release;
+		};
+		88DE10552314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Alge_AppleApp_Extension;
+				INFOPLIST_FILE = "Alge-AppleApp watchOS App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp.watchkitapp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Debug;
+		};
+		88DE10562314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Alge_AppleApp_Extension;
+				INFOPLIST_FILE = "Alge-AppleApp watchOS App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp.watchkitapp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Release;
+		};
+		88DE10592314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G84BL5U52X;
+				INFOPLIST_FILE = "Alge-AppleApp iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88DE105A2314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G84BL5U52X;
+				INFOPLIST_FILE = "Alge-AppleApp iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88DE105C2314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Alge-AppleApp tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.4;
+			};
+			name = Debug;
+		};
+		88DE105D2314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Alge-AppleApp tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88DE105F2314FCC800BE7C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Alge-AppleApp macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		88DE10602314FCC800BE7C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Alge-AppleApp macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.Alge-AppleApp";
+				PRODUCT_NAME = "Alge-AppleApp";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88DE0FE32314FCC600BE7C1E /* Build configuration list for PBXProject "Alge-AppleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE104E2314FCC800BE7C1E /* Debug */,
+				88DE104F2314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DE10502314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp watchOS App Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE10512314FCC800BE7C1E /* Debug */,
+				88DE10522314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DE10542314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp watchOS App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE10552314FCC800BE7C1E /* Debug */,
+				88DE10562314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DE10582314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE10592314FCC800BE7C1E /* Debug */,
+				88DE105A2314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DE105B2314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE105C2314FCC800BE7C1E /* Debug */,
+				88DE105D2314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DE105E2314FCC800BE7C1E /* Build configuration list for PBXNativeTarget "Alge-AppleApp macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DE105F2314FCC800BE7C1E /* Debug */,
+				88DE10602314FCC800BE7C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88DE0FE02314FCC600BE7C1E /* Project object */;
+}

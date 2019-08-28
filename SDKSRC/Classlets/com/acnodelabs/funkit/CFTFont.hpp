@@ -13,14 +13,14 @@ class CFTFont {
 public:
     
     CFTFont()  {
-        CFTFont((char*)"serif_s24.glyphmap", 24);
+       // CFTFont((char*)"serif_s24.glyphmap", 24);
     }
-    CFTFont(char* fontname, int size) {
+    
+    void Init(char* fontname, int size) {
         font = nullptr;
 		allok = false;
         //https://github.com/jtsiomb/libdrawtext/blob/master/examples/simple/simple.c
         /* XXX dtx_open_font opens a font file and returns a pointer to dtx_font */
-		
         if(!(font = dtx_open_font_glyphmap(fontname))) {
             fprintf(stderr, "failed to open font\n");
             // return 1;

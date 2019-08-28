@@ -347,7 +347,7 @@
                     int nLoops = *(int*)p2;
                     [audio[index] setNumberOfLoops:nLoops];
                 }
-                [audio[index] play];
+              //  [audio[index] play];
 			}
 			
 			if (command==CMD_SNDLOOP) {

@@ -19,6 +19,41 @@
 		881D78DC2313C777005DDB67 /* slice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D32313C777005DDB67 /* slice.jpg */; };
 		881D78DD2313C777005DDB67 /* square.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D42313C777005DDB67 /* square.alx */; };
 		881D78DE2313C777005DDB67 /* juices.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78D52313C777005DDB67 /* juices.alx */; };
+		881D79052313D49B005DDB67 /* playerGrey_up2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E22313D497005DDB67 /* playerGrey_up2.alx */; };
+		881D79062313D49B005DDB67 /* bg.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E32313D497005DDB67 /* bg.alx */; };
+		881D79072313D49B005DDB67 /* enemyWalking_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E42313D497005DDB67 /* enemyWalking_1.png */; };
+		881D79082313D49B005DDB67 /* playerGrey_up1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E52313D497005DDB67 /* playerGrey_up1.alx */; };
+		881D79092313D49B005DDB67 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E62313D497005DDB67 /* gameover.wav */; };
+		881D790A2313D49B005DDB67 /* house.wav in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E72313D498005DDB67 /* house.wav */; };
+		881D790B2313D49B005DDB67 /* enemyFlyingAlt_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E82313D498005DDB67 /* enemyFlyingAlt_2.png */; };
+		881D790C2313D49B005DDB67 /* playerGrey_walk1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78E92313D498005DDB67 /* playerGrey_walk1.alx */; };
+		881D790D2313D49B005DDB67 /* enemySwimming_1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EA2313D498005DDB67 /* enemySwimming_1.alx */; };
+		881D790E2313D49B005DDB67 /* house.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EB2313D498005DDB67 /* house.ogg */; };
+		881D790F2313D49B005DDB67 /* enemyWalking_1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EC2313D498005DDB67 /* enemyWalking_1.alx */; };
+		881D79102313D49B005DDB67 /* playerGrey_up2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78ED2313D498005DDB67 /* playerGrey_up2.tga */; };
+		881D79112313D49B005DDB67 /* playerGrey_walk2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EE2313D498005DDB67 /* playerGrey_walk2.alx */; };
+		881D79122313D49B005DDB67 /* playerGrey_up1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78EF2313D498005DDB67 /* playerGrey_up1.tga */; };
+		881D79132313D49B005DDB67 /* playerGrey_walk2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F02313D499005DDB67 /* playerGrey_walk2.tga */; };
+		881D79142313D49B005DDB67 /* enemySwimming_1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F12313D499005DDB67 /* enemySwimming_1.tga */; };
+		881D79152313D49B005DDB67 /* enemyFlyingAlt_2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F22313D499005DDB67 /* enemyFlyingAlt_2.tga */; };
+		881D79162313D49B005DDB67 /* enemySwimming_2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F32313D499005DDB67 /* enemySwimming_2.alx */; };
+		881D79172313D49B005DDB67 /* enemyFlyingAlt_2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F42313D499005DDB67 /* enemyFlyingAlt_2.alx */; };
+		881D79182313D49B005DDB67 /* playerGrey_walk1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F52313D499005DDB67 /* playerGrey_walk1.png */; };
+		881D79192313D49B005DDB67 /* enemySwimming_2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F62313D499005DDB67 /* enemySwimming_2.tga */; };
+		881D791A2313D49B005DDB67 /* playerGrey_walk1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F72313D499005DDB67 /* playerGrey_walk1.tga */; };
+		881D791B2313D49B005DDB67 /* enemySwimming_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F82313D499005DDB67 /* enemySwimming_2.png */; };
+		881D791C2313D49B005DDB67 /* enemyWalking_1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78F92313D49A005DDB67 /* enemyWalking_1.tga */; };
+		881D791D2313D49B005DDB67 /* enemyWalking_2.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FA2313D49A005DDB67 /* enemyWalking_2.alx */; };
+		881D791E2313D49B005DDB67 /* enemyFlyingAlt_1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FB2313D49A005DDB67 /* enemyFlyingAlt_1.tga */; };
+		881D791F2313D49B005DDB67 /* enemyWalking_2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FC2313D49A005DDB67 /* enemyWalking_2.tga */; };
+		881D79202313D49B005DDB67 /* enemyFlyingAlt_1.alx in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FD2313D49A005DDB67 /* enemyFlyingAlt_1.alx */; };
+		881D79212313D49B005DDB67 /* playerGrey_walk2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FE2313D49A005DDB67 /* playerGrey_walk2.png */; };
+		881D79222313D49B005DDB67 /* enemyFlyingAlt_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D78FF2313D49A005DDB67 /* enemyFlyingAlt_1.png */; };
+		881D79232313D49B005DDB67 /* enemySwimming_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D79002313D49A005DDB67 /* enemySwimming_1.png */; };
+		881D79242313D49B005DDB67 /* enemyWalking_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D79012313D49A005DDB67 /* enemyWalking_2.png */; };
+		881D79252313D49B005DDB67 /* playerGrey_up2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D79022313D49A005DDB67 /* playerGrey_up2.png */; };
+		881D79262313D49B005DDB67 /* bg.tga in Resources */ = {isa = PBXBuildFile; fileRef = 881D79032313D49A005DDB67 /* bg.tga */; };
+		881D79272313D49B005DDB67 /* playerGrey_up1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881D79042313D49B005DDB67 /* playerGrey_up1.png */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -188,6 +223,41 @@
 		881D78D32313C777005DDB67 /* slice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = slice.jpg; path = ../../Apps/Juices.Assets/Data/slice.jpg; sourceTree = "<group>"; };
 		881D78D42313C777005DDB67 /* square.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = square.alx; path = ../../Apps/Juices.Assets/Data/square.alx; sourceTree = "<group>"; };
 		881D78D52313C777005DDB67 /* juices.alx */ = {isa = PBXFileReference; lastKnownFileType = text; name = juices.alx; path = ../../Apps/Juices.Assets/Data/juices.alx; sourceTree = "<group>"; };
+		881D78E22313D497005DDB67 /* playerGrey_up2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = playerGrey_up2.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up2.alx; sourceTree = "<group>"; };
+		881D78E32313D497005DDB67 /* bg.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bg.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/bg.alx; sourceTree = "<group>"; };
+		881D78E42313D497005DDB67 /* enemyWalking_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyWalking_1.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_1.png; sourceTree = "<group>"; };
+		881D78E52313D497005DDB67 /* playerGrey_up1.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = playerGrey_up1.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up1.alx; sourceTree = "<group>"; };
+		881D78E62313D497005DDB67 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gameover.wav; path = ../../Apps/DodgeTheCreeps.Assets/Data/gameover.wav; sourceTree = "<group>"; };
+		881D78E72313D498005DDB67 /* house.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = house.wav; path = ../../Apps/DodgeTheCreeps.Assets/Data/house.wav; sourceTree = "<group>"; };
+		881D78E82313D498005DDB67 /* enemyFlyingAlt_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyFlyingAlt_2.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_2.png; sourceTree = "<group>"; };
+		881D78E92313D498005DDB67 /* playerGrey_walk1.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = playerGrey_walk1.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk1.alx; sourceTree = "<group>"; };
+		881D78EA2313D498005DDB67 /* enemySwimming_1.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemySwimming_1.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_1.alx; sourceTree = "<group>"; };
+		881D78EB2313D498005DDB67 /* house.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = house.ogg; path = ../../Apps/DodgeTheCreeps.Assets/Data/house.ogg; sourceTree = "<group>"; };
+		881D78EC2313D498005DDB67 /* enemyWalking_1.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemyWalking_1.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_1.alx; sourceTree = "<group>"; };
+		881D78ED2313D498005DDB67 /* playerGrey_up2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = playerGrey_up2.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up2.tga; sourceTree = "<group>"; };
+		881D78EE2313D498005DDB67 /* playerGrey_walk2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = playerGrey_walk2.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk2.alx; sourceTree = "<group>"; };
+		881D78EF2313D498005DDB67 /* playerGrey_up1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = playerGrey_up1.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up1.tga; sourceTree = "<group>"; };
+		881D78F02313D499005DDB67 /* playerGrey_walk2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = playerGrey_walk2.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk2.tga; sourceTree = "<group>"; };
+		881D78F12313D499005DDB67 /* enemySwimming_1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemySwimming_1.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_1.tga; sourceTree = "<group>"; };
+		881D78F22313D499005DDB67 /* enemyFlyingAlt_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemyFlyingAlt_2.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_2.tga; sourceTree = "<group>"; };
+		881D78F32313D499005DDB67 /* enemySwimming_2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemySwimming_2.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_2.alx; sourceTree = "<group>"; };
+		881D78F42313D499005DDB67 /* enemyFlyingAlt_2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemyFlyingAlt_2.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_2.alx; sourceTree = "<group>"; };
+		881D78F52313D499005DDB67 /* playerGrey_walk1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerGrey_walk1.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk1.png; sourceTree = "<group>"; };
+		881D78F62313D499005DDB67 /* enemySwimming_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemySwimming_2.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_2.tga; sourceTree = "<group>"; };
+		881D78F72313D499005DDB67 /* playerGrey_walk1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = playerGrey_walk1.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk1.tga; sourceTree = "<group>"; };
+		881D78F82313D499005DDB67 /* enemySwimming_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemySwimming_2.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_2.png; sourceTree = "<group>"; };
+		881D78F92313D49A005DDB67 /* enemyWalking_1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemyWalking_1.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_1.tga; sourceTree = "<group>"; };
+		881D78FA2313D49A005DDB67 /* enemyWalking_2.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemyWalking_2.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_2.alx; sourceTree = "<group>"; };
+		881D78FB2313D49A005DDB67 /* enemyFlyingAlt_1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemyFlyingAlt_1.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_1.tga; sourceTree = "<group>"; };
+		881D78FC2313D49A005DDB67 /* enemyWalking_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemyWalking_2.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_2.tga; sourceTree = "<group>"; };
+		881D78FD2313D49A005DDB67 /* enemyFlyingAlt_1.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enemyFlyingAlt_1.alx; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_1.alx; sourceTree = "<group>"; };
+		881D78FE2313D49A005DDB67 /* playerGrey_walk2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerGrey_walk2.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_walk2.png; sourceTree = "<group>"; };
+		881D78FF2313D49A005DDB67 /* enemyFlyingAlt_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyFlyingAlt_1.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyFlyingAlt_1.png; sourceTree = "<group>"; };
+		881D79002313D49A005DDB67 /* enemySwimming_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemySwimming_1.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemySwimming_1.png; sourceTree = "<group>"; };
+		881D79012313D49A005DDB67 /* enemyWalking_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyWalking_2.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/enemyWalking_2.png; sourceTree = "<group>"; };
+		881D79022313D49A005DDB67 /* playerGrey_up2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerGrey_up2.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up2.png; sourceTree = "<group>"; };
+		881D79032313D49A005DDB67 /* bg.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = bg.tga; path = ../../Apps/DodgeTheCreeps.Assets/Data/bg.tga; sourceTree = "<group>"; };
+		881D79042313D49B005DDB67 /* playerGrey_up1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerGrey_up1.png; path = ../../Apps/DodgeTheCreeps.Assets/Data/playerGrey_up1.png; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -445,6 +515,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				881D79282313D4A7005DDB67 /* Creeps */,
+				881D78F02313D499005DDB67 /* playerGrey_walk2.tga */,
 				881D78DF2313C84D005DDB67 /* Juices.Assets */,
 				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
 				FA4AB21E1EBCD47D006141FA /* CANDIDATE.h */,
@@ -522,6 +594,47 @@
 				881D78D42313C777005DDB67 /* square.alx */,
 			);
 			name = Juices.Assets;
+			sourceTree = "<group>";
+		};
+		881D79282313D4A7005DDB67 /* Creeps */ = {
+			isa = PBXGroup;
+			children = (
+				881D78E32313D497005DDB67 /* bg.alx */,
+				881D79032313D49A005DDB67 /* bg.tga */,
+				881D78FD2313D49A005DDB67 /* enemyFlyingAlt_1.alx */,
+				881D78FF2313D49A005DDB67 /* enemyFlyingAlt_1.png */,
+				881D78FB2313D49A005DDB67 /* enemyFlyingAlt_1.tga */,
+				881D78F42313D499005DDB67 /* enemyFlyingAlt_2.alx */,
+				881D78E82313D498005DDB67 /* enemyFlyingAlt_2.png */,
+				881D78F22313D499005DDB67 /* enemyFlyingAlt_2.tga */,
+				881D78EA2313D498005DDB67 /* enemySwimming_1.alx */,
+				881D79002313D49A005DDB67 /* enemySwimming_1.png */,
+				881D78F12313D499005DDB67 /* enemySwimming_1.tga */,
+				881D78F32313D499005DDB67 /* enemySwimming_2.alx */,
+				881D78F82313D499005DDB67 /* enemySwimming_2.png */,
+				881D78F62313D499005DDB67 /* enemySwimming_2.tga */,
+				881D78EC2313D498005DDB67 /* enemyWalking_1.alx */,
+				881D78E42313D497005DDB67 /* enemyWalking_1.png */,
+				881D78F92313D49A005DDB67 /* enemyWalking_1.tga */,
+				881D78FA2313D49A005DDB67 /* enemyWalking_2.alx */,
+				881D79012313D49A005DDB67 /* enemyWalking_2.png */,
+				881D78FC2313D49A005DDB67 /* enemyWalking_2.tga */,
+				881D78E62313D497005DDB67 /* gameover.wav */,
+				881D78EB2313D498005DDB67 /* house.ogg */,
+				881D78E72313D498005DDB67 /* house.wav */,
+				881D78E52313D497005DDB67 /* playerGrey_up1.alx */,
+				881D79042313D49B005DDB67 /* playerGrey_up1.png */,
+				881D78EF2313D498005DDB67 /* playerGrey_up1.tga */,
+				881D78E22313D497005DDB67 /* playerGrey_up2.alx */,
+				881D79022313D49A005DDB67 /* playerGrey_up2.png */,
+				881D78ED2313D498005DDB67 /* playerGrey_up2.tga */,
+				881D78E92313D498005DDB67 /* playerGrey_walk1.alx */,
+				881D78F52313D499005DDB67 /* playerGrey_walk1.png */,
+				881D78F72313D499005DDB67 /* playerGrey_walk1.tga */,
+				881D78EE2313D498005DDB67 /* playerGrey_walk2.alx */,
+				881D78FE2313D49A005DDB67 /* playerGrey_walk2.png */,
+			);
+			name = Creeps;
 			sourceTree = "<group>";
 		};
 		9C380B3C21C123F800E4D705 /* ColorSwitch2D.Assets */ = {
@@ -890,12 +1003,14 @@
 				881D78D62313C777005DDB67 /* font.alx in Resources */,
 				881D78D72313C777005DDB67 /* juices.tga in Resources */,
 				881D78D82313C777005DDB67 /* icon114.png in Resources */,
+				881D79242313D49B005DDB67 /* enemyWalking_2.png in Resources */,
 				881D78D92313C777005DDB67 /* font.tga in Resources */,
 				881D78DA2313C777005DDB67 /* slice.alx in Resources */,
 				881D78DB2313C777005DDB67 /* slice.tga in Resources */,
 				881D78DC2313C777005DDB67 /* slice.jpg in Resources */,
 				881D78DD2313C777005DDB67 /* square.alx in Resources */,
 				881D78DE2313C777005DDB67 /* juices.alx in Resources */,
+				881D791B2313D49B005DDB67 /* enemySwimming_2.png in Resources */,
 				9CEE3B7822D9C66500494E0A /* font.tga in Resources */,
 				9CEE3B8E22D9C66500494E0A /* ScreenShot1.PNG in Resources */,
 				9CEE3B8322D9C66500494E0A /* entry.wav in Resources */,
@@ -903,25 +1018,44 @@
 				9CEE3B5822D9C66500494E0A /* 61-512.png in Resources */,
 				9CEE3B7922D9C66500494E0A /* cloud.alx in Resources */,
 				9CEE3B6F22D9C66500494E0A /* spikey.tga in Resources */,
+				881D791C2313D49B005DDB67 /* enemyWalking_1.tga in Resources */,
+				881D79092313D49B005DDB67 /* gameover.wav in Resources */,
+				881D790A2313D49B005DDB67 /* house.wav in Resources */,
 				9CEE3B8222D9C66500494E0A /* baloon.tga in Resources */,
+				881D79232313D49B005DDB67 /* enemySwimming_1.png in Resources */,
 				9CEE3B8922D9C66500494E0A /* bg.alx in Resources */,
 				9CEE3B7C22D9C66500494E0A /* aargh.wav in Resources */,
 				9CEE3B6E22D9C66500494E0A /* pointer.alx in Resources */,
 				9CEE3B7722D9C66500494E0A /* poppingtime.tga in Resources */,
 				9CEE3B8B22D9C66500494E0A /* bg.tga in Resources */,
+				881D79212313D49B005DDB67 /* playerGrey_walk2.png in Resources */,
 				9CEE3B7322D9C66500494E0A /* pointer.tga in Resources */,
+				881D79252313D49B005DDB67 /* playerGrey_up2.png in Resources */,
+				881D791A2313D49B005DDB67 /* playerGrey_walk1.tga in Resources */,
 				9C380B5621C123F800E4D705 /* scaling.png in Resources */,
+				881D79112313D49B005DDB67 /* playerGrey_walk2.alx in Resources */,
 				9CEE3B7522D9C66500494E0A /* poppingtime.alx in Resources */,
 				9CEE3B7A22D9C66500494E0A /* happy-sandbox.wav in Resources */,
+				881D791D2313D49B005DDB67 /* enemyWalking_2.alx in Resources */,
+				881D790E2313D49B005DDB67 /* house.ogg in Resources */,
 				9CEE3B7B22D9C66500494E0A /* crudefont.tga in Resources */,
 				9CEE3B6522D9C66500494E0A /* ratings.tga in Resources */,
+				881D79162313D49B005DDB67 /* enemySwimming_2.alx in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9C380B6C21C123F800E4D705 /* star5.png in Resources */,
+				881D79202313D49B005DDB67 /* enemyFlyingAlt_1.alx in Resources */,
 				9C380B6421C123F800E4D705 /* Screen0cs.tga in Resources */,
+				881D79262313D49B005DDB67 /* bg.tga in Resources */,
+				881D79052313D49B005DDB67 /* playerGrey_up2.alx in Resources */,
+				881D790C2313D49B005DDB67 /* playerGrey_walk1.alx in Resources */,
+				881D79192313D49B005DDB67 /* enemySwimming_2.tga in Resources */,
+				881D791F2313D49B005DDB67 /* enemyWalking_2.tga in Resources */,
 				9C380B6721C123F800E4D705 /* star.alx in Resources */,
+				881D79152313D49B005DDB67 /* enemyFlyingAlt_2.tga in Resources */,
 				9CEE3B6122D9C66500494E0A /* settings.anchors in Resources */,
 				9CEE3B5F22D9C66500494E0A /* aarhg.aiff in Resources */,
 				9CEE3B8522D9C66500494E0A /* bg0.tga in Resources */,
+				881D79072313D49B005DDB67 /* enemyWalking_1.png in Resources */,
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
 				9CEE3B6B22D9C66500494E0A /* fans.tga in Resources */,
 				9CEE3B8422D9C66500494E0A /* start.tga in Resources */,
@@ -933,13 +1067,17 @@
 				9CEE3B5B22D9C66500494E0A /* Settings.png in Resources */,
 				9CEE3B8722D9C66500494E0A /* start.alx in Resources */,
 				9C380B6121C123F800E4D705 /* ring4color.alx in Resources */,
+				881D79222313D49B005DDB67 /* enemyFlyingAlt_1.png in Resources */,
 				9C380B6621C123F800E4D705 /* star.tga in Resources */,
 				9CEE3B6022D9C66500494E0A /* icon.png in Resources */,
+				881D79172313D49B005DDB67 /* enemyFlyingAlt_2.alx in Resources */,
 				9CEE3B8A22D9C66500494E0A /* Get-Ready.png in Resources */,
+				881D790F2313D49B005DDB67 /* enemyWalking_1.alx in Resources */,
 				9CEE3B5D22D9C66500494E0A /* heli.png in Resources */,
 				9CEE3B7222D9C66500494E0A /* spikey.alx in Resources */,
 				9CEE3B6622D9C66500494E0A /* settings_icon.tga in Resources */,
 				9CEE3B7D22D9C66500494E0A /* cloud.tga in Resources */,
+				881D79272313D49B005DDB67 /* playerGrey_up1.png in Resources */,
 				9C380B5D21C123F800E4D705 /* skydome.alx in Resources */,
 				9CEE3B5A22D9C66500494E0A /* baloon_red.png in Resources */,
 				9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */,
@@ -948,14 +1086,17 @@
 				9C735D49142A3C85003CEA26 /* icon114.png in Resources */,
 				9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */,
 				9CEE3B7622D9C66500494E0A /* poppingtime.png in Resources */,
+				881D79122313D49B005DDB67 /* playerGrey_up1.tga in Resources */,
 				9CEE3B8622D9C66500494E0A /* pop.wav in Resources */,
 				FA4AB2221EBCD846006141FA /* Default-568h@2x.png in Resources */,
 				9CEE3B6722D9C66500494E0A /* fans.alx in Resources */,
 				9C380B6921C123F800E4D705 /* square.alx in Resources */,
+				881D790D2313D49B005DDB67 /* enemySwimming_1.alx in Resources */,
 				9CEE3B8822D9C66500494E0A /* finefont.alx in Resources */,
 				9C380B6821C123F800E4D705 /* star5.tga in Resources */,
 				9C380B5A21C123F800E4D705 /* gamemodesbanner.alx in Resources */,
 				9CEE3B7E22D9C66500494E0A /* 4.jpg in Resources */,
+				881D79182313D49B005DDB67 /* playerGrey_walk1.png in Resources */,
 				9C4E38F5143CA659006EDD6F /* AdViewController.xib in Resources */,
 				9CEE3B7122D9C66500494E0A /* getready.alx in Resources */,
 				9CEE3B6A22D9C66500494E0A /* dpad.tga in Resources */,
@@ -967,21 +1108,28 @@
 				9CEE3B6922D9C66500494E0A /* ratings.alx in Resources */,
 				9C380B5921C123F800E4D705 /* GameModesBanner.PNG in Resources */,
 				9CEE3B8022D9C66500494E0A /* baloon.jpg in Resources */,
+				881D79142313D49B005DDB67 /* enemySwimming_1.tga in Resources */,
 				9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */,
 				9C380B6D21C123F800E4D705 /* font.blend in Resources */,
 				9CEE3B6C22D9C66500494E0A /* getready.tga in Resources */,
 				9C380B6521C123F800E4D705 /* Screen0cs.alx in Resources */,
 				9C380B6A21C123F800E4D705 /* Screen0cs.wav in Resources */,
 				9C221B08153751F300EFEA23 /* Default@2x.png in Resources */,
+				881D791E2313D49B005DDB67 /* enemyFlyingAlt_1.tga in Resources */,
 				9CEE3B6D22D9C66500494E0A /* heli.tga in Resources */,
+				881D790B2313D49B005DDB67 /* enemyFlyingAlt_2.png in Resources */,
+				881D79102313D49B005DDB67 /* playerGrey_up2.tga in Resources */,
 				9CEE3B6822D9C66500494E0A /* settings_icon.alx in Resources */,
 				9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */,
+				881D79062313D49B005DDB67 /* bg.alx in Resources */,
 				9CEE3B5C22D9C66500494E0A /* logo512.png in Resources */,
 				9CEE3B8122D9C66500494E0A /* drop.wav in Resources */,
 				9CEE3B7F22D9C66500494E0A /* baloon.alx in Resources */,
 				9C380B6021C123F800E4D705 /* ring4color.tga in Resources */,
 				9C380B5C21C123F800E4D705 /* Stripes.PNG in Resources */,
 				9CEE3B6222D9C66500494E0A /* settings.alx in Resources */,
+				881D79132313D49B005DDB67 /* playerGrey_walk2.tga in Resources */,
+				881D79082313D49B005DDB67 /* playerGrey_up1.alx in Resources */,
 				9CEE3B5922D9C66500494E0A /* lucidagrande.jpg in Resources */,
 				9C380B5B21C123F800E4D705 /* Screen0.jpg in Resources */,
 				9CEE3B5E22D9C66500494E0A /* spikey.jpg in Resources */,

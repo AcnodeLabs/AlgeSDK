@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
 		9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3281BE13F275F900A53E54 /* Cocoa.framework */; };
 		9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281C713F275F900A53E54 /* InfoPlist.strings */; };
@@ -95,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
 		9C3281BA13F275F900A53E54 /* Evolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Evolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -187,7 +189,6 @@
 		9CE79C6B1F9DED0800B87310 /* UTM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTM.h; sourceTree = "<group>"; };
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
-		9CFB727922E04FFF00426B8F /* App0.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = App0.hpp; path = ../../Apps/PoppingTime/App0.hpp; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		9CFB727B22E0514900426B8F /* pointer.alx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pointer.alx; sourceTree = "<group>"; };
 		9CFB727C22E0514900426B8F /* pointer.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = pointer.tga; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				9CFB727922E04FFF00426B8F /* App0.hpp */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C59977F22DCE926006614F8 /* Data */,
 				9C5C2F5F20314C36005DAC2C /* CANDIDATE.h */,
@@ -296,6 +296,7 @@
 		9C3281C513F275F900A53E54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */,
 				9C2B84542243F747005DF297 /* camera.cpp */,
 				9C3281C713F275F900A53E54 /* InfoPlist.strings */,
 				9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */,
@@ -432,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9C5997B822DCE926006614F8 /* pointer.alx in Resources */,
 				9C5997BD22DCE926006614F8 /* pointer.tga in Resources */,
 				9C5997CF22DCE926006614F8 /* bg.tga in Resources */,

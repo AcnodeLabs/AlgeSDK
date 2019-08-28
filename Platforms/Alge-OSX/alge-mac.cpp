@@ -296,7 +296,7 @@ int main( int argc, char** argv )
   fclose(f);
     
   FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
-    
+  
   char* l = strrchr(app.rm.resourcepath, '.');
 	
   if (l) l[0] = 0;

@@ -224,7 +224,14 @@ public:
 	}
 
 	void PositionCamera(f3 position, f3 rotation) {
-		aCamera.PosRot({position.x,position.y,position.z}, {rotation.x, rotation.y, rotation.z});
+        SF3dVector p, r;
+        p.x = position.x;
+        p.y = position.y;
+        p.z = position.z;
+        r.x = rotation.x;
+        r.y = rotation.y;
+        r.z = rotation.z;
+		aCamera.PosRot(p,r);
 		aCamera.pos = position;
 		aCamera.rot = rotation;
 	}
