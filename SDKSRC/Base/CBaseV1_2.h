@@ -123,7 +123,6 @@ public:
 #endif // WIN32
 
 #ifdef ANDROID
-#define NO_BOX2D
 #define ES_ONLY
 #define NO_NATS
 #include "Ada/AlgeSDK.ads.h"

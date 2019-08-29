@@ -41,8 +41,8 @@ cd %PWD%
 echo src\%PACKAGE:.=\%\%APPNAME%.java
 type src\%PACKAGE:.=\%\%APPNAME%.java
 echo ...
-echo set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
-echo if not %var%==y exit /B
+set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
+if not %var%==y exit /B
 
 echo ------------------ SLATE CLEAN --- Ignore if Exception is raised on %PACKAGEQ%
 

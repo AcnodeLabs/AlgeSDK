@@ -77,6 +77,44 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\bitset \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list \
+  jni\..\..\..\..\Box2D\Box2D\Box2D.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2Settings.h \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2Draw.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2Math.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2Timer.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2CircleShape.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2Shape.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2BlockAllocator.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\b2Collision.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2EdgeShape.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2ChainShape.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2PolygonShape.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\b2BroadPhase.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\b2DynamicTree.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2GrowableStack.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\b2Distance.h \
+  jni\..\..\..\..\Box2D\Box2D\Collision\b2TimeOfImpact.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2Body.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2Fixture.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2WorldCallbacks.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2TimeStep.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2World.h \
+  jni\..\..\..\..\Box2D\Box2D\Common\b2StackAllocator.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\b2ContactManager.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Contacts\b2Contact.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2DistanceJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2Joint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2FrictionJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2GearJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2MotorJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2MouseJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2PrismaticJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2PulleyJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2RevoluteJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2RopeJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.h \
+  jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\CCommands.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CAnimator.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CVec.hpp \
@@ -269,6 +307,82 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list:
+
+jni\..\..\..\..\Box2D\Box2D\Box2D.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2Settings.h:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2Draw.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2Math.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2Timer.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2CircleShape.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2Shape.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2BlockAllocator.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\b2Collision.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2EdgeShape.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2ChainShape.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\Shapes\b2PolygonShape.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\b2BroadPhase.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\b2DynamicTree.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2GrowableStack.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\b2Distance.h:
+
+jni\..\..\..\..\Box2D\Box2D\Collision\b2TimeOfImpact.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2Body.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2Fixture.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2WorldCallbacks.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2TimeStep.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2World.h:
+
+jni\..\..\..\..\Box2D\Box2D\Common\b2StackAllocator.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\b2ContactManager.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Contacts\b2Contact.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2DistanceJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2Joint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2FrictionJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2GearJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2MotorJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2MouseJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2PrismaticJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2PulleyJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2RevoluteJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2RopeJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.h:
+
+jni\..\..\..\..\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.h:
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\CCommands.h:
 

@@ -40,5 +40,13 @@ public:
         float restitution = 0.3;
         AddResourceEx(&boxes, "box", 40, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
+
+#ifdef  NO_BOX2D
+		output.pushP(CMD_TOAST, $ "NO_BOX2D", $ "NO_BOX2D");
+#else 
+		output.pushP(CMD_TOAST, $ "BOX2D ENABLED", $ "BOX2D ENABLED");
+#endif // ! NO_BOX2D
+
+
 	}
 };
