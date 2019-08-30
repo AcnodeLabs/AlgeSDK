@@ -12,4 +12,6 @@ Platforms/Alge-Windows/Rules.txt
 *.dex.d
 mApps/*
 *xcuserdata*
+*.o
+*.o.d
 .vs/*
