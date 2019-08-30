@@ -125,29 +125,41 @@ public:
 	string jn;
     CControls c;
     
-	void processInput(PEG::CMD* p, float deltaT) {
-		if (p->command == CMD_KEYDOWN) {
+	void processInput(PEG::CMD* p, float deltaT) { 
+
+		char touchData = 0;
+
+		if (p->command == CMD_SCREENSIZE) {
+			c.screen[0] = p->i1;
+			c.screen[1] = p->i2;
+		}
+
+		if (p->command == CMD_TOUCH_START) {
+			touchData = (c.KROSS_(false, p->i1, p->i2));
+		}
+
+		if (p->command == CMD_KEYDOWN || touchData) {
 
 			if (p->i1 == AL_KEY_PLUS) {
 				sel->JuiceSpeed *= 2;
 				jn = "[x2] JuiceSpeed=" + std::to_string(sel->JuiceSpeed);
 			}
-			if (p->i1 == AL_KEY_MINUS) {
+			if (p->i1 == AL_KEY_MINUS || touchData == KROSS_DOWN) {
 				sel->JuiceSpeed /= 2;
 				jn = "[/2] JuiceSpeed=" + std::to_string(sel->JuiceSpeed);
 			}
 
-			if (p->i1 == AL_KEY_RIGHT) {
+			if (p->i1 == AL_KEY_RIGHT || touchData == KROSS_RIGHT) {
 				sel = objct.getInstancePtr(1);
 				resetPosRotSpeed(1);
 				jn = "SELECTED RIGHT";
 			}
-			if (p->i1 == AL_KEY_LEFT) {
+			if (p->i1 == AL_KEY_LEFT || touchData == KROSS_LEFT) {
 				sel = objct.getInstancePtr(0);
 				resetPosRotSpeed(0);
 				jn = "SELECTED LEFT";
 			}
-			if (p->i1 == AL_KEY_UP) {
+			if (p->i1 == AL_KEY_UP || touchData == KROSS_UP) {
 				sel->JuiceType++;
 				if (sel->JuiceType == JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
 				if (sel->JuiceType >= JuiceTypes::JUICES_CANCEL) {
@@ -156,7 +168,7 @@ public:
 				}
 				jn = sel->UUID + ":" + JuiceName(sel->JuiceType);
 			}
-			if (p->i1 == AL_KEY_DOWN) {
+			if (p->i1 == AL_KEY_DOWN || touchData == KROSS_DOWN) {
 				sel->JuiceType--;
 				if (sel->JuiceType == JuiceTypes::JUICE_SCALE_IN) sel->scale = 0.1;
 				if (sel->JuiceType < 0) {
@@ -168,9 +180,7 @@ public:
 			output.pushP(CMD_TOAST, $ jn.c_str(), 0);
 		}
         
-		if (p->command == CMD_TOUCH_START) {
-					
-		}
+
 
 	}
 
