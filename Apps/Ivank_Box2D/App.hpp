@@ -18,10 +18,14 @@ public:
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
         if (p->command == CMD_TOUCH_START) {
+			static string msg;
+			f3 pos(p->i1,p->i2,0);
+			msg = pos.str("tch:%.1f,%.1f,%.1f");
+			output.pushP(CMD_TOAST, $ msg.c_str(), $ msg.c_str());
+
             for (auto b : touched_bodies) {
-                printf("\ttch:%s",b->UUID.c_str());
                 b->Impulse(f2(0, -10));
-                if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
+               // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
             }
         }
 	}
