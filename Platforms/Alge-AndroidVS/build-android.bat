@@ -23,78 +23,81 @@ set ORIENT=%5
 echo ORIENT=%ORIENT%
 set PASSW=%6
 
-type jni\CANDIDATE.h
-echo Checking .. src\%PACKAGE:.=\%\%APPNAME%.java
+rem type jni\CANDIDATE.h
+echo [1] Checking .. src\%PACKAGE:.=\%\%APPNAME%.java
 
 set GLUEDIR=src\%PACKAGE:.=\%\
-echo Making ... %GLUEDIR%  
+echo [2] Making ... %GLUEDIR%  
 mkdir %GLUEDIR%
 set PWD=%cd%
 cd %GLUEDIR%
 
 set GLUECODE=package %PACKAGE%; public class %APPNAME% extends com.acnodelabs.alge.BaseActivity{}
-echo Writing .. Gluecode in %APPNAME%.java
+echo [3] Writing .. Gluecode in %APPNAME%.java
 echo %GLUECODE% > %APPNAME%.java
+rem del /Q 1.java
 echo cd %PWD%
 cd %PWD%
 
-echo src\%PACKAGE:.=\%\%APPNAME%.java
+echo [5] src\%PACKAGE:.=\%\%APPNAME%.java
 type src\%PACKAGE:.=\%\%APPNAME%.java
-echo ...
+echo [6] ...
 set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
 if not %var%==y exit /B
 
-echo ------------------ SLATE CLEAN --- Ignore if Exception is raised on %PACKAGEQ%
+echo [7] ------------------ SLATE CLEAN --- Cleaning up src\..\assets directory
+del /Q assets\*.*
 
-del /Q assets\*.jpg
-del /Q assets\*.png
-del /Q assets\*.alx
-del /Q assets\*.tga
-del /Q assets\*.wav
-del /Q assets\*.mp3
-
-echo ------------------ COPYING APP ASSETS
+echo [8] ------------------ COPYING APP ASSETS
 cd assets
+echo [8.1] copying from ..\..\..\Apps\%APPNAME%.Assets\Data\ to jni\..\assets 
 copy /Y ..\..\..\Apps\%APPNAME%.Assets\Data\* .
 copy icon.png ..\res\drawable-ldpi
 cd ..
 
-echo ------------------ CONFIGURING NATIVE BUILD
+echo [9] ------------------ CONFIGURING NATIVE BUILD
 set USERSRC=%PACKAGE:.=\%
 cd src
 mkdir %USERSRC%
 cd ..
-echo CHECK %USERSRC%
-copy jni\CANDIDATE.h jni\CAND.h
-del jni\CANDIDATE.h
+echo [10] CHECK %USERSRC%
+rem copy jni\CANDIDATE.h jni\CAND.h
+rem del jni\CANDIDATE.h
+
+cd Platforms\Alge-AndroidVS
 
 del AndroidManifest.xml
+echo [11] %cd%\cfgdroid.exe %PACKAGE% %APPNAME% %VERSION% %SDKVER% %ORIENT% generated AndroidManifest.xml
 cfgdroid.exe %PACKAGE% %APPNAME% %VERSION% %SDKVER% %ORIENT% > AndroidManifest.xml
-copy jni\CAND.h jni\CANDIDATE.h
-del jni\CAND.h
+rem goto endz
+rem copy jni\CAND.h jni\CANDIDATE.h
+rem del jni\CAND.h
 
-echo ------------------ COMPILING NATIVE CODES
+echo [12] ------------------ COMPILING NATIVE CODES
 call %NDK_ROOT%\ndk-build clean
 call %NDK_ROOT%\ndk-build
-echo ------------------- BUILDING JAVA PORTION
-echo ---- compiling java files in src folder
+echo [13] ------------------- BUILDING JAVA PORTION
+echo [14] ---- compiling java files in src folder
 cd src/com/acnodelabs/alge
-echo javac -classpath %SDK_ROOT%\platforms\android-27\android.jar *.java
+echo %cd%
+echo [15] javac -classpath %SDK_ROOT%\platforms\android-27\android.jar *.java
 call javac -classpath %SDK_ROOT%\platforms\android-27\android.jar *.java
 cd ../../../..
-echo --- generating new ant build.xml
+echo [16] --- generating new ant build.xml
 del build.xml
 call %SDK_ROOT%\tools\android update project --target android-27 --path .
-echo --- generating apk 
+echo [17] --- generating apk 
 call %ANT_EXE% -q release
 del /Q bin\%APPNAME%.apk
-echo ------------------- SIGNING
-echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -keypass %PASSW%
+echo [18] ------------------- SIGNING
+echo [19] jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -keypass %PASSW%
 call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -storepass %PASSW% -keypass %PASSW%
-echo %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
+echo [20] %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 call %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 %SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
-echo Deploying...
+echo [21] Deploying...
 %SDK_ROOT%\platform-tools\adb install bin\%APPNAME%.apk
 %SDK_ROOT%\platform-tools\adb shell am start -n %PACKAGE%/.%APPNAME%
-echo Check App on your Device
+
+endz:
+echo [22] Check App on your Device
