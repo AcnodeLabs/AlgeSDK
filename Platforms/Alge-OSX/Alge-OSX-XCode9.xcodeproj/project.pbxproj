@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
+		889C5CA62318EADE006C2259 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 889C5CA52318EADE006C2259 /* Data */; };
 		88AB79CA2316CB8F004A0239 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD62316684D009AEDF6 /* Data */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -93,6 +94,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				889C5CA62318EADE006C2259 /* Data in CopyFiles */,
 				88AB79CA2316CB8F004A0239 /* Data in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
+		889C5CA52318EADE006C2259 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Juices.Assets/Data; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
 		88AB7AB12316DFAD004A0239 /* b2StackAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2StackAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2StackAllocator.cpp; sourceTree = "<group>"; };
@@ -230,6 +233,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				889C5CA52318EADE006C2259 /* Data */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88BBEFD62316684D009AEDF6 /* Data */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
