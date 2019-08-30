@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		88AB79CA2316CB8F004A0239 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD62316684D009AEDF6 /* Data */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -30,7 +31,6 @@
 		88AB7AD92316E00F004A0239 /* b2ContactManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD32316E00F004A0239 /* b2ContactManager.cpp */; };
 		88AB7ADA2316E00F004A0239 /* b2Island.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD42316E00F004A0239 /* b2Island.cpp */; };
 		88AB7ADB2316E00F004A0239 /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD52316E00F004A0239 /* b2World.cpp */; };
-		88AB7ADC2316E00F004A0239 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD62316E00F004A0239 /* b2Body.cpp */; };
 		88AB7ADD2316E00F004A0239 /* b2WorldCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD72316E00F004A0239 /* b2WorldCallbacks.cpp */; };
 		88AB7ADE2316E00F004A0239 /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AD82316E00F004A0239 /* b2Fixture.cpp */; };
 		88AB7AEB2316E02D004A0239 /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7ADF2316E02D004A0239 /* b2WheelJoint.cpp */; };
@@ -100,6 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
 		88AB7AB12316DFAD004A0239 /* b2StackAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2StackAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2StackAllocator.cpp; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		88AB7AD32316E00F004A0239 /* b2ContactManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2ContactManager.cpp; path = ../../../Box2D/Box2D/Dynamics/b2ContactManager.cpp; sourceTree = "<group>"; };
 		88AB7AD42316E00F004A0239 /* b2Island.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Island.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Island.cpp; sourceTree = "<group>"; };
 		88AB7AD52316E00F004A0239 /* b2World.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2World.cpp; path = ../../../Box2D/Box2D/Dynamics/b2World.cpp; sourceTree = "<group>"; };
-		88AB7AD62316E00F004A0239 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AD72316E00F004A0239 /* b2WorldCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2WorldCallbacks.cpp; path = ../../../Box2D/Box2D/Dynamics/b2WorldCallbacks.cpp; sourceTree = "<group>"; };
 		88AB7AD82316E00F004A0239 /* b2Fixture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Fixture.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Fixture.cpp; sourceTree = "<group>"; };
 		88AB7ADF2316E02D004A0239 /* b2WheelJoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2WheelJoint.cpp; path = ../../../Box2D/Box2D/Dynamics/Joints/b2WheelJoint.cpp; sourceTree = "<group>"; };
@@ -227,19 +227,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88AB7B092316E13F004A0239 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Other Sources";
-			sourceTree = "<group>";
-		};
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
 				88BBEF8623165163009AEDF6 /* candidate.h */,
-				88AB7B092316E13F004A0239 /* Other Sources */,
+				88BBEFD62316684D009AEDF6 /* Data */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
+				889C5CA22318E717006C2259 /* b2Body.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
 				88AB7AF72316E046004A0239 /* b2CircleContact.cpp */,
 				88AB7AFB2316E046004A0239 /* b2Contact.cpp */,
@@ -260,7 +254,6 @@
 				88AB7AE92316E02D004A0239 /* b2RopeJoint.cpp */,
 				88AB7AE62316E02D004A0239 /* b2WeldJoint.cpp */,
 				88AB7ADF2316E02D004A0239 /* b2WheelJoint.cpp */,
-				88AB7AD62316E00F004A0239 /* b2Body.cpp */,
 				88AB7AD32316E00F004A0239 /* b2ContactManager.cpp */,
 				88AB7AD82316E00F004A0239 /* b2Fixture.cpp */,
 				88AB7AD42316E00F004A0239 /* b2Island.cpp */,
@@ -284,7 +277,6 @@
 				88AB7AB42316DFAD004A0239 /* b2Settings.cpp */,
 				88AB7AB12316DFAD004A0239 /* b2StackAllocator.cpp */,
 				88AB7AB32316DFAD004A0239 /* b2Timer.cpp */,
-				88BBEFD62316684D009AEDF6 /* Data */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
 				9C4636BF1FBA0C68008FB5EF /* CBaseV1_2.h */,
@@ -481,7 +473,6 @@
 				88AB7AD92316E00F004A0239 /* b2ContactManager.cpp in Sources */,
 				88AB7ADA2316E00F004A0239 /* b2Island.cpp in Sources */,
 				88AB7ADB2316E00F004A0239 /* b2World.cpp in Sources */,
-				88AB7ADC2316E00F004A0239 /* b2Body.cpp in Sources */,
 				88AB7ADD2316E00F004A0239 /* b2WorldCallbacks.cpp in Sources */,
 				88AB7ADE2316E00F004A0239 /* b2Fixture.cpp in Sources */,
 				88AB7ACF2316DFEA004A0239 /* b2PolygonShape.cpp in Sources */,
@@ -503,6 +494,7 @@
 				88AB7AB92316DFAD004A0239 /* b2Timer.cpp in Sources */,
 				88AB7ABA2316DFAD004A0239 /* b2Settings.cpp in Sources */,
 				88AB79D12316DC63004A0239 /* UTM.cpp in Sources */,
+				889C5CA32318E717006C2259 /* b2Body.cpp in Sources */,
 				9C3281CC13F275F900A53E54 /* main.m in Sources */,
 				9C3281D213F275F900A53E54 /* AlgeAppPlanetsAppDelegate.m in Sources */,
 				9C4637221FBA0E4B008FB5EF /* alge-mac.cpp in Sources */,
