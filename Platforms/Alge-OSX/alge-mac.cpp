@@ -261,11 +261,11 @@ void FindAppName() {
 void reset_window_title(int para)
 {
  //   glutSetWindowTitle(APP_TITLE);
-    glutFullScreen();
+ //   glutFullScreen();
     
-  //  glutReshapeWindow(kWindowWidth, kWindowHeight);
+    glutReshapeWindow(kWindowWidth, kWindowHeight);
     glutPositionWindow(0,0);
-    //HandleReshape(kWindowWidth, kWindowHeight);
+  //  HandleReshape(kWindowWidth, kWindowHeight);
 }
 
 int main( int argc, char** argv )
@@ -273,13 +273,14 @@ int main( int argc, char** argv )
   glutInit( &argc, argv );
   app.landscape = true;
   
-  kWindowWidth = glutGet(GLUT_WINDOW_WIDTH);
-  kWindowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+  kWindowWidth = app.getBackgroundSize().x;
+  kWindowHeight = app.getBackgroundSize().y;
   
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     
   int theWindowHandle = glutCreateWindow( "Alge-OSX" );
   glutInitWindowSize( kWindowWidth, kWindowHeight );
+    glutReshapeWindow(kWindowWidth, kWindowHeight);
     
   glutSetWindow( theWindowHandle );
   glutDisplayFunc( HandleDisplay );
@@ -314,11 +315,16 @@ int main( int argc, char** argv )
   initAL(app.rm.resourcepath);
  
   app.rm.Init(app.rm.resourcepath);
-    app.resolutionReported.x = 1024;
-    app.resolutionReported.y = 768;
-  app.Init(app.rm.resourcepath);
-	
-  //HandleReshape(kWindowWidth, kWindowHeight);
+ //   app.resolutionReported.x = kWindowWidth;
+ //   app.resolutionReported.y = kWindowHeight;
+    app.rightSide = kWindowWidth;
+    app.bottomSide = kWindowHeight;
+    app.originX = app.rightSide /2;
+    app.originX = app.bottomSide /2;
+    app.Init(app.rm.resourcepath);
+
+    
+  HandleReshape(kWindowWidth, kWindowHeight);
     
   startTime = glutGet(GLUT_ELAPSED_TIME);
   deltaT = 0;

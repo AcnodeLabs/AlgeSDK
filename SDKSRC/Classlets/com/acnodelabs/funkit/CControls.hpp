@@ -47,6 +47,15 @@ public:
 	//				 +
 	//				 +DOWN
 	
+    string toStr(short in) {
+        if (in==KROSS_UP) return "KROSS_UP";
+         if (in==KROSS_DOWN) return "KROSS_DOWN";
+         if (in==KROSS_LEFT) return "KROSS_LEFT";
+         if (in==KROSS_RIGHT) return "KROSS_RIGHT";
+        if (in==KROSS_CENTER) return "KROSS_CENTER";
+        return string("--");
+    }
+    
 	short KROSS_(bool portrait, int touched_x, int touched_y) {
 		
 		static short trace[3];

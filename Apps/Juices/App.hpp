@@ -127,15 +127,16 @@ public:
     
 	void processInput(PEG::CMD* p, float deltaT) { 
 
-		char touchData = 0;
+		short touchData = 0;
 
 		if (p->command == CMD_SCREENSIZE) {
-			c.screen[0] = p->i1;
+			c.screen[0] = p->i1 ;
 			c.screen[1] = p->i2;
 		}
 
 		if (p->command == CMD_TOUCH_START) {
 			touchData = (c.KROSS_(false, p->i1, p->i2));
+            jn = "Touched " + c.toStr(touchData);
 		}
 
 		if (p->command == CMD_KEYDOWN || touchData) {
