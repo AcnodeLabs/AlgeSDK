@@ -135,8 +135,17 @@ public:
 		}
 
 		if (p->command == CMD_TOUCH_START) {
+
 			touchData = (c.KROSS_(false, p->i1, p->i2));
             jn = "Touched " + c.toStr(touchData);
+            
+            if (onTouched(objct.getInstancePtr(0)->UUID)) {
+                jn = "Touched LEFT" ;
+            }
+            if (onTouched(objct.getInstancePtr(1)->UUID)) {
+                jn = "Touched RIGHT" ;
+            }
+            
 		}
 
 		if (p->command == CMD_KEYDOWN || touchData) {
