@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		888E394F23198CBB00630241 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 888E394E23198CBA00630241 /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		889C5CA62318EADE006C2259 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 889C5CA52318EADE006C2259 /* Data */; };
 		88AB79CA2316CB8F004A0239 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD62316684D009AEDF6 /* Data */; };
@@ -94,6 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				888E394F23198CBB00630241 /* Data in CopyFiles */,
 				889C5CA62318EADE006C2259 /* Data in CopyFiles */,
 				88AB79CA2316CB8F004A0239 /* Data in CopyFiles */,
 			);
@@ -102,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		888E394E23198CBA00630241 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/DodgeTheCreeps.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		889C5CA52318EADE006C2259 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Juices.Assets/Data; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				889C5CA52318EADE006C2259 /* Data */,
+				888E394E23198CBA00630241 /* Data */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88BBEFD62316684D009AEDF6 /* Data */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
