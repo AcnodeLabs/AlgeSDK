@@ -43,7 +43,7 @@ namespace PlanetApp {
 	};
 }
 
-class App {
+class App : public AlgeApp {
 	PlanetApp::StateMgr state;
 	static const short USER_ALXFILENAME = 1;
 	char pl9[9][256], szP1[256], alxfilename[256], link[256], text[64], idvideox[32], szAbout[255];
