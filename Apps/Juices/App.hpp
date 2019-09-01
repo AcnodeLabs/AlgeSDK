@@ -135,6 +135,7 @@ public:
 		}
 
 		if (p->command == CMD_TOUCH_START) {
+
 			touchData = (c.KROSS_(false, p->i1, p->i2));
             jn = "Touched " + c.toStr(touchData);
             
@@ -144,7 +145,6 @@ public:
             if (onTouched(objct.getInstancePtr(1)->UUID)) {
                 jn = "Touched RIGHT" ;
             }
-            
             
 		}
 
