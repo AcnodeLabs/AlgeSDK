@@ -753,13 +753,12 @@ public:
 
 char* New_String(const char* sz) {return ((char*)sz);}
 
-
 void alPushI (int cmd, int x, int y);
 void alPushP (int cmd, void* param1, void* param2);
 int alLoadModel(ResourceInf* r);
 int alReserveModelId(void);
 void alDrawModel (int ident, bool wireframe = false);
-#ifdef WIN32
+
 void alBillBoardBegin();
 void alBillBoardEnd();
 void alLoadIdentity();
@@ -776,5 +775,5 @@ void alAlphaTest (int enable, float fA = 0.4); // 0=>unset ; 1=>set GL_SRC_ALPHA
 float alModelBounds(int id);
 void alDrawModelTranslateRotate (int id, float posx = 0.0, float posy = 0.0, float posz = 0.0, float angle = 0.0, float x = 0.0, float y = 0.0, float z = 0.0, int rotatefirst = 0, int billboard = 0);
 void alTranslateRotate (float posx = 0.0, float posy = 0.0, float posz = 0.0, float angle =0.0, float x = 0.0, float y = 0.0, float z = 0.0);
-#endif
+
 #endif

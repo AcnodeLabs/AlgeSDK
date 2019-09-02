@@ -1,8 +1,7 @@
 #include <string>
 #include <vector>
 
-#define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
-#include CBASE 
+#include "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 
 // Parallax Effect : http://blog.denivip.ru/index.php/2013/08/parallax-in-ios-applications/?lang=en
 
@@ -141,7 +140,7 @@ public:
         // Convert to Degrees
          for (int n =1; n<=NUMSTARS ; n++) {
            r = C_float(1.001 * (Random(rGen)));
-           alScaleModel(star.modelId, r, r, 1.0);
+             alScaleModel(star.modelId, r, r, 1.0);
            
         alDrawModelTranslateRotate(star.modelId,
                                    C_float(starpos[n].x),

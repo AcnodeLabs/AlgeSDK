@@ -12,8 +12,8 @@
 #define NO_NATS
 #define glOrthof glOrtho
 #include "../../SDKSRC/Base/CBaseV1_2.h"
-#include "CANDIDATE.h"
 
+#include "CANDIDATE.h"
 
 
 #include <GLUT/glut.h>
@@ -339,10 +339,10 @@ int main( int argc, char** argv )
         fprintf(stderr, "failed to open font\n");
    }
     
-  /* XXX select the font and size to render with by calling dtx_use_font
-   * if you want to use a different font size, you must first call:
-   * dtx_prepare(font, size) once.
-   */
+  // XXX select the font and size to render with by calling dtx_use_font
+//if you want to use a different font size, you must first call:
+   // dtx_prepare(font, size) once.
+   //
    
   dtx_use_font(font, 24);
   glutMainLoop( );

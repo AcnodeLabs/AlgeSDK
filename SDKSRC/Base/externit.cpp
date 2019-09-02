@@ -46,10 +46,8 @@ int alReserveModelId() {
 	return model_counter;
 }
 
-extern "C++" void alDrawModelTranslateRotate(int id, float posx, float posy, float posz,
-	float angle, float x, float y, float z,
-	int rotatefirst,
-	int billboard)
+extern "C++" voidalDrawModelTranslateRotate (int id, float posx = 0.0, float posy = 0.0, float posz = 0.0, float angle = 0.0, float x = 0.0, float y = 0.0, float z = 0.0, int rotatefirst = 0, int billboard = 0)
+
 {
 	glPushMatrix();
 	if (rotatefirst != 0) {
@@ -84,7 +82,7 @@ extern "C++" void alTranslateRotate(float posx, float posy, float posz,
 }
 
 #else
-
+class App;
 //MACOS
 #define game app
 extern "C++" void alAlphaTest(int set_unset, float fA) {
@@ -153,7 +151,7 @@ extern "C++" void alTranslateRotate( float posx , float posy, float posz,
     glTranslatef(posx,posy,posz);
     glRotatef(angle,x,y,z);
 }
-
+#undef game
 #endif
 #endif
 

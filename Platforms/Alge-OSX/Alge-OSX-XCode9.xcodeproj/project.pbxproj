@@ -233,9 +233,9 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88BBEF8623165163009AEDF6 /* candidate.h */,
 				8820DA2F231D63F700AF2D21 /* Data */,
 				8820DA31231D67B000AF2D21 /* Data */,
-				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
 				889C5CA22318E717006C2259 /* b2Body.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
