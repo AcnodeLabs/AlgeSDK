@@ -76,7 +76,9 @@ public:
 	PEG input,output;
 	CResourceManager rm;
     
-    void Deinit() {}
+    void Deinit() {
+        planetInf.clear();
+    }
     
     bool getSomeInfo(int planetNum, int* idtype , char* link) {
         
@@ -138,7 +140,7 @@ public:
     void renderStars() {
         angle1 = float(timeVar) * FACTOR_RADIANS_DEGREES * 0.005;
         // Convert to Degrees
-         for (int n =1; n<=NUMSTARS ; n++) {
+         for (int n =1; n<=NUMSTARS ; n) {
            r = C_float(1.001 * (Random(rGen)));
              alScaleModel(star.modelId, r, r, 1.0);
            
@@ -175,7 +177,7 @@ public:
     
     void renderPlanets() {
         alPushMatrix();
-        for (int n=0; n<NP; n++) {
+        for (int n=0; n<NP; n) {
             nr = (NP-1) - n;
             alPushMatrix();
             if (nr == planetNo) {
@@ -325,7 +327,7 @@ public:
     
         if (cmd->command==CMD_TOUCH_START &&
             (absolute(dist-DIST_CLOSER)>=0.05)) {
-            planetNo++;
+            planetNo;
             initPosOrient();
             if (planetNo>(NP-1)) planetNo=0;
             output.pushP(CMD_MSG, (void*)(char*) planetInf.at(planetNo).name.c_str(), 0);
@@ -361,7 +363,7 @@ public:
         *idty = idtype1;
         
         if (idtype1==ID_LINK_YOUTUBE && id1!=lastId) {
-            //output.pushP(CMD_TOAST, $ "Seeking Content ..", 0);
+            //output_pushP(CMD_TOAST, $ "Seeking Content ..", 0);
             output.pushP(CMD_YOUTUBE_SHOW, $ idvideox, youFrame);
             youReady = false;
             lastId = id1;
@@ -377,33 +379,36 @@ public:
     void LoadModel(GameObject* gob, ResourceInf* res) {
         gob->modelId = modelId;
         alLoadModel((char*) res->alx.c_str(), (char*) res->tex.c_str(), modelId, res->scale);
+        modelId;
+    }
+    void LoadPlanet (string name, string alx, string tga, int mdlId, float scale) {
+        alLoadModel((char*)alx.c_str(), (char*)tga.c_str(), mdlId, scale);
         modelId++;
     }
-    
     void Init(char* path) {
         rm.Init(path);
 		strcpy(rm.resourcepath, path);
         string sphere = "sphere.alx";
         
-        planetInf.push_back(ResourceInf("Mercury", sphere ,"mercury.tga", 1.0));
-        planetInf.push_back(ResourceInf("Venus", sphere, "venus.tga", 1.0));
-        planetInf.push_back(ResourceInf( "Earth", sphere ,"earth.tga",  1.0));
-        planetInf.push_back(ResourceInf( "Moon", sphere, "moon.tga", 1.0));
-        planetInf.push_back(ResourceInf("Mars", sphere, "mars.tga", 1.0));
-        planetInf.push_back(ResourceInf( "Jupiter", sphere, "jupiter.tga", 1.0));
-        planetInf.push_back(ResourceInf("IO (Moon of Jupiter)", sphere, "io_rgb_cyl.tga", 1.0));
-        planetInf.push_back(ResourceInf( "Europa (Moon of Jupiter)", sphere, "europa2048.tga", 1.0));
-        planetInf.push_back(ResourceInf("Saturn", sphere, "saturn.tga",  1.0));
-        planetInf.push_back(ResourceInf("Uranus", sphere, "uranus.tga",  1.0));
-        planetInf.push_back(ResourceInf("Neptune", sphere, "neptune.tga",  1.0));
-        planetInf.push_back(ResourceInf("Pluto", sphere, "pluto.tga",  1.0));
+        LoadPlanet("Mercury", sphere ,"mercury.tga",modelId,1.0);
+        LoadPlanet("Venus", sphere, "venus.tga",modelId,1.0);
+        LoadPlanet( "Earth", sphere ,"earth.tga", modelId,1.0);
+        LoadPlanet( "Moon", sphere, "moon.tga",modelId,1.0);
+        LoadPlanet("Mars", sphere, "mars.tga",modelId,1.0);
+        LoadPlanet( "Jupiter", sphere, "jupiter.tga",modelId,1.0);
+        LoadPlanet("IO (Moon of Jupiter)", sphere, "io_rgb_cyl.tga",modelId,1.0);
+        LoadPlanet( "Europa (Moon of Jupiter)", sphere, "europa2048.tga",modelId,1.0);
+        LoadPlanet("Saturn", sphere, "saturn.tga", modelId,1.0);
+        LoadPlanet("Uranus", sphere, "uranus.tga", modelId,1.0);
+        LoadPlanet("Neptune", sphere, "neptune.tga", modelId,1.0);
+        LoadPlanet("Pluto", sphere, "pluto.tga", modelId,1.0);
         
       //  alAlphaTest(1, GL_ONE_MINUS_SRC_ALPHA);
         
-        for (auto &res : planetInf) // access by reference to avoid copying
-        {
-            LoadModel(&planets[modelId], &res);
-        }
+  //      for (auto &res : planetInf) // access by reference to avoid copying
+   //     {
+  //          LoadModel(&planets[modelId], &res);
+  //      }
        
         voyager.modelId = modelId;
         voyager.scale = 0.005;
@@ -430,8 +435,10 @@ public:
             starpos[n].z = r * Cos(theta) ;
         }
         
-    //    output.pushP(CMD_MSG, (void*)"Mercury\nIn Cockpit Mode - Touch & hold to Change Planet", 0);
+    //    output_pushP(CMD_MSG, (void*)"Mercury\nIn Cockpit Mode - Touch & hold to Change Planet", 0);
     }
     
-
+    ~App() {
+      //  planetInf.clear();
+    }
 };
