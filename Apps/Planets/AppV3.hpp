@@ -13,7 +13,9 @@
 
 using namespace std;
 
-
+#define EXTERNIT extern "C"
+#define app game
+#include "../../SDKSRC/Base/externit.cpp"
 
 class App : public AlgeApp {
     

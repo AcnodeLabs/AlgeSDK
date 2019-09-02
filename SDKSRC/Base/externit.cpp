@@ -1,4 +1,13 @@
+#ifndef EXTERNIT_CPP_INCLUDED
+#define EXTERNIT_CPP_INCLUDED
 
+#ifdef WIN32
+#define APPREF game
+#else
+#define APPREF app
+#endif
+
+extern class App APPREF;
 
 EXTERNIT void alAlphaTest(int set_unset, float fA) {
 
@@ -46,20 +55,20 @@ EXTERNIT void alBillBoardEnd() {
 
 
 EXTERNIT void PushP(int cmd, char* param1, char* param2) {
-	app.output.pushP(cmd, (void*)param1, (void*)param2);
+	APPREF.output.pushP(cmd, (void*)param1, (void*)param2);
 }
 
 EXTERNIT void PushI(int cmd, int x, int y) {
-	app.output.pushI(cmd,x,y);
+	APPREF.output.pushI(cmd,x,y);
 }
 
 EXTERNIT void alTriangle(float size) {
-	app.AL10.Triangle(float(size));
+	APPREF.AL10.Triangle(float(size));
 
 }
 
 EXTERNIT void alLoadModel(char* alx, char* tga, int id, float size) {
-	app.rm.loadAlxModel(alx, tga, id,size );
+	APPREF.rm.loadAlxModel(alx, tga, id,size );
 }
 
 EXTERNIT void alDrawModelTranslateRotate(int id, float posx , float posy, float posz,
@@ -75,16 +84,16 @@ EXTERNIT void alDrawModelTranslateRotate(int id, float posx , float posy, float 
     glRotatef(angle, x,y,z);
   }
 
-  if (app.rm.models[id]->loaded) {
+  if (APPREF.rm.models[id]->loaded) {
     if (billboard==1) alBillboardBegin();
-    app.rm.models[id]->glDraw();
+	APPREF.rm.models[id]->glDraw();
     if (billboard==1) alBillboardEnd();
   }
   glPopMatrix();
 }
 
 EXTERNIT void alScaleModel(int id, float sx, float sy, float sz) {
-	app.rm.models[id]->SetScale(sx,sy,sz);
+	APPREF.rm.models[id]->SetScale(sx,sy,sz);
 }
 /*
 EXTERNIT void alDrawModel(int id) {
@@ -92,7 +101,7 @@ EXTERNIT void alDrawModel(int id) {
 }
 */
 EXTERNIT float alModelBounds(int id) {
- return app.rm.models[id]->boundz();
+ return APPREF.rm.models[id]->boundz();
 }
 
 
@@ -103,13 +112,14 @@ EXTERNIT void alTranslateRotate( float posx , float posy, float posz,
 }
 
 EXTERNIT void alLine(float x1, float y1, float x2, float y2) {
-	app.AL10.Line(x1,y1,x2,y2);
+	APPREF.AL10.Line(x1,y1,x2,y2);
   }
 
 EXTERNIT void alCircle(float r, int segments) {
-	app.AL10.Circle(r,short(segments));
+	APPREF.AL10.Circle(r,short(segments));
   }
 
 EXTERNIT void alRect(float w, float h) {
-	app.AL10.Rect(w,h);
+	APPREF.AL10.Rect(w,h);
   }
+#endif

@@ -1,6 +1,9 @@
 #include <string>
 #include <vector>
 
+//#define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
+//#include CBASE 
+
 // Parallax Effect : http://blog.denivip.ru/index.php/2013/08/parallax-in-ios-applications/?lang=en
 
 #define ID_LINK_YOUTUBE	16
@@ -12,10 +15,6 @@
 #define ANIMSEQ_SLINGSHOT	4
 
 using namespace std;
-
-#include "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
-#define EXTERNIT extern "C"
-#include "../../SDKSRC/Base/externit.cpp"
 
 class App : public AlgeApp {
     
@@ -143,7 +142,7 @@ public:
          for (int n =1; n<=NUMSTARS ; n++) {
            r = C_float(1.001 * (Random(rGen)));
            alScaleModel(star.modelId, r, r, 1.0);
-        
+           
         alDrawModelTranslateRotate(star.modelId,
                                    C_float(starpos[n].x),
                                    C_float(starpos[n].y),
@@ -186,7 +185,7 @@ public:
                 if (planetNo == 3) { //if moon
                     alPushMatrix();
                     trackball.ApplyRotate();
-                    alTranslateRotate(60.0,0.0, 0.0);
+                    alTranslateRotate(60.0,0.0, 0.0, 0,0,0,0);
                     glScalef(40.0, 40.0, 40.0);
                     alDrawModel(planets[2].modelId);//earth
                     alPopMatrix();
@@ -195,7 +194,7 @@ public:
                 if (planetNo == 6|| planetNo == 7) { //if io & europa also draw jupiter
                     alPushMatrix();
                     trackball.ApplyRotate();
-                    alTranslateRotate(60.0,0.0, 0.0);
+                    alTranslateRotate(60.0,0.0, 0.0, 0,0,0,0);
                     glScalef(50.0, 50.0, 50.0);
                     alDrawModel(planets[5].modelId);//jupiter
                     alPopMatrix();
@@ -228,7 +227,7 @@ public:
         else move_speed = MIN_ALLOWABLE_SPEED * 100;
         
         Update(deltaT);
-        processInput();
+    //    processInput();
         
         angle1 = float(timeVar) * FACTOR_RADIANS_DEGREES  * 0.1; // Convert to Degrees
  
@@ -240,7 +239,7 @@ public:
             renderStars();
          alPopMatrix();
         
-        alTranslateRotate(0.0,0.0,-dist);
+        alTranslateRotate(0.0,0.0,-dist, 0,0,0,0);
         alTranslateRotate(0.0,0.0,0.0,tilt-aY,0.0,0.0,1.0);
     //  alTranslateRotate(0.0,0.0,0.0,rotation,0.0,1.0,0.0);
         
@@ -387,18 +386,18 @@ public:
 		strcpy(rm.resourcepath, path);
         string sphere = "sphere.alx";
         
-        planetInf.push_back(ResourceInf("Mercury", "mercury4k.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Venus", "venus4_rgb_cyl_www.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf( "Earth", "earth4k.tga", "sphere.alx", 1.0));
-        planetInf.push_back(ResourceInf( "Moon","2k_moon.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Mars", "mars4k.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf( "Jupiter","jupiter4k.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("IO (Moon of Jupiter)","io_rgb_cyl.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf( "Europa (Moon of Jupiter)","europa2048.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Saturn", "saturn.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Uranus", "uranus.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Neptune", "neptune.tga", sphere, 1.0));
-        planetInf.push_back(ResourceInf("Pluto", "pluto.tga", sphere, 1.0));
+        planetInf.push_back(ResourceInf("Mercury", sphere ,"mercury.tga", 1.0));
+        planetInf.push_back(ResourceInf("Venus", sphere, "venus.tga", 1.0));
+        planetInf.push_back(ResourceInf( "Earth", sphere ,"earth.tga",  1.0));
+        planetInf.push_back(ResourceInf( "Moon", sphere, "moon.tga", 1.0));
+        planetInf.push_back(ResourceInf("Mars", sphere, "mars.tga", 1.0));
+        planetInf.push_back(ResourceInf( "Jupiter", sphere, "jupiter.tga", 1.0));
+        planetInf.push_back(ResourceInf("IO (Moon of Jupiter)", sphere, "io_rgb_cyl.tga", 1.0));
+        planetInf.push_back(ResourceInf( "Europa (Moon of Jupiter)", sphere, "europa2048.tga", 1.0));
+        planetInf.push_back(ResourceInf("Saturn", sphere, "saturn.tga",  1.0));
+        planetInf.push_back(ResourceInf("Uranus", sphere, "uranus.tga",  1.0));
+        planetInf.push_back(ResourceInf("Neptune", sphere, "neptune.tga",  1.0));
+        planetInf.push_back(ResourceInf("Pluto", sphere, "pluto.tga",  1.0));
         
       //  alAlphaTest(1, GL_ONE_MINUS_SRC_ALPHA);
         
@@ -420,7 +419,7 @@ public:
         arrowkeys.modelId = 16;
         alLoadModel(New_String("rect1.alx"), New_String("arrowkeys.tga"), int(arrowkeys.modelId), 0.2);
         saturnRings.modelId = 17;
-        alLoadModel(New_String("satrings.alx"), New_String("satring2kwidth.tga"), int(saturnRings.modelId), 2.0);
+        alLoadModel(New_String("satrings.alx"), New_String("satring.tga"), int(saturnRings.modelId), 2.0);
         
         for (int n =1; n<=NUMSTARS ; n++) {
             r = 70.0 + (Random(rGen) * 100.0);
