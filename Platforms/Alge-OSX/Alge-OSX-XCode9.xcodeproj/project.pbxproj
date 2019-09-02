@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		888E394F23198CBB00630241 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 888E394E23198CBA00630241 /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
-		889C5CA62318EADE006C2259 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 889C5CA52318EADE006C2259 /* Data */; };
-		88AB79CA2316CB8F004A0239 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BBEFD62316684D009AEDF6 /* Data */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
 		88AB7AB62316DFAD004A0239 /* b2BlockAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */; };
@@ -95,18 +92,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				888E394F23198CBB00630241 /* Data in CopyFiles */,
-				889C5CA62318EADE006C2259 /* Data in CopyFiles */,
-				88AB79CA2316CB8F004A0239 /* Data in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		888E394E23198CBA00630241 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/DodgeTheCreeps.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
-		889C5CA52318EADE006C2259 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Juices.Assets/Data; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
 		88AB7AB12316DFAD004A0239 /* b2StackAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2StackAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2StackAllocator.cpp; sourceTree = "<group>"; };
@@ -153,7 +145,6 @@
 		88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2PolygonContact.cpp; path = ../../../Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = "<group>"; };
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
-		88BBEFD62316684D009AEDF6 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Ivank_Box2D.Assets/Data; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
 		9C3281BA13F275F900A53E54 /* Alge-OSX-XCode9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alge-OSX-XCode9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -236,10 +227,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				889C5CA52318EADE006C2259 /* Data */,
-				888E394E23198CBA00630241 /* Data */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
-				88BBEFD62316684D009AEDF6 /* Data */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
 				889C5CA22318E717006C2259 /* b2Body.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
