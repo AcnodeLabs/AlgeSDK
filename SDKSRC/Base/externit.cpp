@@ -5,6 +5,7 @@
 #define APPREF game
 #else
 #define APPREF app
+#define EXTERNIT
 #endif
 
 extern class App APPREF;

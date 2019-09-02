@@ -1,8 +1,8 @@
 #include <string>
 #include <vector>
 
-//#define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
-//#include CBASE 
+#define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
+#include CBASE 
 
 // Parallax Effect : http://blog.denivip.ru/index.php/2013/08/parallax-in-ios-applications/?lang=en
 

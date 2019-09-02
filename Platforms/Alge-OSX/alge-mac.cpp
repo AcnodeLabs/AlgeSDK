@@ -39,7 +39,7 @@ void alPrintText(string text, float scale) {
  if (font!=nullptr) dtx_string(text.c_str());
  glPopMatrix();
 }
-
+//#include "../../SDKSRC/Base/externit.cpp"
 App app;
 
 static int elapsedTime;
@@ -351,7 +351,7 @@ int main( int argc, char** argv )
 }
 
 #define game app
-
+#ifndef EXTERNIT_CPP_INCLUDED
 extern "C++" void alAlphaTest(int set_unset, float fA) {
     if (set_unset) {
         glAlphaFunc(GL_GREATER, fA);
@@ -419,5 +419,4 @@ extern "C++" void alTranslateRotate( float posx , float posy, float posz,
     glRotatef(angle,x,y,z);
 }
 
-
-
+#endif
