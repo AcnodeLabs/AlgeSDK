@@ -431,7 +431,7 @@ public:
             starpos[n].z = r * Cos(theta) ;
         }
         
-        output.pushP(CMD_MSG, (void*)"Mercury\nIn Cockpit Mode - Touch & hold to Change Planet", 0);
+    //    output.pushP(CMD_MSG, (void*)"Mercury\nIn Cockpit Mode - Touch & hold to Change Planet", 0);
     }
     
 
