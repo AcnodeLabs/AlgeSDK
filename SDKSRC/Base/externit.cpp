@@ -46,7 +46,7 @@ int alReserveModelId() {
 	return model_counter;
 }
 
-extern "C++" voidalDrawModelTranslateRotate (int id, float posx = 0.0, float posy = 0.0, float posz = 0.0, float angle = 0.0, float x = 0.0, float y = 0.0, float z = 0.0, int rotatefirst = 0, int billboard = 0)
+extern "C++" void alDrawModelTranslateRotate (int id, float posx , float posy , float posz , float angle , float x , float y  , float z , int rotatefirst , int billboard )
 
 {
 	glPushMatrix();
