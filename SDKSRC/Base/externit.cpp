@@ -46,8 +46,10 @@ int alReserveModelId() {
 	return model_counter;
 }
 
-extern "C++" voidalDrawModelTranslateRotate (int id, float posx = 0.0, float posy = 0.0, float posz = 0.0, float angle = 0.0, float x = 0.0, float y = 0.0, float z = 0.0, int rotatefirst = 0, int billboard = 0)
-
+extern "C++" void alDrawModelTranslateRotate(int id, float posx, float posy, float posz,
+	float angle, float x, float y, float z,
+	int rotatefirst,
+	int billboard)
 {
 	glPushMatrix();
 	if (rotatefirst != 0) {
@@ -84,7 +86,7 @@ extern "C++" void alTranslateRotate(float posx, float posy, float posz,
 #else
 class App;
 //MACOS
-#define game app
+
 extern "C++" void alAlphaTest(int set_unset, float fA) {
     if (set_unset) {
         glAlphaFunc(GL_GREATER, fA);
@@ -108,7 +110,7 @@ extern "C++" void alPopMatrix() {
 }
 
 extern "C++" void alLoadModel(char* alx, char* tga, int id, float size) {
-    game.rm.loadAlxModel((char*)alx, (char*)tga, id,size );
+    app.rm.loadAlxModel((char*)alx, (char*)tga, id,size );
 }
 int alLoadModel(ResourceInf* resInf) {
     static int counter = -1;
@@ -130,20 +132,20 @@ extern "C++" void alDrawModelTranslateRotate(int id, float posx , float posy, fl
         glRotatef(angle, x,y,z);
     }
     
-    if (game.rm.models[id]->loaded) {
+    if (app.rm.models[id]->loaded) {
         if (billboard==1) alBillboardBegin();
-        game.rm.models[id]->glDraw();
+        app.rm.models[id]->glDraw();
         if (billboard==1) alBillboardEnd();
     }
     glPopMatrix();
 }
 
 extern "C++" void alScaleModel(int id, float sx, float sy, float sz) {
-    game.rm.models[id]->SetScale(sx,sy,sz);
+    app.rm.models[id]->SetScale(sx,sy,sz);
 }
 
 extern "C++" void alDrawModel(int id, bool wireframe) {
-    game.rm.models[id]->glDraw(wireframe);
+    app.rm.models[id]->glDraw(wireframe);
 }
 
 extern "C++" void alTranslateRotate( float posx , float posy, float posz,

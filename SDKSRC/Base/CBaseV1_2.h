@@ -83,6 +83,7 @@ public:
 	float scale;
 	std::string alx;
 	ResourceInf() {};
+    
 	ResourceInf(std::string _name, std::string _alx, std::string _tex, float _scale = 1.0f) {
 		Set(string(_name), string(_alx), string(_tex), _scale);
 	};
