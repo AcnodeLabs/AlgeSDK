@@ -1,291 +1,227 @@
 // Copyright (c) 2018 AcnodLabs Inc
 
-/*
-   ALGE SDK JD4 Demo :: PoppingTime
-   The Assets Folder Name is PoppingTime.Assets,
-   macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
-*/
-#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
+/* 
+ ALGE SDK JD4 Demo :: PoppingTime
+ The Assets Folder Name is PoppingTime.Assets,
+ macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
+ */
 
+//#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 
-#include <iostream>
-#include <cmath>
-// Elons's Advice: Aim to be Useful
-// What ever is it that you are trying to create
-// What will be the Utility Delta vs the State of the Art times how many people would effect
-// maximize UtilityDelta * NumberOfPeople
-// eg Wither SmallUtilityDelta * LargeNumberOfPeople OR LargeUtilityDelta * SmallNumberOfPeople
-// OR     ::   LargeNumberOfPeople * LargeUtilityDelta
-// Avoid:: SmallUtilityDelta && SmallNumberOfPeople
+#include "SolarDb.hpp"
 
-//Planets App : State of the Art App "C:\Program Files\BlueStacks\HD-RunApp.exe" -json "{\"app_icon_url\": \"\", \"app_name\": \"Solar Walk Free\", \"app_url\": \"\", \"app_pkg\": \"com.vitotechnology.SolarWalkFree\"}"
+// Scrum Page https://scrumy.com/PoppingTime
 
-#define DEGTORAD 0.0174533
-#define RADTODEG 57.2958
-
-#include "SolarDB.hpp"
-
-class Views {
-	vector<PosRotScale> vintage_points[8];
-	short i[8] = {0,0,0,0,0,0,0,0};
+class PlanetsApp : public MockUpOne {
 public:
+   
+    GameObject planets[9];
+	GameObject fps_text;
 
-	Views() {
-		//venus
-		vintage_points[1].push_back(PosRotScale({ 6660.3,-28.1,7029.0 }, { 2.0,958.4,0.0 }));
-		vintage_points[1].push_back(PosRotScale({ 7314.7,-341.8,7483.1 }, { 38.5,944.0,0.0 }));
-		vintage_points[1].push_back(PosRotScale({ 7490.3,70.1,7310.1 }, { 30.0,917.0,0.0 }));
-		vintage_points[1].push_back(PosRotScale({ 7278.3,-35.3,7478.5 }, { 5.8,996.2,0.0 }));
-		//earth
-		vintage_points[2].push_back(PosRotScale({ 601.7,66.1,13270.9 }, { -3.4,879.0,0.0 }));
-		vintage_points[2].push_back(PosRotScale({ 218.1,2.9,14278.5 }, { -3.0,880.6,0.0 }));
-		vintage_points[2].push_back(PosRotScale({ 95.9,-2.6,14517.7 }, { 45.7,885.8,0.0 }));
-		vintage_points[2].push_back(PosRotScale({ 219.4,-517.9,14030.3 }, { 35.5,891.0,0.0 }));
-		//mars
-		vintage_points[3].push_back(PosRotScale({ -11132.3,399.9,15091.1 }, { -2.9,821.4,0.0 }));
-		vintage_points[3].push_back(PosRotScale({ -15362.0,181.3,15942.5 }, { -13.2,824.4,0.0 }));
-		vintage_points[3].push_back(PosRotScale({ -15798.4,77.4,16096.8 }, { 23.0,767.0,0.0 }));
-		vintage_points[3].push_back(PosRotScale({ -15829.5,498.9,15962.1 }, { -42.0,837.4,0.0 }));
-	}
+    int nRemaining;
+    int rightSide1;
+    int leftSide1;
+    int level = 1;
+    
+    void LoadIn(AlgeApp* that) {
+        //FIRST LOAD MOCK
+		LoadMock(that,  /*TitleImage*/ "titletext", /*SettingsImage*/ "settings","pointer", "settings_icon");
+		
+		with that->AddObject(&fps_text);
+			_.pos.x = that->rightSide / 20;
+			_.pos.y = that->bottomSide / 20;
+			_.color = f3(0, 0, 0);
+		_with
+		
+    }
+    
+    void processInput(PEG::CMD* cmd, float deltaT) {
+        
+        if (cmd->command == CMD_TOUCH_START) {
+            
+            if (app->onTouched("bg")) {
+                
+                f2 postouch = startScreen.bg.posTouched();
+                if (postouch.x > rightSide1) postouch.x = rightSide1;
+                if (postouch.x < leftSide1) postouch.x = leftSide1;
+               
+                
+            }
+            
+        }
+        
+        if (cmd->command == CMD_KEYDOWN) {
+            if (cmd->i1 == MAC_KEY_PLUS) {
+            
+            }
+        }
+        
+		if (cmd->command == CMD_SETTINGS_SCREEN) {
+		}
 
-	void Next(int planetNum, Camera* aCamera, bool fwd = true) {
-		int max = vintage_points[planetNum].size(); if (max == 0) return;
-		if (fwd) { i[planetNum]++; if (i[planetNum] >= max) i[planetNum] = 0; } else { i[planetNum]--; if (i[planetNum] < 0) i[planetNum] = max - 1; }
-		PosRotScale* p = &((vintage_points[planetNum])[i[planetNum]]);
-
-		PosRotScale test;
-		test.pos = aCamera->getPos();
-		test.rot = aCamera->getRot();
-		test.scale = aCamera->scale;
-		aCamera->MoveAhead(100);
-		//aCamera->transitionTo(test);
-		//aCamera->PosRot({ p->pos.x, p->pos.y, p->pos.z }, { p->rot.x, p->rot.y, p->rot.z });
-	}
+        if (cmd->command == CMD_GAMEPAD_EVENT) {
+            if (cmd->i1 == MyGamePad::EventTypes::BTN) {
+				if (cmd->i2 == MyGamePad::EventCodes::BTN_X);// DropSpikey();
+            }
+        }
+        if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
+            }
+            if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
+            }
+        }
+        MockUpOne::processInput(cmd, deltaT);
+    }
+    
+    void MakeStarField() {
+        PosRotScale bp;
+        for (int i = 0; i < 100; i++) {
+        }
+   
+    }
+    
+    void onActionComplete(GameObject* obj) {
+   
+    }
+   
 };
 
 class App : public AlgeApp {
-
-	SolarDB db;
-	vector<GameObject*> planets;
-	DPad dpad;
-//	DPointer dpointer;
-	Views v;
-
-	GameObject mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune, pluto;
-	GameObject voyager, starman, skydome;
-	GameObject satringsFr, satringsBk;
-
-	int scene, nLoops;
-	int pnum = 0;
-	int pnum_max;
-
-	f2 getXZ(int angle) {
-		f2 ret;
-		ret.x = std::cos(angle * DEGTORAD);
-		ret.y = std::sin(angle * DEGTORAD);
-		return ret;
-	}
-
+    
+    int scene, nLoops, level, iScore;
+    i2 bgSize;
+    FILE* f;
+    
 public:
-
-	virtual i2 getBackgroundSize() { return size_nokia5; }
-
-	void AddPlanet(GameObject& pl, string alxtag, string tgatag, string name,int scale = 200) {
-		planets.push_back(&pl);
-		GameObject* g = AddResource(&pl, alxtag, tgatag, scale);
-		g->JuiceType = JuiceTypes::JUICE_ROTY;
-		g->JuiceSpeed /= 10;
-		g->UUID = name + ".G";
-		pnum++;
-	}
-	
-	void AddSkyDome() {
-		with AddResource(&skydome, "stardome","stardome", db.getMaxDist()* 1.3);
-			_.JuiceType = JuiceTypes::JUICE_ROTXYZ;
-			_.UUID = "StarDome";
-		_with
-		PosRotScale* pUp = skydome.AddInstance(skydome);
-		pUp->UUID = "StarDomeUp";
-		PosRotScale* pDn = skydome.AddInstance(skydome);
-		pUp->UUID = "StarDomeDn";
-	}
-
-	void MakeVisible(int pnum) {
-		for (auto p : planets) {
-			p->hidden = true;
-		}
-		planets.at(pnum)->hidden = false;
-	}
-
-	virtual void Init(char* path) {
-	
-	//	edit = true;
-	//	wireframe = true;
-		
-		nLoops = 100;
-		pnum = -1;
-
-		AlInit(STANDARD);
-
-		glEnable(GL_DEPTH_TEST);
-	//	glEnable(GL_CULL_FACE);
-	//	glCullFace(GL_BACK);
-
-		AddDefaultCamera(Camera::CAM_MODE_FPS, ORIGIN_IN_MIDDLE_OF_SCREEN);
-
-		PositionCamera({ 0,0,-10000 }, { 0.0, 0.0, 0.0 });
-		
-		string sphere = "earth";
-
-		AddPlanet(mercury, "sphere", "mercury", "mercury", db.getSize(0));
-		AddPlanet(venus, "sphere", "venusea", "venus", db.getSize(1));
-		AddPlanet(earth, "sphere", "earth", "earth", db.getSize(2));
-		AddPlanet(mars, "sphere", "mars", "mars", db.getSize(3));
-		AddPlanet(jupiter, "sphere", "jupiter", "jupiter", db.getSize(4));
-		AddPlanet(saturn, "sphere", "saturn", "saturn", db.getSize(5));
-		AddPlanet(uranus, "sphere", "uranus", "uranus", db.getSize(6));
-		AddPlanet(neptune, "sphere", "neptune", "neptune", db.getSize(7));
-
-
-//		AddPlanet(pluto, "eeeee", 6 * scal);
-//		AddPlanet(moon, "earthe", 4 * scal);
-//		AddPlanet(moon, "earthe", 4 * scal);
-		///	AddPlanet(voyager, "hh", 10 * 3);
-
-		pnum_max = pnum;
-
-	//	AddSkyDome();
-
-		with AddResource(&satringsFr, "satrings", "satrings", 500);
-		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		
-	//	_.Hide();
-		_with
-
-		with AddResource(&satringsBk, "satrings", "satrings", 500);
-		_.JuiceType = JuiceTypes::JUICE_ROTY;
-		
-	//	_.Hide();
-		_with
-
-		dpad.LoadIn(this);
-	//	dpointer.LoadIn(this);
-		
-
-		f3 center = {0,0,0};
-		float rad = 0;
-		
-		int i = 0;
-		//for (int angle = 0; angle <360; angle+= (360/8)) {
-		//	int dist = db.getDist(i);
-		//	f2 r = getXZ(angle);
-		//	planets[i]->pos.x = r.x * dist;
-		//	planets[i]->pos.y = 0; 
-		//	planets[i]->pos.z = r.y * dist;
-		//	i++;
-		//}
-		
-		pnum_max = pnum;
-
-		pnum = 0;
-		selectedObject = planets[pnum];
-		MakeVisible(pnum);
+	void printDebug() {
 		
 	}
 
-	PosRotScale graveyard;
-
-	virtual void onActionComplete(GameObject* obj) {
-
-	}
-
-	virtual void processInput(PEG::CMD* cmd, float deltaT) {
-		if (cmd->command == CMD_TOUCH_START) {
-		//	planets[pnum]->JuiceType = JuiceTypes::JUICE_FLY_OUT;
-			planets[pnum]->juice_sine_angle = 0; //ResetJuiceParameters //TODO add proper fn
-			pnum++;
-			sprintf(tit1, "#%d", pnum);
-			SetTitle(tit1);
-
-			if (pnum > pnum_max) pnum = 0;
-
-		//	planets[pnum]->pos = f3(originX, originY, 0.0);
-			MakeVisible(pnum);
-			planets[pnum]->juice_sine_angle = 0;
-	//		planets[pnum]->pos = f3(originX, originY, 0);
-	/*		planets[pnum]->JuiceType = JuiceTypes::JUICE_SCALE_IN;
-			planets[pnum]->JuiceSpeed = 3;
-	*/	}
-
-		if (cmd->command == CMD_KEYDOWN) {
+    PlanetsApp pp;
+    
+    bool soundedOuch;
+    
+    virtual void Init(char* path) {
+  
+        soundedOuch = false;
+        nLoops = 100;
+        level = 1;
+        iScore = 0;
+        
+        AlInit(STANDARD);
+        AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+        
+        output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
+        output.pushP(CMD_SNDSET1, $ "pop.wav");
+        output.pushP(CMD_SNDSET2, $ "aargh.wav");
+        output.pushP(CMD_SNDSET3, $ "drop.wav");
+        output.pushP(CMD_SNDSET4, $ "entry.wav");
+        
+        //output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
+        wall_msg = "Go";
+        
+		output.pushI(CMD_USEGAMEPAD, 0, 0);
+        scene = 0;
+    }
+    
+    virtual void onActionComplete(GameObject* obj) {
+        pp.onActionComplete(obj);
+    }
+    
+//    virtual i2 getBackgroundSize() {
+//        return size_ipad_air;
+//    }
+    
+    virtual void processInput(PEG::CMD* cmd, float deltaT) {
+        static bool objectsNotLoaded = true;
 		
-		}
-
-
-		if (cmd->command == CMD_TOUCH_START && dpad.wasTouched()) {
-			switch (dpad.UDLRC()) {
-			case 'U':	v.Next(pnum, &aCamera, true );break;
-			case 'D':	v.Next(pnum, &aCamera, false);break;
-			case 'L': {pnum--; if (pnum < 0) pnum = 0; v.Next(pnum, &aCamera, false); break; }
-			case 'R': {
-				pnum++; if (pnum > 3) pnum = 3; v.Next(pnum, &aCamera, false); break; 
-			}
-			}
-			selectedObject = planets[pnum];
-		}
-	}
-
-	float a;
-
-	char tit1[128];
-
-	float zRot =0;
-
-	virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
 			
+		if (cmd->command == CMD_GAMEPAD_EVENT) {
+            if (scene == 0) { scene++; return; }
+        }
+        
+        if (cmd->command == CMD_SCREENSIZE) {
+            bgSize = i2(cmd->i1, cmd->i2);
+            resolutionReported.x = cmd->i1;
+            resolutionReported.y = cmd->i2;
+            //  startScreen.start.pos.x = bgSize.x;
+            //  startScreen.start.pos.y = bgSize.y;
+            SetCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+            if (objectsNotLoaded) {
+                pp.LoadIn(this);objectsNotLoaded = false;
+            }
+        }
 
-		if (pnum == 6) {
-			satringsFr.Show(); satringsBk.Show();
-		}
-		else {
-			satringsFr.Hide(); satringsBk.Hide();
-		}
+		if (cmd->command == CMD_TOUCHMOVE) {
 
-		if (gob->is(satringsFr)) {
-			glRotatef(90, 1, 0, 0);
-			glRotatef(-20, 0, 1, 0);
-			glEnable(GL_DEPTH_TEST);
-		}
-
-		if (gob->is(satringsBk)) {
-			glRotatef(-90, 1, 0, 0);
-			glRotatef(20, 0, 1, 0);
-			glEnable(GL_DEPTH_TEST);
-		}
-
-
-		if (gob->is(*planets[pnum])) {
-	//		glRotatef(180, 1, 0, 0);
-	//		glRotatef(-20, 0, 1, 0);
 		}
 
-		if (gob->is(skydome)) {
-			skydome.getInstancePtr(0)->pos = aCamera.getPos(); 
-			skydome.getInstancePtr(1)->pos = aCamera.getPos();
-			skydome.getInstancePtr(0)->rot.x = (+90);
-			skydome.getInstancePtr(1)->rot.x = (-90);
+        pp.processInput(cmd,deltaT);
+        
+    }
+    
+	//CFTFont font;
+
+    virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
+     //   doInhibitLogic(gob);
+        if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
+        if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
+        
+
+		if (scene!=0 && gob->is(pp.fps_text)) {
+			string x = string("LEFT= ") + to_string(pp.nRemaining);
+				glPushMatrix();
+				text.PrintTextGl(x.c_str(), f3(0,0,0), 2);
+				glPopMatrix();
 		}
 
-		if (gob->is(dpad)) dpad.Update(deltaT);
-		
-//		if (gob->is(dpointer)) {
-//			zRot += deltaT;
-//			dpointer.SetDirection(aCamera.RotatedY);			
-//		}
+       // inhibitRender = false;//Show ALL for DEBUG
+    }
+    
+    void doInhibitLogic(GameObject* gob) {
+//        if ((scene==0) && (gob->is(pp.heli) || gob->is(pp.fps_text)|| gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)))
+ //           inhibitRender = true;
+    }
 
-	}
-
-	~App() {
-	}
+    // First Intro Screen
+    virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
+        if (scene!=0) return;
+   //     if ((gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)|| gob->is(pp.MockUpOne::dPad))) inhibitRender = true;
+        if (onTouched("start"))
+        {
+            scene = 1; //dPad.Show();
+            output.pushP(CMD_SNDPLAY4, $ "entry.wav");
+            paused = false;      
+        }
+    }
+    
+    // GamePlay Scene
+    virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
+        if (scene!=1) return;
+      //  if (gob->isOneOf({ &pp.titl,&pp.startScreen.ratings,&pp.startScreen.start }))
+        if (gob->is(pp.titl) || gob->is(pp.startScreen.ratings) || gob->is(pp.startScreen.start)) inhibitRender = true;
+        
+        if (gob->is(pp.dPad)) {
+            //when come here when dPad.will be visible
+            if (pp.settings.valueControlMethod > 0) inhibitRender = true;
+        }
+        
+        
+        if (gob->is(pp.score)) {
+            glColor3f(0.0, 0.0, 0.0);
+            std::ostringstream sc;
+            sc << "Score : " << iScore;
+            alPrint(sc.str().c_str());
+            glPushMatrix();
+            glTranslatef(0,30,0);
+            alPrint(wall_msg.c_str());
+            glPopMatrix();
+        }
+        
+    }
+    
+    ~App() {
+        if (f) fclose(f);
+    }
 };
 
