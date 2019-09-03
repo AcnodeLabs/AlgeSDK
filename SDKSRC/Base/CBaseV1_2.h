@@ -2109,7 +2109,7 @@ public:
 		texture->width = header[1] * 256 + header[0];			// Determine The TGA Width	(highbyte*256+lowbyte)
 		texture->height = header[3] * 256 + header[2];			// Determine The TGA Height	(highbyte*256+lowbyte)
 
-
+        printf("\n%s %dx%d..Ok", filename, texture->width, texture->height);
 		if (texture->width <= 0 ||								// Is The Width Less Than Or Equal To Zero
 			texture->height <= 0 ||								// Is The Height Less Than Or Equal To Zero
 			(header[4] != 24 && header[4] != 32))					// Is The TGA 24 or 32 Bit?
@@ -2521,6 +2521,7 @@ public:
 				if (ftex) {
 					fclose(ftex);
 					LoadTGA(models[modelId]->texture, tgafilename ? tgafilename : _alxfname);
+                    
 					//Assume if TGA is Avail tex stats from 1
 					if (models[modelId]->texture->texID == 0) models[modelId]->texture->texID = numloads;
 					models[modelId]->textureWidth = models[modelId]->texture->width;

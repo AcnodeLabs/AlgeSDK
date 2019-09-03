@@ -1482,7 +1482,8 @@ class DPad : public GameObject {
 	
 public:
 	bool enabled;
-
+    AlgeApp* that;
+    
 	string m_tag;
 	DPad() {};
 
@@ -1492,6 +1493,7 @@ public:
 	}
 
 	GameObject* LoadIn(AlgeApp* thiz) {
+        that = thiz;
 		if (m_tag.size() == 0) m_tag = "dpad";
 		GameObject* d = thiz->AddResource(this, m_tag, m_tag);
 		pos.x = thiz->rightSide - 64;
@@ -1512,6 +1514,7 @@ public:
 	//		int t = UDLRC();
 		}
 		else {
+       
 			rot.x = 0;
 			rot.y = 0;
 			rot.z = 0;
@@ -2085,6 +2088,8 @@ public:
         startScreen.start.pos.y = 0.9 * bottomSide;
         score.pos.y = 0.05 * bottomSide;
         score.pos.x = 0.85 * rightSide;
+        dPad.pos.x = rightSide - 64;
+        dPad.pos.y = bottomSide / 2;
     }
 };
 
