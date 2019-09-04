@@ -795,8 +795,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	RECT rect;
 	GetWindowRect (hToast, &rect) ;
     SetWindowPos (hAccel, NULL, rect.right+100,rect.top, 0, 0, SWP_NOZORDER | SWP_NOSIZE) ;
-
-
+	
 	while(!done)									// Loop That Runs While done=FALSE
 	{
 

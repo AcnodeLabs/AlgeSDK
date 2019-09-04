@@ -1,7 +1,7 @@
 #ifndef EXTERNIT_CPP_INCLUDED
 #define EXTERNIT_CPP_INCLUDED
 
-#ifdef WIN32
+#ifdef _WIN32
 #define APPREF game
 extern "C++" void alAlphaTest(int set_unset, float fA) {
 	if (set_unset) {

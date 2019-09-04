@@ -1,5 +1,8 @@
 class SolarDB {
 public:
+
+	static const short NUM_PLANETS = 8;
+
 	string getName(int i) {
 		string name;
 		if (i == 0) name = "mercury"; if (i == 1) name = "venus"; if (i == 2) name = "earth"; if (i == 3) name = "mars"; if (i == 4) name = "jupiter"; if (i == 5) name = "saturn"; if (i == 6) name = "uranus"; if (i == 7) name = "neptune";

@@ -282,3 +282,8 @@ Download Tools from google (tools_r22.0.5-windows) Repository extract to %SDK_RO
 Download Platform-Tools (platform-tools_r22-windows) from google Repository (see wget entry in setup-deps)
 Change line containing zipalign version number as per the installed directrory in build-andrroid.bat
 make sure ANT_HOME is set also
+
+
+#Known Issues
+
+Opened On 04 Sept 19 detected in planets app -- If there are 9 tga's there should be 8 alx', cannot use the same alx even if its identical
