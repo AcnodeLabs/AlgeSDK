@@ -40,9 +40,15 @@ public:
 			_.pos.y = that->bottomSide / 20;
 			_.color = f3(0, 0, 0);
 		_with
-        string oo = "sphere";
-       
-        for (int i=0; i<8; i++) that->AddResource(&planets[i], oo,db.getName(i),100);
+        
+		for (int i = 0; i < 8; i++) {
+			with that->AddResource(&planets[i], db.getName(i), 100);
+				_.pos.x = i * that->rightSide / SolarDB::NUM_PLANETS;
+				_.hidden = true;
+				_.rot.z = 180;
+			_with
+
+		}
         
     }
     
@@ -135,6 +141,8 @@ public:
 		output.pushI(CMD_USEGAMEPAD, 0, 0);
         scene = 0;
         pp.dPad.Hide();
+
+		pp.LoadIn(this);
     }
     
     virtual void onActionComplete(GameObject* obj) {
@@ -165,8 +173,10 @@ public:
             }
         }
 
-		if (cmd->command == CMD_TOUCHMOVE) {
-
+		if (cmd->command == CMD_TOUCH_START) {
+			pp.ShowPlanet(shownPlanet);
+			shownPlanet++;
+			if (shownPlanet >= SolarDB::NUM_PLANETS) shownPlanet=0;
 		}
 
         pp.processInput(cmd,deltaT);
@@ -192,20 +202,13 @@ public:
     }
     
     void doInhibitLogic(GameObject* gob) {
-//        if ((scene==0) && (gob->is(pp.heli) || gob->is(pp.fps_text)|| gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)))
- //           inhibitRender = true;
-        static int pn = 1;
-        
-        if (scene==0) {pp.ShowPlanet(pn);pp.planets[pn].Hide();}
-        if (scene==1) {pp.ShowPlanet(pn);};
-     //   pn++;
-        if (pn>7) pn = 0;
+
     }
 
     // First Intro Screen
     virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=0) return;
-   //     if ((gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)|| gob->is(pp.MockUpOne::dPad))) inhibitRender = true;
+
         if (onTouched("start"))
         {
             scene = 1; //dPad.Show();
@@ -214,7 +217,7 @@ public:
             pp.startScreen.bg.Hide();
         }
     }
-    
+	int shownPlanet = 0;
     // GamePlay Scene
     virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=1) return;
@@ -236,9 +239,10 @@ public:
             alPrint(wall_msg.c_str());
             glPopMatrix();
         }
+		
+		//shownPlanet++;
+		//if (shownPlanet >= SolarDB::NUM_PLANETS) shownPlanet = 0;
         
-        //pp.Update(gob, instanceNo, deltaT);
-        pp.planets[1].Show();
     }
     
     ~App() {

@@ -16,3 +16,4 @@ mApps/*
 *.o
 *.o.d
 .vs/*
+GOB#*
