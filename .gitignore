@@ -17,3 +17,5 @@ mApps/*
 *.o.d
 .vs/*
 GOB#*
+Platforms/Alge-AndroidVS/obj/local/armeabi-v7a/objs/alge_app/device-app.o
+Platforms/Alge-AndroidVS/obj/local/armeabi-v7a/objs/alge_app/device-app.o.d
