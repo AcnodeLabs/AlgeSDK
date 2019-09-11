@@ -1460,8 +1460,10 @@ public:
 		output.pushP(CMD_SNDPLAY0+idx, $ name, 0);
 	}
 
-	void SetTitle(const char * name) {
-		output.pushP(CMD_TITLE, $ name, 0);
+	void SetTitle(static const char * name) {
+		static string n;
+		n = string(name);
+		output.pushP(CMD_TITLE, $ n.c_str(), 0);
 	}
 
 

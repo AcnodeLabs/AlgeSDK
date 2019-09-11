@@ -265,7 +265,7 @@ public:
 			short k = c.KROSS_(false, p->i1, p->i2);
 			char t = c.toChar(k);
 			if (t == 'C') t = ' ';
-			playerGrey.SetIntent(t);
+			playerGrey.SetIntent(c.toChar(c.KROSS_(false, p->i1, p->i2)));
 			static string x;
 			x = c.toStr(k);
 			SetTitle(x.c_str());
