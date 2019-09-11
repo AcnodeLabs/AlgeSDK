@@ -83,7 +83,7 @@ public:
 			playerGrey_up1.hidden = false; playerGrey_up1.rot.z = 0;
 			return;
 		}
-		if ((UDLR == 'U' || UDLR == ' ') && !toggle) {
+		if ((UDLR == 'U' || UDLR == 'C' || UDLR == ' ') && !toggle) {
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 0;
 			return;
 		}
@@ -117,7 +117,7 @@ public:
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
 			return;
 		}
-
+		
 	}
 
 	bool toggle;
@@ -190,16 +190,6 @@ class /*DodgeTheCreeps*/ App : public AlgeApp {
 	
 public:
 
-
-	virtual i2 getBackgroundSize() {
-		switch (PlatformCode) {
-		case 'A':
-			return size_nokia5;
-			break;
-		}
-		return size_ipad_air;
-	}
-
 	void MakeTrail() {
 		playerTrail.prsInstances.clear();
 		return;
@@ -244,6 +234,12 @@ public:
 	CControls c;
 	
 	void processInput(PEG::CMD* p, float deltaT) {
+
+		if (p->command == CMD_SCREENSIZE) {
+			c.screen[0] = p->i1;
+			c.screen[1] = p->i2;
+		}
+
 		if (p->command == CMD_KEYDOWN) {
 
 			if (p->i1 == AL_KEY_PLUS) {
@@ -266,7 +262,13 @@ public:
 		}
         
 		if (p->command == CMD_TOUCH_START) {
-					
+			short k = c.KROSS_(false, p->i1, p->i2);
+			char t = c.toChar(k);
+			if (t == 'C') t = ' ';
+			playerGrey.SetIntent(t);
+			static string x;
+			x = c.toStr(k);
+			SetTitle(x.c_str());
 		}
 
 	}

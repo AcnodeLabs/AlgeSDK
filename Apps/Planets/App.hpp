@@ -6,11 +6,7 @@
  macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
  */
 
-//#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
-
 #include "SolarDb.hpp"
-
-// Scrum Page https://scrumy.com/PoppingTime
 
 class PlanetsApp : public MockUpOne {
 public:
@@ -49,45 +45,43 @@ public:
 			_with
 
 		}
-        
+		dPad.Hide();
     }
     
     void processInput(PEG::CMD* cmd, float deltaT) {
-        
-        if (cmd->command == CMD_TOUCH_START) {
-            
-            if (app->onTouched("bg")) {
-                
-                f2 postouch = startScreen.bg.posTouched();
-                if (postouch.x > rightSide1) postouch.x = rightSide1;
-                if (postouch.x < leftSide1) postouch.x = leftSide1;
-               
-                
-            }
-            
-        }
-        
-        if (cmd->command == CMD_KEYDOWN) {
-            if (cmd->i1 == MAC_KEY_PLUS) {
-            
-            }
-        }
-        
+		if (cmd->command == CMD_TOUCH_START) {
+
+			if (app->onTouched("bg")) {
+
+				f2 postouch = startScreen.bg.posTouched();
+				if (postouch.x > rightSide1) postouch.x = rightSide1;
+				if (postouch.x < leftSide1) postouch.x = leftSide1;
+
+			}
+
+		}
+
+		if (cmd->command == CMD_KEYDOWN) {
+			if (cmd->i1 == MAC_KEY_PLUS) {
+
+			}
+		}
+
 		if (cmd->command == CMD_SETTINGS_SCREEN) {
 		}
 
-        if (cmd->command == CMD_GAMEPAD_EVENT) {
-            if (cmd->i1 == MyGamePad::EventTypes::BTN) {
+		if (cmd->command == CMD_GAMEPAD_EVENT) {
+			if (cmd->i1 == MyGamePad::EventTypes::BTN) {
 				if (cmd->i2 == MyGamePad::EventCodes::BTN_X)
-                    ;
-            }
-        }
-        if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
-            if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
-            }
-            if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
-            }
-        }
+					;
+			}
+		}
+		if (cmd->command == CMD_GAMEPAD_EVENT && cmd->i1 == MyGamePad::EventTypes::PAD) {
+			if (cmd->i2 == MyGamePad::EventCodes::PAD_LT || cmd->i2 == MyGamePad::EventCodes::PAD_RT) {
+			}
+			if (cmd->i2 == MyGamePad::EventCodes::PAD_UP || cmd->i2 == MyGamePad::EventCodes::PAD_DN) {
+			}
+		}
         MockUpOne::processInput(cmd, deltaT);
     }
     
@@ -128,34 +122,17 @@ public:
         
         AlInit(STANDARD);
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-        
-        output.pushP(CMD_SNDSET0, $ "happy-sandbox.wav");
-        output.pushP(CMD_SNDSET1, $ "pop.wav");
-        output.pushP(CMD_SNDSET2, $ "aargh.wav");
-        output.pushP(CMD_SNDSET3, $ "drop.wav");
-        output.pushP(CMD_SNDSET4, $ "entry.wav");
-        
-        //output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
-        wall_msg = "Go";
-        
-		output.pushI(CMD_USEGAMEPAD, 0, 0);
-        scene = 0;
-        pp.dPad.Hide();
-
-		pp.LoadIn(this);
+    	pp.LoadIn(this);
     }
     
     virtual void onActionComplete(GameObject* obj) {
         pp.onActionComplete(obj);
     }
-    
-//    virtual i2 getBackgroundSize() {
-//        return size_ipad_air;
-//    }
+
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
-		
+
 			
 		if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (scene == 0) { scene++; return; }
@@ -186,7 +163,6 @@ public:
 	//CFTFont font;
 
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
-       doInhibitLogic(gob);
         if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
         if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
         
@@ -201,10 +177,6 @@ public:
        // inhibitRender = false;//Show ALL for DEBUG
     }
     
-    void doInhibitLogic(GameObject* gob) {
-
-    }
-
     // First Intro Screen
     virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=0) return;

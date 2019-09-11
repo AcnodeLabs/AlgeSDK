@@ -55,6 +55,17 @@ public:
         if (in==KROSS_CENTER) return "KROSS_CENTER";
         return string("--");
     }
+
+	char toChar(short in) {
+		if (in == KROSS_UP) return 'U';
+		if (in == KROSS_DOWN) return 'D';
+		if (in == KROSS_LEFT) return 'L';
+		if (in == KROSS_RIGHT) return 'R';
+		if (in == KROSS_CENTER) return 'C';
+		return char(' ');
+	}
+
+
     
 	short KROSS_(bool portrait, int touched_x, int touched_y) {
 		
@@ -71,16 +82,16 @@ public:
 		
 		if  (portrait) { 
 			K_UP = (y < screen[1] * 1 / 4);
-			K_DOWN = (y > screen[1] * 3/ 4);
-			K_LEFT = (x < screen[0] * 1/4) ;
-			K_RIGHT = (x > screen[0] * 3/4);
+			K_DOWN = (y > screen[1] * 3 / 4);
+			K_RIGHT = (x > screen[0] * 3 / 4);
+			K_LEFT = (x < screen[0] * 1 / 4);
 		}
 		
 		if  (landscape) { 
-			K_UP = (x < screen[0] * 1 / 4);
-			K_DOWN = (x > screen[0] * 3/ 4);
-			K_RIGHT = (y < screen[1] * 1/4) ;
-			K_LEFT = (y > screen[1] * 3/4);
+			K_UP = (y < screen[1] * 1 / 4);
+			K_DOWN = (y > screen[1] * 3/ 4);
+			K_RIGHT = (x > screen[0] * 3/4) ;
+			K_LEFT = (x < screen[0] * 1/4);
 		}
 		
 		short kk=0;

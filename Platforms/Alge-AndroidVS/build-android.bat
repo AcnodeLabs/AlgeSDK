@@ -27,7 +27,11 @@ rem type jni\CANDIDATE.h
 echo [1] Checking .. src\%PACKAGE:.=\%\%APPNAME%.java
 
 set GLUEDIR=src\%PACKAGE:.=\%\
-echo [2] Making ... %GLUEDIR%  
+echo [2] Will make ... %GLUEDIR%  
+
+set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
+if not %var%==y exit /B
+
 mkdir %GLUEDIR%
 set PWD=%cd%
 cd %GLUEDIR%
@@ -42,8 +46,7 @@ cd %PWD%
 echo [5] src\%PACKAGE:.=\%\%APPNAME%.java
 type src\%PACKAGE:.=\%\%APPNAME%.java
 echo [6] ...
-set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
-if not %var%==y exit /B
+
 
 echo [7] ------------------ SLATE CLEAN --- Cleaning up src\..\assets directory
 del /Q assets\*.*

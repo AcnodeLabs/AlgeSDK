@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.acnodelabs.alge.Planets">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.acnodelabs.alge.DodgeTheCreeps">
 <uses-sdk android:minSdkVersion="27" />
-<application  android:theme="@style/android:Theme.Black.NoTitleBar.Fullscreen" android:label="Planets" android:debuggable="false" android:icon="@drawable/icon">
-<activity android:label="Planets" android:screenOrientation="landscape" android:name="Planets">
+<application  android:theme="@style/android:Theme.Black.NoTitleBar.Fullscreen" android:label="DodgeTheCreeps" android:debuggable="false" android:icon="@drawable/icon">
+<activity android:label="DodgeTheCreeps" android:screenOrientation="landscape" android:name="DodgeTheCreeps">
 <intent-filter>
 <action android:name="android.intent.action.MAIN" />
 <category android:name="android.intent.category.LAUNCHER" />

@@ -112,6 +112,13 @@ public:
 
 #define NO_FONTLIB
 
+	virtual void ScreenSize(int width, int height) {
+		resolutionReported.x = width;
+		resolutionReported.y = height;
+		input.pushI(CMD_SCREENSIZE, width, height);
+	}
+
+
 	inline void alPrint(const char* text,  int size = 24 ) {
 		#ifndef NO_FONTLIB
 		if (size!=24) dtx_use_font(font, size);
@@ -223,6 +230,11 @@ public:
 		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width / 2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width / 2, prsRect->m_height / 2);
 	}
 
+	struct Polygon {
+		vector<float> Points;
+	};
+
+	
 	void PositionCamera(f3 position, f3 rotation) {
         SF3dVector p, r;
         p.x = position.x;

@@ -284,6 +284,3 @@ Change line containing zipalign version number as per the installed directrory i
 make sure ANT_HOME is set also
 
 
-#Known Issues
-
-Opened On 04 Sept 19 detected in planets app -- If there are 9 tga's there should be 8 alx', cannot use the same alx even if its identical
