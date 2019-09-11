@@ -266,9 +266,6 @@ public:
 			char t = c.toChar(k);
 			if (t == 'C') t = ' ';
 			playerGrey.SetIntent(c.toChar(c.KROSS_(false, p->i1, p->i2)));
-			static string x;
-			x = c.toStr(k);
-			SetTitle(x.c_str());
 		}
 
 	}
