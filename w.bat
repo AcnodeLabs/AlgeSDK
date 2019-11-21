@@ -1,1 +1,1 @@
-start Platforms\Alge-Windows\ALGE_VC14.sln
+start Platforms\Alge-Windows\ALGE_VS2019.sln

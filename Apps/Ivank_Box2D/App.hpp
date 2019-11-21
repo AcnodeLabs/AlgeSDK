@@ -21,10 +21,10 @@ public:
 			static string msg;
 			f3 pos(p->i1,p->i2,0);
 			msg = pos.str("tch:%.1f,%.1f,%.1f");
-			output.pushP(CMD_TOAST, $ msg.c_str(), $ msg.c_str());
+			//output.pushP(CMD_TOAST, $ msg.c_str(), $ msg.c_str());
 
             for (auto b : touched_bodies) {
-                b->Impulse(f2(0, -10));
+                b->Impulse(f2(0, -4));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
             }
         }

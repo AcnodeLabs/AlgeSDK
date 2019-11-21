@@ -3,6 +3,7 @@ git clone https://github.com/erincatto/Box2D.git --branch v2.3.1
 git clone https://github.com/nats-io/cnats.git
 git clone https://github.com/ThemsAllTook/libstem_gamepad.git
 git clone http://github.com/jtsiomb/libdrawtext
+git clone https://github.com/DentonW/DevIL.git
 echo skipping git clone -b stable https://github.com/flutter/flutter.git
 Echo skipping wget http://dl-ssl.google.com/android/repository/platform-tools_r21-windows.zip
 echo please copy platform tools and tools folder to Android SDK_ROOT folder (rename old folders)
