@@ -10,7 +10,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		2514C27210084DB100A42282 /* ES1Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2514C26E10084DB100A42282 /* ES1Renderer.m */; };
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
-		8843DEED231D90E0006678B6 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8843DEEC231D90E0006678B6 /* Data */; };
+		887C4A64232B9789006C6C0B /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 887C4A63232B9789006C6C0B /* Data */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -93,7 +93,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				8843DEED231D90E0006678B6 /* Data in CopyFiles */,
+				887C4A64232B9789006C6C0B /* Data in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C34850922E2F6CB00221846 /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		883E779B231655030014F5A1 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
-		8843DEEC231D90E0006678B6 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Planets.Assets/Data; sourceTree = "<group>"; };
+		887C4A63232B9789006C6C0B /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/DodgeTheCreeps.Assets/Data; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				8843DEEC231D90E0006678B6 /* Data */,
+				887C4A63232B9789006C6C0B /* Data */,
 				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
 				883E779B231655030014F5A1 /* candidate.h */,
 				9CBCE83C20E4B9F70062EEAD /* App Icons */,
