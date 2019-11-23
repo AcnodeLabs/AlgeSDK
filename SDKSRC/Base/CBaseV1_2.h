@@ -64,6 +64,8 @@
 #include <math.h>
 #include <vector>
 
+#include "jpgd.h"
+
 //SomeHelper Defines
 #define with {auto &_=*
 #define _with }
@@ -2064,6 +2066,42 @@ public:
 
 	char filename[256];
 
+	void BindImageData(TextureImage* ti) {
+		GLuint		type = GL_RGBA;
+		TextureImage* texture = (TextureImage*)ti;
+		texture->texID = 0;
+		glGenTextures(1, &texture->texID);
+		glBindTexture(GL_TEXTURE_2D, texture->texID);			// Bind Our Texture
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	// 
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	// 
+
+		if (texture->bpp == 24)									// Was The TGA 24 Bits
+		{
+			type = GL_RGB;										// If So Set The 'type' To GL_RGB
+		}
+
+		glTexImage2D(GL_TEXTURE_2D, 0, type, texture->width, texture->height, 0, type, GL_UNSIGNED_BYTE, texture->imageData);
+
+	}
+
+	bool LoadJPG(TextureImage* ti, char* fn) {
+		TextureImage* texture = (TextureImage*)ti;
+		sprintf(filename, "%s/%s", resourcepath, (char*)fn);
+		int n_components;
+		int w = 0, h =0;
+		texture->imageData = jpgd::decompress_jpeg_image_from_file(filename, &w, &h, &n_components, 4/*R,G,B,A*/);
+		texture->bpp = 8;//TODO it is hit and trial, may fail also
+		texture->width = w;
+		texture->height = h;
+		
+#ifndef NOGL
+		BindImageData(ti);
+		free(texture->imageData);
+#endif
+		//	printf("\nTGA:%s[%dx%d]", filename, texture->width, texture->height);
+		return true;
+	}
+
 	//Accepts converted images from http://image.online-convert.com/convert-to-tga
 	//Must be 32 bpp for RGBA and 24 bpp for RGB stored without compression
 	//
@@ -2147,22 +2185,7 @@ public:
 																// Build A Texture From The Data
 
 #ifndef NOGL
-		{
-
-			texture->texID = 0;
-			glGenTextures(1, &texture->texID);
-			glBindTexture(GL_TEXTURE_2D, texture->texID);			// Bind Our Texture
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	// 
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	// 
-
-			if (texture->bpp == 24)									// Was The TGA 24 Bits
-			{
-				type = GL_RGB;										// If So Set The 'type' To GL_RGB
-			}
-
-			glTexImage2D(GL_TEXTURE_2D, 0, type, texture->width, texture->height, 0, type, GL_UNSIGNED_BYTE, texture->imageData);
-
-		}
+		BindImageData(ti);
 		free(texture->imageData);
 #endif
 	//	printf("\nTGA:%s[%dx%d]", filename, texture->width, texture->height);
@@ -2234,7 +2257,7 @@ public:
 	}
 	*/
 
-	CModel* loadAlxModel(char* alxfilename, char* tgafilename, short modelId, float fscale)
+	CModel* loadAlxModel(char* alxfilename, char* texfilename, short modelId, float fscale)
 	{
 
 		static int last_modelId;
@@ -2244,11 +2267,12 @@ public:
 				
 		static int numloads = 1;
 
-		char _alxfname[128];
+		char _texfname[128];
+
 		char fname[256];
         char fnamed[256];
         
-		strcpy(_alxfname, alxfilename);
+		strcpy(_texfname, alxfilename);
 
 		if (resourcepath[0]>0) {
 			strcpy(fname, resourcepath);
@@ -2268,6 +2292,16 @@ public:
         if (!file) file = fopen(fname, "r"); //fallbcak to root
     //    if (file) printf("\n%s found", fname);
 		char line[1280];
+
+		//determine  if file is jpg
+		bool jpeg = false;
+		if (texfilename) {
+			int le = int(strlen(texfilename));
+			if (texfilename[le - 1] == 'g') {
+				jpeg = true;
+			}
+		}
+
 
 		if (file)
 		{
@@ -2447,9 +2481,10 @@ public:
 					if (strcmp(line, "v[") == 0) {
 						int zoom = 1;
 						fscanf(file, "%s", line);
-						models[modelId]->vertex_array[vx_i] = atof(line)*zoom;
+						models[modelId]->vertex_array[vx_i] =  atof(line)*zoom;
 						fscanf(file, "%s", line);
-						models[modelId]->vertex_array[vx_i + 1] = atof(line)*zoom;
+						//invert Y for jpegs
+						models[modelId]->vertex_array[vx_i + 1] = (jpeg ? -1 : 1) * atof(line)*zoom;
 						fscanf(file, "%s", line);
 						models[modelId]->vertex_array[vx_i + 2] = atof(line)*zoom;
 						vx_i += 3;
@@ -2508,19 +2543,26 @@ public:
 				fname[l - 1] = 'a';
 			}
 
-			l = int(strlen(_alxfname));
+			l = int(strlen(_texfname));
 			if (l>3) {
-				_alxfname[l - 3] = 't';
-				_alxfname[l - 2] = 'g';
-				_alxfname[l - 1] = 'a';
+				_texfname[l - 3] = 't';
+				_texfname[l - 2] = 'g';
+				_texfname[l - 1] = 'a';
+			}
+			
+			if (texfilename) { 
+				sprintf(fname, "%s/%s", resourcepath, texfilename); 
 			}
 
-			if (tgafilename) sprintf(fname, "%s/%s", resourcepath, tgafilename);
 			if (fname[0]) {
 				FILE * ftex = fopen(fname, "rb");
 				if (ftex) {
 					fclose(ftex);
-					LoadTGA(models[modelId]->texture, tgafilename ? tgafilename : _alxfname);
+					
+					if (jpeg) 
+						LoadJPG(models[modelId]->texture, texfilename ? texfilename : _texfname);
+					else 
+						LoadTGA(models[modelId]->texture, texfilename ? texfilename : _texfname);
                     
 					//Assume if TGA is Avail tex stats from 1
 					if (models[modelId]->texture->texID == 0) models[modelId]->texture->texID = numloads;
@@ -2531,9 +2573,9 @@ public:
 					printf("\nFAILED LOAD OF :%s", fname);
 				}
 
-				_alxfname[l - 3] = 'a';
-				_alxfname[l - 2] = 'l';
-				_alxfname[l - 1] = 'x';
+				_texfname[l - 3] = 'a';
+				_texfname[l - 2] = 'l';
+				_texfname[l - 1] = 'x';
 			}
 
 			models[modelId]->scale(fscale);
@@ -2541,7 +2583,7 @@ public:
 		else {
 			static string err = (string(fname) + " NOT LOADED");
 		}
-		memset(_alxfname, 0, 64);
+		memset(_texfname, 0, 64);
 		models[modelId]->index = modelId;
 		models[modelId]->onLoad();
 

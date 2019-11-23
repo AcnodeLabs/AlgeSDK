@@ -20,6 +20,7 @@ extern CNetMsg netmsg;
 
 #include "XFunctions.hpp"
 
+
 class AlgeApp {
 public:
 	string wall_msg;
@@ -281,11 +282,13 @@ public:
             originY = bottomSide / 2;
         }
     }
-    
+
+	
     GameObject* AddResourceEx(GameObject* g, string alx_tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1) {
         return AddResourceEx(g, alx_tga_name, alx_tga_name, numInstances_max99, is_circle, scale, density, restitution);
     }
     
+	// .jpg has no alpha channel, for alpha channel support use tga pair
 	GameObject* AddResourceEx(GameObject* g, string alx_name, string tga_name, int numInstances_max99, bool is_circle = false, float scale = 1.0, float density = 1.0, float restitution = 0.1) {
 		AddResource(g, alx_name,tga_name, scale);
 		AddMultiplePhysicalInstances(g, numInstances_max99, is_circle, density, restitution); //physics require half width/ half height
@@ -296,17 +299,19 @@ public:
 		return AddResource(g, tag, tag, scale);
 	}
 
-	GameObject* AddResource(GameObject* g, string alx_name, string tga_name, float scale = 1.0) {
+	//Assume tag as name of alx(without extension) and tex is tga(without extension)/jpeg(with extension)
+	GameObject* AddResource(GameObject* g, string alx_name, string tex_name, float scale = 1.0) {
 		ResourceInf res;
-		res.Set(string(tga_name), string(alx_name + ".alx"), string(tga_name + ".tga"), scale);
+		bool jpeg = (tex_name.find(".jp") != string::npos);
+		res.Set(string(tex_name), string(alx_name + ".alx"), string(tex_name + (jpeg?"":".tga")), scale);
 		g->modelId = LoadModel(g, &res);
 		AddObject(g);
 		g->pos.x = aCamera.windowWidth/2;
 		g->pos.y = aCamera.windowHeight/2;
 		g->originalScale = scale;
 		g->JuiceType = 0;
-        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tga_name);
-        g->UUID = alx_name +"_"+ tga_name + ".G";
+        g->SetBounds(2.0 * rm.models[g->modelId]->boundx(), 2.0 * rm.models[g->modelId]->boundy(), tex_name);
+        g->UUID = alx_name +"_"+ tex_name + ".G";
 		XFunction_AutoScalingToFullScreen::GameObjectAdded(g, scale);
 		g->m_touched = false;
 		return g;

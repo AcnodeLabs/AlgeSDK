@@ -37,12 +37,13 @@ public:
 		InitPhysics();
 		PhysAddGroundWithWalls();
 		
-		AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		//AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
         oSize /= 20; //nullify alx size
         float density = 1.0;
         float restitution = 0.3;
-        AddResourceEx(&boxes, "box", 40, false, oSize, density, restitution);//false::Polygon/Box
+        AddResourceEx(&boxes, "box", "box.jpg", 40, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
 
 #ifdef  NO_BOX2D

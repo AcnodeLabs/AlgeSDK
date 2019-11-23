@@ -26,10 +26,11 @@ extern "C++" void alPopMatrix() {
 	glPopMatrix();
 }
 
-extern "C++" void alLoadModel(char* alx, char* tga, int id, float size) {
+extern "C++" void alLoadModel(char* alx, char* tex, int id, float size) {
 	string fname = string(alx);
 	if (fname.find(".alx") != string::npos)
-		game.rm.loadAlxModel((char*)alx, (char*)tga, id, size);
+		//can also pass tex jpeg
+		game.rm.loadAlxModel((char*)alx, (char*)tex, id, size);
 	else //generic 
 		game.rm.loadGenericAsset(fname, id);
 }
