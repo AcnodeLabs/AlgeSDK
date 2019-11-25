@@ -26,6 +26,7 @@
 #include CBASE 
 #include "CANDIDATE.h"
 #include "Timer.h"
+#include <iostream>
 
 #define ALGE_WINDOWS
 
@@ -72,6 +73,59 @@ Timer time1;
 
 char msg[128];
 
+int whatIsTheLengthOfContent(char* buffer) {
+	try {
+		char* ll = strstr(buffer, "Length:") + 8;
+		return atoi(ll);
+	}
+	catch (...) {
+		return 0;
+	}
+}
+
+string getHttpFile(string hostname, string resourcepath, string filename)
+{
+	string fileAndRes = (resourcepath + "/" + filename);
+	std::replace(fileAndRes.begin(), fileAndRes.end(), '/', '_');
+	string localfilename = (string(ResPath) + fileAndRes);
+	FILE* f = fopen(localfilename.c_str(), "wb");
+	WSADATA wsaData;
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+		cout << "WSAStartup failed.\n";
+		return "";
+	}
+	SOCKET Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	struct hostent* host;
+	host = gethostbyname(hostname.c_str());
+	SOCKADDR_IN SockAddr;
+	SockAddr.sin_port = htons(80);
+	SockAddr.sin_family = AF_INET;
+	SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr);
+	std::cout << "Connecting...\n";
+	if (connect(Socket, (SOCKADDR*)(&SockAddr), sizeof(SockAddr)) != 0) {
+		cout << "Could not connect";
+		return "";
+	}
+	cout << "Connected.\n";
+//	const char link[] = hostname.c_str();
+//	send(Socket, "GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n", strlen("GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n"), 0);
+	//string get1 = "GET /wp-content/uploads/2015/03/Japanese-car-brands-Suzuki-logo.jpg HTTP/1.1\r\nHost: www.car-brand-names.com \r\nConnection: close\r\n\r\n";
+	string get1 = "GET /" + resourcepath + "/" + filename +" HTTP/1.1\r\nHost: "+hostname+" \r\nConnection: close\r\n\r\n";
+	const char* sz = get1.c_str();
+	send(Socket, sz, strlen(sz), 0);
+	int len = 256*1024;
+	char* buffer = (char*) malloc(len);
+	int r1 = recv(Socket, buffer, len, 0);
+	//string x2 = rcvStringBlock(&len, Socket);
+	len = whatIsTheLengthOfContent(buffer);
+	char* valid = buffer + (r1 - len);
+	fwrite(valid, len, 1, f);
+	free(buffer);
+	closesocket(Socket);
+	WSACleanup();
+	fclose(f);
+	return fileAndRes;
+}
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
 {
 	if (height==0)										// Prevent A Divide By Zero By
@@ -100,6 +154,8 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
 	game.Init0(ResPath, 'W');
+	//getHttpFile("acnodelabs.com", "", "index.html");
+	getHttpFile("jccc2009.web.fc2.com", "japanese/honda/cr-z-zf2-se-201304", "p01.jpg");
 	SYSTEMTIME now0;
 	GetLocalTime(&now0);
 	int hr = now0.wHour;

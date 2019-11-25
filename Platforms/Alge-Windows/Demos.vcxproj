@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Ivank_Box2D</ProjectName>
+    <ProjectName>JapCarBrochures</ProjectName>
     <ProjectGuid>{EEF0E769-EAA3-47E8-A7DA-4A335BD98196}</ProjectGuid>
     <RootNamespace>Demos</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -49,7 +49,7 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ExecutablePath)</ExecutablePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;C:\Users\liveb\source\repos\AlgeSDK\Tools\libstem_gamepad-master\source\gamepad;..\..\..\imgui;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\curl-7.67.0\include;..\..\SDKSRC\Base;..\..\..\cnats\src;..\..\..\AlgeSDK_m\Tools\CNetMsg;..\..\..\AlgeSDK_m\ThirdParty\bullet3-master\src;..\..\..\AlgeSDK_m\ThirdParty\assimp\include;..\..\..\AlgeSDK_m\ThirdParty\irrlicht\irrlicht-1.5.1\include;..\..\..\Box2D\Box2D;..\..\..\AlgeSDK_m\ThirdParty\SFML\include;C:\Users\liveb\source\repos\AlgeSDK\Tools\libstem_gamepad-master\source\gamepad;..\..\..\imgui;$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Tools\CNetMsg\Debug;libs\win_x86_dbg;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -120,6 +120,7 @@
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp" />
     <ClInclude Include="..\..\SDKSRC\Base\jpgd.h" />
     <ClInclude Include="..\candidate.h" />
+    <ClInclude Include="alge_windows.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

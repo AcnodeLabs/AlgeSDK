@@ -59,6 +59,7 @@
     <ClInclude Include="..\..\SDKSRC\Base\jpgd.h">
       <Filter>libjpeg</Filter>
     </ClInclude>
+    <ClInclude Include="alge_windows.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

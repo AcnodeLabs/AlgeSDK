@@ -3,4 +3,4 @@
 //
 // Project Board is accessibale by Tools > Scrumy (Board)
 
-#include "../Apps/Ivank_Box2D/App.hpp"
+#include "../Apps/JapCarBrochures/App.hpp"

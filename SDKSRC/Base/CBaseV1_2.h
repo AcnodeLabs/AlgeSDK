@@ -63,8 +63,9 @@
 #include <string>
 #include <math.h>
 #include <vector>
-
+//https://www.quora.com/In-C-and-C++-how-can-I-open-an-image-file-like-JPEG-and-read-it-as-a-matrix-of-pixels/answer/Bilal-Ahsan?prompt_topic_bio=1
 #include "jpgd.h"
+
 
 //SomeHelper Defines
 #define with {auto &_=*
@@ -2257,6 +2258,15 @@ public:
 	}
 	*/
 
+	//will be saved as a local file and web address will be lost
+	void retrieve(char** url) {
+		string remote = string(*url);
+		size_t lastslash = remote.find_last_of('/');
+	//	curlpp::Cleanup cleaner;
+
+	//	curlpp::Easy request;
+	}
+
 	CModel* loadAlxModel(char* alxfilename, char* texfilename, short modelId, float fscale)
 	{
 
@@ -2302,6 +2312,12 @@ public:
 			}
 		}
 
+		//determine  if texture is on web
+		bool web = false;
+		if (texfilename) {
+			web = (strstr(texfilename, "http:") != nullptr);
+			if (web) retrieve(&texfilename);//will also modify texfilename variable if found
+		}
 
 		if (file)
 		{
