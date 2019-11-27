@@ -49,6 +49,8 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\climits \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\limits.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h \
@@ -148,7 +150,7 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\candidate.h jni\..\..\..\Apps\DemoCoverflow\app.hpp
+  jni\..\..\candidate.h jni\..\..\..\Apps\JapCarBrochures\App.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -251,6 +253,10 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\limits.h:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h:
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h:
 
@@ -454,4 +460,4 @@ jni\CANDIDATE.h:
 
 jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\DemoCoverflow\app.hpp:
+jni\..\..\..\Apps\JapCarBrochures\App.hpp:

@@ -332,7 +332,7 @@ public:
 			sprintf(img, "p%02d.jpg", i + 1);
 			//http://jccc2009.web.fc2.com/japanese/toyota/aqua-nhp10-201112/p01.jpg
 			//getHttpFile("acnodelabs.com", "images/testimages", img);
-			getHttpFile("jccc2009.web.fc2.com", "japanese/toyota/aqua-nhp10-201112", img);
+		//	getHttpFile("jccc2009.web.fc2.com", "japanese/toyota/aqua-nhp10-201112", img);
 			sprintf(img, "japanese_toyota_aqua-nhp10-201112_p%02d.jpg", i + 1);
 			rm.loadAlxModel("animposter.alx", img, i, 1);
 			cfc.item[i].modelId = i;
@@ -340,7 +340,7 @@ public:
 
 		btn.Init(&rm, "apply", nITEMS+1, 0.75, CRect(0,64,0,rightSide));
 
-		output.pushP(CMD_TOAST, $ "Use Rt/Left Arrow Keys to browse", 0);
+	//	output.pushP(CMD_TOAST, $ "Use Rt/Left Arrow Keys to browse", 0);
 	}
 
 	void Deinit() {

@@ -126,7 +126,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 //	send(Socket, "GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n", strlen("GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n"), 0);
 	//string get1 = "GET /wp-content/uploads/2015/03/Japanese-car-brands-Suzuki-logo.jpg HTTP/1.1\r\nHost: www.car-brand-names.com \r\nConnection: close\r\n\r\n";
 	string get1 = "GET /" + resourcepath + "/" + filename +" HTTP/1.1\r\nHost: "+hostname+" \r\nConnection: close\r\n\r\n";
-	SetWindowTextA(hWnd, (char*)get1.c_str());
+	SetWindowTextA(hWnd, (char*)fileAndRes.c_str());
 	const char* sz = get1.c_str();
 	send(Socket, sz, strlen(sz), 0);
 	int len = 1024 * 1024;

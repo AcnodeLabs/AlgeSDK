@@ -10,6 +10,7 @@ LOCAL_SRC_FILES  := importgl.c \
     device-app.cpp \
     app-android.c \
     ../../../SDKSRC/Base/camera.cpp \
+    ../../../SDKSRC/Base/jpgd.cpp \
     ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp \
     ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp \
     ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2CircleContact.cpp \
