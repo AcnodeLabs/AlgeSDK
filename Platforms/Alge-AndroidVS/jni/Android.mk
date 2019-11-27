@@ -60,6 +60,7 @@ LOCAL_SRC_FILES  := importgl.c \
 LOCAL_CFLAGS     := -std=c17 -DANDROID_NDK -DDISABLE_IMPORTGL -Wno-pointer-sign -Wno-nonportable-include-path -Wno-implicit-function-declaration -Wpointer-sign
 LOCAL_CPPFLAGS     := -std=c++17 -DANDROID_NDK -DDISABLE_IMPORTGL -Wno-pointer-sign -Wno-nonportable-include-path -Wno-implicit-function-declaration -Wpointer-sign
 LOCAL_LDLIBS     := -lGLESv1_CM -ldl -llog -Wl,-s
+LOCAL_CPP_FEATURES += exceptions
 APP_CPPFLAGS += -std=c++17
 LOCAL_C_INCLUDES += jni/../../../../Box2D/Box2D
 

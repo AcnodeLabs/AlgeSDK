@@ -49,14 +49,7 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\climits \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\limits.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h \
-  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h \
-  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream \
-  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ostream \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iostream \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ios \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__locale \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\mutex \
@@ -73,11 +66,19 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\support\android\locale_bionic.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\support\xlocale\__posix_l_fallback.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\streambuf \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ostream \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\locale \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\cstdarg \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__bsd_locale_fallbacks.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\bitset \
-  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list \
   jni\..\..\..\..\Box2D\Box2D\Box2D\Box2D.h \
   jni\..\..\..\..\Box2D\Box2D\Box2D\Common\b2Settings.h \
@@ -254,21 +255,7 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer:
 
-jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h:
-
-C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h:
-
-jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h:
-
-jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h:
-
-jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h:
-
-jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h:
-
-C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream:
-
-C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ostream:
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iostream:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ios:
 
@@ -302,6 +289,10 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\streambuf:
 
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\ostream:
+
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\locale:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\cstdarg:
@@ -310,7 +301,19 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\bitset:
 
-C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\istream:
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list:
 

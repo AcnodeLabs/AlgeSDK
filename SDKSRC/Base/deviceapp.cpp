@@ -37,11 +37,12 @@ static long floatToFixed(float value)
 #define FIXED(value) floatToFixed(value)
 */
 
-char respath[256];
+char ResPath[256];
+XHttpSocket sck;
 
 void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
 void appInit(char *sz) { 
-	strcpy(respath, sz);
+	strcpy(ResPath, sz);
     game.aCamera.custom_type = 0xCA;
     game.aCamera.windowWidth = game.getBackgroundSize().x;
     game.aCamera.windowHeight = game.getBackgroundSize().y;

@@ -25,7 +25,6 @@
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
 
-string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes = nullptr);
 
 #include "CANDIDATE.h"
 #include "Timer.h"
@@ -83,80 +82,20 @@ int whatIsTheLengthOfContent(char* buffer) {
 		return 0;
 	}
 }
-int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char* buf) {
-	string fileAndRes = (resourcepath + "/" + filename);
-	int nbytes;
-	getHttpFile(hostname, resourcepath, filename, &nbytes);	
-	return 0;
-}
+
 
 XHttpSocket sck;
 
-string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes )
-{
+int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char* buf) {
 	string fileAndRes = (resourcepath + "/" + filename);
-	std::replace(fileAndRes.begin(), fileAndRes.end(), '/', '_');
-	string localfilename = (string(ResPath) + fileAndRes);
-	FILE* f = fopen(localfilename.c_str(), "r");
-	if (f) {
-		fseek(f, 0, SEEK_END);
-		int size = ftell(f);
-		fclose(f);
-		if (size!=0) //recollect file if prev retrival was erroneous
-			return localfilename;//Dont proceed if file already exists
-	}
-	f = fopen(localfilename.c_str(), "wb");
-		
-	sck.Connect(hostname);
-
-	string get1 = "GET /" + resourcepath + "/" + filename +" HTTP/1.1\r\nHost: "+hostname+" \r\nConnection: close\r\n\r\n";
-	const char* sz = get1.c_str();
-	sck.Send((char*)sz);
-	int len = 1024 * 1024;
-	char* buffer = (char*) malloc(len);
-	int r1 = sck.Recv(buffer, len);
-
-	try {
-		char* ll = strstr(buffer, "Length:") + 8;
-		len = atoi(ll);
-		int diff = r1 - len;
-	}
-	catch (...) {
-		return "";
-	}
-
-	int bytestogo = len;
-	char* eob = buffer + (1024 * 1024);
-	char* wherecontentbegins = eob - bytestogo;
-	char* buffptr = wherecontentbegins;
-	int totalbytesread = 0;
-
-	if (r1 > len) {//all bytes have been read in first block
-		bytestogo = 0;
-		totalbytesread = len;
-		wherecontentbegins = buffer + (r1 - len);
-	}
-
-	while (bytestogo > 0) {
-		int bytesread = sck.Recv(buffptr, bytestogo);
-		if (bytesread > 0) {
-			bytestogo -= bytesread;
-			buffptr += bytesread;
-			totalbytesread += bytesread;
-		}
-		else break;
-	}
-
-	int lostbytes = len - totalbytesread;
-	if (lostbytes==0)
-		fwrite(wherecontentbegins, len, 1, f);
-
-	free(buffer);
-	sck.Close();
-	fclose(f);
-	if (nbytes != nullptr) *nbytes = len;
-	return fileAndRes;
+	int nbytes;
+	//getHttpFile(&ResPath[0], &sck, hostname, resourcepath, filename, &nbytes);
+	return 0;
 }
+
+
+
+
 
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
 {
