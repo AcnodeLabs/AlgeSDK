@@ -21,10 +21,10 @@ public:
 			static string msg;
 			f3 pos(p->i1,p->i2,0);
 			msg = pos.str("tch:%.1f,%.1f,%.1f");
-			output.pushP(CMD_TOAST, $ msg.c_str(), $ msg.c_str());
+			//output.pushP(CMD_TOAST, $ msg.c_str(), $ msg.c_str());
 
             for (auto b : touched_bodies) {
-                b->Impulse(f2(0, -10));
+                b->Impulse(f2(0, -4));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
             }
         }
@@ -37,12 +37,13 @@ public:
 		InitPhysics();
 		PhysAddGroundWithWalls();
 		
-		AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		//AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
         oSize /= 20; //nullify alx size
         float density = 1.0;
         float restitution = 0.3;
-        AddResourceEx(&boxes, "box", 40, false, oSize, density, restitution);//false::Polygon/Box
+        AddResourceEx(&boxes, "box", "box.jpg", 40, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
 
 #ifdef  NO_BOX2D

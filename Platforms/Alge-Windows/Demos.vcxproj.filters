@@ -12,6 +12,9 @@
     <Filter Include="libdrawtext">
       <UniqueIdentifier>{9aa98122-540d-466f-9280-50f70482aab1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libjpeg">
+      <UniqueIdentifier>{57a0d447-35e8-469c-b09d-e5dce16948e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.cpp">
@@ -41,6 +44,9 @@
     <ClCompile Include="..\..\..\libdrawtext\src\utf8.c">
       <Filter>libdrawtext</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SDKSRC\Base\jpgd.cpp">
+      <Filter>libjpeg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\AlgeSDK\SDKSRC\Base\camera.h">
@@ -50,6 +56,10 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\candidate.h" />
+    <ClInclude Include="..\..\SDKSRC\Base\jpgd.h">
+      <Filter>libjpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="alge_windows.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
