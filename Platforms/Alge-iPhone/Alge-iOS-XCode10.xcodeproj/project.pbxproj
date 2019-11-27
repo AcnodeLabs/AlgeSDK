@@ -10,7 +10,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		2514C27210084DB100A42282 /* ES1Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2514C26E10084DB100A42282 /* ES1Renderer.m */; };
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
-		887C4A64232B9789006C6C0B /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 887C4A63232B9789006C6C0B /* Data */; };
+		88E722462373E79B0095DE43 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88E722452373E79B0095DE43 /* Data */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -93,7 +93,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				887C4A64232B9789006C6C0B /* Data in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,13 +106,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C34850922E2F6CB00221846 /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		883E779B231655030014F5A1 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
-		887C4A63232B9789006C6C0B /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/DodgeTheCreeps.Assets/Data; sourceTree = "<group>"; };
+		88E722452373E79B0095DE43 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Brochures.Assets/Data; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		9C27BA4F130A8B7E00B89793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C317A48135B4DC7005DD266 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9C3B7DD4135AF17D008EE6B1 /* Untitled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Untitled.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3B7DD4135AF17D008EE6B1 /* Brochures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brochures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4B598E1464136800ECBDB6 /* icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon72.png; sourceTree = "<group>"; };
 		9C4E38F1143CA659006EDD6F /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
 		9C4E38F2143CA659006EDD6F /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
@@ -278,7 +277,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3B7DD4135AF17D008EE6B1 /* Untitled.app */,
+				9C3B7DD4135AF17D008EE6B1 /* Brochures.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,8 +285,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				887C4A63232B9789006C6C0B /* Data */,
 				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
+				88E722452373E79B0095DE43 /* Data */,
 				883E779B231655030014F5A1 /* candidate.h */,
 				9CBCE83C20E4B9F70062EEAD /* App Icons */,
 				9CBCE83B20E4B9B60062EEAD /* LaunchScreen Images */,
@@ -556,7 +555,7 @@
 			);
 			name = DodgeTheCreeps;
 			productName = "san-angeles-iphone";
-			productReference = 9C3B7DD4135AF17D008EE6B1 /* Untitled.app */;
+			productReference = 9C3B7DD4135AF17D008EE6B1 /* Brochures.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -597,6 +596,7 @@
 			files = (
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
+				88E722462373E79B0095DE43 /* Data in Resources */,
 				9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */,
 				9CF1FCA713E29C70005FB6E5 /* Default-Portrait~ipad.png in Resources */,
 				9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */,
@@ -692,6 +692,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos4.2]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G84BL5U52X;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -703,8 +704,8 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
-				PRODUCT_NAME = Untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -726,6 +727,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G84BL5U52X;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -735,8 +737,8 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
-				PRODUCT_NAME = Untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -801,6 +803,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator4.2]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G84BL5U52X;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -810,8 +813,8 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Juices;
-				PRODUCT_NAME = Untitled;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphonesimulator4.2]" = "37C021F2-6B9D-415A-8946-E822A76C7B1A";
 				PROVISIONING_PROFILE_SPECIFIER = "";
