@@ -332,7 +332,7 @@ public:
 			sprintf(img, "p%02d.jpg", i + 1);
 			//http://jccc2009.web.fc2.com/japanese/toyota/aqua-nhp10-201112/p01.jpg
 			//getHttpFile("acnodelabs.com", "images/testimages", img);
-		//	getHttpFile("jccc2009.web.fc2.com", "japanese/toyota/aqua-nhp10-201112", img);
+			getHttpFile("jccc2009.web.fc2.com", "japanese/toyota/aqua-nhp10-201112", img);
 			sprintf(img, "japanese_toyota_aqua-nhp10-201112_p%02d.jpg", i + 1);
 			rm.loadAlxModel("animposter.alx", img, i, 1);
 			cfc.item[i].modelId = i;

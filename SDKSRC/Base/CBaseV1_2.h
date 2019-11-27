@@ -63,6 +63,7 @@
 #include <string>
 #include <math.h>
 #include <vector>
+#include <iostream>
 //https://www.quora.com/In-C-and-C++-how-can-I-open-an-image-file-like-JPEG-and-read-it-as-a-matrix-of-pixels/answer/Bilal-Ahsan?prompt_topic_bio=1
 #include "jpgd.h"
 
@@ -2789,6 +2790,71 @@ public:
 };
 
 #endif
+
+#ifndef Xhttp
+#define Xhttp
+class XHttpSocket {
+	string _hostname;
+
+public:
+
+#ifdef WIN32
+	WSADATA wsaData;
+	SOCKADDR_IN SockAddr;
+	SOCKET Socket;
+
+	void Connect(string host_name) {
+		_hostname = host_name;
+
+		if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+			cout << "WSAStartup failed.\n";
+			return;
+		}
+		Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		struct hostent* host;
+
+		host = gethostbyname(_hostname.c_str());
+
+		SockAddr.sin_port = htons(80);
+		SockAddr.sin_family = AF_INET;
+		SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr);
+		std::cout << "Connecting...\n";
+		if (connect(Socket, (SOCKADDR*)(&SockAddr), sizeof(SockAddr)) != 0) {
+			cout << "Could not connect";
+			return;
+		}
+		cout << "Connected.\n";
+
+	}
+
+
+	void Close() {
+		closesocket(Socket);
+		WSACleanup();
+	}
+
+	int Recv(char* buffer, int len) {
+		return recv(Socket, buffer, len, 0);
+	}
+
+	void Send(char* sz) {
+		send(Socket, sz, strlen(sz), 0);
+	}
+
+#else
+
+	void Close() {}
+	int Recv(char* buffer, int len) { return 0; }
+	void Send(char* sz) {}
+	void Connect(string host_name) {
+		_hostname = host_name;
+	}
+
+#endif // WIN32
+
+};
+#else
+#endif // !Xhttp
 
 
 

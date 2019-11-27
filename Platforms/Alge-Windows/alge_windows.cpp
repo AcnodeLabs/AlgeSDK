@@ -90,6 +90,8 @@ int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char
 	return 0;
 }
 
+XHttpSocket sck;
+
 string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes )
 {
 	string fileAndRes = (resourcepath + "/" + filename);
@@ -104,34 +106,15 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 			return localfilename;//Dont proceed if file already exists
 	}
 	f = fopen(localfilename.c_str(), "wb");
-	WSADATA wsaData;
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-		cout << "WSAStartup failed.\n";
-		return "";
-	}
-	SOCKET Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	struct hostent* host;
-	host = gethostbyname(hostname.c_str());
-	SOCKADDR_IN SockAddr;
-	SockAddr.sin_port = htons(80);
-	SockAddr.sin_family = AF_INET;
-	SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr);
-	std::cout << "Connecting...\n";
-	if (connect(Socket, (SOCKADDR*)(&SockAddr), sizeof(SockAddr)) != 0) {
-		cout << "Could not connect";
-		return "";
-	}
-	cout << "Connected.\n";
-//	const char link[] = hostname.c_str();
-//	send(Socket, "GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n", strlen("GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n"), 0);
-	//string get1 = "GET /wp-content/uploads/2015/03/Japanese-car-brands-Suzuki-logo.jpg HTTP/1.1\r\nHost: www.car-brand-names.com \r\nConnection: close\r\n\r\n";
+		
+	sck.Connect(hostname);
+
 	string get1 = "GET /" + resourcepath + "/" + filename +" HTTP/1.1\r\nHost: "+hostname+" \r\nConnection: close\r\n\r\n";
-	SetWindowTextA(hWnd, (char*)fileAndRes.c_str());
 	const char* sz = get1.c_str();
-	send(Socket, sz, strlen(sz), 0);
+	sck.Send((char*)sz);
 	int len = 1024 * 1024;
 	char* buffer = (char*) malloc(len);
-	int r1 = recv(Socket, buffer, len, 0);
+	int r1 = sck.Recv(buffer, len);
 
 	try {
 		char* ll = strstr(buffer, "Length:") + 8;
@@ -155,7 +138,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 	}
 
 	while (bytestogo > 0) {
-		int bytesread = recv(Socket, buffptr, bytestogo, 0);
+		int bytesread = sck.Recv(buffptr, bytestogo);
 		if (bytesread > 0) {
 			bytestogo -= bytesread;
 			buffptr += bytesread;
@@ -169,8 +152,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 		fwrite(wherecontentbegins, len, 1, f);
 
 	free(buffer);
-	closesocket(Socket);
-	WSACleanup();
+	sck.Close();
 	fclose(f);
 	if (nbytes != nullptr) *nbytes = len;
 	return fileAndRes;
