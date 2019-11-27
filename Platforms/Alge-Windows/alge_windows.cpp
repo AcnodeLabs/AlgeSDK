@@ -24,6 +24,9 @@
 
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
+
+string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes = nullptr);
+
 #include "CANDIDATE.h"
 #include "Timer.h"
 #include <iostream>
@@ -40,8 +43,6 @@ extern void(*callBackIn)(string);
 CNetMsg netmsg;
 
 #endif // !
-
-
 
 #define EXTERNIT extern "C"
 //#include "../../SDKSRC/Base/externit.cpp"
@@ -82,13 +83,27 @@ int whatIsTheLengthOfContent(char* buffer) {
 		return 0;
 	}
 }
+int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char* buf) {
+	string fileAndRes = (resourcepath + "/" + filename);
+	int nbytes;
+	getHttpFile(hostname, resourcepath, filename, &nbytes);	
+	return 0;
+}
 
-string getHttpFile(string hostname, string resourcepath, string filename)
+string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes )
 {
 	string fileAndRes = (resourcepath + "/" + filename);
 	std::replace(fileAndRes.begin(), fileAndRes.end(), '/', '_');
 	string localfilename = (string(ResPath) + fileAndRes);
-	FILE* f = fopen(localfilename.c_str(), "wb");
+	FILE* f = fopen(localfilename.c_str(), "r");
+	if (f) {
+		fseek(f, 0, SEEK_END);
+		int size = ftell(f);
+		fclose(f);
+		if (size!=0) //recollect file if prev retrival was erroneous
+			return localfilename;//Dont proceed if file already exists
+	}
+	f = fopen(localfilename.c_str(), "wb");
 	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
 		cout << "WSAStartup failed.\n";
@@ -111,21 +126,56 @@ string getHttpFile(string hostname, string resourcepath, string filename)
 //	send(Socket, "GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n", strlen("GET / HTTP/1.1\r\nHost: www.paperclip.netai.net \r\nConnection: close\r\n\r\n"), 0);
 	//string get1 = "GET /wp-content/uploads/2015/03/Japanese-car-brands-Suzuki-logo.jpg HTTP/1.1\r\nHost: www.car-brand-names.com \r\nConnection: close\r\n\r\n";
 	string get1 = "GET /" + resourcepath + "/" + filename +" HTTP/1.1\r\nHost: "+hostname+" \r\nConnection: close\r\n\r\n";
+	SetWindowTextA(hWnd, (char*)get1.c_str());
 	const char* sz = get1.c_str();
 	send(Socket, sz, strlen(sz), 0);
-	int len = 256*1024;
+	int len = 1024 * 1024;
 	char* buffer = (char*) malloc(len);
 	int r1 = recv(Socket, buffer, len, 0);
-	//string x2 = rcvStringBlock(&len, Socket);
-	len = whatIsTheLengthOfContent(buffer);
-	char* valid = buffer + (r1 - len);
-	fwrite(valid, len, 1, f);
+
+	try {
+		char* ll = strstr(buffer, "Length:") + 8;
+		len = atoi(ll);
+		int diff = r1 - len;
+	}
+	catch (...) {
+		return "";
+	}
+
+	int bytestogo = len;
+	char* eob = buffer + (1024 * 1024);
+	char* wherecontentbegins = eob - bytestogo;
+	char* buffptr = wherecontentbegins;
+	int totalbytesread = 0;
+
+	if (r1 > len) {//all bytes have been read in first block
+		bytestogo = 0;
+		totalbytesread = len;
+		wherecontentbegins = buffer + (r1 - len);
+	}
+
+	while (bytestogo > 0) {
+		int bytesread = recv(Socket, buffptr, bytestogo, 0);
+		if (bytesread > 0) {
+			bytestogo -= bytesread;
+			buffptr += bytesread;
+			totalbytesread += bytesread;
+		}
+		else break;
+	}
+
+	int lostbytes = len - totalbytesread;
+	if (lostbytes==0)
+		fwrite(wherecontentbegins, len, 1, f);
+
 	free(buffer);
 	closesocket(Socket);
 	WSACleanup();
 	fclose(f);
+	if (nbytes != nullptr) *nbytes = len;
 	return fileAndRes;
 }
+
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
 {
 	if (height==0)										// Prevent A Divide By Zero By
@@ -154,8 +204,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
 	game.Init0(ResPath, 'W');
-	//getHttpFile("acnodelabs.com", "", "index.html");
-	getHttpFile("jccc2009.web.fc2.com", "japanese/honda/cr-z-zf2-se-201304", "p01.jpg");
+	
 	SYSTEMTIME now0;
 	GetLocalTime(&now0);
 	int hr = now0.wHour;

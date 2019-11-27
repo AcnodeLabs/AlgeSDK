@@ -326,10 +326,14 @@ public:
 		//Add Resources Directly require rm to be inited by the app so that it knows where to find resources
 		rm.Init(path);
 
-		char img[32];
+		char img[128];
 
 		for (int i=0; i<=21; i++) {
-			sprintf(img, "image%03d.tga", i+1);
+			sprintf(img, "p%02d.jpg", i + 1);
+			//http://jccc2009.web.fc2.com/japanese/toyota/aqua-nhp10-201112/p01.jpg
+			//getHttpFile("acnodelabs.com", "images/testimages", img);
+			getHttpFile("jccc2009.web.fc2.com", "japanese/toyota/aqua-nhp10-201112", img);
+			sprintf(img, "japanese_toyota_aqua-nhp10-201112_p%02d.jpg", i + 1);
 			rm.loadAlxModel("animposter.alx", img, i, 1);
 			cfc.item[i].modelId = i;
 		}
