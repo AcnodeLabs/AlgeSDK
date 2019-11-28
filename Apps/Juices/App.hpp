@@ -86,11 +86,11 @@ public:
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		      //  float scale = getBackgroundSize().x / 800.0;
 		//iit.Track(
-		AddResource(&background, "juices", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		AddResource(&background, "juices", "green_natural.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
 		//);
 		
 		iit.Track(
-			AddResource(&objct, "slice")
+			AddResource(&objct, "slice", "slice.jpg")
 		);
 		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.25, bottomSide/2)));
 		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.75, bottomSide/2)));

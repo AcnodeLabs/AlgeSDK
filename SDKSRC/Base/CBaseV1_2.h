@@ -64,6 +64,7 @@
 #include <math.h>
 #include <vector>
 #include <iostream>
+#include <sstream>
 //https://www.quora.com/In-C-and-C++-how-can-I-open-an-image-file-like-JPEG-and-read-it-as-a-matrix-of-pixels/answer/Bilal-Ahsan?prompt_topic_bio=1
 #include "jpgd.h"
 
@@ -2258,13 +2259,23 @@ public:
 	}
 	}
 	*/
+	//https://stackoverflow.com/questions/5167625/splitting-a-c-stdstring-using-tokens-e-g
+	std::vector<std::string> split(const std::string& s, char seperator)
+	{	std::vector<std::string> output;std::string::size_type prev_pos = 0, pos = 0;while ((pos = s.find(seperator, pos)) != std::string::npos) {std::string substring(s.substr(prev_pos, pos - prev_pos));output.push_back(substring);prev_pos = ++pos;} output.push_back(s.substr(prev_pos, pos - prev_pos));
+		return output; }
 
 	//will be saved as a local file and web address will be lost
-	void retrieve(char** url) {
+	string retrieve(char** url) {
 		string remote = string(*url);
-		size_t lastslash = remote.find_last_of('/');
-	//	curlpp::Cleanup cleaner;
-
+		vector<string> strr = split(remote, '/');
+		int n = strr.size();
+		string hostname = strr[2];
+		string resourcepath = "";
+		for (int i = 3; i < n - 1; i++) {
+			resourcepath += (i==3?"":"/") + strr[i];
+		}
+		string fname = strr[n - 1];
+		return getHttpFile(hostname, resourcepath, fname);
 	//	curlpp::Easy request;
 	}
 
@@ -2317,7 +2328,11 @@ public:
 		bool web = false;
 		if (texfilename) {
 			web = (strstr(texfilename, "http:") != nullptr);
-			if (web) retrieve(&texfilename);//will also modify texfilename variable if found
+			string ret;
+			if (web) {
+				ret = retrieve(&texfilename);//will also modify texfilename variable if found
+				strcpy(texfilename, ret.c_str());
+			}
 		}
 
 		if (file)
@@ -2568,7 +2583,7 @@ public:
 			}
 			
 			if (texfilename) { 
-				sprintf(fname, "%s/%s", resourcepath, texfilename); 
+				sprintf(fname, "%s/%s", resourcepath, texfilename);
 			}
 
 			if (fname[0]) {
@@ -2868,7 +2883,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 		int size = ftell(f);
 		fclose(f);
 		if (size != 0) //recollect file if prev retrival was erroneous
-			return localfilename;//Dont proceed if file already exists
+			return fileAndRes;//Dont proceed if file already exists
 	}
 	f = fopen(localfilename.c_str(), "wb");
 
@@ -2882,8 +2897,9 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 	int r1 = sck.Recv(buffer, len);
 
 	try {
-		char* ll = strstr(buffer, "Length:") + 8;
-		len = atoi(ll);
+		char* ll = strstr(buffer, "Length:");
+		if (!ll) return "";
+		len = atoi(ll+8);
 		int diff = r1 - len;
 	}
 	catch (...) {
