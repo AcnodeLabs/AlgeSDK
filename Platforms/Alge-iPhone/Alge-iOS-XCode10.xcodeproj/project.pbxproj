@@ -10,7 +10,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		2514C27210084DB100A42282 /* ES1Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2514C26E10084DB100A42282 /* ES1Renderer.m */; };
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
-		88E722462373E79B0095DE43 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88E722452373E79B0095DE43 /* Data */; };
+		889E89ED238EDFCA00EB20FA /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889E89EC238EDFCA00EB20FA /* jpgd.cpp */; };
+		889E89EF238EE06D00EB20FA /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 889E89EE238EE06D00EB20FA /* Data */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -106,7 +107,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C34850922E2F6CB00221846 /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		883E779B231655030014F5A1 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
-		88E722452373E79B0095DE43 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Brochures.Assets/Data; sourceTree = "<group>"; };
+		889E89EC238EDFCA00EB20FA /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
+		889E89EE238EE06D00EB20FA /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/JapCarBrochures.Assets/Data; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -285,8 +287,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				889E89EE238EE06D00EB20FA /* Data */,
 				6C34850922E2F6CB00221846 /* AlgeApp.hpp */,
-				88E722452373E79B0095DE43 /* Data */,
 				883E779B231655030014F5A1 /* candidate.h */,
 				9CBCE83C20E4B9F70062EEAD /* App Icons */,
 				9CBCE83B20E4B9B60062EEAD /* LaunchScreen Images */,
@@ -313,6 +315,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				889E89EC238EDFCA00EB20FA /* jpgd.cpp */,
 				9CDFB9AB21908FA80005176E /* Box2D */,
 				9C759F9221858FD9004DA337 /* camera.cpp */,
 				9C759F9321858FD9004DA337 /* camera.h */,
@@ -594,9 +597,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889E89EF238EE06D00EB20FA /* Data in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
-				88E722462373E79B0095DE43 /* Data in Resources */,
 				9CB4344F135CAAB200F8C12F /* MainWindow~iphone.xib in Resources */,
 				9CF1FCA713E29C70005FB6E5 /* Default-Portrait~ipad.png in Resources */,
 				9CB1BBD31432EFC00032B4BD /* icon57.png in Resources */,
@@ -648,6 +651,7 @@
 				9CDFBA2A21908FA90005176E /* b2ContactManager.cpp in Sources */,
 				9CDFBA1621908FA90005176E /* b2PolygonAndCircleContact.cpp in Sources */,
 				9CDFBA2B21908FA90005176E /* b2Rope.cpp in Sources */,
+				889E89ED238EDFCA00EB20FA /* jpgd.cpp in Sources */,
 				9CDFBA1421908FA90005176E /* b2EdgeAndPolygonContact.cpp in Sources */,
 				9CDFBA2C21908FA90005176E /* b2Draw.cpp in Sources */,
 				9CDFBA2221908FA90005176E /* b2MotorJoint.cpp in Sources */,
@@ -704,7 +708,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.JapCarBrochures;
 				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -737,7 +741,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.JapCarBrochures;
 				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -813,7 +817,7 @@
 				HEADER_SEARCH_PATHS = ../../../Box2D;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.Brochures;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.JapCarBrochures;
 				PRODUCT_NAME = Brochures;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphonesimulator4.2]" = "37C021F2-6B9D-415A-8946-E822A76C7B1A";
