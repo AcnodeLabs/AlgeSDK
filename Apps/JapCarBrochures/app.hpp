@@ -1,9 +1,8 @@
 // Copyright (c) 2012 AcnodLabs Inc
 
 /* 
-   ALGE SDK Demo :: CoverFlow
-   IMPORTANT NOTICE :: Images hold Copyrights of aivault.com and Liscenced for ALGE SDK Commercial Liscence Holders only
-   (means Dont Copy and Use content in any of your Freebie or Commercial venture)
+   ALGE SDK Demo :: Brochures
+   IMPORTANT NOTICE ::    (Dont Copy and Use content in any of your Freebie or Commercial venture)
 */
 
 class CCoverFlowItem {
@@ -55,7 +54,6 @@ public:
 		yTilt.StartFromCurrent();
 		z.StartFromCurrent();
 	}
-
 
 	void Reset() {	
 		yTilt.Reset();
@@ -182,14 +180,16 @@ public:
 			item[i].Update(t);
 		}
 	}
+	bool bookMode = false;
 
-	void inline drawSingleItem(CResourceManager* rm, int i) {
+	void inline drawItem(CResourceManager* rm, int i) {
 			if (!item[i].visible) return;
 			glLoadIdentity();
 			glTranslatef(item[i].getXPos(),0,item[i].getZ());
 			glRotatef(item[i].getYTilt(),0,1,0);
 			glColor4f(1,1,1,1);
 			rm->models[item[i].modelId]->glDraw();
+			//draw shadow
 			float modelHeight = rm->models[item[i].modelId]->boundz();
 			glTranslatef(0,-modelHeight*2,0);
 			glRotatef(180,1,0,0);
@@ -200,10 +200,10 @@ public:
 	void glDraw(CResourceManager* rm) {
 		glPushMatrix();
 		for (int i=0; i<currentId; i++) {
-			drawSingleItem(rm,i);
+			drawItem(rm,i);
 		}
 		for (int i=nITEMS-1; i>=currentId; i--) {
-			drawSingleItem(rm,i);
+			drawItem(rm,i);
 		}
 		glPushMatrix();
 	}
@@ -322,6 +322,7 @@ public:
 		yrot=0;
 		xrot=0;
 		z=-3.5f;		
+		cfc.bookMode = true; //two pages at a time
 
 		//Add Resources Directly require rm to be inited by the app so that it knows where to find resources
 		rm.Init(path);

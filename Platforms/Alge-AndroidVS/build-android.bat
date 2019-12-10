@@ -95,7 +95,7 @@ del /Q bin\%APPNAME%.apk
 echo [18] ------------------- SIGNING
 echo [19] jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -keypass %PASSW%
 call jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% bin\%APPNAME%-release-unsigned.apk %KEYSTORE_USERNAME% -storepass %PASSW% -keypass %PASSW%
-echo [20] %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
+echo [20] %SDK_ROOT%\build-tools\29.0.2\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 call %SDK_ROOT%\build-tools\28.0.3\zipalign -v 4 bin\%APPNAME%-release-unsigned.apk bin\%APPNAME%.apk
 %SDK_ROOT%\platform-tools\adb uninstall %PACKAGE%
 echo [21] Deploying...

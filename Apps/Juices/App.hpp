@@ -84,14 +84,14 @@ public:
 		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
 		
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		      //  float scale = getBackgroundSize().x / 800.0;
-		//iit.Track(
-		AddResource(&background, "juices", "green_natural.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-		//);
-		
-		iit.Track(
-			AddResource(&objct, "slice", "slice.jpg")
+		AddResource(&background, "juices", 
+			"green_natural.jpg", 
+			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 		);
+		iit.Track(
+			AddResource(&objct, "slice")
+		);
+
 		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.25, bottomSide/2)));
 		iit.Track((GameObject*)objct.AddInstance(f2(rightSide*0.75, bottomSide/2)));
 		objct.getInstancePtr(0)->UUID = "LEFT";
@@ -103,7 +103,6 @@ public:
 		sel = iit.First();
 		resetPosRotSpeed(0);
 		resetPosRotSpeed(1);
-
 		
 	}
 
@@ -135,7 +134,6 @@ public:
 		}
 
 		if (p->command == CMD_TOUCH_START) {
-
 			touchData = (c.KROSS_(false, p->i1, p->i2));
             jn = "Touched " + c.toStr(touchData);
             
@@ -144,8 +142,7 @@ public:
             }
             if (onTouched(objct.getInstancePtr(1)->UUID)) {
                 jn = "Touched RIGHT" ;
-            }
-            
+            }         
 		}
 
 		if (p->command == CMD_KEYDOWN || touchData) {
@@ -189,8 +186,6 @@ public:
 			output.pushP(CMD_TITLE, $ jn.c_str(), 0);
 			output.pushP(CMD_TOAST, $ jn.c_str(), 0);
 		}
-        
-
 
 	}
 

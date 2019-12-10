@@ -72,13 +72,13 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\cstdarg \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\__bsd_locale_fallbacks.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\bitset \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\UTM.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h \
-  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list \
   jni\..\..\..\..\Box2D\Box2D\Box2D\Box2D.h \
   jni\..\..\..\..\Box2D\Box2D\Box2D\Common\b2Settings.h \
@@ -151,7 +151,8 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\candidate.h jni\..\..\..\Apps\JapCarBrochures\App.hpp
+  jni\..\..\candidate.h jni\..\..\..\Apps\PoppingTime\App.hpp \
+  jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -301,6 +302,8 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\bitset:
 
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream:
+
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\jpgd.h:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\setjmp.h:
@@ -312,8 +315,6 @@ jni\..\..\..\..\AlgeSDK\SDKSRC\Base\CCommands.h:
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\drawtext.h:
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\AlgeSDK.ads.h:
-
-C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\sstream:
 
 C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\list:
 
@@ -463,4 +464,6 @@ jni\CANDIDATE.h:
 
 jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\JapCarBrochures\App.hpp:
+jni\..\..\..\Apps\PoppingTime\App.hpp:
+
+jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp:
