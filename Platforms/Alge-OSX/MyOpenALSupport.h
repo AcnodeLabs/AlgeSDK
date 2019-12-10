@@ -1,4 +1,4 @@
-/*	Copyright © 2007 Apple Inc. All Rights Reserved.
+/*	Copyright ï¿½ 2007 Apple Inc. All Rights Reserved.
 	
 	Disclaimer: IMPORTANT:  This Apple software is supplied to you by 
 			Apple Inc. ("Apple") in consideration of your agreement to the
@@ -39,8 +39,8 @@
 			POSSIBILITY OF SUCH DAMAGE.
 */
 #include <CoreFoundation/CoreFoundation.h>
-#include <AudioToolbox/AudioToolbox.h>
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
+//#include <AudioToolbox/AudioToolbox.h>
+//#import <OpenAL/al.h>
+//#import <OpenAL/alc.h>
 
-void* MyGetOpenALAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei*	outSampleRate);
+//void* MyGetOpenALAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei*	outSampleRate);

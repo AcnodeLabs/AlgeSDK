@@ -543,9 +543,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* DodgeTheCreeps */ = {
+		1D6058900D05DD3D006BFB54 /* PoppingTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DodgeTheCreeps" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PoppingTime" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -556,7 +556,7 @@
 			);
 			dependencies = (
 			);
-			name = DodgeTheCreeps;
+			name = PoppingTime;
 			productName = "san-angeles-iphone";
 			productReference = 9C3B7DD4135AF17D008EE6B1 /* Brochures.app */;
 			productType = "com.apple.product-type.application";
@@ -587,7 +587,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* DodgeTheCreeps */,
+				1D6058900D05DD3D006BFB54 /* PoppingTime */,
 			);
 		};
 /* End PBXProject section */
@@ -921,7 +921,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DodgeTheCreeps" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PoppingTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

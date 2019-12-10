@@ -2870,7 +2870,7 @@ public:
 };
 
 extern char ResPath[256];;
-extern XHttpSocket sck;
+extern XHttpSocket msck;
 
 string getHttpFile(string hostname, string resourcepath, string filename, int* nbytes = nullptr)
 {
@@ -2887,14 +2887,14 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 	}
 	f = fopen(localfilename.c_str(), "wb");
 
-	sck.Connect(hostname);
+	msck.Connect(hostname);
 
 	string get1 = "GET /" + resourcepath + "/" + filename + " HTTP/1.1\r\nHost: " + hostname + " \r\nConnection: close\r\n\r\n";
 	const char* sz = get1.c_str();
-	sck.Send((char*)sz);
+	msck.Send((char*)sz);
 	int len = 1024 * 1024;
 	char* buffer = (char*)malloc(len);
-	int r1 = sck.Recv(buffer, len);
+	int r1 = msck.Recv(buffer, len);
 
 	try {
 		char* ll = strstr(buffer, "Length:");
@@ -2919,7 +2919,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 	}
 
 	while (bytestogo > 0) {
-		int bytesread = sck.Recv(buffptr, bytestogo);
+		int bytesread = msck.Recv(buffptr, bytestogo);
 		if (bytesread > 0) {
 			bytestogo -= bytesread;
 			buffptr += bytesread;
@@ -2933,7 +2933,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 		fwrite(wherecontentbegins, len, 1, f);
 
 	free(buffer);
-	sck.Close();
+	msck.Close();
 	fclose(f);
 	if (nbytes != nullptr) *nbytes = len;
 	return fileAndRes;
