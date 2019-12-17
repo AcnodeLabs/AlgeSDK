@@ -1,10 +1,12 @@
 #ifdef CHOTSPOT_INCLUDED
 #else
 #define CHOTSPOT_INCLUDED
+#include "CLog.hpp"
+
 class CHotSpot {
 
 public:
-
+    int id;
 	int Top, Left, Bottom, Right;
     static int sx, sy;
     static int ox, oy;
@@ -15,11 +17,34 @@ public:
         sy = iSy;
         aspect = sx / ( sy + 0.000001f);
     }
-    
+    void Set(int id, int iwidth, int iheight, int iTop, int iLeft, int iBottom, int iRight) {
+        this->id = id;
+        Set(iwidth, iheight, iTop, iLeft, iBottom, iRight);
+    }
+
     void Set(int iwidth, int iheight, int iTop, int iLeft, int iBottom, int iRight) {
         ox = iwidth;
         oy = iheight;
         Top = iTop; Left = iLeft; Bottom = iBottom; Right = iRight;
+    }
+    static CLog log;
+    static string sz;
+
+    static void WriteCodeToLog(int touchstart_x, int touchstart_y, int touchend_x, int touchend_y) {
+        int w, h, t, l, b, r;
+        l = touchstart_x;
+        r = touchend_x;
+        t = touchstart_y;
+        b = touchend_y;
+        w = r - l;
+        h = b - t;
+        sz =  "hs[][].Set(" + std::to_string(w) + ",";
+        sz +=  std::to_string(h) + ",";
+        sz += std::to_string(t) + ",";
+        sz += std::to_string(l) + ",";
+        sz += std::to_string(b) + ",";
+        sz += std::to_string(r) +");\n";
+        log.it((char*)sz.c_str());
     }
 
     bool HitX(int cx, int cy) {

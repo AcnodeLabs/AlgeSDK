@@ -14,15 +14,20 @@
 
 class PoppingGame : public MockUpOne {
 public:
-    GameLogic logic;
     GameObject spikey, heli, baloons, fan, cloud, getready;
 	GameObject fps_text;
-
+    
     int nRemaining;
     int rightSide1;
     int leftSide1;
     int level = 1;
     
+    enum Scenes {
+        StartScene,
+        PlayScene,
+    };
+
+
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
 		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
@@ -74,12 +79,12 @@ public:
     void processInput(PEG::CMD* cmd, float deltaT) {
         
         if (cmd->command == CMD_TOUCH_START) {
-            
+
             {
                 if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
             }
-            
-            
+
+
             if (app->onTouched("bg") || app->onTouched("baloon")) {
                 heli.JuiceType = 0;
                 f2 postouch = startScreen.bg.posTouched();
@@ -88,9 +93,9 @@ public:
                 int topSide1 = app->topSide + (heli.m_height);
                 int bottomSide1 = app->bottomSide - (heli.m_height + spikey.m_height);
                 if (postouch.y > bottomSide1) postouch.y = bottomSide1;
-                if (postouch.y < topSide1 ) postouch.y = topSide1;
+                if (postouch.y < topSide1) postouch.y = topSide1;
                 heli.transitionTof2(postouch, 500);
-                
+
                 if (heli.hidden) {
                     heli.JuiceType = 0;
                     heli.hidden = false;
@@ -98,7 +103,14 @@ public:
                     heli.pos = app->getBackgroundSize().half();// pos in middle of screen
                 }
             }
-            
+
+        }
+
+        if (cmd->command == CMD_TOUCHMOVE) {
+            if (!heli.hidden) {
+                heli.animPos.active = false;
+                heli.pos = i2(cmd->i1, cmd->i2);
+            }
         }
         
         if (cmd->command == CMD_KEYDOWN) {
@@ -110,9 +122,6 @@ public:
             }
         }
         
-		if (cmd->command == CMD_SETTINGS_SCREEN) {
-		}
-
         if (cmd->command == CMD_GAMEPAD_EVENT) {
             if (cmd->i1 == MyGamePad::EventTypes::BTN) {
                 if (cmd->i2 == MyGamePad::EventCodes::BTN_X) DropSpikey();
@@ -154,8 +163,7 @@ public:
            // bool ok = true;
         }
     }
-    
-    
+        
     void DropSpikey() {
         if (spikey.animPos.active) return;
         spikey.transitionTof2(f2(startScreen.bg.posTouched().x, app->bottomSide), 500);
@@ -170,9 +178,6 @@ class App : public AlgeApp {
     FILE* f;
     
 public:
-	void printDebug() {
-		
-	}
 
     PoppingGame pp;
     
@@ -194,27 +199,20 @@ public:
         output.pushP(CMD_SNDSET3, $ "drop.wav");
         output.pushP(CMD_SNDSET4, $ "entry.wav");
         
-        //output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav", &nLoops);
         wall_msg = "Go";
         
 		output.pushI(CMD_USEGAMEPAD, 0, 0);
-        scene = 0;
+        scene = PoppingGame::Scenes::StartScene;
     }
-    
-    virtual void onActionComplete(GameObject* obj) {
-        pp.onActionComplete(obj);
-    }
-    
-//    virtual i2 getBackgroundSize() {
-//        return size_ipad_air;
-//    }
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
-		
 			
 		if (cmd->command == CMD_GAMEPAD_EVENT) {
-            if (scene == 0) { scene++; return; }
+            if (scene == PoppingGame::Scenes::StartScene) { 
+                scene = PoppingGame::Scenes::PlayScene; 
+                return; 
+            }
         }
         
         if (cmd->command == CMD_SCREENSIZE) {
@@ -229,24 +227,15 @@ public:
             }
         }
 
-		if (cmd->command == CMD_TOUCHMOVE) {
-			if (!pp.heli.hidden) {
-				pp.heli.animPos.active = false;
-				pp.heli.pos = i2(cmd->i1, cmd->i2);
-			}
-		}
-
         pp.processInput(cmd,deltaT);
-        
     }
     
-	//CFTFont font;
-
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
-     //   doInhibitLogic(gob);
-        if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
-        if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
+
+        if (scene == PoppingGame::Scenes::StartScene) UpdateStartScene(gob, instanceNo, deltaT);
+        if (scene == PoppingGame::Scenes::PlayScene)  UpdatePlayScene(gob, instanceNo, deltaT);
         
+        //Clouds Move in Both Screens
         if (gob->is(pp.cloud)) {
             for (unsigned short i = 0; i < pp.cloud.prsInstances.size(); i++) {
                 PosRotScale* cloudprs = pp.cloud.getInstancePtr(i);
@@ -256,23 +245,10 @@ public:
             }
         }
 
-		if (scene!=0 && gob->is(pp.fps_text)) {
-			string x = string("LEFT= ") + to_string(pp.nRemaining);
-				glPushMatrix();
-				text.PrintTextGl(x.c_str(), f3(0,0,0), 2);
-				glPopMatrix();
-		}
-
-       // inhibitRender = false;//Show ALL for DEBUG
     }
     
-    void doInhibitLogic(GameObject* gob) {
-        if ((scene==0) && (gob->is(pp.heli) || gob->is(pp.fps_text)|| gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)))
-            inhibitRender = true;
-    }
-
     // First Intro Screen
-    virtual void UpdateScene0(GameObject* gob, int instanceNo, float deltaT) {
+    virtual void UpdateStartScene(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=0) return;
         if ((gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)|| gob->is(pp.MockUpOne::dPad))) inhibitRender = true;
         if (onTouched("start"))
@@ -284,7 +260,7 @@ public:
     }
     
     // GamePlay Scene
-    virtual void UpdateScene1(GameObject* gob, int instanceNo, float deltaT) {
+    virtual void UpdatePlayScene(GameObject* gob, int instanceNo, float deltaT) {
         if (scene!=1) return;
       //  if (gob->isOneOf({ &pp.titl,&pp.startScreen.ratings,&pp.startScreen.start }))
         if (gob->is(pp.titl) || gob->is(pp.startScreen.ratings) || gob->is(pp.startScreen.start)) inhibitRender = true;
@@ -383,8 +359,19 @@ public:
             }
             
         }
+
+        if (gob->is(pp.fps_text)) {
+            string x = string("LEFT= ") + to_string(pp.nRemaining);
+            glPushMatrix();
+            text.PrintTextGl(x.c_str(), f3(0, 0, 0), 2);
+            glPopMatrix();
+        }
+
     }
-    
+    //fully delegated
+    virtual void onActionComplete(GameObject* obj) { pp.onActionComplete(obj); }
+    ////
+
     ~App() {
         if (f) fclose(f);
     }
