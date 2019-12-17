@@ -8,6 +8,7 @@
 #include "CFTFont.hpp"
 #include "CKeyboard.hpp"
 #include "CPhys.hpp"
+#include "CLog.hpp"
 
 //#include "CEasyBullet.hpp"
 //#include "CNetMsg.hpp"	//Nats Migrated to SDKSRC/Tools/CNetMsg.lib

@@ -24,11 +24,12 @@
 
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
-
+#include "xfmod.hpp"
 
 #include "CANDIDATE.h"
 #include "Timer.h"
 #include <iostream>
+
 
 #define ALGE_WINDOWS
 
@@ -220,6 +221,7 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		Gamepad_processEvents();
 #endif
 		game.Render(deltaT, aX, aY, aZ);
+		fmodsystem->update();
 	}
 	
 
@@ -261,12 +263,15 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 			PostQuitMessage(0);
 		}
 		else if (command >= CMD_SNDSET0 && command <= CMD_SNDSET0 + 15) {
-			sprintf(soundfiles[command - CMD_SNDSET0], "%s/%s", ResPath + 1, (char*)p1);
+			sprintf(soundfiles[command - CMD_SNDSET0], "%s/%s", ResPath, (char*)p1);
+			int sn = command - CMD_SNDSET0;
+			FMOD_Set(sn,soundfiles[sn]);
 		}
 		else if (command >= CMD_SNDPLAY0 && command <= CMD_SNDPLAY0 + 15) {
 			//sndPlaySoundA((char*)soundfiles[command-CMD_SNDPLAY0],SND_ASYNC);
 			//PlaySoundA(NULL,0,0);
-			PlaySoundA(soundfiles[command - CMD_SNDPLAY0], NULL, SND_NOSTOP | SND_ASYNC | SND_FILENAME);
+			FMOD_Play(command - CMD_SNDPLAY0);
+			//PlaySoundA(soundfiles[command - CMD_SNDPLAY0], NULL, SND_NOSTOP | SND_ASYNC | SND_FILENAME);
 			//	ShellExecuteA(hWnd, "open", soundfiles[command-CMD_SNDPLAY0], "", "C:\\", SW_SHOWNORMAL);
 		}
 		else if (command == CMD_VIDPLAY) {
@@ -810,6 +815,8 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 		return 0;									// Quit If Window Was Not Created
 	}
 
+	FMOD_Init();
+
 	//DialogBox (hInstance, TEXT ("Toast"), hWnd, (DLGPROC)DlgProc) ;
 	DWORD A = GetLastError();
 	hToast=CreateDialog(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_DIALOG1), hWnd,(DLGPROC)DlgProc); 
@@ -899,6 +906,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	// Shutdown
 	KillGLWindow();									// Kill The Window
 	game.Deinit();
+	FMOD_Deinit();
 	return (msg.wParam);							// Exit The Program
 }
 
