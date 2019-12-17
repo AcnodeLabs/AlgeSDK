@@ -110,7 +110,7 @@ void sndSet(char* filename, int id, int loops) {
  
  CFStringRef f1 = CFStringCreateWithFileSystemRepresentation(kCFAllocatorDefault, filespec);
  CFURLRef fileURL = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)f1, NULL);
-// data = MyGetOpenALAudioData(fileURL, &size, &format, &freq);
+    data = malloc(1);////MyGetOpenALAudioData(fileURL, &size, &format, &freq);
  CFRelease(fileURL);
  alBufferData(alBuffers[id], format, data, size, freq);
  free(data);
