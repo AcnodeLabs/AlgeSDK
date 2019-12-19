@@ -85,7 +85,7 @@ int whatIsTheLengthOfContent(char* buffer) {
 }
 
 
-XHttpSocket sck;
+XHttpSocket msck;
 
 int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char* buf) {
 	string fileAndRes = (resourcepath + "/" + filename);
@@ -93,9 +93,6 @@ int getHttpJpegToBuf(string hostname, string resourcepath, string filename, char
 	//getHttpFile(&ResPath[0], &sck, hostname, resourcepath, filename, &nbytes);
 	return 0;
 }
-
-
-
 
 
 GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window

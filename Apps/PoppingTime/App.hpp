@@ -9,6 +9,7 @@
 //#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 
 #include "PoppingTimeLogic.hpp"
+#include "../LevelSelect/LevelSelector.hpp"
 
 // Scrum Page https://scrumy.com/PoppingTime
 
@@ -16,6 +17,7 @@ class PoppingGame : public MockUpOne {
 public:
     GameObject spikey, heli, baloons, fan, cloud, getready;
 	GameObject fps_text;
+    
     
     int nRemaining;
     int rightSide1;
@@ -61,8 +63,10 @@ public:
 			_.pos.x = that->rightSide / 20;
 			_.pos.y = that->bottomSide / 20;
 			_.color = f3(0, 0, 0);
-		_with
-		
+            _with
+
+        
+
     }
     
     void MakeClouds(int n) {
@@ -180,7 +184,8 @@ class App : public AlgeApp {
 public:
 
     PoppingGame pp;
-    
+    LevelSelector lvlSelector;
+
     bool soundedOuch;
     
     virtual void Init(char* path) {
@@ -203,6 +208,9 @@ public:
         
 		output.pushI(CMD_USEGAMEPAD, 0, 0);
         scene = PoppingGame::Scenes::StartScene;
+
+   //     lvlSelector.Init(path);  // resoucemanaer not working with app in app
+
     }
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
