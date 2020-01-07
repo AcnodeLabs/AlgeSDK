@@ -313,7 +313,9 @@ int main( int argc, char** argv )
    l = strrchr(app.rm.resourcepath, '/');
   if (l) l[0] = 0;
 	
-  strcat(app.rm.resourcepath, "/Alge-OSX-XCode9.app/Contents/Resources/Data");
+  strcat(app.rm.resourcepath, "/");
+  strcat(app.rm.resourcepath, ALGEAPPNAME);
+  strcat(app.rm.resourcepath, ".app/Contents/Resources/Data");
   
   initAL(app.rm.resourcepath);
  
