@@ -1,10 +1,10 @@
 // Edit here to point to AlgeSDK based cross platform Candidate Application 
 // App Folder should Match ProjectName in Solution Explorer
 //
-// Project Board is accessibale by Tools > Scrumy (Board)
+// In Visual Studio Project Board is accessibale by Tools > Scrumy (Board)
+// or you can goto http://scrummy.com/XAL_PoppingTime
 
-
-
+#define ALGEAPPNAME "PoppingTime"
 #include "../Apps/PoppingTime/App.hpp"
 
 
