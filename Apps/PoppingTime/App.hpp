@@ -209,7 +209,7 @@ public:
 		output.pushI(CMD_USEGAMEPAD, 0, 0);
         scene = PoppingGame::Scenes::StartScene;
 
-   //     lvlSelector.Init(path);  // resoucemanaer not working with app in app
+        lvlSelector.Init(path);  // resoucemanaer not working with app in app
 
     }
     
