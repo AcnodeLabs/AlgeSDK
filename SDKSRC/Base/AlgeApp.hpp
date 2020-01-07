@@ -56,7 +56,7 @@ public:
 	int dcursor;
 	int screen_y;
 	PEG input, output;
-	CResourceManager rm;
+	static CResourceManager rm;
 	aL10 AL10;
 	int backgroundModelId = 0;//used for dimming
 
@@ -1474,7 +1474,7 @@ public:
 
 };
 
-
+CResourceManager AlgeApp::rm;
 
 class GameScene {
     

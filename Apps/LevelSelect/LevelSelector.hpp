@@ -7,15 +7,33 @@
 class LevelSelector : public AlgeApp { 
 	GameObject background;
 	GameObject locks;
+	
 public:
-
+		int CMD_LEVELSELECT = 4111;
+		vector<bool> lockHid;
+		
+		void slideIn() {
+			background.hidden = false;
+			for_i(locks.prsInstances.size())
+				locks.getInstancePtr(i)->hidden = lockHid.at(i);
+			_for
+		}
+	
+		void slideOut() {
+			lockHid.clear();
+			background.hidden = true;
+			for_i(locks.prsInstances.size())
+				lockHid.push_back(locks.getInstancePtr(i)->hidden);
+				locks.getInstancePtr(i)->hidden = background.hidden;
+			_for
+		}
+		
+		// Call after AlInit and AddDefaultCamera
 		virtual void Init(char* path) {
 
-		AlInit(STANDARD);
-		
-		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		AddResource(&background, "levelselect", "levelselect.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 		);
+
 		AddResource(&locks, "lock","lock.jpg");
 					//load hsdata dump
 		#include "../LevelSelect.Assets/Data/levelselect.h"
@@ -41,11 +59,16 @@ public:
 				locks.getInstancePtr(i)->hidden = true;
 			_for
 		}
-
+		
 		void levelSelected(int lvl) {
-			sz = std::to_string(lvl) +"<< Level Selected!";
-			SetTitle(sz.c_str());
 			output.pushP(CMD_SNDPLAY0, $ "entry.wav", 0);
+			slideOut();
+			input.pushI(LevelSelector::CMD_LEVELSELECT, lvl, 0);
+		}
+
+		int dim(int r, int c) {
+			int ret = (r+1)*(c+1);
+			return ret;
 		}
 
     CControls c;
@@ -53,7 +76,7 @@ public:
 	string sz;
 	int sx; int sy;
 	void processInput(PEG::CMD* p, float deltaT) { 
-		
+		if (background.hidden) return;
 		short touchData = 0;
 
 		if (p->command == CMD_SCREENSIZE) {
@@ -68,7 +91,8 @@ public:
 			sy = p->i2;
 			//HITTEST
 			for (int r = 0; r < 3; r++) for (int c = 0; c < 5; c++) {
-				if (hs[r][c].HitX(sx, sy)) levelSelected(hs[r][c].id);
+				bool hid = locks.getInstancePtr(dim(r, c))->hidden;
+				if (hs[r][c].HitX(sx, sy) && !hid) levelSelected(hs[r][c].id);
 			}
 		}
 

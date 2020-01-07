@@ -24,7 +24,7 @@
 
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include CBASE 
-#include "xfmod.hpp"
+#include "../../SDKSRC/Base/fmod/framework.hpp"
 
 #include "CANDIDATE.h"
 #include "Timer.h"
