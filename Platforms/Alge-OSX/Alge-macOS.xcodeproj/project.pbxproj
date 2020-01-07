@@ -55,7 +55,13 @@
 		88AB7B072316E046004A0239 /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFE2316E046004A0239 /* b2ContactSolver.cpp */; };
 		88AB7B082316E046004A0239 /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */; };
 		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
-		88DC650B23C4BF6A00D7DE2E /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88DC650A23C4BF6A00D7DE2E /* Data */; };
+		88E172E423C4ECDF007A5116 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88DC650723C4B75A00D7DE2E /* Data */; };
+		88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
+		88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
+		88E172EF23C4F620007A5116 /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
+		88E172F123C4F620007A5116 /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
+		88E172F723C4F7B1007A5116 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		88E172F823C4F7B1007A5116 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
 		9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3281BE13F275F900A53E54 /* Cocoa.framework */; };
 		9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281C713F275F900A53E54 /* InfoPlist.strings */; };
@@ -86,8 +92,22 @@
 		9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA991E1FAB603D00C52351 /* libfreeimage.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		88E172F323C4F620007A5116 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				88E172F723C4F7B1007A5116 /* libfmod.dylib in Embed Libraries */,
+				88E172F823C4F7B1007A5116 /* libfmodL.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		8805BAD023A896D600032A74 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/LevelSelect.Assets/Data; sourceTree = "<group>"; };
 		8805BAD223A8983700032A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
@@ -138,9 +158,12 @@
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		88DC650723C4B75A00D7DE2E /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/PoppingTime.Assets/Data; sourceTree = "<group>"; };
-		88DC650A23C4BF6A00D7DE2E /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/LevelSelect.Assets/Data; sourceTree = "<group>"; };
+		88E172E523C4F0A5007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmod.dylib; sourceTree = "<group>"; };
+		88E172E723C4F0E9007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodL.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmodL.dylib; sourceTree = "<group>"; };
+		88E172E923C4F25F007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
+		88E172EA23C4F25F007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
-		9C3281BA13F275F900A53E54 /* LevelSelect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelSelect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3281BA13F275F900A53E54 /* PoppingTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoppingTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C3281C813F275F900A53E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mars-Prefix.pch"; sourceTree = "<group>"; };
@@ -201,11 +224,13 @@
 				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
 				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
 				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
+				88E172F123C4F620007A5116 /* libfmodL.dylib in Frameworks */,
 				9C3FB9A71FAEFC390098B256 /* libdrawtext.a in Frameworks */,
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
 				9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */,
+				88E172EF23C4F620007A5116 /* libfmod.dylib in Frameworks */,
 				9C3FB9AE1FAEFF620098B256 /* libfreetype.a in Frameworks */,
 				9C3FB9AC1FAEFF230098B256 /* libGLEW.a in Frameworks */,
 				9C3FB9B01FAEFFF50098B256 /* libbz2.a in Frameworks */,
@@ -219,9 +244,9 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				8805BAD023A896D600032A74 /* Data */,
+				88E172E923C4F25F007A5116 /* libfmod.dylib */,
+				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88DC650723C4B75A00D7DE2E /* Data */,
-				88DC650A23C4BF6A00D7DE2E /* Data */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
@@ -283,7 +308,7 @@
 		9C3281BB13F275F900A53E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3281BA13F275F900A53E54 /* LevelSelect.app */,
+				9C3281BA13F275F900A53E54 /* PoppingTime.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -291,6 +316,8 @@
 		9C3281BD13F275F900A53E54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88E172E723C4F0E9007A5116 /* libfmodL.dylib */,
+				88E172E523C4F0A5007A5116 /* libfmod.dylib */,
 				9CE687D222E0EDE10046E542 /* GLUT.framework */,
 				9CE687CF22E0EDBA0046E542 /* CoreData.framework */,
 				9CE687CD22E0ED9E0046E542 /* Foundation.framework */,
@@ -374,21 +401,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C3281B913F275F900A53E54 /* LevelSelect */ = {
+		9C3281B913F275F900A53E54 /* PoppingTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "LevelSelect" */;
+			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */;
 			buildPhases = (
 				9C3281B613F275F900A53E54 /* Sources */,
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
+				88E172F323C4F620007A5116 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = LevelSelect;
+			name = PoppingTime;
 			productName = AlgeAppPlanets;
-			productReference = 9C3281BA13F275F900A53E54 /* LevelSelect.app */;
+			productReference = 9C3281BA13F275F900A53E54 /* PoppingTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -412,7 +440,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C3281B913F275F900A53E54 /* LevelSelect */,
+				9C3281B913F275F900A53E54 /* PoppingTime */,
 			);
 		};
 /* End PBXProject section */
@@ -422,7 +450,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DC650B23C4BF6A00D7DE2E /* Data in Resources */,
+				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
+				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
+				88E172E423C4ECDF007A5116 /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,
 				9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */,
@@ -551,6 +581,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "@executable_path/../Frameworks";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -599,6 +630,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "@executable_path/../Frameworks";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = "";
@@ -677,7 +709,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "LevelSelect" */ = {
+		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D913F275F900A53E54 /* Debug */,

@@ -14,7 +14,7 @@
 #include "../../SDKSRC/Base/CBaseV1_2.h"
 
 #include "CANDIDATE.h"
-#include "../Alge-Windows/xfmod.hpp"
+#include "../../SDKSRC/Base/fmod/framework.hpp"
 
 #include <GLUT/glut.h>
 #include <stdio.h>
@@ -54,7 +54,7 @@ Timer time1;
 float deltaT;
 float lastTime;
 float aX, aY, aZ;
-
+/*
 ALsizei nAL;
 #define NUM_BUFFERS_SOURCES 16
 ALuint alSources[NUM_BUFFERS_SOURCES];
@@ -95,7 +95,7 @@ void deInitAL() {
  alcCloseDevice(device);
 }
 
-void sndSet(char* filename, int id, int loops) {
+void sndSetAl(char* filename, int id, int loops) {
  ALenum  format;
  ALvoid* data;
  ALsizei size;
@@ -120,6 +120,7 @@ void sndSet(char* filename, int id, int loops) {
 void sndPlay(int id) {
  alSourcePlay(alSources[id]);
 }
+*/
 
 extern void ShowToast(char*);
 
@@ -131,7 +132,9 @@ void processOutput() {
    case CMD_SNDSET2:
    case CMD_SNDSET3:
         {
-         sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+        // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+            string fullpath = string(app.rm.resourcepath) + string("/")+ string((char*)c->param1);
+            FMOD_Set(c->command-CMD_SNDSET, (char*)fullpath.c_str());
         }
    break;
   
@@ -140,7 +143,9 @@ void processOutput() {
      case CMD_SNDPLAY2:
      case CMD_SNDPLAY3:
             {
-                sndPlay(c->command-CMD_SNDPLAY);
+               // sndPlay(c->command-CMD_SNDPLAY);
+                FMOD_Play(c->command-CMD_SNDPLAY);
+                
             }
    break;
         case CMD_TITLE:
@@ -211,7 +216,7 @@ static void HandleReshape( const int width, const int height )
 
 static void exitIt() {
   app.Deinit();
-  deInitAL();
+  FMOD_Deinit();
   exit(0);
 }
 
@@ -317,8 +322,8 @@ int main( int argc, char** argv )
   strcat(app.rm.resourcepath, ALGEAPPNAME);
   strcat(app.rm.resourcepath, ".app/Contents/Resources/Data");
   
-  initAL(app.rm.resourcepath);
- 
+ // initAL(app.rm.resourcepath);
+    FMOD_Init();
   app.rm.Init(app.rm.resourcepath);
  //   app.resolutionReported.x = kWindowWidth;
  //   app.resolutionReported.y = kWindowHeight;
