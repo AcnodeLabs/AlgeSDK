@@ -4,7 +4,7 @@
 //
 //  Created by Bilal on 6/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+// http://scrumy.com/XAL_AlgeSDK
 
 #define MACOSX
 #define XCODE_BUILD
@@ -14,7 +14,7 @@
 #include "../../SDKSRC/Base/CBaseV1_2.h"
 
 #include "CANDIDATE.h"
-
+#include "../Alge-Windows/xfmod.hpp"
 
 #include <GLUT/glut.h>
 #include <stdio.h>
@@ -110,7 +110,7 @@ void sndSet(char* filename, int id, int loops) {
  
  CFStringRef f1 = CFStringCreateWithFileSystemRepresentation(kCFAllocatorDefault, filespec);
  CFURLRef fileURL = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)f1, NULL);
-    data = malloc(1);////MyGetOpenALAudioData(fileURL, &size, &format, &freq);
+    data = malloc(1);//MyGetOpenALAudioData(fileURL, &size, &format, &freq);
  CFRelease(fileURL);
  alBufferData(alBuffers[id], format, data, size, freq);
  free(data);

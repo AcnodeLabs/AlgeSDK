@@ -55,7 +55,7 @@
 		88AB7B072316E046004A0239 /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFE2316E046004A0239 /* b2ContactSolver.cpp */; };
 		88AB7B082316E046004A0239 /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */; };
 		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
-		88DC650823C4B75A00D7DE2E /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88DC650723C4B75A00D7DE2E /* Data */; };
+		88DC650B23C4BF6A00D7DE2E /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88DC650A23C4BF6A00D7DE2E /* Data */; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
 		9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3281BE13F275F900A53E54 /* Cocoa.framework */; };
 		9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281C713F275F900A53E54 /* InfoPlist.strings */; };
@@ -138,8 +138,9 @@
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		88DC650723C4B75A00D7DE2E /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/PoppingTime.Assets/Data; sourceTree = "<group>"; };
+		88DC650A23C4BF6A00D7DE2E /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/LevelSelect.Assets/Data; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
-		9C3281BA13F275F900A53E54 /* PoppingTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoppingTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3281BA13F275F900A53E54 /* LevelSelect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelSelect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C3281C813F275F900A53E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mars-Prefix.pch"; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 			children = (
 				8805BAD023A896D600032A74 /* Data */,
 				88DC650723C4B75A00D7DE2E /* Data */,
+				88DC650A23C4BF6A00D7DE2E /* Data */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
@@ -281,7 +283,7 @@
 		9C3281BB13F275F900A53E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3281BA13F275F900A53E54 /* PoppingTime.app */,
+				9C3281BA13F275F900A53E54 /* LevelSelect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,9 +374,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C3281B913F275F900A53E54 /* PoppingTime */ = {
+		9C3281B913F275F900A53E54 /* LevelSelect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */;
+			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "LevelSelect" */;
 			buildPhases = (
 				9C3281B613F275F900A53E54 /* Sources */,
 				9C3281B713F275F900A53E54 /* Frameworks */,
@@ -384,9 +386,9 @@
 			);
 			dependencies = (
 			);
-			name = PoppingTime;
+			name = LevelSelect;
 			productName = AlgeAppPlanets;
-			productReference = 9C3281BA13F275F900A53E54 /* PoppingTime.app */;
+			productReference = 9C3281BA13F275F900A53E54 /* LevelSelect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -410,7 +412,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C3281B913F275F900A53E54 /* PoppingTime */,
+				9C3281B913F275F900A53E54 /* LevelSelect */,
 			);
 		};
 /* End PBXProject section */
@@ -420,7 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DC650823C4B75A00D7DE2E /* Data in Resources */,
+				88DC650B23C4BF6A00D7DE2E /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,
 				9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */,
@@ -675,7 +677,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */ = {
+		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "LevelSelect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D913F275F900A53E54 /* Debug */,

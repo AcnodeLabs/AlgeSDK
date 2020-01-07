@@ -4,8 +4,8 @@
 // In Visual Studio Project Board is accessibale by Tools > Scrumy (Board)
 // or you can goto http://scrummy.com/XAL_PoppingTime
 
-#define ALGEAPPNAME "PoppingTime"
-#include "../Apps/PoppingTime/App.hpp"
+#define ALGEAPPNAME "LevelSelect"
+#include "../Apps/LevelSelect/App.hpp"
 
 
 
