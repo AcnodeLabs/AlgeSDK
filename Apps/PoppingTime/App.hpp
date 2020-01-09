@@ -143,7 +143,7 @@ public:
     }
     
     void MakeBaloons() {
-        int n = (level++) * 5 * (settings.valueDifficulty + 1);
+        int n = (level++) * 25 * (settings.valueDifficulty + 1);
         rightSide1 = settings.ico.getOwnRect().Left - heli.m_width;
         leftSide1 = heli.m_width / 2;
         baloons.prsInstances.clear();
@@ -321,7 +321,11 @@ public:
             
             PosRotScale* baloon = gob->getInstancePtr(instanceNo);//Gob==Balloon
             // rise baloon
-            if (!paused) baloon->pos.y -= (1 + (pow(pp.settings.valueDifficulty, 2) * deltaT * 100));
+            if (!paused) {
+                //https://docs.google.com/spreadsheets/d/1ug4E5MBKOYcaR2HvguslmNZtZei-e0NyGpNKOelGcD0/edit#gid=0
+                int val = (1 + (pow(pp.settings.valueDifficulty+1, 2) * deltaT * 100 * (baloon->scale)));
+                baloon->pos.y -= val;
+            }
             // if baloon reaches topside teleport it 70 units below the bottom and let it rise again
             
             //static ostringstream oss;
@@ -334,8 +338,17 @@ public:
                 baloon->hidden = false;
             }
             
-            if (doObjectsIntersect(&pp.spikey, baloon)) {
-                
+            if (doObjectsIntersect(baloon, &pp.heli)) {
+                if (pp.heli.JuiceType == 0) output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
+                soundedOuch = true;
+                //    pp.heli.JuiceType = JuiceTypes::JUICE_DIE;
+                //    pp.heli.JuiceDuration = 0.75;
+                iScore /= 2;
+                if (iScore < 0) iScore = 0;
+            }
+
+            if (doObjectsIntersect(&pp.spikey, baloon) || soundedOuch) {
+                soundedOuch = false;
                 baloon->hidden = true;
                 output.pushP(CMD_SNDPLAY1, $ "pop.wav", &nLoops);
                 iScore++;
@@ -357,14 +370,7 @@ public:
                 }
             }
             
-            if (doObjectsIntersect(baloon, &pp.heli)) {
-                if (pp.heli.JuiceType == 0) output.pushP(CMD_SNDPLAY2, $ "aargh.wav", &nLoops);
-                soundedOuch = true;
-            //    pp.heli.JuiceType = JuiceTypes::JUICE_DIE;
-            //    pp.heli.JuiceDuration = 0.75;
-                iScore /= 2;
-                if (iScore < 0) iScore = 0;
-            }
+            
             
         }
 

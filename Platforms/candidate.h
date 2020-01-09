@@ -6,7 +6,3 @@
 
 #define ALGEAPPNAME "PoppingTime"
 #include "../Apps/PoppingTime/App.hpp"
-
-
-
-
