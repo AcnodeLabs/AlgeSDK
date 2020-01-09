@@ -83,7 +83,7 @@ public:
     void processInput(PEG::CMD* cmd, float deltaT) {
         
         if (cmd->command == CMD_TOUCH_START) {
-
+            
             {
                 if (app->onTouched("spikey") || app->onTouched("heli")) DropSpikey();
             }
@@ -107,7 +107,6 @@ public:
                     heli.pos = app->getBackgroundSize().half();// pos in middle of screen
                 }
             }
-
         }
 
         if (cmd->command == CMD_TOUCHMOVE) {
@@ -323,7 +322,7 @@ public:
             // rise baloon
             if (!paused) {
                 //https://docs.google.com/spreadsheets/d/1ug4E5MBKOYcaR2HvguslmNZtZei-e0NyGpNKOelGcD0/edit#gid=0
-                int val = (1 + (pow(pp.settings.valueDifficulty+1, 2) * deltaT * 100 * (baloon->scale)));
+                int val = (1 + (pow(pp.settings.valueDifficulty+1, 2) * deltaT * 100 * ((baloon->scale-0.3)* 10)));
                 baloon->pos.y -= val;
             }
             // if baloon reaches topside teleport it 70 units below the bottom and let it rise again

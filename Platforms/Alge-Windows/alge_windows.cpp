@@ -123,7 +123,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 {
 	game.Init0(ResPath, 'W');
-	
+	game.desktop = true;
 	SYSTEMTIME now0;
 	GetLocalTime(&now0);
 	int hr = now0.wHour;

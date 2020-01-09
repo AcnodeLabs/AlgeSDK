@@ -23,6 +23,7 @@ extern CNetMsg netmsg;
 
 class AlgeApp {
 public:
+	bool desktop;
 	string wall_msg;
  #ifndef NO_BOX2D
 	b2World* pWorld;
@@ -98,7 +99,7 @@ public:
 		LoadScene(currentscene);
 		counter = 0;
         landscape = true;
-            
+		desktop = false;//on desktop platforms sdk will set it to true 
 		#ifndef NO_FONTLIB
 		if (!(font = dtx_open_font_glyphmap("serif_s24.glyphmap"))) {
 			fprintf(stderr, "failed to open font\n");
