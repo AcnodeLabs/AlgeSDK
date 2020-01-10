@@ -30,11 +30,9 @@
 #include "Timer.h"
 #include <iostream>
 
-
 #define ALGE_WINDOWS
 
 App		game;
-
 
 char ResPath[256];
 

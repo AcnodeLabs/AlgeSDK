@@ -17,8 +17,7 @@ class PoppingGame : public MockUpOne {
 public:
     GameObject spikey, heli, baloons, fan, cloud, getready;
 	GameObject fps_text;
-    
-    
+        
     int nRemaining;
     int rightSide1;
     int leftSide1;
@@ -63,10 +62,7 @@ public:
 			_.pos.x = that->rightSide / 20;
 			_.pos.y = that->bottomSide / 20;
 			_.color = f3(0, 0, 0);
-            _with
-
-        
-
+        _with
     }
     
     void MakeClouds(int n) {
@@ -368,15 +364,13 @@ public:
                     paused = false;
                 }
             }
-            
-            
-            
         }
 
         if (gob->is(pp.fps_text)) {
-            string x = string("LEFT= ") + to_string(pp.nRemaining);
+            static float color = 0.0;
+            string x = string("STAGE= ") + to_string(pp.level-1) + string("  LEFT= ") + to_string(pp.nRemaining) + string("  SCORE= ") + to_string(iScore);
             glPushMatrix();
-            text.PrintTextGl(x.c_str(), f3(0, 0, 0), 2);
+            text.PrintTextGl(x.c_str(), f3(color, color, color), 2);
             glPopMatrix();
         }
 

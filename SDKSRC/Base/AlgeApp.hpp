@@ -2016,10 +2016,10 @@ public:
     AlgeApp* app;
     
 	///
-	   	//A mock is a set of Screen and associated interactions
-		//e.g a standard setting screen which shows
-		// a start screen with a title and ratings image and a Start button and a settings icon on top right
-		// s setting screen that shows up and has user clickable regions defined by anchors
+	//A mock is a set of Screen and associated interactions
+	//e.g a standard setting screen which shows
+	// a start screen with a title and ratings image and a Start button and a settings icon on top right
+	// setting screen that shows up and has user clickable regions defined by anchors
 
     void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
         app = thiz;
@@ -2042,7 +2042,6 @@ public:
         _with
         
         settings.LoadIn(thiz,  tagSettings,  tagPointer,  tagIcon, &startScreen.bg, false);
-     
     }
     
     void processInput(PEG::CMD* cmd, float deltaT) {
@@ -2051,7 +2050,6 @@ public:
 		if (cmd->command == CMD_SCREENSIZE) {
 			RepositionObjects(app->rightSide, app->bottomSide);
 			settings.RepositionObject(app->rightSide, app->bottomSide);
-			
 		}
         
         if (cmd->command == CMD_SETTINGS_SCREEN) {
