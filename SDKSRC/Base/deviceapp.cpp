@@ -39,6 +39,7 @@ static long floatToFixed(float value)
 
 char ResPath[256];
 XHttpSocket sck;
+XHttpSocket msck;
 
 void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
 void appInit(char *sz) { 
