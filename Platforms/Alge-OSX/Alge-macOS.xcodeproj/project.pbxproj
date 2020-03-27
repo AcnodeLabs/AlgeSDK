@@ -405,10 +405,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */;
 			buildPhases = (
-				9C3281B613F275F900A53E54 /* Sources */,
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
 				88E172F323C4F620007A5116 /* Embed Libraries */,
+				9C3281B613F275F900A53E54 /* Sources */,
 			);
 			buildRules = (
 			);
