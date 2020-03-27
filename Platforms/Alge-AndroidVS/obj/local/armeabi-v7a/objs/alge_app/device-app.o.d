@@ -130,6 +130,7 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CAnim16.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CCollide.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CHotSpot.hpp \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CLog.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\cballoontext.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CRainMaker.hpp \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CQuaternion.hpp \
@@ -152,7 +153,9 @@
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
   jni\..\..\candidate.h jni\..\..\..\Apps\PoppingTime\App.hpp \
-  jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp
+  jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp \
+  jni\..\..\..\Apps\PoppingTime\..\LevelSelect\LevelSelector.hpp \
+  jni\..\..\..\Apps\PoppingTime\..\LevelSelect\..\LevelSelect.Assets\Data\levelselect.h
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -418,6 +421,8 @@ jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CC
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CHotSpot.hpp:
 
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CLog.hpp:
+
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\cballoontext.hpp:
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\Ada\..\..\Classlets\com\acnodelabs\funkit\CRainMaker.hpp:
@@ -467,3 +472,7 @@ jni\..\..\candidate.h:
 jni\..\..\..\Apps\PoppingTime\App.hpp:
 
 jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp:
+
+jni\..\..\..\Apps\PoppingTime\..\LevelSelect\LevelSelector.hpp:
+
+jni\..\..\..\Apps\PoppingTime\..\LevelSelect\..\LevelSelect.Assets\Data\levelselect.h:

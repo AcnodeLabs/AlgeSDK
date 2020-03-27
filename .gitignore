@@ -7,6 +7,8 @@ Platforms/Alge-Android/algeandroidapps.keystore
 Platforms/Alge-Android/bin/*
 Platforms/Alge-Gnat-macOS/obj/*
 Platforms/Alge-Windows/Rules.txt
+Platforms/Alge-AndroidVS/obj/*
+Platforms/Alge-Windows/GOB*
 *.so
 *.dex
 *.dex.d
@@ -17,5 +19,3 @@ mApps/*
 *.o.d
 .vs/*
 GOB#*
-Platforms/Alge-AndroidVS/obj/local/armeabi-v7a/objs/alge_app/device-app.o
-Platforms/Alge-AndroidVS/obj/local/armeabi-v7a/objs/alge_app/device-app.o.d
