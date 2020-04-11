@@ -30,6 +30,9 @@
 		88B0EE15242CDDCE00071F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0EDDA242CDDCE00071F4E /* Assets.xcassets */; };
 		88B0EE16242CDDCE00071F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0EDDA242CDDCE00071F4E /* Assets.xcassets */; };
 		88B0EE17242CDDCE00071F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0EDDA242CDDCE00071F4E /* Assets.xcassets */; };
+		88B0EE31242CF2A200071F4E /* C.c in Sources */ = {isa = PBXBuildFile; fileRef = 88B0EE30242CF2A200071F4E /* C.c */; };
+		88B0EE32242CF2A200071F4E /* C.c in Sources */ = {isa = PBXBuildFile; fileRef = 88B0EE30242CF2A200071F4E /* C.c */; };
+		88B0EE33242CF2A200071F4E /* C.c in Sources */ = {isa = PBXBuildFile; fileRef = 88B0EE30242CF2A200071F4E /* C.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		88B0EE06242CDDCE00071F4E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		88B0EE09242CDDCE00071F4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88B0EE0B242CDDCE00071F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88B0EE2F242CF2A200071F4E /* C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C.h; sourceTree = "<group>"; };
+		88B0EE30242CF2A200071F4E /* C.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = C.c; sourceTree = "<group>"; };
+		88B0EE34242CF2FD00071F4E /* Alge_Apple-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alge_Apple-Swift.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 				88B0EDD8242CDDCD00071F4E /* Renderer.swift */,
 				88B0EDD9242CDDCD00071F4E /* ShaderTypes.h */,
 				88B0EDDA242CDDCE00071F4E /* Assets.xcassets */,
+				88B0EE2F242CF2A200071F4E /* C.h */,
+				88B0EE30242CF2A200071F4E /* C.c */,
+				88B0EE34242CF2FD00071F4E /* Alge_Apple-Swift.h */,
 			);
 			path = "Alge-Apple Shared";
 			sourceTree = "<group>";
@@ -285,6 +294,7 @@
 			files = (
 				88B0EE0F242CDDCE00071F4E /* Renderer.swift in Sources */,
 				88B0EE0C242CDDCE00071F4E /* Shaders.metal in Sources */,
+				88B0EE31242CF2A200071F4E /* C.c in Sources */,
 				88B0EDE5242CDDCE00071F4E /* GameViewController.swift in Sources */,
 				88B0EDE3242CDDCE00071F4E /* AppDelegate.swift in Sources */,
 			);
@@ -296,6 +306,7 @@
 			files = (
 				88B0EE10242CDDCE00071F4E /* Renderer.swift in Sources */,
 				88B0EE0D242CDDCE00071F4E /* Shaders.metal in Sources */,
+				88B0EE32242CF2A200071F4E /* C.c in Sources */,
 				88B0EDF6242CDDCE00071F4E /* GameViewController.swift in Sources */,
 				88B0EDF4242CDDCE00071F4E /* AppDelegate.swift in Sources */,
 			);
@@ -307,6 +318,7 @@
 			files = (
 				88B0EE11242CDDCE00071F4E /* Renderer.swift in Sources */,
 				88B0EE0E242CDDCE00071F4E /* Shaders.metal in Sources */,
+				88B0EE33242CF2A200071F4E /* C.c in Sources */,
 				88B0EE07242CDDCE00071F4E /* GameViewController.swift in Sources */,
 				88B0EE05242CDDCE00071F4E /* AppDelegate.swift in Sources */,
 			);

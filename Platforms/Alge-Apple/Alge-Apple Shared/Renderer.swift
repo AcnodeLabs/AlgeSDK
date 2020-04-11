@@ -92,7 +92,7 @@ class Renderer: NSObject, MTKViewDelegate {
             print("Unable to load texture. Error info: \(error)")
             return nil
         }
-        
+      
         super.init()
         
     }
