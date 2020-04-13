@@ -23,7 +23,7 @@
 #endif
 
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
-#include CBASE 
+#include "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include "../../SDKSRC/Base/fmod/framework.hpp"
 
 #include "CANDIDATE.h"
