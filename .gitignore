@@ -8,7 +8,7 @@ Platforms/Alge-Android/bin/*
 Platforms/Alge-Gnat-macOS/obj/*
 Platforms/Alge-Windows/Rules.txt
 Platforms/Alge-AndroidVS/obj/*
-Platforms/Alge-Windows/GOB*
+Platforms/Alge-Windows/GOB#*
 *.so
 *.dex
 *.dex.d
