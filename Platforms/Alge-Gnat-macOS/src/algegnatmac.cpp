@@ -19,7 +19,7 @@
 #include "../../../SDKSRC/Base/CBaseV1_2.h"
 
 #include <GLUT/glut.h>
-#include <AL/alut.h>
+//#include <AL/alut.h>
 
 //#include <glut.h>
 #include <stdio.h>

@@ -8,7 +8,7 @@ project Untitled is
       "menu_remover.c", "menu_remover.h", "resource.h", "structdefs_h.ads", "Timer.cpp", "Timer.h",
       "stars.adb", "stars.ads" );
    package Naming is
-      for Spec_Suffix ("c++") use ".h";
+      for Spec_Suffix ("c++") use ".hpp";
       for Body_Suffix ("c++") use ".cpp";
       for Casing use "lowercase";
    end Naming;

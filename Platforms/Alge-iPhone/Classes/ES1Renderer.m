@@ -345,7 +345,7 @@
 				int index = command - CMD_SNDPLAY0;
                 if (p2) {
                     int nLoops = *(int*)p2;
-                    [audio[index] setNumberOfLoops:nLoops];
+                  //  [audio[index] setNumberOfLoops:nLoops];
                 }
               //  [audio[index] play];
 			}
