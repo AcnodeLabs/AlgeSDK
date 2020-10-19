@@ -19,7 +19,7 @@ KickStart  [run bat or sh script]
 git clone -b develop https://github.com/AcnodeLabs/AlgeSDK.git
 cd AlgeSDK
 setup-deps [First Time Only, will pull ThirdParty Requirements]
-KickStart  [run bat or sh script]
+KickStart  [run bat or sh script], Xcode may install additional components on macOS on first run
 ```
 
 ### **Programming with ALGE Vanilla SDK**
