@@ -4,5 +4,5 @@
 // In Visual Studio Project Board is accessibale by Tools > Scrumy (Board)
 // or you can goto https://acnodelabs.visualstudio.com/AlgeSDK
 
-#define ALGEAPPNAME "PoppingTime"
-#include "../Apps/PoppingTime/App.hpp"
+#define ALGEAPPNAME "DodgeTheCreeps"
+#include "../Apps/DodgeTheCreeps/App.hpp"

@@ -1,9 +1,6 @@
 // Copyright (c) 2018 AcnodLabs Inc
-
 //Clone of GoDot's Example found at https://docs.godotengine.org/en/3.1/getting_started/step_by_step/your_first_game.html
-
 //////////////////////////////XTimer
-
 // on device : respath = /data/user/0/com.acnodelabs.DodgeTheCreeps/files
 
 class BiSprite {
