@@ -8,6 +8,10 @@
 #include <sstream>
 #include <list>
 
+#ifdef __is_target_os
+#define NO_BOX2D
+#endif
+
 #ifndef NO_BOX2D //Box2D is to be built by premake which does not support ios, Box2D is excluded from ios from time bieng
 #include <Box2D/Box2D.h>
 #endif
