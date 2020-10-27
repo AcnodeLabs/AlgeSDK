@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88223B85239F7C9200755258 /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88223B84239F7C9200755258 /* jpgd.cpp */; };
+		884C88152548370300C54F50 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 884C88142548370300C54F50 /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -54,7 +55,6 @@
 		88AB7B062316E046004A0239 /* b2ChainAndPolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */; };
 		88AB7B072316E046004A0239 /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFE2316E046004A0239 /* b2ContactSolver.cpp */; };
 		88AB7B082316E046004A0239 /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */; };
-		88BBD0362466810A00A0A3BE /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88BBD0352466810A00A0A3BE /* Data */; };
 		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
 		88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
 		88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
@@ -110,6 +110,7 @@
 /* Begin PBXFileReference section */
 		8805BAD223A8983700032A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
+		884C88142548370300C54F50 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Ivank_Box2D.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
@@ -155,7 +156,6 @@
 		88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2ChainAndPolygonContact.cpp; path = ../../../Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp; sourceTree = "<group>"; };
 		88AB7AFE2316E046004A0239 /* b2ContactSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2ContactSolver.cpp; path = ../../../Box2D/Box2D/Dynamics/Contacts/b2ContactSolver.cpp; sourceTree = "<group>"; };
 		88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2PolygonContact.cpp; path = ../../../Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = "<group>"; };
-		88BBD0352466810A00A0A3BE /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/PoppingTime.Assets/Data; sourceTree = "<group>"; };
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		88E172E523C4F0A5007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmod.dylib; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		88FA5D102452BA9C001C5F08 /* b2CircleShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2CircleShape.cpp; path = ../../../Box2D/Box2D/Collision/Shapes/b2CircleShape.cpp; sourceTree = "<group>"; };
 		88FA5D112452BA9C001C5F08 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
-		9C3281BA13F275F900A53E54 /* PoppingTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoppingTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3281BA13F275F900A53E54 /* Ivank_Box2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ivank_Box2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C3281C813F275F900A53E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mars-Prefix.pch"; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				88BBD0352466810A00A0A3BE /* Data */,
+				884C88142548370300C54F50 /* Data */,
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
@@ -354,7 +354,7 @@
 		9C3281BB13F275F900A53E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3281BA13F275F900A53E54 /* PoppingTime.app */,
+				9C3281BA13F275F900A53E54 /* Ivank_Box2D.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -447,9 +447,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C3281B913F275F900A53E54 /* PoppingTime */ = {
+		9C3281B913F275F900A53E54 /* Ivank_Box2D */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */;
+			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Ivank_Box2D" */;
 			buildPhases = (
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
@@ -460,9 +460,9 @@
 			);
 			dependencies = (
 			);
-			name = PoppingTime;
+			name = Ivank_Box2D;
 			productName = AlgeAppPlanets;
-			productReference = 9C3281BA13F275F900A53E54 /* PoppingTime.app */;
+			productReference = 9C3281BA13F275F900A53E54 /* Ivank_Box2D.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -486,7 +486,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C3281B913F275F900A53E54 /* PoppingTime */,
+				9C3281B913F275F900A53E54 /* Ivank_Box2D */,
 			);
 		};
 /* End PBXProject section */
@@ -496,7 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BBD0362466810A00A0A3BE /* Data in Resources */,
+				884C88152548370300C54F50 /* Data in Resources */,
 				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
 				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
@@ -755,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "PoppingTime" */ = {
+		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "Ivank_Box2D" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D913F275F900A53E54 /* Debug */,

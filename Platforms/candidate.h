@@ -5,5 +5,5 @@
 // or you can goto https://acnodelabs.visualstudio.com/AlgeSDK
 #define NO_BOX2D
 
-#define ALGEAPPNAME "DodgeTheCreeps"
+#define ALGEAPPNAME "Ivank_Box2D"
 #include "../Apps/Ivank_Box2D/App.hpp"

@@ -286,7 +286,7 @@ int main( int argc, char** argv )
   
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     
-  int theWindowHandle = glutCreateWindow( "Alge-OSX" );
+  int theWindowHandle = glutCreateWindow( ResPath );
   glutInitWindowSize( kWindowWidth, kWindowHeight );
     glutReshapeWindow(kWindowWidth, kWindowHeight);
     
