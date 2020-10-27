@@ -6,4 +6,4 @@
 #define NO_BOX2D
 
 #define ALGEAPPNAME "DodgeTheCreeps"
-#include "../Apps/DodgeTheCreeps/App.hpp"
+#include "../Apps/Ivank_Box2D/App.hpp"
