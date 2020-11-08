@@ -3,6 +3,7 @@ git clone https://github.com/erincatto/Box2D.git --branch v2.3.1
 git clone https://github.com/nats-io/cnats.git
 git clone https://github.com/ThemsAllTook/libstem_gamepad.git
 git clone http://github.com/jtsiomb/libdrawtext
+git clone https://github.com/ocornut/imgui.git --branch v1.79
 
 echo skipping git clone -b stable https://github.com/flutter/flutter.git
 Echo skipping wget http://dl-ssl.google.com/android/repository/platform-tools_r21-windows.zip

@@ -1232,6 +1232,7 @@ public:
 		//processInput(p);
 		
 		renderObjects(deltaT, true);
+
 		fps = 1.0 / deltaT;
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) ViewOrthoEnd();
 	//	if (!edit) aCamera.PosRot({ aCamera.pos.x, aCamera.pos.y, aCamera.pos.z }, { aCamera.rot.x, aCamera.rot.y, aCamera.rot.z });
