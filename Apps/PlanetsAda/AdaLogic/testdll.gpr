@@ -1,0 +1,21 @@
+project Testdll is
+   -- https://en.wikibooks.org/wiki/Ada_Programming/Platform/Windows/Visual_C%2B%2B_-_GNAT_interface
+   -- use dll2lib.bat from http://stackoverflow.com/questions/9946322/how-to-generate-an-import-library-lib-file-from-a-dll to gen lib file
+   -- add lib in linker settings i.e libTe.lib;
+   -- copy libTe.dll where [ProjectName].exe resides
+   -- tested to link and execute (no calls yet)
+
+   for Library_Name use "Te";
+   for Library_Dir use "dll";
+   for Library_Ali_Dir use "ali";
+   for Library_Kind use "dynamic";
+   for Languages use ("Ada");
+   for Object_Dir use "obj";
+   for Library_Interface use ("moons", "t");
+   for Library_Auto_Init use "False";
+   for Library_Src_Dir use "dll";
+   for Source_Files use ("Moons.ads", "Moons.adb", "t-th.adb", "t-th.ads", "t.adb", "t.ads", "structdefs_h.ads");
+   for Source_Dirs use ("src/**");
+
+end Testdll;
+

@@ -1,0 +1,147 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U hittestcode%b		hittestcode.adb		c4a30a8b OO PK
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U hittestcode%s		hittestcode.ads		bf1459c0 EE OO PF PK
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+Z ada.containers.generic_array_sort%s
+Z ada.containers.helpers%s  a-conhel.adb	a-conhel.ali
+W ada.containers.vectors%s
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.finalization%s	a-finali.ads		a-finali.ali
+Z ada.iterator_interfaces%s
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+Z ada.unchecked_deallocation%s
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W system%s		system.ads		system.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-contai.ads		20160516092927 61e5e089 ada.containers%s
+D a-cgarso.ads		20160516092927 9129bfa8 ada.containers.generic_array_sort%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-conhel.adb		20160516092931 9cc5095b ada.containers.helpers%b
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-convec.adb		20160516092927 1450cb2b ada.containers.vectors%b
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092931 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20160516092929 7c7305e9 ada.iterator_interfaces%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092931 f15a5ed1 ada.unchecked_deallocation%s
+D hittestcode.ads	20170214140326 d0c8614d hittestcode%s
+D hittestcode.adb	20170222181823 146b6bc6 hittestcode%b
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-atocou.adb		20160516092930 b65612c0 system.atomic_counters%b
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092931 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092931 4ff27390 system.finalization_root%s
+D s-memory.ads		20160516092930 597d6634 system.memory%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-pooglo.ads		20160516092927 ede33ef8 system.pool_global%s
+D s-secsta.ads		20160516092931 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092927 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092927 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 1 ada.ads
+16K9*Ada 19e8 17|2r6 3r6 3r26 4r6
+X 2 a-contai.ads
+16K13*Containers 24e19 17|2w10 3w10 3r30 4r10
+X 6 a-convec.ads
+46k24*Vectors 518e27 17|4w21 18r27
+57R9*Vector<9|43R9> 17|25r24[18]
+65R9*Cursor 17|21r33[18] 24r24[18] 18|24r33[17|18]
+119V13*Element{17|9R9} 18|25s38[17|18]
+119r22 Position{65R9[17|18]} 18|25r47[17|18]
+329U14*Iterate 18|18s7[17|18]
+330r7 Container{57R9[17|18]} 18|18r15[17|18]
+331p7 Process 18|18r39[17|18]
+X 11 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[6|72]>
+X 17 hittestcode.ads
+7K9*HitTestCode 27l5 27e16 18|3b14 36l5 36t16
+9R9*FloatBounds 16e14 18r44 18|25r23
+11i10*name{20|35I9} 18|30r40
+12f10*xMin{float} 18|28r30
+13f10*xMax{float} 18|28r58
+14f10*yMin{float} 18|29r29
+15f10*yMax{float} 18|29r57
+18K12*HitList[6|46] 19r8 24r16 25r16
+21U14*HitTest 21>23 18|18r50 24b14 33l8 33t15
+21r23 aCursor{6|65R9[18]} 18|24b23 25r59
+22V13*DoIt{integer} 22>18 22>30 18|13b13 22l8 22t12
+22f18 fX{float} 18|13b19 15r19
+22f30 fY{float} 18|13b31 16r19
+24r4*hitCursor{6|65R9[18]}
+25r4*hitBounds{6|57R9[18]} 18|18r28
+X 18 hittestcode.adb
+5f3 fUnassigned{float} 7r24 8r24 19r19 20r19
+7f4 touchedX{float} 15m7 19m7 28r11 28r39
+8f4 touchedY{float} 16m7 20m7 29r10 29r38
+9i4 lastHitName{integer} 17m7 21r14 30m10
+25r5 aBound{17|9R9} 28r23 28r51 29r22 29r50 30r33
+X 19 interfac.ads
+38K9*Interfaces 17|1r6 1r24 19|184e15
+X 20 i-c.ads
+18K20*C 17|1w17 1r35 20|230e17
+35I9*int<integer> 17|11r16
+X 22 system.ads
+67M9*Address
+X 30 s-memory.ads
+53V13*Alloc{22|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{22|67M9} 105i<c,__gnat_realloc>22
+X 37 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+X 46 text_io.ads
+24K9*Text_IO=24:29 17|5w6 5r19
+

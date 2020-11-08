@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88223B85239F7C9200755258 /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88223B84239F7C9200755258 /* jpgd.cpp */; };
-		884C88152548370300C54F50 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 884C88142548370300C54F50 /* Data */; };
+		88439E7E25558C2D00DE2F0F /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88439E7D25558C2D00DE2F0F /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -110,7 +110,7 @@
 /* Begin PBXFileReference section */
 		8805BAD223A8983700032A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
-		884C88142548370300C54F50 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Ivank_Box2D.Assets/Data; sourceTree = "<group>"; };
+		88439E7D25558C2D00DE2F0F /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Juices.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
@@ -210,7 +210,6 @@
 		9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9C4636C91FBA0D11008FB5EF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9C4636CA1FBA0D14008FB5EF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreData.framework; sourceTree = "<group>"; };
-		9C4636CB1FBA0D16008FB5EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Foundation.framework; sourceTree = "<group>"; };
 		9C4637211FBA0E4B008FB5EF /* alge-mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "alge-mac.cpp"; sourceTree = "<group>"; };
 		9C46498613F2AF22004CE3D7 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		9C46498713F2AF22004CE3D7 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -289,7 +288,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				884C88142548370300C54F50 /* Data */,
+				88439E7D25558C2D00DE2F0F /* Data */,
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
@@ -370,7 +369,6 @@
 				9CE687CB22E0ED7F0046E542 /* OpenAL.framework */,
 				9CE687C922E0ED5D0046E542 /* OpenGL.framework */,
 				9CE59E5922E06297000FB6F1 /* CoreGraphics.framework */,
-				9C4636CB1FBA0D16008FB5EF /* Foundation.framework */,
 				9C4636CA1FBA0D14008FB5EF /* CoreData.framework */,
 				9C4636C91FBA0D11008FB5EF /* AppKit.framework */,
 				9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */,
@@ -496,7 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				884C88152548370300C54F50 /* Data in Resources */,
+				88439E7E25558C2D00DE2F0F /* Data in Resources */,
 				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
 				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,

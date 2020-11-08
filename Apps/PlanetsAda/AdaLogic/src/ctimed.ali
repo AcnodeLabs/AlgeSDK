@@ -1,0 +1,72 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U ctimed%b		ctimed.adb		0f4e80a7 NE OO PK IL
+
+U ctimed%s		ctimed.ads		03d9e21e EE OO PF PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D ctimed.ads		20170216182314 03d9e21e ctimed%s
+D ctimed.adb		20170216182421 0c9762b9 ctimed%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092931 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stratt.ads		20160516092927 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 6 ctimed.ads
+2K9*CTimed 16l5 16e11 7|2b14 43l5 43t11
+3V13*dst{float} 3>17 3>29 7|4b13 7l8 7t11
+3f17 vel{float} 7|4b17
+3f29 dt{float} 7|4b29
+4V13*spd{float} 4>17 4>29 7|9b13 12l8 12t11
+4f17 dst{float} 7|9b17
+4f29 dt{float} 7|9b29
+6R9*CTimedT 10e17 12r69 13r32 14r47 7|14r69 22r32 27r46
+8f8*curr1{float} 7|16m10 24m9 34m13 34r25 35r36 36r36 39r17
+8f15*from1{float} 7|17m10 24r21 33r16 35r23 36r23 37r23
+8f22*to1{float} 7|18m10 31r20 33r25 35r16 35r46 36r16 36r46 37r16
+8f27*speed1{float} 7|19m10 34r45
+9b8*done{boolean} 7|30r13 35m58 36m58 37m37
+12U14*Set 12>19 12>32 12>43 12=58 7|14b14 20l8 20t11
+12f19 from{float} 7|14b19 16r19 17r19
+12f32 to{float} 7|14b32 18r17
+12f43 speed{float} 7|14b43 19r20
+12c58 ct<6R9> 7|14b58 16m7 17m7 18m7 19m7
+13U14*Redo 13=20 7|22b14 25l8 25t12
+13c20 ct<6R9> 7|22b20 24m6 24r18
+14V13*StepLinear{float} 14>24 14=35 7|27b13 40l8 40t18
+14f24 dt{float} 7|27b24 34r55
+14c35 ct<6R9> 7|27b35 30r10 31r17 33r13 33r22 34m10 34r22 34r42 35r13 35r20
+. 35r33 35r43 35m55 36r13 36r20 36r33 36r43 36m55 37r13 37r20 37m34 39r14
+X 7 ctimed.adb
+28f7 i1{float} 33m34 33m49 34r33
+
