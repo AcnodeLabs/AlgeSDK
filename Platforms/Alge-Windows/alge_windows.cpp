@@ -26,16 +26,61 @@
 #include "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include "../../SDKSRC/Base/fmod/framework.hpp"
 
+HWND hwnd;
+
+// XGui stuff
 #include "../../../imgui/imgui.h"
 #include "../../../imgui/backends/imgui_impl_win32.h"
 #include "../../../imgui/backends/imgui_impl_opengl2.h"
 
-
-HWND hwnd;
-// XGui state
 static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+
+void ImGui_ImplAlgeSDK_Main() {
+	// Setup Dear ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+
+	// Setup Dear ImGui style
+	//ImGui::StyleColorsDark();
+	ImGui::StyleColorsClassic();
+	//ImGui::SetWindowFontScale(2);
+}
+
+void ImGui_ImplAlgeSDK_AfterRender()
+{
+	// Rendering
+	ImGui::Render();
+	ImGuiIO& io = ImGui::GetIO();
+
+	//	glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
+	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+	//	glClear(GL_COLOR_BUFFER_BIT);
+	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+}
+
+void ImGui_ImplAlgeSDK_BeforeRender()
+{
+	// Start the Dear ImGui frame
+	ImGui_ImplOpenGL2_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+}
+
+void ImGui_ImplAlgeSDK_Shutdown() {
+	// Cleanup
+	ImGui_ImplOpenGL2_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+}
+
+////////////////////////
 
 #include "CANDIDATE.h"
 #include "Timer.h"
@@ -229,20 +274,9 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		Gamepad_processEvents();
 #endif
 
-		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL2_NewFrame();
-		ImGui_ImplWin32_NewFrame();
-		ImGui::NewFrame();
+		ImGui_ImplAlgeSDK_BeforeRender();
 		game.Render(deltaT, aX, aY, aZ);
-
-		// Rendering
-		ImGui::Render();
-		ImGuiIO& io = ImGui::GetIO();
-	//	glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
-	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-	//	glClear(GL_COLOR_BUFFER_BIT);
-		//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
-		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+		ImGui_ImplAlgeSDK_AfterRender();
 
 		fmodsystem->update();
 	}
@@ -318,6 +352,8 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 
 	return TRUE;										// Keep Going
 }
+
+
 
 GLvoid KillGLWindow(GLvoid)								// Properly Kill The Window
 {
@@ -773,6 +809,9 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 		}
 	}
 
+
+	ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam);
+
 	// Pass All Unhandled Messages To DefWindowProc
 	return DefWindowProc(hWnd,uMsg,wParam,lParam);
 }
@@ -813,6 +852,8 @@ void onRemoteCommand(string cmd) {
 }
 
 
+
+
 int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 					_In_opt_ HINSTANCE	hPrevInstance,		// Previous Instance
 					_In_ LPSTR		lpCmdLine,			// Command Line Parameters
@@ -821,18 +862,8 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	MSG		msg;									// Windows Message Structure
 	BOOL	done=FALSE;								// Bool Variable To Exit Loop
 
-
-	// Setup Dear ImGui context
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-
-	// Setup Dear ImGui style
-	ImGui::StyleColorsDark();
-	//ImGui::StyleColorsClassic();
-
-	
+	ImGui_ImplAlgeSDK_Main();
+		
 	//nats1();
 	r_mouse = 2.0;//means mouse update will not disturb 
 	
@@ -959,11 +990,13 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 	KillGLWindow();									// Kill The Window
 	game.Deinit();
 	FMOD_Deinit();
-	// Cleanup
-	ImGui_ImplOpenGL2_Shutdown();
-	ImGui_ImplWin32_Shutdown();
+	
+	ImGui_ImplAlgeSDK_Shutdown();
 
 	return (msg.wParam);							// Exit The Program
 }
 
+
+
 #include "../../SDKSRC/Base/externit.cpp"
+#include "ALGE_WINDOWS.H"

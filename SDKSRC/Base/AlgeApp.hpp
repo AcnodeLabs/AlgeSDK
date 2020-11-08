@@ -617,10 +617,6 @@ public:
 		if ((edit && it == gobs[iSelectedObject])) it->JuiceType = JuiceTypes::JUICE_PULSATE;
 
 		
-		
-
-		
-
 		if (edit) {
 			xyz.glDraw();
 		}
