@@ -13,6 +13,8 @@
 #define glOrthof glOrtho
 #include "../../SDKSRC/Base/CBaseV1_2.h"
 
+#include "xgui.hpp"
+
 #include "CANDIDATE.h"
 #include "../../SDKSRC/Base/fmod/framework.hpp"
 
@@ -163,7 +165,9 @@ static void HandleDisplay( )
  float newTime = time1.getElapsedTimeInSec();
  deltaT =  newTime - lastTime;
  if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
+ ImGui_ImplAlgeSDK_BeforeRender();
  app.Render(deltaT,aX,aY,aZ);
+ ImGui_ImplAlgeSDK_AfterRender();
  processOutput();
  glutSwapBuffers( );
  lastTime = newTime;
@@ -281,6 +285,8 @@ int main( int argc, char** argv )
   glutInit( &argc, argv );
   app.landscape = true;
   
+ 
+    
   kWindowWidth = app.getBackgroundSize().x;
   kWindowHeight = app.getBackgroundSize().y;
   
@@ -288,9 +294,14 @@ int main( int argc, char** argv )
     
   int theWindowHandle = glutCreateWindow( ResPath );
   glutInitWindowSize( kWindowWidth, kWindowHeight );
-    glutReshapeWindow(kWindowWidth, kWindowHeight);
+  
+  
+  glutReshapeWindow(kWindowWidth, kWindowHeight);
     
   glutSetWindow( theWindowHandle );
+  
+ 
+  
   glutDisplayFunc( HandleDisplay );
   glutReshapeFunc( HandleReshape );
   glutIdleFunc( HandleIdle );
@@ -310,6 +321,7 @@ int main( int argc, char** argv )
  //  fputs(FULLYQUALIFIEDPATH, f);
 //  fclose(f);
     
+    ImGui_ImplAlgeSDK_Main();
   FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
   
   char* l = strrchr(app.rm.resourcepath, '.');
@@ -357,6 +369,7 @@ int main( int argc, char** argv )
   dtx_use_font(font, 24);
   glutMainLoop( );
   
+  ImGui_ImplAlgeSDK_Shutdown();
   return 0;
 }
 

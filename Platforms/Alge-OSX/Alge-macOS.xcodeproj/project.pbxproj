@@ -56,6 +56,12 @@
 		88AB7B072316E046004A0239 /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFE2316E046004A0239 /* b2ContactSolver.cpp */; };
 		88AB7B082316E046004A0239 /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */; };
 		88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */ = {isa = PBXBuildFile; fileRef = 88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */; };
+		88D2F4D72558FC280061682A /* imgui_impl_glut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */; };
+		88D2F4DA2558FC3F0061682A /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */; };
+		88D2F4E22558FCC40061682A /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4DC2558FCC30061682A /* imgui_demo.cpp */; };
+		88D2F4E32558FCC40061682A /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4DD2558FCC30061682A /* imgui_draw.cpp */; };
+		88D2F4E42558FCC40061682A /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4DF2558FCC30061682A /* imgui_widgets.cpp */; };
+		88D2F4E52558FCC40061682A /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4E02558FCC40061682A /* imgui.cpp */; };
 		88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
 		88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
 		88E172EF23C4F620007A5116 /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
@@ -158,6 +164,14 @@
 		88AB7AFF2316E046004A0239 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2PolygonContact.cpp; path = ../../../Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = "<group>"; };
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
+		88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_glut.cpp; path = ../../../imgui/backends/imgui_impl_glut.cpp; sourceTree = "<group>"; };
+		88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_opengl2.cpp; path = ../../../imgui/backends/imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
+		88D2F4DC2558FCC30061682A /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../../../imgui/imgui_demo.cpp; sourceTree = "<group>"; };
+		88D2F4DD2558FCC30061682A /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../../../imgui/imgui_draw.cpp; sourceTree = "<group>"; };
+		88D2F4DE2558FCC30061682A /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../../../imgui/imgui_internal.h; sourceTree = "<group>"; };
+		88D2F4DF2558FCC30061682A /* imgui_widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = ../../../imgui/imgui_widgets.cpp; sourceTree = "<group>"; };
+		88D2F4E02558FCC40061682A /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../../../imgui/imgui.cpp; sourceTree = "<group>"; };
+		88D2F4E12558FCC40061682A /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../../imgui/imgui.h; sourceTree = "<group>"; };
 		88E172E523C4F0A5007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmod.dylib; sourceTree = "<group>"; };
 		88E172E723C4F0E9007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodL.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmodL.dylib; sourceTree = "<group>"; };
 		88E172E923C4F25F007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
@@ -288,6 +302,14 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88D2F4DC2558FCC30061682A /* imgui_demo.cpp */,
+				88D2F4DD2558FCC30061682A /* imgui_draw.cpp */,
+				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
+				88D2F4DF2558FCC30061682A /* imgui_widgets.cpp */,
+				88D2F4E02558FCC40061682A /* imgui.cpp */,
+				88D2F4E12558FCC40061682A /* imgui.h */,
+				88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */,
+				88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */,
 				88439E7D25558C2D00DE2F0F /* Data */,
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
@@ -518,11 +540,14 @@
 				88AB7B012316E046004A0239 /* b2ChainAndCircleContact.cpp in Sources */,
 				88223B85239F7C9200755258 /* jpgd.cpp in Sources */,
 				88AB7B022316E046004A0239 /* b2EdgeAndPolygonContact.cpp in Sources */,
+				88D2F4E22558FCC40061682A /* imgui_demo.cpp in Sources */,
 				88AB7B032316E046004A0239 /* b2PolygonAndCircleContact.cpp in Sources */,
+				88D2F4E32558FCC40061682A /* imgui_draw.cpp in Sources */,
 				88AB7B042316E046004A0239 /* b2Contact.cpp in Sources */,
 				88AB7B052316E046004A0239 /* b2EdgeAndCircleContact.cpp in Sources */,
 				88AB7B062316E046004A0239 /* b2ChainAndPolygonContact.cpp in Sources */,
 				88AB7B072316E046004A0239 /* b2ContactSolver.cpp in Sources */,
+				88D2F4D72558FC280061682A /* imgui_impl_glut.cpp in Sources */,
 				88AB7B082316E046004A0239 /* b2PolygonContact.cpp in Sources */,
 				88AB7AEB2316E02D004A0239 /* b2WheelJoint.cpp in Sources */,
 				88AB7AEC2316E02D004A0239 /* b2FrictionJoint.cpp in Sources */,
@@ -537,11 +562,14 @@
 				88AB7AF52316E02D004A0239 /* b2RopeJoint.cpp in Sources */,
 				88AB7AF62316E02D004A0239 /* b2MouseJoint.cpp in Sources */,
 				88AB7AD92316E00F004A0239 /* b2ContactManager.cpp in Sources */,
+				88D2F4DA2558FC3F0061682A /* imgui_impl_opengl2.cpp in Sources */,
 				88AB7ADA2316E00F004A0239 /* b2Island.cpp in Sources */,
+				88D2F4E52558FCC40061682A /* imgui.cpp in Sources */,
 				88AB7ADB2316E00F004A0239 /* b2World.cpp in Sources */,
 				88AB7ADD2316E00F004A0239 /* b2WorldCallbacks.cpp in Sources */,
 				88AB7ADE2316E00F004A0239 /* b2Fixture.cpp in Sources */,
 				88AB7ACF2316DFEA004A0239 /* b2PolygonShape.cpp in Sources */,
+				88D2F4E42558FCC40061682A /* imgui_widgets.cpp in Sources */,
 				88AB7AD02316DFEA004A0239 /* b2EdgeShape.cpp in Sources */,
 				88AB7AD12316DFEA004A0239 /* b2ChainShape.cpp in Sources */,
 				88AB7AD22316DFEA004A0239 /* b2CircleShape.cpp in Sources */,
