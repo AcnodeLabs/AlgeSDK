@@ -208,6 +208,7 @@ static void HandleReshape( const int width, const int height )
         appSize(width, height);
         kWindowWidth = width;
         kWindowHeight = height;
+        ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
         printf("[%dx%d]", width, height);
         app.input.pushI(CMD_SCREENSIZE, width , height);
        glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
@@ -216,6 +217,7 @@ static void HandleReshape( const int width, const int height )
        glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
        glLoadIdentity();
     }
+    ImGui_ImplGLUT_ReshapeFunc(width,height);
 }
 
 static void exitIt() {
@@ -226,19 +228,22 @@ static void exitIt() {
 
 static void HandleKeyBoard( const unsigned char inKey, const int inPosX, const int inPosY )
 {
+    ImGui_ImplGLUT_KeyboardFunc(inKey,inPosX,inPosY);
   if (inKey==27) {exitIt();}
   app.input.pushI(CMD_KEYDOWN, inKey, 0);
 }
 
 static void HandleSpecialKey( const int inKey, const int inPosX, const int inPosY )
 {
- if (inKey==27) {exitIt();}
- app.input.pushI(CMD_KEYDOWN, inKey, 0);
+    ImGui_ImplGLUT_SpecialFunc(inKey, inPosX, inPosY);
+    if (inKey==27) {exitIt();}
+    app.input.pushI(CMD_KEYDOWN, inKey, 0);
 }
 
 static void HandleMouse( const int inButton, const int inState, const int inPosX, const int inPosY )
 {
   if (inButton==0) app.input.pushI(inState==0?CMD_TOUCH_START:CMD_TOUCH_END, inPosX, inPosY);
+    ImGui_ImplGLUT_MouseFunc(inButton,inState,inPosX/2,inPosY/2);
 }
 
 static void HandleMotion( const int inPosX, const int inPosY )
@@ -247,6 +252,7 @@ static void HandleMotion( const int inPosX, const int inPosY )
   int y = inPosY;
   if (x!=0 || y!=0)
       app.input.pushI(CMD_TOUCHMOVE, x, y);
+    ImGui_ImplGLUT_MotionFunc(inPosX,inPosY);
 }
 
 char ResPath[256];
@@ -279,13 +285,16 @@ void reset_window_title(int para)
     glutPositionWindow(0,0);
   //  HandleReshape(kWindowWidth, kWindowHeight);
 }
+#include <CoreGraphics/CGDisplayConfiguration.h>
 
 int main( int argc, char** argv )
 {
   glutInit( &argc, argv );
   app.landscape = true;
-  
- 
+
+  auto mainDisplayId = CGMainDisplayID();
+  int factor = 1;
+  app.ScreenSize(CGDisplayPixelsWide(mainDisplayId)*factor,CGDisplayPixelsHigh(mainDisplayId)*factor);
     
   kWindowWidth = app.getBackgroundSize().x;
   kWindowHeight = app.getBackgroundSize().y;
@@ -301,9 +310,10 @@ int main( int argc, char** argv )
   glutSetWindow( theWindowHandle );
   
  
-  
-  glutDisplayFunc( HandleDisplay );
   glutReshapeFunc( HandleReshape );
+
+  glutDisplayFunc( HandleDisplay );
+  
   glutIdleFunc( HandleIdle );
   glutKeyboardFunc( HandleKeyBoard );
   glutSpecialFunc( HandleSpecialKey );
@@ -322,7 +332,16 @@ int main( int argc, char** argv )
 //  fclose(f);
     
     ImGui_ImplAlgeSDK_Main();
-  FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
+    
+    glutPassiveMotionFunc(ImGui_ImplGLUT_MotionFunc);
+    
+#ifdef __FREEGLUT_EXT_H__
+    glutMouseWheelFunc(ImGui_ImplGLUT_MouseWheelFunc);
+#endif
+    glutKeyboardUpFunc(ImGui_ImplGLUT_KeyboardUpFunc);
+    glutSpecialUpFunc(ImGui_ImplGLUT_SpecialUpFunc);
+    
+    FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
   
   char* l = strrchr(app.rm.resourcepath, '.');
 	
@@ -346,7 +365,7 @@ int main( int argc, char** argv )
     app.Init(app.rm.resourcepath);
 
     
-  HandleReshape(kWindowWidth, kWindowHeight);
+  ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
     
   startTime = glutGet(GLUT_ELAPSED_TIME);
   deltaT = 0;

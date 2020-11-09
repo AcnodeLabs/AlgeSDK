@@ -25,6 +25,10 @@ public:
 		
 		}
 
+    i2 getBackgroudSize() {
+        return size_imac_4k;
+    }
+    
 	void processInput(PEG::CMD* p, float deltaT) { 
 		if (p->command == CMD_SCREENSIZE) {
 		}

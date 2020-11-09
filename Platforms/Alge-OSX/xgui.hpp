@@ -13,13 +13,15 @@ void ImGui_ImplAlgeSDK_Main() {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-
+#ifdef MACOSX
+    io.DisplayFramebufferScale = ImVec2(2, 2); //dpi opn 4k monitor
+#endif
     // Setup Dear ImGui style
     //ImGui::StyleColorsDark();
     ImGui::StyleColorsClassic();
     //ImGui::SetWindowFontScale(2);
     ImGui_ImplGLUT_Init();
-    ImGui_ImplGLUT_InstallFuncs();
+    
     ImGui_ImplOpenGL2_Init();
 }
 
@@ -29,9 +31,9 @@ void ImGui_ImplAlgeSDK_AfterRender()
     ImGui::Render();
     ImGuiIO& io = ImGui::GetIO();
 
-    //    glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
-    //    glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-    //    glClear(GL_COLOR_BUFFER_BIT);
+        glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
+        glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+       glClear(GL_COLOR_BUFFER_BIT);
     //glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }
