@@ -22,6 +22,8 @@
 #include <Gamepad.h>
 #endif
 
+#define ALGE_WINDOWS
+
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #include "../../SDKSRC/Base/fmod/framework.hpp"
@@ -34,7 +36,7 @@ HWND hwnd;
 #include "Timer.h"
 #include <iostream>
 
-#define ALGE_WINDOWS
+
 
 App		game;
 
@@ -809,7 +811,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 {
 	MSG		msg;									// Windows Message Structure
 	BOOL	done=FALSE;								// Bool Variable To Exit Loop
-
+	//
 	ImGui_ImplAlgeSDK_Main();
 		
 	//nats1();

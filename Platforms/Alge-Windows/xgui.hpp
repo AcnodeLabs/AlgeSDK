@@ -9,7 +9,6 @@ static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-
 void ImGui_ImplAlgeSDK_Main() {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
@@ -48,6 +47,7 @@ void ImGui_ImplAlgeSDK_Shutdown() {
 	// Cleanup
 	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplWin32_Shutdown();
+	ImGui::DestroyContext();
 }
 
 ////////////////////////
