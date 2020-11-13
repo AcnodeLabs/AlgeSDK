@@ -16,6 +16,60 @@ using namespace std;
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #endif
 #include CBASE
+
+// XGui stuff
+#include "../../../imgui/imgui.h"
+#include "../../../imgui/backends/imgui_impl_opengl2.h"
+
+static bool show_demo_window = true;
+static bool show_another_window = false;
+static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+void ImGui_ImplAlgeSDK_Main() {
+	// Setup Dear ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+
+	// Setup Dear ImGui style
+	//ImGui::StyleColorsDark();
+	ImGui::StyleColorsClassic();
+	//ImGui::SetWindowFontScale(2);
+}
+
+void ImGui_ImplAlgeSDK_AfterRender()
+{
+	// Rendering
+	ImGui::Render();
+	ImGuiIO& io = ImGui::GetIO();
+
+	//	glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
+	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+	//	glClear(GL_COLOR_BUFFER_BIT);
+	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+}
+
+void ImGui_ImplAlgeSDK_BeforeRender()
+{
+	// Start the Dear ImGui frame
+	ImGui_ImplOpenGL2_NewFrame();
+//	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+}
+
+void ImGui_ImplAlgeSDK_Shutdown() {
+	// Cleanup
+	ImGui_ImplOpenGL2_Shutdown();
+//	ImGui_ImplWin32_Shutdown();
+}
+
+////////////////////////
+
+
+
+
 #include "CANDIDATE.h"
 //#include CANDIDATE
 
@@ -43,10 +97,17 @@ XHttpSocket msck;
 
 void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
 void appInit(char *sz) { 
+
+	ImGui_ImplAlgeSDK_Main();
+
 	strcpy(ResPath, sz);
     game.aCamera.custom_type = 0xCA;
     game.aCamera.windowWidth = game.getBackgroundSize().x;
     game.aCamera.windowHeight = game.getBackgroundSize().y;
+
+
+
+
     game.rm.Init(sz);
     game.Init(sz);
 }
@@ -60,7 +121,9 @@ void appSize(int w, int h) {
         game.resolutionReported.y = h;
     }
 }
-void appDeinit(){}
+void appDeinit(){
+    ImGui_ImplAlgeSDK_Shutdown();
+}
 
 void* lastP1 = 0;
 void* lastP2 = 0;
@@ -145,7 +208,9 @@ void appRender(float tick, int width, int height, int accelX, int accelY, int ac
 {
 	prepareFrame(width,height);
 	if (accelX==0 && accelY==0 && accelZ==0) accelY = -9.8*100;
+    ImGui_ImplAlgeSDK_BeforeRender();
 	game.Render(tick, accelX , accelY , accelZ );
+    ImGui_ImplAlgeSDK_AfterRender();
 	return;
 }
 
