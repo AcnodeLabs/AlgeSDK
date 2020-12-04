@@ -16,7 +16,7 @@ public:
 		AlInit(STANDARD);
 		SetTitle("XGui");
 		
-		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+		AddDefaultCamera(Camera::CAM_MODE_2D);
 		AddResource(&background, "juices", 
 			"green_natural.jpg", 
 			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
@@ -24,20 +24,24 @@ public:
 		ImGui::StyleColorsClassic();
 		
 		}
-
+    
+    i2 msize;
+    
     i2 getBackgroudSize() {
-        return size_imac_4k;
+        return msize;
     }
     
 	void processInput(PEG::CMD* p, float deltaT) { 
 		if (p->command == CMD_SCREENSIZE) {
+            msize.x = p->i1;
+            msize.y = p->i2;
 		}
 	}
 
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
 		if (gob->is(background)) {
-			ImGui::ShowDemoWindow();
+            ImGui::ShowDemoWindow();
 		}
 	}
 

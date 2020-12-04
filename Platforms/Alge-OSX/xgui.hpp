@@ -14,7 +14,7 @@ void ImGui_ImplAlgeSDK_Main() {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 #ifdef MACOSX
-    io.DisplayFramebufferScale = ImVec2(2, 2); //dpi opn 4k monitor
+    io.DisplayFramebufferScale = ImVec2(1, 1); //dpi opn 4k monitor
 #endif
     // Setup Dear ImGui style
     //ImGui::StyleColorsDark();

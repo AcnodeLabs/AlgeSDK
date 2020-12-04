@@ -6,4 +6,4 @@
 //#define NO_BOX2D
 
 #define ALGEAPPNAME "XGui"
-#include "../Apps/XGui/App.hpp"
+#include "../Apps//XGui/App.hpp"

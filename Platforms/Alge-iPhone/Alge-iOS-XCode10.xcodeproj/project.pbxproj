@@ -12,7 +12,6 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		889E89ED238EDFCA00EB20FA /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889E89EC238EDFCA00EB20FA /* jpgd.cpp */; };
 		88B670FF246585E800470D28 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88B670FE246585E800470D28 /* Data */; };
-		88BEF11F253D80A8007341B2 /* Box2D in Resources */ = {isa = PBXBuildFile; fileRef = 88BEF11D253D8070007341B2 /* Box2D */; };
 		9C0EE48714A99E4800A32921 /* acnodelogo.tga in Resources */ = {isa = PBXBuildFile; fileRef = 9C0EE48614A99E4800A32921 /* acnodelogo.tga */; };
 		9C221B08153751F300EFEA23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B07153751F300EFEA23 /* Default@2x.png */; };
 		9C221B0A1537523D00EFEA23 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */; };
@@ -64,7 +63,6 @@
 		883E779B231655030014F5A1 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		889E89EC238EDFCA00EB20FA /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
 		88B670FE246585E800470D28 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/PoppingTime.Assets/Data; sourceTree = "<group>"; };
-		88BEF11D253D8070007341B2 /* Box2D */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Box2D; path = ../../../Box2D/Box2D/Box2D; sourceTree = "<group>"; };
 		9C0EE48614A99E4800A32921 /* acnodelogo.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = acnodelogo.tga; sourceTree = "<group>"; };
 		9C221B07153751F300EFEA23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C221B091537523D00EFEA23 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../New Group/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				88BEF11D253D8070007341B2 /* Box2D */,
 				889E89EC238EDFCA00EB20FA /* jpgd.cpp */,
 				9C759F9221858FD9004DA337 /* camera.cpp */,
 				9C759F9321858FD9004DA337 /* camera.h */,
@@ -303,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BEF11F253D80A8007341B2 /* Box2D in Resources */,
 				88B670FF246585E800470D28 /* Data in Resources */,
 				9C317A49135B4DC7005DD266 /* Default.png in Resources */,
 				9CB4344E135CAAB200F8C12F /* MainWindow~ipad.xib in Resources */,
