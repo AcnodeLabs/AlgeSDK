@@ -113,11 +113,13 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\camera.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
-  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\candidate.h jni\..\..\..\Apps\PoppingTime\App.hpp \
-  jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp \
-  jni\..\..\..\Apps\PoppingTime\..\LevelSelect\LevelSelector.hpp \
-  jni\..\..\..\Apps\PoppingTime\..\LevelSelect\..\LevelSelect.Assets\Data\levelselect.h
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\..\..\..\imgui\imgui.h \
+  ..\..\..\imgui\imconfig.h \
+  C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h \
+  jni\..\..\..\..\AlgeSDK\SDKSRC\Base\..\..\..\imgui\backends\imgui_impl_opengl2.h \
+  ..\..\..\imgui\imgui.h jni\CANDIDATE.h jni\..\..\candidate.h \
+  jni\..\..\..\Apps\XGui\App.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -351,14 +353,18 @@ C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\ll
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp:
 
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\..\..\..\imgui\imgui.h:
+
+..\..\..\imgui\imconfig.h:
+
+C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h:
+
+jni\..\..\..\..\AlgeSDK\SDKSRC\Base\..\..\..\imgui\backends\imgui_impl_opengl2.h:
+
+..\..\..\imgui\imgui.h:
+
 jni\CANDIDATE.h:
 
 jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\PoppingTime\App.hpp:
-
-jni\..\..\..\Apps\PoppingTime\PoppingTimeLogic.hpp:
-
-jni\..\..\..\Apps\PoppingTime\..\LevelSelect\LevelSelector.hpp:
-
-jni\..\..\..\Apps\PoppingTime\..\LevelSelect\..\LevelSelect.Assets\Data\levelselect.h:
+jni\..\..\..\Apps\XGui\App.hpp:
