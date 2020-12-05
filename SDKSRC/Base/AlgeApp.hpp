@@ -203,6 +203,10 @@ public:
 		
 	}
 
+    virtual void RenderGui() {
+        
+    }
+    
 	//Preconditions: Dont call before init
 	//Assumption Scene is Saved from same arrangement of Gobs
 	short LoadScene(short n) {
@@ -1232,7 +1236,7 @@ public:
 		fps = 1.0 / deltaT;
 		if (aCamera.GetMode() == Camera::CAM_MODE_2D) ViewOrthoEnd();
 	//	if (!edit) aCamera.PosRot({ aCamera.pos.x, aCamera.pos.y, aCamera.pos.z }, { aCamera.rot.x, aCamera.rot.y, aCamera.rot.z });
-		
+        
 	}
 
 	int LoadModel(GameObject* go, ResourceInf* res) {

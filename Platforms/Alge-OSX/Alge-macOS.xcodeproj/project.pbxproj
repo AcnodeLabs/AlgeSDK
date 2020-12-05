@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88223B85239F7C9200755258 /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88223B84239F7C9200755258 /* jpgd.cpp */; };
-		88439E7E25558C2D00DE2F0F /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88439E7D25558C2D00DE2F0F /* Data */; };
+		88277F88257A88A4006DD180 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 88277F87257A88A4006DD180 /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -116,7 +116,7 @@
 /* Begin PBXFileReference section */
 		8805BAD223A8983700032A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
-		88439E7D25558C2D00DE2F0F /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Juices.Assets/Data; sourceTree = "<group>"; };
+		88277F87257A88A4006DD180 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/Ivank_Box2D.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
@@ -302,6 +302,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88277F87257A88A4006DD180 /* Data */,
 				88D2F4DC2558FCC30061682A /* imgui_demo.cpp */,
 				88D2F4DD2558FCC30061682A /* imgui_draw.cpp */,
 				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
@@ -310,7 +311,6 @@
 				88D2F4E12558FCC40061682A /* imgui.h */,
 				88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */,
 				88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */,
-				88439E7D25558C2D00DE2F0F /* Data */,
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
@@ -516,7 +516,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88439E7E25558C2D00DE2F0F /* Data in Resources */,
+				88277F88257A88A4006DD180 /* Data in Resources */,
 				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
 				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,

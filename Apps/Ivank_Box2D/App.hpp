@@ -8,7 +8,7 @@
 
 class /*IvanK Box2D*/ App : public AlgeApp {
 
-	GameObject winter2, boxes, balls;
+	GameObject winter2, boxes, balls, gui;
 
 public:
 
@@ -16,8 +16,27 @@ public:
 //        return size_ipad_air.half().half();
 //    }
 
+    void RenderGui() {
+        if (!gui.hidden) {
+            ImGui_ImplAlgeSDK_BeforeRender();
+            ImGui::ShowMetricsWindow();
+            ImGui_ImplAlgeSDK_AfterRender();
+        }
+    }
+    
+    void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
+        
+    }
+
 	virtual void processInput(PEG::CMD* p, float deltaT) {
+        
+        if (p->command == CMD_KEYDOWN) {
+            if (p->i1 == ' ') gui.hidden = !gui.hidden;
+        }
+        
+        
         if (p->command == CMD_TOUCH_START) {
+            
 			static string msg;
 			f3 pos(p->i1,p->i2,0);
 			msg = pos.str("tch:%.1f,%.1f,%.1f");
@@ -38,7 +57,9 @@ public:
 		PhysAddGroundWithWalls();
 		
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-		//AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+        AddResource(&gui, "gui");
+    
+        //AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
         oSize /= 20; //nullify alx size
         float density = 1.0;

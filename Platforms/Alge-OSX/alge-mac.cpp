@@ -166,10 +166,10 @@ static void HandleDisplay( )
  float newTime = time1.getElapsedTimeInSec();
  deltaT =  newTime - lastTime;
  if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
- ImGui_ImplAlgeSDK_BeforeRender();
- app.Render(deltaT,aX,aY,aZ);
- ImGui_ImplAlgeSDK_AfterRender();
- processOutput();
+  
+    app.Render(deltaT,aX,aY,aZ);
+    app.RenderGui();
+   processOutput();
  glutSwapBuffers( );
  lastTime = newTime;
 }
