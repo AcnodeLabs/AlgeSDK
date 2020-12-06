@@ -38,6 +38,7 @@ void ImGui_ImplAlgeSDK_AfterRender()
     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }
 
+
 void ImGui_ImplAlgeSDK_BeforeRender()
 {
     // Start the Dear ImGui frame
@@ -52,5 +53,14 @@ void ImGui_ImplAlgeSDK_Shutdown() {
     ImGui_ImplGLUT_Shutdown();
     ImGui::DestroyContext();
 }
+
+void GuiStarts() {
+    ImGui_ImplAlgeSDK_BeforeRender();
+}
+
+void GuiEnds() {
+    ImGui_ImplAlgeSDK_AfterRender();
+}
+
 
 ////////////////////////

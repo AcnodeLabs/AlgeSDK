@@ -213,12 +213,14 @@ static void HandleReshape( const int ewidth, const int eheight )
         //appSize(width, height);
        // kWindowWidth = width;
        // kWindowHeight = height;
-        ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
-        printf("[%dx%d]", width, height);
-       // app.input.pushI(CMD_SCREENSIZE, width , height);
+      //  ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
+        ImGui_ImplGLUT_ReshapeFunc(width, height);
+       printf("[%dx%d]", width, height);
+       app.input.pushI(CMD_SCREENSIZE, width , height);
+        appSize(width, height);
        glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
        glLoadIdentity();									// Reset The Projection Matrix
-       gluPerspective(45.0f,(GLfloat)width * 2/(GLfloat)height * 2,0.1f,100.0f);
+      // gluPerspective(45.0f,(GLfloat)width * 2/(GLfloat)height * 2,0.1f,100.0f);
        glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
        glLoadIdentity();
     }
@@ -308,19 +310,18 @@ int main( int argc, char** argv )
   kWindowWidth = CGDisplayPixelsWide(mainDisplayId)*factor;//app.getBackgroundSize().x;
   kWindowHeight = CGDisplayPixelsHigh(mainDisplayId)*factor;//app.getBackgroundSize().y;
 
-  app.ScreenSize(kWindowWidth,kWindowHeight);
-
-    
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     
+  
+  //glutInitWindowSize( kWindowWidth, kWindowHeight );
+  
+  //glutReshapeWindow(kWindowWidth, kWindowHeight);
+  int ss[2] = {1024,768};
+  glutInitWindowSize( ss[0], ss[1] );
   int theWindowHandle = glutCreateWindow( ResPath );
-  glutInitWindowSize( kWindowWidth, kWindowHeight );
-  
-  
-  glutReshapeWindow(kWindowWidth, kWindowHeight);
-    
   glutSetWindow( theWindowHandle );
-  
+  app.ScreenSize(ss[0],ss[1]);
+    
  
   glutReshapeFunc( HandleReshape );
 
@@ -377,7 +378,7 @@ int main( int argc, char** argv )
     app.Init(app.rm.resourcepath);
 
     
-  ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
+ // ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
     
   startTime = glutGet(GLUT_ELAPSED_TIME);
   deltaT = 0;

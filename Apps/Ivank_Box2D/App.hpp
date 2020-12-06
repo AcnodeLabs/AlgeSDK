@@ -5,6 +5,7 @@
    ALGE SDK JD4 Demo :: IvanK Box2D Impulse
    http://lib.ivank.net/demos/box2D.html
 */
+using namespace ImGui;
 
 class /*IvanK Box2D*/ App : public AlgeApp {
 
@@ -15,12 +16,44 @@ public:
 //    virtual i2 getBackgroundSize() {
 //        return size_ipad_air.half().half();
 //    }
+    bool my_tool_active = true;
+    float my_color[4];
+    void MyFirstToolWindow() {
+        // Create a window called "My First Tool", with a menu bar.
+        Begin("My First Tool", &my_tool_active, ImGuiWindowFlags_MenuBar);
+        if (BeginMenuBar())
+        {
+            if (BeginMenu("File"))
+            {
+                if (MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
+                if (MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
+                if (MenuItem("Close", "Ctrl+W"))  { my_tool_active = false; }
+                EndMenu();
+            }
+            EndMenuBar();
+        }
 
+        // Edit a color (stored as ~4 floats)
+        ColorEdit4("Color", my_color);
+
+        // Plot some values
+        const float my_values[] = { 0.2f, 0.1f, 1.0f, 0.5f, 0.9f, 2.2f };
+        PlotLines("Frame Times", my_values, IM_ARRAYSIZE(my_values));
+
+        // Display contents in a scrolling region
+        TextColored(ImVec4(1,1,0,1), "Important Stuff");
+        BeginChild("Scrolling");
+        for (int n = 0; n < 5; n++)
+            ImGui::Text("%04d: Some text", n);
+        EndChild();
+        End();
+    }
+    
     void RenderGui() {
-        if (!gui.hidden) {
-            ImGui_ImplAlgeSDK_BeforeRender();
-            ImGui::ShowMetricsWindow();
-            ImGui_ImplAlgeSDK_AfterRender();
+        if (gui.Visible()) {
+            GuiStarts();
+                MyFirstToolWindow();
+            GuiEnds();
         }
     }
     

@@ -250,6 +250,10 @@ public:
 		 return own;
 	 }
 
+    bool Visible() {
+        return !hidden;
+    }
+    
 	 void SetJuiceScaleIn() {
 		 this->scale = 0.1;
 		 this->JuiceType = JuiceTypes::JUICE_SCALE_IN;
