@@ -91,7 +91,7 @@ public:
 		
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         AddResource(&gui, "gui");
-    
+        gui.Hide();
         //AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
         oSize /= 20; //nullify alx size

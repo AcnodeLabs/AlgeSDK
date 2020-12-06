@@ -266,10 +266,9 @@ public:
         SetCamera(camMode, _orthoType);
 	}
 
-    void SetCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
-        aCamera.windowWidth = getBackgroundSize().x;
-        aCamera.windowHeight = getBackgroundSize().y;
-        
+    void CamReshape(i2 rect) {
+        aCamera.windowWidth = rect.x;
+        aCamera.windowHeight = rect.y;
         if (orthoType == ORIGIN_IN_MIDDLE_OF_SCREEN) {
             leftSide = -aCamera.windowWidth / 2.0;
             rightSide = aCamera.windowWidth / 2.0;
@@ -286,6 +285,12 @@ public:
             originX = rightSide / 2;
             originY = bottomSide / 2;
         }
+    }
+    
+    void SetCamera(int camMode = Camera::CAM_MODE_FPS, int _orthoType= ORIGIN_IN_MIDDLE_OF_SCREEN) {
+        orthoType= _orthoType;
+        aCamera.mode = camMode;
+        CamReshape(getBackgroundSize());
     }
 
 	
@@ -644,11 +649,12 @@ public:
     bool doPicking2D(PosRotScale* it, f2 mouse) {
         //if (it->touchable==false) return false;
         TRAP(it, "bg");
-    
-        f2 pt_in_world = f2(mouse.x / resolutionReported.x * getBackgroundSize().x, mouse.y / resolutionReported.y * getBackgroundSize().y);
-      //   static char msg[128];
-      //  sprintf(msg, "%s@resolutionReported[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
-      //  SetTitle(msg);
+        i2 fb = getBackgroundSize();
+        i2 rr = resolutionReported;
+        f2 pt_in_world = f2(mouse.x / rr.x * fb.x, mouse.y / rr.y * fb.y);
+        // static char msg[128];
+        //sprintf(msg, "%s@rr[%d,%d]",it->UUID.c_str(), resolutionReported.x, resolutionReported.y);
+        //SetTitle(msg);
         CRect obj = it->getOwnRect(it->UUID);
 		if (it->scale == XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN) {
 			obj.Top = topSide;

@@ -589,12 +589,13 @@ i2 GameObject::windowSize;
 
 
 class Camera : public GameObject, public CFpsCamera {
-	short mode;
 	
 public:
+    short mode;
 	int windowWidth;//for 2D ortho setup
 	int windowHeight;
-
+    int orthoType;
+    
     enum {
         CAM_MODE_NULL,
         CAM_MODE_FPS,

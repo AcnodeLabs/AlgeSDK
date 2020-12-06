@@ -192,39 +192,35 @@ void appSize(int w, int h) {
     if (app.landscape) {
         app.resolutionReported.x = w;
         app.resolutionReported.y = h;
-  
+
     } else {
-        app.resolutionReported.x = w;
+        app.resolutionReported.x = w;//>> ??why both are same
         app.resolutionReported.y = h;
     
     }
-    
+    app.input.pushI(CMD_SCREENSIZE, w , h);
+    app.CamReshape(i2(w,h));
 }
 
+static int reshapeCounter = 0;//as per current coding this first func call seems redundant so it is suppressed in line 215
 static void HandleReshape( const int ewidth, const int eheight )
 {
+    reshapeCounter++;
     int width = ewidth ;
     int height = eheight;
     
     if (eheight>0 && ewidth!=eheight)										// Prevent A Divide By Zero By
     {
-        
-       glViewport(0,0,width,height);						// Reset The Current Viewport
-        //appSize(width, height);
-       // kWindowWidth = width;
-       // kWindowHeight = height;
-      //  ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
-        ImGui_ImplGLUT_ReshapeFunc(width, height);
-       printf("[%dx%d]", width, height);
-       app.input.pushI(CMD_SCREENSIZE, width , height);
-        appSize(width, height);
-       glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
-       glLoadIdentity();									// Reset The Projection Matrix
-      // gluPerspective(45.0f,(GLfloat)width * 2/(GLfloat)height * 2,0.1f,100.0f);
-       glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
-       glLoadIdentity();
+      glViewport(0,0,width,height);						// Commenting it for fixed width
+      ImGui_ImplGLUT_ReshapeFunc(width, height);
+      if (reshapeCounter==1) return;//as per current coding this first func call seems redundant so it is suppressed in line 215
+      printf("[%dx%d]", width, height);      
+      appSize(width, height);
+      glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
+      glLoadIdentity();									// Reset The Projection Matrix
+      glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
+      glLoadIdentity();
     }
-    //ImGui_ImplGLUT_ReshapeFunc(width,height*2);
 }
 
 static void exitIt() {
@@ -293,9 +289,9 @@ void reset_window_title(int para)
  //   glutSetWindowTitle(APP_TITLE);
  //   glutFullScreen();
     
-    glutReshapeWindow(kWindowWidth, kWindowHeight);
-    glutPositionWindow(0,0);
-    HandleReshape(kWindowWidth, kWindowHeight);
+    glutReshapeWindow(app.getBackgroundSize().x, app.getBackgroundSize().y);
+  //  glutPositionWindow(0,0);
+  //  HandleReshape(kWindowWidth, kWindowHeight);
 }
 #include <CoreGraphics/CGDisplayConfiguration.h>
 
@@ -317,13 +313,13 @@ int main( int argc, char** argv )
   
   //glutReshapeWindow(kWindowWidth, kWindowHeight);
   int ss[2] = {1024,768};
-  glutInitWindowSize( ss[0], ss[1] );
+  glutInitWindowSize( 0, 0 );
   int theWindowHandle = glutCreateWindow( ResPath );
   glutSetWindow( theWindowHandle );
   app.ScreenSize(ss[0],ss[1]);
     
  
-  glutReshapeFunc( HandleReshape );
+  
 
   glutDisplayFunc( HandleDisplay );
   
@@ -368,7 +364,7 @@ int main( int argc, char** argv )
   
  // initAL(app.rm.resourcepath);
     FMOD_Init();
-  app.rm.Init(app.rm.resourcepath);
+   app.rm.Init(app.rm.resourcepath);
  //   app.resolutionReported.x = kWindowWidth;
  //   app.resolutionReported.y = kWindowHeight;
     app.rightSide = kWindowWidth;
@@ -377,8 +373,6 @@ int main( int argc, char** argv )
     app.originX = app.bottomSide /2;
     app.Init(app.rm.resourcepath);
 
-    
- // ImGui_ImplGLUT_ReshapeFunc(kWindowWidth, kWindowHeight);
     
   startTime = glutGet(GLUT_ELAPSED_TIME);
   deltaT = 0;
@@ -399,6 +393,7 @@ int main( int argc, char** argv )
    //
    
   dtx_use_font(font, 24);
+  glutReshapeFunc( HandleReshape );
   glutMainLoop( );
   
   ImGui_ImplAlgeSDK_Shutdown();
