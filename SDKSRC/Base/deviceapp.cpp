@@ -38,7 +38,15 @@ void ImGui_ImplAlgeSDK_Main() {
 	//ImGui::SetWindowFontScale(2);
 }
 
-void ImGui_ImplAlgeSDK_AfterRender()
+void ImGui_ImplAlgeSDK_BeforeRender()
+{
+	// Start the Dear ImGui frame
+	ImGui_ImplOpenGL2_NewFrame();
+//	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+}
+
+void ImGui_ImplAlgeSDK_AfterRender(char* msg)
 {
 	// Rendering
 	ImGui::Render();
@@ -48,15 +56,7 @@ void ImGui_ImplAlgeSDK_AfterRender()
 	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 	//	glClear(GL_COLOR_BUFFER_BIT);
 	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-}
-
-void ImGui_ImplAlgeSDK_BeforeRender()
-{
-	// Start the Dear ImGui frame
-	ImGui_ImplOpenGL2_NewFrame();
-//	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
 }
 
 void ImGui_ImplAlgeSDK_Shutdown() {
@@ -203,14 +203,17 @@ static void prepareFrame(int width, int height)
 }
 
 
-
+char msg[256];
 void appRender(float tick, int width, int height, int accelX, int accelY, int accelZ)
 {
+    ImGui_ImplAlgeSDK_BeforeRender();
 	prepareFrame(width,height);
 	if (accelX==0 && accelY==0 && accelZ==0) accelY = -9.8*100;
-    ImGui_ImplAlgeSDK_BeforeRender();
+    
 	game.Render(tick, accelX , accelY , accelZ );
-    ImGui_ImplAlgeSDK_AfterRender();
+    ImGui_ImplAlgeSDK_AfterRender((char*)msg);
+    game.input.pushP(CMD_YOUTUBE_SHOW,msg,msg);
+    
 	return;
 }
 

@@ -14,7 +14,8 @@ LOCAL_SRC_FILES  := importgl.c \
     ../../../../imgui\imgui.cpp \
     ../../../../imgui\imgui_draw.cpp \
     ../../../../imgui\imgui_widgets.cpp \
-    ../../../../imgui\backends\imgui_impl_opengl2es.cpp \
+    ../../../../imgui\imgui_demo.cpp \
+    imgui_impl_opengl2es.cpp \
     # ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp \
     # ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp \
     # ../../../../Box2D/Box2D/Box2D/Dynamics/Contacts/b2CircleContact.cpp \
