@@ -28,7 +28,7 @@ public:
                 if (MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
                 if (MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
                 if (MenuItem("Close", "Ctrl+W"))  { my_tool_active = false; }
-                EndMenu();
+         //       EndMenu();
             }
             EndMenuBar();
         }
@@ -51,9 +51,9 @@ public:
     
     void RenderGui() {
         if (gui.Visible()) {
-            GuiStarts();
+          //  GuiStarts();
                 MyFirstToolWindow();
-            GuiEnds();
+          //  GuiEnds();
         }
     }
     
