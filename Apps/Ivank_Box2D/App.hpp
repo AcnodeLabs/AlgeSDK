@@ -97,7 +97,7 @@ public:
         oSize /= 20; //nullify alx size
         float density = 1.0;
         float restitution = 0.3;
-        AddResourceEx(&boxes, "box", "box.jpg", 40, false, oSize, density, restitution);//false::Polygon/Box
+        AddResourceEx(&boxes, "box", "box.jpg", 4, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
 
 #ifdef  NO_BOX2D
