@@ -13,10 +13,15 @@
 @end
 
 void ShowToast(char* msg) {
-    NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
-    userNotification.title = @"Mars3D Notice";
-    userNotification.informativeText = [NSString stringWithUTF8String:msg];
+  //  NSUserNotification *userNotification = [[[NSUserNotification alloc] init] autorelease];
+  //  userNotification.title = @"Mars3D Notice";
+  //  userNotification.informativeText = [NSString stringWithUTF8String:msg];
     
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
-  
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Alert"];
+    [alert setInformativeText:[NSString stringWithUTF8String:msg]];
+    [alert addButtonWithTitle:@"Ok"];
+    try {
+        [alert runModal];
+    } catch (...) {}
 }
