@@ -50,4 +50,13 @@ void ImGui_ImplAlgeSDK_Shutdown() {
 	ImGui::DestroyContext();
 }
 
+void GuiStarts() {
+	ImGui_ImplOpenGL2_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+}
+
+void GuiEnds() {
+	ImGui_ImplAlgeSDK_AfterRender();
+}
+
 ////////////////////////
