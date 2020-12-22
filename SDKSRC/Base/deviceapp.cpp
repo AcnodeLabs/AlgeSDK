@@ -10,7 +10,6 @@ using namespace std;
 #include "app.h"
 
 #ifdef ANDROID
-#undef NO_BOX2D
 #define CBASE "../../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"
 #else
 #define CBASE "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"

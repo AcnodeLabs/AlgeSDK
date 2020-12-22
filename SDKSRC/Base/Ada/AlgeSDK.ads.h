@@ -10,7 +10,7 @@
 
 #ifdef __is_target_os
 #ifndef MACOSX
-#define NO_BOX2D
+//#define NO_BOX2D
 #endif
 #endif
 
