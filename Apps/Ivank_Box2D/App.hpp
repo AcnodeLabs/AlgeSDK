@@ -103,6 +103,7 @@ public:
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
         
         AddResource(&gui, "gui");
+        gui.hidden = false;
 #ifdef  NO_BOX2D
 		output.pushP(CMD_TOAST, $ "NO_BOX2D", $ "NO_BOX2D");
 #else 

@@ -58,6 +58,17 @@ void ImGui_ImplAlgeSDK_AfterRender(char* msg)
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
 }
 
+void GuiStarts() {
+    ImGui_ImplAlgeSDK_BeforeRender();
+}
+
+void GuiEnds() {
+    static char msg[1024] = {0,0};
+    ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
+}
+
+
+
 void ImGui_ImplAlgeSDK_Shutdown() {
 	// Cleanup
 	ImGui_ImplOpenGL2_Shutdown();
