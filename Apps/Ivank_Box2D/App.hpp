@@ -58,7 +58,7 @@ public:
     }
     
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        
+        if (gob->is(gui)) RenderGui();
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
@@ -80,7 +80,7 @@ public:
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
             }
-            gui.hidden = !gui.hidden;
+            gui.hidden = false;
         }
 	}
 
@@ -92,7 +92,7 @@ public:
 		PhysAddGroundWithWalls();
 		
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-        AddResource(&gui, "gui");
+        
         gui.Hide();
         //AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         float oSize = (bottomSide - topSide)/ 30.0;// 30 balls could stack vertically
@@ -101,7 +101,8 @@ public:
         float restitution = 0.3;
         AddResourceEx(&boxes, "box", "box.jpg", 4, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
-
+        
+        AddResource(&gui, "gui");
 #ifdef  NO_BOX2D
 		output.pushP(CMD_TOAST, $ "NO_BOX2D", $ "NO_BOX2D");
 #else 

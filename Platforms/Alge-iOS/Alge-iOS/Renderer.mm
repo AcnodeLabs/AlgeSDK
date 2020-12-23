@@ -9,7 +9,7 @@
 #import <ModelIO/ModelIO.h>
 
 #import "Renderer.h"
-
+#include "../../../SDKSRC/Base/Ada/AlgeSDK.ads.h"
 // Include header shared between C code here, which executes Metal API commands, and .metal files
 #import "ShaderTypes.h"
 

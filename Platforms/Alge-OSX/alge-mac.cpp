@@ -168,9 +168,10 @@ static void HandleDisplay( )
  if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
   
     app.Render(deltaT,aX,aY,aZ);
-    app.RenderGui();
+
    processOutput();
  glutSwapBuffers( );
+   
  lastTime = newTime;
 }
 
