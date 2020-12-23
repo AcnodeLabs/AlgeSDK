@@ -18,7 +18,7 @@ public:
 //    }
     bool my_tool_active = true;
     float my_color[4];
-    void MyFirstToolWindow() {
+    void MyFirstToolWindow(float dt) {
         // Create a window called "My First Tool", with a menu bar.
         Begin("My First Tool", &my_tool_active, ImGuiWindowFlags_MenuBar);
         if (BeginMenuBar())
@@ -43,22 +43,25 @@ public:
         // Display contents in a scrolling region
         TextColored(ImVec4(1,1,0,1), "Important Stuff");
         BeginChild("Scrolling");
-        for (int n = 0; n < 5; n++)
-            ImGui::Text("%04d: Some text", n);
+        ImGui::Text("FPS %.2f", 1.0/dt);
+        ImGui::SliderInt("Impulse", &force, 1, 10);
+        for (int n = 1; n < 5; n++)
+            ImGui::Text("GOC # %04d: ", n);
         EndChild();
         End();
     }
-    
-    void RenderGui() {
+    int force;
+   
+    void RenderGui(float dt) {
         if (gui.Visible()) {
             GuiStarts();
-                MyFirstToolWindow();
+                MyFirstToolWindow(dt);
             GuiEnds();
         }
     }
     
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        if (gob->is(gui)) RenderGui();
+        if (gob->is(gui)) RenderGui(deltaT);
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
@@ -76,7 +79,7 @@ public:
 			
             bool impulsed = false;
             for (auto b : touched_bodies) {
-                b->Impulse(f2(0, -4));
+                b->Impulse(f2(0, -force));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
             }
@@ -90,7 +93,7 @@ public:
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		InitPhysics();
 		PhysAddGroundWithWalls();
-		
+        force = 2;
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         
         gui.Hide();
@@ -103,7 +106,7 @@ public:
         AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
         
         AddResource(&gui, "gui");
-        gui.hidden = false;
+        
 #ifdef  NO_BOX2D
 		output.pushP(CMD_TOAST, $ "NO_BOX2D", $ "NO_BOX2D");
 #else 
