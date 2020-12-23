@@ -5,5 +5,5 @@
 // or you can goto https://acnodelabs.visualstudio.com/AlgeSDK
 //#define NO_BOX2D
 
-#define ALGEAPPNAME "DemoCoverFlow"
-#include "../Apps/DemoCoverflow/App.hpp"
+#define ALGEAPPNAME "XFs"
+#include "../Apps/XFs/App.hpp"
