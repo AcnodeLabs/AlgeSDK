@@ -13,28 +13,14 @@ class /*IvanK Box2D*/ App : public AlgeApp {
 
 public:
 
-//    virtual i2 getBackgroundSize() {
-//        return size_ipad_air.half().half();
-//    }
     bool my_tool_active = true;
     float my_color[4];
     void MyFirstToolWindow(float dt) {
         // Create a window called "My First Tool", with a menu bar.
-        Begin("My First Tool", &my_tool_active, ImGuiWindowFlags_MenuBar);
-        if (BeginMenuBar())
-        {
-            if (BeginMenu("File"))
-            {
-                if (MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
-                if (MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
-                if (MenuItem("Close", "Ctrl+W"))  { my_tool_active = false; }
-         //       EndMenu();
-            }
-            EndMenuBar();
-        }
+        Begin("Balls and Boxes", &my_tool_active, ImGuiWindowFlags_MenuBar);
 
         // Edit a color (stored as ~4 floats)
-        ColorEdit4("Color", my_color);
+        //ColorEdit4("Color", my_color);
 
         // Plot some values
         const float my_values[] = { 0.2f, 0.1f, 1.0f, 0.5f, 0.9f, 2.2f };
@@ -45,8 +31,10 @@ public:
         BeginChild("Scrolling");
         ImGui::Text("FPS %.2f", 1.0/dt);
         ImGui::SliderInt("Impulse", &force, 1, 10);
-        for (int n = 1; n < 5; n++)
-            ImGui::Text("GOC # %04d: ", n);
+        
+        for (auto b : boxes.prsInstances) {
+            ImGui::Text("Box@ [%.0f,%.0f]", b.pos.x,b.pos.y);
+        }
         EndChild();
         End();
     }
@@ -72,12 +60,7 @@ public:
         
         
         if (p->command == CMD_TOUCH_START) {
-            
-			static string msg;
-			f3 pos(p->i1,p->i2,0);
-			msg = pos.str("tch:%.1f,%.1f,%.1f");
-			
-            bool impulsed = false;
+           bool impulsed = false;
             for (auto b : touched_bodies) {
                 b->Impulse(f2(0, -force));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
@@ -103,7 +86,7 @@ public:
         float density = 1.0;
         float restitution = 0.3;
         AddResourceEx(&boxes, "box", "box.jpg", 4, false, oSize, density, restitution);//false::Polygon/Box
-        AddResourceEx(&balls, "bigball",40, true, oSize, density, restitution* 2.0);//true:Circle
+        AddResourceEx(&balls, "bigball",99, true, oSize, density, restitution* 2.0);//true:Circle
         
         AddResource(&gui, "gui");
         
