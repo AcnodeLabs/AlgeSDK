@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88070D5025CC5AD2009A0468 /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */; };
 		88223B85239F7C9200755258 /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88223B84239F7C9200755258 /* jpgd.cpp */; };
 		8865D4162593792F00F261AC /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 8865D4152593792F00F261AC /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
@@ -95,7 +96,6 @@
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
 		9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA991E1FAB603D00C52351 /* libfreeimage.a */; };
-		A5031C5C25CC59C30056D79A /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5031C5B25CC59C30056D79A /* imgui_impl_opengl2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -115,6 +115,8 @@
 
 /* Begin PBXFileReference section */
 		8805BAD223A8983700032A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
+		88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_impl_opengl2.h; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
 		8865D4152593792F00F261AC /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/XFs.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_glut.cpp; path = ../../../imgui/backends/imgui_impl_glut.cpp; sourceTree = "<group>"; };
-		88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_opengl2.cpp; path = ../../../imgui/backends/imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
 		88D2F4DC2558FCC30061682A /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../../../imgui/imgui_demo.cpp; sourceTree = "<group>"; };
 		88D2F4DD2558FCC30061682A /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../../../imgui/imgui_draw.cpp; sourceTree = "<group>"; };
 		88D2F4DE2558FCC30061682A /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../../../imgui/imgui_internal.h; sourceTree = "<group>"; };
@@ -242,7 +243,6 @@
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
-		A5031C5B25CC59C30056D79A /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_opengl2.cpp; path = ../../SDKSRC/imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,7 +303,8 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
-				A5031C5B25CC59C30056D79A /* imgui_impl_opengl2.cpp */,
+				88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */,
+				88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */,
 				8865D4152593792F00F261AC /* Data */,
 				88D2F4DC2558FCC30061682A /* imgui_demo.cpp */,
 				88D2F4DD2558FCC30061682A /* imgui_draw.cpp */,
@@ -311,7 +312,6 @@
 				88D2F4DF2558FCC30061682A /* imgui_widgets.cpp */,
 				88D2F4E02558FCC40061682A /* imgui.cpp */,
 				88D2F4E12558FCC40061682A /* imgui.h */,
-				88D2F4D92558FC3F0061682A /* imgui_impl_opengl2.cpp */,
 				88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */,
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
@@ -538,7 +538,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5031C5C25CC59C30056D79A /* imgui_impl_opengl2.cpp in Sources */,
 				88AB7B002316E046004A0239 /* b2CircleContact.cpp in Sources */,
 				88AB7B012316E046004A0239 /* b2ChainAndCircleContact.cpp in Sources */,
 				88223B85239F7C9200755258 /* jpgd.cpp in Sources */,
@@ -567,6 +566,7 @@
 				88AB7AD92316E00F004A0239 /* b2ContactManager.cpp in Sources */,
 				88AB7ADA2316E00F004A0239 /* b2Island.cpp in Sources */,
 				88D2F4E52558FCC40061682A /* imgui.cpp in Sources */,
+				88070D5025CC5AD2009A0468 /* imgui_impl_opengl2.cpp in Sources */,
 				88AB7ADB2316E00F004A0239 /* b2World.cpp in Sources */,
 				88AB7ADD2316E00F004A0239 /* b2WorldCallbacks.cpp in Sources */,
 				88AB7ADE2316E00F004A0239 /* b2Fixture.cpp in Sources */,
