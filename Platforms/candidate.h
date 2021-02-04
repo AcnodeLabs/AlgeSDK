@@ -5,5 +5,5 @@
 // or you can goto https://acnodelabs.visualstudio.com/AlgeSDK
 //#define NO_BOX2D
 
-#define ALGEAPPNAME "XFs"
-#include "../Apps/XFs/App.hpp"
+#define ALGEAPPNAME "PoppingTime"
+#include "../Apps/PoppingTime/App.hpp"

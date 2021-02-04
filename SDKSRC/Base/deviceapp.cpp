@@ -16,6 +16,7 @@ using namespace std;
 #endif
 #include CBASE
 
+#ifndef NO_IMGUI
 // XGui stuff
 #include "../../../imgui/imgui.h"
 #include "../../../imgui/backends/imgui_impl_opengl2.h"
@@ -76,7 +77,7 @@ void ImGui_ImplAlgeSDK_Shutdown() {
 }
 
 ////////////////////////
-
+#endif //NO_IMGUI
 
 
 
@@ -107,16 +108,13 @@ XHttpSocket msck;
 
 void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
 void appInit(char *sz) { 
-
+#ifndef NO_IMGUI
 	ImGui_ImplAlgeSDK_Main();
-
+#endif
 	strcpy(ResPath, sz);
     game.aCamera.custom_type = 0xCA;
     game.aCamera.windowWidth = game.getBackgroundSize().x;
     game.aCamera.windowHeight = game.getBackgroundSize().y;
-
-
-
 
     game.rm.Init(sz);
     game.Init(sz);
@@ -132,7 +130,9 @@ void appSize(int w, int h) {
     }
 }
 void appDeinit(){
+#ifndef NO_IMGUI
     ImGui_ImplAlgeSDK_Shutdown();
+#endif
 }
 
 void* lastP1 = 0;
@@ -216,12 +216,16 @@ static void prepareFrame(int width, int height)
 char msg[256];
 void appRender(float tick, int width, int height, int accelX, int accelY, int accelZ)
 {
+#ifndef NO_IMGUI
     ImGui_ImplAlgeSDK_BeforeRender();
+#endif
 	prepareFrame(width,height);
 	if (accelX==0 && accelY==0 && accelZ==0) accelY = -9.8*100;
     
 	game.Render(tick, accelX , accelY , accelZ );
+#ifndef NO_IMGUI
     ImGui_ImplAlgeSDK_AfterRender((char*)msg);
+#endif
     game.input.pushP(CMD_YOUTUBE_SHOW,msg,msg);
     
 	return;
