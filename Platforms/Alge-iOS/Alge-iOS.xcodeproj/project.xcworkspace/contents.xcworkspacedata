@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/imac/Desktop/SANDBOX/AlgeSDK/Platforms/Alge-iPhone/Alge-iOS.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,7 +1,0 @@
-after testing and committing your app on primary station (do):
-
-on this station:
-
-cd into AlgeSDK folder
-git pull
-[Run]
