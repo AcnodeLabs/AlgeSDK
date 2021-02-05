@@ -28,7 +28,6 @@ public:
         PlayScene,
     };
 
-
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
 		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");

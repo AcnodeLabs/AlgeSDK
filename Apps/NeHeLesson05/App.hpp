@@ -19,6 +19,7 @@ public:
         ShowMetricsWindow();
         ImGui_ImplAlgeSDK_AfterRender();
     }
+    
     bool b = true;
 	void Render(float dt, int aX, int aY, int aZ) {
         RenderGuia();
