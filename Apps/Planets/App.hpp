@@ -29,7 +29,7 @@ public:
     
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
-		LoadMock(that,  /*TitleImage*/ "titletext", /*SettingsImage*/ "settings","pointer", "settings_icon");
+		LoadMock(that,  /*TitleImage*/ "titletext", /*SettingsImage*/ "settings","pointer", "settings_icon", "bg_p");
 		
 		with that->AddObject(&fps_text);
 			_.pos.x = that->rightSide / 20;
