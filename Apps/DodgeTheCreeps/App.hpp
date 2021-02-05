@@ -244,16 +244,16 @@ public:
 			if (p->i1 == AL_KEY_MINUS) {
 			}
 
-			if (p->i1 == AL_KEY_RIGHT) {
+			if (p->i1 == MAC_KEY_RGT) {
 				playerGrey.SetIntent('R');
 			}
-			if (p->i1 == AL_KEY_LEFT) {
+			if (p->i1 == MAC_KEY_LFT) {
 				playerGrey.SetIntent('L');
 			}
-			if (p->i1 == AL_KEY_UP) {
+			if (p->i1 == MAC_KEY_FWD) {
 				playerGrey.SetIntent('U');
 			}
-			if (p->i1 == AL_KEY_DOWN) {
+			if (p->i1 == MAC_KEY_BAC) {
 				playerGrey.SetIntent('D');
 			}
 		}
