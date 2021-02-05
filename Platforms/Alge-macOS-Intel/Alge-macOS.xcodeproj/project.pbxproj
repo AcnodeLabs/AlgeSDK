@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		88070D5025CC5AD2009A0468 /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */; };
 		88223B85239F7C9200755258 /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88223B84239F7C9200755258 /* jpgd.cpp */; };
-		8865D4162593792F00F261AC /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 8865D4152593792F00F261AC /* Data */; };
+		8885782425CD21FA00F545FC /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 8885782325CD21FA00F545FC /* Data */; };
 		889C5CA32318E717006C2259 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 889C5CA22318E717006C2259 /* b2Body.cpp */; };
 		88AB79D12316DC63004A0239 /* UTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9CE79C6A1F9DED0800B87310 /* UTM.cpp */; };
 		88AB7AB52316DFAD004A0239 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AB7AAF2316DFAD004A0239 /* b2Math.cpp */; };
@@ -118,7 +118,7 @@
 		88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
 		88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_impl_opengl2.h; sourceTree = "<group>"; };
 		88223B84239F7C9200755258 /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jpgd.cpp; path = ../../SDKSRC/Base/jpgd.cpp; sourceTree = "<group>"; };
-		8865D4152593792F00F261AC /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/XFs.Assets/Data; sourceTree = "<group>"; };
+		8885782325CD21FA00F545FC /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/COMMON.Assets/Data; sourceTree = "<group>"; };
 		889C5CA22318E717006C2259 /* b2Body.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Body.cpp; path = ../../../Box2D/Box2D/Dynamics/b2Body.cpp; sourceTree = "<group>"; };
 		88AB7AAF2316DFAD004A0239 /* b2Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Math.cpp; path = ../../../Box2D/Box2D/Common/b2Math.cpp; sourceTree = "<group>"; };
 		88AB7AB02316DFAD004A0239 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		88FA5D102452BA9C001C5F08 /* b2CircleShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2CircleShape.cpp; path = ../../../Box2D/Box2D/Collision/Shapes/b2CircleShape.cpp; sourceTree = "<group>"; };
 		88FA5D112452BA9C001C5F08 /* b2BlockAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2BlockAllocator.cpp; path = ../../../Box2D/Box2D/Common/b2BlockAllocator.cpp; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
-		9C3281BA13F275F900A53E54 /* XFs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3281BA13F275F900A53E54 /* AlgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3281BE13F275F900A53E54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C3281C813F275F900A53E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C3281CA13F275F900A53E54 /* Mars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mars-Prefix.pch"; sourceTree = "<group>"; };
@@ -303,9 +303,10 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				88BBEF8623165163009AEDF6 /* candidate.h */,
+				8885782325CD21FA00F545FC /* Data */,
 				88070D4E25CC5AD2009A0468 /* imgui_impl_opengl2.cpp */,
 				88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */,
-				8865D4152593792F00F261AC /* Data */,
 				88D2F4DC2558FCC30061682A /* imgui_demo.cpp */,
 				88D2F4DD2558FCC30061682A /* imgui_draw.cpp */,
 				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
@@ -316,7 +317,6 @@
 				88E172E923C4F25F007A5116 /* libfmod.dylib */,
 				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
-				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
 				889C5CA22318E717006C2259 /* b2Body.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
@@ -377,7 +377,7 @@
 		9C3281BB13F275F900A53E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C3281BA13F275F900A53E54 /* XFs.app */,
+				9C3281BA13F275F900A53E54 /* AlgeApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -469,9 +469,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C3281B913F275F900A53E54 /* XFs */ = {
+		9C3281B913F275F900A53E54 /* AlgeApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "XFs" */;
+			buildConfigurationList = 9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "AlgeApp" */;
 			buildPhases = (
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
@@ -482,9 +482,9 @@
 			);
 			dependencies = (
 			);
-			name = XFs;
+			name = AlgeApp;
 			productName = AlgeAppPlanets;
-			productReference = 9C3281BA13F275F900A53E54 /* XFs.app */;
+			productReference = 9C3281BA13F275F900A53E54 /* AlgeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -508,7 +508,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C3281B913F275F900A53E54 /* XFs */,
+				9C3281B913F275F900A53E54 /* AlgeApp */,
 			);
 		};
 /* End PBXProject section */
@@ -518,9 +518,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8865D4162593792F00F261AC /* Data in Resources */,
 				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
 				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
+				8885782425CD21FA00F545FC /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,
 				9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */,
@@ -783,7 +783,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "XFs" */ = {
+		9C3281D813F275F900A53E54 /* Build configuration list for PBXNativeTarget "AlgeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C3281D913F275F900A53E54 /* Debug */,

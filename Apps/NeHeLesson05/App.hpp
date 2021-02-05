@@ -15,14 +15,14 @@ public:
 	float t0;
     
     void RenderGuia() {
-        ImGui_ImplAlgeSDK_BeforeRender();
-        ShowMetricsWindow();
-        ImGui_ImplAlgeSDK_AfterRender();
+       // ImGui_ImplAlgeSDK_BeforeRender();
+      //  ShowMetricsWindow();
+      //  ImGui_ImplAlgeSDK_AfterRender();
     }
     
     bool b = true;
 	void Render(float dt, int aX, int aY, int aZ) {
-        RenderGuia();
+        //RenderGuia();
         //
         t0+=dt;
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
