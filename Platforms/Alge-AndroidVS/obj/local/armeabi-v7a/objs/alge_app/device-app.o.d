@@ -156,7 +156,8 @@
   ..\..\..\imgui\imconfig.h \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\..\..\..\imgui\backends\imgui_impl_opengl2.h \
   ..\..\..\imgui\imgui.h jni\CANDIDATE.h jni\..\..\candidate.h \
-  jni\..\..\..\Apps\Ivank_Box2D\App.hpp
+  jni\..\..\..\Apps\planets\App.hpp \
+  jni\..\..\..\Apps\planets\SolarDb.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -478,4 +479,6 @@ jni\CANDIDATE.h:
 
 jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\Ivank_Box2D\App.hpp:
+jni\..\..\..\Apps\planets\App.hpp:
+
+jni\..\..\..\Apps\planets\SolarDb.hpp:
