@@ -1978,10 +1978,10 @@ public:
 
 	GameObject ratings;
 
-	void LoadIn(AlgeApp* thiz) {
+	void LoadIn(AlgeApp* thiz, string bgd = "bg") {
         
-		thiz->AddResource(&bg, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-		        
+		thiz->AddResource(&bg, bgd, XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+        
 		int middleX = thiz->rightSide / 2;
 
 		with thiz->AddResource(&ratings, "ratings", 0.7);
@@ -2028,10 +2028,10 @@ public:
 	// a start screen with a title and ratings image and a Start button and a settings icon on top right
 	// setting screen that shows up and has user clickable regions defined by anchors
 
-    void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon) {
+    void LoadMock(AlgeApp* thiz, string titleTag, string tagSettings, string tagPointer, string tagIcon, string backgrnd) {
         app = thiz;
         
-        startScreen.LoadIn(thiz);
+        startScreen.LoadIn(thiz,backgrnd);
         
         with thiz->AddResource(&titl, titleTag.c_str(), 1.2);
         _.JuiceType = JuiceTypes::JUICE_PULSATE;
