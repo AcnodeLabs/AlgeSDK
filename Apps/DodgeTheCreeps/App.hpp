@@ -203,7 +203,7 @@ public:
 		AlInit(STANDARD);
 		SetTitle("DodgeTheCreeps");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		AddResource(&background, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		AddResource(&background, "bg_p", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
 		
 		//AddResource(&playerTrail, "playerGrey_up1", 1);
 		//MakeTrail();

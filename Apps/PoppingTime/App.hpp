@@ -30,7 +30,7 @@ public:
 
     void LoadIn(AlgeApp* that) {
         //FIRST LOAD MOCK
-		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon");
+		LoadMock(that,  /*TitleImage*/ "poppingtime", /*SettingsImage*/ "settings","pointer", "settings_icon", "bg");
 		
         ///LOAD PLAY OBJECTS
         that->AddResource(&baloons, "baloon");// , 10, true, 1, 0.3);
