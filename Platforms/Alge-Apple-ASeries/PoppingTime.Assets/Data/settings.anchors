@@ -1,0 +1,6 @@
+//anchorpoints for settings.alx & settings.tga screen
+i2 anchors_v1[3][3] = {
+{{465,205},{655,205},{835,205}},
+{{465,335},{655,335},{655,335}},
+{{465,480},{655,480},{845,480}}
+};//row col
