@@ -7,4 +7,4 @@
 #define ALGEAPPNAME "AlgeApp"
 //TODO:: move above line elsewhere
 
-#include "../Apps/DodgeTheCreeps/App.hpp"
+#include "../Apps/Ivank_Box2D/App_noimgui.hpp"
