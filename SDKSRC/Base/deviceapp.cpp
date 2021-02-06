@@ -41,7 +41,7 @@ void ImGui_ImplAlgeSDK_Main() {
 void ImGui_ImplAlgeSDK_BeforeRender()
 {
 	// Start the Dear ImGui frame
-	ImGui_ImplOpenGL2_NewFrame();
+//	ImGui_ImplOpenGL2_NewFrame();
 //	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 }
@@ -56,7 +56,9 @@ void ImGui_ImplAlgeSDK_AfterRender(char* msg)
 	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 	//	glClear(GL_COLOR_BUFFER_BIT);
 	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
+#ifndef IOS
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
+#endif
 }
 
 void GuiStarts() {
@@ -65,7 +67,9 @@ void GuiStarts() {
 
 void GuiEnds() {
     static char msg[1024] = {0,0};
+#ifndef IOS
     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
+#endif
 }
 
 

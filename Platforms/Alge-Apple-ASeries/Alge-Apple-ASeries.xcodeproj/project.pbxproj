@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,7 +29,7 @@
 		9CC6B536135B3C850099EA7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B52E135B3C840099EA7E /* CoreGraphics.framework */; };
 		9CC6B537135B3C850099EA7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B52F135B3C840099EA7E /* Foundation.framework */; };
 		9CC6B538135B3C850099EA7E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B530135B3C840099EA7E /* MediaPlayer.framework */; };
-		9CC6B539135B3C850099EA7E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B531135B3C840099EA7E /* OpenGLES.framework */; };
+		9CC6B539135B3C850099EA7E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B531135B3C840099EA7E /* OpenGLES.framework */; platformFilter = ios; };
 		9CC6B53A135B3C850099EA7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B532135B3C840099EA7E /* QuartzCore.framework */; };
 		9CC6B53B135B3C850099EA7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC6B533135B3C840099EA7E /* UIKit.framework */; };
 		9CF1FCA713E29C70005FB6E5 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF1FCA613E29C70005FB6E5 /* Default-Portrait~ipad.png */; };
@@ -79,6 +79,11 @@
 		A54FD2A225CE8981007E3950 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD29C25CE8981007E3950 /* b2Math.cpp */; };
 		A54FD2A325CE8981007E3950 /* b2Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD29E25CE8981007E3950 /* b2Draw.cpp */; };
 		A54FD2AB25CE8A6A007E3950 /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2A925CE8A6A007E3950 /* b2CollideEdge.cpp */; };
+		A54FD2B325CECA6A007E3950 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2B025CECA6A007E3950 /* imgui_widgets.cpp */; };
+		A54FD2B425CECA6A007E3950 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2B125CECA6A007E3950 /* imgui_demo.cpp */; };
+		A54FD2B525CECA6A007E3950 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2B225CECA6A007E3950 /* imgui.cpp */; };
+		A54FD2B825CECA88007E3950 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2B725CECA88007E3950 /* imgui_draw.cpp */; };
+		A54FD2C125CECC8E007E3950 /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */; };
 		A55BA3E825CD1C4E00281BCF /* Data in Resources */ = {isa = PBXBuildFile; fileRef = A55BA3E725CD1C4E00281BCF /* Data */; };
 		A5657FBF25CD1FF600335140 /* collect.sh in Resources */ = {isa = PBXBuildFile; fileRef = A5657FBE25CD1FF600335140 /* collect.sh */; };
 		FA4AB21D1EBCD44B006141FA /* device-app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB21C1EBCD44B006141FA /* device-app.cpp */; };
@@ -189,6 +194,12 @@
 		A54FD2A125CE8981007E3950 /* b2Settings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Settings.cpp; path = ../../../Box2D/Box2D/Common/b2Settings.cpp; sourceTree = "<group>"; };
 		A54FD2A925CE8A6A007E3950 /* b2CollideEdge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2CollideEdge.cpp; path = Collision/b2CollideEdge.cpp; sourceTree = "<group>"; };
 		A54FD2AA25CE8A6A007E3950 /* b2CollideCircle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2CollideCircle.cpp; path = Collision/b2CollideCircle.cpp; sourceTree = "<group>"; };
+		A54FD2B025CECA6A007E3950 /* imgui_widgets.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = ../../../imgui/imgui_widgets.cpp; sourceTree = "<group>"; };
+		A54FD2B125CECA6A007E3950 /* imgui_demo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../../../imgui/imgui_demo.cpp; sourceTree = "<group>"; };
+		A54FD2B225CECA6A007E3950 /* imgui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../../../imgui/imgui.cpp; sourceTree = "<group>"; };
+		A54FD2B725CECA88007E3950 /* imgui_draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../../../imgui/imgui_draw.cpp; sourceTree = "<group>"; };
+		A54FD2BF25CECC8E007E3950 /* imgui_impl_opengl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_impl_opengl2.h; sourceTree = "<group>"; };
+		A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_impl_opengl2.cpp; sourceTree = "<group>"; };
 		A55BA3E725CD1C4E00281BCF /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/COMMON.Assets/Data; sourceTree = "<group>"; };
 		A5657FBE25CD1FF600335140 /* collect.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = collect.sh; path = ../../Apps/collect.sh; sourceTree = "<group>"; };
 		A58582D325CD781800F07AB1 /* AlgeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlgeApp.entitlements; sourceTree = "<group>"; };
@@ -248,7 +259,13 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */,
+				A54FD2BF25CECC8E007E3950 /* imgui_impl_opengl2.h */,
 				883E779B231655030014F5A1 /* candidate.h */,
+				A54FD2B725CECA88007E3950 /* imgui_draw.cpp */,
+				A54FD2B125CECA6A007E3950 /* imgui_demo.cpp */,
+				A54FD2B025CECA6A007E3950 /* imgui_widgets.cpp */,
+				A54FD2B225CECA6A007E3950 /* imgui.cpp */,
 				A54FD2AA25CE8A6A007E3950 /* b2CollideCircle.cpp */,
 				A54FD2A925CE8A6A007E3950 /* b2CollideEdge.cpp */,
 				A54FD29D25CE8981007E3950 /* b2BlockAllocator.cpp */,
@@ -477,6 +494,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54FD2B825CECA88007E3950 /* imgui_draw.cpp in Sources */,
+				A54FD2B425CECA6A007E3950 /* imgui_demo.cpp in Sources */,
+				A54FD2B325CECA6A007E3950 /* imgui_widgets.cpp in Sources */,
+				A54FD2B525CECA6A007E3950 /* imgui.cpp in Sources */,
 				A54FD2AB25CE8A6A007E3950 /* b2CollideEdge.cpp in Sources */,
 				A54FD24325CE847E007E3950 /* b2CircleContact.cpp in Sources */,
 				A54FD27F25CE8723007E3950 /* b2ChainAndCircleContact.cpp in Sources */,
@@ -521,6 +542,7 @@
 				A54FD2A325CE8981007E3950 /* b2Draw.cpp in Sources */,
 				A54FD27725CE8624007E3950 /* b2StackAllocator.cpp in Sources */,
 				A54FD27525CE8624007E3950 /* b2Timer.cpp in Sources */,
+				A54FD2C125CECC8E007E3950 /* imgui_impl_opengl2.cpp in Sources */,
 				A54FD27925CE8624007E3950 /* b2Settings.cpp in Sources */,
 				A54FD26A25CE85F6007E3950 /* b2Body.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
@@ -563,7 +585,10 @@
 				GCC_PREFIX_HEADER = untitled_iphone_Prefix.pch;
 				"GCC_THUMB_SUPPORT[sdk=iphoneos4.2][arch=armv6]" = "";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = ../../../Box2D;
+				HEADER_SEARCH_PATHS = (
+					../../../Box2D,
+					../../../imgui,
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
@@ -599,7 +624,10 @@
 				GCC_PREFIX_HEADER = untitled_iphone_Prefix.pch;
 				"GCC_THUMB_SUPPORT[sdk=iphoneos4.2][arch=armv6]" = "";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = ../../../Box2D;
+				HEADER_SEARCH_PATHS = (
+					../../../Box2D,
+					../../../imgui,
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
@@ -654,7 +682,11 @@
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "68AF5C93-3754-493B-A406-F2D50289B10D";
 				SDKROOT = iphoneos;
-				SYSTEM_HEADER_SEARCH_PATHS = "../Tools/CNetMsg ../../Thirdparty/cnats/include ../../Thirdparty/Box2D-master";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../Tools/CNetMsg,
+					../../Thirdparty/cnats/include,
+					"../../Thirdparty/Box2D-master",
+				);
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
@@ -679,7 +711,10 @@
 				GCC_PREFIX_HEADER = untitled_iphone_Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = ../../../Box2D;
+				HEADER_SEARCH_PATHS = (
+					../../../Box2D,
+					../../../imgui,
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
@@ -737,7 +772,11 @@
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos4.2]" = "";
 				SDKROOT = iphoneos;
-				SYSTEM_HEADER_SEARCH_PATHS = "../Tools/CNetMsg ../../Thirdparty/cnats/include ../../Thirdparty/Box2D-master";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../Tools/CNetMsg,
+					../../Thirdparty/cnats/include,
+					"../../Thirdparty/Box2D-master",
+				);
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -782,7 +821,11 @@
 				PROVISIONING_PROFILE = "21953b53-1c53-4012-b4c8-f6593ca835ab";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				SYSTEM_HEADER_SEARCH_PATHS = "../Tools/CNetMsg ../../Thirdparty/cnats/include ../../Thirdparty/Box2D-master";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../Tools/CNetMsg,
+					../../Thirdparty/cnats/include,
+					"../../Thirdparty/Box2D-master",
+				);
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
