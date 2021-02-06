@@ -35,9 +35,11 @@ int pinchDist;
   //  CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGFloat screenScale = [[UIScreen mainScreen] scale];
   //  CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
-    
-   // location.x *= screenScale;
-   // location.y *= screenScale;
+    int lx = screenScale*(int)location.x;
+    int ly = screenScale*(int)location.y;
+    appPushI(CMD_TOUCH_START,lx, ly);
+    location.x = lx;
+    location.y = ly;
     
     
     if ([[event allTouches] count]==2) {
@@ -50,7 +52,7 @@ int pinchDist;
                   (location.y-location2.y) * (location.y-location2.y) );
         appPushI(CMD_PINCH_START,(int)pinchDist, 0);
     }
-    appPushI(CMD_TOUCH_START,(int)location.x, (int)location.y);
+    
 
 }
 

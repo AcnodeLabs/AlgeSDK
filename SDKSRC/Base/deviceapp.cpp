@@ -126,11 +126,9 @@ void appInit(char *sz) {
 
 void appSize(int w, int h) {
     if (game.landscape) {
-        game.resolutionReported.y = w;
-        game.resolutionReported.x = h;
+        game.ScreenSize(h, w);
     } else {
-        game.resolutionReported.x = w;
-        game.resolutionReported.y = h;
+        game.ScreenSize(w, h);
     }
 }
 void appDeinit(){

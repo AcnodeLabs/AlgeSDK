@@ -14,11 +14,18 @@ public:
 
     int force;
     
+        
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
+        
+        if (p->command == CMD_SCREENSIZE) {
+            f2 size;
+            size.x = p->i1;
+            size.y = p->i2;
+        }
         
         if (p->command == CMD_KEYDOWN) {
 
@@ -31,6 +38,7 @@ public:
                 b->Impulse(f2(0, -force));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
+                
             }
         }
 	}
@@ -41,7 +49,7 @@ public:
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		InitPhysics();
 		PhysAddGroundWithWalls();
-        force = 2;
+        force = 10;
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         
         //AddResource(&winter2, "winter2", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
@@ -49,7 +57,7 @@ public:
         oSize /= 20; //nullify alx size
         float density = 1.0;
         float restitution = 0.3;
-        AddResourceEx(&boxes, "box", "box.jpg", 4, false, oSize, density, restitution);//false::Polygon/Box
+        AddResourceEx(&boxes, "box", "box.jpg", 44, false, oSize, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",99, true, oSize, density, restitution* 2.0);//true:Circle
         
 #ifdef  NO_BOX2D
