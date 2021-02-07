@@ -5,18 +5,30 @@
 //  Created by Bilal on 6/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 // http://scrumy.com/XAL_AlgeSDK
+// M1 Edit
 
 #define MACOSX
 #define XCODE_BUILD
 //#define NO_BOX2D
 #define NO_NATS
+
+#define M1ARM
+
+#ifdef M1ARM
+#define NO_FMOD
+#define NO_FONTLIB
+#endif
+
 #define glOrthof glOrtho
 #include "../../SDKSRC/Base/CBaseV1_2.h"
 
 #include "xgui.hpp"
 
 #include "CANDIDATE.h"
-#include "../../SDKSRC/Base/fmod/framework.hpp"
+
+#ifndef NO_FMOD
+   #include "../../SDKSRC/Base/fmod/framework.hpp"
+#endif
 
 #include <GLUT/glut.h>
 
@@ -37,13 +49,18 @@ int kWindowHeight = (1080);
 int startTime;
 int prevTime;
 
+#ifndef NO_FONTLIB
 struct dtx_font *font;
+#endif
 
 void alPrintText(string text, float scale) {
- glPushMatrix();
- glScalef(scale, scale, scale);
- if (font!=nullptr) dtx_string(text.c_str());
+#ifndef NO_FONTLIB
+    glPushMatrix();
+    glScalef(scale, scale, scale);
+    
+    if (font!=nullptr) dtx_string(text.c_str());
  glPopMatrix();
+#endif
 }
 
 App app;
@@ -137,7 +154,9 @@ void processOutput() {
         {
         // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
             string fullpath = string(app.rm.resourcepath) + string("/")+ string((char*)c->param1);
+#ifndef NO_FMOD
             FMOD_Set(c->command-CMD_SNDSET, (char*)fullpath.c_str());
+#endif
         }
    break;
   
@@ -147,8 +166,9 @@ void processOutput() {
      case CMD_SNDPLAY3:
             {
                // sndPlay(c->command-CMD_SNDPLAY);
+#ifndef NO_FMOD
                 FMOD_Play(c->command-CMD_SNDPLAY);
-                
+#endif
             }
    break;
         case CMD_TITLE:
@@ -226,7 +246,9 @@ static void HandleReshape( const int ewidth, const int eheight )
 
 static void exitIt() {
   app.Deinit();
+#ifndef NO_FMOD
   FMOD_Deinit();
+#endif
   exit(0);
 }
 
@@ -364,7 +386,9 @@ int main( int argc, char** argv )
   strcat(app.rm.resourcepath, ".app/Contents/Resources/Data");
   
  // initAL(app.rm.resourcepath);
+#ifndef NO_FMOD
     FMOD_Init();
+#endif
    app.rm.Init(app.rm.resourcepath);
  //   app.resolutionReported.x = kWindowWidth;
  //   app.resolutionReported.y = kWindowHeight;
@@ -379,7 +403,8 @@ int main( int argc, char** argv )
   deltaT = 0;
   time1.start();
   lastTime = time1.getElapsedTimeInSec();
-    
+  
+#ifndef NO_FONTLIB
   font = nullptr;
    
   // https://github.com/jtsiomb/libdrawtext/blob/master/examples/simple/simple.c
@@ -387,13 +412,14 @@ int main( int argc, char** argv )
   if(!(font = dtx_open_font("/Library/Fonts/AppleGothic.ttf", 24))) {
         fprintf(stderr, "failed to open font\n");
    }
-    
+
   // XXX select the font and size to render with by calling dtx_use_font
 //if you want to use a different font size, you must first call:
    // dtx_prepare(font, size) once.
    //
    
   dtx_use_font(font, 24);
+#endif
   glutReshapeFunc( HandleReshape );
   glutMainLoop( );
   

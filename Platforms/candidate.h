@@ -7,5 +7,5 @@
 #define ALGEAPPNAME "AlgeApp"
 //TODO:: move above line elsewhere
 
-#include "../Apps/XGui/App.hpp"
+#include "../Apps/XFs/App.hpp"
 

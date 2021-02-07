@@ -64,8 +64,6 @@
 		88D2F4E52558FCC40061682A /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4E02558FCC40061682A /* imgui.cpp */; };
 		88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
 		88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
-		88E172EF23C4F620007A5116 /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
-		88E172F123C4F620007A5116 /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
 		88E172F723C4F7B1007A5116 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		88E172F823C4F7B1007A5116 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
@@ -76,10 +74,6 @@
 		9C3281D213F275F900A53E54 /* AlgeAppPlanetsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3281D113F275F900A53E54 /* AlgeAppPlanetsAppDelegate.m */; };
 		9C3281D513F275F900A53E54 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281D313F275F900A53E54 /* MainMenu.xib */; };
 		9C3FB9A51FAEF72F0098B256 /* Toast.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FB9A41FAEF72F0098B256 /* Toast.mm */; };
-		9C3FB9A71FAEFC390098B256 /* libdrawtext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3FB9A61FAEFC390098B256 /* libdrawtext.a */; };
-		9C3FB9AC1FAEFF230098B256 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3FB9AB1FAEFF220098B256 /* libGLEW.a */; };
-		9C3FB9AE1FAEFF620098B256 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3FB9AD1FAEFF620098B256 /* libfreetype.a */; };
-		9C3FB9B01FAEFFF50098B256 /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3FB9AF1FAEFFF50098B256 /* libbz2.a */; };
 		9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636B81FBA0AF6008FB5EF /* AudioToolbox.framework */; };
 		9C4637221FBA0E4B008FB5EF /* alge-mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C4637211FBA0E4B008FB5EF /* alge-mac.cpp */; };
 		9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C91FBA0D11008FB5EF /* AppKit.framework */; };
@@ -95,7 +89,6 @@
 		9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */; };
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
-		9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA991E1FAB603D00C52351 /* libfreeimage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -257,17 +250,10 @@
 				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
 				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
 				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
-				88E172F123C4F620007A5116 /* libfmodL.dylib in Frameworks */,
-				9C3FB9A71FAEFC390098B256 /* libdrawtext.a in Frameworks */,
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
 				9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */,
-				88E172EF23C4F620007A5116 /* libfmod.dylib in Frameworks */,
-				9C3FB9AE1FAEFF620098B256 /* libfreetype.a in Frameworks */,
-				9C3FB9AC1FAEFF230098B256 /* libGLEW.a in Frameworks */,
-				9C3FB9B01FAEFFF50098B256 /* libbz2.a in Frameworks */,
-				9CEA991F1FAB603E00C52351 /* libfreeimage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
