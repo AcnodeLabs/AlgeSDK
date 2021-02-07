@@ -62,10 +62,6 @@
 		88D2F4E32558FCC40061682A /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4DD2558FCC30061682A /* imgui_draw.cpp */; };
 		88D2F4E42558FCC40061682A /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4DF2558FCC30061682A /* imgui_widgets.cpp */; };
 		88D2F4E52558FCC40061682A /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D2F4E02558FCC40061682A /* imgui.cpp */; };
-		88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; };
-		88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; };
-		88E172F723C4F7B1007A5116 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172E923C4F25F007A5116 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		88E172F823C4F7B1007A5116 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 88E172EA23C4F25F007A5116 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9C2B84552243F748005DF297 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B84542243F747005DF297 /* camera.cpp */; };
 		9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3281BE13F275F900A53E54 /* Cocoa.framework */; };
 		9C3281C913F275F900A53E54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C3281C713F275F900A53E54 /* InfoPlist.strings */; };
@@ -98,8 +94,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				88E172F723C4F7B1007A5116 /* libfmod.dylib in Embed Libraries */,
-				88E172F823C4F7B1007A5116 /* libfmodL.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,8 +162,6 @@
 		88D2F4E12558FCC40061682A /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../../imgui/imgui.h; sourceTree = "<group>"; };
 		88E172E523C4F0A5007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmod.dylib; sourceTree = "<group>"; };
 		88E172E723C4F0E9007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodL.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmodL.dylib; sourceTree = "<group>"; };
-		88E172E923C4F25F007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
-		88E172EA23C4F25F007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
 		88FA5CFF2452BA9B001C5F08 /* b2Distance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Distance.cpp; path = ../../../Box2D/Box2D/Collision/b2Distance.cpp; sourceTree = "<group>"; };
 		88FA5D002452BA9B001C5F08 /* b2CollideEdge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2CollideEdge.cpp; path = ../../../Box2D/Box2D/Collision/b2CollideEdge.cpp; sourceTree = "<group>"; };
 		88FA5D012452BA9B001C5F08 /* b2Draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = b2Draw.cpp; path = ../../../Box2D/Box2D/Common/b2Draw.cpp; sourceTree = "<group>"; };
@@ -300,8 +292,6 @@
 				88D2F4E02558FCC40061682A /* imgui.cpp */,
 				88D2F4E12558FCC40061682A /* imgui.h */,
 				88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */,
-				88E172E923C4F25F007A5116 /* libfmod.dylib */,
-				88E172EA23C4F25F007A5116 /* libfmodL.dylib */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
 				889C5CA22318E717006C2259 /* b2Body.cpp */,
@@ -504,8 +494,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E172ED23C4F4CC007A5116 /* libfmod.dylib in Resources */,
-				88E172EE23C4F4CC007A5116 /* libfmodL.dylib in Resources */,
 				8885782425CD21FA00F545FC /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,

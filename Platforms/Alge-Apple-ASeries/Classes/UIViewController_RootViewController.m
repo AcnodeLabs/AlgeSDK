@@ -33,7 +33,7 @@ int pinchDist;
     CGPoint location = [touch1 locationInView:self.view];
     
   //  CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGFloat screenScale = 1;//[[UIScreen mainScreen] scale];
   //  CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
     int lx = screenScale*(int)location.x;
     int ly = screenScale*(int)location.y;

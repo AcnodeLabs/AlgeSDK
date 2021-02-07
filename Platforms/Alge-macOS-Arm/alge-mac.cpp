@@ -74,7 +74,7 @@ Timer time1;
 float deltaT;
 float lastTime;
 float aX, aY, aZ;
-/*
+
 ALsizei nAL;
 #define NUM_BUFFERS_SOURCES 16
 ALuint alSources[NUM_BUFFERS_SOURCES];
@@ -95,11 +95,15 @@ void initAL(char* respath) {
 		if (newContext != NULL)
 		{
 			alcMakeContextCurrent(newContext);
+            
         }
     }
     alListenerfv(AL_POSITION, alPosition);
     alGenBuffers(nAL, alBuffers);
     alGenSources(nAL, alSources);
+    
+
+    
 }
 
 void deInitAL() {
@@ -112,10 +116,21 @@ void deInitAL() {
  context = alcGetCurrentContext();
  device = alcGetContextsDevice(context);
  alcDestroyContext(context);
- alcCloseDevice(device);
+
+
+    
+alcCloseDevice(device);
+    
+    
+    
 }
 
-void sndSetAl(char* filename, int id, int loops) {
+void list_audio_devices(const ALCchar *devices)
+{
+
+}
+
+void sndSet(char* filename, int id, int loops) {
  ALenum  format;
  ALvoid* data;
  ALsizei size;
@@ -123,7 +138,7 @@ void sndSetAl(char* filename, int id, int loops) {
 	
  if (loops>0) alSourcei(alSources[id], AL_LOOPING, AL_TRUE);
  alSourcefv(alSources[id], AL_POSITION, alPosition);
- alSourcef(alSources[id],AL_REFERENCE_DISTANCE, 5.0f);
+ alSourcef(alSources[id],AL_REFERENCE_DISTANCE, 0.0f);
  
  char filespec[256];
  sprintf(filespec, "%s/%s", app.rm.resourcepath, filename);
@@ -138,9 +153,10 @@ void sndSetAl(char* filename, int id, int loops) {
 }
 
 void sndPlay(int id) {
- alSourcePlay(alSources[id]);
+    printf("Trying to Play Sound# %d", id);
+    alSourcePlay(alSources[id]);
 }
-*/
+
 
 extern void ShowToast(char*);
 
@@ -152,10 +168,12 @@ void processOutput() {
    case CMD_SNDSET2:
    case CMD_SNDSET3:
         {
-        // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+       
             string fullpath = string(app.rm.resourcepath) + string("/")+ string((char*)c->param1);
 #ifndef NO_FMOD
             FMOD_Set(c->command-CMD_SNDSET, (char*)fullpath.c_str());
+#else
+            sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
 #endif
         }
    break;
@@ -165,9 +183,11 @@ void processOutput() {
      case CMD_SNDPLAY2:
      case CMD_SNDPLAY3:
             {
-               // sndPlay(c->command-CMD_SNDPLAY);
+               
 #ifndef NO_FMOD
                 FMOD_Play(c->command-CMD_SNDPLAY);
+#else
+                sndPlay((c->command) - (CMD_SNDPLAY));
 #endif
             }
    break;
@@ -248,6 +268,8 @@ static void exitIt() {
   app.Deinit();
 #ifndef NO_FMOD
   FMOD_Deinit();
+#else
+    deInitAL();
 #endif
   exit(0);
 }
@@ -388,6 +410,8 @@ int main( int argc, char** argv )
  // initAL(app.rm.resourcepath);
 #ifndef NO_FMOD
     FMOD_Init();
+#else
+    initAL(app.rm.resourcepath);
 #endif
    app.rm.Init(app.rm.resourcepath);
  //   app.resolutionReported.x = kWindowWidth;

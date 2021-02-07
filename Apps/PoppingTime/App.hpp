@@ -204,7 +204,7 @@ public:
         scene = PoppingGame::Scenes::StartScene;
 
         lvlSelector.Init(path);  // resoucemanaer not working with app in app
-
+        output.pushP(CMD_SNDPLAY0, $ "happy-sandbox.wav");
     }
     
     virtual void processInput(PEG::CMD* cmd, float deltaT) {

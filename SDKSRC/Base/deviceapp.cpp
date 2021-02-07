@@ -130,10 +130,11 @@ void appInit(char *sz) {
 }
 
 void appSize(int w, int h) {
+    int frameBufferScale = 2; //ios
     if (game.landscape) {
-        game.ScreenSize(h, w);
+        game.ScreenSize(h, w, frameBufferScale);
     } else {
-        game.ScreenSize(w, h);
+        game.ScreenSize(w, h, frameBufferScale);
     }
 }
 void appDeinit(){
