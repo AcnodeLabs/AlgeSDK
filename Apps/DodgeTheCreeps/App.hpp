@@ -3,6 +3,7 @@
 //////////////////////////////XTimer
 // on device : respath = /data/user/0/com.acnodelabs.DodgeTheCreeps/files
 
+using namespace ImGui;
 class BiSprite {
 	
 	float heading; //0 to 180
@@ -191,7 +192,7 @@ public:
 ///Flicker, Trail
 class /*DodgeTheCreeps*/ App : public AlgeApp { 
 
-	GameObject background;
+	GameObject background, txt;
 	Sprite playerGrey;
 	GameObject playerTrail;
 	BiSprite enemyFlyingAlt[3], enemySwimming[3], enemyWalking[3];
@@ -245,6 +246,8 @@ public:
 		output.pushP(CMD_SNDSET0, $ "house.wav");
 		output.pushP(CMD_SNDSET1, $ "gameover.wav");
 		output.pushP(CMD_SNDPLAY0, $ "house.wav");
+        
+        AddResource(&txt, "text");
 		
 	}
 
@@ -320,6 +323,16 @@ public:
 	
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
+        if (gob->is(txt)) {
+            GuiStarts();
+            {
+                ImGui::Begin("My First Tool", false, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize);
+                ImGui::Text("Score");
+                ImGui::End();
+            }
+            GuiEnds();
+        }
+        
 		if (gob->is(count_text)) {
 			string x = to_string(int(timeVar));
 			glPushMatrix();
