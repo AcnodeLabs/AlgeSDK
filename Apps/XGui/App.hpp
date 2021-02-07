@@ -24,23 +24,44 @@ public:
 			);
             AddResource(&gui, "gui");
             gui.hidden = false;
+            
+             
 		}
     
     i2 msize;
+    i2 mou;
     
     i2 getBackgroudSize() {
         return msize;
     }
 
 	bool done = false;
+    
 	void processInput(PEG::CMD* p, float deltaT) { 
 		if (p->command == CMD_SCREENSIZE) {
             msize.x = p->i1;
             msize.y = p->i2;
 		}
-        
         if (p->command == CMD_TOUCH_START) {
-         //   gui.hidden = !gui.hidden;
+                ImGuiIO& io = ImGui::GetIO();
+                io.MousePos = ImVec2((float)p->i1 / 2, (float)p->i2 / 2);
+                io.MouseDown[0] = true;
+            mou.x = io.MousePos.x;
+            mou.y = io.MousePos.y;
+        }
+        if (p->command == CMD_TOUCHMOVE) {
+                ImGuiIO& io = ImGui::GetIO();
+                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
+            mou.x = io.MousePos.x;
+            mou.y = io.MousePos.y;
+        }
+        
+        if (p->command == CMD_TOUCH_END) {
+                ImGuiIO& io = ImGui::GetIO();
+                io.MousePos = ImVec2((float)p->i1 / 2, (float)p->i2 / 2);
+                io.MouseDown[0] = false;
+            mou.x = io.MousePos.x;
+            mou.y = io.MousePos.y;
         }
         
 		if (p->command == CMD_YOUTUBE_SHOW) {
@@ -62,7 +83,9 @@ public:
            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
            ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
-           ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+        ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
+        
+        ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
            ImGui::Checkbox("Another Window", &show_another_window);
 
            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
@@ -75,20 +98,16 @@ public:
 
            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
            ImGui::End();
-       
     }
-    
-    
-    void RenderGui(float dt) {
-        if (gui.Visible()) {
+  
+	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
+        if (gob->is(gui) && !gui.hidden)
+        {
             GuiStarts();
-                MyFirstToolWindow(dt);
+                //MyFirstToolWindow(deltaT);
+            ImGui::ShowDemoWindow();
             GuiEnds();
         }
-    }
-    
-	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        if (gob->is(gui)) RenderGui(deltaT);
 
 	}
 
