@@ -317,7 +317,7 @@ int main( int argc, char** argv )
   glutInitWindowSize( 0, 0 );
   int theWindowHandle = glutCreateWindow( ResPath );
   glutSetWindow( theWindowHandle );
-  app.ScreenSize(ss[0],ss[1]);
+  app.ScreenSize(ss[0],ss[1],2);
     
  
   
