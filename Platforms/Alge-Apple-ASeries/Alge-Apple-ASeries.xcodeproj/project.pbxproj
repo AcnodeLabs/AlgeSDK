@@ -259,9 +259,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				883E779B231655030014F5A1 /* candidate.h */,
+				A55BA3E725CD1C4E00281BCF /* Data */,
 				A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */,
 				A54FD2BF25CECC8E007E3950 /* imgui_impl_opengl2.h */,
-				883E779B231655030014F5A1 /* candidate.h */,
 				A54FD2B725CECA88007E3950 /* imgui_draw.cpp */,
 				A54FD2B125CECA6A007E3950 /* imgui_demo.cpp */,
 				A54FD2B025CECA6A007E3950 /* imgui_widgets.cpp */,
@@ -287,7 +288,6 @@
 				A54FD28625CE88A5007E3950 /* b2PolygonShape.cpp */,
 				A54FD28125CE8794007E3950 /* imgui_draw.cpp */,
 				A54FD27E25CE8723007E3950 /* b2ChainAndCircleContact.cpp */,
-				A55BA3E725CD1C4E00281BCF /* Data */,
 				A54FD27425CE8624007E3950 /* b2Settings.cpp */,
 				A54FD27125CE8624007E3950 /* b2BlockAllocator.cpp */,
 				A54FD27225CE8624007E3950 /* b2StackAllocator.cpp */,

@@ -7,7 +7,7 @@
 
 class /*XGui*/ App : public AlgeApp { 
 	
-	GameObject background;
+	GameObject background, gui;
 
 public:
 
@@ -23,6 +23,7 @@ public:
 			);
 	//	ImGui::StyleColorsClassic();
 	//	output.pushP(CMD_TOAST, $ "hello,", $ "hi");
+            AddResource(&gui, "gui");
 		}
     
     i2 msize;
@@ -49,8 +50,8 @@ public:
 	float my_color[4];
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
-		 {
-
+		 if (gob->is(gui)) {
+             GuiStarts();
 			{
 				static float f = 0.0f;
 				static int counter = 0;
@@ -73,7 +74,7 @@ public:
 				ImGui::End();
                 
 			}
-            
+             GuiEnds();
 		}
 	}
 
