@@ -17,13 +17,13 @@ public:
 		SetTitle("XGui");
 		
 		AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-            AddResource(&gui, "gui");
+            
 		AddResource(&background, "juices", 
 			"green_natural.jpg", 
 			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 			);
-	
-            gui.hidden = true;
+            AddResource(&gui, "gui");
+            gui.hidden = false;
 		}
     
     i2 msize;
@@ -40,7 +40,7 @@ public:
 		}
         
         if (p->command == CMD_TOUCH_START) {
-            gui.hidden = !gui.hidden;
+         //   gui.hidden = !gui.hidden;
         }
         
 		if (p->command == CMD_YOUTUBE_SHOW) {
