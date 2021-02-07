@@ -17,14 +17,13 @@ public:
 		SetTitle("XGui");
 		
 		AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+            AddResource(&gui, "gui");
 		AddResource(&background, "juices", 
 			"green_natural.jpg", 
 			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 			);
-	//	ImGui::StyleColorsClassic();
-	//	output.pushP(CMD_TOAST, $ "hello,", $ "hi");
-            AddResource(&gui, "gui");
-            gui.hidden = false;
+	
+            gui.hidden = true;
 		}
     
     i2 msize;
@@ -39,6 +38,11 @@ public:
             msize.x = p->i1;
             msize.y = p->i2;
 		}
+        
+        if (p->command == CMD_TOUCH_START) {
+            gui.hidden = !gui.hidden;
+        }
+        
 		if (p->command == CMD_YOUTUBE_SHOW) {
 			if (!done) {
 				output.pushP(CMD_TOAST, $ p->param1, $ "hi");
@@ -57,7 +61,7 @@ public:
            
            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-           ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+           ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
            ImGui::Checkbox("Another Window", &show_another_window);
 
