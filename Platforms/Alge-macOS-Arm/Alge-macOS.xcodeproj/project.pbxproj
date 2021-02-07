@@ -85,6 +85,14 @@
 		9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */; };
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
+		A59AC5B625D014E000CF5776 /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; };
+		A59AC5B725D014E000CF5776 /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; };
+		A59AC5B825D0151A00CF5776 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A59AC5B925D0151C00CF5776 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A59AC5BA25D0154F00CF5776 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; };
+		A59AC5BB25D0155300CF5776 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; };
+		A59AC5BC25D0156500CF5776 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A59AC5BD25D0156A00CF5776 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +102,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				A59AC5BD25D0156A00CF5776 /* libfmodL.dylib in Embed Libraries */,
+				A59AC5BC25D0156500CF5776 /* libfmod.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A59AC5B325D0141000CF5776 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A59AC5B825D0151A00CF5776 /* libfmod.dylib in Embed Libraries */,
+				A59AC5B925D0151C00CF5776 /* libfmodL.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +250,8 @@
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		A59AC5B425D014E000CF5776 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
+		A59AC5B525D014E000CF5776 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */,
+				A59AC5B625D014E000CF5776 /* libfmodL.dylib in Frameworks */,
 				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
 				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
 				9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */,
@@ -245,6 +270,7 @@
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
+				A59AC5B725D014E000CF5776 /* libfmod.dylib in Frameworks */,
 				9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +320,8 @@
 				88D2F4D62558FC280061682A /* imgui_impl_glut.cpp */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
 				88AB7AF82316E046004A0239 /* b2ChainAndCircleContact.cpp */,
+				A59AC5B525D014E000CF5776 /* libfmod.dylib */,
+				A59AC5B425D014E000CF5776 /* libfmodL.dylib */,
 				889C5CA22318E717006C2259 /* b2Body.cpp */,
 				88AB7AFD2316E046004A0239 /* b2ChainAndPolygonContact.cpp */,
 				88AB7AF72316E046004A0239 /* b2CircleContact.cpp */,
@@ -453,6 +481,7 @@
 				9C3281B813F275F900A53E54 /* Resources */,
 				88E172F323C4F620007A5116 /* Embed Libraries */,
 				9C3281B613F275F900A53E54 /* Sources */,
+				A59AC5B325D0141000CF5776 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -494,6 +523,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59AC5BB25D0155300CF5776 /* libfmodL.dylib in Resources */,
+				A59AC5BA25D0154F00CF5776 /* libfmod.dylib in Resources */,
 				8885782425CD21FA00F545FC /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,

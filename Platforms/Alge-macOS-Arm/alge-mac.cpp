@@ -15,7 +15,6 @@
 #define M1ARM
 
 #ifdef M1ARM
-#define NO_FMOD
 #define NO_FONTLIB
 #endif
 
@@ -68,13 +67,16 @@ App app;
 static int elapsedTime;
 
 #include "Timer.h"
-#include "MyOpenALSupport.h"
+
 
 Timer time1;
 float deltaT;
 float lastTime;
 float aX, aY, aZ;
-
+/*
+ 
+ #include "MyOpenALSupport.h"
+ 
 ALsizei nAL;
 #define NUM_BUFFERS_SOURCES 16
 ALuint alSources[NUM_BUFFERS_SOURCES];
@@ -156,7 +158,7 @@ void sndPlay(int id) {
     printf("Trying to Play Sound# %d", id);
     alSourcePlay(alSources[id]);
 }
-
+*/
 
 extern void ShowToast(char*);
 
@@ -361,7 +363,8 @@ int main( int argc, char** argv )
   glutInitWindowSize( 0, 0 );
   int theWindowHandle = glutCreateWindow( ResPath );
   glutSetWindow( theWindowHandle );
-  app.ScreenSize(ss[0],ss[1]);
+  app.ScreenSize(ss[0],ss[1],2);
+
     
  
   
