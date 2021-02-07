@@ -341,7 +341,7 @@ int main( int argc, char** argv )
  //  fputs(FULLYQUALIFIEDPATH, f);
 //  fclose(f);
     
-    ImGui_ImplAlgeSDK_Main();
+    ImGui_ImplAlgeSDK_Main(ss[0],ss[1]);
     
     glutPassiveMotionFunc(ImGui_ImplGLUT_MotionFunc);
     

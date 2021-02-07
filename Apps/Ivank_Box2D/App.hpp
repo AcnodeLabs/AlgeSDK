@@ -49,7 +49,7 @@ public:
     }
     
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-       // if (gob->is(gui)) RenderGui(deltaT);
+        if (gob->is(gui)) RenderGui(deltaT);
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
