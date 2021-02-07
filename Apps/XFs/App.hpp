@@ -41,6 +41,7 @@ public:
         if (gui.Visible()) {
             GuiStarts();
                 MyFirstToolWindow(dt);
+            ImGui::ShowDemoWindow();
             GuiEnds();
         }
     }
