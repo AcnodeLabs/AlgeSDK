@@ -41,33 +41,8 @@ public:
 		if (p->command == CMD_SCREENSIZE) {
             msize.x = p->i1;
             msize.y = p->i2;
-            ImGuiIO& io = ImGui::GetIO();
-            //io.DisplaySize.x = p->i1;
-            //io.DisplaySize.y = p->i2;
-            //io.DisplayFramebufferScale.x = 2;
-            //io.DisplayFramebufferScale.y = 2;
 		}
-        if (p->command == CMD_TOUCH_START) {
-                ImGuiIO& io = ImGui::GetIO();
-                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
-                io.MouseDown[0] = true;
-            mou.x = io.MousePos.x;
-            mou.y = io.MousePos.y;
-        }
-        if (p->command == CMD_TOUCHMOVE) {
-                ImGuiIO& io = ImGui::GetIO();
-                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
-            mou.x = io.MousePos.x;
-            mou.y = io.MousePos.y;
-        }
         
-        if (p->command == CMD_TOUCH_END) {
-                ImGuiIO& io = ImGui::GetIO();
-                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
-                io.MouseDown[0] = false;
-            mou.x = io.MousePos.x;
-            mou.y = io.MousePos.y;
-        }
         
 		if (p->command == CMD_YOUTUBE_SHOW) {
 			if (!done) {

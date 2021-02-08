@@ -115,7 +115,25 @@ char ResPath[256];
 XHttpSocket sck;
 XHttpSocket msck;
 
-void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
+void appPushI(int command, int p1, int p2) {
+    game.input.pushI(command,p1,p2);
+#ifndef NO_IMGUI
+    ImGuiIO& io = ImGui::GetIO();
+    if (command == CMD_TOUCH_START) {
+        io.MouseDown[0] = true;
+        io.MousePos = ImVec2((float)p1, (float)p2);
+    }
+    if (command == CMD_TOUCHMOVE) {
+        io.MousePos = ImVec2((float)p1, (float)p2);
+    }
+    
+    if (command == CMD_TOUCH_END) {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MousePos = ImVec2((float)p1, (float)p2);
+        io.MouseDown[0] = false;
+    }
+#endif
+}
 void appInit(char *sz) { 
 
 	strcpy(ResPath, sz);
