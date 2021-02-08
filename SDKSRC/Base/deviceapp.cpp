@@ -20,8 +20,10 @@ using namespace std;
 // XGui stuff
 #include "../../../imgui/imgui.h"
 #include "../../../imgui/backends/imgui_impl_opengl2.h"
-#include "../../SDKSRC/Base/fmod/framework.hpp"
 
+#ifndef NO_FMOD
+#include "../../SDKSRC/Base/fmod/framework.hpp"
+#endif
 static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -55,7 +57,7 @@ void ImGui_ImplAlgeSDK_AfterRender(char* msg)
 {
 	// Rendering
 	ImGui::Render();
-	ImGuiIO& io = ImGui::GetIO();
+	//ImGuiIO& io = ImGui::GetIO();
 
 	//	glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
 	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
@@ -144,7 +146,7 @@ void appInit(char *sz) {
     game.aCamera.windowWidth = game.getBackgroundSize().x;
     game.aCamera.windowHeight = game.getBackgroundSize().y;
 #ifndef NO_IMGUI
-    int frameBufferScale = 2; //ios
+   // int frameBufferScale = 2; //ios
     ImGui_ImplAlgeSDK_Main(game.getBackgroundSize().x,game.getBackgroundSize().y,1);
 #endif
     game.rm.Init(sz);
@@ -209,9 +211,11 @@ int appPull() {
        case CMD_SNDSET2:
        case CMD_SNDSET3:
             {
-            // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+#ifndef NO_FMOD
+              // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
                 string fullpath = string(game.rm.resourcepath) + string("/")+ string((char*)a->param1);
                 FMOD_Set((a->command - CMD_SNDSET), (char*)fullpath.c_str());
+#endif
             }
        break;
       
@@ -220,9 +224,10 @@ int appPull() {
          case CMD_SNDPLAY2:
          case CMD_SNDPLAY3:
                 {
-                   // sndPlay(a->command-CMD_SNDPLAY);
+                  //  sndPlay(a->command-CMD_SNDPLAY);
+#ifndef NO_FMOD
                     FMOD_Play(a->command - CMD_SNDPLAY);
-                    
+#endif
                 }
     }
     
