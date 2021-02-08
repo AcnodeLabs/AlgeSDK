@@ -37,7 +37,8 @@
 #else
 #include <stdint.h>     // intptr_t
 #endif
-
+#include <stdio.h>
+#include <string>
 // Include OpenGL header (without an OpenGL loader) requires a bit of fiddling
 #if defined(_WIN32) && !defined(APIENTRY)
 #define APIENTRY __stdcall                  // It is customary to use APIENTRY for OpenGL function pointer declarations on all platforms.  Additionally, the Windows OpenGL header needs APIENTRY.
@@ -102,12 +103,14 @@ static void ImGui_ImplOpenGL2_SetupRenderState(ImDrawData* draw_data, int fb_wid
 
     // Setup viewport, orthographic projection matrix
     // Our visible imgui space lies from draw_data->DisplayPos (top left) to draw_data->DisplayPos+data_data->DisplaySize (bottom right). DisplayPos is (0,0) for single viewport apps.
-    fb_width = 512; fb_height = 384;
+    
     glViewport(0, 0, (GLsizei)fb_width, (GLsizei)fb_height);
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
     glOrtho(draw_data->DisplayPos.x, draw_data->DisplayPos.x + draw_data->DisplaySize.x, draw_data->DisplayPos.y + draw_data->DisplaySize.y, draw_data->DisplayPos.y, -1.0f, +1.0f);
+    static char msg[512];
+    sprintf(msg,"fb%d,%d,sc=%.f,left=%.f,right=%.f,bottom=%.f,top=%.f",fb_width,fb_height,draw_data->FramebufferScale.x,draw_data->DisplayPos.x, draw_data->DisplayPos.x + draw_data->DisplaySize.x, draw_data->DisplayPos.y + draw_data->DisplaySize.y, draw_data->DisplayPos.y, -1.0f, +1.0f);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();

@@ -7,7 +7,7 @@ static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-void ImGui_ImplAlgeSDK_Main(int x, int y) {
+void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale ) {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -16,7 +16,7 @@ void ImGui_ImplAlgeSDK_Main(int x, int y) {
     io.DisplaySize.x = x;
     io.DisplaySize.y = y;
 #ifdef MACOSX
-    io.DisplayFramebufferScale = ImVec2(1, 1); //dpi opn 4k monitor
+    io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale); //
 #endif
     // Setup Dear ImGui style
     //ImGui::StyleColorsDark();

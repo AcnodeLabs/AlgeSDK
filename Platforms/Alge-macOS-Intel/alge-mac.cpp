@@ -313,11 +313,11 @@ int main( int argc, char** argv )
   //glutInitWindowSize( kWindowWidth, kWindowHeight );
   
   //glutReshapeWindow(kWindowWidth, kWindowHeight);
-  int ss[2] = {1024,768};
+  int ss[2] = {kWindowWidth,kWindowHeight};
   glutInitWindowSize( 0, 0 );
   int theWindowHandle = glutCreateWindow( ResPath );
   glutSetWindow( theWindowHandle );
-  app.ScreenSize(ss[0],ss[1],2);
+  app.ScreenSize(ss[0],ss[1],1);
     
  
   
@@ -341,7 +341,7 @@ int main( int argc, char** argv )
  //  fputs(FULLYQUALIFIEDPATH, f);
 //  fclose(f);
     
-    ImGui_ImplAlgeSDK_Main(ss[0],ss[1]);
+    ImGui_ImplAlgeSDK_Main(ss[0],ss[1],1);
     
     glutPassiveMotionFunc(ImGui_ImplGLUT_MotionFunc);
     
