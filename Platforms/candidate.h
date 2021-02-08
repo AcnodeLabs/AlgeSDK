@@ -7,5 +7,5 @@
 #define ALGEAPPNAME "AlgeApp"
 //TODO:: move above line elsewhere
 
-#include "../Apps/Ivank_Box2D/App.hpp"
+#include "../XalApps/Recitation/app.hpp"
 

@@ -18,10 +18,12 @@ public:
 		
 		AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
             
-		AddResource(&background, "juices", 
-			"green_natural.jpg", 
-			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
-			);
+            AddResource(&background, "juices",
+                "green_natural.jpg",
+                XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
+                );
+
+
             AddResource(&gui, "gui");
             gui.hidden = false;
             
