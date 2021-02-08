@@ -87,8 +87,6 @@
 		A55BA3E825CD1C4E00281BCF /* Data in Resources */ = {isa = PBXBuildFile; fileRef = A55BA3E725CD1C4E00281BCF /* Data */; };
 		A5657FBF25CD1FF600335140 /* collect.sh in Resources */ = {isa = PBXBuildFile; fileRef = A5657FBE25CD1FF600335140 /* collect.sh */; };
 		A59B580625D1065F003025AF /* libfmod_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580225D1065F003025AF /* libfmod_iphoneos.a */; };
-		A59B580725D1065F003025AF /* libfmodstudio_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */; };
-		A59B580825D1065F003025AF /* libfmodstudioL_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */; };
 		A59B580925D1065F003025AF /* libfmodL_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580525D1065F003025AF /* libfmodL_iphoneos.a */; };
 		A59B580B25D1066F003025AF /* libresonanceaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580A25D1066F003025AF /* libresonanceaudio.a */; };
 		A59B581725D10813003025AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B581625D10813003025AF /* AudioToolbox.framework */; };
@@ -215,8 +213,6 @@
 		A59B57E325D10552003025AF /* libresonanceaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libresonanceaudio.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libresonanceaudio.a; sourceTree = "<group>"; };
 		A59B57E425D10552003025AF /* libfmodL_iphoneos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmodL_iphoneos.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libfmodL_iphoneos.a; sourceTree = "<group>"; };
 		A59B580225D1065F003025AF /* libfmod_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmod_iphoneos.a; sourceTree = "<group>"; };
-		A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodstudio_iphoneos.a; sourceTree = "<group>"; };
-		A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodstudioL_iphoneos.a; sourceTree = "<group>"; };
 		A59B580525D1065F003025AF /* libfmodL_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodL_iphoneos.a; sourceTree = "<group>"; };
 		A59B580A25D1066F003025AF /* libresonanceaudio.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libresonanceaudio.a; sourceTree = "<group>"; };
 		A59B581025D107EF003025AF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -241,12 +237,10 @@
 				9CC6B535135B3C850099EA7E /* CoreFoundation.framework in Frameworks */,
 				9CC6B536135B3C850099EA7E /* CoreGraphics.framework in Frameworks */,
 				9CC6B537135B3C850099EA7E /* Foundation.framework in Frameworks */,
-				A59B580825D1065F003025AF /* libfmodstudioL_iphoneos.a in Frameworks */,
 				9CC6B538135B3C850099EA7E /* MediaPlayer.framework in Frameworks */,
 				A59B580B25D1066F003025AF /* libresonanceaudio.a in Frameworks */,
 				9CC6B539135B3C850099EA7E /* OpenGLES.framework in Frameworks */,
 				9CC6B53A135B3C850099EA7E /* QuartzCore.framework in Frameworks */,
-				A59B580725D1065F003025AF /* libfmodstudio_iphoneos.a in Frameworks */,
 				A59B580625D1065F003025AF /* libfmod_iphoneos.a in Frameworks */,
 				A59B580925D1065F003025AF /* libfmodL_iphoneos.a in Frameworks */,
 				9CC6B53B135B3C850099EA7E /* UIKit.framework in Frameworks */,
@@ -287,8 +281,6 @@
 				A59B580A25D1066F003025AF /* libresonanceaudio.a */,
 				A59B580225D1065F003025AF /* libfmod_iphoneos.a */,
 				A59B580525D1065F003025AF /* libfmodL_iphoneos.a */,
-				A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */,
-				A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */,
 				883E779B231655030014F5A1 /* candidate.h */,
 				A55BA3E725CD1C4E00281BCF /* Data */,
 				A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */,
