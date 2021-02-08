@@ -121,6 +121,7 @@
 		
 		OldTime = CACurrentMediaTime();
         strcat(sz, "/Data/");
+
 		appInit((char*)sz);
         
 	}

@@ -20,6 +20,7 @@ using namespace std;
 // XGui stuff
 #include "../../../imgui/imgui.h"
 #include "../../../imgui/backends/imgui_impl_opengl2.h"
+#include "../../SDKSRC/Base/fmod/framework.hpp"
 
 static bool show_demo_window = true;
 static bool show_another_window = false;
@@ -135,7 +136,9 @@ void appPushI(int command, int p1, int p2) {
 #endif
 }
 void appInit(char *sz) { 
-
+#ifndef NO_FMOD
+    FMOD_Init();
+#endif
 	strcpy(ResPath, sz);
     game.aCamera.custom_type = 0xCA;
     game.aCamera.windowWidth = game.getBackgroundSize().x;
@@ -146,6 +149,9 @@ void appInit(char *sz) {
 #endif
     game.rm.Init(sz);
     game.Init(sz);
+    
+
+    
 }
 
 void appSize(int w, int h) {
@@ -159,6 +165,9 @@ void appSize(int w, int h) {
 void appDeinit(){
 #ifndef NO_IMGUI
     ImGui_ImplAlgeSDK_Shutdown();
+#endif
+#ifndef NO_FMOD
+    FMOD_Deinit();
 #endif
 }
 
@@ -194,6 +203,29 @@ int appPull() {
 		
 	}
 	
+    switch (a->command) {
+       case CMD_SNDSET0:
+       case CMD_SNDSET1:
+       case CMD_SNDSET2:
+       case CMD_SNDSET3:
+            {
+            // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+                string fullpath = string(game.rm.resourcepath) + string("/")+ string((char*)a->param1);
+                FMOD_Set((a->command - CMD_SNDSET), (char*)fullpath.c_str());
+            }
+       break;
+      
+         case CMD_SNDPLAY0:
+         case CMD_SNDPLAY1:
+         case CMD_SNDPLAY2:
+         case CMD_SNDPLAY3:
+                {
+                   // sndPlay(a->command-CMD_SNDPLAY);
+                    FMOD_Play(a->command - CMD_SNDPLAY);
+                    
+                }
+    }
+    
 	lastI1 = a->i1;
 	lastI2 = a->i2;
 	

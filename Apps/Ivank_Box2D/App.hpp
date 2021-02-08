@@ -65,6 +65,7 @@ public:
                 b->Impulse(f2(0, -force));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
+                output.pushP(CMD_SNDPLAY0, $ "pop.wav");
             }
             gui.hidden = false;
         }
@@ -96,6 +97,6 @@ public:
 		output.pushP(CMD_TOAST, $ "BOX2D ENABLED", $ "BOX2D ENABLED");
 #endif // ! NO_BOX2D
 
-
+        output.pushP(CMD_SNDSET0, $ "pop.wav");
 	}
 };

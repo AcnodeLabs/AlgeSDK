@@ -86,6 +86,12 @@
 		A54FD2C125CECC8E007E3950 /* imgui_impl_opengl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */; };
 		A55BA3E825CD1C4E00281BCF /* Data in Resources */ = {isa = PBXBuildFile; fileRef = A55BA3E725CD1C4E00281BCF /* Data */; };
 		A5657FBF25CD1FF600335140 /* collect.sh in Resources */ = {isa = PBXBuildFile; fileRef = A5657FBE25CD1FF600335140 /* collect.sh */; };
+		A59B580625D1065F003025AF /* libfmod_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580225D1065F003025AF /* libfmod_iphoneos.a */; };
+		A59B580725D1065F003025AF /* libfmodstudio_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */; };
+		A59B580825D1065F003025AF /* libfmodstudioL_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */; };
+		A59B580925D1065F003025AF /* libfmodL_iphoneos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580525D1065F003025AF /* libfmodL_iphoneos.a */; };
+		A59B580B25D1066F003025AF /* libresonanceaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B580A25D1066F003025AF /* libresonanceaudio.a */; };
+		A59B581725D10813003025AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59B581625D10813003025AF /* AudioToolbox.framework */; };
 		FA4AB21D1EBCD44B006141FA /* device-app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB21C1EBCD44B006141FA /* device-app.cpp */; };
 		FA4AB2221EBCD846006141FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4AB2211EBCD846006141FA /* Default-568h@2x.png */; };
 		FA9837B51EBC9329002F2850 /* PlayYouTubeInWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9837B41EBC9329002F2850 /* PlayYouTubeInWebViewController.m */; };
@@ -203,6 +209,19 @@
 		A55BA3E725CD1C4E00281BCF /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../../Apps/COMMON.Assets/Data; sourceTree = "<group>"; };
 		A5657FBE25CD1FF600335140 /* collect.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = collect.sh; path = ../../Apps/collect.sh; sourceTree = "<group>"; };
 		A58582D325CD781800F07AB1 /* AlgeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlgeApp.entitlements; sourceTree = "<group>"; };
+		A59B57E025D10552003025AF /* libfmod_iphoneos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmod_iphoneos.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libfmod_iphoneos.a; sourceTree = "<group>"; };
+		A59B57E125D10552003025AF /* libfmodstudio_iphoneos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmodstudio_iphoneos.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libfmodstudio_iphoneos.a; sourceTree = "<group>"; };
+		A59B57E225D10552003025AF /* libfmodstudioL_iphoneos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmodstudioL_iphoneos.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libfmodstudioL_iphoneos.a; sourceTree = "<group>"; };
+		A59B57E325D10552003025AF /* libresonanceaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libresonanceaudio.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libresonanceaudio.a; sourceTree = "<group>"; };
+		A59B57E425D10552003025AF /* libfmodL_iphoneos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmodL_iphoneos.a; path = ../../../../Downloads/fmodstudio20107ue4/FMODStudio/Binaries/IOS/libfmodL_iphoneos.a; sourceTree = "<group>"; };
+		A59B580225D1065F003025AF /* libfmod_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmod_iphoneos.a; sourceTree = "<group>"; };
+		A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodstudio_iphoneos.a; sourceTree = "<group>"; };
+		A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodstudioL_iphoneos.a; sourceTree = "<group>"; };
+		A59B580525D1065F003025AF /* libfmodL_iphoneos.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libfmodL_iphoneos.a; sourceTree = "<group>"; };
+		A59B580A25D1066F003025AF /* libresonanceaudio.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libresonanceaudio.a; sourceTree = "<group>"; };
+		A59B581025D107EF003025AF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A59B581325D107FE003025AF /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		A59B581625D10813003025AF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA4AB21B1EBCD44B006141FA /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		FA4AB21C1EBCD44B006141FA /* device-app.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "device-app.cpp"; sourceTree = "<group>"; };
 		FA4AB2211EBCD846006141FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -216,14 +235,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59B581725D10813003025AF /* AudioToolbox.framework in Frameworks */,
 				9CF4C76D143B653700877BF1 /* iAd.framework in Frameworks */,
 				9CC6B534135B3C850099EA7E /* AVFoundation.framework in Frameworks */,
 				9CC6B535135B3C850099EA7E /* CoreFoundation.framework in Frameworks */,
 				9CC6B536135B3C850099EA7E /* CoreGraphics.framework in Frameworks */,
 				9CC6B537135B3C850099EA7E /* Foundation.framework in Frameworks */,
+				A59B580825D1065F003025AF /* libfmodstudioL_iphoneos.a in Frameworks */,
 				9CC6B538135B3C850099EA7E /* MediaPlayer.framework in Frameworks */,
+				A59B580B25D1066F003025AF /* libresonanceaudio.a in Frameworks */,
 				9CC6B539135B3C850099EA7E /* OpenGLES.framework in Frameworks */,
 				9CC6B53A135B3C850099EA7E /* QuartzCore.framework in Frameworks */,
+				A59B580725D1065F003025AF /* libfmodstudio_iphoneos.a in Frameworks */,
+				A59B580625D1065F003025AF /* libfmod_iphoneos.a in Frameworks */,
+				A59B580925D1065F003025AF /* libfmodL_iphoneos.a in Frameworks */,
 				9CC6B53B135B3C850099EA7E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +284,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A59B580A25D1066F003025AF /* libresonanceaudio.a */,
+				A59B580225D1065F003025AF /* libfmod_iphoneos.a */,
+				A59B580525D1065F003025AF /* libfmodL_iphoneos.a */,
+				A59B580325D1065F003025AF /* libfmodstudio_iphoneos.a */,
+				A59B580425D1065F003025AF /* libfmodstudioL_iphoneos.a */,
 				883E779B231655030014F5A1 /* candidate.h */,
 				A55BA3E725CD1C4E00281BCF /* Data */,
 				A54FD2C025CECC8E007E3950 /* imgui_impl_opengl2.cpp */,
@@ -376,6 +406,14 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A59B581625D10813003025AF /* AudioToolbox.framework */,
+				A59B581325D107FE003025AF /* CoreAudioKit.framework */,
+				A59B581025D107EF003025AF /* CoreAudio.framework */,
+				A59B57E025D10552003025AF /* libfmod_iphoneos.a */,
+				A59B57E425D10552003025AF /* libfmodL_iphoneos.a */,
+				A59B57E125D10552003025AF /* libfmodstudio_iphoneos.a */,
+				A59B57E225D10552003025AF /* libfmodstudioL_iphoneos.a */,
+				A59B57E325D10552003025AF /* libresonanceaudio.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -591,6 +629,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
 				PRODUCT_NAME = AlgeApp;
 				PROVISIONING_PROFILE = "";
@@ -630,6 +672,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
 				PRODUCT_NAME = AlgeApp;
 				PROVISIONING_PROFILE = "";
@@ -717,6 +763,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.acnodelabs.apps.alge.AlgeApp;
 				PRODUCT_NAME = AlgeApp;
 				PROVISIONING_PROFILE = "";
