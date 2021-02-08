@@ -37,7 +37,7 @@
 #else
 #include <stdint.h>     // intptr_t
 #endif
-
+#include <stdio.h>
 // Include OpenGL header (without an OpenGL loader) requires a bit of fiddling
 #if defined(_WIN32) && !defined(APIENTRY)
 #define APIENTRY __stdcall                  // It is customary to use APIENTRY for OpenGL function pointer declarations on all platforms.  Additionally, the Windows OpenGL header needs APIENTRY.
@@ -108,6 +108,8 @@ static void ImGui_ImplOpenGL2_SetupRenderState(ImDrawData* draw_data, int fb_wid
     glPushMatrix();
     glLoadIdentity();
     glOrthof(draw_data->DisplayPos.x, draw_data->DisplayPos.x + draw_data->DisplaySize.x, draw_data->DisplayPos.y + draw_data->DisplaySize.y, draw_data->DisplayPos.y, -1.0f, +1.0f);
+    static char msg[512];
+    sprintf(msg,"fb%d,%d,sc=%d,left=%.f,right=%.f,bottom=%.f,top=%.f",fb_width,fb_height,draw_data->FramebufferScale.x,draw_data->DisplayPos.x, draw_data->DisplayPos.x + draw_data->DisplaySize.x, draw_data->DisplayPos.y + draw_data->DisplaySize.y, draw_data->DisplayPos.y, -1.0f, +1.0f);
     //aluPerspective(45, (float)width / (float)height, 0.05f, 150);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();

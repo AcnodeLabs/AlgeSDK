@@ -25,7 +25,7 @@ static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale = 1) {
+void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale) {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -33,9 +33,9 @@ void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale = 1) {
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.DisplaySize.x = x;
     io.DisplaySize.y = y;
-    io.DisplayFramebufferScale.x = framebufferScale;
-    io.DisplayFramebufferScale.y = framebufferScale;
-
+#ifdef IOS
+    io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale); //
+#endif
 	// Setup Dear ImGui style
 	//ImGui::StyleColorsDark();
 	ImGui::StyleColorsClassic();
@@ -124,7 +124,7 @@ void appInit(char *sz) {
     game.aCamera.windowHeight = game.getBackgroundSize().y;
 #ifndef NO_IMGUI
     int frameBufferScale = 2; //ios
-    ImGui_ImplAlgeSDK_Main(game.getBackgroundSize().x/frameBufferScale,game.getBackgroundSize().y/frameBufferScale);
+    ImGui_ImplAlgeSDK_Main(game.getBackgroundSize().x,game.getBackgroundSize().y,1);
 #endif
     game.rm.Init(sz);
     game.Init(sz);

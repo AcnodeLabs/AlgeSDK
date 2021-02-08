@@ -49,7 +49,7 @@ public:
 		}
         if (p->command == CMD_TOUCH_START) {
                 ImGuiIO& io = ImGui::GetIO();
-                io.MousePos = ImVec2((float)p->i1 / 2, (float)p->i2 / 2);
+                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
                 io.MouseDown[0] = true;
             mou.x = io.MousePos.x;
             mou.y = io.MousePos.y;
@@ -63,7 +63,7 @@ public:
         
         if (p->command == CMD_TOUCH_END) {
                 ImGuiIO& io = ImGui::GetIO();
-                io.MousePos = ImVec2((float)p->i1 / 2, (float)p->i2 / 2);
+                io.MousePos = ImVec2((float)p->i1, (float)p->i2);
                 io.MouseDown[0] = false;
             mou.x = io.MousePos.x;
             mou.y = io.MousePos.y;
