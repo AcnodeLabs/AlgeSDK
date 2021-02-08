@@ -41,6 +41,11 @@ public:
 		if (p->command == CMD_SCREENSIZE) {
             msize.x = p->i1;
             msize.y = p->i2;
+            ImGuiIO& io = ImGui::GetIO();
+            //io.DisplaySize.x = p->i1;
+            //io.DisplaySize.y = p->i2;
+            //io.DisplayFramebufferScale.x = 2;
+            //io.DisplayFramebufferScale.y = 2;
 		}
         if (p->command == CMD_TOUCH_START) {
                 ImGuiIO& io = ImGui::GetIO();
@@ -97,14 +102,16 @@ public:
            ImGui::Text("counter = %d", counter);
 
            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-           ImGui::End();
+        ImGui::SetWindowPos(ImVec2(0, 50), true);
+        ImGui::End();
     }
   
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         if (gob->is(gui) && !gui.hidden)
         {
             GuiStarts();
-                //MyFirstToolWindow(deltaT);
+                MyFirstToolWindow(deltaT);
+            
             ImGui::ShowDemoWindow();
             GuiEnds();
         }

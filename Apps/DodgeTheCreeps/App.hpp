@@ -320,13 +320,13 @@ public:
             avoidOrigin();
 		}
 	}
-	
+    bool wind;
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
         if (gob->is(txt)) {
             GuiStarts();
             {
-                ImGui::Begin("My First Tool", false, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize);
+                ImGui::Begin("My First Tool", &wind, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize);
                 ImGui::Text("Score");
                 ImGui::End();
             }

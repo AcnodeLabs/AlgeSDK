@@ -25,7 +25,7 @@ static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-void ImGui_ImplAlgeSDK_Main(int x, int y) {
+void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale = 1) {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -33,8 +33,9 @@ void ImGui_ImplAlgeSDK_Main(int x, int y) {
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.DisplaySize.x = x;
     io.DisplaySize.y = y;
-    io.DisplayFramebufferScale.x = 1;
-    io.DisplayFramebufferScale.y = 1;
+    io.DisplayFramebufferScale.x = framebufferScale;
+    io.DisplayFramebufferScale.y = framebufferScale;
+
 	// Setup Dear ImGui style
 	//ImGui::StyleColorsDark();
 	ImGui::StyleColorsClassic();
