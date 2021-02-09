@@ -73,11 +73,13 @@
     <ClInclude Include="..\..\SDKSRC\Base\AlgeApp.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\candidate.h" />
     <ClInclude Include="..\..\SDKSRC\Base\jpgd.h">
       <Filter>libjpeg</Filter>
     </ClInclude>
     <ClInclude Include="alge_windows.h" />
+    <ClInclude Include="..\candidate.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

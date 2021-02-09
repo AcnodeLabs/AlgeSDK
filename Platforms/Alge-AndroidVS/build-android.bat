@@ -29,7 +29,7 @@ echo [1] Checking .. src\%PACKAGE:.=\%\%APPNAME%.java
 set GLUEDIR=src\%PACKAGE:.=\%\
 echo [2] Will make ... %GLUEDIR%  
 
-set /p var=Pl Check above info/variables are set Properly, Continue as per above?[y/n]: 
+set /p var=Pl Check above info/variables are set Properly, Ensure Device is Connected and Unlocked, Continue as per above?[y/n]: 
 if not %var%==y exit /B
 
 mkdir %GLUEDIR%

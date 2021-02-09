@@ -109,7 +109,7 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize Th
 #ifndef USING_IRRLICHT
 	glViewport(0,0,width,height);						// Reset The Current Viewport
 #endif
-	game.ScreenSize(width,height);
+	game.ScreenSize(width,height,1);
 
 	sprintf(msg, "ScreenSize(%d,%d)", width, height);
 //	if (game.verbosity_lmh == 'h') netmsg.Post(string(msg));

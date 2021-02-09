@@ -1,7 +1,9 @@
+#undef ANDROID
 #define ANDROID
 #ifdef ANDROID
 #define NO_FONTLIB
-#undef NO_BOX2D
+#define NO_IMGUI
+#define NO_FMOD
 #endif
 
 #include "../../../../AlgeSDK/SDKSRC/Base/deviceapp.cpp"
