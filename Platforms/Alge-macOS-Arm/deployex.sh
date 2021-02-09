@@ -5,4 +5,5 @@ dir_dbg=${dir_rel/Release/Debug}
 sch=`xcodebuild -list -project Alge-macOS-Arm.xcodeproj/ | grep '     '`
 schemeName="${sch##* }"
 xcodebuild -scheme $schemeName build
+cp -v *.dylib $dir_dbg/$name_app/Contents/MacOS
 echo $dir_dbg/$name_app
