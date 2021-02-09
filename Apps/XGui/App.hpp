@@ -44,16 +44,8 @@ public:
             msize.x = p->i1;
             msize.y = p->i2;
 		}
-        
-        
-		if (p->command == CMD_YOUTUBE_SHOW) {
-			if (!done) {
-				output.pushP(CMD_TOAST, $ p->param1, $ "hi");
-				done = true;
-			}
-		}
+  	}
 
-	}
 	bool my_tool_active;
 	float my_color[4];
     
@@ -65,9 +57,9 @@ public:
            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
            ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
-        ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
+           ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
         
-        ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+           ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
            ImGui::Checkbox("Another Window", &show_another_window);
 
            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
@@ -88,8 +80,7 @@ public:
         {
             GuiStarts();
                 MyFirstToolWindow(deltaT);
-            
-            ImGui::ShowDemoWindow();
+                if (show_demo_window) ImGui::ShowDemoWindow();
             GuiEnds();
         }
 
