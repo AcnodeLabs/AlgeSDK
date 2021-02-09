@@ -21,17 +21,24 @@ using namespace std;
 #include "../../../imgui/imgui.h"
 #include "../../../imgui/backends/imgui_impl_opengl2.h"
 
+#ifndef NO_FMOD
+#include "../../SDKSRC/Base/fmod/framework.hpp"
+#endif
 static bool show_demo_window = true;
 static bool show_another_window = false;
 static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-void ImGui_ImplAlgeSDK_Main() {
+void ImGui_ImplAlgeSDK_Main(int x, int y, int framebufferScale) {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-
+    io.DisplaySize.x = x;
+    io.DisplaySize.y = y;
+#ifdef IOS
+    io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale); //
+#endif
 	// Setup Dear ImGui style
 	//ImGui::StyleColorsDark();
 	ImGui::StyleColorsClassic();
@@ -42,7 +49,7 @@ void ImGui_ImplAlgeSDK_BeforeRender()
 {
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL2_NewFrame();
-//	ImGui_ImplWin32_NewFrame();
+	//ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 }
 
@@ -50,13 +57,15 @@ void ImGui_ImplAlgeSDK_AfterRender(char* msg)
 {
 	// Rendering
 	ImGui::Render();
-	ImGuiIO& io = ImGui::GetIO();
+	//ImGuiIO& io = ImGui::GetIO();
 
 	//	glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
 	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 	//	glClear(GL_COLOR_BUFFER_BIT);
 	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
+
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+
 }
 
 void GuiStarts() {
@@ -65,7 +74,10 @@ void GuiStarts() {
 
 void GuiEnds() {
     static char msg[1024] = {0,0};
+#ifndef IOS
     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),msg);
+#endif
+    ImGui_ImplAlgeSDK_AfterRender(msg);
 }
 
 
@@ -106,32 +118,58 @@ char ResPath[256];
 XHttpSocket sck;
 XHttpSocket msck;
 
-void appPushI(int command, int p1, int p2) { game.input.pushI(command,p1,p2);}
-void appInit(char *sz) { 
+void appPushI(int command, int p1, int p2) {
+    game.input.pushI(command,p1,p2);
 #ifndef NO_IMGUI
-	ImGui_ImplAlgeSDK_Main();
+    ImGuiIO& io = ImGui::GetIO();
+    if (command == CMD_TOUCH_START) {
+        io.MouseDown[0] = true;
+        io.MousePos = ImVec2((float)p1, (float)p2);
+    }
+    if (command == CMD_TOUCHMOVE) {
+        io.MousePos = ImVec2((float)p1, (float)p2);
+    }
+    
+    if (command == CMD_TOUCH_END) {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MousePos = ImVec2((float)p1, (float)p2);
+        io.MouseDown[0] = false;
+    }
+#endif
+}
+void appInit(char *sz) { 
+#ifndef NO_FMOD
+    FMOD_Init();
 #endif
 	strcpy(ResPath, sz);
     game.aCamera.custom_type = 0xCA;
     game.aCamera.windowWidth = game.getBackgroundSize().x;
     game.aCamera.windowHeight = game.getBackgroundSize().y;
-
+#ifndef NO_IMGUI
+   // int frameBufferScale = 2; //ios
+    ImGui_ImplAlgeSDK_Main(game.getBackgroundSize().x,game.getBackgroundSize().y,1);
+#endif
     game.rm.Init(sz);
     game.Init(sz);
+    
+
+    
 }
 
 void appSize(int w, int h) {
+    int frameBufferScale = 2; //ios
     if (game.landscape) {
-        game.resolutionReported.y = w;
-        game.resolutionReported.x = h;
+        game.ScreenSize(h, w, frameBufferScale);
     } else {
-        game.resolutionReported.x = w;
-        game.resolutionReported.y = h;
+        game.ScreenSize(w, h, frameBufferScale);
     }
 }
 void appDeinit(){
 #ifndef NO_IMGUI
     ImGui_ImplAlgeSDK_Shutdown();
+#endif
+#ifndef NO_FMOD
+    FMOD_Deinit();
 #endif
 }
 
@@ -167,6 +205,32 @@ int appPull() {
 		
 	}
 	
+    switch (a->command) {
+       case CMD_SNDSET0:
+       case CMD_SNDSET1:
+       case CMD_SNDSET2:
+       case CMD_SNDSET3:
+            {
+#ifndef NO_FMOD
+              // sndSet((char*)c->param1, c->command-CMD_SNDSET, c->i2);
+                string fullpath = string(game.rm.resourcepath) + string("/")+ string((char*)a->param1);
+                FMOD_Set((a->command - CMD_SNDSET), (char*)fullpath.c_str());
+#endif
+            }
+       break;
+      
+         case CMD_SNDPLAY0:
+         case CMD_SNDPLAY1:
+         case CMD_SNDPLAY2:
+         case CMD_SNDPLAY3:
+                {
+                  //  sndPlay(a->command-CMD_SNDPLAY);
+#ifndef NO_FMOD
+                    FMOD_Play(a->command - CMD_SNDPLAY);
+#endif
+                }
+    }
+    
 	lastI1 = a->i1;
 	lastI2 = a->i2;
 	
@@ -217,16 +281,16 @@ char msg[256];
 void appRender(float tick, int width, int height, int accelX, int accelY, int accelZ)
 {
 #ifndef NO_IMGUI
-    ImGui_ImplAlgeSDK_BeforeRender();
+   // ImGui_ImplAlgeSDK_BeforeRender();
 #endif
 	prepareFrame(width,height);
 	if (accelX==0 && accelY==0 && accelZ==0) accelY = -9.8*100;
     
 	game.Render(tick, accelX , accelY , accelZ );
 #ifndef NO_IMGUI
-    ImGui_ImplAlgeSDK_AfterRender((char*)msg);
+  //  ImGui_ImplAlgeSDK_AfterRender((char*)msg);
 #endif
-    game.input.pushP(CMD_YOUTUBE_SHOW,msg,msg);
+  //  game.input.pushP(CMD_YOUTUBE_SHOW,msg,msg);
     
 	return;
 }

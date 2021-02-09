@@ -3,13 +3,22 @@
 //////////////////////////////XTimer
 // on device : respath = /data/user/0/com.acnodelabs.DodgeTheCreeps/files
 
+using namespace ImGui;
 class BiSprite {
-	f3 MyPos;
+	
 	float heading; //0 to 180
 	
 public:
+    f3 MyPos;
 	GameObject flip, flop;
 
+    void avoidOrigin() {
+        while (abs(MyPos.x - screenCenter.x) < 200) MyPos.x += 1;
+        while (abs(MyPos.y - screenCenter.y) < 200) MyPos.y += 1;
+    }
+    
+    f3 screenCenter;
+    
 	void LoadIn(AlgeApp* thiz, string prefix) {
 		thiz->AddResource(&flip, prefix + "1");
 		thiz->AddResource(&flop, prefix + "2");
@@ -18,6 +27,8 @@ public:
 		heading = rndm(100, 360);
 		MyPos.x = rndm(thiz->leftSide, thiz->rightSide);
 		MyPos.y = rndm(thiz->topSide, thiz->bottomSide);
+        screenCenter.x = (thiz->rightSide /2);
+        screenCenter.y = (thiz->bottomSide /2);
 	}
 
 	bool toggle;
@@ -120,9 +131,11 @@ public:
 	bool toggle;
 	float timeVar = 0;
 
+    AlgeApp* that;
+    
 	void Update(float dt, AlgeApp* app) {
 		timeVar += dt;
-		
+        that = app;
 		const int dd = 10;
 
 		if (UDLR == 'U') 
@@ -179,7 +192,7 @@ public:
 ///Flicker, Trail
 class /*DodgeTheCreeps*/ App : public AlgeApp { 
 
-	GameObject background;
+	GameObject background, txt;
 	Sprite playerGrey;
 	GameObject playerTrail;
 	BiSprite enemyFlyingAlt[3], enemySwimming[3], enemyWalking[3];
@@ -187,6 +200,14 @@ class /*DodgeTheCreeps*/ App : public AlgeApp {
 	
 public:
 
+    void avoidOrigin() {
+        for_i(3)
+            enemyFlyingAlt[i].avoidOrigin();
+            enemySwimming[i].avoidOrigin();
+            enemyWalking[i].avoidOrigin();
+        _for
+    }
+    
 	void MakeTrail() {
 		playerTrail.prsInstances.clear();
 		return;
@@ -203,7 +224,7 @@ public:
 		AlInit(STANDARD);
 		SetTitle("DodgeTheCreeps");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-		AddResource(&background, "bg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
+		AddResource(&background, "bg_u", "bg_u.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
 		
 		//AddResource(&playerTrail, "playerGrey_up1", 1);
 		//MakeTrail();
@@ -225,6 +246,8 @@ public:
 		output.pushP(CMD_SNDSET0, $ "house.wav");
 		output.pushP(CMD_SNDSET1, $ "gameover.wav");
 		output.pushP(CMD_SNDPLAY0, $ "house.wav");
+        
+        AddResource(&txt, "text");
 		
 	}
 
@@ -244,16 +267,16 @@ public:
 			if (p->i1 == AL_KEY_MINUS) {
 			}
 
-			if (p->i1 == AL_KEY_RIGHT) {
+			if (p->i1 == MAC_KEY_RGT) {
 				playerGrey.SetIntent('R');
 			}
-			if (p->i1 == AL_KEY_LEFT) {
+			if (p->i1 == MAC_KEY_LFT) {
 				playerGrey.SetIntent('L');
 			}
-			if (p->i1 == AL_KEY_UP) {
+			if (p->i1 == MAC_KEY_FWD) {
 				playerGrey.SetIntent('U');
 			}
-			if (p->i1 == AL_KEY_DOWN) {
+			if (p->i1 == MAC_KEY_BAC) {
 				playerGrey.SetIntent('D');
 			}
 		}
@@ -294,11 +317,22 @@ public:
 			output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
 			playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
 			playerGrey.WasHit();
+            avoidOrigin();
 		}
 	}
-	
+    bool wind;
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
+        if (gob->is(txt)) {
+            GuiStarts();
+            {
+                ImGui::Begin("My First Tool", &wind, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize);
+                ImGui::Text("Score");
+                ImGui::End();
+            }
+            GuiEnds();
+        }
+        
 		if (gob->is(count_text)) {
 			string x = to_string(int(timeVar));
 			glPushMatrix();

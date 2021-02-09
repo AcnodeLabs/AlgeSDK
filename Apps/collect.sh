@@ -5,5 +5,5 @@
 
 MyApps="Brochures DemoCoverFlow DodgeTheCreeps Ivank_Box2D JapCarBrochures Juices LevelSelect NeheLesson05 NeheLesson09 NeheLesson19 Planets PoppingTime XFs XGui"
 for app in $MyApps; do
-   cp -f $app.Assets/Data/* COMMON.Assets/Data
+   cp -v $app.Assets/Data/* COMMON.Assets/Data
 done

@@ -1,4 +1,5 @@
 
+#define GLES_SILENCE_DEPRECATION
 #include "Ada/AlgeSDK.ads.h"
 #include "camera.h"
 
@@ -114,9 +115,9 @@ public:
 
 #define NO_FONTLIB
 
-	virtual void ScreenSize(int width, int height) {
-		resolutionReported.x = width;
-		resolutionReported.y = height;
+	virtual void ScreenSize(int width, int height, int framebufferScale) {
+		resolutionReported.x = width / framebufferScale;
+		resolutionReported.y = height / framebufferScale;
 		input.pushI(CMD_SCREENSIZE, width, height);
 	}
 
@@ -188,12 +189,11 @@ public:
 		static char msg[128];
 		static int _value = value;
 		strcpy(msg, setting.c_str());
-		output.pushP(CMD_SETTINGS_SCREEN, $ msg , (void*) _value);
+		output.pushP(CMD_SETTINGS_SCREEN, $ msg , (void*) &_value);
 	}
 
 	virtual i2 getBackgroundSize() {
-	//	static char msg[128];
-	//	printf("Bg Size reported = %d ,%d", resolutionReported.x, resolutionReported.y);
+		printf("Bg Size reported = %d ,%d", resolutionReported.x, resolutionReported.y);
        if (resolutionReported.x<1) resolutionReported.x = size_ipad_air.x;
        if (resolutionReported.y<1) resolutionReported.y = size_ipad_air.y;
 		return i2(resolutionReported.x,resolutionReported.y);

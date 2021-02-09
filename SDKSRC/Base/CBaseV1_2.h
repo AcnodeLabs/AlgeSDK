@@ -2125,7 +2125,7 @@ public:
 #define GL_RGB                            0x1907
 #endif
 																// Set The Default GL Mode To RBGA (32 BPP)
-		GLuint		type = GL_RGBA;
+	//	GLuint		type = GL_RGBA;
 		//FILE *filex = fopen("LoadTgaFolder", "wb+");			// Open The TGA File
 		//	fwrite("Here", 1, 4, filex);
 		//fclose(filex);
@@ -2268,7 +2268,7 @@ public:
 	string retrieve(char** url) {
 		string remote = string(*url);
 		vector<string> strr = split(remote, '/');
-		int n = strr.size();
+		int n = (int)strr.size();
 		string hostname = strr[2];
 		string resourcepath = "";
 		for (int i = 3; i < n - 1; i++) {
@@ -2880,7 +2880,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 	FILE* f = fopen(localfilename.c_str(), "r");
 	if (f) {
 		fseek(f, 0, SEEK_END);
-		int size = ftell(f);
+		int size = (int)ftell(f);
 		fclose(f);
 		if (size != 0) //recollect file if prev retrival was erroneous
 			return fileAndRes;//Dont proceed if file already exists
@@ -2900,7 +2900,7 @@ string getHttpFile(string hostname, string resourcepath, string filename, int* n
 		char* ll = strstr(buffer, "Length:");
 		if (!ll) return "";
 		len = atoi(ll+8);
-		int diff = r1 - len;
+		//int diff = r1 - len;
 	}
 	catch (...) {
 		return "";
