@@ -8,9 +8,5 @@
 
 //TODO:: move above line elsewhere
 
-<<<<<<< HEAD
-#include "../Apps/Planets/App.hpp"
-=======
-#include "../XalApps/Recitation/app.hpp"
->>>>>>> ca5c7cb5a41c5a62c015817dae793bceaae35318
+#include "../Apps/planets/App.hpp"
 
