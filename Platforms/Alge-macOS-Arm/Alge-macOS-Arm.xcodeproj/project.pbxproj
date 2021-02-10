@@ -122,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */,
 				9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */,
 				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
 				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
@@ -130,11 +129,12 @@
 				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
 				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
 				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
+				A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */,
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
 				9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */,
-				A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */,
+				A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +261,8 @@
 			buildPhases = (
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
-				9C3281B613F275F900A53E54 /* Sources */,
 				A59D66DF25D396CB00A8A25B /* Embed Libraries */,
+				9C3281B613F275F900A53E54 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -282,7 +282,6 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					9C3281B913F275F900A53E54 = {
-						DevelopmentTeam = G84BL5U52X;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -467,7 +466,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
@@ -500,7 +499,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
