@@ -10,4 +10,4 @@ Echo skipping wget http://dl-ssl.google.com/android/repository/platform-tools_r2
 echo please copy platform tools and tools folder to Android SDK_ROOT folder (rename old folders)
 echo this step is manual for time bieng and is expected to be automated soon
 cd AlgeSDK
-Kickstart.bat
+open Platforms
