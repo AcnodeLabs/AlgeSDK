@@ -359,7 +359,7 @@ int main( int argc, char** argv )
   //glutInitWindowSize( kWindowWidth, kWindowHeight );
   
   //glutReshapeWindow(kWindowWidth, kWindowHeight);
-  int ss[2] = {1024,768};
+  int ss[2] = {1024*2,768*2};
   glutInitWindowSize( 0, 0 );
   int theWindowHandle = glutCreateWindow( ResPath );
   glutSetWindow( theWindowHandle );

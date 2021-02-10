@@ -62,7 +62,7 @@ public:
         if (p->command == CMD_TOUCH_START) {
            bool impulsed = false;
             for (auto b : touched_bodies) {
-                b->Impulse(f2(0, -force));
+                b->Impulse(f2(0, -force/10.0));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
                 output.pushP(CMD_SNDPLAY0, $ "pop.wav");
@@ -77,7 +77,7 @@ public:
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		InitPhysics();
 		PhysAddGroundWithWalls();
-        force = 2;
+        force = 1;
 		AddResource(&winter2, "winter2", "winter2.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         
         gui.Hide();
