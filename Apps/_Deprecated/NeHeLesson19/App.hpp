@@ -147,7 +147,7 @@ public:
 		rm.Init(path);
 
 		InitParticles();
-
+        AddResource(&any, "any");
 		output.pushP(CMD_SNDSET0, (char*) "explosion.wav", 0);
 
 	};
@@ -155,6 +155,12 @@ public:
 	void Deinit() {
 	};
 
+    GameObject any;
+    
+    virtual void UpdateCustom(GameObject* g, int iit, float deltaT) {
+        if (g->is(any)) Render(deltaT, 0, 0, 0);
+    }
+    
 	void Render(float dt, int ax, int ay, int az) {
 
 		processInput();

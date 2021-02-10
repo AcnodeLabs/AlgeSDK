@@ -350,8 +350,8 @@ int main( int argc, char** argv )
   auto mainDisplayId = CGMainDisplayID();
   int factor = 1;
 
-  kWindowWidth = CGDisplayPixelsWide(mainDisplayId)*factor;//app.getBackgroundSize().x;
-  kWindowHeight = CGDisplayPixelsHigh(mainDisplayId)*factor;//app.getBackgroundSize().y;
+  kWindowWidth = (int)CGDisplayPixelsWide(int(mainDisplayId)*factor);//app.getBackgroundSize().x;
+  kWindowHeight = (int)CGDisplayPixelsHigh(int(mainDisplayId)*factor);//app.getBackgroundSize().y;
 
   glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
     

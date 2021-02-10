@@ -7,11 +7,16 @@ using namespace ImGui;
 class BiSprite {
 	
 	float heading; //0 to 180
-	
+    bool hidden;
 public:
     f3 MyPos;
 	GameObject flip, flop;
 
+    void hide(bool b) {
+        if (!b) flip.hidden = b;
+        if (b) flop.hidden = b;
+    }
+    
     void avoidOrigin() {
         while (abs(MyPos.x - screenCenter.x) < 200) MyPos.x += 1;
         while (abs(MyPos.y - screenCenter.y) < 200) MyPos.y += 1;
@@ -201,7 +206,7 @@ class /*DodgeTheCreeps*/ App : public AlgeApp {
 public:
 
     void avoidOrigin() {
-        for_i(3)
+        for_i(x3)
             enemyFlyingAlt[i].avoidOrigin();
             enemySwimming[i].avoidOrigin();
             enemyWalking[i].avoidOrigin();
@@ -221,6 +226,8 @@ public:
 	}
 
 	virtual void Init(char* path) {
+        x3 = 3;
+        quiet = false;
 		AlInit(STANDARD);
 		SetTitle("DodgeTheCreeps");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
@@ -231,7 +238,7 @@ public:
 
 		playerGrey.LoadIn(this, "playerGrey_up", "playerGrey_walk");
 
-		for_i(3)
+		for_i(x3)
 			enemyFlyingAlt[i].LoadIn(this, "enemyFlyingAlt_");
 			enemySwimming[i].LoadIn(this, "enemySwimming_");
 			enemyWalking[i].LoadIn(this, "enemyWalking_");
@@ -252,7 +259,8 @@ public:
 	}
 
 	CControls c;
-	
+    bool quiet;
+    
 	void processInput(PEG::CMD* p, float deltaT) {
 
 		if (p->command == CMD_SCREENSIZE) {
@@ -267,6 +275,14 @@ public:
 			if (p->i1 == AL_KEY_MINUS) {
 			}
 
+            if (p->i1 == 'w' ||  p->i1 == 'W') {
+                wireframe = !wireframe;
+            }
+            
+            if (p->i1 == 'q' ||  p->i1 == 'Q') {
+                quiet = !quiet;
+            }
+            
 			if (p->i1 == MAC_KEY_RGT) {
 				playerGrey.SetIntent('R');
 			}
@@ -314,32 +330,29 @@ public:
 		
 		if (doObjectsIntersect((PosRotScale*)& playerGrey,gob) ){
 			timeVar = 0;
-			output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
+			if (!quiet) output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
 			playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
 			playerGrey.WasHit();
             avoidOrigin();
 		}
 	}
     bool wind;
+    int x3;
+    
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		
         if (gob->is(txt)) {
             GuiStarts();
             {
-                ImGui::Begin("My First Tool", &wind, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize);
-                ImGui::Text("Score");
+                ImGui::Begin("Score", &wind, ImGuiWindowFlags_NoTitleBar);
+                ImGui::Text("Score:%s", to_string(int(timeVar)).c_str());
+                ImGui::Checkbox("Quiet", &quiet);
+                ImGui::SliderInt("x3", &x3, 1, 3);
                 ImGui::End();
             }
             GuiEnds();
         }
         
-		if (gob->is(count_text)) {
-			string x = to_string(int(timeVar));
-			glPushMatrix();
-			text.PrintTextGl(x.c_str(), f3(0, 0, 0), 2);
-			glPopMatrix();
-		}
-
 		if (gob->is(playerTrail)) {
 			trailLogic(deltaT);
 		}
@@ -348,7 +361,18 @@ public:
 			playerGrey.Update(deltaT, this);
 		}
 
-		for_i(3)
+        for_i(3)
+          //  enemyFlyingAlt[i].hide(true);
+          //  enemySwimming[i].hide(true);
+          //  enemyWalking[i].hide(true);
+        _for
+        
+		for_i(x3)
+        
+//            enemyFlyingAlt[i].hide(false);
+//            enemySwimming[i].hide(false);
+//            enemyWalking[i].hide(false);
+        
 			if (enemyFlyingAlt[i].IsItYou(gob)) {
 				enemyFlyingAlt[i].Update(deltaT, this);
 				intersectLogic(gob);
