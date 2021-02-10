@@ -35,37 +35,23 @@
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
 		A596D93025D29DE4000959C2 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A596D92F25D29DE3000959C2 /* Extensions.cpp */; };
-		A59AC5B625D014E000CF5776 /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; };
-		A59AC5B725D014E000CF5776 /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; };
-		A59AC5B825D0151A00CF5776 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		A59AC5B925D0151C00CF5776 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		A59AC5BA25D0154F00CF5776 /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; };
-		A59AC5BB25D0155300CF5776 /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; };
-		A59AC5BC25D0156500CF5776 /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B525D014E000CF5776 /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		A59AC5BD25D0156A00CF5776 /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59AC5B425D014E000CF5776 /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D125D3963900A8A25B /* libfmod.dylib */; };
+		A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D225D3963900A8A25B /* libfmodL.dylib */; };
+		A59D66DA25D396AE00A8A25B /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59D66D825D396AE00A8A25B /* libfmod.dylib */; };
+		A59D66DB25D396AE00A8A25B /* libfmodL.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59D66D925D396AE00A8A25B /* libfmodL.dylib */; };
+		A59D66DE25D396CB00A8A25B /* libfmod.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59D66D125D3963900A8A25B /* libfmod.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A59D66E025D396CD00A8A25B /* libfmodL.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A59D66D225D3963900A8A25B /* libfmodL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		88E172F323C4F620007A5116 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				A59AC5BD25D0156A00CF5776 /* libfmodL.dylib in Embed Libraries */,
-				A59AC5BC25D0156500CF5776 /* libfmod.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A59AC5B325D0141000CF5776 /* Embed Libraries */ = {
+		A59D66DF25D396CB00A8A25B /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 16;
 			files = (
-				A59AC5B825D0151A00CF5776 /* libfmod.dylib in Embed Libraries */,
-				A59AC5B925D0151C00CF5776 /* libfmodL.dylib in Embed Libraries */,
+				A59D66DE25D396CB00A8A25B /* libfmod.dylib in Embed Libraries */,
+				A59D66E025D396CD00A8A25B /* libfmodL.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,8 +111,10 @@
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
 		A596D92F25D29DE3000959C2 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
-		A59AC5B425D014E000CF5776 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
-		A59AC5B525D014E000CF5776 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
+		A59D66D125D3963900A8A25B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
+		A59D66D225D3963900A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
+		A59D66D825D396AE00A8A25B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
+		A59D66D925D396AE00A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */,
 				9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */,
-				A59AC5B625D014E000CF5776 /* libfmodL.dylib in Frameworks */,
 				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
 				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
 				9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */,
@@ -145,8 +133,8 @@
 				9C4637261FBA0E73008FB5EF /* AppKit.framework in Frameworks */,
 				9C4637271FBA0E7C008FB5EF /* CoreAudio.framework in Frameworks */,
 				9C3281BF13F275F900A53E54 /* Cocoa.framework in Frameworks */,
-				A59AC5B725D014E000CF5776 /* libfmod.dylib in Frameworks */,
 				9C4636CC1FBA0D65008FB5EF /* AudioToolbox.framework in Frameworks */,
+				A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,13 +144,13 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				A59D66D825D396AE00A8A25B /* libfmod.dylib */,
+				A59D66D925D396AE00A8A25B /* libfmodL.dylib */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */,
 				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
 				88D2F4E12558FCC40061682A /* imgui.h */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
-				A59AC5B525D014E000CF5776 /* libfmod.dylib */,
-				A59AC5B425D014E000CF5776 /* libfmodL.dylib */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
 				9C4636BF1FBA0C68008FB5EF /* CBaseV1_2.h */,
@@ -189,6 +177,8 @@
 			children = (
 				88E172E723C4F0E9007A5116 /* libfmodL.dylib */,
 				88E172E523C4F0A5007A5116 /* libfmod.dylib */,
+				A59D66D125D3963900A8A25B /* libfmod.dylib */,
+				A59D66D225D3963900A8A25B /* libfmodL.dylib */,
 				9CE687D222E0EDE10046E542 /* GLUT.framework */,
 				9CE687CF22E0EDBA0046E542 /* CoreData.framework */,
 				9CE687CD22E0ED9E0046E542 /* Foundation.framework */,
@@ -271,9 +261,8 @@
 			buildPhases = (
 				9C3281B713F275F900A53E54 /* Frameworks */,
 				9C3281B813F275F900A53E54 /* Resources */,
-				88E172F323C4F620007A5116 /* Embed Libraries */,
 				9C3281B613F275F900A53E54 /* Sources */,
-				A59AC5B325D0141000CF5776 /* Embed Libraries */,
+				A59D66DF25D396CB00A8A25B /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -291,6 +280,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1130;
+				TargetAttributes = {
+					9C3281B913F275F900A53E54 = {
+						DevelopmentTeam = G84BL5U52X;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 9C3281B413F275F900A53E54 /* Build configuration list for PBXProject "Alge-macOS-Arm" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -315,8 +310,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59AC5BB25D0155300CF5776 /* libfmodL.dylib in Resources */,
-				A59AC5BA25D0154F00CF5776 /* libfmod.dylib in Resources */,
+				A59D66DA25D396AE00A8A25B /* libfmod.dylib in Resources */,
+				A59D66DB25D396AE00A8A25B /* libfmodL.dylib in Resources */,
 				8885782425CD21FA00F545FC /* Data in Resources */,
 				88BBEF8523163D1B009AEDF6 /* serif_s24.glyphmap in Resources */,
 				9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */,
@@ -472,13 +467,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlgeAppPlanets/Mars-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					../../SDKSRC/Thirdparty/cnats/include,
+					../../SDKSRC/Tools/CNetMsg,
+					../../../../Box2D,
+					../../../Box2D,
+				);
 				INFOPLIST_FILE = "AlgeAppPlanets/AlgeAppPlanets-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,6 +490,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.apps.mac.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -496,9 +500,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -506,6 +512,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlgeAppPlanets/Mars-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					../../../../Box2D,
+					../../../Box2D,
+				);
 				INFOPLIST_FILE = "AlgeAppPlanets/AlgeAppPlanets-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,6 +524,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.acnodelabs.apps.mac.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
