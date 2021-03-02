@@ -270,6 +270,10 @@ public:
 
 		if (p->command == CMD_KEYDOWN) {
 
+			if (p->i1 == AL_KEY_SPACE) {
+ 				centerPlayer();
+			}
+
 			if (p->i1 == AL_KEY_PLUS) {
 			}
 			if (p->i1 == AL_KEY_MINUS) {
@@ -325,13 +329,16 @@ public:
 	 	}
 	}
 
+	void centerPlayer() {
+		playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
+	}
 	
 	void intersectLogic(GameObject* gob) {
 		
 		if (doObjectsIntersect((PosRotScale*)& playerGrey,gob) ){
 			timeVar = 0;
 			if (!quiet) output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
-			playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
+			centerPlayer();
 			playerGrey.WasHit();
             avoidOrigin();
 		}

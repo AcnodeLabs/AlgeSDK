@@ -1,5 +1,7 @@
 #define CMD_LOG 0x3001
 #define CMD_MSG 0x3002
+#define CMD_NATSMSG 0x3121
+
 #define CMD_VOID 0x3003
 #define CMD_ERR 0x3000
 #define CMD_SNDSET 0x3040
@@ -89,6 +91,7 @@
 #define AL_KEY_RIGHT (-10)
 #define AL_KEY_DOWN (-9)
 #define AL_KEY_ALPHA (16)
+#define AL_KEY_SPACE (-17)
 #define ALKEY(k) (AL_KEY_ALPHA + (k-'A'))
 
 

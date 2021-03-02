@@ -11,7 +11,7 @@
 #include  <commctrl.h>
 #include <stdio.h>
 
-#define NO_NATS
+//#define NO_NATS
 
 #define NO_GAMEPAD
 //https://stackoverflow.com/questions/30450042/unresolved-external-symbol-imp-iob-func-referenced-in-function-openssldie/35339896
@@ -87,8 +87,6 @@ int whatIsTheLengthOfContent(char* buffer) {
 		return 0;
 	}
 }
-
-
 
 XHttpSocket msck;
 
@@ -823,8 +821,8 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 		
 	}
 	FindAppName();
-	//MessageBoxA(NULL, "Use [TITLE].e to monitor\n[TITLE].e.In to command", netmsg.prepend.c_str(), MB_ICONINFORMATION);
-//	netmsg.Connect("e", true);// "Evolution");
+	MessageBoxA(NULL, "NATS Tip\nUse xal.e to monitor\nxal.e.In to command\nTelnet 127.0.0.1 4222 and \nDo SUB xal.e 90 to monitor data, and use PUB xal.e <length> to post data\nThe data will be posted in param1 of CMD_REMOTE_COMMAND to the application", netmsg.prepend.c_str(), MB_ICONINFORMATION);
+	netmsg.SubscribeConnect("e", true);// "Evolution");
 	
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
 
