@@ -245,7 +245,7 @@ public:
 			playerTrail.AddInstance(bp);
 		}
 	}
-
+    ImFont* roboto;
 	virtual void Init(char* path) {
         x3 = 3;
         quiet = false;
@@ -276,6 +276,7 @@ public:
 		output.pushP(CMD_SNDPLAY0, $ "house.wav");
         
         AddResource(&txt, "text");
+        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 24.0f);
 		
 	}
 
