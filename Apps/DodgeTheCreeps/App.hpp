@@ -21,6 +21,10 @@ public:
         while (abs(MyPos.x - screenCenter.x) < 200) MyPos.x += 1;
         while (abs(MyPos.y - screenCenter.y) < 200) MyPos.y += 1;
     }
+    void toOrigin() {
+        MyPos.x = screenCenter.x;
+        MyPos.y = screenCenter.y;
+    }
     
     f3 screenCenter;
     
@@ -81,6 +85,18 @@ public:
 	void SetIntent(char dir) {
 		UDLR = dir;
 	}
+    
+    void toOrigin(GameObject& g) {
+        g.pos.x = (screenRect.Left-screenRect.Right)/2;
+        g.pos.y = (screenRect.Bottom-screenRect.Right)/2;
+    }
+    
+    void toOrigin() {
+        toOrigin(playerGrey_up1);
+        toOrigin(playerGrey_up2);
+        toOrigin(playerGrey_walk1);
+        toOrigin(playerGrey_walk2);
+    }
 
 	bool IsItYou(GameObject* g) {
 		return (g == &playerGrey_up1 ||	g == &playerGrey_up2 || g == &playerGrey_walk1 || g == &playerGrey_walk2 );
@@ -130,6 +146,11 @@ public:
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
 			return;
 		}
+        if (UDLR == ' ' && !toggle) {
+            playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
+            return;
+        }
+        
 		
 	}
 
