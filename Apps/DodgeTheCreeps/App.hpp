@@ -79,8 +79,9 @@ public:
 class Sprite {
 	f3 MyPos;
 	char UDLR = ' ';
-	GameObject playerGrey_up1, playerGrey_up2, playerGrey_walk1, playerGrey_walk2;
 public: 
+	GameObject playerGrey_up1, playerGrey_up2, playerGrey_walk1, playerGrey_walk2;
+
 	
 	void SetIntent(char dir) {
 		UDLR = dir;
@@ -277,7 +278,7 @@ public:
         
         AddResource(&txt, "text");
         roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 24.0f);
-		
+        
 	}
 
 	CControls c;
@@ -292,15 +293,15 @@ public:
 
 		if (p->command == CMD_KEYDOWN) {
 
+            if (p->i1 == 'w' || p->i1 == 'W') {
+                wireframe = !wireframe;
+            }
 			if (p->i1 == AL_KEY_PLUS) {
 			}
 			if (p->i1 == AL_KEY_MINUS) {
 			}
 
-            if (p->i1 == 'w' ||  p->i1 == 'W') {
-                wireframe = !wireframe;
-            }
-            
+          
             if (p->i1 == 'q' ||  p->i1 == 'Q') {
                 quiet = !quiet;
             }
@@ -350,7 +351,7 @@ public:
 	
 	void intersectLogic(GameObject* gob) {
 		
-		if (doObjectsIntersect((PosRotScale*)& playerGrey,gob) ){
+		if (doObjectsIntersect((PosRotScale*)& (playerGrey.playerGrey_up1),gob) ){
 			timeVar = 0;
 			if (!quiet) output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
 			playerGrey.SetPos(f3(rightSide / 2., bottomSide / 2., 0.));
