@@ -6,12 +6,8 @@
  macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
  */
 
-//#include  "../../../AlgeSDK/SDKSRC/Base/CBaseV1_2.h"cd De 
-
 #include "PoppingTimeLogic.hpp"
 #include "../LevelSelect/LevelSelector.hpp"
-
-// Scrum Page https://scrumy.com/PoppingTime
 
 class PoppingGame : public MockUpOne {
 public:
@@ -216,11 +212,13 @@ public:
                 return; 
             }
         }
-        
+        if (cmd->command == CMD_KEYDOWN) {
+            if (cmd->i1=='w' || cmd->i1=='W') wireframe = !wireframe;
+        }
         if (cmd->command == CMD_SCREENSIZE) {
             bgSize = i2(cmd->i1, cmd->i2);
-            resolutionReported.x = cmd->i1;
-            resolutionReported.y = cmd->i2;
+            //resolutionReported.x = cmd->i1;
+            //resolutionReported.y = cmd->i2;
             //  startScreen.start.pos.x = bgSize.x;
             //  startScreen.start.pos.y = bgSize.y;
             SetCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
@@ -237,7 +235,9 @@ public:
         if (scene == PoppingGame::Scenes::StartScene) UpdateStartScene(gob, instanceNo, deltaT);
         if (scene == PoppingGame::Scenes::PlayScene)  UpdatePlayScene(gob, instanceNo, deltaT);
         
-        //Clouds Move in Both Screens
+        
+        //COMMON
+        // a) Clouds Move in Both Screens
         if (gob->is(pp.cloud)) {
             for (unsigned short i = 0; i < pp.cloud.prsInstances.size(); i++) {
                 PosRotScale* cloudprs = pp.cloud.getInstancePtr(i);
@@ -251,7 +251,7 @@ public:
     
     // First Intro Screen
     virtual void UpdateStartScene(GameObject* gob, int instanceNo, float deltaT) {
-        if (scene!=0) return;
+        
         if ((gob->is(pp.heli) || gob->is(pp.spikey) || gob->is(pp.fan) || gob->is(pp.baloons)|| gob->is(pp.MockUpOne::dPad))) inhibitRender = true;
         if (onTouched("start"))
         {
@@ -263,8 +263,7 @@ public:
     
     // GamePlay Scene
     virtual void UpdatePlayScene(GameObject* gob, int instanceNo, float deltaT) {
-        if (scene!=1) return;
-      //  if (gob->isOneOf({ &pp.titl,&pp.startScreen.ratings,&pp.startScreen.start }))
+        
         if (gob->is(pp.titl) || gob->is(pp.startScreen.ratings) || gob->is(pp.startScreen.start)) inhibitRender = true;
         
         if (gob->is(pp.dPad)) {

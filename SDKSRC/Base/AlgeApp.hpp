@@ -233,7 +233,7 @@ public:
 	int orthoType;
 
 	bool doObjectsIntersect(PosRotScale* prsCircle, PosRotScale* prsRect) {
-		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width / 2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width / 2, prsRect->m_height / 2);
+		return isCircleIntersectingRect(prsCircle->pos.x, prsCircle->pos.y, prsCircle->m_width /2, prsRect->pos.x, prsRect->pos.y, prsRect->m_width/2 , prsRect->m_height/2 );
 	}
 
 	struct Polygon {

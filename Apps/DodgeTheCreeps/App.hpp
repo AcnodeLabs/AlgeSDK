@@ -21,6 +21,10 @@ public:
         while (abs(MyPos.x - screenCenter.x) < 200) MyPos.x += 1;
         while (abs(MyPos.y - screenCenter.y) < 200) MyPos.y += 1;
     }
+    void toOrigin() {
+        MyPos.x = screenCenter.x;
+        MyPos.y = screenCenter.y;
+    }
     
     f3 screenCenter;
     
@@ -75,12 +79,25 @@ public:
 class Sprite {
 	f3 MyPos;
 	char UDLR = ' ';
-	GameObject playerGrey_up1, playerGrey_up2, playerGrey_walk1, playerGrey_walk2;
 public: 
+	GameObject playerGrey_up1, playerGrey_up2, playerGrey_walk1, playerGrey_walk2;
+
 	
 	void SetIntent(char dir) {
 		UDLR = dir;
 	}
+    
+    void toOrigin(GameObject& g) {
+        g.pos.x = (screenRect.Left-screenRect.Right)/2;
+        g.pos.y = (screenRect.Bottom-screenRect.Right)/2;
+    }
+    
+    void toOrigin() {
+        toOrigin(playerGrey_up1);
+        toOrigin(playerGrey_up2);
+        toOrigin(playerGrey_walk1);
+        toOrigin(playerGrey_walk2);
+    }
 
 	bool IsItYou(GameObject* g) {
 		return (g == &playerGrey_up1 ||	g == &playerGrey_up2 || g == &playerGrey_walk1 || g == &playerGrey_walk2 );
@@ -130,6 +147,11 @@ public:
 			playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
 			return;
 		}
+        if (UDLR == ' ' && !toggle) {
+            playerGrey_up2.hidden = false; playerGrey_up2.rot.z = 180;
+            return;
+        }
+        
 		
 	}
 
@@ -224,7 +246,7 @@ public:
 			playerTrail.AddInstance(bp);
 		}
 	}
-
+    ImFont* roboto;
 	virtual void Init(char* path) {
         x3 = 3;
         quiet = false;
@@ -255,7 +277,8 @@ public:
 		output.pushP(CMD_SNDPLAY0, $ "house.wav");
         
         AddResource(&txt, "text");
-		
+        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 24.0f);
+        
 	}
 
 	CControls c;
@@ -274,15 +297,16 @@ public:
  				centerPlayer();
 			}
 
+            if (p->i1 == 'w' || p->i1 == 'W') {
+                wireframe = !wireframe;
+            }
+
 			if (p->i1 == AL_KEY_PLUS) {
 			}
 			if (p->i1 == AL_KEY_MINUS) {
 			}
 
-            if (p->i1 == 'w' ||  p->i1 == 'W') {
-                wireframe = !wireframe;
-            }
-            
+          
             if (p->i1 == 'q' ||  p->i1 == 'Q') {
                 quiet = !quiet;
             }
@@ -335,7 +359,7 @@ public:
 	
 	void intersectLogic(GameObject* gob) {
 		
-		if (doObjectsIntersect((PosRotScale*)& playerGrey,gob) ){
+		if (doObjectsIntersect((PosRotScale*)& (playerGrey.playerGrey_up1),gob) ){
 			timeVar = 0;
 			if (!quiet) output.pushP(CMD_SNDPLAY1, $ "gameover.wav");
 			centerPlayer();

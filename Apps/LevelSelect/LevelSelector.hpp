@@ -9,6 +9,11 @@ class LevelSelector : public AlgeApp {
 	GameObject locks;
 	
 public:
+    
+        i2 getBackgroundSize() {
+           return i2(c.screen[0],c.screen[1]);
+        }
+    
 		int CMD_LEVELSELECT = 4111;
 		vector<bool> lockHid;
 		
@@ -50,6 +55,8 @@ public:
 			locks.AddInstance(prs);
 		}
 
+            wireframe = false;
+            
 		output.pushP(CMD_SNDSET0, $ "entry.wav", 0);
 
 		}
@@ -81,9 +88,9 @@ public:
 
 		if (p->command == CMD_SCREENSIZE) {
 			c.screen[0] = p->i1 ;
-			c.screen[1] = p->i2;
-			CHotSpot::sx = p->i1;
-			CHotSpot::sy = p->i2;
+			c.screen[1] = p->i2 ;
+			CHotSpot::sx = p->i1 * 2;
+			CHotSpot::sy = p->i2 * 2;
 		}
 		
 		if (p->command == CMD_TOUCH_START) {

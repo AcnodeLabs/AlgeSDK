@@ -26,8 +26,8 @@ public:
 
             AddResource(&gui, "gui");
             gui.hidden = false;
-            
-             
+            ImGui::GetIO().Fonts->AddFontDefault();
+            roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 16.0f);
 		}
     
     i2 msize;
@@ -48,15 +48,16 @@ public:
 
 	bool my_tool_active;
 	float my_color[4];
-    
+    ImFont *roboto;
     void MyFirstToolWindow(float dt) {
         
            static float f = 0.0f;
            static int counter = 0;
            
            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
+           ImGui::PushFont(roboto);
            ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
+           ImGui::PopFont();
            ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
         
            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
