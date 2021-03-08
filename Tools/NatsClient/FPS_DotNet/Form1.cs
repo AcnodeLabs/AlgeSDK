@@ -74,7 +74,7 @@ namespace FPS_DotNet
                 //-url nats://seaof-163-43-82-143.jp-tokyo-01.arukascloud.io:31759/ -subject AlgeApp.Evolution -verbose
                 string[] args = {
                     "-url", "nats://localhost:4222",//"nats://seaof-163-43-82-143.jp-tokyo-01.arukascloud.io:31759/",
-                    "-subject", "AlgeApp.Evolution.Vars",
+                    "-subject", "xal.e",
                     "-verbose"
                 };
                 nats.Run(args);
@@ -103,7 +103,7 @@ namespace FPS_DotNet
               //     "-count [count] [-payload payload]");
             string[] args = {
                     "-url", "nats://localhost:4222",//"nats://seaof-163-43-82-143.jp-tokyo-01.arukascloud.io:31759/",
-                    "-subject", "AlgeApp.Evolution.In",
+                    "-subject", "xal.e",
                      "-count", "1",
                     "-payload", msg
                 };

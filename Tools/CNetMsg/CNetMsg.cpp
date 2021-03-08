@@ -39,7 +39,7 @@ void (*callBackIn)(string) = NULL;                        // C
 		s = NATS_ERR;
 	}
 	
-	static void onMsgIn(natsConnection *nc, natsSubscription *sub, natsMsg *msg, void *closure) 
+		static void onMsgIn(natsConnection *nc, natsSubscription *sub, natsMsg *msg, void *closure) 
 	{
 		//printf("Received msg: %s - %.*s\n",	natsMsg_GetSubject(msg),natsMsg_GetDataLength(msg),	natsMsg_GetData(msg));
 

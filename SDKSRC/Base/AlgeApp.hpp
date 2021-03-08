@@ -918,7 +918,8 @@ public:
 		{
 			if (r[1] == 'f') {// fps
 				sprintf(tval, "fps(%d)", fps);
-			//	netmsg.PostSub(string("Vars"), string(tval));
+				netmsg.Post(string(tval));
+				//netmsg.PostSub(string("Vars"), string(tval));
 			}
 		};
 
