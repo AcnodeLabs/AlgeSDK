@@ -81,7 +81,7 @@ public:
 
 		AlInit(STANDARD);
 		SetTitle("Juices");
-		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nPress UP DOWN to change Object\nPress RT LT to change Effects (Juices)", 0);
+		output.pushP(CMD_TOAST, $ "Juices are Effects applicable to single game object or its instance\nTouch UP DOWN to change Object\nTouch RT LT to change Effects (Juices)", 0);
 		
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
 		AddResource(&background, "juices", 
