@@ -918,7 +918,9 @@ public:
 		{
 			if (r[1] == 'f') {// fps
 				sprintf(tval, "fps(%d)", fps);
+#ifndef NO_NATS
 				netmsg.Post(string(tval));
+#endif
 				//netmsg.PostSub(string("Vars"), string(tval));
 			}
 		};
