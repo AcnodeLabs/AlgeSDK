@@ -10,3 +10,15 @@ C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_D
 C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Release\FPS_DotNet.csproj.CopyComplete
 C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Release\FPS_DotNet.exe
 C:\MINDMAP\WORK\_PROJECTS\_PRODUCTS\AlgeSDK\AlgeSDKToolProjects\FPS_DotNet\FPS_DotNet\obj\Release\FPS_DotNet.pdb
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\bin\Release\FPS_DotNet.exe.config
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\bin\Release\FPS_DotNet.exe
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\bin\Release\FPS_DotNet.pdb
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\bin\Release\NATS.Client.dll
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.csprojAssemblyReference.cache
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.Form1.resources
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.Properties.Resources.resources
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.csproj.GenerateResource.cache
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.csproj.CoreCompileInputs.cache
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.csproj.CopyComplete
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.exe
+C:\Users\liveb\Desktop\SANDBOX\AlgeSDK\Tools\NatsClient\FPS_DotNet\obj\Release\FPS_DotNet.pdb

@@ -49,8 +49,12 @@ void (*callBackIn)(string) = NULL;                        // C
 		// they are used from the subscription's delivery and the main
 		// threads. For demo purposes, this is fine.
 		if (++countIn == total)	elapsed = nats_Now() - start;
-		if (callBackIn !=nullptr) callBackIn(natsMsg_GetData(msg));
-		natsMsg_Destroy(msg);
+		try {
+			if (callBackIn != nullptr) callBackIn(natsMsg_GetData(msg));
+			natsMsg_Destroy(msg);
+		}
+		catch (...) {
+		}
 	}
 
 	void CNetMsg::Post(string data) {
