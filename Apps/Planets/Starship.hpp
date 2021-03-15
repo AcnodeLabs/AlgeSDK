@@ -104,6 +104,58 @@ public:
    
 };
 
+class AWindow {
+public:
+    GameObject gui;
+    void Init(AlgeApp* that) {
+        that->AddResource(&gui, "gui");
+    }
+
+    void Update(GameObject* check, float deltaT) {
+        if (check->is(gui) && !gui.hidden)
+        {
+            GuiStarts();
+            Show(deltaT);
+            GuiEnds();
+        }
+    }
+
+    void Show(float dt) {
+        {
+            static string m_vehregno, m_result;
+            static float f = 0.0f;
+            static int counter = 0;
+
+            ImGui::Begin("Vehicle Lookup");                          // Create a window called "Hello, world!" and append into it.
+
+            ImGui::InputText("Enter Vehicle Reg No XX-NNN", (char*)m_vehregno.c_str(), 128, 0, 0, 0);
+            bool clicked = ImGui::Button("Go!");
+            if (clicked) {
+                netmsg.Post("veh_regno=" + string(m_vehregno));
+            }
+            ImGui::Text("%s", m_result);
+
+            //ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
+            //ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
+
+            //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+            //ImGui::Checkbox("Another Window", &show_another_window);
+
+            //ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+            //ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+            //if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            //    counter++;
+            //ImGui::SameLine();
+            //ImGui::Text("counter = %d", counter);
+
+            //ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::SetWindowPos(ImVec2(0, 50), true);
+            ImGui::End();
+        }
+    }
+};
+
 class App : public AlgeApp {
     
     int scene, nLoops, level, iScore;
@@ -118,7 +170,8 @@ public:
     StarshipApp pp;
     
     bool soundedOuch;
-    
+
+
     virtual void Init(char* path) {
   
         soundedOuch = false;
@@ -129,6 +182,8 @@ public:
         AlInit(STANDARD);
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
     	pp.LoadIn(this);
+        w.Init(this);
+        
     }
     
     virtual void onActionComplete(GameObject* obj) {
@@ -167,11 +222,13 @@ public:
     }
     
 	//CFTFont font;
+    AWindow w;
 
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
         if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
         if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
         
+        w.Update(gob,deltaT);
 
 		if (scene!=0 && gob->is(pp.fps_text)) {
 			string x = string("LEFT= ") + to_string(pp.nRemaining);

@@ -277,8 +277,10 @@ public:
 		output.pushP(CMD_SNDPLAY0, $ "house.wav");
         
         AddResource(&txt, "text");
-        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 24.0f);
-        
+		string pth ="";
+		pth.append(path);
+		pth.append("Roboto-Bold.ttf");
+        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF(pth.c_str(), 24.0f);      
 	}
 
 	CControls c;
