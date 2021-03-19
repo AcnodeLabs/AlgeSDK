@@ -10,7 +10,7 @@
 #define MACOSX
 #define XCODE_BUILD
 //#define NO_BOX2D
-#define NO_NATS
+//#define NO_NATS
 
 #define M1ARM
 

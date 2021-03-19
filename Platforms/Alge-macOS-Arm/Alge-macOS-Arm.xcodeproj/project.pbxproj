@@ -411,7 +411,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
-					../../SDKSRC/Thirdparty/cnats/include,
+					../../../cnats/src,
 					../../SDKSRC/Tools/CNetMsg,
 					../../../Box2D,
 				);
@@ -457,6 +457,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					../../../cnats/src,
+					../../../Box2D,
+					../../SDKSRC/Tools/CNetMsg,
+				);
 				INFOPLIST_FILE = "Mars-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				SDKROOT = macosx;

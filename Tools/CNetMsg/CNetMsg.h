@@ -3,7 +3,7 @@
 #else
 #define CNETMSG_H_INCLUDED
 
-#include <nats.h>
+#include "../../../cnats/src/nats.h"
 #include <string>
 using namespace std;
 
