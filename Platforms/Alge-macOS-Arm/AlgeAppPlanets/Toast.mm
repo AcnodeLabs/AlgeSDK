@@ -18,9 +18,9 @@ void ShowToast(char* msg) {
   //  userNotification.informativeText = [NSString stringWithUTF8String:msg];
     
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Alert"];
+ //   [alert setMessageText:@"Alert"];
     [alert setInformativeText:[NSString stringWithUTF8String:msg]];
-    [alert addButtonWithTitle:@"Ok"];
+  //  [alert addButtonWithTitle:@"Ok"];
     try {
         [alert runModal];
     } catch (...) {}

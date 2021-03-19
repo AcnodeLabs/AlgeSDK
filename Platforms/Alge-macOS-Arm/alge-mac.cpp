@@ -10,7 +10,7 @@
 #define MACOSX
 #define XCODE_BUILD
 //#define NO_BOX2D
-//#define NO_NATS
+#define NO_NATS
 
 #define M1ARM
 
@@ -45,6 +45,7 @@ int kWindowHeight = (1080);
 
 #define TIMERMSECS 33
 
+
 int startTime;
 int prevTime;
 
@@ -63,6 +64,11 @@ void alPrintText(string text, float scale) {
 }
 
 App app;
+
+extern void(*callBackIn)(string);
+#ifndef NO_NATS
+CNetMsg netmsg;
+#endif // !
 
 static int elapsedTime;
 
@@ -341,6 +347,14 @@ void reset_window_title(int para)
 }
 #include <CoreGraphics/CGDisplayConfiguration.h>
 
+
+static char remoteCommand[256];
+
+void onRemoteCommand(string cmd) {
+    strcpy(remoteCommand, cmd.c_str());
+    app.input.pushP(CMD_REMOTE_COMMAND, (void*)remoteCommand, 0);
+}
+
 int main( int argc, char** argv )
 {
   glutInit( &argc, argv );
@@ -398,7 +412,10 @@ int main( int argc, char** argv )
     glutSpecialUpFunc(ImGui_ImplGLUT_SpecialUpFunc);
     
     FindAppName();  sprintf(app.rm.resourcepath, "%s", argv[0]);
-  
+#ifndef NO_NATS
+    netmsg.SubscribeConnect("e", false);// "Evolution");
+    callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
+#endif
   char* l = strrchr(app.rm.resourcepath, '.');
 	
   if (l) l[0] = 0;

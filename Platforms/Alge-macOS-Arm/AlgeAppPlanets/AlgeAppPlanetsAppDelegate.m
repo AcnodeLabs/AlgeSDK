@@ -15,8 +15,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Hello, World!";
-    notification.informativeText = @"A notification";
+   // notification.title = @"Hello, World!";
+   // notification.informativeText = @"A notification";
     notification.soundName = NSUserNotificationDefaultSoundName;
     
  
