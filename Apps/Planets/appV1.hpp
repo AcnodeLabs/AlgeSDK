@@ -545,7 +545,8 @@ public:
                 float yf = controls.screen[1] / 480.0f;
                 if (splashit) {
                     if (y>0*yf && y<45*yf && x>270*xf && x<320*xf) output.pushP(CMD_MSG, $ szAbout, $ "Info");
-                    if (y>408*yf && y<447*yf && x>186*xf && x<284*xf) {beat = 0; splashit = false;}// Begin Arena
+                    if (y>408*yf && y<447*yf && x>186*xf && x<284*xf)
+					{beat = 0; splashit = false;}// Begin Arena
                     tbegin = t;
                     PlanetChanged();
                     break;
