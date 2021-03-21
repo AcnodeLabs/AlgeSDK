@@ -278,8 +278,8 @@ public:
         
         AddResource(&txt, "text");
 		string pth ="";
-		pth.append(path);
-		pth.append("Roboto-Bold.ttf");
+        pth.append(path);pth.append("/");
+        pth.append("Roboto-Bold.ttf");
         roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF(pth.c_str(), 24.0f);      
 	}
 

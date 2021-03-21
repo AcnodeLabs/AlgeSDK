@@ -34,6 +34,7 @@
 		9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */; };
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
+		A595EE302604B39100BFB870 /* libnats_staticd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A595EE2F2604B39100BFB870 /* libnats_staticd.a */; };
 		A596D93025D29DE4000959C2 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A596D92F25D29DE3000959C2 /* Extensions.cpp */; };
 		A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D125D3963900A8A25B /* libfmod.dylib */; };
 		A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D225D3963900A8A25B /* libfmodL.dylib */; };
@@ -110,6 +111,15 @@
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		A595ED1326047AE600BFB870 /* libnats.pc */ = {isa = PBXFileReference; lastKnownFileType = text; name = libnats.pc; path = ../../../cnats/silicon/libnats.pc; sourceTree = "<group>"; };
+		A595ED1526047B4000BFB870 /* nonats */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = nonats; path = ../../../cnats/silicon/test/dylib/nonats; sourceTree = "<group>"; };
+		A595ED172604A0C500BFB870 /* libnats.2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnats.2.3.0.dylib; path = ../../../cnats/silicon/src/libnats.2.3.0.dylib; sourceTree = "<group>"; };
+		A595ED272604A18B00BFB870 /* libnats_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnats_static.a; path = ../../../cnats/silicon/src/libnats_static.a; sourceTree = "<group>"; };
+		A595ED332604A35500BFB870 /* CNetMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CNetMsg.cpp; path = ../../Tools/CNetMsg/CNetMsg.cpp; sourceTree = "<group>"; };
+		A595ED3E2604A54B00BFB870 /* libnats.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnats.dylib; path = ../../../cnats/silicon/src/libnats.dylib; sourceTree = "<group>"; };
+		A595EDBE2604AE9000BFB870 /* libnatsd.2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnatsd.2.3.0.dylib; path = "../../../cnats/arm64-Xcode/src/Debug/libnatsd.2.3.0.dylib"; sourceTree = "<group>"; };
+		A595EDC22604AEB600BFB870 /* libnatsd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnatsd.dylib; path = "../../../cnats/arm64-Xcode/src/Debug/libnatsd.dylib"; sourceTree = "<group>"; };
+		A595EE2F2604B39100BFB870 /* libnats_staticd.a */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c.preprocessed; name = libnats_staticd.a; path = "../../../cnats/arm64-Xcode/src/Debug/libnats_staticd.a"; sourceTree = "<group>"; };
 		A596D92F25D29DE3000959C2 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
 		A59D66D125D3963900A8A25B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
 		A59D66D225D3963900A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
@@ -126,6 +136,7 @@
 				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
 				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
 				9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */,
+				A595EE302604B39100BFB870 /* libnats_staticd.a in Frameworks */,
 				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
 				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
 				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
@@ -147,6 +158,7 @@
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				A59D66D825D396AE00A8A25B /* libfmod.dylib */,
 				A59D66D925D396AE00A8A25B /* libfmodL.dylib */,
+				A595EE2F2604B39100BFB870 /* libnats_staticd.a */,
 				88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */,
 				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
 				88D2F4E12558FCC40061682A /* imgui.h */,
@@ -156,6 +168,7 @@
 				9C4636BF1FBA0C68008FB5EF /* CBaseV1_2.h */,
 				9C4637211FBA0E4B008FB5EF /* alge-mac.cpp */,
 				A596D92F25D29DE3000959C2 /* Extensions.cpp */,
+				A595ED332604A35500BFB870 /* CNetMsg.cpp */,
 				8885782325CD21FA00F545FC /* Data */,
 				9C4636BB1FBA0B4D008FB5EF /* clibs */,
 				9C3281C413F275F900A53E54 /* main mm */,
@@ -175,6 +188,13 @@
 		9C3281BD13F275F900A53E54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A595EDC22604AEB600BFB870 /* libnatsd.dylib */,
+				A595EDBE2604AE9000BFB870 /* libnatsd.2.3.0.dylib */,
+				A595ED3E2604A54B00BFB870 /* libnats.dylib */,
+				A595ED272604A18B00BFB870 /* libnats_static.a */,
+				A595ED172604A0C500BFB870 /* libnats.2.3.0.dylib */,
+				A595ED1526047B4000BFB870 /* nonats */,
+				A595ED1326047AE600BFB870 /* libnats.pc */,
 				88E172E723C4F0E9007A5116 /* libfmodL.dylib */,
 				88E172E523C4F0A5007A5116 /* libfmod.dylib */,
 				A59D66D125D3963900A8A25B /* libfmod.dylib */,

@@ -75,7 +75,8 @@ void (*callBackIn)(string) = NULL;                        // C
 	int CNetMsg::SubscribeConnect(string _appname, bool local) {
 		string arukas;
 		if (local) arukas = "nats://localhost:4222";
-		else arukas = "http://seaof-163-43-82-147.jp-tokyo-01.arukascloud.io:31706/";
+	//	else arukas = "http://seaof-163-43-82-147.jp-tokyo-01.arukascloud.io:31706/";
+        else arukas = "nats://192.168.100.153:4222/";
 
 		//"nats://localhost:4222";
 		this->appname = _appname;
