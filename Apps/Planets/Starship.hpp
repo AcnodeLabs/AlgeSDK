@@ -168,7 +168,8 @@ public:
 	}
 
     StarshipApp pp;
-    
+    GameObject sn11;
+
     bool soundedOuch;
 
 
@@ -181,9 +182,11 @@ public:
         
         AlInit(STANDARD);
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-    	pp.LoadIn(this);
-        w.Init(this);
-        
+    //	pp.LoadIn(this);
+    //    w.Init(this);
+        AddResource(&sn11, "sn11", 50.0);
+        sn11.JuiceType = JuiceTypes::JUICE_ROTXYZ;
+        wireframe = true;
     }
     
     virtual void onActionComplete(GameObject* obj) {
