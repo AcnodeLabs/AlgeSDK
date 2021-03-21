@@ -171,6 +171,7 @@ enum JuiceTypes {
 	JUICE_FLY_OUT,
 	JUICE_FLY_IN,
 	JUICE_ROTY,
+    JUICE_ROTX,
 	JUICE_PULSATE,
 	JUICE_PULSATE_FULLY,
 	JUICE_ROTZ_PULSATE,
@@ -190,6 +191,7 @@ string JuiceName(int j) {
 	if (j == JUICE_FLY_IN) return "JUICE_FLY_IN";
 	if (j == JUICE_FLY_OUT) return "JUICE_FLY_OUT";
 	if (j == JUICE_ROTY) return "JUICE_ROTY";
+    if (j == JUICE_ROTX) return "JUICE_ROTX";
 	if (j == JUICE_PULSATE) return "JUICE_PULSATE";
 	if (j == JUICE_PULSATE_FULLY) return "JUICE_PULSATE_FULLY";
 	if (j == JUICE_ROTZ_PULSATE) return "JUICE_ROTZ_PULSATE";

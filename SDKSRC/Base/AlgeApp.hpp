@@ -430,6 +430,9 @@ public:
 		case JuiceTypes::JUICE_ROTY:
 			jprs->rot.y += speedDt;
 			break;
+        case JuiceTypes::JUICE_ROTX:
+            jprs->rot.x += speedDt;
+            break;
 		case JuiceTypes::JUICE_DIE_TEMP:
 		case JuiceTypes::JUICE_DIE:
 			if (jprs->JuiceDuration>0) {

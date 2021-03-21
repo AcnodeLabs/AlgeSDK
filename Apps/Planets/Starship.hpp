@@ -8,6 +8,16 @@
 
 #include "SolarDb.hpp"
 
+class Burners : public GameObject {
+public:
+    void LoadIn(AlgeApp* that) {
+        that->AddResource(this, "burn", "burn.jpg");
+        this->JuiceType  = JUICE_ROTX;
+        this->JuiceSpeed = 123.0;
+    }
+};
+
+
 class StarshipApp : public MockUpOne {
 public:
    
@@ -167,7 +177,8 @@ public:
 
     StarshipApp pp;
     GameObject sn11;
-
+    Burners burners;
+    
     bool soundedOuch;
 
 
@@ -184,8 +195,12 @@ public:
     //    w.Init(this);
         AddResource(&sn11, "sn11" /*blender 2.92 .blend>>.stl>>import stl in blender 2.44>export_alx script*/, 50.0);
         
-        sn11.JuiceType = JuiceTypes::JUICE_ROTXYZ;
+        //sn11.JuiceType = JuiceTypes::JUICE_ROTXYZ;
+        sn11.rot.y = 90;
         wireframe = true;
+        burners.LoadIn(this);
+        burners.pos.x -= 20*18;
+       // sn11.AddChild(&burners);
     }
     
     virtual void onActionComplete(GameObject* obj) {
@@ -213,10 +228,15 @@ public:
             }
         }
 
+       if (cmd->command == CMD_KEYDOWN) {
+           if (cmd->i1=='w' || cmd->i1=='W') wireframe = !wireframe;
+        }
+        
 		if (cmd->command == CMD_TOUCH_START) {
 			pp.ShowPlanet(shownPlanet);
 			shownPlanet++;
 			if (shownPlanet >= SolarDB::NUM_PLANETS) shownPlanet=0;
+            
 		}
 
         pp.processInput(cmd,deltaT);
