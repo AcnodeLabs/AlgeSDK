@@ -113,6 +113,7 @@
 		A59B581025D107EF003025AF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		A59B581325D107FE003025AF /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		A59B581625D10813003025AF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A59E6949260734FA007004CA /* libnats_staticd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnats_staticd.a; path = "../../../cnats/arm64-Xcode/src/Debug/libnats_staticd.a"; sourceTree = "<group>"; };
 		A5A028A825D2F4CC00B16A72 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
 		FA4AB21B1EBCD44B006141FA /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		FA4AB21C1EBCD44B006141FA /* device-app.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "device-app.cpp"; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A59E6949260734FA007004CA /* libnats_staticd.a */,
 				A59B581625D10813003025AF /* AudioToolbox.framework */,
 				A59B581325D107FE003025AF /* CoreAudioKit.framework */,
 				A59B581025D107EF003025AF /* CoreAudio.framework */,

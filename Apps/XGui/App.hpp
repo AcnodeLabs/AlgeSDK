@@ -27,7 +27,7 @@ public:
             AddResource(&gui, "gui");
             gui.hidden = false;
             ImGui::GetIO().Fonts->AddFontDefault();
-            roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF("Data/Roboto-Bold.ttf", 16.0f);
+            roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((string(path)+"/Roboto-Bold.ttf").c_str(), 16.0f);
 		}
     
     i2 msize;

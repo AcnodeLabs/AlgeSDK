@@ -36,10 +36,8 @@ public:
 			_.pos.y = that->bottomSide / 20;
 			_.color = f3(0, 0, 0);
 		_with
-        
-        
-        
-		for (int i = 0; i < 8; i++) {
+      
+        for (int i = 0; i < 8; i++) {
 			with that->AddResource(&planets[i], db.getName(i), 100);
 				_.pos.x = i * that->rightSide / SolarDB::NUM_PLANETS;
 				_.hidden = true;
@@ -51,7 +49,7 @@ public:
         string fpath = string(that->rm.resourcepath)+ "/Starship/model.dae";
    //     that->rm.loadColladaModel(fpath.c_str(), nxtModelId);
         
-		dPad.Hide();
+		//dPad.Hide();
     }
     
     void processInput(PEG::CMD* cmd, float deltaT) {
@@ -131,9 +129,9 @@ public:
             ImGui::InputText("Enter Vehicle Reg No XX-NNN", (char*)m_vehregno.c_str(), 128, 0, 0, 0);
             bool clicked = ImGui::Button("Go!");
             if (clicked) {
-                netmsg.Post("veh_regno=" + string(m_vehregno));
+             //   netmsg.Post("veh_regno=" + string(m_vehregno));
             }
-            ImGui::Text("%s", m_result);
+            ImGui::Text("%s", m_result.c_str());
 
             //ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
             //ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
@@ -184,7 +182,8 @@ public:
         AddDefaultCamera(Camera::CAM_MODE_2D, ORIGIN_IN_TOP_LEFT_OF_SCREEN);
     //	pp.LoadIn(this);
     //    w.Init(this);
-        AddResource(&sn11, "sn11", 50.0);
+        AddResource(&sn11, "sn11" /*blender 2.92 .blend>>.stl>>import stl in blender 2.44>export_alx script*/, 50.0);
+        
         sn11.JuiceType = JuiceTypes::JUICE_ROTXYZ;
         wireframe = true;
     }
