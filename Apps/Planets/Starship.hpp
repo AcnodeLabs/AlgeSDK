@@ -229,7 +229,8 @@ public:
         }
 
        if (cmd->command == CMD_KEYDOWN) {
-           if (cmd->i1=='w' || cmd->i1=='W') wireframe = !wireframe;
+           if (cmd->i1==38 || cmd->i1=='w' || cmd->i1=='W') wireframe = !wireframe;
+           if (cmd->i1==17 || cmd->i1 == 'b' || cmd->i1 == 'B') burners.hidden = !burners.hidden;
         }
         
 		if (cmd->command == CMD_TOUCH_START) {
