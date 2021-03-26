@@ -30,7 +30,7 @@ public:
         TextColored(ImVec4(1,1,0,1), "Important Stuff");
         BeginChild("Scrolling");
         ImGui::Text("FPS %.2f", 1.0/dt);
-        ImGui::SliderInt("Impulse", &force, 1, 10);
+        ImGui::SliderInt("Impulse", &force, 1, 100);
         
         for (auto b : boxes.prsInstances) {
             ImGui::Text("Box@ [%.0f,%.0f]", b.pos.x,b.pos.y);
@@ -62,7 +62,7 @@ public:
         if (p->command == CMD_TOUCH_START) {
            bool impulsed = false;
             for (auto b : touched_bodies) {
-                b->Impulse(f2(0, -force/10.0));
+                b->Impulse(f2(0, -force/1.0));
                // if (b->UUID.find("ball")!=string::npos) b->color = f3(randm(),randm(),randm());
                 impulsed = true;
                 output.pushP(CMD_SNDPLAY0, $ "pop.wav");
@@ -86,7 +86,8 @@ public:
         oSize /= 20; //nullify alx size
         float density = 1.0;
         float restitution = 0.3;
-        AddResourceEx(&boxes, "box", "box.jpg", 4, false, oSize, density, restitution);//false::Polygon/Box
+        
+        AddResourceEx(&boxes, "box", "box.jpg", 4, false, /*oSize*/3, density, restitution);//false::Polygon/Box
         AddResourceEx(&balls, "bigball",99, true, oSize, density, restitution* 2.0);//true:Circle
         
         AddResource(&gui, "gui");

@@ -8,15 +8,45 @@
 
 #include "SolarDb.hpp"
 
+
+
 class Burners : public GameObject {
 public:
     void LoadIn(AlgeApp* that) {
         that->AddResource(this, "burn", "burn.jpg");
-        this->JuiceType  = JUICE_ROTX;
-        this->JuiceSpeed = 123.0;
     }
 };
 
+class ShipAttitudeController {
+public:
+    int burner_rotz = 0;
+    int ship_rotz = 0;
+    int burner_rotx = 0;
+    int ship_rotx = 0;
+    
+    void SetZTilt(int angle) {
+        burner_rotz = angle;
+        ship_rotz = angle;
+    }
+    void SetXTilt(int angle) {
+        burner_rotx = angle;
+        ship_rotx = angle;
+    }
+    
+    int xx =0;
+    
+    void Transform(char thing, GameObject& obj) {
+        if (thing=='b') {
+            obj.rot.y = burner_rotz - 90;
+            obj.rot.x = burner_rotx ;
+        }
+        if (thing=='s') {
+            obj.rot.y = ship_rotz;
+            obj.rot.x = ship_rotx;
+        }
+    }
+        
+};
 
 class StarshipApp : public MockUpOne {
 public:
@@ -178,6 +208,7 @@ public:
     StarshipApp pp;
     GameObject sn11;
     Burners burners;
+    ShipAttitudeController sac;
     
     bool soundedOuch;
 
@@ -196,18 +227,20 @@ public:
         AddResource(&sn11, "sn11" /*blender 2.92 .blend>>.stl>>import stl in blender 2.44>export_alx script*/, 50.0);
         
         //sn11.JuiceType = JuiceTypes::JUICE_ROTXYZ;
-        sn11.rot.y = 90;
+        
         wireframe = true;
         burners.LoadIn(this);
-        burners.pos.x -= 20*18;
+        sac.SetZTilt(0);
        // sn11.AddChild(&burners);
+        scene = 1;
     }
     
     virtual void onActionComplete(GameObject* obj) {
         pp.onActionComplete(obj);
     }
 
-    
+    int zz=0;
+    int zx=0;
     virtual void processInput(PEG::CMD* cmd, float deltaT) {
         static bool objectsNotLoaded = true;
 
@@ -227,10 +260,16 @@ public:
                 pp.LoadIn(this);objectsNotLoaded = false;
             }
         }
-
+       
        if (cmd->command == CMD_KEYDOWN) {
            if (cmd->i1==38 || cmd->i1=='w' || cmd->i1=='W') wireframe = !wireframe;
            if (cmd->i1==17 || cmd->i1 == 'b' || cmd->i1 == 'B') burners.hidden = !burners.hidden;
+           if (cmd->i1==MAC_KEY_LFT || cmd->i1==AL_KEY_LEFT) zz++;
+           if (cmd->i1==MAC_KEY_RGT || cmd->i1==AL_KEY_RIGHT) zz--;
+           if (cmd->i1==MAC_KEY_FWD || cmd->i1==AL_KEY_UP) zx++;
+           if (cmd->i1==MAC_KEY_BAC || cmd->i1==AL_KEY_DOWN) zx--;
+           sac.SetZTilt(zz);
+           sac.SetXTilt(zx);
         }
         
 		if (cmd->command == CMD_TOUCH_START) {
@@ -250,6 +289,9 @@ public:
     virtual void UpdateCustom(GameObject* gob, int instanceNo, float deltaT) {
         if (scene == 0) UpdateScene0(gob, instanceNo, deltaT);
         if (scene == 1) UpdateScene1(gob, instanceNo, deltaT);
+        
+        if (gob->is(burners))   sac.Transform('b',burners);
+        if (gob->is(sn11))      sac.Transform('s', sn11);
         
         w.Update(gob,deltaT);
 
