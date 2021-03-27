@@ -92,7 +92,10 @@ public:
     
 	virtual void processInput(PEG::CMD* p, float deltaT) {
         if (!ss.burners.hidden) {
-            ss.ship.getInstancePtr(0)->Thrust(f2(0, -force/1.0));
+            float angR = (angle+90)/FACTOR_RADIANS_DEGREES;
+            float fx = force*cos(angR);
+            float fy = force*sin(angR);
+            ss.ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
         }
         if (p->command == CMD_KEYDOWN) {
             if (p->i1 == 'w' || p->i1 == 'W') wireframe = !wireframe;

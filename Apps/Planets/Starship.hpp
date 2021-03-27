@@ -54,7 +54,10 @@ public:
     Burners burners;
     ShipAttitudeController controls;
     GameObject ship;
+    b2Transform initialTransform;
+    AlgeApp* thiz;
     void LoadIn(AlgeApp* that) {
+        thiz = that;
         float density = 1.1;
         float restitution = 0.1;
         that->AddResourceEx(&ship, "Starship/DSC5164", "Starship/DSC5164", 1, false, /*oSize*/0.2, density, restitution);//false::Polygon/Box
@@ -63,8 +66,13 @@ public:
         burners.JuiceType = JuiceTypes::JUICE_ROTY;
         burners.JuiceSpeed = 123.123;
         burners.hidden = true;
-        ship.getInstancePtr(0)->physBodyPtr->SetTransform(b2Vec2(that->rightSide*0.5*S2P, 0), 0);
+        reset();
     }
+    
+    void reset() {
+        ship.getInstancePtr(0)->physBodyPtr->SetTransform(b2Vec2(thiz->rightSide*0.5*S2P, 0), 0);
+     }
+    
 };
 
 class AWindow {
