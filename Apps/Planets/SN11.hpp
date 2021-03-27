@@ -31,7 +31,7 @@ public:
     void MyFirstToolWindow(float dt) {
         // Create a window called "My First Tool", with a menu bar.
         Begin("Starship Parameters", &my_tool_active, ImGuiWindowFlags_MenuBar);
-
+        ImGui::SetWindowSize(ImVec2((float)rightSide/2, (float)bottomSide/4));
         // Edit a color (stored as ~4 floats)
         //ColorEdit4("Color", my_color);
 
@@ -51,8 +51,9 @@ public:
         ImGui::Checkbox("Burners", &burner_on);
         ss.burners.hidden = !burner_on;
         if (!burner_on) force = 0;
-        EndChild();
         ImGui::Button("Redo");
+        EndChild();
+        
         End();
     }
     int force, angle;
@@ -111,5 +112,6 @@ public:
         ss.LoadIn(this);
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
+        
 	}
 };
