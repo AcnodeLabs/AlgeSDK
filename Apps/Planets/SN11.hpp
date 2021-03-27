@@ -5,8 +5,10 @@
    ALGE SDK JD4 Demo :: IvanK Box2D Impulse
    http://lib.ivank.net/demos/box2D.html
 */
-using namespace ImGui;
 
+#ifndef NO_IMGUI
+using namespace ImGui;
+#endif
 #include "Starship.hpp"
 
 class /*SN11 Box2D*/ App : public AlgeApp {
@@ -27,8 +29,10 @@ public:
         }
         dat[63] = f;
     }
-    
+    int force, angle;
+#ifndef NO_IMGUI    
     void MyFirstToolWindow(float dt) {
+
         // Create a window called "My First Tool", with a menu bar.
         Begin("Starship Parameters", &my_tool_active, ImGuiWindowFlags_MenuBar);
         ImGui::SetWindowSize(ImVec2((float)rightSide/2, (float)bottomSide/4));
@@ -37,7 +41,7 @@ public:
 
         // Plot some values
         
-        PlotLines("Height", dat, IM_ARRAYSIZE(dat));
+        PlotLines("Height", dat, sizeof(dat));
 
         // Display contents in a scrolling region
         TextColored(ImVec4(1,1,0,1), "Altitude");
@@ -56,7 +60,7 @@ public:
         
         End();
     }
-    int force, angle;
+    
    
     void RenderGui(float dt) {
         if (gui.Visible()) {
@@ -65,7 +69,8 @@ public:
             GuiEnds();
         }
     }
-    
+#endif // !NO_IMGUI
+
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         if (gob->is(ss.ship)) {
         //for 2D model its not required//    glRotatef(90, 1, 0, 0);
@@ -75,8 +80,9 @@ public:
             ss.burners.pos.x = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
             ss.burners.pos.y = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 100;
         }
-        
+#ifndef NO_IMGUI
         if (gob->is(gui)) RenderGui(deltaT);
+#endif // !NO_IMGUI
     }
 
     int Alt() {
@@ -99,7 +105,7 @@ public:
     int BaseLineHeight = 115;
     
 	virtual void Init(char* path) {
-        memset(dat,0,IM_ARRAYSIZE(dat));
+        memset(dat,0,sizeof(dat));
         landscape = true;
 		AlInit(STANDARD_2D, "SN11");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
