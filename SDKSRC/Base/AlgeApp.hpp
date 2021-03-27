@@ -1427,12 +1427,11 @@ public:
 	b2PolygonShape shp;
 #endif
 
-	void PhysAddGroundWithWalls() {
+	void PhysAddGroundWithWalls(int height=1.0) {
 #ifndef NO_BOX2D
-
 		bxFixDef.shape = &shp;
 		// create ground
-		shp.SetAsBox(rightSide * S2P / 2, 1 * S2P);
+		shp.SetAsBox(rightSide * S2P / 2, height * S2P);
 		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
 		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
 

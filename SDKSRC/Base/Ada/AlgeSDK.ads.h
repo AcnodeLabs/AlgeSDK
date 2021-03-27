@@ -291,6 +291,15 @@ public:
 #endif
 	}
 
+    void Thrust(f2 up) {
+#ifndef NO_BOX2D
+        static b2Vec2 bUp;
+        bUp.x = up.x;
+        bUp.y = up.y;
+        if (physBodyPtr) physBodyPtr->ApplyForceToCenter(bUp, true);
+#endif
+    }
+    
 };
 
 class Serializable : public PosRotScale {

@@ -281,6 +281,11 @@ static void exitIt() {
   exit(0);
 }
 
+static void HandleKeyBoardUp( unsigned char key, int x, int y)
+{
+  app.input.pushI(CMD_KEYUP, key, 0);
+}
+
 static void HandleKeyBoard( const unsigned char inKey, const int inPosX, const int inPosY )
 {
     ImGui_ImplGLUT_KeyboardFunc(inKey,inPosX,inPosY);
@@ -386,6 +391,7 @@ int main( int argc, char** argv )
   
   glutIdleFunc( HandleIdle );
   glutKeyboardFunc( HandleKeyBoard );
+  glutKeyboardUpFunc(HandleKeyBoardUp);
   glutSpecialFunc( HandleSpecialKey );
   glutMouseFunc( HandleMouse );
   glutMotionFunc( HandleMotion );
