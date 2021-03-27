@@ -13,7 +13,7 @@
 class Burners : public GameObject {
 public:
     void LoadIn(AlgeApp* that) {
-        that->AddResource(this, "burn", "burn.jpg", 0.5);
+        that->AddResource(this, "burn", "burn", 1);
     }
 };
 
