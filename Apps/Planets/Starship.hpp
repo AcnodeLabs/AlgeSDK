@@ -60,7 +60,7 @@ public:
         thiz = that;
         float density = 1.1;
         float restitution = 0.1;
-        that->AddResourceEx(&ship, "Starship/DSC5164", "Starship/DSC5164", 1, false, /*oSize*/0.2, density, restitution);//false::Polygon/Box
+        that->AddResourceEx(&ship, "Starship/DSC5164", "Starship/DSC5164", 1, false, /*oSize*/0.1, density, restitution);//false::Polygon/Box
         burners.LoadIn(that);
         ship.AddChild(&burners);
         burners.JuiceType = JuiceTypes::JUICE_ROTY;

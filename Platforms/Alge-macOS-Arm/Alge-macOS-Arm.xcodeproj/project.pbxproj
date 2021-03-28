@@ -125,6 +125,7 @@
 		A59D66D225D3963900A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
 		A59D66D825D396AE00A8A25B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
 		A59D66D925D396AE00A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
+		A5AB4F652610E94A00634596 /* Box2DebugDraw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Box2DebugDraw.hpp; path = ../../Apps/Planets/Box2DebugDraw.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +156,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				A5AB4F652610E94A00634596 /* Box2DebugDraw.hpp */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				A59D66D825D396AE00A8A25B /* libfmod.dylib */,
 				A59D66D925D396AE00A8A25B /* libfmodL.dylib */,

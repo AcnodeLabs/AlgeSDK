@@ -22,6 +22,66 @@ extern CNetMsg netmsg;
 #include "XFunctions.hpp"
 
 
+class DbgDraw : public b2Draw
+  {
+  
+  public:
+    
+    int m_rightSide = 0, m_bottomSide = 0;
+    
+      void Set(int rightSide, int bottomSide) {
+          m_rightSide = rightSide;
+          m_bottomSide = bottomSide;
+      }
+      
+    void DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) {
+        //set up vertex array
+            GLfloat glverts[16]; //allow for polygons up to 8 vertices
+            glVertexPointer(2, GL_FLOAT, 0, glverts); //tell OpenGL where to find vertices
+            glEnableClientState(GL_VERTEX_ARRAY); //use vertices in subsequent calls to glDrawArrays
+            
+            //fill in vertex positions as directed by Box2D
+            for (int i = 0; i < vertexCount; i++) {
+              glverts[i*2]   = vertices[i].x * P2S - m_rightSide/2;
+              glverts[i*2+1] = vertices[i].y * P2S - m_bottomSide/2;
+            }
+            
+            //draw solid area
+            glColor4f( color.r, color.g, color.b, 1);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+          
+            //draw lines
+            glLineWidth(3); //fat lines
+            glColor4f( 1, 0, 1, 1 ); //purple
+            glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
+    }
+    void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) {
+        //set up vertex array
+            GLfloat glverts[16]; //allow for polygons up to 8 vertices
+            glVertexPointer(2, GL_FLOAT, 0, glverts); //tell OpenGL where to find vertices
+            glEnableClientState(GL_VERTEX_ARRAY); //use vertices in subsequent calls to glDrawArrays
+            
+            //fill in vertex positions as directed by Box2D
+            for (int i = 0; i < vertexCount; i++) {
+              glverts[i*2]   = vertices[i].x * P2S - m_rightSide/2;
+              glverts[i*2+1] = vertices[i].y * P2S - m_bottomSide/2;
+            }
+            
+            //draw solid area
+            glColor4f( color.r, color.g, color.b, 1);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+          
+            //draw lines
+            glLineWidth(3); //fat lines
+            glColor4f( 1, 0, 1, 1 ); //purple
+            glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
+    }
+    void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color) {}
+    void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color) {}
+    void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) {}
+    void DrawTransform(const b2Transform& xf) {}
+  };
+
 class AlgeApp {
 public:
 	bool desktop;
@@ -1270,10 +1330,18 @@ public:
 		
 	int velocityIterations = 6;
 	int positionIterations = 2;
-
-	void InitPhysics() {
+    DbgDraw dbgDraw;
+	void InitPhysics(b2Draw *dbg = 0 ) {
 #ifndef NO_BOX2D
-		world = new b2World(b2Vec2(0, 10));
+		world = new b2World(b2Vec2(0, 9.8));
+        if (dbg) {
+            world->SetDebugDraw(dbg);
+            dbg->SetFlags( b2Draw::e_shapeBit );
+        } else {
+            world->SetDebugDraw(&dbgDraw);
+            dbgDraw.SetFlags( b2Draw::e_shapeBit );
+            dbgDraw.Set(rightSide, bottomSide);
+        }
 #endif
 	}
 
@@ -1427,15 +1495,21 @@ public:
 	b2PolygonShape shp;
 #endif
 
-	void PhysAddGroundWithWalls(int height=1.0) {
+    void PhysAddGroundWithWalls(int height=1.0) {
 #ifndef NO_BOX2D
 		bxFixDef.shape = &shp;
 		// create ground
-		shp.SetAsBox(rightSide * S2P / 2, height * S2P);
-		bodyDefWalls.position.Set(rightSide * S2P / 2, bottomSide * S2P );
+        float half_width_of_box = rightSide * S2P / 2; float half_height_of_box = height * S2P;
+        float position_of_box_x = rightSide * S2P / 2; float position_of_box_y = bottomSide * S2P;
+        
+        shp.SetAsBox(half_width_of_box,half_height_of_box);
+        bodyDefWalls.position.Set(position_of_box_x,position_of_box_y);
+        
 		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);
-
-		shp.SetAsBox(1 * S2P, bottomSide*S2P);
+        
+        half_width_of_box = 1 * S2P; half_height_of_box = bottomSide * S2P;
+        shp.SetAsBox(half_width_of_box,half_height_of_box);
+		
 		// left wall
 		bodyDefWalls.position.Set(0, bottomSide * S2P / 2);
 		if (world) world->CreateBody(&bodyDefWalls)->CreateFixture(&bxFixDef);

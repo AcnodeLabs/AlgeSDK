@@ -298,6 +298,12 @@ public:
         bUp.y = up.y;
         if (physBodyPtr) physBodyPtr->ApplyForceToCenter(bUp, true);
 #endif
+  }
+    
+    void Torque(int angle) {
+#ifndef NO_BOX2D
+        if (physBodyPtr) physBodyPtr->ApplyTorque(angle, true);
+#endif
     }
     
 };

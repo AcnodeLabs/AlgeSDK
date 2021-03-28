@@ -10,6 +10,7 @@
 using namespace ImGui;
 #endif
 #include "Starship.hpp"
+#include "Box2DebugDraw.hpp"
 
 class /*SN11 Box2D*/ App : public AlgeApp {
 
@@ -29,13 +30,14 @@ public:
         }
         dat[63] = f;
     }
-    int force, angle;
+    int force;
+    float angle;
 #ifndef NO_IMGUI    
     void MyFirstToolWindow(float dt) {
 
         // Create a window called "My First Tool", with a menu bar.
         Begin("Starship Parameters", &my_tool_active, ImGuiWindowFlags_MenuBar);
-        ImGui::SetWindowSize(ImVec2((float)rightSide/2, (float)bottomSide/4));
+        ImGui::SetWindowSize(ImVec2((float)rightSide/2, (float)bottomSide/3));
         // Edit a color (stored as ~4 floats)
         //ColorEdit4("Color", my_color);
 
@@ -51,11 +53,13 @@ public:
        
         BeginChild("Controls");
         ImGui::SliderInt("Thrust [0-15]", &force, 0, 15);
-        ImGui::SliderInt("Thrust Angle [-20 to +20]", &angle, -20, 20);
+        ImGui::SliderAngle("Thrust Angle", &angle);
         ImGui::Checkbox("Burners", &burner_on);
         ss.burners.hidden = !burner_on;
         if (!burner_on) force = 0;
-        ImGui::Button("Redo");
+        if (ImGui::Button("Redo")) {
+            ss.reset();
+        }
         EndChild();
         
         End();
@@ -78,13 +82,18 @@ public:
 
         if (gob->is(ss.burners)) {
             ss.burners.pos.x = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
-            ss.burners.pos.y = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 100;
+            ss.burners.pos.y = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 50;
         }
 #ifndef NO_IMGUI
         if (gob->is(gui)) RenderGui(deltaT);
 #endif // !NO_IMGUI
+        if (gob->is(dbglayer)) {
+            world->DrawDebugData();
+        }
     }
 
+    GameObject dbglayer;
+    
     int Alt() {
         float ht = (933-ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2)/10;
         return ht;
@@ -95,11 +104,14 @@ public:
             float angR = (angle+90)/FACTOR_RADIANS_DEGREES;
             float fx = force*cos(angR);
             float fy = force*sin(angR);
+            ss.burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
             ss.ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
+            ss.ship.getInstancePtr(0)->Torque(angle);
         }
         if (p->command == CMD_KEYDOWN) {
             if (p->i1 == 'w' || p->i1 == 'W') wireframe = !wireframe;
             if (p->i1 == 'g' || p->i1 == 'G') gui.hidden = !gui.hidden;
+            if (p->i1 == 'd' || p->i1 == 'D') dbglayer.hidden = !dbglayer.hidden;
         }
         pushDat(Alt());
  	}
@@ -121,6 +133,7 @@ public:
         ss.LoadIn(this);
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
+        AddResource(&dbglayer, "");
         
 	}
 };
