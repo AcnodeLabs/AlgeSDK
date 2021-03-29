@@ -142,6 +142,6 @@ public:
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
         AddResource(&dbglayer,"")->hidden = true;
-        wireframe = true;
+        
    }
 };
