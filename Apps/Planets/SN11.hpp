@@ -31,7 +31,7 @@ public:
         dat[63] = f;
     }
     int force;
-    float angle;
+    int angle;
 #ifndef NO_IMGUI    
     void MyFirstToolWindow(float dt) {
 
@@ -47,18 +47,18 @@ public:
 
         // Display contents in a scrolling region
         TextColored(ImVec4(1,1,0,1), "Altitude");
-        for (auto b : ss.ship.prsInstances) {
+        for (auto b : starship.ship.prsInstances) {
             ImGui::Text("Alt@ [%d m]", Alt());
         }
        
         BeginChild("Controls");
         ImGui::SliderInt("Thrust [0-15]", &force, 0, 15);
-        ImGui::SliderAngle("Thrust Angle", &angle);
+        ImGui::SliderInt("Thrust Angle", &angle, -30,30);
         ImGui::Checkbox("Burners", &burner_on);
-        ss.burners.hidden = !burner_on;
+        starship.burners.hidden = !burner_on;
         if (!burner_on) force = 0;
         if (ImGui::Button("Redo")) {
-            ss.reset();
+            starship.reset();
         }
         EndChild();
         
@@ -76,13 +76,13 @@ public:
 #endif // !NO_IMGUI
 
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        if (gob->is(ss.ship)) {
+        if (gob->is(starship.ship)) {
         //for 2D model its not required//    glRotatef(90, 1, 0, 0);
         }
 
-        if (gob->is(ss.burners)) {
-            ss.burners.pos.x = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
-            ss.burners.pos.y = ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 50;
+        if (gob->is(starship.burners)) {
+            starship.burners.pos.x = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
+            starship.burners.pos.y = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 50;
         }
 #ifndef NO_IMGUI
         if (gob->is(gui)) RenderGui(deltaT);
@@ -95,28 +95,37 @@ public:
     GameObject dbglayer;
     
     int Alt() {
-        float ht = (933-ss.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2)/10;
+        float ht = (933-starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2)/10;
         return ht;
     }
     
+    bool Kee(int i1, char large) {
+        char small = large + 32;
+        return (i1 == small || i1 == large || i1 - AL_KEY_ALPHA == small || i1 - AL_KEY_ALPHA == large );
+    }
+    
 	virtual void processInput(PEG::CMD* p, float deltaT) {
-        if (!ss.burners.hidden) {
+        if (!starship.burners.hidden) {
             float angR = (angle+90)/FACTOR_RADIANS_DEGREES;
             float fx = force*cos(angR);
             float fy = force*sin(angR);
-            ss.burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
-            ss.ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
-            ss.ship.getInstancePtr(0)->Torque(angle);
+            starship.burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
+            starship.ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
+            //starship.ship.getInstancePtr(0)->rot- ->Torque(-angle/20);
+            starship.burners.pos.x = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x * P2S;
+            starship.burners.pos.y= starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y * P2S;
+            starship.burners.rot.z = angle;
         }
         if (p->command == CMD_KEYDOWN) {
-            if (p->i1 == 'w' || p->i1 == 'W') wireframe = !wireframe;
-            if (p->i1 == 'g' || p->i1 == 'G') gui.hidden = !gui.hidden;
-            if (p->i1 == 'd' || p->i1 == 'D') dbglayer.hidden = !dbglayer.hidden;
-        }
+            if (Kee(p->i1,'W')) wireframe = !wireframe;
+            if (Kee(p->i1,'G')) gui.hidden = !gui.hidden;
+            if (Kee(p->i1,'D')) dbglayer.hidden = !dbglayer.hidden;
+            if (Kee(p->i1,'B')) starship.burners.hidden = !starship.burners.hidden;
+         }
         pushDat(Alt());
  	}
     
-    StarShip ss;
+    StarShip starship;
     int BaseLineHeight = 115;
     
 	virtual void Init(char* path) {
@@ -129,11 +138,9 @@ public:
 		PhysAddGroundWithWalls(BaseLineHeight);
         force = 0;
 		AddResource(&background, "bg_p", "bocachica.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
-     //   gui.Hide();
-        ss.LoadIn(this);
+        starship.LoadIn(this);
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
-        AddResource(&dbglayer, "");
-        
-	}
+        AddResource(&dbglayer,"")->hidden = true;
+   }
 };

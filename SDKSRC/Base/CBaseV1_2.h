@@ -149,6 +149,8 @@ public:
 
 #define EFFECT_SQUEEZEIN	6701
 
+
+
 float absolute(float value) {
 	if (value<0.0f) return -value;
 	return value;
