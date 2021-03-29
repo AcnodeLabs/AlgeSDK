@@ -139,6 +139,7 @@ public:
         force = 0;
 		AddResource(&background, "bg_p", "bocachica.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         starship.LoadIn(this);
+        AddResource(&starship.ship, "Starship/DSC5164");
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
         AddResource(&dbglayer,"")->hidden = true;
