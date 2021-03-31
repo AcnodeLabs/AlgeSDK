@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
+    <None Include="..\Alge-AndroidVS\ops1.py" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">

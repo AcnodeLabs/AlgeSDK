@@ -63,8 +63,8 @@ public:
         that->AddResourceEx(&ship, "DSC5164", "DSC5164", 1, false, /*oSize*/0.1, density, restitution);//false::Polygon/Box
         burners.LoadIn(that);
         ship.AddChild(&burners);
-    //    burners.JuiceType = JuiceTypes::JUICE_ROTY;
-    //    burners.JuiceSpeed = 123.123;
+    //  burners.JuiceType = JuiceTypes::JUICE_ROTY;
+    //  burners.JuiceSpeed = 123.123;
         burners.hidden = true;
         reset();
     }
