@@ -122,6 +122,9 @@ public:
             if (Kee(p->i1,'D')) dbglayer.hidden = !dbglayer.hidden;
             if (Kee(p->i1,'B')) starship.burners.hidden = !starship.burners.hidden;
          }
+        if (p->command == CMD_TOUCH_START) {
+            force = force + 1;
+        }
         pushDat(Alt());
  	}
     
@@ -139,11 +142,11 @@ public:
         force = 0;
 		AddResource(&background, "bg_p", "bocachica.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         starship.LoadIn(this);
-        
        // AddResource(&starship.ship, "DSC5164");
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
-        AddResource(&dbglayer,"")->hidden = false;
-        
+        AddResource(&dbglayer,"")->hidden = true; 
+        starship.burners.hidden = false;
+        force = 11;
    }
 };
