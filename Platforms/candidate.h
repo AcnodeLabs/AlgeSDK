@@ -11,7 +11,7 @@
 // Edit here to point to AlgeSDK based cross platform Candidate Application 
 // ALGEAPPNAME will be name of Target in Mac, in Windows it is defined by ProjectName  
 #define ALGEAPPNAME "AlgeApp" //Should Match with Product .app or .exe name
-#include "../Apps/Planets/SN11.hpp"
+#include "../Apps/Ivank_Box2D/App_noimgui.hpp"
 
 // The Canditate to build is referenced above:-
 // For uncluttered workspace 'Do Close All but this canditdate.h' and Right Click and Open the file referenced below,
