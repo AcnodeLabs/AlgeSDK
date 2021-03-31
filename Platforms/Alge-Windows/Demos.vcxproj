@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Ivank_Box2D</ProjectName>
+    <ProjectName>Planets</ProjectName>
     <ProjectGuid>{EEF0E769-EAA3-47E8-A7DA-4A335BD98196}</ProjectGuid>
     <RootNamespace>Demos</RootNamespace>
     <Keyword>Win32Proj</Keyword>

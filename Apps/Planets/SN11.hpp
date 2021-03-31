@@ -100,8 +100,8 @@ public:
     }
     
     bool Kee(int i1, char large) {
-        char small = large + 32;
-        return (i1 == small || i1 == large || i1 - AL_KEY_ALPHA == small || i1 - AL_KEY_ALPHA == large );
+        char smal = large + 32;
+        return (i1 == smal || i1 == large || i1 - AL_KEY_ALPHA == smal || i1 - AL_KEY_ALPHA == large );
     }
     
 	virtual void processInput(PEG::CMD* p, float deltaT) {
@@ -139,7 +139,7 @@ public:
         force = 0;
 		AddResource(&background, "bg_p", "bocachica.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         starship.LoadIn(this);
-        AddResource(&starship.ship, "Starship/DSC5164");
+        AddResource(&starship.ship, "DSC5164");
         AddResource(&gui, "gui");
         output.pushP(CMD_SNDSET0, $ "pop.wav");
         AddResource(&dbglayer,"")->hidden = true;
