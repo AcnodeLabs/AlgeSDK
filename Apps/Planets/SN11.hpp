@@ -31,7 +31,7 @@ public:
         dat[63] = f;
     }
     int force;
-    int angle;
+    float angle;
 #ifndef NO_IMGUI    
     void MyFirstToolWindow(float dt) {
 
@@ -53,7 +53,7 @@ public:
        
         BeginChild("Controls");
         ImGui::SliderInt("Thrust [0-15]", &force, 0, 15);
-        ImGui::SliderInt("Thrust Angle", &angle, -30,30);
+        ImGui::SliderAngle("Thrust Angle", &angle);
         ImGui::Checkbox("Burners", &burner_on);
         starship.burners.hidden = !burner_on;
         if (!burner_on) force = 0;
@@ -81,8 +81,8 @@ public:
         }
 
         if (gob->is(starship.burners)) {
-            starship.burners.pos.x = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
-            starship.burners.pos.y = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 50;
+         //   starship.burners.pos.x = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x* P2S - rightSide/2;
+         //   starship.burners.pos.y = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - bottomSide/2 + 50;
         }
 #ifndef NO_IMGUI
         if (gob->is(gui)) RenderGui(deltaT);
@@ -105,17 +105,9 @@ public:
     }
     
 	virtual void processInput(PEG::CMD* p, float deltaT) {
-        if (!starship.burners.hidden) {
-            float angR = (angle+90)/FACTOR_RADIANS_DEGREES;
-            float fx = force*cos(angR);
-            float fy = force*sin(angR);
-            starship.burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
-            starship.ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
-            //starship.ship.getInstancePtr(0)->rot- ->Torque(-angle/20);
-            starship.burners.pos.x = starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().x * P2S;
-            starship.burners.pos.y= starship.ship.getInstancePtr(0)->physBodyPtr->GetPosition().y * P2S;
-            starship.burners.rot.z = angle;
-        }
+        
+        starship.Update(force,angle, deltaT);
+        
         if (p->command == CMD_KEYDOWN) {
             if (Kee(p->i1,'W')) wireframe = !wireframe;
             if (Kee(p->i1,'G')) gui.hidden = !gui.hidden;

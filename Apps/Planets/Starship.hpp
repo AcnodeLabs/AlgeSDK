@@ -8,8 +8,6 @@
 
 #include "SolarDb.hpp"
 
-
-
 class Burners : public GameObject {
 public:
     void LoadIn(AlgeApp* that) {
@@ -58,15 +56,43 @@ public:
     AlgeApp* thiz;
     void LoadIn(AlgeApp* that) {
         thiz = that;
-        float density = 1.1;  
+        float density = 1.1;
         float restitution = 0.1;
         that->AddResourceEx(&ship, "DSC5164", "DSC5164", 1, false, /*oSize*/0.1, density, restitution);//false::Polygon/Box
         burners.LoadIn(that);
         ship.AddChild(&burners);
-    //  burners.JuiceType = JuiceTypes::JUICE_ROTY;
+     // burners.JuiceType = JuiceTypes::JUICE_ROTY;
     //  burners.JuiceSpeed = 123.123;
         burners.hidden = true;
         reset();
+    }
+    
+    
+    void Update(float force, float thrustAngle,float deltaT) {
+        if (!burners.hidden) {
+            ship.getInstancePtr(0)->physBodyPtr->ApplyTorque(0.1,true);
+            float angleRad = -ship.getInstancePtr(0)->physBodyPtr->GetAngle();
+            burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
+           
+            burners.pos.set(getBurnerPos(angleRad));
+            burners.rot.z = -angleRad * FACTOR_RADIANS_DEGREES + thrustAngle * 4;
+            
+            float ang = (angleRad+90)/FACTOR_RADIANS_DEGREES;
+            float fx = force*cos(ang);
+            float fy = force*sin(ang);
+            ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
+            
+        }
+    }
+    
+    f3 getBurnerPos(float angR) {
+        float r = ship.m_height/2.0;
+        float s = sin(angR);
+        float c = cos(angR);
+        float px = r*s+ ship.getInstancePtr(0)->physBodyPtr->GetPosition().x * P2S - thiz->rightSide/2.0;
+        float py = r*c+ ship.getInstancePtr(0)->physBodyPtr->GetPosition().y * P2S - thiz->bottomSide/2.0;
+        float pz = 0;
+        return f3(px,py,pz);
     }
     
     void reset() {

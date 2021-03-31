@@ -66,6 +66,8 @@ public:
 	char xyz[64] = { 0 };
 	void clear() { x = 0; y = 0; z = 0; }
 	f3(float mx, float my, float mz) { x = mx; y = my; z = mz; }
+    void set(float mx, float my, float mz) { x = mx; y = my; z = mz; }
+    void set(f3 p) { x = p.x; y = p.y; z = p.z; }
 	f3(i2 m) { x = m.x; y = m.y; z = 0; }
 	string str(string fmt) {
     snprintf(xyz, 64, fmt.c_str(), x, y, z);
