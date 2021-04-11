@@ -4,7 +4,8 @@
 // Tip: Bookmark this file CANDIDATE.h for specifying App to build
 // Available AddOns:-
 // Windows          - CORE+BOX2D+IMGUI+FMOD+NATS
-// macOS            - CORE+BOX2D+IMGUI+FMOD+GNAT
+// macOS Intel      - CORE+BOX2D+IMGUI+FMOD+GNAT
+// macOS Silicon    - CORE+BOX2D+IMGUI+FMOD
 // iOS,ipadOS       - CORE+BOX2D+IMGUI+FMOD
 // Android          - CORE+BOX2D
 

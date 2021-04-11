@@ -34,8 +34,8 @@
 		9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4636C81FBA0CFD008FB5EF /* CoreFoundation.framework */; };
 		9CE687D322E0EDE10046E542 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE687D222E0EDE10046E542 /* GLUT.framework */; };
 		9CE79C701F9DFBF700B87310 /* Mars-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */; };
-		A595EE302604B39100BFB870 /* libnats_staticd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A595EE2F2604B39100BFB870 /* libnats_staticd.a */; };
-		A596D93025D29DE4000959C2 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A596D92F25D29DE3000959C2 /* Extensions.cpp */; };
+		A53C77E62622D2F700912EC0 /* libnats_staticd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A53C77E52622D2F700912EC0 /* libnats_staticd.a */; };
+		A53C77ED2622D5F700912EC0 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A596D92F25D29DE3000959C2 /* Extensions.cpp */; };
 		A59D66D325D3963900A8A25B /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D125D3963900A8A25B /* libfmod.dylib */; };
 		A59D66D525D3963900A8A25B /* libfmodL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D66D225D3963900A8A25B /* libfmodL.dylib */; };
 		A59D66DA25D396AE00A8A25B /* libfmod.dylib in Resources */ = {isa = PBXBuildFile; fileRef = A59D66D825D396AE00A8A25B /* libfmod.dylib */; };
@@ -67,7 +67,6 @@
 		88BBEF8423163D1B009AEDF6 /* serif_s24.glyphmap */ = {isa = PBXFileReference; lastKnownFileType = text; name = serif_s24.glyphmap; path = ../serif_s24.glyphmap; sourceTree = "<group>"; };
 		88BBEF8623165163009AEDF6 /* candidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = candidate.h; path = ../candidate.h; sourceTree = "<group>"; };
 		88D2F4DE2558FCC30061682A /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../../../imgui/imgui_internal.h; sourceTree = "<group>"; };
-		88D2F4E12558FCC40061682A /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../../imgui/imgui.h; sourceTree = "<group>"; };
 		88E172E523C4F0A5007A5116 /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmod.dylib; sourceTree = "<group>"; };
 		88E172E723C4F0E9007A5116 /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodL.dylib; path = ../../SDKSRC/Base/fmod/lib/libfmodL.dylib; sourceTree = "<group>"; };
 		9C2B84542243F747005DF297 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../../SDKSRC/Base/camera.cpp; sourceTree = "<group>"; };
@@ -111,6 +110,8 @@
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		A527DDCB262317DA0057C00F /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../../imgui/imgui.h; sourceTree = "<group>"; };
+		A53C77E52622D2F700912EC0 /* libnats_staticd.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libnats_staticd.a; sourceTree = "<group>"; };
 		A595ED1326047AE600BFB870 /* libnats.pc */ = {isa = PBXFileReference; lastKnownFileType = text; name = libnats.pc; path = ../../../cnats/silicon/libnats.pc; sourceTree = "<group>"; };
 		A595ED1526047B4000BFB870 /* nonats */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = nonats; path = ../../../cnats/silicon/test/dylib/nonats; sourceTree = "<group>"; };
 		A595ED172604A0C500BFB870 /* libnats.2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnats.2.3.0.dylib; path = ../../../cnats/silicon/src/libnats.2.3.0.dylib; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		A595ED3E2604A54B00BFB870 /* libnats.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnats.dylib; path = ../../../cnats/silicon/src/libnats.dylib; sourceTree = "<group>"; };
 		A595EDBE2604AE9000BFB870 /* libnatsd.2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnatsd.2.3.0.dylib; path = "../../../cnats/arm64-Xcode/src/Debug/libnatsd.2.3.0.dylib"; sourceTree = "<group>"; };
 		A595EDC22604AEB600BFB870 /* libnatsd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnatsd.dylib; path = "../../../cnats/arm64-Xcode/src/Debug/libnatsd.dylib"; sourceTree = "<group>"; };
-		A595EE2F2604B39100BFB870 /* libnats_staticd.a */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c.preprocessed; name = libnats_staticd.a; path = "../../../cnats/arm64-Xcode/src/Debug/libnats_staticd.a"; sourceTree = "<group>"; };
 		A596D92F25D29DE3000959C2 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
 		A59D66D125D3963900A8A25B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmod.dylib; sourceTree = "<group>"; };
 		A59D66D225D3963900A8A25B /* libfmodL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfmodL.dylib; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				9CE687D122E0EDCF0046E542 /* CoreFoundation.framework in Frameworks */,
 				9CE687D022E0EDBA0046E542 /* CoreData.framework in Frameworks */,
 				9CE687CE22E0ED9E0046E542 /* Foundation.framework in Frameworks */,
-				A595EE302604B39100BFB870 /* libnats_staticd.a in Frameworks */,
+				A53C77E62622D2F700912EC0 /* libnats_staticd.a in Frameworks */,
 				9CE687CC22E0ED7F0046E542 /* OpenAL.framework in Frameworks */,
 				9CE687CA22E0ED5D0046E542 /* OpenGL.framework in Frameworks */,
 				9CE59E5A22E06297000FB6F1 /* CoreGraphics.framework in Frameworks */,
@@ -156,14 +156,14 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				A527DDCB262317DA0057C00F /* imgui.h */,
 				A5AB4F652610E94A00634596 /* Box2DebugDraw.hpp */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
 				A59D66D825D396AE00A8A25B /* libfmod.dylib */,
 				A59D66D925D396AE00A8A25B /* libfmodL.dylib */,
-				A595EE2F2604B39100BFB870 /* libnats_staticd.a */,
+				A53C77E52622D2F700912EC0 /* libnats_staticd.a */,
 				88070D4F25CC5AD2009A0468 /* imgui_impl_opengl2.h */,
 				88D2F4DE2558FCC30061682A /* imgui_internal.h */,
-				88D2F4E12558FCC40061682A /* imgui.h */,
 				88223B84239F7C9200755258 /* jpgd.cpp */,
 				9CFB727A22E0501B00426B8F /* AlgeApp.hpp */,
 				9C4636C01FBA0C73008FB5EF /* AlgeSDK.ads.h */,
@@ -354,10 +354,10 @@
 				88223B85239F7C9200755258 /* jpgd.cpp in Sources */,
 				88AB79D12316DC63004A0239 /* UTM.cpp in Sources */,
 				9C3281CC13F275F900A53E54 /* main.m in Sources */,
+				A53C77ED2622D5F700912EC0 /* Extensions.cpp in Sources */,
 				9C3281D213F275F900A53E54 /* AlgeAppPlanetsAppDelegate.m in Sources */,
 				9C4637221FBA0E4B008FB5EF /* alge-mac.cpp in Sources */,
 				9C2B84552243F748005DF297 /* camera.cpp in Sources */,
-				A596D93025D29DE4000959C2 /* Extensions.cpp in Sources */,
 				9C46498813F2AF22004CE3D7 /* Timer.cpp in Sources */,
 				9C3FB9A51FAEF72F0098B256 /* Toast.mm in Sources */,
 			);
@@ -435,12 +435,14 @@
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					../../../cnats/src,
 					../../SDKSRC/Tools/CNetMsg,
-					../../../Box2D,
+					../../../Box2D/Box2D,
 				);
 				INFOPLIST_FILE = "Mars-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/xalmini/Desktop/SANDBOX/Box2D/Box2D;
+				USER_HEADER_SEARCH_PATHS = /Users/xalmini/Desktop/SANDBOX/Box2D/Box2D;
 			};
 			name = Debug;
 		};
@@ -481,12 +483,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					../../../cnats/src,
-					../../../Box2D,
+					../../../Box2D/Box2D,
 					../../SDKSRC/Tools/CNetMsg,
 				);
 				INFOPLIST_FILE = "Mars-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				SDKROOT = macosx;
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/xalmini/Desktop/SANDBOX/Box2D/Box2D;
+				USER_HEADER_SEARCH_PATHS = /Users/xalmini/Desktop/SANDBOX/Box2D/Box2D;
 			};
 			name = Release;
 		};

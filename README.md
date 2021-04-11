@@ -284,4 +284,8 @@ Download Platform-Tools (platform-tools_r22-windows) from google Repository (see
 Change line containing zipalign version number as per the installed directrory in build-andrroid.bat
 make sure ANT_HOME is set also
 
+Developer Notes:-
+To build cnats on a (Apple M1) use this:-
+cmake -G Xcode .. -DNATS_BUILD_WITH_TLS=OFF -DNATS_BUILD_STREAMING=OFF 
+It will generate xcode project to build cnats static lib
 
