@@ -35,14 +35,21 @@ public:
     CControls c;
     
 	void processInput(PEG::CMD* p, float deltaT) { 
-
-		short touchData = 0;
+        static char tim[64];
+        static int calls = 0;
+        short touchData = 0;
 
 		if (p->command == CMD_SCREENSIZE) {
 			c.screen[0] = p->i1;
 			c.screen[1] = p->i2;
 		}
 
+        if (p->command == CMD_HHMM) {
+            calls++;
+            sprintf(tim,"%02d:%02d [call#%d]", p->i1, p->i2, calls);
+            SetTitle(tim);
+        }
+        
 		if (p->command == CMD_TOUCH_START) {
 			touchData = (c.KROSS_(false, p->i1, p->i2));
             jn = "Touched " + c.toStr(touchData);

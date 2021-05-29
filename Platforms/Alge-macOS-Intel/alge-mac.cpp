@@ -166,7 +166,7 @@ static void HandleDisplay( )
  float newTime = time1.getElapsedTimeInSec();
  deltaT =  newTime - lastTime;
  if (aX==0 && aY==0 && aZ==0) aY=-9.8*100;
-  
+
     app.Render(deltaT,aX,aY,aZ);
 
    processOutput();

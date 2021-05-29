@@ -1240,8 +1240,58 @@ public:
 
 	RunningAverage tAvg;
 
-	void Render(float dT, int aX, int aY, int aZ) {
+    class Timeulator {
+        int isec = 0;
+        float fsec = 0.0;
+    public:
+        int curHH = 0;
+        int curMM = 0;
+        int curSEC = 0;
 
+        bool tick(float dt) {
+            fsec+=dt;
+            int n = int(fsec);//https://stackoverflow.com/questions/3127962/c-float-to-int:
+            if (isec!=n) {
+                isec = n;
+                return true;
+            }
+            return false;
+        }
+        bool tickMM(float dt) {
+            if (tick(dt)) {
+                curSEC++;
+                if (curSEC>=60) {
+                    curMM++;
+                    curSEC=0;
+                    if (curMM>=60) {
+                        curHH++;
+                        curMM=0;
+                        if (curHH>=24) {
+                            curHH=0;
+                            curMM=0;
+                            
+                        }
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+        void test() {
+            bool b1 = tick(0.4);
+            bool b2 = tick(0.4);
+            bool b3 = tick(0.4);
+            bool b4 = tick(0.4);
+        }
+        Timeulator() {
+          //  test();
+        }
+    };
+    
+    Timeulator timulator;
+        
+	void Render(float dT, int aX, int aY, int aZ) {
+        if (timulator.tickMM(dT)) input.pushI(CMD_HHMM,timulator.curHH,timulator.curMM);
 		tAvg.Put(dT);
 		float deltaT = tAvg.Get() * timeMultiplier;  //Always use running average of incoming dt
 		
