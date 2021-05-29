@@ -6,12 +6,17 @@
  macOS Note:- Navigate to App Folder by File > Show in Finder then Ctrl + UP to view peer .Assets Folder, Drop it in xcode project before run [this step is not required in Windows/VS]
  */
 
-#include "SolarDb.hpp"
+
 
 class Burners : public GameObject {
 public:
     void LoadIn(AlgeApp* that) {
         that->AddResource(this, "burn", "burn", 1);
+    }
+    void Update(float torque, f3 _pos) {
+        JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
+        pos.set(_pos);
+        rot.z = torque*1000;
     }
 };
 
@@ -54,6 +59,9 @@ public:
     GameObject ship;
     b2Transform initialTransform;
     AlgeApp* thiz;
+    bool burner_on;
+    float force;
+    float torque;
     void LoadIn(AlgeApp* that) {
         thiz = that;
         float density = 1.1;
@@ -61,31 +69,36 @@ public:
         that->AddResourceEx(&ship, "DSC5164", "DSC5164", 1, false, /*oSize*/0.1, density, restitution);//false::Polygon/Box
         burners.LoadIn(that);
         ship.AddChild(&burners);
-     // burners.JuiceType = JuiceTypes::JUICE_ROTY;
-    //  burners.JuiceSpeed = 123.123;
+        burners.JuiceType = JuiceTypes::JUICE_FLICKER;
+        burners.JuiceSpeed = 123.123;
         burners.hidden = true;
         reset();
     }
     
+    float Alt() {
+        float ht = (933.0-ship.getInstancePtr(0)->physBodyPtr->GetPosition().y* P2S - thiz->bottomSide/2.)/10.;
+        return ht;
+    }
     
-    void Update(float force, float thrustAngle,float deltaT) {
+    void Update( float thrustAngle,float deltaT) {
         if (!burners.hidden) {
-            ship.getInstancePtr(0)->physBodyPtr->ApplyTorque(0.1,true);
+           //
             float angleRad = -ship.getInstancePtr(0)->physBodyPtr->GetAngle();
-            burners.JuiceSpeed = 123 + 50 * rndm(0.0, 1.0);
-           
-            burners.pos.set(getBurnerPos(angleRad));
-            burners.rot.z = -angleRad * FACTOR_RADIANS_DEGREES + thrustAngle * 4;
+            burners.Update(torque, getEnginePos(angleRad));
             
             float ang = (angleRad+90)/FACTOR_RADIANS_DEGREES;
-            float fx = force*cos(ang);
+            float fx = force*cos(thrustAngle-90);
             float fy = force*sin(ang);
-            ship.getInstancePtr(0)->Thrust(f2(-fx, -fy));
+            ship.getInstancePtr(0)->Thrust(f2(0, -fy));
+            float dfx = 0.01;
+            if (fx>dfx) fx = dfx;
+            if (fx< -dfx) fx = -dfx;
+            ship.getInstancePtr(0)->physBodyPtr->ApplyTorque(torque,true);
             
         }
     }
     
-    f3 getBurnerPos(float angR) {
+    f3 getEnginePos(float angR) {
         float r = ship.m_height/2.0;
         float s = sin(angR);
         float c = cos(angR);
@@ -97,20 +110,12 @@ public:
     
     void reset() {
         ship.getInstancePtr(0)->physBodyPtr->SetTransform(b2Vec2(thiz->rightSide*0.5*S2P, 0), 0);
+        torque = 0;
+        force = 2.0;
+        burner_on = false;
+        burners.hidden = true;
      }
     
 };
 
-class AWindow {
-public:
-    GameObject gui;
-    void Init(AlgeApp* that) {
-        that->AddResource(&gui, "gui");
-    }
 
-    void Update(GameObject* check, float deltaT) {
-        if (check->is(gui) && !gui.hidden)
-        {
-        }
-    }
-};

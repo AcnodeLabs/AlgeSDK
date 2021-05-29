@@ -181,6 +181,7 @@ enum JuiceTypes {
 	JUICE_ROTXYZ_PULSATE_FULLY,
 	JUICE_DIE,
 	JUICE_DIE_TEMP,
+    JUICE_FLICKER,
 	JUICES_CANCEL,
 	JUICES_END
 };
@@ -201,6 +202,7 @@ string JuiceName(int j) {
 	if (j == JUICE_ROTXYZ_PULSATE_FULLY) return "JUICE_ROTXYZ_PULSATE_FULLY";
 	if (j == JUICE_DIE) return "JUICE_DIE";
 	if (j == JUICE_DIE_TEMP) return "JUICE_DIE_TEMP";
+    if (j == JUICE_FLICKER) return "JUICE_FLICKER";
 	if (j == JUICES_CANCEL) return "JUICE_CANCEL";
 	if (j == JUICES_END) return "JUICE_END";
 	return "Wrong ID " + std::to_string(j);
