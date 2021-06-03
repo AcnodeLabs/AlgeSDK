@@ -1287,23 +1287,11 @@ public:
             return false;
         }
         
-        void nowis ()
+        i2 nowis ()
         {
-          using std::chrono::system_clock;
-
-          std::chrono::duration<int,std::ratio<60*60*24> > one_day (1);
-
-          system_clock::time_point today = system_clock::now();
-          system_clock::time_point tomorrow = today + one_day;
-
-          std::time_t tt;
-
-          tt = system_clock::to_time_t ( today );
-          std::cout << "today is: " << ctime(&tt);
-
-          tt = system_clock::to_time_t ( tomorrow );
-          std::cout << "tomorrow will be: " << ctime(&tt);
-
+            time_t now = time(NULL);
+            struct tm *tm_struct = localtime(&now);
+            return i2(tm_struct->tm_hour, tm_struct->tm_min);
         }
         
         void test() {
@@ -1313,7 +1301,9 @@ public:
             bool b4 = tick(0.4);
         }
         Timeulator() {
-          //  test();
+            i2 n = nowis();
+            curHH = n.x;
+            curMM = n.y;
         }
     };
     
