@@ -382,10 +382,10 @@ public:
 	float n[512 * 4];
 	float c[512 * 4];
 
-	unsigned int iver;
-	unsigned int itex;
-	unsigned int inor;
-	unsigned int icol;
+	unsigned int iver = 0;
+	unsigned int itex = 0;
+	unsigned int inor = 0;
+	unsigned int icol = 0;
 
 	GLuint MODE;
 
@@ -667,6 +667,9 @@ public:
 		glColor4f(randm(), randm(), randm(), 1.0f);
 	}
 
+    void drawColor(float r, float g, float b) {
+        
+    }
 
 };
 #endif

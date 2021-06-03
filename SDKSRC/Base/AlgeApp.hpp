@@ -1246,7 +1246,7 @@ public:
     public:
         int curHH = 0;
         int curMM = 0;
-        int curSEC = 0;
+        int curSEC = -1;
 
         bool tick(float dt) {
             fsec+=dt;
@@ -1257,7 +1257,16 @@ public:
             }
             return false;
         }
+        
         bool tickMM(float dt) {
+            if (tickSS(dt)) {
+                if (curSEC==0)
+                    return true;
+            }
+            return false;
+        }
+        
+        bool tickSS(float dt) {
             if (tick(dt)) {
                 curSEC++;
                 if (curSEC>=60) {

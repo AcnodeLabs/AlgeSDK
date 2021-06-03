@@ -7,7 +7,7 @@
 
 class /*Juices*/ App : public AlgeApp { 
 	
-	GameObject objct;
+	GameObject objct, needle;
 	GameObject background;
 	PosRotScale *sel;
 	
@@ -28,11 +28,13 @@ public:
 			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 		);
             AddResource(&objct, "spiral", "spiral.jpg", 1.5);
+            AddObject(&needle);
             sel = &objct;
 	}
 
     string jn;
     CControls c;
+    aL10 easydraw;
     
 	void processInput(PEG::CMD* p, float deltaT) { 
         static char tim[64];
@@ -46,7 +48,11 @@ public:
 
         if (p->command == CMD_HHMM) {
             calls++;
-            sprintf(tim,"%02d:%02d [call#%d]", p->i1, p->i2, calls);
+            int cHH=23;
+            float mmhhf = (cHH+p->i1) + p->i2/60.0;
+            short ang = mmhhf*30;//0,3,6,9,12...=>0,90,180,270..
+            sprintf(tim,"%02d:%02d %.2f %03d [call#%d]", p->i1, p->i2, mmhhf,ang,calls);
+            sel->rot.z = -ang;
             SetTitle(tim);
         }
         
@@ -109,6 +115,12 @@ public:
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
 		if (gob->is(background)) 
 			glColor3f(0.8, 0.8, 0.8);//dim 80%
+        if (gob->is(needle)) {
+            i2 midScreen(rightSide/2,bottomSide/2);
+            i2 topMiddle(rightSide/2,100);
+            easydraw.Line(midScreen.x, midScreen.y, topMiddle.x, topMiddle.y);
+            gob->color.set(0, 0, 1.0);
+        }
 	}
 
 };
