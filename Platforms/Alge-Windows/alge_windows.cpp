@@ -737,7 +737,8 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 		case WM_SYSKEYDOWN:
 		{
 			static BOOL bCursor = true;
-			game.input.pushI(CMD_KEYDOWN,NumberKeys(wParam),0);
+			//game.input.pushI(CMD_KEYDOWN,NumberKeys(wParam),0);
+			game.input.pushI(CMD_KEYDOWN, (wParam), 0);
 			if (NumberKeys(wParam)==18) bCursor=!bCursor;
 			ShowCursor(bCursor);
 			keys[wParam] = TRUE;					// If So, Mark It As TRUE

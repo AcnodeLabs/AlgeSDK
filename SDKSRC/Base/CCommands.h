@@ -76,15 +76,30 @@
 #define CMD_GAMEPAD_EVENT 0x8676
 #define CMD_SETTINGS_SCREEN 0x9100
 
-#define MAC_KEY_FWD 101
-#define MAC_KEY_BAC 103
-#define MAC_KEY_LFT 100
-#define MAC_KEY_RGT 102
-#define MAC_KEY_PGUP 104
-#define MAC_KEY_PGDN 105
-#define MAC_KEY_0 48
-#define MAC_KEY_9 57
-#define MAC_KEY_PLUS 43
+#ifdef WIN32
+#define KEY_FWD 38
+#define KEY_BAC 40
+#define KEY_LFT 37
+#define KEY_RGT 39
+#define KEY_PGUP 41
+#define KEY_PGDN 42
+#define KEY_0 48
+#define KEY_9 57
+#define KEY_PLUS 43
+
+#else
+#define KEY_FWD 101
+#define KEY_BAC 103
+#define KEY_LFT 100
+#define KEY_RGT 102
+#define KEY_PGUP 104
+#define KEY_PGDN 105
+#define KEY_0 48
+#define KEY_9 57
+#define KEY_PLUS 43
+
+#endif // WIN32
+
 
 #define AL_KEY_PLUS (58)
 #define AL_KEY_MINUS (60)
