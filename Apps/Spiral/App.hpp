@@ -50,8 +50,10 @@ public:
             calls++;
             float mmhhf = (p->i1) + p->i2/60.0;
             short ang = mmhhf*30;//0,3,6,9,12...=>0,90,180,270..
-            sprintf(tim,"%02d:%02d [%cM]", p->i1, p->i2, mmhhf<12?'A':'P');
-            sel->rot.z = -ang;
+
+            sprintf(tim,"%02d:%02d %.2f %03d [call#%d]", p->i1, p->i2, mmhhf,ang,calls);
+            sel->rot.z = ang;
+
             SetTitle(tim);
         }
         

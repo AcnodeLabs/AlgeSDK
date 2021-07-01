@@ -1,4 +1,4 @@
-*.GOB
+*.GOB#*
 *._*
 *.DS_Store
 Platforms/Alge-iPhone/DerivedData

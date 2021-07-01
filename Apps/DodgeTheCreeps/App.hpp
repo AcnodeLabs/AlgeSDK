@@ -313,16 +313,16 @@ public:
                 quiet = !quiet;
             }
             
-			if (p->i1 == MAC_KEY_RGT) {
+			if (p->i1 == KEY_RGT) {
 				playerGrey.SetIntent('R');
 			}
-			if (p->i1 == MAC_KEY_LFT) {
+			if (p->i1 == KEY_LFT) {
 				playerGrey.SetIntent('L');
 			}
-			if (p->i1 == MAC_KEY_FWD) {
+			if (p->i1 == KEY_FWD) {
 				playerGrey.SetIntent('U');
 			}
-			if (p->i1 == MAC_KEY_BAC) {
+			if (p->i1 == KEY_BAC) {
 				playerGrey.SetIntent('D');
 			}
 		}

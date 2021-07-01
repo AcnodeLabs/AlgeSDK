@@ -152,10 +152,7 @@
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\dimensions.h \
   C:\Users\liveb\AppData\Local\Android\Sdk\ndk-bundle\build\\..\sources\cxx-stl\llvm-libc++\include\iomanip \
   jni\..\..\..\..\AlgeSDK\SDKSRC\Base\XFunctions.hpp jni\CANDIDATE.h \
-  jni\..\..\candidate.h jni\..\..\..\Apps\Planets\SN11.hpp \
-  jni\..\..\..\Apps\Planets\Starship.hpp \
-  jni\..\..\..\Apps\Planets\SolarDb.hpp \
-  jni\..\..\..\Apps\Planets\Box2DebugDraw.hpp
+  jni\..\..\candidate.h jni\..\..\..\Apps\Spiral\App.hpp
 
 jni\..\..\..\..\AlgeSDK\SDKSRC\Base\deviceapp.cpp:
 
@@ -469,10 +466,4 @@ jni\CANDIDATE.h:
 
 jni\..\..\candidate.h:
 
-jni\..\..\..\Apps\Planets\SN11.hpp:
-
-jni\..\..\..\Apps\Planets\Starship.hpp:
-
-jni\..\..\..\Apps\Planets\SolarDb.hpp:
-
-jni\..\..\..\Apps\Planets\Box2DebugDraw.hpp:
+jni\..\..\..\Apps\Spiral\App.hpp:
