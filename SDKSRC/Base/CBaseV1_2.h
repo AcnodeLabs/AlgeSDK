@@ -565,18 +565,24 @@ public:
 		glDrawArrays(GL_LINES, 0, 2);
 	}
 
-	void Circle(float r, short segments) {
+
+    
+	void Circle(float r, short segments, i2 center) {
 		double lx = r* cos(0.0f);
 		double ly = r* sin(0.0f);
 		for (double th = 3.1417 / segments; th<3.1417 * 2; th += 3.1417 / segments) {
 			float x = r* cos(th);
 			float y = r* sin(th);
-			Line(lx, ly, x, y);
+			Line(center.x+lx, center.y+ly, center.x+x, center.y+y);
 			lx = x;
 			ly = y;
 		}
 	}
-
+    void Circle(float r, short segments) {
+        i2 cen;
+        cen.x = 0; cen.y = 0;
+        Circle(r,segments,cen);
+    }
 	void Rect(float w, float h) {
 		float squareverts[] = { 0,0, 0,h, 0,0, w,0, 0,h, w,h, w,h, w,0 };
 		glVertexPointer(2, GL_FLOAT, 0, squareverts);

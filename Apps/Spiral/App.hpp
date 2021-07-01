@@ -27,7 +27,7 @@ public:
 			"time_machine.jpg",
 			XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
 		);
-            AddResource(&objct, "spiral", "spiral.jpg", 1.5);
+            AddResource(&objct, "spiral", "spiral.jpg", 2.5);
             AddObject(&needle);
             sel = &objct;
 	}
@@ -50,12 +50,13 @@ public:
             calls++;
             float mmhhf = (p->i1) + p->i2/60.0;
             short ang = mmhhf*30;//0,3,6,9,12...=>0,90,180,270..
-            sprintf(tim,"%02d:%02d %.2f %03d [call#%d]", p->i1, p->i2, mmhhf,ang,calls);
+            sprintf(tim,"%02d:%02d [%cM]", p->i1, p->i2, mmhhf<12?'A':'P');
             sel->rot.z = -ang;
             SetTitle(tim);
         }
         
-		if (p->command == CMD_TOUCH_START) {
+		if (0 && p->command == CMD_TOUCH_START) {
+            
 			touchData = (c.KROSS_(false, p->i1, p->i2));
             jn = "Touched " + c.toStr(touchData);
             
@@ -67,8 +68,8 @@ public:
             }         
 		}
 
-		if (p->command == CMD_KEYDOWN || touchData) {
-
+		if (0 && (p->command == CMD_KEYDOWN || touchData)) {
+            
 			if (p->i1 == AL_KEY_PLUS) {
 				sel->JuiceSpeed *= 2;
 				jn = "[x2] JuiceSpeed=" + std::to_string(sel->JuiceSpeed);
@@ -108,16 +109,26 @@ public:
 			output.pushP(CMD_TITLE, $ jn.c_str(), 0);
 			output.pushP(CMD_TOAST, $ jn.c_str(), 0);
 		}
-
 	}
 
+    int yfromAng(i2 mid) {
+        int ang = -sel->rot.z;
+        if (ang<90) return mid.y-500;
+        if (ang<180) return mid.y-400;
+        if (ang<270) return mid.y-300;
+        if (ang<360) return mid.y-200;
+    }
+    
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-		if (gob->is(background)) 
+        glClearColor(1.0, 1.0, 1.0, 1.0);
+        if (gob->is(background))
 			glColor3f(0.8, 0.8, 0.8);//dim 80%
         if (gob->is(needle)) {
             i2 midScreen(rightSide/2,bottomSide/2);
             i2 topMiddle(rightSide/2,100);
             easydraw.Line(midScreen.x, midScreen.y, topMiddle.x, topMiddle.y);
+            midScreen.y = yfromAng(midScreen);
+            easydraw.Circle(70, 30, midScreen);
             gob->color.set(0, 0, 1.0);
         }
 	}
