@@ -214,7 +214,6 @@ public:
 	}
 };
 
-
 ///TODO
 ///Flicker, Trail
 class /*DodgeTheCreeps*/ App : public AlgeApp { 

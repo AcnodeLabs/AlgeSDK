@@ -280,7 +280,7 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 			//	ShellExecuteA(hWnd, "open", soundfiles[command-CMD_SNDPLAY0], "", "C:\\", SW_SHOWNORMAL);
 		}
 		else if (command == CMD_VIDPLAY) {
-			ShellExecuteA(hWnd, "open", "C:\\acnode\\Alge_Demos\\Data\\video1.mp4", "", "C:\\", SW_SHOWNORMAL);
+		//	ShellExecuteA(hWnd, "open", "C:\\acnode\\Alge_Demos\\Data\\video1.mp4", "", "C:\\", SW_SHOWNORMAL);
 		}
 		else if (command == CMD_TITLE) {
 			SetWindowTextA(hWnd, (LPCSTR)p1);
