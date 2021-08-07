@@ -17,7 +17,7 @@ public:
 	int sum = 0;
 	CCfg(const char* fname) {
 #ifndef METRO
-		fopen_s(&finp, fname, "r");
+		FILE* finp = fopen(fname, "r");
 		if (finp) {
 			while (!feof(finp)) {
 				fgets(line, 1024, finp);

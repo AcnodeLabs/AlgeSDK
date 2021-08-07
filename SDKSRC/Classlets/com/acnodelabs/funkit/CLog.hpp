@@ -1,27 +1,34 @@
 #ifdef CLOG_INCLUDED
 #else
 #define CLOG_INCLUDED
+#include <string>
+
 class CLog {
-	FILE *outp;
+    FILE *outp;
 public:
-	CLog() {
+    CLog() {
 #ifndef METRO
-		outp = fopen("log2.txt", "w");
+        outp = fopen("log.txt", "w");
 #endif
-	}
+    }
 
-	void it(char* line) {
+    void it(char* line, bool printalso = true) {
 #ifndef METRO
-		fprintf(outp,", \"%s\"\n", line);
+        if (outp) fprintf(outp,"%s", line);
 #endif
-	}
+        if (printalso) printf(line);
+    }
 
-	~CLog() {
+    void its(std::string line, bool printalso = true) {
+        it((char*)line.c_str(),printalso);
+        it((char*)"\n",printalso);
+    }
+
+    ~CLog() {
 #ifndef METRO
-		if (outp)
-		fclose(outp);
+        if (outp) fclose(outp);
 #endif
-	}
+    }
 
 };
 #endif
