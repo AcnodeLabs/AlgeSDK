@@ -108,7 +108,7 @@ public:
         }
         
         if (cmd->command == CMD_KEYDOWN) {
-            if (cmd->i1 == MAC_KEY_PLUS) {
+            if (cmd->i1 == KEY_PLUS) {
                 for (unsigned int i=0; i< baloons.prsInstances.size(); i++) {
                     baloons.getInstancePtr(i)->hidden = false;
                     app->output.pushP(CMD_SNDPLAY3, $ "drop.wav");
