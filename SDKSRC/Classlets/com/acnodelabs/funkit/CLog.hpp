@@ -16,7 +16,7 @@ public:
 #ifndef METRO
         if (outp) fprintf(outp,"%s", line);
 #endif
-        if (printalso) printf(line);
+        if (printalso) printf("%s",line);
     }
 
     void its(std::string line, bool printalso = true) {

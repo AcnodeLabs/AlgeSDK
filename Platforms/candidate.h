@@ -12,12 +12,11 @@
 // Edit here to point to AlgeSDK based cross platform Candidate Application 
 // ALGEAPPNAME will be name of Target in Mac, in Windows it is defined by ProjectName  
 #define ALGEAPPNAME "AlgeApp" //Should Match with Product .app or .exe name
-#include "../Apps/PoppingTime/App.hpp"
+#include "../Apps/Planets/SN11.hpp"
 
 // The Canditate to build is referenced above:-
-// For uncluttered workspace 'Do Close All but this canditdate.h' and Right Click and Open the file referenced below,
-// Some Samples are XGui, DodgeTheCreeps, PoppingTime, Juices, Ivan_Box2D, Planets
-
+// For uncluttered workspace 'Do "Close All but this" canditdate.h' and Right Click and Open the file referenced below,
+// Some Samples are XGui, DodgeTheCreeps, PoppingTime, Juices, Ivank_Box2D, Planets
 
 //For ease of Development Common.Assets/Data is added in the Project Build Phase [mac], so
 //if a new app is added of new asset is added, modify and run collect.sh in app directory once after adding assets, this will also copy the Data of the App to Common.Assets/Data, in Production Use Original App.Assets folder instead of Common.Assets

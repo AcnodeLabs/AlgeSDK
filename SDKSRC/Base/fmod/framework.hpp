@@ -38,11 +38,11 @@ FMOD_RESULT F_CALLBACK channelGroupCallback(FMOD_CHANNELCONTROL* channelControl,
 
 FMOD_RESULT F_CALLBACK nonblockcallback(FMOD_SOUND* sound, FMOD_RESULT result)
 {
-    FMOD::Sound* snd = (FMOD::Sound*)sound;
+  //  FMOD::Sound* snd = (FMOD::Sound*)sound;
 
-    printf("Sound loaded! (%d) %s\n", result, FMOD_ErrorString(result));
+ //   printf("Sound loaded! (%d) %s\n", result, FMOD_ErrorString(result));
 
-    soundIsReady = true;
+ //   soundIsReady = true;
     
     return FMOD_OK;
 }

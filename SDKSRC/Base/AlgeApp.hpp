@@ -1295,10 +1295,10 @@ public:
         }
         
         void test() {
-            bool b1 = tick(0.4);
-            bool b2 = tick(0.4);
-            bool b3 = tick(0.4);
-            bool b4 = tick(0.4);
+       //     bool b1 = tick(0.4);
+       //     bool b2 = tick(0.4);
+        //    bool b3 = tick(0.4);
+       //     bool b4 = tick(0.4);
         }
         Timeulator() {
             i2 n = nowis();
@@ -2263,8 +2263,10 @@ public:
         startScreen.start.pos.x = 0.5 * rightSide;
 		startScreen.ratings.pos.x = startScreen.start.pos.x;
         startScreen.start.pos.y = 0.9 * bottomSide;
+
         score.pos.y = 0.05 * bottomSide;
         score.pos.x = 0.85 * rightSide;
+
         dPad.pos.x = rightSide - 64;
         dPad.pos.y = bottomSide / 2;
     }

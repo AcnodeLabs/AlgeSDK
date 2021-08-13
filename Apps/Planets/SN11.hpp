@@ -48,7 +48,6 @@ public:
         bufHeight.pushDat(starship.Alt());
  	}
     
-    
     int BaseLineHeight = 115;
     
 	virtual void Init(char* path) {

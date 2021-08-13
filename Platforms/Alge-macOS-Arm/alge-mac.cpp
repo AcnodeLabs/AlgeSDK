@@ -217,7 +217,7 @@ static void HandleDisplay( )
     app.Render(deltaT,aX,aY,aZ);
 
    processOutput();
- glutSwapBuffers( );
+   glutSwapBuffers( );
    
  lastTime = newTime;
 }
