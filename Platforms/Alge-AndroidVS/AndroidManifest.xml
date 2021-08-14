@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.acnodelabs.alge.Spiral">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.acnodelabs.alge.PoppingTime">
 <uses-sdk android:minSdkVersion="27" />
-<application  android:theme="@style/android:Theme.Black.NoTitleBar.Fullscreen" android:label="Spiral" android:debuggable="false" android:icon="@drawable/icon">
-<activity android:label="Spiral" android:screenOrientation="landscape" android:name="Spiral">
+<application  android:theme="@style/android:Theme.Black.NoTitleBar.Fullscreen" android:label="PoppingTime" android:debuggable="false" android:icon="@drawable/icon">
+<activity android:label="PoppingTime" android:screenOrientation="landscape" android:name="PoppingTime">
 <intent-filter>
 <action android:name="android.intent.action.MAIN" />
 <category android:name="android.intent.category.LAUNCHER" />
