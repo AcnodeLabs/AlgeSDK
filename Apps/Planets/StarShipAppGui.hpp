@@ -35,7 +35,7 @@ public:
         // Display contents in a scrolling region
         TextColored(ImVec4(1,1,0,1), "Altitude");
         for (auto b : starship.ship.prsInstances) {
-            ImGui::Text("Alt@ [%d m]", starship.Alt());
+            ImGui::Text("Alt@ [%.1f m]", starship.Alt());
         }
        
         BeginChild("Controls");
