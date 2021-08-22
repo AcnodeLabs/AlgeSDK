@@ -8,7 +8,7 @@
 
 
 
-class /*Juices*/ App : public AlgeApp { 
+class /*Flag*/ App : public AlgeApp { 
     
     GameObject flag;
 	
@@ -51,11 +51,12 @@ class /*Juices*/ App : public AlgeApp {
     void m_display()
     {
         glClear(GL_COLOR_BUFFER_BIT);
+        //glRasterPos2f(0.1, 0.1);
         glDrawPixels(WIDTH,HEIGHT,GL_RGB,GL_UNSIGNED_BYTE,matrix);
         
     }
 
-    void m_idle()
+    void m_update()
     {
         static float count = 0.0;
 
@@ -95,7 +96,7 @@ public:
     virtual void Init(char* path) {
 		AlInit(STANDARD);
 		SetTitle("Flag");
-		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_MIDDLE_OF_SCREEN);
+		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
         AddObject(&flag);
         m_init();
 	}
@@ -128,8 +129,7 @@ public:
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
         glClearColor(1.0, 1.0, 1.0, 1.0);
           if (gob->is(flag)) {
-
-            m_idle();
+            m_update();
             m_display();
         }
 	}
