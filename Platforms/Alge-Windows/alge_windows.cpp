@@ -801,7 +801,11 @@ void onRemoteCommand(string cmd) {
 }
 
 
-
+bool Monday() {
+	SYSTEMTIME now0;
+	GetLocalTime(&now0);
+	return (now0.wDayOfWeek == 1);
+}
 
 int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 					_In_opt_ HINSTANCE	hPrevInstance,		// Previous Instance
@@ -822,7 +826,7 @@ int WINAPI WinMain(	_In_ HINSTANCE	hInstance,			// Instance
 		
 	}
 	FindAppName();
-	MessageBoxA(NULL, "NATS Tip\nUse xal.e to monitor\nxal.e.In to command\nTelnet 127.0.0.1 4222 and \nDo SUB xal.e 90 to monitor data, and use PUB xal.e <length> to post data\nThe data will be posted in param1 of CMD_REMOTE_COMMAND to the application", netmsg.prepend.c_str(), MB_ICONINFORMATION);
+	if (Monday()) MessageBoxA(NULL, "NATS Tip\nUse xal.e to monitor\nxal.e.In to command\nTelnet 127.0.0.1 4222 and \nDo SUB xal.e 90 to monitor data, and use PUB xal.e <length> to post data\nThe data will be posted in param1 of CMD_REMOTE_COMMAND to the application", netmsg.prepend.c_str(), MB_ICONINFORMATION);
 	netmsg.SubscribeConnect("e", true);// "Evolution");
 	
 	callBackIn = &onRemoteCommand; //Some Error Recheck Callback scheme
