@@ -1,16 +1,29 @@
-// Copyright (c) 2018 AcnodLabs Inc
+// Copyright (c) 2021 Bilal Ahsan
 
 /* 
-   ALGE SDK JD3 Demo :: XGui
+   com.perfectcircle.pcsclient
 */
 
-#include "../../../hayai/src/hayai_main.hpp"
+//Shift to AlgeBASE
+class iAlge {
+    
+public:
+    class UIMaker {
+    
+    };
+    
+    UIMaker uimaker;
 
-class /*XGui*/ App : public AlgeApp {
+};
+//
+
+#include "PCSClient.hpp"
+
+class /*PCSClient*/ App : public AlgeApp {
     
-    ::hayai::MainRunner runner;
+    PCSClientApp pcs;
+    iAlge* iapp ;
     
-    //Variables
     bool my_tool_active;
     float my_color[4];
     ImFont *roboto;
@@ -21,6 +34,27 @@ class /*XGui*/ App : public AlgeApp {
     //Gfx Objects
 	GameObject background, gui;
 
+public:
+    virtual void Init(char* path) {
+        iapp = (new PCSClientApp)->init();
+        mpath = path;
+        AlInit(STANDARD);
+        SetTitle("XGui");
+    
+    AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
+        
+        AddResource(&background, "juices",
+            "green_natural.jpg",
+            XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
+            );
+
+
+        AddResource(&gui, "gui");
+        gui.hidden = false;
+        ImGui::GetIO().Fonts->AddFontDefault();
+        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((string(path)+"/Roboto-Bold.ttf").c_str(), 16.0f);
+    }
+    
     //App Specifics
     class ImWindows {
         i2 msize;
@@ -74,9 +108,7 @@ class /*XGui*/ App : public AlgeApp {
         if (ImGui::Button("Hayai"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
         {
             
-            runner.ParseArgs(1, &mpath);
-            runner.Run();
-        }
+          }
         
         ImGui::SameLine();
         ImGui::Text("counter = %d", counter);
@@ -89,24 +121,7 @@ class /*XGui*/ App : public AlgeApp {
 public:
     char* mpath;
     //Primary Functions
-    virtual void Init(char* path) {
-        mpath = path;
-    AlInit(STANDARD);
-    SetTitle("XGui");
-    
-    AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-        
-        AddResource(&background, "juices",
-            "green_natural.jpg",
-            XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
-            );
 
-
-        AddResource(&gui, "gui");
-        gui.hidden = false;
-        ImGui::GetIO().Fonts->AddFontDefault();
-        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((string(path)+"/Roboto-Bold.ttf").c_str(), 16.0f);
-    }
     void processInput(PEG::CMD* p, float deltaT) {
 		if (p->command == CMD_SCREENSIZE) {
             msize.x = p->i1;
