@@ -13,10 +13,36 @@ struct SKRect {};
 struct SKPoint {};
 class SKImage {};
 class SKImageInfo {};
+class Socket{
+public:
+    int Connected;
+};
+class SKTouchEventArgs {
+public:
+    i2 Location;
+    short ActionType;
+};
+class SKPaintSurfaceEventArgs {
+    
+};
+class Task {};
+
+class Action {};
+struct _PCSFontAttributes {
+    short Right;
+    short Bottom;
+    short Left;
+    short Top;
+};
+enum SKTouchAction {
+    Pressed = 1,
+};
 
 enum SKPaintStyle {
     
 };
+
+class System_Drawing_Rectangle {};
 
 enum SKColors {
     
@@ -217,7 +243,7 @@ public:
             string IQRtnCmd;
 
             _KeyData(KeyTypes Type, char EndAccept, char code, string Key, string RF, string D2, string IQ) {
-                this.Type = Type; this.EndAccept = EndAccept; this.Value = code; this.RtnKey = Key; this.D2RtnCmd = RF; this.D2RtnCmd = D2; this.IQRtnCmd = IQ;
+                Type = Type; EndAccept = EndAccept; Value = code; RtnKey = Key; D2RtnCmd = RF; D2RtnCmd = D2; IQRtnCmd = IQ;
             }
         };
 
@@ -233,13 +259,13 @@ public:
         void SpawnTimer()
         {
            // test_PSplit();
-            dTimer = new Timer(PullData, new AutoResetEvent(false), 0, offline ? 5000000 : 150);
+ //           dTimer = new Timer(PullData, new AutoResetEvent(false), 0, offline ? 5000000 : 150);
         }
 
         void SpawnThread()
         {
-            Task a = new Task(PullDataTh);
-            a.Start();
+     //       Task a = new Task(PullDataTh);
+     //       a.Start();
         }
 
 
@@ -251,118 +277,119 @@ public:
         void InitKeyData() {
             return;
             //    Type    EndAccept    Code            Key        RF        2D        IQ
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'Y', ' ', "ESC", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_ESCAPE, "ESC", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '?', "?  ", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '9', "99 ", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '.', ".  ", "DE", "RF", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'Q', "Q  ", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'q', "Q  ", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', ',', ",  ", "DE", "LF", "PU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '>', ">  ", "DE", "PR", "PD"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '<', "<  ", "DE", "PL", "PU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'Y', "Y  ", "DE", "DE", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'y', "Y  ", "DE", "DE", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'N', "N  ", "DE", "FF", "FF"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'n', "N  ", "DE", "FF", "FF"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'C', "C  ", "DE", "DE", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'c', "C  ", "DE", "DE", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'D', "D  ", "DE", "DE", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'd', "D  ", "DE", "DE", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'S', "S  ", "DE", "PU", "ST"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 's', "S  ", "DE", "PU", "ST"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'P', "P  ", "DE", "PD", "PD"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'p', "P  ", "DE", "PD", "PD"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'B', "B  ", "DE", "BF", "BF"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'b', "B  ", "DE", "BF", "BF"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'L', "L  ", "DE", "PU", "PU"));
-            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'l', "L  ", "DE", "PU", "PU"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F1, "F1 ", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F2, "F2 ", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F3, "F3 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F4, "F4 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F5, "F5 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F6, "F6 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F7, "F7 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F8, "F8 ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F9, "F9 ", "DE", "DE", "DE"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F10, "FA ", "QU", "QU", "QU"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F11, "FB ", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F12, "FC ", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_PRIOR, "PU ", "BF", "PU", "PU"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_NEXT, "PD ", "DF", "PD", "PD"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', PCS_VK_ALTH, "ALH", "HL", "HL", "HL"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'E', VK_LEFT, "LA ", "BF", "LF", "BF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'E', VK_RIGHT, "RA ", "DF", "RF", "FF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_UP, "UA ", "BF", "BF", "BF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_DOWN, "DA ", "DF", "FF", "FF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_HOME, "HM ", "BF", "BF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_TAB, "TB ", "DF", "FF", "FF"));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', Convert.ToChar(-1), "BT ", "BF", "BF", "BF"));
-            KeyData.Add(new _KeyData(KeyTypes.CLN, 'Y', VK_END, "EN ", "  ", "  ", "  "));
-            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', VK_DELETE, "DL ", "  ", "  ", "  "));
-            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', VK_INSERT, "IN ", "  ", "  ", "  "));
-            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_LBUTTON, "LB ", "DF", "DF", "DF"));
-            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', Convert.ToChar(-2), "WDL", "  ", "  ", "  "));
-            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', Convert.ToChar(-3), "WDR", "  ", "  ", "  "));
-            KeyData.Add(new _KeyData(KeyTypes.EOT, ' ', ' ', "   ", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'Y', ' ', "ESC", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_ESCAPE, "ESC", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '?', "?  ", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '9', "99 ", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '.', ".  ", "DE", "RF", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'Q', "Q  ", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'q', "Q  ", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', ',', ",  ", "DE", "LF", "PU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '>', ">  ", "DE", "PR", "PD"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', '<', "<  ", "DE", "PL", "PU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'Y', "Y  ", "DE", "DE", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'y', "Y  ", "DE", "DE", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'N', "N  ", "DE", "FF", "FF"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'n', "N  ", "DE", "FF", "FF"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'C', "C  ", "DE", "DE", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'c', "C  ", "DE", "DE", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'D', "D  ", "DE", "DE", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'd', "D  ", "DE", "DE", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'S', "S  ", "DE", "PU", "ST"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 's', "S  ", "DE", "PU", "ST"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'P', "P  ", "DE", "PD", "PD"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'p', "P  ", "DE", "PD", "PD"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'B', "B  ", "DE", "BF", "BF"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'b', "B  ", "DE", "BF", "BF"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'L', "L  ", "DE", "PU", "PU"));
+//            KeyData.Add(new _KeyData(KeyTypes.STD, 'N', 'l', "L  ", "DE", "PU", "PU"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F1, "F1 ", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F2, "F2 ", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F3, "F3 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F4, "F4 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F5, "F5 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F6, "F6 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F7, "F7 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F8, "F8 ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F9, "F9 ", "DE", "DE", "DE"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F10, "FA ", "QU", "QU", "QU"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F11, "FB ", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_F12, "FC ", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_PRIOR, "PU ", "BF", "PU", "PU"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_NEXT, "PD ", "DF", "PD", "PD"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', PCS_VK_ALTH, "ALH", "HL", "HL", "HL"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'E', VK_LEFT, "LA ", "BF", "LF", "BF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'E', VK_RIGHT, "RA ", "DF", "RF", "FF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_UP, "UA ", "BF", "BF", "BF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_DOWN, "DA ", "DF", "FF", "FF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_HOME, "HM ", "BF", "BF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_TAB, "TB ", "DF", "FF", "FF"));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', Convert.ToChar(-1), "BT ", "BF", "BF", "BF"));
+//            KeyData.Add(new _KeyData(KeyTypes.CLN, 'Y', VK_END, "EN ", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', VK_DELETE, "DL ", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', VK_INSERT, "IN ", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.SPL, 'Y', VK_LBUTTON, "LB ", "DF", "DF", "DF"));
+//            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', Convert.ToChar(-2), "WDL", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.CLN, 'N', Convert.ToChar(-3), "WDR", "  ", "  ", "  "));
+//            KeyData.Add(new _KeyData(KeyTypes.EOT, ' ', ' ', "   ", "  ", "  ", "  "));
+            
         }
 
 
-        std::list<std::string> phase1(std::list<std::string> td)
-        {
-
-            td.Add("CTL,SZ,19,W0080");
-            td.Add("CTL,WC,10,001");
-            td.Add("CTL,WP,161,001001001025080NSS701701701880701741721721001001001001 E RF 000000YY NN020041030100 YN022041040YN023041040NN023041040YK022001040YK023001040NN02300104");
-            td.Add("CTL,WL,17,001001Y731");
-            td.Add("CTL,WT,179,001001   ☺☻");
-            td.Add("CTL,WT,179,001001   ☺☻");
-            td.Add("CTL,WT,179,0010014  ☺☻");
-            td.Add("CTL,WT,179,001001   ☺☻");
-            td.Add("CTL,WT,179,001001Ç  ☺☻");
-            td.Add("CTL,WT,42,001001   ☺");
-            td.Add("CTL,WT,42,001001");
-            td.Add("CTL,WL,17,001002Y701");
-            td.Add("CTL,WT,44,001002");
-            td.Add("CTL,WL,17,001003Y701");
-            td.Add("CTL,WL,17,001004Y701");
-            td.Add("CTL,WL,17,001005Y701");
-            td.Add("CTL,WL,17,001006Y701");
-            td.Add("CTL,WL,17,001007Y701");
-            td.Add("CTL,WL,17,001008Y701");
-            td.Add("CTL,WL,17,001009Y701");
-            td.Add("CTL,WL,17,001010Y701");
-            td.Add("CTL,WL,17,001011Y701");
-            td.Add("CTL,WT,44,001011");
-            td.Add("CTL,WL,17,001012Y701");
-            td.Add("CTL,WT,179,001012");
-            td.Add("CTL,WL,17,001013Y701");
-            td.Add("CTL,WL,17,001014Y701");
-            td.Add("CTL,WT,179,001014  ");
-            td.Add("CTL,WT,179,001014");
-            td.Add("CTL,WL,17,001015Y701");
-            td.Add("CTL,WT,179,001015");
-            td.Add("CTL,WL,17,001016Y701");
-            td.Add("CTL,WL,17,001017Y701");
-            td.Add("CTL,WL,17,001018Y701");
-            td.Add("CTL,WL,17,001019Y701");
-            td.Add("CTL,WL,17,001020Y701");
-            td.Add("CTL,WL,17,001021Y701");
-            td.Add("CTL,WL,17,001022Y701");
-            td.Add("CTL,WL,17,001023Y701");
-            td.Add("CTL,WL,17,001024Y731");
-            td.Add("CTL,WT,179,001024   ");
-            td.Add("CTL,WT,42,001024   ");
-            td.Add("CTL,WT,42,001024");
-            td.Add("CTL,WL,17,001025Y731");
-            td.Add("CTL,WT,179,001025  ");
-            td.Add("CTL,WT,179,001025");
-            td.Add("CTL,WE,8,");
-            td.Add("SIO,US,19,TEST");
-            td.Add("SIO,AD,320,V2 23142480014041012005001S880SSNNSSNSNSSSSRFY AUN000001100400NNNY  Enter user-name to login");
-            return td;
-        }
+//        std::list<std::string> phase1(std::list<std::string> td)
+//        {
+//
+//            td.Add("CTL,SZ,19,W0080");
+//            td.Add("CTL,WC,10,001");
+//            td.Add("CTL,WP,161,001001001025080NSS701701701880701741721721001001001001 E RF 000000YY NN020041030100 YN022041040YN023041040NN023041040YK022001040YK023001040NN02300104");
+//            td.Add("CTL,WL,17,001001Y731");
+//            td.Add("CTL,WT,179,001001   ☺☻");
+//            td.Add("CTL,WT,179,001001   ☺☻");
+//            td.Add("CTL,WT,179,0010014  ☺☻");
+//            td.Add("CTL,WT,179,001001   ☺☻");
+//            td.Add("CTL,WT,179,001001Ç  ☺☻");
+//            td.Add("CTL,WT,42,001001   ☺");
+//            td.Add("CTL,WT,42,001001");
+//            td.Add("CTL,WL,17,001002Y701");
+//            td.Add("CTL,WT,44,001002");
+//            td.Add("CTL,WL,17,001003Y701");
+//            td.Add("CTL,WL,17,001004Y701");
+//            td.Add("CTL,WL,17,001005Y701");
+//            td.Add("CTL,WL,17,001006Y701");
+//            td.Add("CTL,WL,17,001007Y701");
+//            td.Add("CTL,WL,17,001008Y701");
+//            td.Add("CTL,WL,17,001009Y701");
+//            td.Add("CTL,WL,17,001010Y701");
+//            td.Add("CTL,WL,17,001011Y701");
+//            td.Add("CTL,WT,44,001011");
+//            td.Add("CTL,WL,17,001012Y701");
+//            td.Add("CTL,WT,179,001012");
+//            td.Add("CTL,WL,17,001013Y701");
+//            td.Add("CTL,WL,17,001014Y701");
+//            td.Add("CTL,WT,179,001014  ");
+//            td.Add("CTL,WT,179,001014");
+//            td.Add("CTL,WL,17,001015Y701");
+//            td.Add("CTL,WT,179,001015");
+//            td.Add("CTL,WL,17,001016Y701");
+//            td.Add("CTL,WL,17,001017Y701");
+//            td.Add("CTL,WL,17,001018Y701");
+//            td.Add("CTL,WL,17,001019Y701");
+//            td.Add("CTL,WL,17,001020Y701");
+//            td.Add("CTL,WL,17,001021Y701");
+//            td.Add("CTL,WL,17,001022Y701");
+//            td.Add("CTL,WL,17,001023Y701");
+//            td.Add("CTL,WL,17,001024Y731");
+//            td.Add("CTL,WT,179,001024   ");
+//            td.Add("CTL,WT,42,001024   ");
+//            td.Add("CTL,WT,42,001024");
+//            td.Add("CTL,WL,17,001025Y731");
+//            td.Add("CTL,WT,179,001025  ");
+//            td.Add("CTL,WT,179,001025");
+//            td.Add("CTL,WE,8,");
+//            td.Add("SIO,US,19,TEST");
+//            td.Add("SIO,AD,320,V2 23142480014041012005001S880SSNNSSNSNSSSSRFY AUN000001100400NNNY  Enter user-name to login");
+//            return td;
+//        }
 
 
         string Desc(string ret)
@@ -370,33 +397,39 @@ public:
             return "";
         }
 
-        string GetDesc(string ret[])
-        {
-            List<string> l = new List<string>();
-            foreach (string a in ret)
-            {
-                l.Add(Desc(a));
-            }
-            return l.ToArray();
-        }
+//        string GetDesc(string ret[])
+//        {
+//            list<string> l = new List<string>();
+//            foreach (string a in ret)
+//            {
+//                l.Add(Desc(a));
+//            }
+//            return l.ToArray();
+//        }
 
-        string GetTestData(int seg)
-        {
-            List<string> td = new List<string>();
-            phase1(ref td);
-            //return test.ToArray();
-            string[] ret = test_data_arr0;//.ToList().Take(1879-1839).ToArray();
-            string[] descs = GetDesc(ret);
-            return ret;
-        }
+//        string GetTestData(int seg)
+//        {
+//            List<string> td = new List<string>();
+//            phase1(ref td);
+//            //return test.ToArray();
+//            string[] ret = test_data_arr0;//.ToList().Take(1879-1839).ToArray();
+//            string[] descs = GetDesc(ret);
+//            return ret;
+//        }
 
         char c;
+        
+        class Thread {
+        public:
+            static void Sleep(int ms) {};
+        };
         
         void PullDataTh()
         {
             while (true) {
-                PullData(null);
-                Thread.Sleep(500);
+                object nullobject;
+                PullData(nullobject);
+                Thread::Sleep(500);
             //    PrintMessage(canvas, paint, " Sent Reconnect Key", 10, 10, 1, 711, fa, 1, false);
               //  c++;
             //    mVib.Vibrate(20);
@@ -411,23 +444,23 @@ public:
             
             if (!offline)
             {
-                if (sock==null || !sock.Connected)
+                if (!sock.Connected)
                 {
                //     DisplayAlert("Error", "Remote Server Not Connected.", "OK");
                //     dTimer.Dispose();
                 } else
-                test_data = SocketSendReceive(this);
+                    test_data = SocketSendReceive(*this);
             }
             else {
                 //test_data = test_data_arr0;
             }
         }
-
+/*
         byte Take(byte arr[], int from, int to) {
             int skip = from;
             int take = to;
-            byte[] seg = arr.Skip(skip).Take(take).ToArray();
-            return seg;
+            byte seg[] = arr.Skip(skip).Take(take).ToArray();
+            return &seg;
         }
 
         byte SplitByteArrayBinMode(byte oneDbyteArray[])
@@ -445,7 +478,7 @@ public:
 
         list<byte[]> SplitPCSMessages(byte oneDbyteArray[])
         {
-            List<byte[]> ret = new List<byte[]>();
+            list<byte[]> ret = new list<byte[]>();
             int MsgSizePtr = 3;
             int idx = 0;
             {
@@ -488,7 +521,7 @@ public:
 
             return res;
         }
-
+ */
         bool IsNumeric(string x) {
             bool ret = false;
             foreach (char c in x) {
@@ -504,13 +537,13 @@ public:
 
             {
 
-            var point = args.Location; //Point location
-            var type = args.ActionType; //Entered, Pressed, Moved ... etc.
+            auto point = args.Location; //Point location
+            auto type = args.ActionType; //Entered, Pressed, Moved ... etc.
                                         //... do something
                                         // Handle event to indicate we are interested in other events
 
-            if (type == SKTouchAction.Pressed)
-                ProcessVBtn(Convert.ToInt16(point.X), Convert.ToInt16(point.Y));
+            if (type == SKTouchAction::Pressed)
+                ProcessVBtn(Convert.ToInt16(point.x), Convert.ToInt16(point.y));
             }
             args.Handled = true;
         }
@@ -638,8 +671,8 @@ public:
         }
 
     private:
-        string b2s(byte[] ba) {
-            return Encoding.UTF8.GetString(ba);
+        string b2s(byte* ba) {
+            return string(ba);
         }
 
         void SendReconnectKey() {
@@ -956,7 +989,8 @@ public:
 
         class XY {
             int x, y;
-        }
+        };
+        
         XY getBtnId(int mX, int mY)
         {
             
@@ -1002,7 +1036,7 @@ public:
         int MaxCol = 80;
 
 
-        private void PaintWindow()
+        void PaintWindow()
         {
 
             if (CurWindow < 0) return;//dont paint until vars are set
@@ -1022,12 +1056,12 @@ public:
             DisplayWindow(CurWindow, RectTop, RectLeft, RectBot, RectRight);
         }
 
-        private void DisplayWindow(int curWindow, int rectTop, int rectLeft, int rectBot, int rectRight)
+        void DisplayWindow(int curWindow, int rectTop, int rectLeft, int rectBot, int rectRight)
         {
            // canvas.Restore(SavedBM[curWindow].hbitmap);
         }
 
-        private SKPoint GetSIOPoint(int row, int col)
+        SKPoint GetSIOPoint(int row, int col)
         {
             int xw = 22, yw = 42;
             int px = col * xw;
@@ -1035,7 +1069,7 @@ public:
             return new SKPoint(px, py);
         }
 
-        private SKPoint GetSIOPoint0(string v2)
+        SKPoint GetSIOPoint0(string v2)
         {
 
             string rowsz = v2.Substring(3 + 0, 3);
@@ -1046,7 +1080,7 @@ public:
             return new SKPoint(col * xw, CellHeight + row * yw);
         }
 
-        private SKPoint GetSIOPoint(string v2)
+        SKPoint GetSIOPoint(string v2)
         {
             string rowsz = v2.Substring(3 + 0, 3);
             string colsz = v2.Substring(3 + 3, 3);
@@ -1057,7 +1091,7 @@ public:
             return new SKPoint(col * xw, yw + row * yw);
         }
 
-        private SKPoint GetSIOPoint3(string v2)
+        SKPoint GetSIOPoint3(string v2)
         {
             string rowsz = v2.Substring(3 + 0, 3);
             string colsz = v2.Substring(3 + 3, 3);
@@ -1070,12 +1104,12 @@ public:
             return new SKPoint(col * xw, yw + row * yw - 10);//-10 is just visual correction
         }
 
-        private string GetSIOText(string spec, string stxt)
+        string GetSIOText(string spec, string stxt)
         {
             return stxt;//.Replace(' ','_');
         }
 
-        private int ConvertBufNum(string b, int start, int len)
+        int ConvertBufNum(string b, int start, int len)
         {
             
             int ret = 0;
@@ -1105,7 +1139,7 @@ public:
         int CellWidth = 22, CellHeight = 42;
         int TextSize = 36;
 
-        int[] StdColorMap =
+        int StdColorMap[100] =
  {
     //    SIO1    SIO2    FRed    FGreen    FBlue    BRed    BGreen    BBlue
         0,      701,    0,      0,      0,      255,    255,    255, //white
@@ -1304,7 +1338,7 @@ public:
 
         }
 
-        private void MDrawBox(string b, SKCanvas canvas, SKPaint paint, int MsgSize)
+        void MDrawBox(string b, SKCanvas canvas, SKPaint paint, int MsgSize)
         {
             int row;
             int col;
@@ -1332,7 +1366,7 @@ public:
             //canvas.DrawLine()
         }
 
-        private void MDrawLine(string b, SKCanvas canvas, SKPaint paint, int MsgSize)
+        void MDrawLine(string b, SKCanvas canvas, SKPaint paint, int MsgSize)
         {
             int row;
             int col;
@@ -1356,9 +1390,9 @@ public:
             //canvas.DrawLine()
         }
 
-        List<PCSMessage> test_data = new List<PCSMessage>();
+        std::list<PCSMessage> test_data;
 
-        private string correctDDtext(string spec, string ddtext)
+        string correctDDtext(string spec, string ddtext)
         {
             int siz = ConvertBufNum(spec, 3 + 6, 3);
 
@@ -1423,7 +1457,7 @@ public:
 
             PrintMessage(canvas, paint, Data, row, col, siz, Color, fa, tag, fe);
         }
-        private void MDrawText(SKCanvas canvas, SKPaint paint, string spec, string astxt, int bgColor = 731, int fgColor = -1/*Grey*/)
+        void MDrawText(SKCanvas canvas, SKPaint paint, string spec, string astxt, int bgColor = 731, int fgColor = -1/*Grey*/)
         {
             if (CurWindow < 0) return;
             paint.Color = new SKColor(0, 0, 255);
@@ -1484,7 +1518,7 @@ public:
             }
         }
 
-        private SKPoint pt(SKPoint p)
+        SKPoint pt(SKPoint p)
         {
             p.X = p.X + 50;//Left Border
             return p;
@@ -1492,7 +1526,7 @@ public:
 
         class ACCEPTDATA
         {
-            private string str(int n) { return new string(' ', n); }
+            string str(int n) { return new string(' ', n); }
 
             ACCEPTDATA()
             {
@@ -1543,12 +1577,12 @@ public:
         double FONT_PERCENT = 0.75;
         int FONT_OFFSET = 3;
         double EXPAND_DISPLAY = 0.25;
-        ClientMode PCSMode = ClientMode.NORMALMODE;
+        ClientMode PCSMode = ClientMode::NORMALMODE;
         int InpIdx = 0;
-        char[] InpBuff = new char[128];
+        char InpBuffr[128];
         int CurWindow = -1;
-        _WindowTable[] Window = new _WindowTable[15];
-        ACCEPTDATA CurAccept = new ACCEPTDATA();
+        _WindowTable Window[15];
+        ACCEPTDATA CurAccept;// = new ACCEPTDATA();
 
         int MainFont = 0;
         struct _PCSFontAttributes
@@ -1692,7 +1726,7 @@ public:
         int WindowWidth = 80;
         int WindowHeight = 25;
 
-        void RenderTextTran(int win, string Text, _PCSFontAttributes fa, System.Drawing.Rectangle Loc, int Fore, bool ClearLine, short Background, bool fld_expand, bool Multiline)
+        void RenderTextTran(int win, string Text, _PCSFontAttributes fa, System_Drawing_Rectangle Loc, int Fore, bool ClearLine, short Background, bool fld_expand, bool Multiline)
         {
             long fc, bc;
             int col;
@@ -1718,12 +1752,12 @@ public:
 
         //Wrapper for canvas.DrawText
         int corrY = 6;
-        private void _DrawText(SKCanvas canvas, string txt, SKPoint p, SKPaint paint)
+        void _DrawText(SKCanvas canvas, string txt, SKPoint p, SKPaint paint)
         {
             canvas.DrawText(txt, pt(new SKPoint(p.X, p.Y - corrY)), paint);
         }
 
-        private void PrintMessageAcpt(SKCanvas canvas, SKPaint paint, string message, int row, int col, int siz, int color, _PCSFontAttributes fa, int tag, bool fe)
+        void PrintMessageAcpt(SKCanvas canvas, SKPaint paint, string message, int row, int col, int siz, int color, _PCSFontAttributes fa, int tag, bool fe)
         {
             if (row < 0) row = 0;
             if (col < 0) col = 0;
@@ -1742,7 +1776,7 @@ public:
             //InvalidateRect(PCSDialogWindow, NULL, FALSE);
         }
 
-        private void PrintMessage(SKCanvas canvas, SKPaint paint, string message, int row, int col, int siz, int color, _PCSFontAttributes fa, int tag, bool fe)
+        void PrintMessage(SKCanvas canvas, SKPaint paint, string message, int row, int col, int siz, int color, _PCSFontAttributes fa, int tag, bool fe)
         {
             if (paint == null) return;
             if (canvas == null) return;
@@ -1826,7 +1860,7 @@ public:
         }
 
 
-        private void MAcceptData(SKCanvas canvas, SKPaint paint, string txt, string t3, char A_type)
+        void MAcceptData(SKCanvas canvas, SKPaint paint, string txt, string t3, char A_type)
         {
             int i;
             _WindowData wd;
@@ -2081,30 +2115,30 @@ public:
 
         
 
-        private void SIODisplayCalendar()
+        void SIODisplayCalendar()
         {
             throw new NotImplementedException();
         }
 
-        private void DestroyOneButton(int i)
+        void DestroyOneButton(int i)
         {
             throw new NotImplementedException();
         }
 
-        private void SetTimer(int v)
+        void SetTimer(int v)
         {
             //throw new NotImplementedException();
         }
 
-        private string ConvertNumToAlph(int size, int value)
+        string ConvertNumToAlph(int size, int value)
         {
             string Dest = "" + value;
             if (Dest.Length == 1) return "00" + Dest;
             if (Dest.Length == 2) return "0" + Dest;
             return Dest;
         }
-        char[] SendBuf = new char[158];
-        private char[] FinishAccept(string vBtnTxt="")
+        char SendBuf[158];
+        char* FinishAccept(string vBtnTxt="")
         {
 
             short BufSize;
@@ -2221,7 +2255,7 @@ public:
             return SendBuf;
         }
 
-        private void ProcessKeyBuff()
+        void ProcessKeyBuff()
         {
 
         }
@@ -2237,7 +2271,7 @@ public:
         }
 
 
-        private int ComputePosition()
+        int ComputePosition()
         {
 
             int i;
@@ -2311,7 +2345,7 @@ public:
         }
 
         int batchno = 0;
-        private void SIOOpenWindow(string b)
+        void SIOOpenWindow(string b)
         {
             int j;
             int i;
@@ -2433,7 +2467,7 @@ public:
 
         }
 
-        private void ResizePCS(bool move, int def_x, int def_y)
+        void ResizePCS(bool move, int def_x, int def_y)
         {
             //DisplayTime(null, 0, 1, 0);
 
@@ -2441,7 +2475,7 @@ public:
 
         }
 
-        private string getTextParamBinMode(string txt)
+        string getTextParamBinMode(string txt)
         {
             string ret = "";
             int countSpc = 0;
@@ -2455,7 +2489,7 @@ public:
         }
 
         //Deprecated
-        private string getTextParam(string txt)
+        string getTextParam(string txt)
         {
             string[] t = txt.Split(',');
             string ret = t[3];
@@ -2467,8 +2501,8 @@ public:
         }
 
         SKSurface surface;
-        SKCanvas canvas = null;
-        SKPaint paint = null;
+        SKCanvas canvas;// = null;
+        SKPaint paint;// = null;
 
         bool canvasPaintRefSet = false;
 
@@ -2486,7 +2520,7 @@ public:
             int bottom;
             int left;
             int right;
-        }
+        };
 
         struct _FIELDENH
         {
@@ -2501,7 +2535,7 @@ public:
                 StartCol = 0; EndCol = 0; Size = 0; Row = 0; Window = 0;
             }
 
-        }
+        };
 
         const int NUM_BUTTONS = 93;
         struct _ButtonTable
@@ -2513,12 +2547,12 @@ public:
             {
                 Name = ""; Code = ""; AcceptSeq = "";
             }
-        }
-        _ButtonTable[] ButtonTable = new _ButtonTable[NUM_BUTTONS];
+        };
+        _ButtonTable ButtonTable[93];
 
 
         const int NUM_FH = 500;
-        _FIELDENH[] FieldEnh = new _FIELDENH[NUM_FH];
+        _FIELDENH FieldEnh[500];
         int FieldEnh_Ptr = 0;
 
         int CharWidth = 0, CharHeight = 0, NumberWidth = 0;
@@ -2610,7 +2644,7 @@ public:
             }
         }
 
-        private void MDisplayBox(int strrow, int strcol, int endrow, int endcol, int color, int type, int thick, bool outL, bool f, int tag)
+        void MDisplayBox(int strrow, int strcol, int endrow, int endcol, int color, int type, int thick, bool outL, bool f, int tag)
         {
             _WindowData wd = FindWD(CurWindow);
             if (wd != null)
@@ -2663,7 +2697,7 @@ public:
             byte tmStruckOut;
             byte tmPitchAndFamily;
             byte tmCharSet;
-        }
+        };
 
         TEXTMETRIC TextMetrics;
         byte TMPF_FIXED_PITCH = 0x01;
@@ -2671,19 +2705,14 @@ public:
 
         void GetTextMetrics() { }
 
-        void GetTextExtentPoint32(string str1, int c, ref SIZE psizl)
-        {
-            psizl.cx = 32;//Dummy Default picked from C++ run
-            psizl.cx = 13;
-        }
 
         struct SIZE
         {
             long cx;
             long cy;
-        }
+        };
 
-        void SetFontData(ref int cw, ref int ch, ref int nw)
+        void SetFontData(int& cw, int& ch, int& nw)
         {
 
             int width, height, numwidth;
@@ -2893,7 +2922,7 @@ public:
 
         }
 
-        byte[][] PSplit(byte[] t, char separator=',')
+        byte&& PSplit(byte t[], char separator=',')
         {
             int commas = 0;
             int idx = 0 ;
@@ -2915,7 +2944,7 @@ public:
            return ret;
         }
 
-        string[] PSplit(string t)
+    std::list<string> PSplit(string t)
         {
             int commas = 0;
             string msgtag = "";
@@ -2995,10 +3024,10 @@ public:
             return ret;
         }
 
-        string spaces = new string(' ',256);
+        char spaces[256];
         int t1 = 0;
 
-        private void MDrawBatch()
+        void MDrawBatch()
         {
 
             batchno++;
@@ -3369,7 +3398,7 @@ public:
         }
         int alertY = 0;
 
-        private void Alert(string msg) {
+        void Alert(string msg) {
            // Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+msg);
             return;
             PCSMessage mdd = new PCSMessage("");
@@ -3387,12 +3416,12 @@ public:
             PaintWindow();
         }
 
-        private byte[] s2b(string v)
+        char* s2b(string v)
         {
-            return Encoding.ASCII.GetBytes(v);
+            return v.c_str();
         }
 
-        private void AlertEX(string msg, bool persist) {
+        void AlertEX(string msg, bool persist) {
             mVib.Vibrate(10);
             return;
             //try
@@ -3409,7 +3438,7 @@ public:
 
         }
 
-        private void onSpawnConnected()
+        void onSpawnConnected()
         {
             PrintMessage(canvas, paint, " Spawn Connected .. Preparing Display", 12, 10, 40, 711, fa, 1, false);
             mVib.Vibrate(20);
@@ -3421,7 +3450,7 @@ public:
       //      PullData(null);
         }
 
-        private void OnExpiryÏnfo(char v)
+        void OnExpiryÏnfo(char v)
         {
             PrintMessage(canvas, paint, " Sending Login to "+ip_server+"..", 12, 10, 40, 711, fa, 1, false);
             mVib.Vibrate(20);
@@ -3431,7 +3460,7 @@ public:
 
         bool Allowed = false;
 
-        private void OnClientAuth(char v)
+        void OnClientAuth(char v)
         {
             switch (v) {
                 case 'Y':
@@ -3470,7 +3499,7 @@ public:
             }
         }
 
-        private SKImage Shrink(SKImage i) {
+        SKImage Shrink(SKImage i) {
             SKImageInfo info = new SKImageInfo(3*180, 3*100, SKColorType.Bgra8888);
             SKImage r = SKImage.Create(info);
             i.ScalePixels(r.PeekPixels(), SKFilterQuality.None);
@@ -3479,13 +3508,13 @@ public:
 
         bool prototyping = true;
 
-        private void horizLines(int startx, int width, int spacingY, int nlines) {
+        void horizLines(int startx, int width, int spacingY, int nlines) {
             for (int y = 0; y < nlines*spacingY; y += spacingY)
             {
                 canvas.DrawLine(new SKPoint(startx, y), new SKPoint(startx + width, y), paint);
             }
         }
-        private void vertLines(int endy, int height, int spacingX, int nlines)
+        void vertLines(int endy, int height, int spacingX, int nlines)
         {
             for (int x = 0; x < nlines * spacingX; x += spacingX)
             {
@@ -3493,9 +3522,9 @@ public:
             }
         }
 
-        SKRect[] vBtnActuals = new SKRect[22];
+        SKRect vBtnActuals[22];
         int numVBtns = 0;
-        private void vBtn(string txt, int row, int col, int bg = 701, bool expand = false) {
+        void vBtn(string txt, int row, int col, int bg = 701, bool expand = false) {
             
             int r = (1 + row * 3);
             int c = (0 + col * 7);//change 0 to 82
@@ -3512,7 +3541,7 @@ public:
             _DrawText(canvas, txt.StartsWith("ENT")? "ENT " + CurAccept.Default:txt, GetSIOPoint(r,c), paint);
         }
 
-        private void DrawKbdGrid() {
+        void DrawKbdGrid() {
             paint.Color = new SKColor(100, 255, 100);
             string b = "";
             numVBtns = 0;
@@ -3527,7 +3556,7 @@ public:
         vBtn("ENT", r, 1, 711, true);
         }
 
-        private void DrawThumbs() {
+        void DrawThumbs() {
             //DrawThumb
             /*DEBUGGING ONLY*/
             if (SavedBM[0].hbitmap != null) canvas.DrawImage(Shrink(SavedBM[0].hbitmap), new SKPoint(1900, 350 * 0), paint);
@@ -3535,7 +3564,7 @@ public:
             if (SavedBM[2].hbitmap != null) canvas.DrawImage(Shrink(SavedBM[2].hbitmap), new SKPoint(1900, 350 * 2), paint);
         }
 
-        private void DisplayHorizSep(int row, int col, int siz, char ActColrDisp, int DispColr, int type, int thick, int tag)
+        void DisplayHorizSep(int row, int col, int siz, char ActColrDisp, int DispColr, int type, int thick, int tag)
         {
 
             int Color;
@@ -3617,23 +3646,23 @@ public:
         }
 
 
-        private void DisplayHSep(int row, int col, int size, int type, int thick, int color, int tag)
+        void DisplayHSep(int row, int col, int size, int type, int thick, int color, int tag)
         {
             _WindowData wd = FindWD(CurWindow);
             if (wd!=null) RenderHSepTran(CurWindow, row, col, col + size, size, color, type, thick, false, 0);
         }
 
-        private void SIOClearError(int lastWinLoaded)
+        void SIOClearError(int lastWinLoaded)
         {
            // throw new NotImplementedException();
         }
 
-        private void LoadWindowLines(string b)
+        void LoadWindowLines(string b)
         {
             //  throw new NotImplementedException();
         }
 
-        private void LoadWindowTrans(string w)
+        void LoadWindowTrans(string w)
         {
             int MSG_HDR = 0;
             int offset = 3 + MSG_HDR;
@@ -3650,7 +3679,7 @@ public:
             //if (Type == 5) LoadHLineTran(&w[offset], (MsgSize > 30 + offset));
         }
 
-        private _WindowData FindPoolEnd()
+        _WindowData FindPoolEnd()
         {
             return new _WindowData();
         }
@@ -3661,11 +3690,11 @@ public:
         {
             string Source;
             SKImage hbitmap;
-        }
+        };
         const int NUM_BM = 50;
-        StructSavedBM[] SavedBM = new StructSavedBM[NUM_BM];
+        StructSavedBM SavedBM[50];
 
-        private void CopyBitmap(_WindowData wd)
+        void CopyBitmap(_WindowData wd)
         {
             try
             {
@@ -3685,7 +3714,7 @@ public:
             }
         }
 
-        private void MakeBitmap(_WindowData wLast)
+        void MakeBitmap(_WindowData wLast)
         {
           
 
@@ -3725,10 +3754,10 @@ public:
      */
         static Socket Server;
         static Socket sock;
-        static byte[] bytesSent;
-        static byte[] bytesReceived;
+        static char bytesSent[];
+        static char bytesReceived[];
 
-        private static Socket SocketConnect(string server, int port)
+        static Socket SocketConnect(string server, int port)
         {
            string request = "GET / HTTP/1.1\r\nHost: " + server +
                 "\r\nConnection: Close\r\n\r\n";
@@ -3771,10 +3800,10 @@ public:
         }
 
         class PCSMessage {
-            byte[] MsgSize = new byte[2];
-            byte[] Content = null;
-            byte[] Type = new byte[3];
-            byte[] SubType = new byte[2];
+            byte MsgSize[2];
+            byte Content;// = null;
+            byte Type[3];
+            byte SubType[2];
             int n = 0;
             short iMsgSize =0;
 
@@ -3837,13 +3866,13 @@ public:
                 }
          //       Console.WriteLine("GOT n4=" + n4);
             }
-            private void Console_WriteLine(string x)
+            void Console_WriteLine(string x)
             {
                 return;
                 Console.WriteLine(x);
             }
 
-            private void Console_WriteLine(int n4)
+            void Console_WriteLine(int n4)
             {
                 return;
                 Console.WriteLine(n4);
@@ -3853,7 +3882,7 @@ public:
                 
             }
 
-            internal string Printable()
+            string Printable()
             {
                 string ret = Type[0] + "" + Type[1] + "" + Type[2] + " " + SubType[0] + "" + SubType[1];
                 try
@@ -3865,12 +3894,12 @@ public:
                 }
                 return ret;
             }
-        }
+        };
 
         static char aa;
-        static _PCSFontAttributes fa = new _PCSFontAttributes();
+        static _PCSFontAttributes fa;
         // This method requests the home page content for the specified server.
-        private static List<PCSMessage> SocketSendReceive(MainPage pg)
+        static std::list<PCSMessage> SocketSendReceive(MainPage pg)
         {
             List<PCSMessage> pcs = new List<PCSMessage>();
              try
@@ -3924,152 +3953,152 @@ public:
         {
             return "SIO,OP,154,001001025080NSS701701701880701741721721001001001001     E RF YY  NN020041030    YN022041040YN023041040NN023041040YK022001040YK023001040NN023001040 ";
         }
-
-        string[] test_data_arr0 = {
- "CTL,VI,8, "
-, "SIO,OP,154,001001025080NSS701701701880701741721721001001001001     E RF YY  NN020041030    YN022041040YN023041040NN023041040YK022001040YK023001040NN023001040 "
-, "SIO,SH,11,100 "
-, "SIO,EW,8, "
-, "SIO,SC,14,000000 "
-, "SIO,DD,40,V2 001001080D731001100400NNN000Y "
-, "SIO,SC,14,000000 "
-, "SIO,DD,40,V2 024001080D731001100400NNN000Y "
-, "SIO,SC,14,000000 "
-, "SIO,DD,40,V2 025001080D731001100400NNN000Y "
-, "SIO,SC,14,000000 "
-, "SIO,DD,54,V2 001001012D731001075400NNN000Y  Jul  9, 2020 "
-, "SIO,SC,14,000000 "
-, "SIO,DD,40,V2 001016002D731001075400NNN000Y "
-, "SIO,SC,14,000000 "
-, "SIO,DD,52,V2 001030030D731001100400NNN000YC PCS Log On "
-, "SIO,SC,14,000000 "
-, "SIO,DD,52,V2 001070010D731001075400NNN000Y  MNSL6354 H "
-, "SIO,DL,32,001001079002001731000000 "
-, "SIO,DL,32,001001079004001731000000 "
-, "SIO,SC,14,000000 "
-, "SIO,DD,115,V2 024001080D731001075400NNN000Y            (C) Copyrights,  Perfect Circle Solutions, Inc.  1979 thru 2014 "
-, "SIO,SC,14,000000 "
-, "SIO,DD,40,V2 025001080D731001100400NNN000Y "
-, "SIO,SC,14,000000 "
-, "SIO,DD,96,V2 025001063D731001075400NNN000Y            San Diego, CA  (619) 817-8440, v5.4.12 (FWA) "
-, "SIO,SC,14,000000 "
-, "SIO,DD,46,V2 025064017D731001075400NNN000Y  USR: "
-, "SIO,DL,32,024064000003001731000001 "
-, "SIO,DL,32,024001079004001731000000 "
-, "SIO,DB,34,002001079019001001YY711000 "
-, "GFX,DB,75,S            0"
-, "SIO,DB,34,011029046005001001YY751000 "
-, "SIO,SC,14,000000 "
-, "SIO,DD,66,V2 014030024D751001100400NNN000Y  Logon:    [            ] "
-, "SIO,SC,14,000000 "
-, "SIO,DD,62,V2 015030024D751001100400NNN000Y  Password: [        ] "
-, "SIO,SC,14,000000 "
-, "SIO,DD,66,V2 012031025D751001100400NNN000Y   Perfect Circle Software "
-, "SIO,AD,223,V2 23274438014041012005001S880SSNNSSNSNSSSSRFY AUN000001100400NNNY  Enter user-name to login                                                                                                Edit: Arrow, Ins, Del, Bksp "
-, "SIO,SC,14,000000 "
-, "SIO,DD,46,V2 014041012S751001100400NNN000Y  TEST "
-, "SIO,AD,223,V2 23275053015041008005001S880SSNNSSNSNSSSSRFYYAUN000001100400NNNY  Enter password                                                                                                          Edit: Arrow, Ins, Del, Bksp "
-, "SIO,SC,14,000000 "
-, "SIO,DD,56,V2 014054020D751001100400NNN000Y  TEST SECURUITY "
-, "SIO,US,19,TEST        "
-////, "DEV,SAVE"
-//, "CTL,VI,8, "
-//, "SIO,OP,154,015020023080YSS761761761761761761761761014054020005     N RF YY  NN022041023100 NN022041040NN023041040NN023041040NN022001040NN023001040NN023001040 "
-//, "SIO,SH,11,200 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 017039002S761001100400NNN000Y  51 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,58,V2 017044030S761001100400NNN000Y  PCS Food Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 018039002S761001100400NNN000Y  52 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,62,V2 018044030S761001100400NNN000Y  PCS Furniture System "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 019039002S761001100400NNN000Y  53 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,63,V2 019044030S761001100400NNN000Y  PCS Export Management "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 020039002S761001100400NNN000Y  54 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,66,V2 020044030S761001100400NNN000Y  PCS Distribution Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 021039002S761001100400NNN000Y  55 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,67,V2 021044030S761001100400NNN000Y  PCS Manufacturing Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,66,V2 023039033S761001100400NNN000Y   (F2 for more companies) "
-////, "DEV,RESTORE"
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,63,V2 016026021S761001100400NNN000Y  Enter Company No [  ] "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 016044002S761001100400NNN000Y  99 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,65,V2 016049030S761001100400NNN000Y  Perfect Circle Software "
+//
+//        string[] test_data_arr0 = {
+// "CTL,VI,8, "
+//, "SIO,OP,154,001001025080NSS701701701880701741721721001001001001     E RF YY  NN020041030    YN022041040YN023041040NN023041040YK022001040YK023001040NN023001040 "
 //, "SIO,SH,11,100 "
+//, "SIO,EW,8, "
 //, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 016044002D711001100400NNN000Y  99 "
+//, "SIO,DD,40,V2 001001080D731001100400NNN000Y "
 //, "SIO,SC,14,000000 "
-////, "SIO,DD,57,V2 016049030D711001100400NNN000Y  Invalid Company "
+//, "SIO,DD,40,V2 024001080D731001100400NNN000Y "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,40,V2 025001080D731001100400NNN000Y "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,54,V2 001001012D731001075400NNN000Y  Jul  9, 2020 "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,40,V2 001016002D731001075400NNN000Y "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,52,V2 001030030D731001100400NNN000YC PCS Log On "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,52,V2 001070010D731001075400NNN000Y  MNSL6354 H "
+//, "SIO,DL,32,001001079002001731000000 "
+//, "SIO,DL,32,001001079004001731000000 "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,115,V2 024001080D731001075400NNN000Y            (C) Copyrights,  Perfect Circle Solutions, Inc.  1979 thru 2014 "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,40,V2 025001080D731001100400NNN000Y "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,96,V2 025001063D731001075400NNN000Y            San Diego, CA  (619) 817-8440, v5.4.12 (FWA) "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,46,V2 025064017D731001075400NNN000Y  USR: "
+//, "SIO,DL,32,024064000003001731000001 "
+//, "SIO,DL,32,024001079004001731000000 "
+//, "SIO,DB,34,002001079019001001YY711000 "
+//, "GFX,DB,75,S            0"
+//, "SIO,DB,34,011029046005001001YY751000 "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,66,V2 014030024D751001100400NNN000Y  Logon:    [            ] "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,62,V2 015030024D751001100400NNN000Y  Password: [        ] "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,66,V2 012031025D751001100400NNN000Y   Perfect Circle Software "
+//, "SIO,AD,223,V2 23274438014041012005001S880SSNNSSNSNSSSSRFY AUN000001100400NNNY  Enter user-name to login                                                                                                Edit: Arrow, Ins, Del, Bksp "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,46,V2 014041012S751001100400NNN000Y  TEST "
+//, "SIO,AD,223,V2 23275053015041008005001S880SSNNSSNSNSSSSRFYYAUN000001100400NNNY  Enter password                                                                                                          Edit: Arrow, Ins, Del, Bksp "
+//, "SIO,SC,14,000000 "
+//, "SIO,DD,56,V2 014054020D751001100400NNN000Y  TEST SECURUITY "
+//, "SIO,US,19,TEST        "
+//////, "DEV,SAVE"
+////, "CTL,VI,8, "
+////, "SIO,OP,154,015020023080YSS761761761761761761761761014054020005     N RF YY  NN022041023100 NN022041040NN023041040NN023041040NN022001040NN023001040NN023001040 "
+////, "SIO,SH,11,200 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 017039002S761001100400NNN000Y  51 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,58,V2 017044030S761001100400NNN000Y  PCS Food Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 018039002S761001100400NNN000Y  52 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,62,V2 018044030S761001100400NNN000Y  PCS Furniture System "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 019039002S761001100400NNN000Y  53 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,63,V2 019044030S761001100400NNN000Y  PCS Export Management "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 020039002S761001100400NNN000Y  54 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,66,V2 020044030S761001100400NNN000Y  PCS Distribution Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 021039002S761001100400NNN000Y  55 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,67,V2 021044030S761001100400NNN000Y  PCS Manufacturing Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,66,V2 023039033S761001100400NNN000Y   (F2 for more companies) "
+//////, "DEV,RESTORE"
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,63,V2 016026021S761001100400NNN000Y  Enter Company No [  ] "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 016044002S761001100400NNN000Y  99 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,65,V2 016049030S761001100400NNN000Y  Perfect Circle Software "
+////, "SIO,SH,11,100 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 016044002D711001100400NNN000Y  99 "
+////, "SIO,SC,14,000000 "
+//////, "SIO,DD,57,V2 016049030D711001100400NNN000Y  Invalid Company "
+//////, "SIO,SC,14,000000 "
+//////, "SIO,DD,44,V2 016044002S711001100400NNN000Y  99 "
+//////, "SIO,SC,14,000000 "
+////, "SIO,DD,40,V2 016049030S711001100400NNN000Y "
+////, "SIO,AD,318,V2 23275336016044002001001S711SSNSSSSSRSSSSRFY   N000001100400NNNY  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List                                                                                               99 "
 ////, "SIO,SC,14,000000 "
 ////, "SIO,DD,44,V2 016044002S711001100400NNN000Y  99 "
+////, "SIO,CE,8, "
+////, "SIO,OP,154,017023025080YSS731731731731731741721721016044002001     E RF YY  NN025028030100 NN021041040NN022041040NN023041040NN021001040NN022001040NN023001040 "
+////, "SIO,DL,32,016043000001001731000001 "
+////, "SIO,DL,32,016047000001001731000001 "
 ////, "SIO,SC,14,000000 "
-//, "SIO,DD,40,V2 016049030S711001100400NNN000Y "
-//, "SIO,AD,318,V2 23275336016044002001001S711SSNSSSSSRSSSSRFY   N000001100400NNNY  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List                                                                                               99 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 016044002S711001100400NNN000Y  99 "
-//, "SIO,CE,8, "
-//, "SIO,OP,154,017023025080YSS731731731731731741721721016044002001     E RF YY  NN025028030100 NN021041040NN022041040NN023041040NN021001040NN022001040NN023001040 "
-//, "SIO,DL,32,016043000001001731000001 "
-//, "SIO,DL,32,016047000001001731000001 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 018027002S731001100400NNN000Y  51 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,58,V2 018031048S731001100400NNN000Y  PCS Food Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 019027002S731001100400NNN000Y  52 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,62,V2 019031048S731001100400NNN000Y  PCS Furniture System "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 020027002S731001100400NNN000Y  53 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,63,V2 020031048S731001100400NNN000Y  PCS Export Management "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 021027002S731001100400NNN000Y  54 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,66,V2 021031048S731001100400NNN000Y  PCS Distribution Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 022027002S731001100400NNN000Y  55 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,67,V2 022031048S731001100400NNN000Y  PCS Manufacturing Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 023027002S731001100400NNN000Y  56 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,60,V2 023031048S731001100400NNN000Y  PCS Service Center "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 024027002S731001100400NNN000Y  57 "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,60,V2 024031048S731001100400NNN000Y  PCS Retail Company "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 018025002S731001100400NNN000N  -> "
-//, "SIO,AD,221,V2 23275872018024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,40,V2 018024001S731001100400NNN000N "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,40,V2 018024003S731001100400NNN000N "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 019025002S731001100400NNN000N  -> "
-//, "SIO,AD,221,V2 23280050019024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,40,V2 019024001S731001100400NNN000N "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,40,V2 019024003S731001100400NNN000N "
-//, "SIO,SC,14,000000 "
-//, "SIO,DD,44,V2 020025002S731001100400NNN000N  -> "
-//, "SIO,AD,221,V2 23280106020024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
-//, "SIO,DE,40,Invalid - Use '?' or F2 for list "
-//, "SIO,AB,47,00210384671N  No    No - change company "
-//, "SIO,AB,42,00110384671Y  Yes   Yes - continue "
-        };
+////, "SIO,DD,44,V2 018027002S731001100400NNN000Y  51 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,58,V2 018031048S731001100400NNN000Y  PCS Food Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 019027002S731001100400NNN000Y  52 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,62,V2 019031048S731001100400NNN000Y  PCS Furniture System "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 020027002S731001100400NNN000Y  53 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,63,V2 020031048S731001100400NNN000Y  PCS Export Management "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 021027002S731001100400NNN000Y  54 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,66,V2 021031048S731001100400NNN000Y  PCS Distribution Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 022027002S731001100400NNN000Y  55 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,67,V2 022031048S731001100400NNN000Y  PCS Manufacturing Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 023027002S731001100400NNN000Y  56 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,60,V2 023031048S731001100400NNN000Y  PCS Service Center "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 024027002S731001100400NNN000Y  57 "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,60,V2 024031048S731001100400NNN000Y  PCS Retail Company "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 018025002S731001100400NNN000N  -> "
+////, "SIO,AD,221,V2 23275872018024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,40,V2 018024001S731001100400NNN000N "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,40,V2 018024003S731001100400NNN000N "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 019025002S731001100400NNN000N  -> "
+////, "SIO,AD,221,V2 23280050019024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,40,V2 019024001S731001100400NNN000N "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,40,V2 019024003S731001100400NNN000N "
+////, "SIO,SC,14,000000 "
+////, "SIO,DD,44,V2 020025002S731001100400NNN000N  -> "
+////, "SIO,AD,221,V2 23280106020024001001001S731SSNSSSSSRSSSS2DY   N000001100400NNNN  Enter Company Code                                                                                                      Enter Flag: ?/F2 for List "
+////, "SIO,DE,40,Invalid - Use '?' or F2 for list "
+////, "SIO,AB,47,00210384671N  No    No - change company "
+////, "SIO,AB,42,00110384671Y  Yes   Yes - continue "
+//        };
     }
 }
 

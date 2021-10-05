@@ -5,24 +5,13 @@
 */
 
 //App Specifics
-#include "XGUI_App_Windows.hpp"
+#include "AnotherOne.hpp"
 
 class /*XGui*/ App : public AlgeApp {
     
-    //Variables
-    bool my_tool_active;
-    float my_color[4];
-    ImFont *roboto;
-    i2 msize;
-    i2 mou;
-    bool done = false;
-
-    //Gfx Objects
-	GameObject background, gui;
-
-    
-    
+	GameObject background, gob_gui;
     XGUI_App_Windows app_gui;
+    
 public:
     
     
@@ -34,33 +23,30 @@ public:
     
     AddDefaultCamera(Camera::CAM_MODE_2D,OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
         
-        AddResource(&background, "juices",
+    AddResource(&background, "juices",
             "green_natural.jpg",
             XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN
-            );
+    );
 
 
-        AddResource(&gui, "gui");
-        gui.hidden = false;
-        ImGui::GetIO().Fonts->AddFontDefault();
-        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((string(path)+"/Roboto-Bold.ttf").c_str(), 16.0f);
+    AddResource(&gob_gui, "gui");
+    app_gui.Init(string(path));
+        
     }
     void processInput(PEG::CMD* p, float deltaT) {
-		if (p->command == CMD_SCREENSIZE) {
-            msize.x = p->i1;
-            msize.y = p->i2;
-		}
+		if (p->command == CMD_SCREENSIZE) app_gui.msize = i2(p->i1,p->i2);
+		
   	}
 	void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-        if (gob->is(gui) && !gui.hidden)
+        if (gob->is(gob_gui))
         {
             GuiStarts();
-                app_gui.MyFirstToolWindow(deltaT);
+                app_gui.ShowWindows(deltaT);
             GuiEnds();
         }
 
 	}
 
     //Secondary Functions
-    i2 getBackgroudSize() {return msize;}
+    i2 getBackgroudSize() {return app_gui.msize;}
 };

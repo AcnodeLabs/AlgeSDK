@@ -20,3 +20,5 @@ mApps/*
 *.o.d
 .vs/*
 GOB#*
+XalApps/*
+Apps/Hayai/*

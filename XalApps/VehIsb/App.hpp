@@ -72,7 +72,7 @@ public:
            ImGui::InputText("Enter Vehicle Reg No XX-NNN", m_vehregno,128,0,0,0);
            bool clicked = ImGui::Button("Go!");
            if (clicked) {
-               netmsg.Post("veh_regno="+string(m_vehregno));
+       //     netmsg.Post("veh_regno="+string(m_vehregno));
            }
            ImGui::Text("%s",m_result);
 

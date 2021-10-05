@@ -110,6 +110,7 @@
 		9CE79C6F1F9DFBF700B87310 /* Mars-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mars-Info.plist"; sourceTree = "<group>"; };
 		9CEA991E1FAB603D00C52351 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreeimage.a; sourceTree = "<group>"; };
 		9CFB727A22E0501B00426B8F /* AlgeApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AlgeApp.hpp; path = ../../SDKSRC/Base/AlgeApp.hpp; sourceTree = "<group>"; };
+		A512709C26E7799700C82966 /* PCSClientCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PCSClientCpp.hpp; path = ../../Apps/Hayai/PCSClientCpp.hpp; sourceTree = "<group>"; };
 		A527DDCB262317DA0057C00F /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../../imgui/imgui.h; sourceTree = "<group>"; };
 		A53C77E52622D2F700912EC0 /* libnats_staticd.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libnats_staticd.a; sourceTree = "<group>"; };
 		A595ED1326047AE600BFB870 /* libnats.pc */ = {isa = PBXFileReference; lastKnownFileType = text; name = libnats.pc; path = ../../../cnats/silicon/libnats.pc; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		9C3281AF13F275F900A53E54 = {
 			isa = PBXGroup;
 			children = (
+				A512709C26E7799700C82966 /* PCSClientCpp.hpp */,
 				A527DDCB262317DA0057C00F /* imgui.h */,
 				A5AB4F652610E94A00634596 /* Box2DebugDraw.hpp */,
 				88BBEF8623165163009AEDF6 /* candidate.h */,
