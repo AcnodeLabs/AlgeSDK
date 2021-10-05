@@ -13,7 +13,7 @@
 // ALGEAPPNAME will be name of Target in Mac, in Windows it is defined by ProjectName  
 #define ALGEAPPNAME "AlgeApp" //Should Match with Product .app or .exe name
 //p#include "../Apps/PoppingTime/App.hpp"
-#include "../XalApps/APCSClient/App.hpp"
+#include "../Apps/XGui/App.hpp"
 // The Canditate to build is referenced above:-
 // For uncluttered workspace 'Do "Close All but this" canditdate.h' and Right Click and Open the file referenced below,
 // Some Samples are XGui, DodgeTheCreeps, PoppingTime, Juices, Ivank_Box2D, Planets
