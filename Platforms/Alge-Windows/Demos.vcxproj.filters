@@ -26,24 +26,6 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\draw.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\drawgl.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\drawrast.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\font.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\tpool.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\libdrawtext\src\utf8.c">
-      <Filter>libdrawtext</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SDKSRC\Base\jpgd.cpp">
       <Filter>libjpeg</Filter>
     </ClCompile>
@@ -63,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\imgui\backends\imgui_impl_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\imgui\imgui_tables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

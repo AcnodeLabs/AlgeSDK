@@ -8,7 +8,7 @@ class CLog {
 public:
     CLog() {
 #ifndef METRO
-        outp = fopen("log.txt", "w");
+        fopen_s(&outp,"log.txt", "w");
 #endif
     }
 

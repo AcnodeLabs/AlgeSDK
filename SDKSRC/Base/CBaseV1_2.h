@@ -119,6 +119,7 @@ public:
 #include "../ThirdParty/assimp/include/assimp/postprocess.h"
 */
 
+#define NO_FREETYPE
 #include "drawtext.h"
 
 #ifdef XCODE_BUILD

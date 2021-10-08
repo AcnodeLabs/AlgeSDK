@@ -112,13 +112,8 @@
     <ClCompile Include="..\..\..\imgui\imgui.cpp" />
     <ClCompile Include="..\..\..\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\..\..\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\..\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="..\..\..\libdrawtext\src\draw.c" />
-    <ClCompile Include="..\..\..\libdrawtext\src\drawgl.c" />
-    <ClCompile Include="..\..\..\libdrawtext\src\drawrast.c" />
-    <ClCompile Include="..\..\..\libdrawtext\src\font.c" />
-    <ClCompile Include="..\..\..\libdrawtext\src\tpool.c" />
-    <ClCompile Include="..\..\..\libdrawtext\src\utf8.c" />
     <ClCompile Include="..\..\SDKSRC\Base\jpgd.cpp" />
     <ClCompile Include="alge_windows.cpp" />
     <ClCompile Include="Timer.cpp" />

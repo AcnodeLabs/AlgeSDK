@@ -32,7 +32,7 @@ void ImGui_ImplAlgeSDK_AfterRender()
 	//	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 	//	glClear(GL_COLOR_BUFFER_BIT);
 	//glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound, but prefer using the GL3+ code.
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData(),(char*)msxg);
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }
 
 void ImGui_ImplAlgeSDK_BeforeRender()
