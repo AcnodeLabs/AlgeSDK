@@ -3,11 +3,14 @@
 #define CLOG_INCLUDED
 #include <string>
 
+
 class CLog {
     FILE *outp;
 public:
     CLog() {
-#ifndef METRO
+#ifndef ALGE_WINDOWS
+        outp = fopen("log.txt", "w");
+#else
         fopen_s(&outp,"log.txt", "w");
 #endif
     }
