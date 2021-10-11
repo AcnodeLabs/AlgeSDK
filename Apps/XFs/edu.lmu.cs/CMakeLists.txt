@@ -4,3 +4,8 @@
 cmake_minimum_required (VERSION 2.8.11)
 project (openfly)
 add_executable (openfly fly.cpp landscape.cpp)
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
+
+target_link_libraries(openfly ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
