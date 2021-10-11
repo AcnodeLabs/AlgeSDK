@@ -35,31 +35,31 @@ void newLandscape() {
 
 // A ship and some functions to control it: Later, we need to add a ship
 // controller class so even the navigation controls are pluggable.
-static Ship theShip(Point(60, 40, 220));
+static Ship theShip(OPoint(60, 40, 220));
 static Cockpit cockpit(theShip);
 
 void keyboard(unsigned char key, int, int) {
   const double deltaSpeed = 0.01;
   const double angle = 0.02;
   switch(key) {
-    case '8': theShip.setSpeed(theShip.getSpeed() + deltaSpeed); break;
-    case 'm': theShip.setSpeed(theShip.getSpeed() - deltaSpeed); break;
-    case 'w': wireframe = !wireframe; break;
-    case 'r': newLandscape();
-    case 'j': theShip.roll(angle); break;
-    case 'l': theShip.roll(-angle); break;
-    case 'h': theShip.yaw(angle); break;
-    case ';': theShip.yaw(-angle); break;
-    case 'i': theShip.pitch(-angle); break;
-    case 'k': theShip.pitch(angle);  break;
+    case '=': theShip.setSpeed(theShip.getSpeed() + deltaSpeed); break;
+    case '-': theShip.setSpeed(theShip.getSpeed() - deltaSpeed); break;
+    case ' ': wireframe = !wireframe; break;
+    case 'l': newLandscape();
+    case 'a': theShip.roll(angle); break;
+    case 'd': theShip.roll(-angle); break;
+    case 'z': theShip.yaw(angle); break;
+    case 'x': theShip.yaw(-angle); break;
+    case 'w': theShip.pitch(-angle); break;
+    case 's': theShip.pitch(angle);  break;
   }
 }
 
-// Display and Animation: To draw we just clear the window and draw the scene.
+// openfly_Display and Animation: To draw we just clear the window and draw the scene.
 // Because our main window is double buffered we have to swap the buffers to
 // make the drawing visible.  Animation is achieved by successively moving
 // the ship and drawing.
-void display() {
+void openfly_display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   wireframe ? landscape.drawWireFrame() : landscape.draw();
   cockpit.draw();
@@ -67,11 +67,11 @@ void display() {
   glutSwapBuffers();
 }
 
-// Move the ship one step, recompute the view, and ask to redisplay.
+// Move the ship one step, recompute the view, and ask to reopenfly_display.
 void timer(int v) {
   theShip.fly();
-  Point eye(theShip.getPosition());
-  Point at(theShip.getPosition() + theShip.getDirection());
+  OPoint eye(theShip.getPosition());
+  OPoint at(theShip.getPosition() + theShip.getDirection());
   Vector up(theShip.getVertical());
   glLoadIdentity();
   gluLookAt(eye.x, eye.y, eye.z, at.x, at.y, at.z, up.i, up.j, up.k);
@@ -91,7 +91,7 @@ void reshape(int w, int h) {
 }
 
 // init(): Initialize GLUT and enter the GLUT event loop.
-void init() {
+void openfly_init() {
   srand(9903);
   glEnable(GL_DEPTH_TEST);
   newLandscape();
@@ -115,16 +115,16 @@ void init() {
 
 // Writes some trivial help text to the console.
 void writeHelpToConsole() {
-  std::cout << "j/l = roll left / right\n";
-  std::cout << "i/k - pitch down / up\n";
-  std::cout << "h/; - yaw left / right\n";
-  std::cout << "8/m - speed up / slow down\n";
+  std::cout << "a/d = roll left / right\n";
+  std::cout << "w/s - pitch down / up\n";
+  std::cout << "z/x - yaw left / right\n";
+  std::cout << "+/- - speed up / slow down\n";
   std::cout << "w - toggle wireframe mode\n";
-  std::cout << "r - generate a new landscape\n";
+  std::cout << "l - generate a new landscape\n";
 }
 
 // main(): Initialize GLUT and enter the GLUT event loop.
-int main(int argc, char** argv) {
+int openfly_main(int argc, char** argv) {
   writeHelpToConsole();
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -133,8 +133,14 @@ int main(int argc, char** argv) {
   glutCreateWindow("Simple Flight");
   glutReshapeFunc(reshape);
   glutTimerFunc(100, timer, 0);
-  glutDisplayFunc(display);
+  glutDisplayFunc(openfly_display);
   glutKeyboardFunc(keyboard);
-  init();
+  openfly_init();
   glutMainLoop();
 }
+
+#ifndef CBASE_H_INCLUDED
+int main(int argc, char** argv) {
+  return openfly_main(argc,argv);
+}
+#endif

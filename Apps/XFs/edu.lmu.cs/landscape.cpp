@@ -24,7 +24,7 @@ Landscape::Landscape(int r, int c): rows(r), columns(c) {
 }
 
 // create() sets the elevations of the four grid corners to 0, generates
-// internal elevations remembering the highest point, then generates display
+// internal elevations remembering the highest OPoint, then generates display
 // lists.
 void Landscape::create(double rug) {
   int r, c;
@@ -62,7 +62,7 @@ void Landscape::create(double rug) {
   createWireFrameDisplayList();
 }
 
-// Simple math for random midpoint displacement.
+// Simple math for random midOPoint displacement.
 void Landscape::generate(int x1, int y1, int x2, int y2, double rug) {
   int x3 = (x1 + x2) / 2;
   int y3 = (y1 + y2) / 2;
@@ -90,7 +90,7 @@ void Landscape::generate(int x1, int y1, int x2, int y2, double rug) {
   }
 }
 
-// We assign colors to points so that blue is the water, then going up
+// We assign colors to OPoints so that blue is the water, then going up
 // you get green (grassland), brown (mountain) then white (snowcaps).
 void Landscape::vertex(double x, double z) {
   double y = d[(int)x][(int)z];
@@ -106,9 +106,9 @@ void Landscape::vertex(double x, double z) {
 }
 
 void Landscape::drawTriangle(int x1, int z1, int x2, int z2, int x3, int z3) {
-  Point p[] = {Point(x1, d[x1][z1], z1),
-               Point(x2, d[x2][z2], z2),
-               Point(x3, d[x3][z3], z3)};
+  OPoint p[] = {OPoint(x1, d[x1][z1], z1),
+               OPoint(x2, d[x2][z2], z2),
+               OPoint(x3, d[x3][z3], z3)};
   Vector normal = unit(Plane(p[0], p[1], p[2]).normal());
   //if (normal.j < 0.0) normal = -normal;
   double h = 0.005;

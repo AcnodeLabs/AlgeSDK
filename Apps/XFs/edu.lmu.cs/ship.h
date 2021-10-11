@@ -1,6 +1,6 @@
 // A simplified spaceship that you can use in flybys, flight simulators and
 // other 3D programs.  A ship has a position, an orientation and a speed.
-// The position is simply a point.  The orientation is given by three
+// The position is simply a OPoint.  The orientation is given by three
 // UNIT vectors: (1) forward, the vector along which the ship is currently
 // moving, (2) up, a vector perpendicular to forward that describes which
 // direction is "up" to someone sitting in the ship, and (3) right, which
@@ -34,14 +34,14 @@
 #include "geometry.h"
 
 class Ship {
-  Point position;
+  OPoint position;
   Vector forward, up, right;
   double speed;
 public:
-  Ship(Point initialPosition = Point(0, 0, 0));
-  Point getPosition() {return position;}
+  Ship(OPoint initialPosition = OPoint(0, 0, 0));
+  OPoint getPosition() {return position;}
   void fly() {position += speed * forward;}
-  void teleport(Point newPosition) {position = newPosition;}
+  void teleport(OPoint newPosition) {position = newPosition;}
   Vector getDirection() {return forward;}
   Vector getVertical() {return up;}
   void pitch(double angle);
@@ -51,7 +51,7 @@ public:
   void setSpeed(double newSpeed) {speed = newSpeed;}
 };
 
-inline Ship::Ship(Point initialPosition):
+inline Ship::Ship(OPoint initialPosition):
   position(initialPosition),
   forward(0, 0, -1),
   up(0, 1, 0),
