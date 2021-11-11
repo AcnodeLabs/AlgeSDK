@@ -1,21 +1,16 @@
 //#include <CBaseV1_2.h>
 // Copyright (c) 2018 AcnodLabs Inc
 
-/*
-   ALGE SDK JD4 Demo :: XFs
-   http://lib.ivank.net/demos/box2D.html
-*/
 using namespace ImGui;
 
-#include "edu.lmu.cs/fly.cpp"
-#include "edu.lmu.cs/landscape.cpp"
+
+#include "../Tetris/xtetris.hpp"
 
 
-class /*XFs*/ App : public AlgeApp {
+class /*Tetris*/ App : public AlgeApp {
 
 	GameObject skydome, gui;
-    GameObject openfly;
-    
+
 public:
 
     bool my_tool_active = true;
@@ -52,19 +47,7 @@ public:
     }
     
     void UpdateCustom(GameObject* gob,int instanceNo, float deltaT) {
-       // if (gob->is(gui)) RenderGui(deltaT);
-        if (gob->is(openfly)) {
-         //   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-             cockpit.draw();
-            glFlush();
-            theShip.fly();
-            OPoint eye(theShip.getPosition());
-            OPoint at(theShip.getPosition() + theShip.getDirection());
-            Vector up(theShip.getVertical());
-            glLoadIdentity();
-            gluLookAt(eye.x, eye.y, eye.z, at.x, at.y, at.z, up.i, up.j, up.k);
-            
-        }
+        if (gob->is(gui)) RenderGui(deltaT);
     }
 
 	virtual void processInput(PEG::CMD* p, float deltaT) {
@@ -83,14 +66,12 @@ public:
         
 		AlInit(STANDARD_2D, "XFs Flight Sim");
 		AddDefaultCamera(Camera::CAM_MODE_2D, OrthoTypes::ORIGIN_IN_TOP_LEFT_OF_SCREEN);
-	//	InitPhysics();
+		InitPhysics();
 		
 		AddResource(&skydome, "skydome", "skydome.jpg", XFunction_AutoScalingToFullScreen::AUTO_SCALING_FULLSCREEN);
         AddResource(&gui, "gui");
         gui.Hide();
-        
-        openfly_init();
-        AddResource(&openfly, "openfly");
+   
 
 	}
 };

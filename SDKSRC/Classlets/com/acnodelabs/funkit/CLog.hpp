@@ -9,7 +9,7 @@ class CLog {
 public:
     CLog() {
 #ifndef ALGE_WINDOWS
-        outp = fopen("log.txt", "w");
+        fopen_s(&outp, "log.txt", "w");
 #else
         fopen_s(&outp,"log.txt", "w");
 #endif

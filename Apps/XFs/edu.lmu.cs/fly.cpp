@@ -137,6 +137,7 @@ int openfly_main(int argc, char** argv) {
   glutKeyboardFunc(keyboard);
   openfly_init();
   glutMainLoop();
+  return 1;
 }
 
 #ifndef CBASE_H_INCLUDED
