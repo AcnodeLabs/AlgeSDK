@@ -9,11 +9,11 @@ class XGUI_App_Windows {
 public:
     i2 msize;
     i2 mou;
-    ImFont *roboto;
+  //  ImFont *roboto;
 
     void Init(string path) {
-        ImGui::GetIO().Fonts->AddFontDefault();
-        roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((path+"/Roboto-Bold.ttf").c_str(), 16.0f);
+  //      ImGui::GetIO().Fonts->AddFontDefault();
+  //      roboto = ImGui::GetIO().Fonts->AddFontFromFileTTF((path+"/Roboto-Bold.ttf").c_str(), 16.0f);
     }
     
     void ShowWindows(float dt) {
@@ -26,9 +26,9 @@ public:
         static int counter = 0;
            
         ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-           ImGui::PushFont(roboto);
+      //     ImGui::PushFont(roboto);
            ImGui::Text("Screen Size = {%d x %d}", msize.x, msize.y);               // Display some text (you can use a format strings too)
-           ImGui::PopFont();
+      //     ImGui::PopFont();
            ImGui::Text("Mouse Pos = {%d x %d}", mou.x, mou.y);               // Display some text
         
            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state

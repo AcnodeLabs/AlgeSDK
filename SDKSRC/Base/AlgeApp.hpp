@@ -22,6 +22,8 @@ extern CNetMsg netmsg;
 #include "XFunctions.hpp"
 
 
+
+
 class DbgDraw : public b2Draw
   {
   

@@ -59,4 +59,14 @@ void GuiEnds() {
 	ImGui_ImplAlgeSDK_AfterRender();
 }
 
+class GuiFont : public ImFont {
+	ImFont* thiz;
+public:
+	GuiFont() {}
+	void Init(string fontfile, float size) {
+		thiz = ImGui::GetIO().Fonts->AddFontFromFileTTF(fontfile.c_str(), size);
+	}
+};
+GuiFont guiFont;
+
 ////////////////////////
